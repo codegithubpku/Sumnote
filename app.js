@@ -208,7 +208,7 @@
     $('readerTitle').textContent = `Modul ${mod.num} — ${mod.title}`;
     $('readerSub').textContent = `${course.code} · ${course.title}`;
 
-    const encodedPath = `modules/${encodeURIComponent(course.folder)}/${encodeURIComponent(mod.file)}`;
+    const encodedPath = `${encodeURIComponent(course.folder)}/${encodeURIComponent(mod.file)}`;
     readerFrame.src = encodedPath;
 
     $('prevModBtn').disabled = modIndex <= 0;
