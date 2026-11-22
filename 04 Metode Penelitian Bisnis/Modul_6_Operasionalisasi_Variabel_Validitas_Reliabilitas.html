@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="id"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Modul 6 — Operasionalisasi Variabel serta Validitas dan Reliabilitas Instrumen | EKMA5104</title>
+<script>window.MathJax={tex:{inlineMath:[['$','$']],displayMath:[['\\[','\\]'],['$$','$$']]},svg:{fontCache:'global'},startup:{typeset:true}};</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js" async></script>
+<style>
+:root{--bg:#f4f6f9;--panel:#fff;--ink:#1c2733;--muted:#5c6b7a;--line:#e4e9f0;--brand:#1a86c7;--brand-dark:#0f5e8f;--brand-soft:#e7f3fb;--kb1:#1a86c7;--kb2:#e08a1e;--kb3:#2a9d6f;--kb4:#7a5cc0;--kb5:#c75b7a;--radius:14px;--shadow:0 1px 2px rgba(16,42,67,.06),0 6px 20px rgba(16,42,67,.06);--maxw:900px}
+*{box-sizing:border-box}html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;line-height:1.72}
+#progress{position:fixed;top:0;left:0;height:4px;width:0;background:linear-gradient(90deg,var(--brand),#53c0ec);z-index:200;transition:width .1s}
+header.top{position:sticky;top:0;z-index:100;background:rgba(255,255,255,.92);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+.top-in{max-width:var(--maxw);margin:0 auto;padding:10px 20px;display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+.badge{background:var(--brand);color:#fff;font-weight:700;font-size:.72rem;letter-spacing:.5px;padding:4px 10px;border-radius:999px}
+.homebtn{text-decoration:none;display:inline-flex;align-items:center;gap:7px;background:var(--brand);color:#fff;font-weight:700;font-size:.8rem;padding:7px 15px;border-radius:999px;box-shadow:0 2px 6px rgba(16,42,67,.22);line-height:1}
+.top-title{font-size:.9rem;font-weight:600;color:var(--muted)}
+nav.jump{margin-left:auto;display:flex;gap:4px;flex-wrap:wrap}
+nav.jump a{font-size:.78rem;color:var(--muted);text-decoration:none;padding:5px 10px;border-radius:8px}
+nav.jump a:hover{background:var(--brand-soft);color:var(--brand-dark)}
+.wrap{max-width:var(--maxw);margin:0 auto;padding:0 20px 90px}
+.hero{margin-top:26px;padding:30px 28px;border-radius:var(--radius);color:#fff;background:linear-gradient(135deg,#0f5e8f,#1a86c7 60%,#2fa4df);box-shadow:var(--shadow);position:relative;overflow:hidden}
+.hero .eyebrow{font-size:.78rem;letter-spacing:1.5px;text-transform:uppercase;opacity:.9;font-weight:600}
+.hero h1{margin:.3em 0 .25em;font-size:1.62rem;line-height:1.25;max-width:90%}
+.hero .meta{display:flex;gap:18px;flex-wrap:wrap;font-size:.84rem;opacity:.95;margin-top:10px}
+h2.section{font-size:1.3rem;margin:48px 0 4px;display:flex;align-items:center;gap:10px;scroll-margin-top:70px}
+h2.section .dot{width:10px;height:22px;border-radius:4px;background:var(--brand)}
+.section-sub{color:var(--muted);font-size:.9rem;margin:0 0 18px}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);padding:22px 24px;margin:16px 0;--dot:var(--brand);overflow-x:clip;overflow-wrap:break-word;word-wrap:break-word}
+.concepts{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:minmax(0,1fr);gap:10px}
+.concepts li{display:flex;gap:12px;align-items:flex-start;padding:12px 14px;border:1px solid var(--line);border-radius:10px;background:#fcfdff;min-width:0;max-width:100%}
+.concepts li>span{min-width:0;max-width:100%;overflow-wrap:break-word;word-wrap:break-word}
+.concepts input{margin-top:4px;width:18px;height:18px;accent-color:var(--brand);flex:none;cursor:pointer}
+.concepts .ct{font-weight:600}.concepts .cd{display:block;font-weight:400;color:var(--muted);font-size:.86rem;margin-top:2px}
+.concepts li.done{background:var(--brand-soft);border-color:#bfe0f3}.concepts li.done .ct{text-decoration:line-through;opacity:.65}
+.cl-head{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-bottom:6px}
+.cl-head .count{font-size:.82rem;color:var(--muted);background:var(--brand-soft);padding:3px 10px;border-radius:999px;font-weight:600}
+.btn-reset{font-size:.78rem;border:1px solid var(--line);background:#fff;color:var(--muted);padding:5px 12px;border-radius:8px;cursor:pointer}
+.mm-toolbar{display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin-bottom:10px}
+.mm-btn{font-size:.78rem;border:1px solid var(--line);background:#fff;padding:6px 13px;border-radius:8px;cursor:pointer;color:var(--brand-dark);font-weight:600}
+.mindmap-host{height:580px;overflow:auto;border:1px solid var(--line);border-radius:10px;background:#fcfdff}.mindmap-host svg{display:block}
+.kb-tag{display:inline-flex;align-items:center;gap:8px;font-size:.78rem;font-weight:700;color:#fff;padding:5px 12px;border-radius:999px;margin-bottom:6px}
+.kb1t{background:var(--kb1)}.kb2t{background:var(--kb2)}.kb3t{background:var(--kb3)}.kb4t{background:var(--kb4)}.kb5t{background:var(--kb5)}
+.kb1b{--dot:var(--kb1)}.kb2b{--dot:var(--kb2)}.kb3b{--dot:var(--kb3)}.kb4b{--dot:var(--kb4)}.kb5b{--dot:var(--kb5)}
+.lead{font-size:1.02rem}.term{font-weight:700;color:var(--dot)}.en{font-style:italic;color:var(--muted);font-weight:500}
+.abc{display:flex;align-items:center;gap:10px;margin:28px 0 10px;padding-bottom:6px;border-bottom:2px solid color-mix(in srgb,var(--dot) 18%,#fff)}
+.abc .ltr{background:var(--dot);color:#fff;font-weight:800;min-width:30px;height:30px;padding:0 7px;border-radius:8px;display:grid;place-items:center;flex:none}
+.abc h4{margin:0;font-size:1.06rem;color:var(--dot)}
+.numh{font-weight:700;color:var(--dot);margin:22px 0 4px;font-size:1rem}
+.leth{font-weight:800;color:var(--dot);margin:20px 0 6px;font-size:.98rem;border-left:3px solid var(--dot);padding-left:10px}
+ol.book{margin:12px 0;padding-left:28px}ol.book>li{margin:10px 0;padding-left:6px}ol.book>li::marker{font-weight:700;color:var(--dot)}
+ul.exp{list-style:none;margin:12px 0;padding:0;display:grid;grid-template-columns:minmax(0,1fr);gap:10px}
+ul.exp>li{position:relative;padding-left:20px;min-width:0;max-width:100%;overflow-wrap:break-word;word-wrap:break-word}
+ul.exp>li::before{content:"";position:absolute;left:0;top:11px;width:8px;height:8px;border-radius:2px;background:var(--dot)}
+ul.let{list-style:lower-alpha;margin:10px 0;padding-left:28px}ul.let>li{margin:8px 0;padding-left:4px}ul.let>li::marker{color:var(--dot);font-weight:700}
+.flow{border-left:4px solid var(--dot);background:color-mix(in srgb,var(--dot) 9%,#fff);padding:11px 15px;border-radius:0 10px 10px 0;margin:18px 0;font-size:.9rem;min-width:0;max-width:100%;overflow-wrap:break-word;word-wrap:break-word}
+.flow::before{content:"🔗 Benang merah — ";font-weight:700;color:var(--dot)}.flow b{color:var(--dot)}
+.casebox{background:#f8fafc;border:1px solid var(--line);border-left:4px solid var(--dot);border-radius:0 10px 10px 0;padding:12px 15px;margin:14px 0;font-size:.88rem;min-width:0;max-width:100%;overflow-wrap:break-word;word-wrap:break-word}
+.casebox .ctitle{font-weight:700;color:var(--dot);margin-bottom:4px;display:block}
+.table-wrap{width:100%;overflow-x:auto;-webkit-overflow-scrolling:touch;margin:14px 0;border-radius:10px}
+table.mini{width:100%;border-collapse:collapse;margin:0;font-size:.86rem;table-layout:auto}
+table.mini th,table.mini td{border:1px solid var(--line);padding:10px 12px;text-align:left;vertical-align:top;overflow-wrap:break-word;word-wrap:break-word}
+table.mini th{background:color-mix(in srgb,var(--dot) 12%,#fff);color:var(--dot);font-weight:700}
+.rgrid{display:grid;gap:8px;margin:14px 0}.rgrid.c2{grid-template-columns:repeat(2,1fr)}.rgrid.c3{grid-template-columns:repeat(3,1fr)}.rgrid.c4{grid-template-columns:repeat(4,1fr)}
+.rcell{border:1px solid var(--line);border-radius:10px;padding:11px 13px;cursor:pointer;background:#fff;display:flex;gap:10px;align-items:flex-start;transition:.15s;min-width:0;max-width:100%}
+.rcell>span{min-width:0;max-width:100%;overflow-wrap:break-word;word-wrap:break-word}
+.rcell:hover{border-color:var(--dot);box-shadow:var(--shadow);transform:translateY(-2px)}
+.rcell.active{border-color:var(--dot);background:color-mix(in srgb,var(--dot) 8%,#fff)}
+.rcell .stepnum{background:var(--dot);color:#fff;font-weight:700;min-width:24px;height:24px;border-radius:7px;display:grid;place-items:center;flex:none;font-size:.82rem}
+.rcell .rt{font-weight:700;font-size:.9rem;color:var(--dot);display:block}.rcell .rp{font-size:.78rem;color:var(--muted);display:block;margin-top:2px}
+.rdetail{font-size:.88rem;border-left:4px solid var(--dot);background:color-mix(in srgb,var(--dot) 8%,#fff);border-radius:0 10px 10px 0;padding:12px 15px;margin-top:6px;min-width:0;max-width:100%;overflow-wrap:break-word;word-wrap:break-word}
+.pill-row{display:flex;gap:8px;flex-wrap:wrap;margin:10px 0}.pill{font-size:.8rem;background:#eef3f8;color:#36506a;border:1px solid #e0e8f0;padding:4px 11px;border-radius:999px;font-weight:600}
+.flowchart{display:flex;align-items:center;gap:6px;flex-wrap:wrap;margin:16px 0;justify-content:center}
+.fc-node{background:color-mix(in srgb,var(--dot) 12%,#fff);border:1.5px solid var(--dot);color:var(--dot);font-weight:700;font-size:.8rem;padding:8px 12px;border-radius:9px;text-align:center}
+.fc-arrow{color:var(--dot);font-weight:800;font-size:1.05rem}
+.pyramid{display:flex;flex-direction:column;align-items:center;gap:4px;margin:16px 0}.pyr-row{color:#fff;font-weight:700;text-align:center;padding:9px 12px;border-radius:7px;font-size:.84rem}
+.bs-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:14px 0}
+.bs-col{border:1.5px solid var(--dot);border-radius:10px;overflow:hidden;min-width:0;max-width:100%}
+.bs-head{background:var(--dot);color:#fff;font-weight:700;font-size:.84rem;padding:7px 12px;text-align:center}
+.bs-box{padding:10px 12px;border-bottom:1px dashed var(--line);font-size:.84rem}.bs-box:last-child{border-bottom:none}
+.eqbox{background:#fcfdff;border:1px solid var(--line);border-radius:10px;padding:8px 14px;margin:14px 0;overflow-x:auto}
+mjx-container{max-width:100%;overflow-x:auto;overflow-y:hidden}
+mjx-container:not([display="true"]){display:inline-block;vertical-align:middle}
+.chart-wrap{background:#fcfdff;border:1px solid var(--line);border-radius:12px;padding:14px 16px;margin:16px 0}
+.chart-title{font-weight:700;font-size:.9rem;color:var(--dot);margin:0 0 4px}
+.chart-sub{font-size:.78rem;color:var(--muted);margin:0 0 10px}
+.chart-host{width:100%;overflow-x:auto;position:relative}.chart-host svg{display:block;max-width:100%;height:auto;margin:0 auto}
+.chart-legend{display:flex;gap:14px;flex-wrap:wrap;justify-content:center;margin-top:8px;font-size:.78rem;color:var(--muted)}
+.chart-legend span{display:inline-flex;align-items:center;gap:6px}.chart-legend i{display:inline-block;width:14px;height:3px;border-radius:2px}
+.glossary dt{font-weight:700;color:var(--brand-dark);margin-top:10px}.glossary dd{margin:0 0 2px;color:var(--muted);font-size:.9rem}
+footer{max-width:var(--maxw);margin:0 auto;padding:30px 20px 60px;color:var(--muted);font-size:.82rem;border-top:1px solid var(--line)}
+.offline-note{font-size:.76rem;color:var(--muted);background:#fff8e6;border:1px solid #f0e2b8;border-radius:8px;padding:8px 12px;margin:10px 0}
+@media(max-width:680px){
+  .table-wrap{overflow-x:visible}
+  table.mini,table.mini thead,table.mini tbody,table.mini th,table.mini td,table.mini tr{display:block;width:100%}
+  table.mini thead{display:none}
+  table.mini tr{margin-bottom:12px;border:1.5px solid color-mix(in srgb,var(--dot) 28%,#e4e9f0);border-radius:10px;background:#fff;overflow:hidden;box-shadow:0 1px 4px rgba(16,42,67,.05)}
+  table.mini td{border:none;border-bottom:1px solid var(--line);padding:10px 12px;text-align:left}
+  table.mini td:last-child{border-bottom:none}
+  table.mini td::before{content:attr(data-label);display:block;font-size:.74rem;font-weight:700;text-transform:uppercase;letter-spacing:.4px;color:var(--dot);margin-bottom:4px}
+}
+.acro-box{background:#f8fafc;border:1px solid var(--line);border-radius:10px;padding:12px 14px;margin:14px 0;font-size:.84rem;min-width:0;max-width:100%;overflow-wrap:break-word;word-wrap:break-word}
+.acro-title{font-weight:700;color:var(--dot);font-size:.86rem;margin-bottom:8px;display:block}
+.acro-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:6px 14px;margin:0;padding:0;list-style:none}
+.acro-grid li{min-width:0;line-height:1.5}.acro-grid b{color:var(--dot)}
+.fguide{background:color-mix(in srgb,var(--dot) 5%,#fff);border:1px solid color-mix(in srgb,var(--dot) 22%,#e4e9f0);border-radius:10px;padding:12px 15px;margin:-6px 0 16px;font-size:.86rem;min-width:0;max-width:100%;overflow-wrap:break-word;word-wrap:break-word}
+.fguide .fg-head{font-weight:700;color:var(--dot);font-size:.84rem;text-transform:uppercase;letter-spacing:.35px;margin:0 0 6px}
+.fguide ul{margin:4px 0 8px;padding-left:18px}.fguide ul li{margin:3px 0}
+.fguide .fg-core{border-top:1px dashed color-mix(in srgb,var(--dot) 30%,#cbd5e1);padding-top:8px;margin-top:8px;display:grid;grid-template-columns:minmax(0,1fr);gap:4px}
+.fguide .fg-core div{min-width:0}
+@media(max-width:640px){.hero h1{font-size:1.3rem;max-width:100%}nav.jump{display:none}.rgrid.c2,.rgrid.c3,.rgrid.c4,.bs-grid,.acro-grid{grid-template-columns:minmax(0,1fr)}.mindmap-host{height:440px}}
+</style></head><body>
+<div id="progress"></div>
+<header class="top"><div class="top-in">
+  <span class="badge">MODUL 6</span>
+  <a class="homebtn" href="index.html" title="Kembali ke daftar modul"><span style="font-size:1rem;line-height:1">&#8962;</span> Daftar Modul</a>
+  <span class="top-title">Metode Penelitian Bisnis · EKMA5104</span>
+  <nav class="jump"><a href="#konsep">Konsep</a><a href="#peta">Peta Konsep</a><a href="#kb1">KB1</a><a href="#kb2">KB2</a><a href="#kb3">KB3</a><a href="#glosarium">Glosarium</a></nav>
+</div></header>
+<div class="wrap">
+  <section class="hero"><div class="eyebrow">Ringkasan Belajar · EKMA5104 (Edisi 3)</div>
+    <h1>Operasionalisasi Variabel serta Validitas dan Reliabilitas Instrumen</h1>
+    <div class="meta"><span>⏱️ ±40 menit</span><span>📚 3 bagian (KB)</span><span>✍️ Dr. Lerbin Roberto Aritonang R., M.M.</span></div></section>
+  <p class="section-sub" style="margin-top:22px">Modul 6 terdiri dari tiga Kegiatan Belajar yang menjadi inti kualitas pengukuran riset kuantitatif: 5 tahap operasionalisasi variabel (KB 1), tipe &amp; uji validitas termasuk korelasi butir-total dikoreksi dan analisis faktor (KB 2), serta uji reliabilitas, uji-coba, adopsi, dan pelaporan instrumen (KB 3).</p>
+  <p class="offline-note">ℹ️ Peta konsep, grafik SVG, kartu penjelasan, dan checklist konsep berjalan tanpa internet. Koneksi internet hanya diperlukan untuk merender persamaan matematika (MathJax).</p>
+
+  <h2 class="section" id="konsep"><span class="dot"></span>Konsep Penting yang Harus Dikuasai</h2>
+  <div class="card"><div class="cl-head"><span class="count"><span id="doneCount">0</span>/<span id="totalCount">0</span> dikuasai</span><button class="btn-reset" id="resetBtn">Reset centang</button></div>
+    <ul class="concepts" id="conceptList">
+      <li><input type="checkbox"><span><span class="ct">Definisi Pengukuran &amp; 5 Tahap Operasionalisasi Variabel</span><span class="cd">Pengukuran adalah pemetaan atribut variabel ke angka/kode menurut aturan korespondensi. 5 tahap: definisi konseptual &amp; atribut, pemicuan/indikator, pengembangan instrumen, skala &amp; skor, serta uji validitas &amp; reliabilitas.</span></span></li>
+      <li><input type="checkbox"><span><span class="ct">Variabel Laten (Hipotetis) &amp; Indikator</span><span class="cd">Variabel sosial/psikologis tak dapat diamati langsung (laten) sehingga diukur lewat petunjuk tak langsung (indikator) dan kadang termanifestasi dalam beberapa dimensi (faktor/komponen).</span></span></li>
+      <li><input type="checkbox"><span><span class="ct">3 Tipe Validitas (APA): Isi, Kriteria, dan Konstrak</span><span class="cd">Isi (tampang/face &amp; penyampelan/kurikulum, dibantu kisi-kisi); Kriteria (prediktif beda waktu vs konkuren waktu sama); Konstrak (konvergen = variabel sama, diskriminan = variabel beda, + nomologis).</span></span></li>
+      <li><input type="checkbox"><span><span class="ct">Pendekatan Internal Validitas: Korelasi Butir-Total Dikoreksi</span><span class="cd">Mengoreksi bias korelasi butir dengan skor total (rumus Guilford / menghapus skor butir dari total). Standar minimal umumnya $r \ge 0.20$ (Cronbach; Rust &amp; Golombok); hapus butir negatif terbesar dulu bila gugur.</span></span></li>
+      <li><input type="checkbox"><span><span class="ct">Analisis Faktor (EFA vs CFA), KMO, Bartlett, Eigenvalue &amp; Muatan Faktor</span><span class="cd">EFA mencari jumlah faktor; CFA mengonfirmasi jumlah faktor teoritis. Syarat: KMO $\ge 0.5$ (Kaiser), Bartlett Sig. $<0.05$, Eigenvalue $>1$, total variansi $\ge 60\%$, muatan faktor $>0.5$ (Fornell &amp; Larcker) dan tidak lintas-muatan.</span></span></li>
+      <li><input type="checkbox"><span><span class="ct">Pengertian Reliabilitas &amp; 3 Pendekatan Konseptualnya</span><span class="cd">Konsistensi, stabilitas, keandalan, tanpa distorsi. Didekati lewat pengukuran ulang (stabilitas), skor "murni" (tanpa distorsi), dan eror pengukuran (makin kecil eror, makin tinggi reliabilitas).</span></span></li>
+      <li><input type="checkbox"><span><span class="ct">Reliabilitas Eksternal vs Internal (Bagi-Dua, KR-20/21, Alpha Cronbach)</span><span class="cd">Eksternal: pengukuran ulang &amp; bentuk paralel (tak praktis). Internal: Bagi-Dua (Spearman-Brown untuk homogen; Rulon &amp; Guttman untuk tak homogen), KR-20/21 (dikotomi), dan Alpha Cronbach (indeks terbaik untuk skala multi-opsi seperti Likert; hitung hanya pada butir valid!).</span></span></li>
+      <li><input type="checkbox"><span><span class="ct">Standar Minimal Koefisien Reliabilitas &amp; 3 Cara Memperbaikinya</span><span class="cd">Nunnally: $\ge 0.70$ tahap awal, $\ge 0.80$ riset dasar, $\ge 0.90$ keputusan terapan penting (hati-hati $>0.90$ bisa berarti butir terlalu banyak). Perbaiki dengan: kejelasan butir, tambah butir homogen, dan pembakuan petunjuk/kondisi.</span></span></li>
+      <li><input type="checkbox"><span><span class="ct">Kaitan Validitas &amp; Reliabilitas serta Pengaruh Jumlah Butir</span><span class="cd">Validitas tinggi otomatis reliabel, tetapi reliabilitas tinggi belum tentu valid (validitas lebih penting!). Menambah butir yang homogen meningkatkan reliabilitas ($r_{kk} = \frac{k r_{11}}{1+(k-1)r_{11}}$).</span></span></li>
+      <li><input type="checkbox"><span><span class="ct">Pra-Uji-Coba, Uji-Coba, Uji-Coba-Terpakai &amp; Ukuran Subyeknya</span><span class="cd">Pra-uji-coba: 5–10 subyek mirip (bukan subyek riset); uji-coba penuh: 5–10× jumlah butir atau ideal $\ge 200$ subyek (Nunnally; Crocker &amp; Algina). Uji-coba-terpakai berisiko tinggi (gagal = riset berhenti).</span></span></li>
+      <li><input type="checkbox"><span><span class="ct">Adopsi Instrumen Lama &amp; Standar Pelaporan (Nunnally &amp; Pallant)</span><span class="cd">Cek kesesuaian definisi konseptual &amp; koefisien validitas/reliabilitas sebelum mengadopsi instrumen. Laporan wajib memuat metode estimasi, SD skor, SE pengukuran, deskripsi sampel, dan tabel muatan faktor lengkap (bila memakai analisis faktor).</span></span></li>
+    </ul></div>
+
+  <h2 class="section" id="peta"><span class="dot"></span>Peta Konsep (Mind Map)</h2>
+  <div class="card"><div class="mm-toolbar"><button class="mm-btn" id="mmExpand">Perluas semua</button><button class="mm-btn" id="mmCollapse">Ciutkan</button><span style="font-size:.76rem;color:var(--muted)">Klik simpul bertanda + / – untuk buka-tutup · Gulir untuk menggeser</span></div><div class="mindmap-host" id="mindmap"></div></div>
+
+  <!-- KB 1 -->
+  <h2 class="section" id="kb1"><span class="dot" style="background:var(--kb1)"></span>KB 1 — Operasionalisasi Variabel</h2>
+  <div class="card kb1b"><span class="kb-tag kb1t">KEGIATAN BELAJAR 1 · HAL. 6.4–6.11</span>
+    <div class="acro-box">
+      <span class="acro-title">📖 Kamus Konteks Singkatan &amp; Akronim KB 1</span>
+      <ul class="acro-grid">
+        <li><b>SEM / LISREL</b>: <i>Structural Equation Modeling</i> / <i>Linear Structural Relations</i> — perangkat pemodelan untuk menghasilkan skor faktor variabel laten.</li>
+      </ul>
+    </div>
+
+    <p class="lead">Untuk menguji kebenaran empiris hipotesis, peneliti harus mengubah konsep abstrak menjadi angka yang dapat dianalisis melalui <b>operasionalisasi variabel</b> (definisi operasional / pengukuran variabel).</p>
+
+    <div class="abc"><span class="ltr">A</span><h4>Definisi Pengukuran</h4></div>
+    <p><span class="term">Pengukuran <span class="en">(measurement)</span></span> adalah pemberian angka/simbol pada obyek atau kejadian menurut aturan korespondensi tertentu (Stevens; Kerlinger &amp; Lee, 2000 — <b>Gambar 6.1</b>). Angka tidak selalu bermakna hitungan aritmetika, melainkan dapat berfungsi sebagai kode/lambang (mis. laki-laki = 1, perempuan = 0). <b>Penting:</b> yang diukur adalah <i>atribut variabel</i> (mis. <i>volume penjualan</i>, <i>tingkat harga</i>), bukan konsep statisnya ("penjualan", "produk").</p>
+
+    <div class="abc"><span class="ltr">B</span><h4>Lima Tahap Operasionalisasi Variabel</h4></div>
+    <div class="flowchart">
+      <span class="fc-node">1. Definisi Konseptual<br>&amp; Atribut</span><span class="fc-arrow">→</span>
+      <span class="fc-node">2. Pemicuan / Indikator<br>&amp; Dimensi</span><span class="fc-arrow">→</span>
+      <span class="fc-node">3. Pengembangan<br>Instrumen</span><span class="fc-arrow">→</span>
+      <span class="fc-node">4. Skala &amp; Ketentuan<br>Skor/Kode</span><span class="fc-arrow">→</span>
+      <span class="fc-node">5. Uji Validitas<br>&amp; Reliabilitas</span>
+    </div>
+    <ol class="book">
+      <li><span class="term">Definisi konseptual &amp; identifikasi atribut</span>: jabarkan atribut yang nilainya bervariasi (mis. gender, usia).</li>
+      <li><span class="term">Pemicuan penampakan atribut / indikator</span>: untuk variabel tak teramati langsung (<b>variabel laten / hipotetis</b> seperti kepuasan, kesetiaan, frustrasi), gunakan <b>indikator</b> (petunjuk tak langsung, seperti jarum penunjuk bensin di dasbor) dan dimensi-dimensinya.</li>
+      <li><span class="term">Pengembangan instrumen</span>: memilih/merancang angket, skala Likert, wawancara, observasi, atau tes beserta butir-butirnya.</li>
+      <li><span class="term">Identifikasi skala &amp; penentuan skor/kode</span>: menetapkan skala (nominal/ordinal/interval/rasio), rentang opsi (makin lebar makin akurat tapi jangan sampai tak terpakai), serta aturan skor total/rata-rata/rasio keuangan atau skor faktor lewat SEM/LISREL.</li>
+      <li><span class="term">Penilaian validitas &amp; reliabilitas instrumen</span>: memastikan data yang diperoleh sahih secara ilmiah (dibahas di KB 2 dan KB 3).</li>
+    </ol>
+  </div>
+
+  <!-- KB 2 -->
+  <h2 class="section" id="kb2"><span class="dot" style="background:var(--kb2)"></span>KB 2 — Pengertian dan Pengujian Validitas</h2>
+  <div class="card kb2b"><span class="kb-tag kb2t">KEGIATAN BELAJAR 2 · HAL. 6.12–6.39</span>
+    <div class="acro-box">
+      <span class="acro-title">📖 Kamus Konteks Singkatan &amp; Akronim KB 2</span>
+      <ul class="acro-grid">
+        <li><b>APA</b>: <i>American Psychological Association</i> — lembaga penyusun klasifikasi 3 tipe validitas (isi, kriteria, konstrak).</li>
+        <li><b>MTMM</b>: <i>Multitrait-Multimethod</i> — matriks uji validitas konvergen &amp; diskriminan secara serentak.</li>
+        <li><b>EFA / CFA</b>: <i>Exploratory Factor Analysis</i> (mencari dimensi) dan <i>Confirmatory Factor Analysis</i> (mengonfirmasi dimensi teoritis).</li>
+        <li><b>KMO</b>: <i>Kaiser-Meyer-Olkin</i> — ukuran kecukupan korelasi sampel untuk analisis faktor (syarat $\ge 0.50$).</li>
+      </ul>
+    </div>
+
+    <p class="lead">Kualitas pengukuran riset kuantitatif ditentukan pertama-tama oleh ketepatan instrumen mengukur apa yang seharusnya diukur (validitas).</p>
+
+    <div class="abc"><span class="ltr">A</span><h4>Pengertian Validitas</h4></div>
+    <p>Instrumen dinyatakan <span class="term">valid <span class="en">(valid)</span></span> apabila mampu mengukur variabel yang memang dimaksudkan untuk diukur (timbangan valid untuk berat badan, tetapi tidak valid untuk tinggi badan). Uji validitas terutama krusial pada variabel sosial/psikologis yang bersifat laten (tidak dapat diamati langsung).</p>
+
+    <div class="abc"><span class="ltr">B</span><h4>Tiga Tipe Validitas (APA) dan Analisis Eksternalnya</h4></div>
+    <p>Klik tiap kartu untuk memahami ketiga tipe validitas APA (1974) beserta sub-tipenya:</p>
+    <div class="rgrid c3" data-revealgroup>
+      <div class="rcell active" data-reveal data-detail="<b>1. Validitas Isi (Content Validity)</b> — Kesesuaian butir instrumen dengan definisi konseptualnya. Mencakup <b>validitas tampang (face validity)</b> (penampakan luar) dan <b>validitas penyampelan/kurikulum</b> (kerepresentativan butir). Bersifat teoritis/logis, sangat terbantu oleh <b>kisi-kisi (blueprint — Tabel 6.1)</b> (tak boleh ada sel kosong pascavalidasi), dan dapat diuji empiris lewat kesepakatan beberapa penilai ahli."><span class="stepnum">1</span><span><span class="rt">Validitas Isi</span><span class="rp">Tampang, penyampelan, kisi-kisi</span></span></div>
+      <div class="rcell" data-reveal data-detail="<b>2. Validitas Kriteria (Criterion-Related)</b> — Mengorelasikan skor instrumen baru dengan instrumen kriteria yang sudah teruji. Dibedakan berdasar waktu: <b>Validitas Prediktif</b> (kriteria diukur di masa depan, mis. sikap sekarang → perilaku beli 2 bulan lagi) vs <b>Validitas Konkuren</b> (diukur pada waktu bersamaan). Cronbach (1990): $r=0.45$ moderat, $r=0.60$ baik, $r=0.20$ kadang berguna di tahap awal."><span class="stepnum">2</span><span><span class="rt">Validitas Kriteria</span><span class="rp">Prediktif vs Konkuren</span></span></div>
+      <div class="rcell" data-reveal data-detail="<b>3. Validitas Konstrak (Construct) &amp; Nomologis</b> — Mengorelasikan dengan instrumen lain yang sudah valid/reliabel: <b>Konvergen</b> (konstrak <i>sama</i> → korelasi harus positif &amp; besar/signifikan); <b>Diskriminan / Diferensial</b> (konstrak <i>berbeda</i> → korelasi harus rendah/tak signifikan; uji serentak via <i>Multitrait-Multimethod / MTMM</i>). <b>Validitas Nomologis</b> menguji kesesuaian dengan anteseden/konsekuensi dalam teori (sebenarnya lebih ke uji hipotesis)."><span class="stepnum">3</span><span><span class="rt">Validitas Konstrak</span><span class="rp">Konvergen, diskriminan, nomologis</span></span></div>
+    </div>
+    <div class="rdetail" data-revealdetail><b>1. Validitas Isi (Content Validity)</b> — Kesesuaian butir instrumen dengan definisi konseptualnya. Mencakup <b>validitas tampang (face validity)</b> (penampakan luar) dan <b>validitas penyampelan/kurikulum</b> (kerepresentativan butir). Bersifat teoritis/logis, sangat terbantu oleh <b>kisi-kisi (blueprint — Tabel 6.1)</b> (tak boleh ada sel kosong pascavalidasi), dan dapat diuji empiris lewat kesepakatan beberapa penilai ahli.</div>
+
+    <div class="flow">Karena sulit mencari instrumen pembanding eksternal dan subyek bisa lelah jika mengisi dua angket sekaligus, praktik riset bisnis paling sering memakai <b>Pendekatan Internal</b>.</div>
+
+    <div class="abc"><span class="ltr">C</span><h4>Pendekatan Internal Validitas</h4></div>
+
+    <div class="numh">1. Analisis Korelasi Butir-Total yang Dikoreksi (Corrected Item-Total Correlation)</div>
+    <p>Skor tiap butir ($X_i$) dikorelasikan dengan skor total ($Y$), lalu <b>dikoreksi dengan rumus Guilford</b> (atau mengeluarkan $X_i$ dari $Y$) agar koefisien tidak menggembung semu (menguji validitas konvergen butir):</p>
+    <div class="eqbox">\[ r_{it} = \frac{r_{iY}\,s_Y - s_i}{\sqrt{s_i^2 + s_Y^2 - 2\,r_{iY}\,s_i\,s_Y}} \]</div>
+    <div class="fguide">
+      <div class="fg-head">Bedah Variabel &amp; Intisari Formula Korelasi Butir-Total Dikoreksi (Guilford)</div>
+      <ul>
+        <li><b>$r_{it}$</b> = koefisien korelasi butir ke-$i$ dengan skor total yang sudah dikoreksi (tanpa butir ke-$i$); <b>$r_{iY}$</b> = korelasi mentah butir $X_i$ dengan skor total $Y$; <b>$s_i$</b> = deviasi standar butir ke-$i$; <b>$s_Y$</b> = deviasi standar skor total $Y$.</li>
+        <li><b>Makna formula:</b> Menghilangkan efek tumpang-tindih (<i>spurious overlap</i>) akibat skor butir $X_i$ ikut menjadi bagian dari skor total $Y$.</li>
+      </ul>
+      <div class="fg-core">
+        <div>🧭 <b>Filosofis:</b> Mengukur seberapa selaras satu butir pertanyaan dengan keseluruhan butir lain dalam satu variabel yang sama tanpa "mengorelasikan butir dengan dirinya sendiri".</div>
+        <div>📏 <b>Mengukur:</b> Validitas konvergen internal tiap butir instrumen (batas umum $r_{it} \ge 0.20$).</div>
+        <div>🎯 <b>Manfaat:</b> Menyaring dan membuang butir yang tidak relevan/gugur (mulai dari yang negatif terbesar) sebelum menghitung reliabilitas.</div>
+      </div>
+    </div>
+
+    <ul class="exp">
+      <li><b>Kriteria lolos:</b> uji-$t$ ($dk=n-2$, jika sampel acak) atau pendekatan nilai mutlak <b>minimal $r \ge 0.20$</b> (Cronbach, 1990; Rust &amp; Golombok, 1989).</li>
+      <li><b>Prosedur eliminasi butir gugur:</b> buang satu per satu dimulai dari butir berkoefisien <b>negatif terbesar</b>, lalu analisis ulang hingga semua tersisa valid (Rust &amp; Golombok menyarankan minimal 20 butir akhir atau pilih 70–80% butir asli agar reliabel).</li>
+    </ul>
+
+    <div class="numh">2. Analisis Faktor (EFA vs CFA)</div>
+    <p>Analisis faktor digunakan untuk memverifikasi struktur dimensi/faktor laten suatu variabel: <b>Analisis Faktor Eksplorasi (EFA)</b> dipakai bila jumlah dimensi belum diketahui sebelumnya, sedangkan <b>Analisis Faktor Konfirmasi (CFA)</b> dipakai bila jumlah dimensi sudah ditetapkan dari teori (di SPSS: <code>Analyze → Dimension Reduction → Factor → Varimax</code>).</p>
+
+    <div class="numh">3. Kriteria Kelayakan, Muatan Faktor, Jumlah Faktor, dan Ukuran Sampel</div>
+    <div class="table-wrap">
+      <table class="mini">
+        <thead><tr><th>Indikator Analisis Faktor</th><th>Kriteria / Batas Layak</th><th>Makna &amp; Referensi</th></tr></thead>
+        <tbody>
+          <tr><td data-label="Indikator Analisis Faktor"><b>KMO (Kaiser-Meyer-Olkin)</b></td><td data-label="Kriteria / Batas Layak"><b>$\ge 0.50$</b> (0.70-an sedang, 0.80-an terpuji, 0.90-an sangat bagus)</td><td data-label="Makna &amp; Referensi">Kecukupan korelasi antarbutir (Kaiser, 1974).</td></tr>
+          <tr><td data-label="Indikator Analisis Faktor"><b>Bartlett's Test of Sphericity</b></td><td data-label="Kriteria / Batas Layak"><b>Sig. $&lt; 0.05$</b></td><td data-label="Makna &amp; Referensi">Menolak $H_0$ bahwa semua korelasi $= 0$ (Pallant, 2010).</td></tr>
+          <tr><td data-label="Indikator Analisis Faktor"><b>Jumlah Faktor (Eigenvalue)</b></td><td data-label="Kriteria / Batas Layak"><b>Eigenvalue $&gt; 1$</b> (atau $&gt;0.7$ Jolliffe) &amp; kumulatif variansi <b>$\ge 60\%$</b></td><td data-label="Makna &amp; Referensi">Hair et al. (2010); psikologi wajibkan <i>parallel analysis</i> (Horn).</td></tr>
+          <tr><td data-label="Indikator Analisis Faktor"><b>Muatan Faktor (Rotated)</b></td><td data-label="Kriteria / Batas Layak"><b>$&gt; 0.50$</b> (Fornell &amp; Larcker; Kaiser) atau $&gt;0.40$ (Stevens), tanpa lintas-muatan</td><td data-label="Makna &amp; Referensi">Jika 1 butir punya muatan $&gt;0.50$ di $\ge 2$ faktor → buang &amp; ulangi analisis.</td></tr>
+          <tr><td data-label="Indikator Analisis Faktor"><b>Ukuran Sampel Analisis Faktor</b></td><td data-label="Kriteria / Batas Layak">Comrey: 200 memadai, 300 baik; Nunnally: 10× butir; MacCallum: komunalitas $&gt;0.6$ boleh $&lt;100$</td><td data-label="Makna &amp; Referensi">Guadagnoli &amp; Velicer: $\ge 4$ muatan $&gt;0.6$ sudah reliabel tanpa pandang $n$.</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- KB 3 -->
+  <h2 class="section" id="kb3"><span class="dot" style="background:var(--kb3)"></span>KB 3 — Reliabilitas dan Hal Lain yang Terkait dengan Instrumen</h2>
+  <div class="card kb3b"><span class="kb-tag kb3t">KEGIATAN BELAJAR 3 · HAL. 6.40–6.58</span>
+    <div class="acro-box">
+      <span class="acro-title">📖 Kamus Konteks Singkatan &amp; Akronim KB 3</span>
+      <ul class="acro-grid">
+        <li><b>KR-20 / KR-21</b>: <i>Kuder-Richardson</i> 20 &amp; 21 — rumus reliabilitas internal khusus tanggapan dikotomi (ya/tidak, 0/1).</li>
+        <li><b>SD / SE</b>: <i>Standard Deviation</i> skor dan <i>Standard Error</i> pengukuran — informasi wajib dalam pelaporan reliabilitas.</li>
+        <li><b>MTMM-SEM</b>: Pengujian matriks <i>Multitrait-Multimethod</i> menggunakan pemodelan SEM.</li>
+      </ul>
+    </div>
+
+    <p class="lead">Selain valid, instrumen ilmiah harus konsisten dan stabil ketika digunakan berulang kali—inilah hakikat reliabilitas beserta tata cara uji-coba, adopsi, dan pelaporannya.</p>
+
+    <div class="abc"><span class="ltr">A</span><h4>Pengertian Reliabilitas</h4></div>
+    <p>Instrumen yang <span class="term">reliabel <span class="en">(reliable)</span></span> menghasilkan ukuran yang konsisten, stabil, andal, dapat direproduksi, dan bebas distorsi jika digunakan berulang pada obyek yang sama. Secara konseptual, reliabilitas didekati melalui tiga sudut pandang: pengukuran ulang (stabilitas), skor "murni" (tanpa distorsi), dan eror pengukuran (makin kecil eror, makin tinggi reliabilitas).</p>
+
+    <div class="abc"><span class="ltr">B</span><h4>Pendekatan Eksternal Uji Reliabilitas</h4></div>
+    <p>Pendekatan eksternal jarang dipakai dalam praktik bisnis karena kendala teknis di lapangan, terdiri dari dua metode: (1) <b>Pengukuran ulang (<i>test-retest</i>)</b> yang rentan subyek hilang/lelah, efek belajar, dan perubahan perkembangan seiring waktu; serta (2) <b>Bentuk paralel</b> yang sulit menyusun dua instrumen setara dan membuat jumlah butir terlalu banyak.</p>
+
+    <div class="abc"><span class="ltr">C</span><h4>Pendekatan Internal Uji Reliabilitas</h4></div>
+    <p>Pendekatan internal hanya membutuhkan satu instrumen dan satu kali pengukuran sehingga paling dominan digunakan:</p>
+    <div class="rgrid c3" data-revealgroup>
+      <div class="rcell active" data-reveal data-detail="<b>1. Metode Bagi-Dua (Split-Half)</b> — Membagi butir jadi dua (mis. ganjil vs genap), lalu dikoreksi agar mencerminkan panjang penuh:<br>• <b>Spearman-Brown</b> (asumsi belahan homogen): $r_{tt} = \frac{2 r_{hh}}{1 + r_{hh}}$.<br>• <b>Rulon</b> (butir tak homogen): $r_{tt} = 1 - \frac{V_d}{V_t}$ ($d = a-b$).<br>• <b>Guttman</b>: $r_{tt} = 2\left[1 - \frac{V_a + V_b}{V_t}\right]$."><span class="stepnum">1</span><span><span class="rt">Bagi-Dua (Split-Half)</span><span class="rp">Spearman-Brown · Rulon · Guttman</span></span></div>
+      <div class="rcell" data-reveal data-detail="<b>2. Kuder-Richardson (KR-20 &amp; KR-21)</b> — Khusus instrumen beropsi <b>dikotomi</b> (ya/tidak, benar/salah):<br>• <b>KR-20</b>: $r_{tt} = \frac{k}{k-1}\left(\frac{V_t - \sum p_i q_i}{V_t}\right)$.<br>• <b>KR-21</b> (asumsi tingkat kesulitan $p_i$ sama): $r_{tt} = \frac{k}{k-1}\left(1 - \frac{M(k-M)}{k V_t}\right)$."><span class="stepnum">2</span><span><span class="rt">KR-20 &amp; KR-21</span><span class="rp">Khusus tanggapan dikotomi</span></span></div>
+      <div class="rcell" data-reveal data-detail="<b>3. Alpha Cronbach &amp; SEM</b> — Indeks konsistensi internal terbaik untuk skala multi-opsi seperti Likert (Kline, 1993). <b>Aturan wajib:</b> hitung hanya pada butir-butir yang sudah lolos uji validitas! Nilai $\alpha$ negatif dilaporkan $0$; $\alpha > 0.90$ bisa jadi tanda butir terlalu banyak (Steiner)."><span class="stepnum">3</span><span><span class="rt">Alpha Cronbach</span><span class="rp">Standar utama Skala Likert</span></span></div>
+    </div>
+    <div class="rdetail" data-revealdetail><b>1. Metode Bagi-Dua (Split-Half)</b> — Membagi butir jadi dua (mis. ganjil vs genap), lalu dikoreksi agar mencerminkan panjang penuh:<br>• <b>Spearman-Brown</b> (asumsi belahan homogen): $r_{tt} = \frac{2 r_{hh}}{1 + r_{hh}}$.<br>• <b>Rulon</b> (butir tak homogen): $r_{tt} = 1 - \frac{V_d}{V_t}$ ($d = a-b$).<br>• <b>Guttman</b>: $r_{tt} = 2\left[1 - \frac{V_a + V_b}{V_t}\right]$.</div>
+
+    <div class="eqbox">\[ \alpha = \frac{k}{k-1}\left(\frac{V_t - \sum V_i}{V_t}\right) \qquad \text{Pengaruh jumlah butir: } r_{kk} = \frac{k\,r_{11}}{1+(k-1)r_{11}} \]</div>
+    <div class="fguide">
+      <div class="fg-head">Bedah Variabel &amp; Intisari Formula Alpha Cronbach &amp; Spearman-Brown</div>
+      <ul>
+        <li><b>$\alpha$</b> = koefisien reliabilitas Alpha Cronbach; <b>$k$</b> = jumlah butir valid (atau kelipatan penambahan butir pada $r_{kk}$); <b>$V_t$</b> = variansi skor total; <b>$\sum V_i$</b> = jumlah variansi masing-masing butir; <b>$r_{11}$</b> = reliabilitas awal; <b>$r_{kk}$</b> = reliabilitas setelah jumlah butir dilipatgandakan $k$ kali.</li>
+        <li><b>Makna formula:</b> Membandingkan jumlah keragaman masing-masing butir terhadap keragaman skor totalnya—makin kompak antarbutir, makin besar $V_t$ dibanding $\sum V_i$, sehingga $\alpha$ mendekati $1$.</li>
+      </ul>
+      <div class="fg-core">
+        <div>🧭 <b>Filosofis:</b> Jika seluruh butir benar-benar mengukur satu konstrak yang sama, jawaban responden akan bergerak konsisten dari satu butir ke butir lain.</div>
+        <div>📏 <b>Mengukur:</b> Konsistensi internal instrumen skala multi-opsi (Likert) serta proyeksi kenaikan reliabilitas saat menambah butir homogen.</div>
+        <div>🎯 <b>Manfaat:</b> Menjamin data kuesioner cukup andal sebelum masuk pengujian hipotesis (standar Nunnally $\ge 0.70$ awal, $\ge 0.80$ riset dasar).</div>
+      </div>
+    </div>
+
+    <div class="abc"><span class="ltr">D</span><h4>Koefisien Minimal Reliabilitas</h4></div>
+    <p>Mengacu <b>Nunnally (1978)</b>: riset tahap awal mensyaratkan $\ge 0.70$ (kadang $0.50–0.60$ diterima; untuk instrumen pendek $&lt;10$ butir periksa rata-rata korelasi antarbutir $0.20–0.40$ — Briggs &amp; Cheek), riset dasar $\ge 0.80$ ($&gt;0.80$ sering boros), dan keputusan terapan penting $\ge 0.90$ (ideal $&gt;0.95$). Rust &amp; Golombok membedakan standar $\ge 0.70$ untuk <i>person-based</i> dan $\ge 0.80$ untuk <i>knowledge-based</i>.</p>
+
+    <div class="abc"><span class="ltr">E</span><h4>Tiga Cara Memperbaiki Reliabilitas</h4></div>
+    <p>Menurut <b>Kerlinger &amp; Lee</b>, reliabilitas dapat ditingkatkan dengan tiga langkah: (1) menulis butir secara jelas agar tidak disalahartikan, (2) menambah jumlah butir yang homogen &amp; setara mutunya, dan (3) membakukan petunjuk serta kondisi pelaksanaan pengukuran.</p>
+
+    <div class="abc"><span class="ltr">F</span><h4>Kaitan Validitas dan Reliabilitas</h4></div>
+    <p><b>Validitas lebih penting daripada reliabilitas</b>: instrumen yang valid otomatis reliabel, tetapi instrumen yang reliabel belum tentu valid. Selain itu, menambah butir homogen akan meningkatkan reliabilitas mengikuti rumus Spearman-Brown ($r_{kk}$) di atas.</p>
+
+    <div class="flow">Pengujian validitas dan reliabilitas tidak dilakukan di ruang hampa, melainkan melalui tahapan <b>uji-coba instrumen</b> yang terencana dan wajib dilaporkan secara transparan.</div>
+
+    <div class="abc"><span class="ltr">G</span><h4>Jenis Uji-Coba Instrumen</h4></div>
+    <p>Uji-coba idealnya dilakukan bertahap: <b>Pra-uji-coba</b> (5–10 subyek untuk cek redaksi/bahasa) dilanjutkan <b>Uji-coba penuh</b> pada subyek yang mirip &amp; heterogen (<i>bukan</i> subyek riset, dipilih <i>purposive</i>) untuk merevisi/menambah/menghapus butir tanpa membuang informasi vital. <b>Uji-coba-terpakai</b> (sekali kumpul data langsung dipakai uji hipotesis) hanya dilakukan saat terpaksa karena berisiko tinggi: bila instrumen gagal valid/reliabel, riset berhenti.</p>
+
+    <div class="abc"><span class="ltr">H</span><h4>Ukuran Subyek Uji-Coba</h4></div>
+    <p>Pra-uji-coba membutuhkan 5–10 subyek; uji-coba penuh idealnya $\ge 200$ subyek (Rust &amp; Golombok; Crocker &amp; Algina) atau 5–10× jumlah butir (Nunnally); validitas kriteria/prediktif $\ge 50$ subyek; MTMM-SEM 250–1.000 subyek tergantung kerumitan (Nussbeck et al.); dan rasio parameter bebas SEM 5:1 hingga 10:1 (Bentler &amp; Chou).</p>
+
+    <div class="abc"><span class="ltr">I</span><h4>Penggunaan Instrumen yang Telah Ada (Adopsi)</h4></div>
+    <p>Sebelum mengadopsi instrumen dari peneliti terdahulu, peneliti wajib memeriksa kesesuaian definisi konseptualnya dengan penelitian yang sedang dilakukan serta kecukupan koefisien validitas dan reliabilitasnya.</p>
+
+    <div class="abc"><span class="ltr">J</span><h4>Pelaporan Validitas dan Reliabilitas</h4></div>
+    <p>Mengacu <b>Nunnally</b> dan <b>Pallant</b>, laporan wajib memuat: (1) metode estimasi reliabilitas, (2) deviasi standar skor, (3) eror standar pengukuran, dan (4) deskripsi sampel uji. Bila memakai analisis faktor, sertakan pula metode ekstraksi, kriteria jumlah faktor, rotasi (Varimax/Oblimin), total variansi, eigenvalue, serta tabel muatan faktor lengkap (seluruh nilai, bukan hanya $&gt;0.3$).</p>
+  </div>
+
+  <h2 class="section" id="glosarium"><span class="dot"></span>Glosarium Kilat</h2>
+  <div class="card"><dl class="glossary">
+    <dt>Alpha Cronbach</dt><dd>Indeks konsistensi internal terbaik untuk mengestimasi reliabilitas instrumen beropsi ganda (seperti Skala Likert).</dd>
+    <dt>Analisis Faktor (Eksplorasi vs Konfirmasi)</dt><dd>EFA mengidentifikasi jumlah faktor/dimensi laten; CFA mengonfirmasi secara empiris jumlah faktor yang ditetapkan dari teori.</dd>
+    <dt>Kisi-Kisi (Blueprint)</dt><dd>Matriks pemetaan indikator/komponen terhadap jumlah butir untuk menjamin terpenuhinya validitas isi.</dd>
+    <dt>Korelasi Butir-Total Dikoreksi</dt><dd>Uji validitas konvergen butir dengan mengorelasikan skor butir dan skor total setelah dikoreksi (rumus Guilford) agar tak menggembung semu.</dd>
+    <dt>Kuder-Richardson (KR-20 &amp; KR-21)</dt><dd>Rumus estimasi reliabilitas internal khusus untuk instrumen dengan tanggapan dikotomi (ya/tidak, benar/salah).</dd>
+    <dt>Muatan Faktor (Factor Loading)</dt><dd>Korelasi antara indikator/butir dengan faktor laten; kuadratnya menunjukkan persentase variansi indikator yang dijelaskan faktor tersebut.</dd>
+    <dt>Multitrait-Multimethod (MTMM)</dt><dd>Metode untuk menguji validitas konvergen dan validitas diskriminan secara serentak.</dd>
+    <dt>Reliabilitas (Eksternal vs Internal)</dt><dd>Keandalan, stabilitas, konsistensi, dan bebas distorsi suatu instrumen (eksternal: ukur-ulang/paralel; internal: bagi-dua, KR, Alpha Cronbach).</dd>
+    <dt>Uji-Coba (Pra-Uji-Coba, Uji-Coba, Uji-Coba-Terpakai)</dt><dd>Pra-uji-coba (5–10 subyek, cek bahasa), uji-coba penuh (validitas/reliabilitas pada subyek mirip), dan uji-coba-terpakai (data sekaligus dipakai uji hipotesis).</dd>
+    <dt>Validitas (Isi, Kriteria: Prediktif/Konkuren, Konstrak: Konvergen/Diskriminan)</dt><dd>Ketepatan instrumen mengukur apa yang dimaksudkan untuk diukur.</dd>
+  </dl></div>
+</div>
+<footer><b>EKMA5104 — Metode Penelitian Bisnis (Edisi 3)</b> · Modul 6: Operasionalisasi Variabel serta Validitas dan Reliabilitas Instrumen<br>Bahan belajar ringkas untuk persiapan ujian · Dr. Lerbin Roberto Aritonang R., M.M.</footer>
+<script>
+(function(){
+  var pb=document.getElementById('progress');
+  function onScroll(){var h=document.documentElement;var sc=h.scrollTop||document.body.scrollTop;var max=(h.scrollHeight-h.clientHeight)||1;pb.style.width=(sc/max*100)+'%';}
+  document.addEventListener('scroll',onScroll,{passive:true});onScroll();
+
+  var list=document.getElementById('conceptList');var items=[].slice.call(list.querySelectorAll('li'));var boxes=items.map(function(li){return li.querySelector('input');});
+  document.getElementById('totalCount').textContent=items.length;var doneEl=document.getElementById('doneCount');var KEY='studi_ekma5104_m6_concepts_v1';
+  function load(){try{var a=JSON.parse(localStorage.getItem(KEY)||'[]');boxes.forEach(function(b,i){if(a[i])b.checked=true;});}catch(e){}}
+  function save(){try{localStorage.setItem(KEY,JSON.stringify(boxes.map(function(b){return b.checked?1:0;})));}catch(e){}}
+  function refresh(){var n=0;items.forEach(function(li,i){if(boxes[i].checked){li.classList.add('done');n++;}else li.classList.remove('done');});doneEl.textContent=n;}
+  load();refresh();boxes.forEach(function(b){b.addEventListener('change',function(){refresh();save();});});
+  document.getElementById('resetBtn').addEventListener('click',function(){boxes.forEach(function(b){b.checked=false;});refresh();save();});
+
+  [].slice.call(document.querySelectorAll('[data-revealgroup]')).forEach(function(g){
+    var det=g.querySelector('[data-revealdetail]');if(!det){var sib=g.nextElementSibling;if(sib&&sib.hasAttribute&&sib.hasAttribute('data-revealdetail'))det=sib;}
+    var cells=[].slice.call(g.querySelectorAll('[data-reveal]'));
+    cells.forEach(function(c){c.addEventListener('click',function(){cells.forEach(function(x){x.classList.remove('active');});c.classList.add('active');if(det){det.innerHTML=c.getAttribute('data-detail');if(window.MathJax&&window.MathJax.typesetPromise)window.MathJax.typesetPromise([det]);}});});
+  });
+
+  (function(){
+    var ROWH=46,NODE_H=32,PAD=13,GAP=52;var COL={root:'#0f5e8f',kb1:'#1a86c7',kb2:'#e08a1e',kb3:'#2a9d6f',kb4:'#7a5cc0',kb5:'#c75b7a'};
+    var mc=document.createElement('canvas').getContext('2d');mc.font='700 13px -apple-system,Segoe UI,Roboto,sans-serif';
+    function tw(t){return Math.ceil(mc.measureText(t).width);}function esc(t){return t.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');}
+    function rgba(hex,a){var h=hex.replace('#','');return 'rgba('+parseInt(h.substr(0,2),16)+','+parseInt(h.substr(2,2),16)+','+parseInt(h.substr(4,2),16)+','+a+')';}
+    var DATA={label:'MODUL 6 — Operasionalisasi, Validitas & Reliabilitas',color:COL.root,children:[
+  {label:'KB1 · Operasionalisasi Variabel',color:COL.kb1,children:[
+    {label:'A. Definisi Pengukuran (Pemetaan Atribut → Angka)'},
+    {label:'B. 5 Tahap Operasionalisasi Variabel (Indikator & Variabel Laten)'}
+  ]},
+  {label:'KB2 · Pengertian & Pengujian Validitas',color:COL.kb2,children:[
+    {label:'A. Pengertian Validitas (Fisik vs Sosial/Laten)'},
+    {label:'B. 3 Tipe Validitas (APA)',children:[
+      {label:'1. Validitas Isi (Tampang, Penyampelan, Kisi-Kisi)'},
+      {label:'2. Validitas Kriteria (Prediktif vs Konkuren)'},
+      {label:'3. Validitas Konstrak (Konvergen, Diskriminan, Nomologis)'}
+    ]},
+    {label:'C. Pendekatan Internal Validitas',children:[
+      {label:'1. Korelasi Butir-Total Dikoreksi (Guilford, r ≥ 0.20)'},
+      {label:'2. Analisis Faktor (EFA vs CFA)'},
+      {label:'3. Kriteria KMO, Bartlett, Eigenvalue, Muatan Faktor & Sampel'}
+    ]}
+  ]},
+  {label:'KB3 · Reliabilitas & Hal Lain Terkait Instrumen',color:COL.kb3,children:[
+    {label:'A. Pengertian Reliabilitas (3 Pendekatan Konseptual)'},
+    {label:'B. Pendekatan Eksternal (Ukur-Ulang & Bentuk Paralel)'},
+    {label:'C. Pendekatan Internal (Bagi-Dua, KR-20/21, Alpha Cronbach)'},
+    {label:'D. Koefisien Minimal Reliabilitas (Nunnally)'},
+    {label:'E. 3 Cara Memperbaiki Reliabilitas'},
+    {label:'F. Kaitan Validitas & Reliabilitas'},
+    {label:'G. Jenis Uji-Coba (Pra, Penuh, Terpakai)'},
+    {label:'H. Ukuran Subyek Uji-Coba'},
+    {label:'I. Adopsi Instrumen yang Telah Ada'},
+    {label:'J. Pelaporan Validitas & Reliabilitas'}
+  ]}
+]};
+    var idc=0;(function w(n,c){n.id='n'+(idc++);n.color=n.color||c;(n.children||[]).forEach(function(k){w(k,n.color);});})(DATA,COL.root);
+    (function w(n,d){if(d>=2&&n.children&&n.children.length)n.collapsed=true;(n.children||[]).forEach(function(k){w(k,d+1);});})(DATA,0);
+    var host=document.getElementById('mindmap');
+    function render(){
+      var colW=[];(function w(n,d){var width=tw(n.label)+PAD*2+((n.children&&n.children.length)?20:0);colW[d]=Math.max(colW[d]||0,width);if(!n.collapsed)(n.children||[]).forEach(function(k){w(k,d+1);});})(DATA,0);
+      var colX=[],acc=14;for(var d=0;d<colW.length;d++){colX[d]=acc;acc+=colW[d]+GAP;}var row={v:0};
+      (function lay(n,d){if(!n.children||!n.children.length||n.collapsed){n._y=row.v*ROWH+ROWH/2+8;row.v++;return;}var f,l;n.children.forEach(function(k,i){lay(k,d+1);if(i===0)f=k._y;l=k._y;});n._y=(f+l)/2;})(DATA,0);
+      var totalW=acc,totalH=row.v*ROWH+24;var nodes=[],links=[];
+      (function col(n,d,p){n._x=colX[d];n._w=tw(n.label)+PAD*2+((n.children&&n.children.length)?20:0);nodes.push({n:n,d:d});if(p)links.push([p,n]);if(!n.collapsed)(n.children||[]).forEach(function(k){col(k,d+1,n);});})(DATA,0,null);
+      var s='<svg width="'+totalW+'" height="'+totalH+'" viewBox="0 0 '+totalW+' '+totalH+'" xmlns="http://www.w3.org/2000/svg">';
+      links.forEach(function(pr){var a=pr[0],b=pr[1],x1=a._x+a._w,y1=a._y,x2=b._x,y2=b._y,mx=(x1+x2)/2;s+='<path d="M'+x1+' '+y1+' C'+mx+' '+y1+' '+mx+' '+y2+' '+x2+' '+y2+'" fill="none" stroke="'+rgba(b.color,.5)+'" stroke-width="2"/>';});
+      nodes.forEach(function(o){var n=o.n,x=n._x,y=n._y-NODE_H/2,w=n._w,hk=n.children&&n.children.length;var fill=o.d===0?n.color:(o.d===1?rgba(n.color,.12):'#fff');var tf=o.d===0?'#fff':'#1c2733';
+        s+='<g data-id="'+n.id+'" style="cursor:'+(hk?'pointer':'default')+'"><rect x="'+x+'" y="'+y+'" rx="9" width="'+w+'" height="'+NODE_H+'" fill="'+fill+'" stroke="'+n.color+'" stroke-width="'+(o.d===0?0:1.6)+'"/><text x="'+(x+PAD)+'" y="'+(n._y+4)+'" font-size="13" font-weight="'+(o.d<=1?'700':'500')+'" fill="'+tf+'" font-family="-apple-system,Segoe UI,Roboto,sans-serif">'+esc(n.label)+'</text>';
+        if(hk){var cx=x+w-12,cy=n._y;s+='<circle cx="'+cx+'" cy="'+cy+'" r="8.5" fill="'+n.color+'"/><text x="'+cx+'" y="'+(cy+4.5)+'" font-size="13" font-weight="700" fill="#fff" text-anchor="middle" font-family="sans-serif">'+(n.collapsed?'+':'\u2013')+'</text>';}s+='</g>';});
+      s+='</svg>';host.innerHTML=s;
+    }
+    host.addEventListener('click',function(e){var g=e.target.closest('g[data-id]');if(!g)return;var id=g.getAttribute('data-id');(function f(n){if(n.id===id){if(n.children&&n.children.length)n.collapsed=!n.collapsed;return true;}return (n.children||[]).some(f);})(DATA);render();});
+    document.getElementById('mmExpand').addEventListener('click',function(){(function w(n){if(n.children)n.collapsed=false;(n.children||[]).forEach(w);})(DATA);render();});
+    document.getElementById('mmCollapse').addEventListener('click',function(){(function w(n,d){if(d>=1&&n.children&&n.children.length)n.collapsed=true;(n.children||[]).forEach(function(k){w(k,d+1);});})(DATA,0);render();});
+    render();
+  })();
+
+  window.addEventListener('load',function(){setTimeout(function(){if(window.MathJax&&window.MathJax.typesetPromise)window.MathJax.typesetPromise();},400);});
+})();
+</script></body></html>

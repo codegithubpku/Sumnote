@@ -1,0 +1,563 @@
+<!DOCTYPE html>
+<html lang="id"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Modul 1 — Pengertian dan Proses Penelitian Bisnis | EKMA5104</title>
+<script>window.MathJax={tex:{inlineMath:[['$','$']],displayMath:[['\\[','\\]'],['$$','$$']]},svg:{fontCache:'global'},startup:{typeset:true}};</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js" async></script>
+<style>
+:root{--bg:#f4f6f9;--panel:#fff;--ink:#1c2733;--muted:#5c6b7a;--line:#e4e9f0;--brand:#1a86c7;--brand-dark:#0f5e8f;--brand-soft:#e7f3fb;--kb1:#1a86c7;--kb2:#e08a1e;--kb3:#2a9d6f;--kb4:#7a5cc0;--kb5:#c75b7a;--radius:14px;--shadow:0 1px 2px rgba(16,42,67,.06),0 6px 20px rgba(16,42,67,.06);--maxw:900px}
+*{box-sizing:border-box}html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;line-height:1.72}
+#progress{position:fixed;top:0;left:0;height:4px;width:0;background:linear-gradient(90deg,var(--brand),#53c0ec);z-index:200;transition:width .1s}
+header.top{position:sticky;top:0;z-index:100;background:rgba(255,255,255,.92);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+.top-in{max-width:var(--maxw);margin:0 auto;padding:10px 20px;display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+.badge{background:var(--brand);color:#fff;font-weight:700;font-size:.72rem;letter-spacing:.5px;padding:4px 10px;border-radius:999px}
+.homebtn{text-decoration:none;display:inline-flex;align-items:center;gap:7px;background:var(--brand);color:#fff;font-weight:700;font-size:.8rem;padding:7px 15px;border-radius:999px;box-shadow:0 2px 6px rgba(16,42,67,.22);line-height:1}
+.top-title{font-size:.9rem;font-weight:600;color:var(--muted)}
+nav.jump{margin-left:auto;display:flex;gap:4px;flex-wrap:wrap}
+nav.jump a{font-size:.78rem;color:var(--muted);text-decoration:none;padding:5px 10px;border-radius:8px}
+nav.jump a:hover{background:var(--brand-soft);color:var(--brand-dark)}
+.wrap{max-width:var(--maxw);margin:0 auto;padding:0 20px 90px}
+.hero{margin-top:26px;padding:30px 28px;border-radius:var(--radius);color:#fff;background:linear-gradient(135deg,#0f5e8f,#1a86c7 60%,#2fa4df);box-shadow:var(--shadow);position:relative;overflow:hidden}
+.hero .eyebrow{font-size:.78rem;letter-spacing:1.5px;text-transform:uppercase;opacity:.9;font-weight:600}
+.hero h1{margin:.3em 0 .25em;font-size:1.62rem;line-height:1.25;max-width:90%}
+.hero .meta{display:flex;gap:18px;flex-wrap:wrap;font-size:.84rem;opacity:.95;margin-top:10px}
+h2.section{font-size:1.3rem;margin:48px 0 4px;display:flex;align-items:center;gap:10px;scroll-margin-top:70px}
+h2.section .dot{width:10px;height:22px;border-radius:4px;background:var(--brand)}
+.section-sub{color:var(--muted);font-size:.9rem;margin:0 0 18px}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);padding:22px 24px;margin:16px 0;--dot:var(--brand);overflow-x:clip;overflow-wrap:break-word;word-wrap:break-word}
+.concepts{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:minmax(0,1fr);gap:10px}
+.concepts li{display:flex;gap:12px;align-items:flex-start;padding:12px 14px;border:1px solid var(--line);border-radius:10px;background:#fcfdff;min-width:0;max-width:100%}
+.concepts li>span{min-width:0;max-width:100%;overflow-wrap:break-word;word-wrap:break-word}
+.concepts input{margin-top:4px;width:18px;height:18px;accent-color:var(--brand);flex:none;cursor:pointer}
+.concepts .ct{font-weight:600}.concepts .cd{display:block;font-weight:400;color:var(--muted);font-size:.86rem;margin-top:2px}
+.concepts li.done{background:var(--brand-soft);border-color:#bfe0f3}.concepts li.done .ct{text-decoration:line-through;opacity:.65}
+.cl-head{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-bottom:6px}
+.cl-head .count{font-size:.82rem;color:var(--muted);background:var(--brand-soft);padding:3px 10px;border-radius:999px;font-weight:600}
+.btn-reset{font-size:.78rem;border:1px solid var(--line);background:#fff;color:var(--muted);padding:5px 12px;border-radius:8px;cursor:pointer}
+.mm-toolbar{display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin-bottom:10px}
+.mm-btn{font-size:.78rem;border:1px solid var(--line);background:#fff;padding:6px 13px;border-radius:8px;cursor:pointer;color:var(--brand-dark);font-weight:600}
+.mindmap-host{height:580px;overflow:auto;border:1px solid var(--line);border-radius:10px;background:#fcfdff}.mindmap-host svg{display:block}
+.kb-tag{display:inline-flex;align-items:center;gap:8px;font-size:.78rem;font-weight:700;color:#fff;padding:5px 12px;border-radius:999px;margin-bottom:6px}
+.kb1t{background:var(--kb1)}.kb2t{background:var(--kb2)}.kb3t{background:var(--kb3)}.kb4t{background:var(--kb4)}.kb5t{background:var(--kb5)}
+.kb1b{--dot:var(--kb1)}.kb2b{--dot:var(--kb2)}.kb3b{--dot:var(--kb3)}.kb4b{--dot:var(--kb4)}.kb5b{--dot:var(--kb5)}
+.lead{font-size:1.02rem}.term{font-weight:700;color:var(--dot)}.en{font-style:italic;color:var(--muted);font-weight:500}
+.abc{display:flex;align-items:center;gap:10px;margin:28px 0 10px;padding-bottom:6px;border-bottom:2px solid color-mix(in srgb,var(--dot) 18%,#fff)}
+.abc .ltr{background:var(--dot);color:#fff;font-weight:800;min-width:30px;height:30px;padding:0 7px;border-radius:8px;display:grid;place-items:center;flex:none}
+.abc h4{margin:0;font-size:1.06rem;color:var(--dot)}
+.numh{font-weight:700;color:var(--dot);margin:22px 0 4px;font-size:1rem}
+.leth{font-weight:800;color:var(--dot);margin:20px 0 6px;font-size:.98rem;border-left:3px solid var(--dot);padding-left:10px}
+ol.book{margin:12px 0;padding-left:28px}ol.book>li{margin:10px 0;padding-left:6px}ol.book>li::marker{font-weight:700;color:var(--dot)}
+ul.exp{list-style:none;margin:12px 0;padding:0;display:grid;grid-template-columns:minmax(0,1fr);gap:10px}
+ul.exp>li{position:relative;padding-left:20px;min-width:0;max-width:100%;overflow-wrap:break-word;word-wrap:break-word}
+ul.exp>li::before{content:"";position:absolute;left:0;top:11px;width:8px;height:8px;border-radius:2px;background:var(--dot)}
+ul.let{list-style:lower-alpha;margin:10px 0;padding-left:28px}ul.let>li{margin:8px 0;padding-left:4px}ul.let>li::marker{color:var(--dot);font-weight:700}
+.flow{border-left:4px solid var(--dot);background:color-mix(in srgb,var(--dot) 9%,#fff);padding:11px 15px;border-radius:0 10px 10px 0;margin:18px 0;font-size:.9rem;min-width:0;max-width:100%;overflow-wrap:break-word;word-wrap:break-word}
+.flow::before{content:"🔗 Benang merah — ";font-weight:700;color:var(--dot)}.flow b{color:var(--dot)}
+.casebox{background:#f8fafc;border:1px solid var(--line);border-left:4px solid var(--dot);border-radius:0 10px 10px 0;padding:12px 15px;margin:14px 0;font-size:.88rem;min-width:0;max-width:100%;overflow-wrap:break-word;word-wrap:break-word}
+.casebox .ctitle{font-weight:700;color:var(--dot);margin-bottom:4px;display:block}
+.table-wrap{width:100%;overflow-x:auto;-webkit-overflow-scrolling:touch;margin:14px 0;border-radius:10px}
+table.mini{width:100%;border-collapse:collapse;margin:0;font-size:.86rem;table-layout:auto}
+table.mini th,table.mini td{border:1px solid var(--line);padding:10px 12px;text-align:left;vertical-align:top;overflow-wrap:break-word;word-wrap:break-word}
+table.mini th{background:color-mix(in srgb,var(--dot) 12%,#fff);color:var(--dot);font-weight:700}
+.rgrid{display:grid;gap:8px;margin:14px 0}.rgrid.c2{grid-template-columns:repeat(2,1fr)}.rgrid.c3{grid-template-columns:repeat(3,1fr)}.rgrid.c4{grid-template-columns:repeat(4,1fr)}
+.rcell{border:1px solid var(--line);border-radius:10px;padding:11px 13px;cursor:pointer;background:#fff;display:flex;gap:10px;align-items:flex-start;transition:.15s;min-width:0;max-width:100%}
+.rcell>span{min-width:0;max-width:100%;overflow-wrap:break-word;word-wrap:break-word}
+.rcell:hover{border-color:var(--dot);box-shadow:var(--shadow);transform:translateY(-2px)}
+.rcell.active{border-color:var(--dot);background:color-mix(in srgb,var(--dot) 8%,#fff)}
+.rcell .stepnum{background:var(--dot);color:#fff;font-weight:700;min-width:24px;height:24px;border-radius:7px;display:grid;place-items:center;flex:none;font-size:.82rem}
+.rcell .rt{font-weight:700;font-size:.9rem;color:var(--dot);display:block}.rcell .rp{font-size:.78rem;color:var(--muted);display:block;margin-top:2px}
+.rdetail{font-size:.88rem;border-left:4px solid var(--dot);background:color-mix(in srgb,var(--dot) 8%,#fff);border-radius:0 10px 10px 0;padding:12px 15px;margin-top:6px;min-width:0;max-width:100%;overflow-wrap:break-word;word-wrap:break-word}
+.pill-row{display:flex;gap:8px;flex-wrap:wrap;margin:10px 0}.pill{font-size:.8rem;background:#eef3f8;color:#36506a;border:1px solid #e0e8f0;padding:4px 11px;border-radius:999px;font-weight:600}
+.flowchart{display:flex;align-items:center;gap:6px;flex-wrap:wrap;margin:16px 0;justify-content:center}
+.fc-node{background:color-mix(in srgb,var(--dot) 12%,#fff);border:1.5px solid var(--dot);color:var(--dot);font-weight:700;font-size:.8rem;padding:8px 12px;border-radius:9px;text-align:center}
+.fc-arrow{color:var(--dot);font-weight:800;font-size:1.05rem}
+.pyramid{display:flex;flex-direction:column;align-items:center;gap:4px;margin:16px 0}.pyr-row{color:#fff;font-weight:700;text-align:center;padding:9px 12px;border-radius:7px;font-size:.84rem}
+.bs-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:14px 0}
+.bs-col{border:1.5px solid var(--dot);border-radius:10px;overflow:hidden;min-width:0;max-width:100%}
+.bs-head{background:var(--dot);color:#fff;font-weight:700;font-size:.84rem;padding:7px 12px;text-align:center}
+.bs-box{padding:10px 12px;border-bottom:1px dashed var(--line);font-size:.84rem}.bs-box:last-child{border-bottom:none}
+.eqbox{background:#fcfdff;border:1px solid var(--line);border-radius:10px;padding:8px 14px;margin:14px 0;overflow-x:auto}
+mjx-container{max-width:100%;overflow-x:auto;overflow-y:hidden}
+mjx-container:not([display="true"]){display:inline-block;vertical-align:middle}
+.chart-wrap{background:#fcfdff;border:1px solid var(--line);border-radius:12px;padding:14px 16px;margin:16px 0}
+.chart-title{font-weight:700;font-size:.9rem;color:var(--dot);margin:0 0 4px}
+.chart-sub{font-size:.78rem;color:var(--muted);margin:0 0 10px}
+.chart-host{width:100%;overflow-x:auto;position:relative}.chart-host svg{display:block;max-width:100%;height:auto;margin:0 auto}
+.chart-legend{display:flex;gap:14px;flex-wrap:wrap;justify-content:center;margin-top:8px;font-size:.78rem;color:var(--muted)}
+.chart-legend span{display:inline-flex;align-items:center;gap:6px}.chart-legend i{display:inline-block;width:14px;height:3px;border-radius:2px}
+.glossary dt{font-weight:700;color:var(--brand-dark);margin-top:10px}.glossary dd{margin:0 0 2px;color:var(--muted);font-size:.9rem}
+footer{max-width:var(--maxw);margin:0 auto;padding:30px 20px 60px;color:var(--muted);font-size:.82rem;border-top:1px solid var(--line)}
+.offline-note{font-size:.76rem;color:var(--muted);background:#fff8e6;border:1px solid #f0e2b8;border-radius:8px;padding:8px 12px;margin:10px 0}
+@media(max-width:680px){
+  .table-wrap{overflow-x:visible}
+  table.mini,table.mini thead,table.mini tbody,table.mini th,table.mini td,table.mini tr{display:block;width:100%}
+  table.mini thead{display:none}
+  table.mini tr{margin-bottom:12px;border:1.5px solid color-mix(in srgb,var(--dot) 28%,#e4e9f0);border-radius:10px;background:#fff;overflow:hidden;box-shadow:0 1px 4px rgba(16,42,67,.05)}
+  table.mini td{border:none;border-bottom:1px solid var(--line);padding:10px 12px;text-align:left}
+  table.mini td:last-child{border-bottom:none}
+  table.mini td::before{content:attr(data-label);display:block;font-size:.74rem;font-weight:700;text-transform:uppercase;letter-spacing:.4px;color:var(--dot);margin-bottom:4px}
+}
+.acro-box{background:#f8fafc;border:1px solid var(--line);border-radius:10px;padding:12px 14px;margin:14px 0;font-size:.84rem;min-width:0;max-width:100%;overflow-wrap:break-word;word-wrap:break-word}
+.acro-title{font-weight:700;color:var(--dot);font-size:.86rem;margin-bottom:8px;display:block}
+.acro-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:6px 14px;margin:0;padding:0;list-style:none}
+.acro-grid li{min-width:0;line-height:1.5}.acro-grid b{color:var(--dot)}
+.fguide{background:color-mix(in srgb,var(--dot) 5%,#fff);border:1px solid color-mix(in srgb,var(--dot) 22%,#e4e9f0);border-radius:10px;padding:12px 15px;margin:-6px 0 16px;font-size:.86rem;min-width:0;max-width:100%;overflow-wrap:break-word;word-wrap:break-word}
+.fguide .fg-head{font-weight:700;color:var(--dot);font-size:.84rem;text-transform:uppercase;letter-spacing:.35px;margin:0 0 6px}
+.fguide ul{margin:4px 0 8px;padding-left:18px}.fguide ul li{margin:3px 0}
+.fguide .fg-core{border-top:1px dashed color-mix(in srgb,var(--dot) 30%,#cbd5e1);padding-top:8px;margin-top:8px;display:grid;grid-template-columns:minmax(0,1fr);gap:4px}
+.fguide .fg-core div{min-width:0}
+@media(max-width:640px){.hero h1{font-size:1.3rem;max-width:100%}nav.jump{display:none}.rgrid.c2,.rgrid.c3,.rgrid.c4,.bs-grid,.acro-grid{grid-template-columns:minmax(0,1fr)}.mindmap-host{height:440px}}
+</style></head><body>
+<div id="progress"></div>
+<header class="top"><div class="top-in">
+  <span class="badge">MODUL 1</span>
+  <a class="homebtn" href="index.html" title="Kembali ke daftar modul"><span style="font-size:1rem;line-height:1">&#8962;</span> Daftar Modul</a>
+  <span class="top-title">Metode Penelitian Bisnis · EKMA5104</span>
+  <nav class="jump"><a href="#konsep">Konsep</a><a href="#peta">Peta Konsep</a><a href="#kb1">KB1</a><a href="#kb2">KB2</a><a href="#glosarium">Glosarium</a></nav>
+</div></header>
+<div class="wrap">
+  <section class="hero"><div class="eyebrow">Ringkasan Belajar · EKMA5104 (Edisi 3)</div>
+    <h1>Pengertian dan Proses Penelitian Bisnis</h1>
+    <div class="meta"><span>⏱️ ±35 menit</span><span>📚 2 bagian (KB)</span><span>✍️ Dr. Lerbin Roberto Aritonang R., M.M.</span></div></section>
+  <p class="section-sub" style="margin-top:22px">Modul 1 menjadi dasar bagi delapan modul berikutnya dalam mata kuliah Metode Penelitian Bisnis. Bagian ini membahas hakikat pengetahuan dan kebenaran ilmiah, variabel sebagai obyek material penelitian kuantitatif, metodologi penelitian bisnis (termasuk falsifikasi Popper &amp; 10 ciri ilmiah), perbedaannya dengan pengetahuan awam, ragam jenis penelitian, cara memperoleh pengetahuan, postulat ilmu, hingga "benang merah" serta 13 tahapan proses penelitian bisnis kuantitatif.</p>
+  <p class="offline-note">ℹ️ Peta konsep, grafik SVG, kartu penjelasan, dan checklist konsep berjalan tanpa internet. Koneksi internet hanya diperlukan untuk merender persamaan matematika (MathJax).</p>
+
+  <h2 class="section" id="konsep"><span class="dot"></span>Konsep Penting yang Harus Dikuasai</h2>
+  <div class="card"><div class="cl-head"><span class="count"><span id="doneCount">0</span>/<span id="totalCount">0</span> dikuasai</span><button class="btn-reset" id="resetBtn">Reset centang</button></div>
+    <ul class="concepts" id="conceptList">
+      <li><input type="checkbox"><span><span class="ct">Kebenaran Ilmiah (Logis, Empiris &amp; Sementara)</span><span class="cd">Pengetahuan baru disebut ilmiah jika masuk akal (logis) sekaligus terkonfirmasi data panca indera (empiris), serta bersifat sementara (bukan dogma) sehingga terus dikembangkan.</span></span></li>
+      <li><input type="checkbox"><span><span class="ct">Variabel &amp; Obyek Material Penelitian Kuantitatif</span><span class="cd">Sesuatu yang memiliki atribut bervariasi dan dinyatakan dalam bentuk numerik (atau pengelompokan logis atribut), menjadi fokus utama modul berbasis positivisme.</span></span></li>
+      <li><input type="checkbox"><span><span class="ct">Metodologi, Teknik, Research &amp; Falsifikasi Popper</span><span class="cd">Metodologi = ilmu tentang cara ilmiah; teknik = bagian operasional metode; research = pencarian berulang; falsifikasi Popper = teori baik bila terbuka untuk disangkal, diuji, dan diganti.</span></span></li>
+      <li><input type="checkbox"><span><span class="ct">Sepuluh Ciri Penelitian Ilmiah &amp; Self-Correction</span><span class="cd">Diturunkan dari definisi Kerlinger &amp; Lee serta Sekaran &amp; Bougie: masalah spesifik, sistematis, empiris, bukan soal moral, publik, kritis, obyektif/intersubjektif, terkontrol, teori-hipotesis, dan self-correction.</span></span></li>
+      <li><input type="checkbox"><span><span class="ct">Intersubjektivitas (Intersubjectivity)</span><span class="cd">Kesepakatan para ahli dalam komunitas ilmu tertentu sebagai pengganti objektivitas mutlak yang mustahil dicapai manusia.</span></span></li>
+      <li><input type="checkbox"><span><span class="ct">Kontrol Eksperimen vs Kontrol Statistik (ANCOVA)</span><span class="cd">Dua cara mengendalikan variabel pengganggu: menyamakan kondisi subyek secara langsung atau mengontrol pengaruhnya melalui analisis kovariansi.</span></span></li>
+      <li><input type="checkbox"><span><span class="ct">Pengetahuan Ilmiah vs Common Sense (Tabel 1.1)</span><span class="cd">Delapan perbedaan mendasar (Marx/Shaughnessy): pendekatan umum, observasi, pelaporan, konsep, instrumen, pengukuran, hipotesis, dan sikap.</span></span></li>
+      <li><input type="checkbox"><span><span class="ct">Penelitian Murni (Basic) vs Terapan (Applied)</span><span class="cd">Penelitian murni bertujuan mengembangkan teori/ilmu; penelitian terapan memakai teori yang ada untuk menyelesaikan masalah praktis sehari-hari.</span></span></li>
+      <li><input type="checkbox"><span><span class="ct">Positivisme (Kuantitatif) vs Interpretivisme (Kualitatif)</span><span class="cd">Positivisme mereduksi obyek menjadi variabel &amp; angka (deduktif); interpretivisme memahami makna secara holistik/gestalt (induktif); realisme menggabungkan keduanya.</span></span></li>
+      <li><input type="checkbox"><span><span class="ct">Skripsi (S1), Tesis (S2), dan Disertasi (S3)</span><span class="cd">Berbeda dalam skala generalisasi (subyek), jumlah &amp; kebaruan masalah, proporsi referensi jurnal, serta kontribusi teori baru.</span></span></li>
+      <li><input type="checkbox"><span><span class="ct">Lima Cara Memperoleh Pengetahuan</span><span class="cd">Pengalaman pribadi, otoritas, penalaran induktif, penalaran deduktif (silogisme), dan penalaran ilmiah/reflektif (siklus deduktif-induktif).</span></span></li>
+      <li><input type="checkbox"><span><span class="ct">Postulat Alam Semesta &amp; Kemampuan Manusia</span><span class="cd">Alam semesta: jenis, keajegan, sebab-akibat, variabilitas. Manusia: reliabilitas pengamatan, ingatan, dan pemikiran.</span></span></li>
+      <li><input type="checkbox"><span><span class="ct">"Benang Merah" Penelitian</span><span class="cd">Keterkaitan, kesesuaian, dan konsistensi mutlak antara tiga komponen utama: Rumusan Masalah (?) → Hipotesis (!) → Analisis.</span></span></li>
+      <li><input type="checkbox"><span><span class="ct">4 Ciri Rumusan Masalah yang Baik</span><span class="cd">Variabel eksplisit (minimal 2), kaitan antarvariabel eksplisit &amp; mengacu pada analisis, subyek eksplisit, dan berbentuk kalimat pertanyaan.</span></span></li>
+      <li><input type="checkbox"><span><span class="ct">Desain Eksploratif vs Konklusif (Deskriptif &amp; Kausal)</span><span class="cd">Ditentukan oleh ada tidaknya hipotesis yang diuji (eksploratif vs konklusif) serta ada tidaknya variabel perlakuan/manipulasi (deskriptif vs kausal).</span></span></li>
+      <li><input type="checkbox"><span><span class="ct">13 Tahap Proses Penelitian Bisnis &amp; Pembahasan</span><span class="cd">Tiga gugus utama: Perumusan Masalah (1), Jawaban Teoritis/Logis (2–4), dan Pengujian Kebenaran Empiris hingga Pelaporan (5–13). Kesimpulan statistik wajib melalui Pembahasan sebelum menjadi kesimpulan penelitian.</span></span></li>
+    </ul></div>
+
+  <h2 class="section" id="peta"><span class="dot"></span>Peta Konsep (Mind Map)</h2>
+  <div class="card"><div class="mm-toolbar"><button class="mm-btn" id="mmExpand">Perluas semua</button><button class="mm-btn" id="mmCollapse">Ciutkan</button><span style="font-size:.76rem;color:var(--muted)">Klik simpul bertanda + / – untuk buka-tutup · Gulir untuk menggeser</span></div><div class="mindmap-host" id="mindmap"></div></div>
+
+  <!-- KB 1 -->
+  <h2 class="section" id="kb1"><span class="dot" style="background:var(--kb1)"></span>KB 1 — Pengertian Penelitian Ilmiah</h2>
+  <div class="card kb1b"><span class="kb-tag kb1t">KEGIATAN BELAJAR 1 · HAL. 1.3–1.28</span>
+    <div class="acro-box">
+      <span class="acro-title">📖 Kamus Konteks Singkatan &amp; Akronim KB 1</span>
+      <ul class="acro-grid">
+        <li><b>MPB</b>: Metode Penelitian Bisnis — mata kuliah inti (EKMA5104) untuk menyusun proposal &amp; laporan penelitian bisnis kuantitatif.</li>
+        <li><b>SDM</b>: Sumber Daya Manusia — salah satu dari 4 bidang manajemen dalam ruang lingkup penelitian bisnis.</li>
+        <li><b>ANCOVA</b>: <i>Analysis of Covariance</i> (Analisis Kovariansi) — teknik kontrol statistik untuk mengendalikan variabel pengganggu.</li>
+        <li><b>FGD</b>: <i>Focus Group Discussion</i> — teknik pengumpulan data diskusi kelompok terarah yang lazim pada penelitian kualitatif.</li>
+        <li><b>S1 / S2 / S3</b>: Jenjang pendidikan tinggi Sarjana (Skripsi), Magister (Tesis), dan Doktor (Disertasi).</li>
+        <li><b>KB</b>: Keluarga Berencana (dalam contoh kasus aliran Realisme zaman Orde Baru di buku).</li>
+      </ul>
+    </div>
+
+    <p class="lead">Manusia membutuhkan pengetahuan untuk mengambil keputusan, termasuk dalam konteks bisnis (pemasaran, keuangan, SDM, operasional, dan akuntansi). Pengetahuan berawal dari stimulus yang ditangkap panca indera (data), disampaikan ke otak untuk diberi makna dan diolah lewat penalaran menjadi informasi, lalu disimpan sebagai pengetahuan atau kebenaran.</p>
+
+    <div class="flowchart">
+      <span class="fc-node">Stimulus / Data<br><small>(Panca indera)</small></span>
+      <span class="fc-arrow">→</span>
+      <span class="fc-node">Penalaran / Analisis<br><small>(Kemampuan otak)</small></span>
+      <span class="fc-arrow">→</span>
+      <span class="fc-node">Informasi<br><small>(Data bermakna)</small></span>
+      <span class="fc-arrow">→</span>
+      <span class="fc-node">Pengetahuan / Kebenaran<br><small>(Logis + Empiris = Ilmiah)</small></span>
+    </div>
+
+    <p>Secara umum, kebenaran dibedakan menjadi kebenaran ilmiah dan tidak ilmiah. Dua pilar <span class="term">kebenaran ilmiah <span class="en">(scientific truth)</span></span> adalah <b>logis</b> (masuk akal secara teoritis, mis. biaya iklan berhubungan positif dengan volume penjualan) dan <b>empiris</b> (terkonfirmasi oleh data nyata yang diperoleh lewat panca indera, mis. data biaya iklan dan volume penjualan selama beberapa periode). Sifat kebenaran ilmiah adalah <b>sementara, tidak abadi</b>, dan harus terus dikembangkan.</p>
+
+    <div class="casebox">
+      <span class="ctitle">Contoh Keputusan Bisnis &amp; Peran Informasi (Tinjauan Mata Kuliah &amp; Hal. 1.3)</span>
+      Pimpinan organisasi bisnis memilih alternatif tindakan di lima bidang utama: <b>Pemasaran</b> (menaikkan harga atau tidak — butuh riset kepekaan konsumen terhadap harga), <b>Keuangan</b> (pinjaman atau laba ditahan untuk membeli aktiva tetap), <b>SDM</b> (rekrutmen internal atau eksternal), <b>Operasional</b> (ubah tata letak pabrik atau tidak), dan <b>Akuntansi</b> (sistem manual atau perangkat lunak). Informasi riset membuat keputusan jauh lebih tepat.
+    </div>
+
+    <div class="flow">Karena fokus utama modul ini adalah penelitian kuantitatif, istilah paling mendasar yang menjadi obyek materialnya—yaitu <b>variabel</b>—perlu dipahami terlebih dahulu sebelum masuk ke metodologi penelitian bisnis.</div>
+
+    <div class="abc"><span class="ltr">A</span><h4>Variabel dan Penelitian Kuantitatif</h4></div>
+    <p>Obyek material metode penelitian kuantitatif adalah <span class="term">variabel <span class="en">(variable)</span></span>, yaitu sesuatu yang memiliki <b>atribut yang bervariasi</b> dan variasi atribut itu dinyatakan dalam bentuk <b>numerik (kuantitatif, bilangan)</b>. Variabel juga dapat dipandang sebagai hasil pengelompokan secara logis atas atribut-atribut tersebut.</p>
+    <ul class="exp">
+      <li><span class="term">Contoh atribut numerik (kode vs besaran)</span>: variabel <i>jenis kelamin</i> memiliki dua variasi atribut (perempuan diberi lambang angka <code>0</code>, laki-laki <code>1</code>); variabel <i>prestasi kerja</i> dinyatakan dalam skor numerik seperti <code>90, 75, 79</code>.</li>
+      <li><span class="term">Pengaitan antarvariabel dalam bisnis</span>: sadar atau tidak, kita terus mengamati variasi dan mengaitkan antarvariabel—misalnya kepuasan dengan kesetiaan pelanggan, harga saham dengan keuntungan perusahaan, tingkat emosi laki-laki dengan perempuan, serta prestasi kerja pekerja berpengalaman dengan yang belum berpengalaman.</li>
+    </ul>
+
+    <div class="flow">Setelah memahami bahwa variabel numerik adalah obyek materialnya, bagian B menguraikan kerangka kerja ilmiah untuk meneliti variabel-variabel tersebut dalam konteks bisnis: <b>Metodologi Penelitian Bisnis</b>.</div>
+
+    <div class="abc"><span class="ltr">B</span><h4>Metodologi Penelitian Bisnis</h4></div>
+    <p>Metode penelitian pada modul ini berfokus pada pendekatan kuantitatif yang berlandaskan <span class="term">positivisme <span class="en">(positivism)</span></span>—aliran filsafat ilmu yang mensyaratkan obyek ilmu harus diketahui melalui panca indera (empiris) dan dapat diukur dalam bentuk numerik. Karena itu, pengetahuan baru dinyatakan ilmiah apabila memenuhi kriteria <b>logis</b> sekaligus <b>empiris</b>.</p>
+
+    <div class="numh">1. Metodologi Penelitian</div>
+    <p>Sebelum membedah ciri-ciri penelitian ilmiah, terdapat empat konsep kunci yang mendasari istilah metodologi dan penelitian:</p>
+    <ul class="exp">
+      <li><span class="term">Metodologi &amp; Teknik</span>: <b>metodologi</b> berasal dari kata <i>metode</i> (cara) dan <i>logi</i> (ilmu), yakni ilmu mengenai cara melakukan sesuatu secara ilmiah; sedangkan <b>teknik</b> adalah bagian operasional dari metode.</li>
+      <li><span class="term">Etimologi Research</span>: berasal dari <i>re</i> (kembali, berulang-ulang) dan <i>search</i> (mencari)—penelitian adalah pencarian pengetahuan/kebenaran secara berulang-ulang karena kebenaran ilmiah bersifat <b>sementara, tidak abadi, bukan dogma</b> seperti dalam agama.</li>
+      <li><span class="term">Sikap Skeptis &amp; Falsifikasi Popper <span class="en">(falsification)</span></span>: peneliti wajib bersikap <b>skeptis</b> (senantiasa mempertanyakan kebenaran yang ada). Menurut <b>Karl R. Popper</b> (dalam Alfons, 1989), suatu teori/pengetahuan dinyatakan baik justru jika kebenarannya <b>dapat disangkal</b>—artinya terbuka untuk diuji, diperbaiki, atau diganti oleh teori baru.</li>
+      <li><span class="term">Dua Definisi Utama Penelitian Ilmiah</span>: <b>Kerlinger &amp; Lee (2010: 14)</b> mendefinisikannya sebagai penyelidikan sistematis, terkontrol, empiris, amoral, publik, dan kritis atas fenomena alam yang dipandu teori dan hipotesis; <b>Sekaran &amp; Bougie (2010: 3)</b> mendefinisikannya sebagai penyelidikan ilmiah yang terorganisir, sistematis, berbasis data, kritis, dan obyektif terhadap masalah spesifik untuk menemukan jawaban/solusinya.</li>
+    </ul>
+
+    <p>Dari kedua definisi di atas diturunkan <b>sepuluh ciri penelitian ilmiah</b> (termasuk <i>self-correction</i>). Klik tiap kartu untuk penjelasan kontekstual dan contohnya:</p>
+    <div class="rgrid c2" data-revealgroup>
+      <div class="rcell active" data-reveal data-detail="<b>1. Masalah Spesifik &amp; Teori Relevan</b> — Setiap karya ilmiah selalu diawali masalah (tanpa masalah, tak ada karya ilmiah). Masalah tidak boleh terlalu umum atau kabur, dan landasan teori yang dipakai harus spesifik yang relevan saja (misalnya saat meneliti motivasi, pilih teori motivasi yang tepat, bukan menumpuk semua teori seperti hierarki kebutuhan dan penetapan tujuan sekaligus)."><span class="stepnum">1</span><span><span class="rt">Masalah Spesifik</span><span class="rp">Masalah tajam &amp; teori relevan</span></span></div>
+      <div class="rcell" data-reveal data-detail="<b>2. Sistematis (Systematic)</b> — Seluruh kegiatan dan alat penelitian (instrumen, teknik analisis) merupakan satu kesatuan sub-subsistem yang terorganisir, sinkron, saling terkait, serta direncanakan secara sadar dan teliti."><span class="stepnum">2</span><span><span class="rt">Sistematis</span><span class="rp">Terorganisir &amp; sinkron</span></span></div>
+      <div class="rcell" data-reveal data-detail="<b>3. Empiris (Empirical)</b> — Kebenaran tidak berhenti pada taraf teoritis/logika, tetapi wajib teruji oleh data nyata. Penjelasan intuitif atau metafisik (di luar benda fisik) tidak termasuk penelitian ilmiah karena tak bisa diuji secara empiris."><span class="stepnum">3</span><span><span class="rt">Empiris</span><span class="rp">Teruji data, bukan metafisik</span></span></div>
+      <div class="rcell" data-reveal data-detail="<b>4. Bukan Mengenai Moral (Amoral)</b> — Pengetahuan ilmiah menilai validitas dan reliabilitas, bukan label 'baik' atau 'jelek'. Namun, proses pelaksanaannya tetap wajib tunduk pada moral melalui <i>kode etik penelitian ilmiah</i>."><span class="stepnum">4</span><span><span class="rt">Bukan Soal Moral</span><span class="rp">Fokus validitas; patuh kode etik</span></span></div>
+      <div class="rcell" data-reveal data-detail="<b>5. Publik (Public)</b> — Hasil riset wajib dipublikasikan (terutama di jurnal ilmiah ternama yang memiliki penelaah ahli / <i>peer review</i>) agar kekeliruan terdeteksi dan publik/ilmuwan lain dapat menelaah atau mereplikasinya. Meski demikian, penelaah kadang bisa keliru (kasus Kepler, Galileo, Copernicus, Jenner, Semmelweis, dan Garcia)."><span class="stepnum">5</span><span><span class="rt">Publik</span><span class="rp">Jurnal ilmiah &amp; peer review</span></span></div>
+      <div class="rcell" data-reveal data-detail="<b>6. Kritis (Critical &amp; Skeptical)</b> — Peneliti harus skeptis, tidak menerima kebenaran begitu saja, dan selalu menyertakan argumentasi obyektif saat memilih metode atau alat analisis di antara alternatif yang sejenis."><span class="stepnum">6</span><span><span class="rt">Kritis</span><span class="rp">Skeptis &amp; berargumen obyektif</span></span></div>
+      <div class="rcell" data-reveal data-detail="<b>7. Obyektif → Intersubjektivitas (Intersubjectivity)</b> — Pribadi peneliti tidak boleh memengaruhi hasil agar riset serupa memberi hasil mirip. Karena objektivitas mutlak mustahil bagi manusia, ilmu menganut <i>intersubjektivitas</i>, yakni kesepakatan di antara para ahli dalam komunitas ilmu tertentu."><span class="stepnum">7</span><span><span class="rt">Obyektif / Intersubjektif</span><span class="rp">Kesepakatan komunitas ilmu</span></span></div>
+      <div class="rcell" data-reveal data-detail="<b>8. Terkontrol (Controlled)</b> — Peneliti mengendalikan variabel pengganggu saat menjelaskan variasi variabel dependen. Pengendalian dilakukan lewat <i>kontrol eksperimen</i> (menyamakan kondisi/usia subyek secara langsung) atau <i>kontrol statistik</i> (analisis kovariansi / ANCOVA)."><span class="stepnum">8</span><span><span class="rt">Terkontrol</span><span class="rp">Kontrol eksperimen vs ANCOVA</span></span></div>
+      <div class="rcell" data-reveal data-detail="<b>9. Teori dan Hipotesis</b> — Penelitian dan teori membentuk siklus: teori (penjelasan masuk akal) melahirkan hipotesis (dugaan sementara kaitan antarvariabel), lalu hipotesis diuji empiris untuk mengembangkan teori. Data tanpa teori bukan ilmu."><span class="stepnum">9</span><span><span class="rt">Teori &amp; Hipotesis</span><span class="rp">Siklus teori ↔ uji empiris</span></span></div>
+      <div class="rcell" data-reveal data-detail="<b>10. Self-Correction (Kerlinger &amp; Lee, 2000)</b> — Ciri unik metode ilmiah yang tak dimiliki metode lain: tersedia 'rambu-rambu' pemeriksaan internal di tiap tahap (misalnya wajib uji validitas dan reliabilitas sebelum instrumen dipakai mengumpulkan data)."><span class="stepnum">10</span><span><span class="rt">Self-Correction</span><span class="rp">Pemeriksaan otomatis tiap tahap</span></span></div>
+    </div>
+    <div class="rdetail" data-revealdetail><b>1. Masalah Spesifik &amp; Teori Relevan</b> — Setiap karya ilmiah selalu diawali masalah (tanpa masalah, tak ada karya ilmiah). Masalah tidak boleh terlalu umum atau kabur, dan landasan teori yang dipakai harus spesifik yang relevan saja (misalnya saat meneliti motivasi, pilih teori motivasi yang tepat, bukan menumpuk semua teori seperti hierarki kebutuhan dan penetapan tujuan sekaligus).</div>
+
+    <div class="casebox">
+      <span class="ctitle">Kasus Penting Buku (Hal. 1.7–1.8): Publikasi Garcia &amp; Kontrol Huitema (1982)</span>
+      <b>Kasus Garcia:</b> Karyanya mengenai kendala biologis pada pembelajaran sempat ditolak penelaah ahli jurnal ternama sebagai "tidak layak ilmiah". Garcia lalu menerbitkannya di jurnal tanpa penelaah ahli; ilmuwan lain membaca, mereplikasi, dan mengapresiasinya—membuktikan sifat <i>publik</i> dan <i>self-correction</i> ilmu.<br>
+      <b>Kasus Huitema (1982):</b> Perbandingan tinggi badan anak kota vs desa awalnya memberi hasil keliru/terbalik karena variabel pengganggu (usia) belum dikontrol. Setelah usia dikendalikan lewat kontrol eksperimen atau kontrol statistik (ANCOVA), kesimpulan baru menjadi akurat.
+    </div>
+
+    <div class="numh">2. Penelitian Bisnis</div>
+    <p><span class="term">Penelitian bisnis <span class="en">(business research)</span></span> adalah penerapan penelitian ilmiah dalam konteks bisnis, yakni organisasi pemasok barang dan/atau jasa (baik berorientasi laba maupun nirlaba). Ruang lingkupnya meliputi lima bidang utama:</p>
+    <div class="pill-row">
+      <span class="pill">Akuntansi</span>
+      <span class="pill">Manajemen Pemasaran</span>
+      <span class="pill">Manajemen Operasional</span>
+      <span class="pill">Manajemen SDM</span>
+      <span class="pill">Manajemen Keuangan</span>
+    </div>
+
+    <div class="flow">Untuk mempertajam pemahaman mengapa ciri-ciri ilmiah di atas begitu penting, bagian C membandingkan langsung cara kerja ilmuwan dengan cara orang awam sehari-hari (<b>common sense</b>).</div>
+
+    <div class="abc"><span class="ltr">C</span><h4>Pengetahuan Ilmiah dan Pengetahuan Awam</h4></div>
+    <p>Menurut Kerlinger &amp; Lee (2000), ilmu pada dasarnya adalah perluasan yang sistematis dan terkontrol atas pengetahuan orang awam (<span class="term">common sense</span>). Meski punya akar serupa, Shaughnessy et al. (2003, mengadaptasi Marx 1963) merangkum 8 perbedaan mendasar pada <b>Tabel 1.1</b>:</p>
+
+    <div class="table-wrap">
+      <table class="mini">
+        <thead><tr><th>Karakteristik</th><th>Pendekatan Tak Ilmiah (Awam)</th><th>Pendekatan Ilmiah (Ilmuwan)</th></tr></thead>
+        <tbody>
+          <tr><td data-label="Karakteristik"><b>Pendekatan umum</b></td><td data-label="Pendekatan Tak Ilmiah (Awam)">Intuitif; sering menerima penjelasan metafisik yang tidak dapat diuji.</td><td data-label="Pendekatan Ilmiah (Ilmuwan)">Empiris, didukung data; mengesampingkan penjelasan metafisik (Kerlinger, 1986).</td></tr>
+          <tr><td data-label="Karakteristik"><b>Observasi</b></td><td data-label="Pendekatan Tak Ilmiah (Awam)">Kausal (sembarangan) dan tak terkontrol; langsung menyimpulkan sebab-akibat tanpa menimbang faktor lain.</td><td data-label="Pendekatan Ilmiah (Ilmuwan)">Sistematis, terencana, penuh kehati-hatian, dan terkontrol terhadap faktor pengganggu.</td></tr>
+          <tr><td data-label="Karakteristik"><b>Pelaporan</b></td><td data-label="Pendekatan Tak Ilmiah (Awam)">Subyektif dan bias oleh perasaan/pengalaman pribadi.</td><td data-label="Pendekatan Ilmiah (Ilmuwan)">Obyektif (intersubjektif), berbasis fakta, tidak emosional. Motto Malhotra (1993): <i>"Find it and tell like it is"</i> (dianjurkan memakai kalimat pasif &amp; kata "peneliti").</td></tr>
+          <tr><td data-label="Karakteristik"><b>Konsep</b></td><td data-label="Pendekatan Tak Ilmiah (Awam)">Ambigu (kabur) dan diberi makna tambahan sehingga mudah menimbulkan salah paham.</td><td data-label="Pendekatan Ilmiah (Ilmuwan)">Definisi jelas dan dioperasionalkan secara spesifik mengacu pada ukuran empirisnya.</td></tr>
+          <tr><td data-label="Karakteristik"><b>Instrumen</b></td><td data-label="Pendekatan Tak Ilmiah (Awam)">Tidak akurat (<i>inaccurate</i>) dan tidak tepat (<i>imprecise</i>), mis. menimbang berat badan dengan timbangan mobil.</td><td data-label="Pendekatan Ilmiah (Ilmuwan)">Akurat dan tepat sesuai obyek yang diukur.</td></tr>
+          <tr><td data-label="Karakteristik"><b>Pengukuran</b></td><td data-label="Pendekatan Tak Ilmiah (Awam)">Tidak valid dan tidak reliabel.</td><td data-label="Pendekatan Ilmiah (Ilmuwan)">Valid (mengukur apa yang seharusnya diukur) dan reliabel (hasil konsisten), diuji teoritis &amp; empiris sebelum dipakai.</td></tr>
+          <tr><td data-label="Karakteristik"><b>Hipotesis</b></td><td data-label="Pendekatan Tak Ilmiah (Awam)">Tidak dapat diuji secara empiris.</td><td data-label="Pendekatan Ilmiah (Ilmuwan)">Dihasilkan lewat penalaran logis dan dapat diverifikasi secara empiris.</td></tr>
+          <tr><td data-label="Karakteristik"><b>Sikap</b></td><td data-label="Pendekatan Tak Ilmiah (Awam)">Menerima begitu saja, tidak kritis, tunduk pada dogma.</td><td data-label="Pendekatan Ilmiah (Ilmuwan)">Kritis dan skeptis; menerima kebenaran sebagai sementara (karena tak ada riset sempurna — Aritonang R., 1996).</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="flow">Setelah memahami batas tegas antara pengetahuan ilmiah dan awam, kita perlu mengenal klasifikasi <b>jenis penelitian</b> agar bisa menempatkan tujuan, paradigma, serta jenjang riset (seperti tesis S2) secara tepat.</div>
+
+    <div class="abc"><span class="ltr">D</span><h4>Jenis Penelitian</h4></div>
+
+    <div class="numh">1. Penelitian Murni dan Penelitian Terapan</div>
+    <ul class="exp">
+      <li><span class="term">Penelitian Murni / Dasar <span class="en">(basic / pure research)</span></span>: bertujuan mengembangkan ilmu pengetahuan, menjawab keterbatasan teori, dan memajukan bangunan keilmuan.</li>
+      <li><span class="term">Penelitian Terapan <span class="en">(applied research)</span></span>: bertujuan menyelesaikan masalah nyata sehari-hari (misalnya masalah perusahaan) dengan memanfaatkan teori atau hasil penelitian yang sudah ada—tidak bertujuan menciptakan teori baru.</li>
+    </ul>
+
+    <div class="numh">2. Penelitian Kuantitatif dan Penelitian Kualitatif</div>
+    <p>Ilmu alam lebih dulu diakui ilmiah karena obyek materialnya fisik dan memakai eksperimen. Ilmu sosial (seperti psikologi) baru diakui ilmiah setelah mengalihkan obyek "jiwa" yang abstrak ke "perilaku" yang dapat diobservasi langsung serta mengadopsi eksperimen. Dalam ontologi ilmu sosial, berkembang dua aliran filsafat dominan dan satu aliran gabungan:</p>
+    <ul class="exp">
+      <li><span class="term">Positivisme <span class="en">(positivism → Kuantitatif)</span></span>: obyek ilmu harus empiris, nyata, meyakinkan, dan dapat diukur/direduksi menjadi data numerik (disebut <b>variabel</b>). Teologi, logika, dan matematika tidak tergolong ilmu empiris menurut aliran ini.</li>
+      <li><span class="term">Interpretivisme <span class="en">(interpretivism → Kualitatif)</span></span>: perilaku manusia tak dapat direduksi menjadi angka karena manusia memiliki perasaan dan refleksi. Obyeknya disebut <b>gejala</b> yang harus dipahami secara menyeluruh (<i>holistik / gestalt</i>) berdasarkan makna subyektifnya (contoh: usia pensiun bisa dimaknai berkah bagi satu orang, tetapi penderitaan bagi orang lain; juga fenomena <i>halo effect</i>).</li>
+      <li><span class="term">Realisme <span class="en">(realism → Gabungan / Mixed)</span></span>: menggabungkan keduanya secara kontekstual—lazimnya diawali kualitatif (interpretivisme) lalu dilanjutkan kuantitatif (positivisme), meski membutuhkan waktu, tenaga, dan dana besar (contoh: keberhasilan program KB zaman Orde Baru).</li>
+    </ul>
+
+    <p>Perbedaan rinci keduanya dirangkum pada <b>Tabel 1.2</b> (Ary et al., 2010: 25) beserta perbandingan kerepresentatifan, reliabilitas, dan validitasnya:</p>
+    <div class="table-wrap">
+      <table class="mini">
+        <thead><tr><th>Aspek</th><th>Penelitian Kuantitatif (Positivisme)</th><th>Penelitian Kualitatif (Interpretivisme)</th></tr></thead>
+        <tbody>
+          <tr><td data-label="Aspek"><b>Tujuan</b></td><td data-label="Penelitian Kuantitatif (Positivisme)">Meneliti kaitan sebab-akibat antarvariabel yang terukur.</td><td data-label="Penelitian Kualitatif (Interpretivisme)">Memahami gejala secara rinci dan menyeluruh sebagaimana adanya.</td></tr>
+          <tr><td data-label="Aspek"><b>Desain</b></td><td data-label="Penelitian Kuantitatif (Positivisme)">Deskriptif dan kausal (eksperimen) untuk menguji hipotesis; disusun kaku sebelum riset berjalan.</td><td data-label="Penelitian Kualitatif (Interpretivisme)">Eksploratif (penjajakan), bukan untuk uji hipotesis; luwes dan berkembang selama riset berlangsung.</td></tr>
+          <tr><td data-label="Aspek"><b>Pendekatan</b></td><td data-label="Penelitian Kuantitatif (Positivisme)">Deduktif — menguji teori yang sudah ada lewat hipotesis.</td><td data-label="Penelitian Kualitatif (Interpretivisme)">Induktif — mengumpulkan data kaya makna untuk menghasilkan teori baru.</td></tr>
+          <tr><td data-label="Aspek"><b>Alat (Instrumen)</b></td><td data-label="Penelitian Kuantitatif (Positivisme)">Instrumen terstruktur yang dipilih sebelumnya (mis. angket tertutup skala Likert), bersifat klasikal (massal), wajib uji validitas &amp; reliabilitas; pengumpulan data bisa didelegasikan.</td><td data-label="Penelitian Kualitatif (Interpretivisme)">Peneliti sendiri adalah instrumen utama (wawancara mendalam, observasi partisipatif, FGD); bersifat individual/kelompok kecil; jarang diuji empiris.</td></tr>
+          <tr><td data-label="Aspek"><b>Sampel</b></td><td data-label="Penelitian Kuantitatif (Positivisme)">Sampel besar (sering acak) → validitas eksternal tinggi, layak digeneralisasikan ke populasi.</td><td data-label="Penelitian Kualitatif (Interpretivisme)">Sampel kecil demi kedalaman makna → tidak layak digeneralisasikan secara luas.</td></tr>
+          <tr><td data-label="Aspek"><b>Analisis</b></td><td data-label="Penelitian Kuantitatif (Positivisme)">Analisis statistik atas data numerik (angka/koefisien).</td><td data-label="Penelitian Kualitatif (Interpretivisme)">Uraian dan interpretasi naratif (mis. analisis isi, walau kini kadang dibantu chi-kuadrat/perangkat lunak).</td></tr>
+          <tr><td data-label="Aspek"><b>Reliabilitas &amp; Validitas</b></td><td data-label="Penelitian Kuantitatif (Positivisme)">Lebih mudah direplikasi dengan hasil konsisten; obyek dianggap obyektif (<i>"biarkan data berbicara sendiri"</i>).</td><td data-label="Penelitian Kualitatif (Interpretivisme)">Sulit direplikasi karena bergantung konteks &amp; makna; obyek bersifat individual dan subyektif (komunitas ilmu menganut intersubjektivitas).</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="numh">3. Skripsi, Tesis, dan Disertasi</div>
+    <p>Ketiganya sama-sama bertujuan melatih mahasiswa meneliti secara ilmiah, berjenjang dari S1 ke S3, memiliki struktur garis besar yang sama (masalah hingga kesimpulan), dan pada prinsipnya mencakup pengujian hipotesis (wajib pada tesis &amp; disertasi, dan idealnya juga ada pada skripsi meski sederhana). Perbedaan utamanya:</p>
+    <div class="table-wrap">
+      <table class="mini">
+        <thead><tr><th>Dimensi</th><th>Skripsi (S1 / Sarjana)</th><th>Tesis (S2 / Magister)</th><th>Disertasi (S3 / Doktor)</th></tr></thead>
+        <tbody>
+          <tr><td data-label="Dimensi"><b>Subyek &amp; Generalisasi</b></td><td data-label="Skripsi (S1 / Sarjana)">Cukup 1 perusahaan (generalisasi terbatas pada perusahaan itu).</td><td data-label="Tesis (S2 / Magister)">Lebih dari 1 perusahaan, lebih baik 1 industri (generalisasi lebih luas).</td><td data-label="Disertasi (S3 / Doktor)">Satu industri atau beberapa industri (generalisasi paling luas).</td></tr>
+          <tr><td data-label="Dimensi"><b>Masalah &amp; Kebaruan</b></td><td data-label="Skripsi (S1 / Sarjana)">Boleh meneliti ulang masalah lama (bukan jiplakan; minimal beda subyek/teori/metode); bisa 1 masalah &amp; hipotesis sederhana.</td><td data-label="Tesis (S2 / Magister)">Harus menghasilkan hal baru (signifikansi di bawah disertasi); jumlah masalah &amp; hipotesis lebih sedikit dari disertasi.</td><td data-label="Disertasi (S3 / Doktor)">Wajib mengurangi keterbatasan ilmu / masalah baru; idealnya menghasilkan <b>teori baru</b> (istilah "tesis" sering merujuk pada teori yang dihasilkan).</td></tr>
+          <tr><td data-label="Dimensi"><b>Referensi Jurnal</b></td><td data-label="Skripsi (S1 / Sarjana)">Mayoritas referensi tidak harus dari jurnal.</td><td data-label="Tesis (S2 / Magister)">Mayoritas referensi wajib berasal dari jurnal ilmiah.</td><td data-label="Disertasi (S3 / Doktor)">Hampir seluruh/semua dari jurnal; wajib memuat riwayat asal-muasal topik (dari referensi pertama hingga yang terkini).</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="flow">Selain melalui penelitian ilmiah formal di atas, manusia sehari-hari memperoleh pengetahuan dari berbagai sumber lain. Bagian E memetakan lima cara memperoleh pengetahuan sekaligus menunjukkan mengapa hanya cara kelima yang menghasilkan ilmu.</div>
+
+    <div class="abc"><span class="ltr">E</span><h4>Cara Memperoleh Pengetahuan</h4></div>
+    <p>Empat cara pertama tidak menghasilkan pengetahuan ilmiah karena rentan bias dan keterbatasan logika; hanya cara kelima yang membentuk metode ilmiah. Klik tiap kartu untuk detailnya:</p>
+    <div class="rgrid c3" data-revealgroup>
+      <div class="rcell active" data-reveal data-detail="<b>1. Pengalaman Pribadi (Personal Experience)</b> — Berguna untuk masalah sehari-hari, namun menurut Sutrisno (1975) jika tidak kritis justru merugikan. Dua kekeliruan utamanya: (a) <i>generalisasi berlebihan</i> tanpa pengalaman memadai, dan (b) <i>observasi selektif</i> karena cenderung hanya melihat hal yang sesuai harapan/nilai sendiri."><span class="stepnum">1</span><span><span class="rt">Pengalaman Pribadi</span><span class="rp">Rentan bias &amp; selektif</span></span></div>
+      <div class="rcell" data-reveal data-detail="<b>2. Otoritas (Authority &amp; Tradition)</b> — Meminta pendapat ahli (mis. dokter) atau tradisi. Unggul karena cepat dan mudah, tetapi punya 3 kelemahan: (a) pihak otoritas bisa salah/kurang kompeten, (b) antar-ahli sering berbeda pendapat, dan (c) cenderung diterima secara tidak kritis."><span class="stepnum">2</span><span><span class="rt">Otoritas</span><span class="rp">Cepat, tapi bisa salah</span></span></div>
+      <div class="rcell" data-reveal data-detail="<b>3. Penalaran Induktif (Inductive Reasoning)</b> — Menarik kesimpulan umum (generalisasi) dari beberapa peristiwa khusus sejenis. Francis Bacon membedakan <i>induksi lengkap/sempurna</i> (mengamati semua kasus — mustahil) vs <i>induksi tak sempurna</i>. Diperkuat lewat <i>meta-analisis</i> dan statistik inferensial (sampel → populasi)."><span class="stepnum">3</span><span><span class="rt">Penalaran Induktif</span><span class="rp">Khusus → Umum (generalisasi)</span></span></div>
+      <div class="rcell" data-reveal data-detail="<b>4. Penalaran Deduktif (Deductive Reasoning)</b> — Kebalikan induksi: menarik kesimpulan khusus dari hal umum lewat <b>silogisme</b> (Premis Mayor + Premis Minor → Konklusi; mis. Semua manusia mati + Ali manusia → Ali mati). Keterbatasan: sulit menemukan premis mayor universal &amp; konklusi tak bisa melampaui premis. Kegunaan: mendeduksi hipotesis dari teori (Ary et al., 2007)."><span class="stepnum">4</span><span><span class="rt">Penalaran Deduktif</span><span class="rp">Umum → Khusus (silogisme)</span></span></div>
+      <div class="rcell" data-reveal data-detail="<b>5. Penalaran Ilmiah / Reflektif (Scientific Reasoning)</b> — Gabungan siklus tanpa akhir antara deduktif dan induktif: mulai dari masalah → kaji teori (umum) → <i>deduksi</i> menjadi hipotesis (logis) → uji empiris pada kasus khusus → <i>induksi</i>/generalisasi hasil kembali ke teori."><span class="stepnum">5</span><span><span class="rt">Penalaran Ilmiah</span><span class="rp">Siklus Deduktif ↔ Induktif</span></span></div>
+    </div>
+    <div class="rdetail" data-revealdetail><b>1. Pengalaman Pribadi (Personal Experience)</b> — Berguna untuk masalah sehari-hari, namun menurut Sutrisno (1975) jika tidak kritis justru merugikan. Dua kekeliruan utamanya: (a) <i>generalisasi berlebihan</i> tanpa pengalaman memadai, dan (b) <i>observasi selektif</i> karena cenderung hanya melihat hal yang sesuai harapan/nilai sendiri.</div>
+
+    <div class="flowchart">
+      <span class="fc-node">Masalah Penelitian</span>
+      <span class="fc-arrow">→</span>
+      <span class="fc-node">Teori (Umum)</span>
+      <span class="fc-arrow">→ <small>Deduksi</small> →</span>
+      <span class="fc-node">Hipotesis (Logis)</span>
+      <span class="fc-arrow">→ <small>Uji Empiris</small> →</span>
+      <span class="fc-node">Data Kasus Khusus</span>
+      <span class="fc-arrow">→ <small>Induksi</small> →</span>
+      <span class="fc-node">Generalisasi ke Teori</span>
+    </div>
+
+    <div class="flow">Agar penalaran ilmiah dapat dijalankan di dunia nyata, ilmuwan berpegang pada asumsi-asumsi dasar tentang bagaimana alam semesta bekerja dan sejauh mana kemampuan manusia dapat dipercaya—inilah yang dibahas pada <b>Postulat dalam Ilmu</b>.</div>
+
+    <div class="abc"><span class="ltr">F</span><h4>Postulat dalam Ilmu</h4></div>
+    <p><span class="term">Postulat <span class="en">(postulate)</span></span> adalah ketentuan dasar yang menjadi landasan dan pedoman kerja penelitian ilmiah. Mengacu pada Sutrisno (1975), terdapat dua kelompok postulat:</p>
+
+    <div class="numh">1. Postulat Mengenai Alam Semesta</div>
+    <ul class="let">
+      <li><span class="term">Jenis <span class="en">(categorization / classification)</span></span>: obyek di alam semesta memiliki kesamaan dan perbedaan sehingga dapat dikelompokkan. Tiga fungsinya (Sutrisno, 1975): meringkas obyek tak terhingga agar mudah dipikirkan, memudahkan identifikasi kelompok obyek, dan memudahkan komunikasi antarpeneliti.</li>
+      <li><span class="term">Keajegan <span class="en">(consistency / regularity)</span></span>: gejala alam cenderung konsisten pada kondisi dan kurun waktu tertentu (gejala alam lebih ajek daripada gejala sosial; bersifat kecenderungan, bukan mutlak). Postulat ini melahirkan fungsi <b>prediksi</b> ilmu.</li>
+      <li><span class="term">Sebab-akibat <span class="en">(causality)</span></span>: kejadian merupakan rangkaian sebab-akibat yang kini dipandang bersifat <i>probabilistik</i> (makin tinggi probabilitas, makin kuat keyakinan kausal). Melahirkan fungsi <b>prediksi</b> dan <b>kontrol</b> ilmu; kejadian di luar sebab-akibat diperlakukan sebagai belum dapat diterangkan / di luar ilmu.</li>
+      <li><span class="term">Variabilitas gejala alam <span class="en">(variability)</span></span>: gejala alam bervariasi (mis. efek motivasi berbeda pada tiap karyawan). Makin banyak variabel penyebab yang diperhitungkan, makin kecil variabilitas akibat yang tak terjelaskan—meski dalam ilmu sosial mustahil memasukkan semua penyebab sekaligus.</li>
+    </ul>
+
+    <div class="numh">2. Postulat Mengenai Kemampuan Manusia</div>
+    <p>Tiga proses psikologis peneliti dalam memperoleh fakta rentan keliru sehingga memerlukan pengendalian sadar:</p>
+    <ul class="let">
+      <li><span class="term">Reliabilitas pengamatan <span class="en">(reliability of observation)</span></span>: pengamatan berulang atau oleh orang berbeda belum tentu sama akibat bias latar belakang/pengalaman (mis. orang lapar vs pebisnis melihat roti) atau kelelahan. Enam cara memperkecil kekeliruan (Sutrisno, 1975): (1) mengulang pengamatan, (2) menambah jumlah obyek, (3) membandingkan dengan pengamat lain, (4) memakai alat bantu (kamera/video), (5) memakai teknik pencatatan cepat/simbol/steno, dan (6) sadar menekan subjektivitas.</li>
+      <li><span class="term">Reliabilitas ingatan <span class="en">(reliability of memory)</span></span>: daya ingat manusia terbatas dan selektif (mudah mengingat hal yang sangat disukai atau sangat dibenci saja). Cara mengatasinya: gunakan alat pencatat/perekam (daftar periksa, kamera, video) dan lakukan pencatatan sesegera mungkin.</li>
+      <li><span class="term">Reliabilitas pemikiran <span class="en">(reliability of thinking)</span></span>: kekeliruan penalaran dapat terjadi sejak identifikasi masalah hingga pelaporan. Cara mengatasinya: rancang dan jalankan penelitian secara cermat, terencana, sistematis, serta senantiasa meminta masukan dari peneliti lain.</li>
+    </ul>
+  </div>
+
+  <!-- KB 2 -->
+  <h2 class="section" id="kb2"><span class="dot" style="background:var(--kb2)"></span>KB 2 — Proses Penelitian</h2>
+  <div class="card kb2b"><span class="kb-tag kb2t">KEGIATAN BELAJAR 2 · HAL. 1.32–1.46</span>
+    <div class="acro-box">
+      <span class="acro-title">📖 Kamus Konteks Singkatan &amp; Akronim KB 2</span>
+      <ul class="acro-grid">
+        <li><b>IV</b>: <i>Independent Variable</i> (Variabel Independen / Prediktor) — variabel yang memengaruhi atau digunakan untuk memprediksi variabel lain.</li>
+        <li><b>DV</b>: <i>Dependent Variable</i> (Variabel Dependen / Kriterium) — variabel akibat yang variasinya dijelaskan atau diprediksi.</li>
+        <li><b>DN</b>: Dalam Negeri — singkatan konteks contoh penelitian perbedaan profitabilitas bank swasta DN vs asing (Tabel 1.3).</li>
+        <li><b>Uji-t</b>: <i>t-test</i> — teknik analisis statistik parametrik untuk menguji perbedaan rata-rata dua kelompok/kondisi.</li>
+      </ul>
+    </div>
+
+    <p class="lead">Fokus modul ini adalah penelitian bisnis <b>kuantitatif</b> yang bertujuan menguji hipotesis. Sebelum membedah 13 langkah teknisnya, peneliti harus menguasai inti paling mendasar yang menyatukan keseluruhan penelitian: <b>"Benang Merah" Penelitian</b>.</p>
+
+    <div class="abc"><span class="ltr">A</span><h4>"Benang Merah" Penelitian</h4></div>
+    <p>Setiap penelitian ilmiah selalu diawali oleh <b>masalah</b> (berbentuk pertanyaan), dijawab secara teoritis/logis lewat <b>hipotesis</b>, lalu diverifikasi secara empiris melalui <b>analisis data</b>. Keterkaitan, kesesuaian, dan konsistensi ketiganya disebut <span class="term">"benang merah" penelitian</span> (<b>Gambar 1.1</b>):</p>
+
+    <div class="flowchart">
+      <span class="fc-node">MASALAH (?)<br><small>Pertanyaan penelitian</small></span>
+      <span class="fc-arrow">→</span>
+      <span class="fc-node">HIPOTESIS (!)<br><small>Jawaban teoritis / logis</small></span>
+      <span class="fc-arrow">→</span>
+      <span class="fc-node">ANALISIS<br><small>Verifikasi empiris (data)</small></span>
+    </div>
+
+    <div class="numh">4 Ciri Rumusan Masalah yang Baik</div>
+    <ol class="book">
+      <li><span class="term">Variabel eksplisit &amp; minimal dua</span>: variabel yang diteliti tertulis jelas dan paling sedikit terdiri dari dua variabel (independen dan dependen).</li>
+      <li><span class="term">Kaitan antarvariabel eksplisit &amp; mengacu pada analisis</span>: kata penghubung (perbedaan, prediksi, hubungan) tertulis jelas sehingga langsung mengarahkan ke teknik analisis statistik yang sesuai (dengan mempertimbangkan skala datanya).</li>
+      <li><span class="term">Subyek eksplisit</span>: pihak atau obyek tempat variabel melekat (produk, bank, pekerja, konsumen, auditor) dinyatakan secara tertulis.</li>
+      <li><span class="term">Berbentuk kalimat pertanyaan</span>: menggunakan kata tanya (seperti "apakah") dan diakhiri tanda tanya ("?"), meski di beberapa jurnal masalah kadang tersirat pada tujuan/hipotesis.</li>
+    </ol>
+
+    <p>Penerapan keempat ciri tersebut dirangkum pada <b>Tabel 1.3</b> (lima contoh rumusan masalah bisnis):</p>
+    <div class="table-wrap">
+      <table class="mini">
+        <thead><tr><th>Contoh Rumusan Masalah</th><th>Variabel (Eksplisit, ≥2)</th><th>Kaitan &amp; Acuan Analisis</th><th>Subyek</th></tr></thead>
+        <tbody>
+          <tr><td data-label="Contoh Rumusan Masalah">1. Apakah terdapat <b>perbedaan</b> volume penjualan produk sebelum dan setelah kegiatan promosi?</td><td data-label="Variabel (Eksplisit, ≥2)">1. Volume penjualan (DV)<br>2. Promosi: sebelum/setelah (IV)</td><td data-label="Kaitan &amp; Acuan Analisis">Perbedaan → <b>Uji-t</b> (<i>t-test</i>)</td><td data-label="Subyek">Produk</td></tr>
+          <tr><td data-label="Contoh Rumusan Masalah">2. Apakah terdapat <b>perbedaan</b> profitabilitas antara bank swasta dalam negeri dan bank swasta asing?</td><td data-label="Variabel (Eksplisit, ≥2)">1. Profitabilitas (DV)<br>2. Kepemilikan modal: DN/asing (IV)</td><td data-label="Kaitan &amp; Acuan Analisis">Perbedaan → <b>Uji-t</b> (<i>t-test</i>)</td><td data-label="Subyek">Bank</td></tr>
+          <tr><td data-label="Contoh Rumusan Masalah">3. Apakah komitmen dapat digunakan untuk <b>memprediksi</b> kesetiaan pekerja?</td><td data-label="Variabel (Eksplisit, ≥2)">1. Komitmen (IV / prediktor)<br>2. Kesetiaan (DV / kriterium)</td><td data-label="Kaitan &amp; Acuan Analisis">Prediksi → <b>Analisis Regresi</b></td><td data-label="Subyek">Pekerja</td></tr>
+          <tr><td data-label="Contoh Rumusan Masalah">4. Apakah ada <b>hubungan</b> positif antara tingkat penggunaan praktik manajemen lingkungan dan tingkat kepuasan konsumen?</td><td data-label="Variabel (Eksplisit, ≥2)">1. Praktik manajemen lingkungan (IV)<br>2. Kepuasan konsumen (DV)</td><td data-label="Kaitan &amp; Acuan Analisis">Hubungan → <b>Analisis Korelasi</b></td><td data-label="Subyek">Organisasi &amp; konsumen</td></tr>
+          <tr><td data-label="Contoh Rumusan Masalah">5. Apakah ada <b>hubungan</b> antara komitmen keorganisasian dan komitmen profesional auditor internal?</td><td data-label="Variabel (Eksplisit, ≥2)">1. Komitmen keorganisasian (IV)<br>2. Komitmen profesional (DV)</td><td data-label="Kaitan &amp; Acuan Analisis">Hubungan → <b>Analisis Korelasi</b></td><td data-label="Subyek">Auditor internal</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="numh">4 Kriteria Evaluasi Kesesuaian "Benang Merah"</div>
+    <p>Untuk memeriksa kelayakan proposal/laporan (milik sendiri maupun orang lain), pastikan keempat hal ini selaras—jika tidak, proposal wajib diperbaiki sebelum dilanjutkan:</p>
+    <ul class="exp">
+      <li><b>Bentuk kalimat hipotesis</b>: harus berupa kalimat <i>pernyataan</i> karena berfungsi menjawab rumusan masalah yang berbentuk pertanyaan.</li>
+      <li><b>Konsistensi variabel &amp; kaitan</b>: nama variabel, jumlah variabel, serta tipe kaitan (perbedaan/prediksi/hubungan) harus persis sama di masalah, hipotesis, dan analisis.</li>
+      <li><b>Kesesuaian alat analisis</b>: tujuan teknik analisis harus cocok dengan tipe kaitan pada masalah dan hipotesis (serta skala datanya).</li>
+      <li><b>Kesamaan subyek</b>: subyek penelitian pada rumusan masalah dan hipotesis harus sama.</li>
+    </ul>
+
+    <div class="flow">"Benang merah" merupakan kerangka makro penelitian. Bagian B mengurai kerangka makro tersebut menjadi <b>13 tahapan operasional</b> dari perumusan masalah hingga pelaporan akhir.</div>
+
+    <div class="abc"><span class="ltr">B</span><h4>Proses Penelitian (13 Tahap)</h4></div>
+    <p>Seluruh 13 tahap proses penelitian (<b>Gambar 1.2</b>) dikelompokkan menjadi <b>tiga gugus kegiatan utama</b>:</p>
+    <div class="flowchart">
+      <span class="fc-node">1. Perumusan Masalah<br><small>(Tahap 1)</small></span>
+      <span class="fc-arrow">→</span>
+      <span class="fc-node">2. Jawaban Teoritis / Logis<br><small>(Tahap 2–4: Teori → Hipotesis)</small></span>
+      <span class="fc-arrow">→</span>
+      <span class="fc-node">3. Pengujian Kebenaran Empiris<br><small>(Tahap 5–13: Desain → Pelaporan)</small></span>
+    </div>
+
+    <p>Klik tiap nomor tahap di bawah ini untuk membaca rincian operasional dan poin krusial ujian pada masing-masing dari 13 tahap proses penelitian:</p>
+    <div class="rgrid c3" data-revealgroup>
+      <div class="rcell active" data-reveal data-detail="<b>Tahap 1 — Perumusan Masalah</b>: Titik awal mutlak penelitian ilmiah (tanpa masalah, tak ada riset). Harus memenuhi 4 ciri rumusan masalah yang baik. Bila jurnal tidak menuliskannya eksplisit, masalah dapat dilacak dari tujuan atau dengan mengubah hipotesis menjadi kalimat pertanyaan."><span class="stepnum">1</span><span><span class="rt">Perumusan Masalah</span><span class="rp">Gugus 1 · Titik awal riset</span></span></div>
+      <div class="rcell" data-reveal data-detail="<b>Tahap 2 — Kajian Teori &amp; Hasil Penelitian yang Relevan</b>: Mencari jawaban logis dari literatur. Unsur paling dasar adalah <i>definisi setiap variabel</i> dalam rumusan masalah—peneliti tak mungkin menjawab persoalan jika tak tahu definisi variabelnya—serta penjelasan teoritis/empiris kaitan antarvariabel."><span class="stepnum">2</span><span><span class="rt">Kajian Teori &amp; Riset Relevan</span><span class="rp">Gugus 2 · Definisi &amp; kaitan</span></span></div>
+      <div class="rcell" data-reveal data-detail="<b>Tahap 3 — Perumusan Kerangka Pemikiran</b>: Ringkasan runtut dan rinci dari definisi variabel serta alasan kaitan antarvariabel sebagai dasar menyimpulkan hipotesis. <b>Aturan penting:</b> tidak ada nama orang/kutipan di sini karena merupakan hasil penalaran peneliti sendiri (walau tetap bertumpu pada teori Tahap 2)."><span class="stepnum">3</span><span><span class="rt">Kerangka Pemikiran</span><span class="rp">Gugus 2 · Penalaran peneliti</span></span></div>
+      <div class="rcell" data-reveal data-detail="<b>Tahap 4 — Perumusan Hipotesis</b>: Kesimpulan teoritis dari kerangka pemikiran sekaligus jawaban sementara (baru benar secara logis, belum empiris) atas rumusan masalah. Wajib berbentuk <i>kalimat pernyataan</i> dan memuat eksplisit semua variabel serta tipe kaitannya."><span class="stepnum">4</span><span><span class="rt">Perumusan Hipotesis</span><span class="rp">Gugus 2 · Jawaban teoritis</span></span></div>
+      <div class="rcell" data-reveal data-detail="<b>Tahap 5 — Penentuan Desain Penelitian</b>: Ditentukan oleh 2 kriteria: (a) <i>ada tidaknya hipotesis</i> → tanpa hipotesis = <b>Eksploratif</b> (kualitatif); ada hipotesis = <b>Konklusif</b> (kuantitatif); (b) <i>ada tidaknya variabel perlakuan (manipulasi)</i> pada desain konklusif → tanpa perlakuan = <b>Deskriptif</b>; ada perlakuan = <b>Kausal (Eksperimen)</b>. Desain berdampak pada instrumen, ukuran sampel, dan teknik analisis."><span class="stepnum">5</span><span><span class="rt">Penentuan Desain</span><span class="rp">Gugus 3 · Eksploratif vs Konklusif</span></span></div>
+      <div class="rcell" data-reveal data-detail="<b>Tahap 6 — Penentuan Subyek Penelitian</b>: Subyek adalah tempat variabel melekat (orang: konsumen/pekerja/auditor, atau non-orang: perusahaan/produk) yang harus dibatasi tegas. Jika meneliti semua = <b>Populasi</b> (hasil hanya berlaku di populasi itu); jika sebagian = <b>Sampel</b> (untuk digeneralisasikan ke populasi → wajib jelaskan metode, teknik, dan ukuran sampel)."><span class="stepnum">6</span><span><span class="rt">Penentuan Subyek</span><span class="rp">Gugus 3 · Populasi vs Sampel</span></span></div>
+      <div class="rcell" data-reveal data-detail="<b>Tahap 7 — Pengembangan Instrumen (Operasionalisasi Variabel)</b>: Menjabarkan langkah berurutan untuk mengukur atribut variabel (dari definisi) menjadi skor/kode lewat observasi, wawancara, atau angket, serta mengidentifikasi skalanya (nominal, ordinal, interval, rasio). Peneliti juga boleh memakai instrumen peneliti terdahulu dengan syarat tertentu."><span class="stepnum">7</span><span><span class="rt">Pengembangan Instrumen</span><span class="rp">Gugus 3 · Operasionalisasi &amp; skala</span></span></div>
+      <div class="rcell" data-reveal data-detail="<b>Tahap 8 — Analisis Reliabilitas &amp; Validitas Instrumen</b>: Syarat minimal instrumen ilmiah (terutama variabel psikologis/tak teramati langsung &amp; skala Likert). <i>Valid</i> = mengukur apa yang dimaksud; <i>Reliabel</i> = hasil konsisten. <b>Catatan penting:</b> subyek uji coba harus berbeda dari subyek penelitian sesungguhnya, tetapi memiliki karakteristik yang mirip."><span class="stepnum">8</span><span><span class="rt">Validitas &amp; Reliabilitas</span><span class="rp">Gugus 3 · Uji coba instrumen</span></span></div>
+      <div class="rcell" data-reveal data-detail="<b>Tahap 9 — Pengumpulan Data</b>: Baru layak dilakukan setelah instrumen terbukti valid dan reliabel. Jika pengumpulan data dilakukan oleh kolektor data (bukan peneliti sendiri), wajib diawali pembekalan mengenai tujuan riset, cara memakai instrumen, dan prosedur mengatasi kendala lapangan (mis. responden terpilih tidak ditemukan)."><span class="stepnum">9</span><span><span class="rt">Pengumpulan Data</span><span class="rp">Gugus 3 · Eksekusi lapangan</span></span></div>
+      <div class="rcell" data-reveal data-detail="<b>Tahap 10 — Penganalisisan Data</b>: Diawali <i>editing</i> (cek kesalahan catat/rekam) dan <i>pengolahan</i> (mis. hitung rasio keuangan). Pemilihan uji statistik wajib sesuai tipe kaitan antarvariabel dan skala data. Sebelum dipakai menguji hipotesis, <b>asumsi statistik harus diuji dulu</b>—jika menyimpang jauh, alat analisis tersebut tidak boleh digunakan."><span class="stepnum">10</span><span><span class="rt">Penganalisisan Data</span><span class="rp">Gugus 3 · Editing, asumsi, statistik</span></span></div>
+      <div class="rcell" data-reveal data-detail="<b>Tahap 11 — Pendiskusian Hasil Analisis (Pembahasan)</b>: Kesimpulan statistik ≠ kesimpulan penelitian. Pembahasan membandingkan 3 hal: <i>hipotesis, kesimpulan analisis, dan riset relevan</i>. Jika konsisten → hipotesis terverifikasi &amp; memperkuat teori. Jika tak konsisten → wajib dijelaskan dari sisi metode (operasionalisasi, sampel, asumsi) atau teori (variabel penting terlewat). Hipotesis ditolak bukan berarti riset jelek; <b>dilarang memanipulasi data</b>."><span class="stepnum">11</span><span><span class="rt">Pendiskusian Hasil</span><span class="rp">Gugus 3 · Pembahasan 3 unsur</span></span></div>
+      <div class="rcell" data-reveal data-detail="<b>Tahap 12 — Perumusan Kesimpulan dan Saran</b>: Kesimpulan wajib bersumber dari <i>pembahasan</i> (bukan semata angka analisis) dan jumlahnya harus sejajar dengan rumusan masalah/hipotesis. Saran harus berdasar hasil/diskusi, bersifat rinci &amp; operasional (untuk peneliti berikutnya atau praktisi), dan sifatnya tidak wajib selalu ada."><span class="stepnum">12</span><span><span class="rt">Kesimpulan &amp; Saran</span><span class="rp">Gugus 3 · Berbasis pembahasan</span></span></div>
+      <div class="rcell" data-reveal data-detail="<b>Tahap 13 — Pelaporan</b>: Laporan tertulis (dapat diseminarkan atau dipublikasikan di jurnal ilmiah). Bedakan <b>Proposal</b> (rencana sebelum riset) dan <b>Laporan Penelitian</b> (realisasi proposal + penjelasan jujur mengenai hal-hal yang menyimpang dari rencana, cara mengatasinya, serta alasan keabsahan cara tersebut)."><span class="stepnum">13</span><span><span class="rt">Pelaporan</span><span class="rp">Gugus 3 · Realisasi proposal</span></span></div>
+    </div>
+    <div class="rdetail" data-revealdetail><b>Tahap 1 — Perumusan Masalah</b>: Titik awal mutlak penelitian ilmiah (tanpa masalah, tak ada riset). Harus memenuhi 4 ciri rumusan masalah yang baik. Bila jurnal tidak menuliskannya eksplisit, masalah dapat dilacak dari tujuan atau dengan mengubah hipotesis menjadi kalimat pertanyaan.</div>
+
+    <div class="numh">Ringkasan Penentuan Desain Penelitian (Tahap 5)</div>
+    <div class="table-wrap">
+      <table class="mini">
+        <thead><tr><th>Kriteria Penentu</th><th>Jenis Desain</th><th>Ciri Utama &amp; Konteks</th></tr></thead>
+        <tbody>
+          <tr><td data-label="Kriteria Penentu">Tidak ada hipotesis yang diverifikasi</td><td data-label="Jenis Desain"><b>Eksploratif</b> <span class="en">(exploratory)</span></td><td data-label="Ciri Utama &amp; Konteks">Lazim pada penelitian kualitatif; menjajaki gejala secara mendalam.</td></tr>
+          <tr><td data-label="Kriteria Penentu">Ada hipotesis, <b>tanpa</b> variabel perlakuan</td><td data-label="Jenis Desain"><b>Konklusif — Deskriptif</b> <span class="en">(descriptive)</span></td><td data-label="Ciri Utama &amp; Konteks">Lazim pada penelitian kuantitatif survei/sekunder tanpa manipulasi variabel independen.</td></tr>
+          <tr><td data-label="Kriteria Penentu">Ada hipotesis, <b>dengan</b> variabel perlakuan</td><td data-label="Jenis Desain"><b>Konklusif — Kausal / Eksperimen</b> <span class="en">(causal)</span></td><td data-label="Ciri Utama &amp; Konteks">Ada variabel independen yang sengaja dimanipulasi untuk melihat dampaknya pada variabel dependen.</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <h2 class="section" id="glosarium"><span class="dot"></span>Glosarium Kilat</h2>
+  <div class="card"><dl class="glossary">
+    <dt>Benang Merah Penelitian</dt><dd>Kaitan, kesesuaian, dan konsistensi antara rumusan masalah, hipotesis, dan analisis.</dd>
+    <dt>Falsifikasi Popper (Falsification)</dt><dd>Prinsip Karl R. Popper bahwa suatu teori/pengetahuan ilmiah dinyatakan baik jika kebenarannya dapat disangkal, diuji, diperbaiki, atau diganti.</dd>
+    <dt>Hipotesis Penelitian (Research Hypothesis)</dt><dd>Kesimpulan yang dihasilkan melalui kerangka pemikiran dan berfungsi sebagai jawaban teoritis (logis) atas rumusan masalah.</dd>
+    <dt>Interpretivisme (Interpretivism)</dt><dd>Aliran dalam filsafat ilmu yang menekankan pemberian makna atas pengalaman orang daripada mereduksi obyek ilmu menjadi data kuantitatif.</dd>
+    <dt>Kerangka Pemikiran (Conceptual Framework)</dt><dd>Ringkasan dari definisi tiap variabel maupun penjelasan alasan teoritis mengenai kaitan antarvariabel tersebut sehingga menjadi dasar logis merumuskan hipotesis.</dd>
+    <dt>Metodologi &amp; Teknik</dt><dd>Metodologi adalah ilmu mengenai cara melakukan sesuatu secara ilmiah (<i>metode + logi</i>); teknik adalah bagian operasional dari metode.</dd>
+    <dt>Penalaran Deduktif (Deductive Reasoning)</dt><dd>Pembuatan kesimpulan dari hal yang umum menjadi hal yang khusus.</dd>
+    <dt>Penalaran Ilmiah (Scientific / Reflective Reasoning)</dt><dd>Disebut juga penalaran reflektif, merupakan gabungan dari penalaran deduktif dan penalaran induktif.</dd>
+    <dt>Penalaran Induktif (Inductive Reasoning)</dt><dd>Pembuatan kesimpulan berdasarkan hal-hal yang khusus menjadi hal yang umum (generalisasi berdasarkan pengalaman-pengalaman).</dd>
+    <dt>Penelitian Kualitatif (Qualitative Research)</dt><dd>Penelitian yang didasarkan pada interpretivisme, menekankan makna obyek bagi subyek, dan bersifat holistik.</dd>
+    <dt>Penelitian Kuantitatif (Quantitative Research)</dt><dd>Penelitian yang didasarkan pada positivisme, yang mereduksi obyek menjadi data kuantitatif (variabel numerik).</dd>
+    <dt>Postulat (Postulate)</dt><dd>Ketentuan mengenai gejala yang ada dalam alam semesta dan mengenai kemampuan manusia dalam meneliti gejala alam semesta itu.</dd>
+    <dt>Realisme (Realism)</dt><dd>Aliran dalam filsafat ilmu yang menggabungkan positivisme dan interpretivisme.</dd>
+    <dt>Silogisme (Syllogism)</dt><dd>Alat untuk membuat kesimpulan dalam penalaran deduktif yang terdiri atas premis mayor, premis minor, dan kesimpulan (konklusi).</dd>
+    <dt>Subyek Penelitian (Research Subject)</dt><dd>Sesuatu (orang maupun non-orang) di mana data mengenai variabel penelitian terdapat atau melekat.</dd>
+    <dt>Variabel (Variable)</dt><dd>Obyek material penelitian kuantitatif berupa sesuatu yang memiliki atribut bervariasi dan dinyatakan dalam bentuk numerik (kuantitatif, bilangan).</dd>
+  </dl></div>
+</div>
+<footer><b>EKMA5104 — Metode Penelitian Bisnis (Edisi 3)</b> · Modul 1: Pengertian dan Proses Penelitian Bisnis<br>Bahan belajar ringkas untuk persiapan ujian · Dr. Lerbin Roberto Aritonang R., M.M.</footer>
+<script>
+(function(){
+  var pb=document.getElementById('progress');
+  function onScroll(){var h=document.documentElement;var sc=h.scrollTop||document.body.scrollTop;var max=(h.scrollHeight-h.clientHeight)||1;pb.style.width=(sc/max*100)+'%';}
+  document.addEventListener('scroll',onScroll,{passive:true});onScroll();
+
+  var list=document.getElementById('conceptList');var items=[].slice.call(list.querySelectorAll('li'));var boxes=items.map(function(li){return li.querySelector('input');});
+  document.getElementById('totalCount').textContent=items.length;var doneEl=document.getElementById('doneCount');var KEY='studi_ekma5104_m1_concepts_v1';
+  function load(){try{var a=JSON.parse(localStorage.getItem(KEY)||'[]');boxes.forEach(function(b,i){if(a[i])b.checked=true;});}catch(e){}}
+  function save(){try{localStorage.setItem(KEY,JSON.stringify(boxes.map(function(b){return b.checked?1:0;})));}catch(e){}}
+  function refresh(){var n=0;items.forEach(function(li,i){if(boxes[i].checked){li.classList.add('done');n++;}else li.classList.remove('done');});doneEl.textContent=n;}
+  load();refresh();boxes.forEach(function(b){b.addEventListener('change',function(){refresh();save();});});
+  document.getElementById('resetBtn').addEventListener('click',function(){boxes.forEach(function(b){b.checked=false;});refresh();save();});
+
+  // REVEAL HELPER (perbaikan sibling + re-typeset MathJax dinamis)
+  [].slice.call(document.querySelectorAll('[data-revealgroup]')).forEach(function(g){
+    var det=g.querySelector('[data-revealdetail]');if(!det){var sib=g.nextElementSibling;if(sib&&sib.hasAttribute&&sib.hasAttribute('data-revealdetail'))det=sib;}
+    var cells=[].slice.call(g.querySelectorAll('[data-reveal]'));
+    cells.forEach(function(c){c.addEventListener('click',function(){cells.forEach(function(x){x.classList.remove('active');});c.classList.add('active');if(det){det.innerHTML=c.getAttribute('data-detail');if(window.MathJax&&window.MathJax.typesetPromise)window.MathJax.typesetPromise([det]);}});});
+  });
+
+  // MIND MAP ENGINE (SVG collapsible)
+  (function(){
+    var ROWH=46,NODE_H=32,PAD=13,GAP=52;var COL={root:'#0f5e8f',kb1:'#1a86c7',kb2:'#e08a1e',kb3:'#2a9d6f',kb4:'#7a5cc0',kb5:'#c75b7a'};
+    var mc=document.createElement('canvas').getContext('2d');mc.font='700 13px -apple-system,Segoe UI,Roboto,sans-serif';
+    function tw(t){return Math.ceil(mc.measureText(t).width);}function esc(t){return t.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');}
+    function rgba(hex,a){var h=hex.replace('#','');return 'rgba('+parseInt(h.substr(0,2),16)+','+parseInt(h.substr(2,2),16)+','+parseInt(h.substr(4,2),16)+','+a+')';}
+    var DATA={label:'MODUL 1 — Pengertian & Proses Penelitian Bisnis',color:COL.root,children:[
+      {label:'KB1 · Pengertian Penelitian Ilmiah',color:COL.kb1,children:[
+        {label:'Pengantar: Data → Informasi → Kebenaran Ilmiah (Logis + Empiris)'},
+        {label:'A. Variabel & Penelitian Kuantitatif (Atribut Numerik)'},
+        {label:'B. Metodologi Penelitian Bisnis (Positivisme)',children:[
+          {label:'1. Metodologi, Teknik, Research, Falsifikasi Popper & 10 Ciri Ilmiah'},
+          {label:'2. Penelitian Bisnis: Akuntansi & 4 Bidang Manajemen'}
+        ]},
+        {label:'C. Ilmiah vs Common Sense (Tabel 1.1)'},
+        {label:'D. Jenis Penelitian',children:[
+          {label:'Murni (Basic) vs Terapan (Applied)'},
+          {label:'Kuantitatif (Positivisme) vs Kualitatif (Interpretivisme) + Realisme'},
+          {label:'Skripsi (S1) · Tesis (S2) · Disertasi (S3)'}
+        ]},
+        {label:'E. 5 Cara Memperoleh Pengetahuan',children:[
+          {label:'Pengalaman Pribadi & Otoritas'},
+          {label:'Induktif & Deduktif (Silogisme)'},
+          {label:'Penalaran Ilmiah / Reflektif'}
+        ]},
+        {label:'F. Postulat Ilmu (Sutrisno, 1975)',children:[
+          {label:'Alam Semesta: Jenis, Keajegan, Sebab-Akibat, Variabilitas'},
+          {label:'Manusia: Reliabilitas Pengamatan, Ingatan, Pemikiran'}
+        ]}
+      ]},
+      {label:'KB2 · Proses Penelitian',color:COL.kb2,children:[
+        {label:'A. "Benang Merah" Penelitian',children:[
+          {label:'Masalah (?) → Hipotesis (!) → Analisis'},
+          {label:'4 Ciri Rumusan Masalah (Tabel 1.3)'},
+          {label:'4 Kriteria Evaluasi Kesesuaian'}
+        ]},
+        {label:'B. 13 Tahap Proses Penelitian (Gambar 1.2)',children:[
+          {label:'Gugus 1: Perumusan Masalah (Tahap 1)'},
+          {label:'Gugus 2: Teori, Kerangka Pemikiran, Hipotesis (Tahap 2–4)'},
+          {label:'Gugus 3a: Desain, Subyek, Instrumen, Validitas/Reliabilitas (Tahap 5–8)'},
+          {label:'Gugus 3b: Pengumpulan, Analisis, Diskusi, Kesimpulan, Laporan (Tahap 9–13)'}
+        ]}
+      ]}
+    ]};
+    var idc=0;(function w(n,c){n.id='n'+(idc++);n.color=n.color||c;(n.children||[]).forEach(function(k){w(k,n.color);});})(DATA,COL.root);
+    (function w(n,d){if(d>=2&&n.children&&n.children.length)n.collapsed=true;(n.children||[]).forEach(function(k){w(k,d+1);});})(DATA,0);
+    var host=document.getElementById('mindmap');
+    function render(){
+      var colW=[];(function w(n,d){var width=tw(n.label)+PAD*2+((n.children&&n.children.length)?20:0);colW[d]=Math.max(colW[d]||0,width);if(!n.collapsed)(n.children||[]).forEach(function(k){w(k,d+1);});})(DATA,0);
+      var colX=[],acc=14;for(var d=0;d<colW.length;d++){colX[d]=acc;acc+=colW[d]+GAP;}var row={v:0};
+      (function lay(n,d){if(!n.children||!n.children.length||n.collapsed){n._y=row.v*ROWH+ROWH/2+8;row.v++;return;}var f,l;n.children.forEach(function(k,i){lay(k,d+1);if(i===0)f=k._y;l=k._y;});n._y=(f+l)/2;})(DATA,0);
+      var totalW=acc,totalH=row.v*ROWH+24;var nodes=[],links=[];
+      (function col(n,d,p){n._x=colX[d];n._w=tw(n.label)+PAD*2+((n.children&&n.children.length)?20:0);nodes.push({n:n,d:d});if(p)links.push([p,n]);if(!n.collapsed)(n.children||[]).forEach(function(k){col(k,d+1,n);});})(DATA,0,null);
+      var s='<svg width="'+totalW+'" height="'+totalH+'" viewBox="0 0 '+totalW+' '+totalH+'" xmlns="http://www.w3.org/2000/svg">';
+      links.forEach(function(pr){var a=pr[0],b=pr[1],x1=a._x+a._w,y1=a._y,x2=b._x,y2=b._y,mx=(x1+x2)/2;s+='<path d="M'+x1+' '+y1+' C'+mx+' '+y1+' '+mx+' '+y2+' '+x2+' '+y2+'" fill="none" stroke="'+rgba(b.color,.5)+'" stroke-width="2"/>';});
+      nodes.forEach(function(o){var n=o.n,x=n._x,y=n._y-NODE_H/2,w=n._w,hk=n.children&&n.children.length;var fill=o.d===0?n.color:(o.d===1?rgba(n.color,.12):'#fff');var tf=o.d===0?'#fff':'#1c2733';
+        s+='<g data-id="'+n.id+'" style="cursor:'+(hk?'pointer':'default')+'"><rect x="'+x+'" y="'+y+'" rx="9" width="'+w+'" height="'+NODE_H+'" fill="'+fill+'" stroke="'+n.color+'" stroke-width="'+(o.d===0?0:1.6)+'"/><text x="'+(x+PAD)+'" y="'+(n._y+4)+'" font-size="13" font-weight="'+(o.d<=1?'700':'500')+'" fill="'+tf+'" font-family="-apple-system,Segoe UI,Roboto,sans-serif">'+esc(n.label)+'</text>';
+        if(hk){var cx=x+w-12,cy=n._y;s+='<circle cx="'+cx+'" cy="'+cy+'" r="8.5" fill="'+n.color+'"/><text x="'+cx+'" y="'+(cy+4.5)+'" font-size="13" font-weight="700" fill="#fff" text-anchor="middle" font-family="sans-serif">'+(n.collapsed?'+':'\u2013')+'</text>';}s+='</g>';});
+      s+='</svg>';host.innerHTML=s;
+    }
+    host.addEventListener('click',function(e){var g=e.target.closest('g[data-id]');if(!g)return;var id=g.getAttribute('data-id');(function f(n){if(n.id===id){if(n.children&&n.children.length)n.collapsed=!n.collapsed;return true;}return (n.children||[]).some(f);})(DATA);render();});
+    document.getElementById('mmExpand').addEventListener('click',function(){(function w(n){if(n.children)n.collapsed=false;(n.children||[]).forEach(w);})(DATA);render();});
+    document.getElementById('mmCollapse').addEventListener('click',function(){(function w(n,d){if(d>=1&&n.children&&n.children.length)n.collapsed=true;(n.children||[]).forEach(function(k){w(k,d+1);});})(DATA,0);render();});
+    render();
+  })();
+
+  window.addEventListener('load',function(){setTimeout(function(){if(window.MathJax&&window.MathJax.typesetPromise)window.MathJax.typesetPromise();},400);});
+})();
+</script></body></html>

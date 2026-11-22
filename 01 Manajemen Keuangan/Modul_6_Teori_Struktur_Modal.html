@@ -1,0 +1,756 @@
+<!DOCTYPE html>
+<html lang="id"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Modul 6 — Teori Struktur Modal | EKMA5205</title>
+<script>window.MathJax={tex:{inlineMath:[['$','$']],displayMath:[['\\[','\\]'],['$$','$$']]},svg:{fontCache:'global'},startup:{typeset:true}};</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js" async></script>
+<style>
+:root{--bg:#f4f6f9;--panel:#fff;--ink:#1c2733;--muted:#5c6b7a;--line:#e4e9f0;--brand:#1a86c7;--brand-dark:#0f5e8f;--brand-soft:#e7f3fb;--kb1:#1a86c7;--kb2:#e08a1e;--kb3:#2a9d6f;--kb4:#7a5cc0;--kb5:#c75b7a;--radius:14px;--shadow:0 1px 2px rgba(16,42,67,.06),0 6px 20px rgba(16,42,67,.06);--maxw:900px}
+*{box-sizing:border-box}html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;line-height:1.72}
+#progress{position:fixed;top:0;left:0;height:4px;width:0;background:linear-gradient(90deg,var(--brand),#53c0ec);z-index:200;transition:width .1s}
+header.top{position:sticky;top:0;z-index:100;background:rgba(255,255,255,.92);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+.top-in{max-width:var(--maxw);margin:0 auto;padding:10px 20px;display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+.badge{background:var(--brand);color:#fff;font-weight:700;font-size:.72rem;letter-spacing:.5px;padding:4px 10px;border-radius:999px}
+.homebtn{text-decoration:none;display:inline-flex;align-items:center;gap:7px;background:var(--brand);color:#fff;font-weight:700;font-size:.8rem;padding:7px 15px;border-radius:999px;box-shadow:0 2px 6px rgba(16,42,67,.22);line-height:1}
+.top-title{font-size:.9rem;font-weight:600;color:var(--muted)}
+nav.jump{margin-left:auto;display:flex;gap:4px;flex-wrap:wrap}
+nav.jump a{font-size:.78rem;color:var(--muted);text-decoration:none;padding:5px 10px;border-radius:8px}
+nav.jump a:hover{background:var(--brand-soft);color:var(--brand-dark)}
+.wrap{max-width:var(--maxw);margin:0 auto;padding:0 20px 90px}
+.hero{margin-top:26px;padding:30px 28px;border-radius:var(--radius);color:#fff;background:linear-gradient(135deg,#0f5e8f,#1a86c7 60%,#2fa4df);box-shadow:var(--shadow);position:relative;overflow:hidden}
+.hero .eyebrow{font-size:.78rem;letter-spacing:1.5px;text-transform:uppercase;opacity:.9;font-weight:600}
+.hero h1{margin:.3em 0 .25em;font-size:1.62rem;line-height:1.25;max-width:90%}
+.hero .meta{display:flex;gap:18px;flex-wrap:wrap;font-size:.84rem;opacity:.95;margin-top:10px}
+h2.section{font-size:1.3rem;margin:48px 0 4px;display:flex;align-items:center;gap:10px;scroll-margin-top:70px}
+h2.section .dot{width:10px;height:22px;border-radius:4px;background:var(--brand)}
+.section-sub{color:var(--muted);font-size:.9rem;margin:0 0 18px}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);padding:22px 24px;margin:16px 0;--dot:var(--brand)}
+.concepts{list-style:none;margin:0;padding:0;display:grid;gap:10px}
+.concepts li{display:flex;gap:12px;align-items:flex-start;padding:12px 14px;border:1px solid var(--line);border-radius:10px;background:#fcfdff}
+.concepts input{margin-top:4px;width:18px;height:18px;accent-color:var(--brand);flex:none;cursor:pointer}
+.concepts .ct{font-weight:600}.concepts .cd{display:block;font-weight:400;color:var(--muted);font-size:.86rem;margin-top:2px}
+.concepts li.done{background:var(--brand-soft);border-color:#bfe0f3}.concepts li.done .ct{text-decoration:line-through;opacity:.65}
+.cl-head{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-bottom:6px}
+.cl-head .count{font-size:.82rem;color:var(--muted);background:var(--brand-soft);padding:3px 10px;border-radius:999px;font-weight:600}
+.btn-reset{font-size:.78rem;border:1px solid var(--line);background:#fff;color:var(--muted);padding:5px 12px;border-radius:8px;cursor:pointer}
+.mm-toolbar{display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin-bottom:10px}
+.mm-btn{font-size:.78rem;border:1px solid var(--line);background:#fff;padding:6px 13px;border-radius:8px;cursor:pointer;color:var(--brand-dark);font-weight:600}
+.mindmap-host{height:580px;overflow:auto;border:1px solid var(--line);border-radius:10px;background:#fcfdff}.mindmap-host svg{display:block}
+.kb-tag{display:inline-flex;align-items:center;gap:8px;font-size:.78rem;font-weight:700;color:#fff;padding:5px 12px;border-radius:999px;margin-bottom:6px}
+.kb1t{background:var(--kb1)}.kb2t{background:var(--kb2)}.kb3t{background:var(--kb3)}.kb4t{background:var(--kb4)}.kb5t{background:var(--kb5)}
+.kb1b{--dot:var(--kb1)}.kb2b{--dot:var(--kb2)}.kb3b{--dot:var(--kb3)}.kb4b{--dot:var(--kb4)}.kb5b{--dot:var(--kb5)}
+.lead{font-size:1.02rem}.term{font-weight:700;color:var(--dot)}.en{font-style:italic;color:var(--muted);font-weight:500}
+.abc{display:flex;align-items:center;gap:10px;margin:28px 0 10px;padding-bottom:6px;border-bottom:2px solid color-mix(in srgb,var(--dot) 18%,#fff)}
+.abc .ltr{background:var(--dot);color:#fff;font-weight:800;min-width:30px;height:30px;padding:0 7px;border-radius:8px;display:grid;place-items:center;flex:none}
+.abc h4{margin:0;font-size:1.06rem;color:var(--dot)}
+.numh{font-weight:700;color:var(--dot);margin:22px 0 4px;font-size:1rem}
+.leth{font-weight:800;color:var(--dot);margin:20px 0 6px;font-size:.98rem;border-left:3px solid var(--dot);padding-left:10px}
+ol.book{margin:12px 0;padding-left:28px}ol.book>li{margin:10px 0;padding-left:6px}ol.book>li::marker{font-weight:700;color:var(--dot)}
+ul.exp{list-style:none;margin:12px 0;padding:0;display:grid;gap:10px}ul.exp>li{position:relative;padding-left:20px}
+ul.exp>li::before{content:"";position:absolute;left:0;top:11px;width:8px;height:8px;border-radius:2px;background:var(--dot)}
+ul.let{list-style:lower-alpha;margin:10px 0;padding-left:28px}ul.let>li{margin:8px 0;padding-left:4px}ul.let>li::marker{color:var(--dot);font-weight:700}
+.flow{border-left:4px solid var(--dot);background:color-mix(in srgb,var(--dot) 9%,#fff);padding:11px 15px;border-radius:0 10px 10px 0;margin:18px 0;font-size:.9rem}
+.flow::before{content:"🔗 Benang merah — ";font-weight:700;color:var(--dot)}.flow b{color:var(--dot)}
+table.mini{width:100%;border-collapse:collapse;margin:14px 0;font-size:.86rem}
+table.mini th,table.mini td{border:1px solid var(--line);padding:9px 11px;text-align:left;vertical-align:top}
+table.mini th{background:color-mix(in srgb,var(--dot) 12%,#fff);color:var(--dot);font-weight:700}
+.rgrid{display:grid;gap:8px;margin:14px 0}.rgrid.c2{grid-template-columns:repeat(2,1fr)}.rgrid.c3{grid-template-columns:repeat(3,1fr)}.rgrid.c4{grid-template-columns:repeat(4,1fr)}
+.rcell{border:1px solid var(--line);border-radius:10px;padding:11px 13px;cursor:pointer;background:#fff;display:flex;gap:10px;align-items:flex-start;transition:.15s}
+.rcell:hover{border-color:var(--dot);box-shadow:var(--shadow);transform:translateY(-2px)}
+.rcell.active{border-color:var(--dot);background:color-mix(in srgb,var(--dot) 8%,#fff)}
+.rcell .stepnum{background:var(--dot);color:#fff;font-weight:700;min-width:24px;height:24px;border-radius:7px;display:grid;place-items:center;flex:none;font-size:.82rem}
+.rcell .rt{font-weight:700;font-size:.9rem;color:var(--dot);display:block}.rcell .rp{font-size:.78rem;color:var(--muted);display:block;margin-top:2px}
+.rdetail{font-size:.88rem;border-left:4px solid var(--dot);background:color-mix(in srgb,var(--dot) 8%,#fff);border-radius:0 10px 10px 0;padding:12px 15px;margin-top:6px}
+.flowchart{display:flex;align-items:center;gap:6px;flex-wrap:wrap;margin:16px 0;justify-content:center}
+.fc-node{background:color-mix(in srgb,var(--dot) 12%,#fff);border:1.5px solid var(--dot);color:var(--dot);font-weight:700;font-size:.8rem;padding:8px 12px;border-radius:9px;text-align:center}
+.fc-arrow{color:var(--dot);font-weight:800;font-size:1.05rem}
+.eqbox{background:#fcfdff;border:1px solid var(--line);border-radius:10px;padding:8px 14px;margin:14px 0;overflow-x:auto}
+.glossary dt{font-weight:700;color:var(--brand-dark);margin-top:10px}.glossary dd{margin:0 0 2px;color:var(--muted);font-size:.9rem}
+footer{max-width:var(--maxw);margin:0 auto;padding:30px 20px 60px;color:var(--muted);font-size:.82rem;border-top:1px solid var(--line)}
+.offline-note{font-size:.76rem;color:var(--muted);background:#fff8e6;border:1px solid #f0e2b8;border-radius:8px;padding:8px 12px;margin:10px 0}
+.casebox{background:#f8fafc;border:1px solid var(--line);border-left:4px solid var(--dot);border-radius:0 10px 10px 0;padding:12px 15px;margin:14px 0;font-size:.88rem}
+.casebox .ctitle{font-weight:700;color:var(--dot);margin-bottom:4px;display:block}
+
+.chart-wrap{background:#fcfdff;border:1px solid var(--line);border-radius:12px;padding:14px 16px;margin:16px 0}
+.chart-title{font-weight:700;font-size:.9rem;color:var(--dot);margin:0 0 4px}
+.chart-sub{font-size:.78rem;color:var(--muted);margin:0 0 10px}
+.chart-host{width:100%;overflow-x:auto;position:relative}
+.chart-host svg{display:block;max-width:100%;height:auto;margin:0 auto}
+.chart-legend{display:flex;gap:14px;flex-wrap:wrap;justify-content:center;margin-top:8px;font-size:.78rem;color:var(--muted)}
+.chart-legend span{display:inline-flex;align-items:center;gap:6px}
+.chart-legend i{display:inline-block;width:14px;height:3px;border-radius:2px}
+@media(max-width:640px){.hero h1{font-size:1.3rem;max-width:100%}nav.jump{display:none}.rgrid.c2,.rgrid.c3,.rgrid.c4{grid-template-columns:1fr}.mindmap-host{height:440px}}
+
+/* GLOBAL RESPONSIVE & OVERFLOW PROTECTION */
+.card{overflow-x:clip;overflow-wrap:break-word;word-wrap:break-word}
+ul.exp,.concepts{grid-template-columns:minmax(0,1fr)}
+ul.exp>li,.concepts li,.concepts li>span,.rcell,.rcell>span,.bs-col,.casebox,.rdetail,.flow{min-width:0;max-width:100%;overflow-wrap:break-word;word-wrap:break-word}
+mjx-container{max-width:100%;overflow-x:auto;overflow-y:hidden}
+mjx-container:not([display="true"]){display:inline-block;vertical-align:middle}
+.table-wrap{width:100%;overflow-x:auto;-webkit-overflow-scrolling:touch;margin:14px 0;border-radius:10px}
+table.mini{width:100%;border-collapse:collapse;margin:0;font-size:.86rem;table-layout:auto}
+table.mini th,table.mini td{border:1px solid var(--line);padding:10px 12px;text-align:left;vertical-align:top;overflow-wrap:break-word;word-wrap:break-word}
+@media(max-width:680px){
+  .table-wrap{overflow-x:visible}
+  table.mini,table.mini thead,table.mini tbody,table.mini th,table.mini td,table.mini tr{display:block;width:100%}
+  table.mini thead{display:none}
+  table.mini tr{margin-bottom:12px;border:1.5px solid color-mix(in srgb,var(--dot) 28%,#e4e9f0);border-radius:10px;background:#fff;overflow:hidden;box-shadow:0 1px 4px rgba(16,42,67,.05)}
+  table.mini td{border:none;border-bottom:1px solid var(--line);padding:10px 12px;text-align:left}
+  table.mini td:last-child{border-bottom:none}
+  table.mini td::before{content:attr(data-label);display:block;font-size:.74rem;font-weight:700;text-transform:uppercase;letter-spacing:.4px;color:var(--dot);margin-bottom:4px}
+}
+
+/* REVISI KB1 & KB2: KAMUS AKRONIM & BEDAH FORMULA */
+.acro-box{background:#f8fafc;border:1px solid var(--line);border-radius:10px;padding:12px 14px;margin:14px 0;font-size:.84rem;min-width:0;max-width:100%;overflow-wrap:break-word;word-wrap:break-word}
+.acro-title{font-weight:700;color:var(--dot);font-size:.86rem;margin-bottom:8px;display:block}
+.acro-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:6px 14px;margin:0;padding:0;list-style:none}
+.acro-grid li{min-width:0;line-height:1.5}
+.acro-grid b{color:var(--dot)}
+.fguide{background:color-mix(in srgb,var(--dot) 5%,#fff);border:1px solid color-mix(in srgb,var(--dot) 22%,#e4e9f0);border-radius:10px;padding:12px 15px;margin:-6px 0 16px;font-size:.86rem;min-width:0;max-width:100%;overflow-wrap:break-word;word-wrap:break-word}
+.fguide .fg-head{font-weight:700;color:var(--dot);font-size:.84rem;text-transform:uppercase;letter-spacing:.35px;margin:0 0 6px}
+.fguide ul{margin:4px 0 8px;padding-left:18px}
+.fguide ul li{margin:3px 0}
+.fguide .fg-core{border-top:1px dashed color-mix(in srgb,var(--dot) 30%,#cbd5e1);padding-top:8px;margin-top:8px;display:grid;grid-template-columns:minmax(0,1fr);gap:4px}
+.fguide .fg-core div{min-width:0}
+@media(max-width:640px){.acro-grid{grid-template-columns:minmax(0,1fr)}}
+</style></head><body>
+<div id="progress"></div>
+<header class="top"><div class="top-in">
+ <span class="badge">MODUL 6</span>
+ <a class="homebtn" href="index.html" title="Kembali ke daftar modul"><span style="font-size:1rem;line-height:1">&#8962;</span> Daftar Modul</a>
+ <span class="top-title">Manajemen Keuangan · EKMA5205</span>
+ <nav class="jump">
+ <a href="#konsep">Konsep</a>
+ <a href="#peta">Peta Konsep</a>
+ <a href="#kb1">KB 1</a>
+ <a href="#kb2">KB 2</a>
+ <a href="#kb3">KB 3</a>
+ <a href="#glosarium">Glosarium</a>
+ </nav>
+</div></header>
+
+<div class="wrap">
+ <section class="hero">
+ <div class="eyebrow">Ringkasan Belajar · EKMA5205 (Edisi 3)</div>
+ <h1>Teori Struktur Modal</h1>
+ <div class="meta">
+ <span>⏱️ ±40 menit</span>
+ <span>📚 3 Kegiatan Belajar (KB)</span>
+ <span>✍️ Dr. Said Kelana Asnawi, M.M.</span>
+ </div>
+ </section>
+
+ <p class="section-sub" style="margin-top:22px">Modul 6 membedah keputusan pendanaan jangka panjang dan distribusi laba perusahaan secara menyeluruh: mulai dari <b>teori pengungkit (leverage)</b> meliputi analisis pulang pokok, DOL, DFL, DTL, risiko bisnis vs keuangan, dan pendekatan EBIT–EPS (KB 1); dilanjutkan <b>teori struktur modal Modigliani–Miller (MM I &amp; MM II)</b> tanpa pajak vs dengan pajak, <i>homemade leverage</i>, dan nilai perusahaan (KB 2); hingga <b>kebijaksanaan dividen</b> mencakup prosedur pembayaran, teori relevan vs tidak relevan, 6 faktor penentu, 4 tipe kebijakan, dividen saham, <i>stock split</i>, dan <i>repurchase</i> (KB 3).</p>
+ <p class="offline-note">ℹ️ Peta konsep, kartu penjelasan interaktif, dan checklist konsep berjalan tanpa internet. Koneksi internet hanya diperlukan untuk merender persamaan matematika (MathJax).</p>
+
+ <!-- KONSEP PENTING -->
+ <h2 class="section" id="konsep"><span class="dot"></span>Konsep Penting yang Harus Dikuasai</h2>
+ <div class="card">
+ <div class="cl-head">
+ <span class="count"><span id="doneCount">0</span>/<span id="totalCount">0</span> dikuasai</span>
+ <button class="btn-reset" id="resetBtn">Reset centang</button>
+ </div>
+ <ul class="concepts" id="conceptList">
+ <li><input type="checkbox"><span><span class="ct">Analisis Pulang Pokok (Breakeven Analysis)</span><span class="cd">$Q_{\text{BEP}} = \text{FC}/(P - \text{AVC})$; titik impas mengecil bila FC/AVC turun atau harga jual $P$ naik.</span></span></li>
+ <li><input type="checkbox"><span><span class="ct">Degree of Operating Leverage (DOL) &amp; Efek Biaya Tetap</span><span class="cd">Sensitivitas $\%\Delta\text{EBIT}$ terhadap $\%\Delta\text{Sales}$ akibat biaya tetap operasional; titik: $(R-\text{VC})/\text{EBIT}$; makin besar porsi biaya tetap, makin tinggi DOL.</span></span></li>
+ <li><input type="checkbox"><span><span class="ct">Degree of Financial Leverage (DFL) &amp; Total Leverage (DTL)</span><span class="cd">DFL mengukur $\%\Delta\text{EPS}$ terhadap $\%\Delta\text{EBIT}$ akibat bunga &amp; dividen preferen; $\text{DTL} = \text{DOL} \times \text{DFL}$ mengukur efek total perubahan penjualan pada EPS.</span></span></li>
+ <li><input type="checkbox"><span><span class="ct">Risiko Bisnis ($\text{CV}_u$) vs Risiko Keuangan ($\text{CV}_L - \text{CV}_u$)</span><span class="cd">Risiko bisnis = fluktuasi EPS tanpa utang; penambahan utang menaikkan CV sekaligus menaikkan $E(\text{EPS})$.</span></span></li>
+ <li><input type="checkbox"><span><span class="ct">Pendekatan EBIT–EPS (Indifferent Point)</span><span class="cd">Mencari tingkat EBIT saat dua alternatif struktur modal menghasilkan EPS sama; di atas titik impas, struktur ber-leverage lebih tinggi menghasilkan EPS lebih besar.</span></span></li>
+ <li><input type="checkbox"><span><span class="ct">Proposisi MM I &amp; MM II (Tanpa Pajak) + Homemade Leverage</span><span class="cd">Tanpa pajak, nilai perusahaan ($V_L = V_U$) dan WACC ($=k_o$) tidak dipengaruhi struktur modal; investor dapat meniru leverage lewat utang pribadi; $k_e = k_o + (D/E)(k_o - k_d)$.</span></span></li>
+ <li><input type="checkbox"><span><span class="ct">Pengaruh Pajak: Debt Tax Shield, $V_L = V_U + t\cdot D$, &amp; WACC</span><span class="cd">Dengan pajak, utang memberi penghematan pajak $PV = t \cdot D$ sehingga $V_L &gt; V_U$ dan WACC turun di bawah $k_o$ hingga batas struktur modal optimal.</span></span></li>
+ <li><input type="checkbox"><span><span class="ct">Prosedur &amp; Tanggal Penting Pembagian Dividen</span><span class="cd">Announcement date → Cum-dividend date (harga cenderung naik) → Ex-dividend date (harga cenderung turun) → Recording date → Payment date.</span></span></li>
+ <li><input type="checkbox"><span><span class="ct">Teori Dividen: Irrelevance (MM), Bird-in-Hand, &amp; Tax Preference</span><span class="cd">MM: dividen tak relevan (kecuali efek sinyal &amp; clientele); Bird-in-Hand (Gordon–Lintner): dividen lebih pasti → return naik; Tax Preference: pajak dividen lebih besar/cepat → return turun.</span></span></li>
+ <li><input type="checkbox"><span><span class="ct">6 Faktor Penentu &amp; 4 Tipe Kebijakan Dividen</span><span class="cd">Kendala legal, kontraktual, internal/likuiditas, pertumbuhan, owner, respons pasar; tipe: reguler konstan, payout proporsional, low-regular-and-extra, dan residual.</span></span></li>
+ <li><input type="checkbox"><span><span class="ct">Dividen Saham (Kecil vs Besar) &amp; Pemecahan Saham (Stock Split)</span><span class="cd">Dividen saham menggeser saldo laba ke modal saham/agio (total ekuitas tetap, EPS &amp; harga terdilusi proporsional); stock split memecah nilai par agar lebih likuid tanpa mengubah angka akun ekuitas.</span></span></li>
+ <li><input type="checkbox"><span><span class="ct">Pembelian Kembali Saham (Stock Repurchase)</span><span class="cd">Mengurangi saham beredar untuk cegah akuisisi, dividen terselubung, dan mendongkrak EPS; pada PER tetap, investor indifferent antara jual premium atau tahan saham.</span></span></li>
+ </ul>
+ </div>
+
+ <!-- PETA KONSEP -->
+ <h2 class="section" id="peta"><span class="dot"></span>Peta Konsep (Mind Map)</h2>
+ <div class="card">
+ <div class="mm-toolbar">
+ <button class="mm-btn" id="mmExpand">Perluas semua</button>
+ <button class="mm-btn" id="mmCollapse">Ciutkan</button>
+ <span style="font-size:.76rem;color:var(--muted)">Klik simpul bertanda + / – untuk buka-tutup · Gulir untuk menggeser</span>
+ </div>
+ <div class="mindmap-host" id="mindmap"></div>
+ </div>
+
+ <!-- ========================================================= -->
+ <!-- KB 1 -->
+ <!-- ========================================================= -->
+ <h2 class="section" id="kb1"><span class="dot" style="background:var(--kb1)"></span>KB 1 — Teori Pengungkit (Leverage Theory)</h2>
+ <div class="card kb1b">
+ <span class="kb-tag kb1t">KB 1 · BEP, DOL, DFL, DTL, &amp; EBIT–EPS (Hal. 6.4 – 6.19)</span>
+ <p class="lead"><span class="term">Pengungkit <span class="en">(leverage)</span></span> timbul akibat adanya <b>biaya tetap</b>—baik biaya tetap operasional yang diukur dengan <span class="term">DOL</span> maupun biaya tetap keuangan berupa bunga utang dan dividen saham preferen yang diukur dengan <span class="term">DFL</span>—yang melambungkan laba saat penjualan naik, tetapi juga menjatuhkannya tajam saat penjualan turun.</p>
+
+ <div class="acro-box">
+ <span class="acro-title">📖 Kamus Konteks Singkatan &amp; Akronim KB 1</span>
+ <ul class="acro-grid">
+ <li><b>BEP</b> (<span class="en">Break-Even Point</span>): Titik pulang pokok/impas saat laba operasi tepat nol ($\text{EBIT}=0$).</li>
+ <li><b>TR / $R$</b> (<span class="en">Total Revenue</span>): Total penerimaan penjualan ($P \times Q$).</li>
+ <li><b>TC</b> (<span class="en">Total Cost</span>): Total biaya operasi ($\text{FC} + \text{VC}$).</li>
+ <li><b>FC</b> (<span class="en">Fixed Cost</span>): Biaya tetap operasional (sewa, gaji tetap, penyusutan) yang tidak berubah mengikuti volume produksi.</li>
+ <li><b>VC &amp; AVC</b> (<span class="en">Variable Cost / Average Variable Cost</span>): Total biaya variabel dan biaya variabel rata-rata per unit (bahan baku, komisi).</li>
+ <li><b>AFC &amp; ATC</b> (<span class="en">Average Fixed / Total Cost</span>): Biaya tetap rata-rata per unit ($\text{FC}/Q$) dan biaya total rata-rata per unit ($\text{TC}/Q$).</li>
+ <li><b>EBIT</b> (<span class="en">Earnings Before Interest &amp; Taxes</span>): Laba operasi sebelum beban bunga dan pajak.</li>
+ <li><b>EPS</b> (<span class="en">Earnings Per Share</span>): Laba bersih per lembar saham biasa.</li>
+ <li><b>DOL</b> (<span class="en">Degree of Operating Leverage</span>): Derajat pengungkit operasional akibat biaya tetap operasi.</li>
+ <li><b>DFL</b> (<span class="en">Degree of Financial Leverage</span>): Derajat pengungkit keuangan akibat bunga dan dividen preferen.</li>
+ <li><b>DTL</b> (<span class="en">Degree of Total Leverage</span>): Derajat pengungkit total gabungan ($\text{DOL} \times \text{DFL}$).</li>
+ <li><b>Int &amp; $\text{Div}_{\text{PS}}$</b> (<span class="en">Interest &amp; Preferred Stock Dividend</span>): Beban bunga utang (pengurang pajak) dan dividen saham preferen (dibayar dari laba setelah pajak).</li>
+ <li><b>CV ($\text{CV}_u, \text{CV}_L$)</b> (<span class="en">Coefficient of Variation</span>): Koefisien variasi EPS tanpa utang (<i>unlevered</i>, $u$) vs dengan utang (<i>levered</i>, $L$).</li>
+ <li><b>$E(\text{EPS})$</b> (<span class="en">Expected EPS</span>): Nilai ekspektasi (rata-rata tertimbang peluang) laba per saham.</li>
+ </ul>
+ </div>
+
+ <div class="abc"><span class="ltr">A</span><h4>Analisis Pulang Pokok <span class="en">(Breakeven Analysis)</span></h4></div>
+ <p>Titik impas (<span class="en">breakeven</span>) tercapai ketika total penerimaan ($R = P \cdot Q$) sama dengan total biaya ($\text{TC} = \text{FC} + \text{AVC}\cdot Q$), atau secara per unit $P = \text{ATC} = \text{AFC} + \text{AVC}$ (sehingga $\text{EBIT} = 0$).</p>
+ <div class="eqbox">
+ \[Q_{\text{BEP}} = \frac{\text{FC}}{P - \text{AVC}}\]
+ </div>
+ <div class="fguide">
+ <div class="fg-head">Bedah Variabel &amp; Intisari Formula BEP</div>
+ <ul>
+ <li><b>$Q_{\text{BEP}}$</b> = kuantitas (unit) penjualan pada titik impas; <b>$\text{FC}$</b> = total biaya tetap operasional; <b>$P$</b> = harga jual per unit; <b>$\text{AVC}$</b> = biaya variabel rata-rata per unit; <b>$(P - \text{AVC})$</b> = <i>margin kontribusi per unit</i> (sisa harga jual setelah menutup biaya variabel untuk melunasi $\text{FC}$).</li>
+ <li><b>Makna formula:</b> Membagi total biaya tetap dengan margin kontribusi per unit untuk mengetahui berapa unit yang wajib terjual agar seluruh biaya tetap tertutup tepat nol.</li>
+ </ul>
+ <div class="fg-core">
+ <div>🧭 <b>Filosofis:</b> Sebelum mencetak satu rupiah pun laba operasi, setiap unit yang terjual harus lebih dulu "melunasi" beban biaya tetap; melewati titik ini, setiap margin kontribusi langsung mengalir menjadi laba operasi.</div>
+ <div>📏 <b>Mengukur:</b> Ambang batas volume produksi/penjualan minimum agar operasional tidak rugi (batas keamanan operasional).</div>
+ <div>🎯 <b>Manfaat:</b> Menetapkan target penjualan minimum, menguji sensitivitas harga jual ($P$), dan mengevaluasi efisiensi struktur biaya tetap ($\text{FC}$) vs variabel ($\text{AVC}$).</div>
+ </div>
+ </div>
+ <ul class="exp">
+ <li><span class="term">Contoh Buku (PT Sari Kelapa Abadi / PT SKA)</span> — $\text{FC} = \text{Rp1.000 jt}$, $\text{AVC} = \text{Rp100}$, $P = \text{Rp500} \implies Q_{\text{BEP}} = 1.000\text{ jt}/(500-100) = \mathbf{2{,}5\text{ juta unit}}$. Produksi 1 jt unit rugi Rp600 jt; produksi 5 jt unit untung Rp1.000 jt. $Q_{\text{BEP}}$ mengecil bila $\text{FC}$ atau $\text{AVC}$ turun, atau bila $P$ naik.</li>
+ </ul>
+
+ <div class="chart-wrap">
+ <div class="chart-title">Grafik 6.1 · Analisis Pulang Pokok (Breakeven) PT Sari Kelapa Abadi</div>
+ <div class="chart-sub">Penerimaan ($TR = 500Q$) memotong Biaya Total ($TC = 1.000 + 100Q$) di titik impas $Q_{\text{BEP}} = 2{,}5\text{ juta unit}$.</div>
+ <div class="chart-host" id="ch_m6_bep"></div>
+ </div>
+
+ <div class="abc"><span class="ltr">B – E</span><h4>DOL, Perubahan Biaya Tetap, DFL, dan DTL</h4></div>
+
+ <div class="numh">1. Degree of Operating Leverage (DOL)</div>
+ <div class="eqbox">
+ \[\text{DOL} = \frac{\%\Delta\text{EBIT}}{\%\Delta\text{Sales}} = \frac{R - \text{VC}}{\text{EBIT}} = \frac{Q(P - \text{AVC})}{Q(P - \text{AVC}) - \text{FC}}\]
+ </div>
+ <div class="fguide">
+ <div class="fg-head">Bedah Variabel &amp; Intisari Formula DOL</div>
+ <ul>
+ <li><b>$\%\Delta\text{EBIT}$</b> = persentase perubahan laba operasi; <b>$\%\Delta\text{Sales}$</b> = persentase perubahan penjualan; <b>$R$</b> = total penjualan; <b>$\text{VC}$</b> = total biaya variabel; <b>$(R - \text{VC})$</b> = total margin kontribusi; <b>$\text{EBIT}$</b> = laba operasi pada tingkat output $Q$.</li>
+ <li><b>Makna formula:</b> Menunjukkan berapa persen EBIT berubah apabila penjualan berubah sebesar 1% pada tingkat penjualan tertentu (nilai DOL berbeda di tiap titik $Q$ dan mengecil saat $Q$ makin jauh di atas BEP).</li>
+ </ul>
+ <div class="fg-core">
+ <div>🧭 <b>Filosofis:</b> Biaya tetap operasional bekerja seperti tuas mekanis—karena tidak ikut naik saat penjualan tumbuh, seluruh tambahan margin kontribusi melipatgandakan laba; namun saat penjualan turun, beban tetap tak bisa menyusut sehingga kerugian ikut berlipat.</div>
+ <div>📏 <b>Mengukur:</b> Tingkat sensitivitas laba operasi (risiko bisnis akibat struktur biaya tetap) terhadap gejolak penjualan.</div>
+ <div>🎯 <b>Manfaat:</b> Memprediksi dampak lonjakan/penurunan omzet terhadap EBIT dan menimbang keputusan substitusi biaya variabel (mis. komisi penjualan) menjadi biaya tetap (gaji tetap atau otomatisasi mesin).</div>
+ </div>
+ </div>
+
+ <div class="numh">2. Degree of Financial Leverage (DFL)</div>
+ <div class="eqbox">
+ \[\text{DFL} = \frac{\%\Delta\text{EPS}}{\%\Delta\text{EBIT}} = \frac{\text{EBIT}}{\text{EBIT} - \text{Int} - \frac{\text{Div}_{\text{PS}}}{1 - t}}\]
+ </div>
+ <div class="fguide">
+ <div class="fg-head">Bedah Variabel &amp; Intisari Formula DFL</div>
+ <ul>
+ <li><b>$\%\Delta\text{EPS}$</b> = persentase perubahan laba per saham biasa; <b>$\text{EBIT}$</b> = laba operasi; <b>$\text{Int}$</b> = beban bunga utang tetap; <b>$\text{Div}_{\text{PS}}$</b> = dividen saham preferen; <b>$t$</b> = tarif pajak badan.</li>
+ <li><b>Mengapa $\text{Div}_{\text{PS}}$ dibagi $(1 - t)$?</b> Beban bunga dibayar sebelum pajak (<i>tax-deductible</i>), sedangkan dividen saham preferen dibayar dari laba setelah pajak. Pembagian dengan $(1 - t)$ menyetarakan dividen preferen ke basis sebelum pajak (<i>before-tax equivalent</i>) agar dapat dikurangkan secara setara dari EBIT.</li>
+ <li><b>Makna formula:</b> Menunjukkan berapa persen EPS berubah apabila EBIT berubah sebesar 1% karena adanya beban tetap pendanaan.</li>
+ </ul>
+ <div class="fg-core">
+ <div>🧭 <b>Filosofis:</b> Kreditor dan pemegang saham preferen hanya mengambil porsi tetap dari laba operasi; kelebihan di atas beban tetap sepenuhnya memperkaya pemegang saham biasa, tetapi saat EBIT turun, pemegang saham biasa menanggung hantaman berlipat ganda.</div>
+ <div>📏 <b>Mengukur:</b> Sensitivitas laba pemegang saham biasa (risiko keuangan) terhadap fluktuasi laba operasi (EBIT).</div>
+ <div>🎯 <b>Manfaat:</b> Mengendalikan agresivitas penggunaan utang/saham preferen dan mengantisipasi volatilitas EPS saat kinerja operasional berubah.</div>
+ </div>
+ </div>
+
+ <div class="numh">3. Degree of Total Leverage (DTL)</div>
+ <div class="eqbox">
+ \[\text{DTL} = \frac{\%\Delta\text{EPS}}{\%\Delta\text{Sales}} = \frac{R - \text{VC}}{\text{EBIT} - \text{Int} - \frac{\text{Div}_{\text{PS}}}{1 - t}} = \text{DOL} \times \text{DFL}\]
+ </div>
+ <div class="fguide">
+ <div class="fg-head">Bedah Variabel &amp; Intisari Formula DTL</div>
+ <ul>
+ <li>Menghubungkan langsung ujung atas laporan laba rugi (<b>$\%\Delta\text{Sales}$</b> dan margin kontribusi $R - \text{VC}$) dengan ujung bawahnya (<b>$\%\Delta\text{EPS}$</b> dan laba sebelum pajak yang tersedia bagi pemegang saham biasa).</li>
+ <li><b>Makna formula:</b> Kelipatan perubahan persentase EPS akibat perubahan 1% pada penjualan sebagai efek berantai gabungan dari DOL dan DFL.</li>
+ </ul>
+ <div class="fg-core">
+ <div>🧭 <b>Filosofis:</b> Risiko operasional dan risiko keuangan bersifat <i>multiplikatif</i> (saling mengalikan), bukan sekadar menjumlah—menggabungkan biaya tetap tinggi dengan utang tinggi menciptakan amplifikasi risiko ekstrem ke dua arah.</div>
+ <div>📏 <b>Mengukur:</b> Total risiko pengungkit gabungan (operasi + pendanaan) dari fluktuasi omzet hingga ke kantong pemegang saham.</div>
+ <div>🎯 <b>Manfaat:</b> Membantu manajer menjaga keseimbangan risiko total—perusahaan dengan DOL tinggi (padat modal) idealnya menahan DFL agar tetap rendah supaya DTL tidak membahayakan kelangsungan usaha.</div>
+ </div>
+ </div>
+
+ <div class="rgrid c3" data-revealgroup>
+ <div class="rcell active" data-reveal data-detail="<b>Contoh Buku DOL (PT SKA):</b> Pada $Q=5$ jt unit (EBIT Rp1.000 jt), $\text{DOL} = (2.500-500)/1.000 = \mathbf{2\times}$ (penjualan naik 1% → EBIT naik 2%); pada $Q=7{,}5$ jt, $\text{DOL} = 1{,}5\times$. <b>Efek Perubahan Biaya Tetap (Bagian C):</b> jika FC dinaikkan ke 1.200 dan AVC diturunkan ke 60 (mis. ganti komisi jadi gaji tetap), DOL naik menjadi <b>2,2×</b>."><span class="stepnum">1</span><span><span class="rt">Contoh DOL</span><span class="rp">PT SKA: 2× → 2,2×</span></span></div>
+ <div class="rcell" data-reveal data-detail="<b>Contoh Buku DFL (PT A):</b> EBIT Rp20.000, Bunga Rp4.000, Dividen PS Rp4.800, pajak 20% → $\text{Div}_{\text{PS}}/(1-t) = 4.800/0{,}8 = 6.000$. Maka $\text{DFL}_{20.000} = 20.000/(20.000-4.000-6.000) = \mathbf{2\times}$ (EBIT naik 1% → EPS naik 2%); pada EBIT 12.000, $\text{DFL} = 6\times$; pada EBIT 28.000, $\text{DFL} = 1{,}56\times$."><span class="stepnum">2</span><span><span class="rt">Contoh DFL</span><span class="rp">PT A: 2× (EBIT 20.000)</span></span></div>
+ <div class="rcell" data-reveal data-detail="<b>Contoh Buku DTL (PT ABC):</b> Sales 28.000, $\%\Delta\text{Sales}=28{,}57\%$, $\%\Delta\text{EPS}=80\%$, sehingga $\text{DTL} = \mathbf{2{,}8\times}$. Jika $\text{DOL}=2$ dan $\text{DFL}=3 \implies \text{DTL}=6\times$: setiap 1% perubahan penjualan mengungkit EPS sebesar 6% (naik saat booming, jatuh tajam saat resesi)."><span class="stepnum">3</span><span><span class="rt">Contoh DTL</span><span class="rp">PT ABC: 2,8×</span></span></div>
+ </div>
+ <div class="rdetail" data-revealdetail><b>Contoh Buku DOL (PT SKA):</b> Pada $Q=5$ jt unit (EBIT Rp1.000 jt), $\text{DOL} = (2.500-500)/1.000 = \mathbf{2\times}$ (penjualan naik 1% → EBIT naik 2%); pada $Q=7{,}5$ jt, $\text{DOL} = 1{,}5\times$. <b>Efek Perubahan Biaya Tetap (Bagian C):</b> jika FC dinaikkan ke 1.200 dan AVC diturunkan ke 60 (mis. ganti komisi jadi gaji tetap), DOL naik menjadi <b>2,2×</b>.</div>
+
+ <div class="flow">Penggunaan utang (DFL) menciptakan risiko tambahan di atas risiko usaha murni. Bagian F memisahkan secara kuantitatif <b>risiko bisnis vs risiko keuangan</b>, lalu bagian G memakai <b>pendekatan EBIT–EPS</b> untuk memilih struktur modal.</div>
+
+ <div class="abc"><span class="ltr">F – G</span><h4>Risiko Bisnis vs Keuangan &amp; Pendekatan EBIT–EPS</h4></div>
+
+ <div class="numh">1. Pemisahan Risiko Bisnis vs Risiko Keuangan (Koefisien Variasi / CV)</div>
+ <div class="eqbox">
+ \[\text{CV} = \frac{\sigma_{\text{EPS}}}{E(\text{EPS})} \qquad\big|\qquad \text{Risiko Bisnis} = \text{CV}_u \qquad\big|\qquad \text{Risiko Keuangan} = \text{CV}_L - \text{CV}_u\]
+ </div>
+ <div class="fguide">
+ <div class="fg-head">Bedah Variabel &amp; Intisari Formula CV Risiko</div>
+ <ul>
+ <li><b>$\sigma_{\text{EPS}}$</b> = standar deviasi (simpangan baku) EPS di berbagai skenario ekonomi; <b>$E(\text{EPS})$</b> = ekspektasi EPS; <b>$\text{CV}_u$</b> = koefisien variasi saat perusahaan tanpa utang (<i>unlevered</i>); <b>$\text{CV}_L$</b> = koefisien variasi saat perusahaan berutang (<i>levered</i>).</li>
+ <li><b>Makna formula:</b> Mengukur risiko relatif per satu satuan ekspektasi EPS lalu memecahnya menjadi porsi murni dari usaha ($\text{CV}_u$) dan porsi tambahan semata-mata karena utang ($\text{CV}_L - \text{CV}_u$).</li>
+ </ul>
+ <div class="fg-core">
+ <div>🧭 <b>Filosofis:</b> Utang tidak pernah menghapus risiko dasar bisnis; ia justru menumpuk lapisan risiko baru (risiko keuangan) di atas risiko bisnis sebagai "harga" untuk mengejar $E(\text{EPS})$ yang lebih tinggi.</div>
+ <div>📏 <b>Mengukur:</b> Kenaikan risiko relatif pemegang saham setiap kali rasio utang dinaikkan.</div>
+ <div>🎯 <b>Manfaat:</b> Menimbang <i>risk–return trade-off</i> lintas skenario rasio utang sebelum menetapkan batas utang yang masih dapat ditoleransi pemilik.</div>
+ </div>
+ </div>
+ <ul class="exp">
+ <li><span class="term">Contoh Buku (PT BJK — Kebutuhan Rp1.000, 3 skenario EBIT 1.000/2.000/4.000)</span> — Utang 0% → $\text{CV}_u = \mathbf{0{,}48}$ (risiko bisnis murni), $E(\text{EPS})=18$; utang 20% → $\text{CV}=0{,}49, E(\text{EPS})=22{,}26$; utang 40% → $\text{CV}=0{,}50, E(\text{EPS})=29{,}25$; utang 60% → $\text{CV}=0{,}51, E(\text{EPS})=43{,}08$. Setiap penambahan utang menaikkan risiko keuangan ($\text{CV}_L - \text{CV}_u$) sekaligus menaikkan potensi imbalan.</li>
+ </ul>
+
+ <div class="numh">2. Pendekatan EBIT–EPS (Titik Indifferent / Indifferent Point)</div>
+ <div class="eqbox">
+ \[\frac{(\text{EBIT} - \text{Int}_1)(1-t) - \text{Div}_{\text{PS},1}}{\#\text{Saham}_1} = \frac{(\text{EBIT} - \text{Int}_2)(1-t) - \text{Div}_{\text{PS},2}}{\#\text{Saham}_2}\]
+ </div>
+ <div class="fguide">
+ <div class="fg-head">Bedah Variabel &amp; Intisari Formula EBIT–EPS</div>
+ <ul>
+ <li><b>$\text{EBIT}$</b> = tingkat laba operasi impas (<i>indifferent point</i>) yang dicari; <b>$\text{Int}_1, \text{Int}_2$</b> = beban bunga tahunan Alternatif 1 &amp; 2; <b>$t$</b> = tarif pajak badan; <b>$\text{Div}_{\text{PS},1}, \text{Div}_{\text{PS},2}$</b> = dividen saham preferen masing-masing alternatif; <b>$\#\text{Saham}_1, \#\text{Saham}_2$</b> = jumlah lembar saham biasa beredar pada masing-masing alternatif.</li>
+ <li><b>Makna formula:</b> Menyamakan rumus EPS dari dua opsi struktur modal untuk menemukan persis pada tingkat EBIT berapa keduanya memberikan laba per saham yang sama.</li>
+ </ul>
+ <div class="fg-core">
+ <div>🧭 <b>Filosofis:</b> Setiap skema pendanaan punya zona keunggulannya—saat EBIT rendah, beban bunga utang terasa mencekik; namun saat EBIT tinggi melampaui titik potong, opsi berutang lebih tinggi (jumlah saham lebih sedikit/minim dilusi) melesatkan EPS lebih cepat. Ingat pula: cara pembiayaan <b>tidak mengubah risiko bisnis/EBIT</b> ("penggorengan menghasilkan masakan sama baik dibeli tunai maupun utang").</div>
+ <div>📏 <b>Mengukur:</b> Ambang batas laba operasi (EBIT) tempat keunggulan EPS dua alternatif struktur modal saling bertukar.</div>
+ <div>🎯 <b>Manfaat:</b> Alat bantu memilih alternatif pendanaan (utang, saham preferen, atau saham biasa) dengan membandingkan proyeksi EBIT masa depan terhadap titik <i>indifferent</i>-nya.</div>
+ </div>
+ </div>
+ <ul class="exp">
+ <li><span class="term">Contoh Buku (PT YYY — Investasi Rp1.000 jt, pajak 20%)</span> — Alt A (Utang 400 @12%, PS 300 @15%, 300 rb saham) vs Alt B (Utang 600 @13%, 320 rb saham) → <i>indifferent point</i> tercapai pada $\mathbf{\text{EBIT} = \text{Rp502 juta}}$ ($\text{EPS}=\text{Rp1.060}$). Jika prediksi $\text{EBIT} = 700\text{ jt} (&gt;502)$, Alt A unggul ($\text{EPS } 1.589 &gt; 1.555$).</li>
+ </ul>
+
+ <div class="chart-wrap">
+ <div class="chart-title">Grafik 6.4 · Pendekatan EBIT–EPS &amp; Indifferent Point (PT YYY)</div>
+ <div class="chart-sub">Alternatif A dan B menghasilkan EPS identik (Rp1.060) pada $\text{EBIT} = \text{Rp502 juta}$; di atas Rp502 jt, Alternatif A lebih tinggi.</div>
+ <div class="chart-host" id="ch_m6_ebit"></div>
+ </div>
+ </div>
+
+ <!-- ========================================================= -->
+ <!-- KB 2 -->
+ <!-- ========================================================= -->
+ <h2 class="section" id="kb2"><span class="dot" style="background:var(--kb2)"></span>KB 2 — Teori Struktur Modal</h2>
+ <div class="card kb2b">
+ <span class="kb-tag kb2t">KB 2 · MODIGLIANI–MILLER (MM I &amp; II) &amp; PAJAK (Hal. 6.22 – 6.32)</span>
+ <p class="lead">KB 2 menjawab pertanyaan inti struktur modal ($V = D + E$): apakah mengubah komposisi utang jangka panjang dan ekuitas dapat meningkatkan <span class="term">nilai perusahaan ($V$)</span>? Jawabannya dibedakan tegas antara dunia ideal <b>tanpa pajak</b> dan dunia nyata <b>dengan pajak</b> menurut teorema <span class="term">Modigliani–Miller (MM)</span>.</p>
+
+ <div class="acro-box">
+ <span class="acro-title">📖 Kamus Konteks Singkatan &amp; Akronim KB 2</span>
+ <ul class="acro-grid">
+ <li><b>MM (MM I &amp; MM II)</b>: Franco <i>Modigliani</i> &amp; Merton <i>Miller</i> — Proposisi I membahas nilai perusahaan ($V$), Proposisi II membahas biaya ekuitas ($k_e$) &amp; WACC.</li>
+ <li><b>$V, V_U, V_L$</b> (<span class="en">Value of the Firm</span>): Nilai total perusahaan ($D + E$); $V_U$ = tanpa utang (<i>unlevered</i>), $V_L$ = berutang (<i>levered</i>).</li>
+ <li><b>$D$ &amp; $E$</b> (<span class="en">Debt &amp; Equity</span>): Nilai pasar utang jangka panjang ($D$) dan nilai pasar ekuitas/saham ($E$).</li>
+ <li><b>$D/E$</b> (<span class="en">Debt-to-Equity Ratio</span>): Rasio utang terhadap ekuitas dalam struktur modal.</li>
+ <li><b>$k_o$</b> (<span class="en">Unlevered Cost of Capital</span>): Biaya modal perusahaan tanpa utang (murni mencerminkan risiko bisnis aset).</li>
+ <li><b>$k_d$ &amp; $k_d^*$</b> (<span class="en">Cost of Debt</span>): Biaya utang sebelum pajak ($k_d$ atau $r_d$) dan setelah pajak ($k_d^* = k_d(1-t)$).</li>
+ <li><b>$k_e$</b> (<span class="en">Cost of Equity</span>): Biaya modal sendiri / tingkat imbalan yang disyaratkan pemegang saham.</li>
+ <li><b>WACC</b> (<span class="en">Weighted Average Cost of Capital</span>): Biaya modal rata-rata tertimbang dari seluruh sumber dana jangka panjang.</li>
+ <li><b>$w_d$ &amp; $w_e$</b> (<span class="en">Weights of Debt &amp; Equity</span>): Proporsi/bobot nilai pasar utang ($D/V$) dan ekuitas ($E/V$), dengan $w_d + w_e = 1$.</li>
+ <li><b>PV &amp; $t$</b> (<span class="en">Present Value &amp; Corporate Tax Rate</span>): Nilai sekarang arus kas masa depan dan tarif pajak penghasilan badan.</li>
+ </ul>
+ </div>
+
+ <div class="abc"><span class="ltr">A – D</span><h4>Proposisi MM Tanpa Pajak &amp; Homemade Leverage</h4></div>
+
+ <div class="numh">1. Proposisi MM I (Tanpa Pajak) — Nilai Perusahaan</div>
+ <div class="eqbox">
+ \[V_L = V_U = \frac{\text{EBIT}}{k_o}\]
+ </div>
+ <div class="fguide">
+ <div class="fg-head">Bedah Variabel &amp; Intisari Formula MM I (Tanpa Pajak)</div>
+ <ul>
+ <li><b>$V_L$</b> = nilai pasar perusahaan berutang; <b>$V_U$</b> = nilai pasar perusahaan tanpa utang; <b>$\text{EBIT}$</b> = laba operasi tahunan (diasumsikan konstan/perpetuitas); <b>$k_o$</b> = biaya modal perusahaan tanpa utang (risiko bisnis murni).</li>
+ <li><b>Makna formula:</b> Nilai perusahaan ditentukan semata-mata oleh arus kas operasi (EBIT) yang didiskontokan pada risiko bisnisnya ($k_o$), sehingga berutang maupun tidak berutang menghasilkan nilai perusahaan yang sama persis.</li>
+ </ul>
+ <div class="fg-core">
+ <div>🧭 <b>Filosofis:</b> "Besarnya kue tidak tergantung pada cara mengirisnya"—nilai riil perusahaan diciptakan di sisi kiri neraca (aset dan produktivitas operasi), bukan dari rekayasa komposisi utang vs saham di sisi kanan neraca.</div>
+ <div>📏 <b>Mengukur:</b> Nilai intrinsik perusahaan dalam kondisi pasar modal sempurna tanpa pajak dan tanpa biaya kebangkrutan.</div>
+ <div>🎯 <b>Manfaat:</b> Menjadi tolok ukur teoretis (<i>benchmark</i> nol friksi) yang menegaskan bahwa struktur modal baru relevan jika terdapat faktor dunia nyata seperti pajak dan risiko kebangkrutan.</div>
+ </div>
+ </div>
+
+ <div class="numh">2. Proposisi MM II (Tanpa Pajak) — Biaya Ekuitas &amp; WACC Konstan</div>
+ <div class="eqbox">
+ \[k_e = k_o + \frac{D}{E}(k_o - k_d) \qquad\big|\qquad \text{WACC} = w_d k_d + w_e k_e = k_o\]
+ </div>
+ <div class="fguide">
+ <div class="fg-head">Bedah Variabel &amp; Intisari Formula MM II (Tanpa Pajak)</div>
+ <ul>
+ <li><b>$k_e$</b> = biaya modal sendiri; <b>$k_o$</b> = biaya modal tanpa utang; <b>$D/E$</b> = rasio utang terhadap ekuitas; <b>$(k_o - k_d)$</b> = selisih premi risiko bisnis di atas biaya utang; <b>$w_d = D/V$</b> dan <b>$w_e = E/V$</b> = bobot nilai pasar utang dan ekuitas.</li>
+ <li><b>Makna formula:</b> Biaya ekuitas ($k_e$) naik secara linear seiring naiknya rasio $D/E$; lonjakan $k_e$ tersebut persis mengimbangi murahnya $k_d$ sehingga WACC selalu konstan sama dengan $k_o$.</li>
+ </ul>
+ <div class="fg-core">
+ <div>🧭 <b>Filosofis:</b> Tidak ada "makan siang gratis" dari utang di dunia tanpa pajak—porsi utang yang berbunga murah langsung menaikkan risiko pemegang saham, sehingga tuntutan imbalan mereka ($k_e$) naik tepat sebesar penghematannya.</div>
+ <div>📏 <b>Mengukur:</b> Besarnya tuntutan imbalan ekuitas ($k_e$) akibat penambahan leverage serta stabilitas biaya modal total (WACC).</div>
+ <div>🎯 <b>Manfaat:</b> Mencegah kesalahpahaman manajemen bahwa menambah utang otomatis menurunkan biaya modal tanpa memperhitungkan lonjakan biaya ekuitas.</div>
+ </div>
+ </div>
+
+ <div class="table-wrap">
+ <table class="mini">
+ <thead><tr><th>Konsep (Tanpa Pajak)</th><th>Mekanisme Utama</th><th>Contoh Buku (EBIT = 200, $k_d=10\%, k_o=12{,}5\%$)</th></tr></thead>
+ <tbody>
+ <tr><td data-label="Konsep (Tanpa Pajak)"><b>Proposisi MM I</b><br>(Nilai Perusahaan)</td><td data-label="Mekanisme Utama">Nilai perusahaan konstan meski rasio utang diubah.</td><td data-label="Contoh Buku (EBIT = 200, kd=10%, ko=12,5%)">Utang 0 → $V=1.600, k_e=12{,}5\%$.<br>Utang 600 → $V=1.600, E=1.000, k_e=14\%$.<br>Utang 1.000 → $V=1.600, E=600, k_e=16{,}67\%$.</td></tr>
+ <tr><td data-label="Konsep (Tanpa Pajak)"><b>Proposisi MM II</b><br>(Biaya Ekuitas &amp; WACC)</td><td data-label="Mekanisme Utama">Kenaikan porsi utang murah ($k_d$) tepat diimbangi lonjakan $k_e$.</td><td data-label="Contoh Buku (EBIT = 200, kd=10%, ko=12,5%)">Pada seluruh tingkat utang di atas, <b>WACC tetap 12,5% ($= k_o$)</b>.</td></tr>
+ <tr><td data-label="Konsep (Tanpa Pajak)"><b>Homemade Leverage</b><br>(Bagian D)</td><td data-label="Mekanisme Utama">Investor dapat meniru perusahaan berutang (PT L) dengan membeli saham perusahaan tanpa utang (PT U) sambil berutang pribadi.</td><td data-label="Contoh Buku (EBIT = 200, kd=10%, ko=12,5%)">Bapak Z butuh modal Rp500 untuk 10% kepemilikan: beli 5 lbr PT L atau 10 lbr PT U (utang pribadi Rp500 @10%) → keduanya memberi <b>kekayaan bersih sama Rp50</b>.</td></tr>
+ </tbody>
+ </table>
+ </div>
+ <p style="font-size:.88rem"><b>Catatan Bobot WACC:</b> Selalu utamakan <b>bobot nilai pasar</b> (bukan nilai buku) atau target struktur modal; contoh PT DD: utang 1.000, nilai pasar saham 1.400 → $w_d=0{,}42, w_e=0{,}58 \implies \text{WACC} = 10\%$.</p>
+
+ <div class="flow">Begitu asumsi "tanpa pajak" dilepas dan masuk ke dunia nyata yang mengenal pajak korporasi, utang menciptakan <b>penghematan pajak (debt tax shield)</b> sehingga Proposisi MM I dan MM II berubah total pada bagian E–H.</div>
+
+ <div class="abc"><span class="ltr">E – H</span><h4>Pengaruh Pajak: Debt Tax Shield, $V_L$, &amp; Struktur Modal Optimal</h4></div>
+
+ <div class="numh">1. Nilai Sekarang Penghematan Pajak Utang (PV Debt Tax Shield)</div>
+ <div class="eqbox">
+ \[\text{PV}(\text{Debt Tax Shield}) = \frac{(r_d \cdot D) \cdot t}{r_d} = t \cdot D\]
+ </div>
+ <div class="fguide">
+ <div class="fg-head">Bedah Variabel &amp; Intisari Formula Debt Tax Shield</div>
+ <ul>
+ <li><b>$r_d$</b> (atau $k_d$) = tingkat bunga utang; <b>$D$</b> = nilai pokok utang jangka panjang permanen; <b>$(r_d \cdot D)$</b> = beban bunga tahunan; <b>$t$</b> = tarif pajak badan; <b>$(r_d \cdot D)\cdot t$</b> = penghematan kas pajak setiap tahun (didiskontokan dengan $r_d$ karena risikonya setara arus kas utang).</li>
+ <li><b>Makna formula:</b> Karena $r_d$ saling meniadakan, nilai sekarang seluruh penghematan pajak dari utang permanen persis sebesar tarif pajak dikali jumlah utang ($t \cdot D$).</li>
+ </ul>
+ <div class="fg-core">
+ <div>🧭 <b>Filosofis:</b> Dalam sistem pajak yang mengakui bunga sebagai pengurang penghasilan kena pajak, negara secara tidak langsung ikut menanggung sebagian biaya bunga—memperkecil bagian pajak pemerintah dan memperbesar bagian investor.</div>
+ <div>📏 <b>Mengukur:</b> Nilai tambah ekonomis (dalam rupiah) yang lahir semata-mata dari manfaat fiskal penggunaan utang.</div>
+ <div>🎯 <b>Manfaat:</b> Mengkuantifikasi secara instan seberapa besar nilai perusahaan bertambah ketika perusahaan menambah utang jangka panjang.</div>
+ </div>
+ </div>
+
+ <div class="numh">2. Proposisi MM I (Dengan Pajak) — Nilai Perusahaan Berutang ($V_L$)</div>
+ <div class="eqbox">
+ \[V_U = \frac{\text{EBIT}(1-t)}{k_o} \qquad\big|\qquad V_L = V_U + t \cdot D = \frac{\text{EBIT}(1-t)}{\text{WACC}}\]
+ </div>
+ <div class="fguide">
+ <div class="fg-head">Bedah Variabel &amp; Intisari Formula MM I (Dengan Pajak)</div>
+ <ul>
+ <li><b>$V_U$</b> = nilai perusahaan tanpa utang; <b>$\text{EBIT}(1-t)$</b> = laba operasi setelah pajak (arus kas operasi bersih bagi penyedia modal); <b>$k_o$</b> = biaya modal tanpa utang; <b>$V_L$</b> = nilai perusahaan berutang; <b>$t \cdot D$</b> = nilai sekarang <i>debt tax shield</i>; <b>$\text{WACC}$</b> = biaya modal rata-rata tertimbang setelah pajak.</li>
+ <li><b>Makna formula:</b> Nilai perusahaan berutang sama dengan nilai perusahaan tanpa utang ditambah nilai penghematan pajak ($t \cdot D$), dan hasilnya selalu identik dengan mendiskontokan $\text{EBIT}(1-t)$ menggunakan WACC.</li>
+ </ul>
+ <div class="fg-core">
+ <div>🧭 <b>Filosofis:</b> Kehadiran pajak meruntuhkan netralitas struktur modal—cara membiayai perusahaan kini benar-benar memperbesar total "kue" kekayaan yang mengalir kepada kreditor dan pemegang saham.</div>
+ <div>📏 <b>Mengukur:</b> Total nilai pasar perusahaan (utang + ekuitas) di dunia nyata yang mengenal pajak korporasi.</div>
+ <div>🎯 <b>Manfaat:</b> Memberikan dua metode valuasi yang saling memverifikasi (pendekatan <i>Adjusted Present Value</i> $V_U + t\cdot D$ vs pendekatan diskonto WACC).</div>
+ </div>
+ </div>
+
+ <div class="numh">3. Proposisi MM II (Dengan Pajak) — Biaya Ekuitas ($k_e$) &amp; WACC Setelah Pajak</div>
+ <div class="eqbox">
+ \[k_e = k_o + \frac{D}{E}(1-t)(k_o - k_d) \qquad\big|\qquad \text{WACC} = w_d k_d(1-t) + w_e k_e\]
+ </div>
+ <div class="fguide">
+ <div class="fg-head">Bedah Variabel &amp; Intisari Formula MM II (Dengan Pajak)</div>
+ <ul>
+ <li><b>$k_e$</b> = biaya ekuitas dengan pajak; <b>$k_o$</b> = biaya modal tanpa utang; <b>$D/E$</b> = rasio utang terhadap ekuitas; <b>$(1-t)$</b> = faktor peredam pajak; <b>$k_d(1-t)$</b> = biaya utang efektif setelah pajak ($k_d^*$); <b>$w_d, w_e$</b> = bobot nilai pasar utang dan ekuitas.</li>
+ <li><b>Makna formula:</b> Kenaikan biaya ekuitas ($k_e$) akibat utang kini lebih landai karena diredam oleh $(1-t)$, sementara bobot utang memakai biaya lebih murah $k_d(1-t)$, sehingga WACC turun di bawah $k_o$.</li>
+ </ul>
+ <div class="fg-core">
+ <div>🧭 <b>Filosofis:</b> Manfaat pajak membuat WACC menurun saat utang ditambah; namun di dunia nyata utang tidak bisa dinaikkan hingga 100% karena memicu biaya kesulitan keuangan (<i>financial distress</i>)—pertemuan manfaat pajak dan risiko gagal bayar inilah yang membentuk <b>struktur modal optimal</b> (WACC minimum, $V_L$ maksimum).</div>
+ <div>📏 <b>Mengukur:</b> Biaya ekuitas setelah pajak dan tingkat diskonto rata-rata tertimbang perusahaan (<i>hurdle rate</i> investasi).</div>
+ <div>🎯 <b>Manfaat:</b> Menjadi acuan penentuan tingkat diskonto proyek (WACC) serta panduan menyusun komposisi utang-ekuitas yang memaksimalkan nilai perusahaan tanpa terjebak kebangkrutan.</div>
+ </div>
+ </div>
+
+ <ul class="exp">
+ <li><span class="term">Verifikasi Dua Cara Menghitung $V_L$ (Contoh Buku: EBIT 200, $D=600, k_d=10\%, k_o=12{,}5\%, t=10\%$)</span> —
+ (1) Via <i>Tax Shield</i>: $V_U = 200(0{,}9)/0{,}125 = 1.440 \implies V_L = 1.440 + 0{,}1(600) = \mathbf{1.500}$ ($E = 900$).
+ (2) Via WACC: $k_e = 12{,}5\% + (600/900)(0{,}9)(2{,}5\%) = 14\%$; $\text{WACC} = 0{,}6(14\%) + 0{,}4(9\%) = \mathbf{12\%} \implies V_L = 180/0{,}12 = \mathbf{1.500}$ (identik!).</li>
+ <li><span class="term">Batas Optimal Utang (Bagian H)</span> — Dengan pajak, WACC ($12\%$) turun di bawah $k_o$ ($12{,}5\%$) selama $k_d$ tetap. Namun di dunia nyata, utang terlalu tinggi memicu <span class="term">financial distress</span> (suku bunga melonjak, syarat cadangan kas ketat). Titik di mana WACC mencapai minimum adalah <span class="term">struktur modal optimal</span>.</li>
+ </ul>
+
+ <div class="chart-wrap">
+ <div class="chart-title">Grafik MM II · Biaya Ekuitas ($k_e$), Biaya Utang ($k_d^*$), &amp; WACC vs Rasio Utang ($D/E$)</div>
+ <div class="chart-sub">Tanpa pajak WACC konstan di $k_o = 12{,}5\%$; dengan pajak ($t=10\%$), WACC menurun di bawah $k_o$ berkat <i>debt tax shield</i>.</div>
+ <div class="chart-host" id="ch_m6_mm"></div>
+ </div>
+ </div>
+
+ <!-- ========================================================= -->
+ <!-- KB 3 -->
+ <!-- ========================================================= -->
+ <h2 class="section" id="kb3"><span class="dot" style="background:var(--kb3)"></span>KB 3 — Kebijaksanaan Dividen</h2>
+ <div class="card kb3b">
+ <span class="kb-tag kb3t">KB 3 · DIVIDEN, TEORI, TIPE, SPLIT, &amp; REPURCHASE (Hal. 6.35 – 6.52)</span>
+ <p class="lead"><span class="term">Kebijakan dividen</span> menentukan porsi laba bersih (EAT) yang dibagikan tunai kepada pemegang saham versus ditahan (<span class="en">retained earnings</span>) untuk memupuk modal—sehingga berkaitan erat dengan kebutuhan utang eksternal di KB 1 &amp; KB 2.</p>
+ <div class="acro-box">
+ <span class="acro-title">📖 Kamus Konteks Singkatan &amp; Akronim KB 3</span>
+ <ul class="acro-grid">
+ <li><b>RUPS</b>: <i>Rapat Umum Pemegang Saham</i> — forum tertinggi yang mengesahkan keputusan pembagian dividen.</li>
+ <li><b>DPR &amp; DPS</b>: <i>Dividend Payout Ratio</i> (% laba dibagikan) &amp; <i>Dividend Per Share</i> (rupiah dividen per lembar saham).</li>
+ <li><b>EPS &amp; CPS</b>: <i>Earnings Per Share</i> (laba per saham) &amp; <i>Cash Per Share</i> (kas per saham — penentu utama DPS).</li>
+ <li><b>R/E</b>: <i>Retained Earnings</i> — saldo laba ditahan (satu-satunya pos legal sumber dividen).</li>
+ <li><b>MM &amp; DDS</b>: <i>Modigliani–Miller</i> (1961, teori <i>Dividend Irrelevance</i>) &amp; riset <i>DeAngelo–DeAngelo–Skinner</i> (1992).</li>
+ <li><b>DER &amp; PER</b>: <i>Debt-to-Equity Ratio</i> (target struktur modal pada <i>residual dividend</i>) &amp; <i>Price Earning Ratio</i> (acuan valuasi <i>repurchase</i>).</li>
+ </ul>
+ </div>
+
+ <div class="abc"><span class="ltr">A – B</span><h4>Pendahuluan &amp; Prosedur Pembayaran Dividen</h4></div>
+ <p>Keputusan dividen disahkan lewat RUPS dan diumumkan terbuka (nilai total, DPR %, dan DPS; Kotak 1: contoh RUPS PT BTN Tbk). Linimasa tanggal pentingnya dan efek pada harga saham (Gambar 6.5):</p>
+ <div class="flowchart">
+ <span class="fc-node">1. Announcement Date<br><small>Direksi umumkan dividen</small></span><span class="fc-arrow">→ (Harga ↑) →</span>
+ <span class="fc-node">2. Cum-Dividend Date<br><small>Hari terakhir berhak dividen</small></span><span class="fc-arrow">→ (Harga ↓) →</span>
+ <span class="fc-node">3. Ex-Dividend Date<br><small>Mulai tanpa hak dividen</small></span><span class="fc-arrow">→</span>
+ <span class="fc-node">4. Recording Date<br><small>Daftar pemegang berhak</small></span><span class="fc-arrow">→</span>
+ <span class="fc-node">5. Payment Date<br><small>Pembayaran dividen tunai</small></span>
+ </div>
+
+ <div class="abc"><span class="ltr">C – D</span><h4>Teori Dividen: Irrelevance vs Relevan (Gambar 6.6)</h4></div>
+ <div class="rgrid c3" data-revealgroup>
+ <div class="rcell active" data-reveal data-detail="<b>1. Dividend Irrelevance (Modigliani–Miller, 1961):</b> Pembagian dividen tidak memengaruhi nilai perusahaan; hanya laba dan risiko aset yang menentukan (Contoh PT Maidote: laba 100 ditahan → harga Rp11 + DPS Rp0 = Rp11; dibagi semua → harga Rp10 + DPS Rp1 = Rp11). Jika pasar bereaksi, itu akibat <b>informational content (signaling kas)</b> atau <b>clientele effects</b> (investor memilih emiten sesuai selera dividen/capital gain)."><span class="stepnum">1</span><span><span class="rt">Irrelevance Theory (MM)</span><span class="rp">Return konstan (garis datar)</span></span></div>
+ <div class="rcell" data-reveal data-detail="<b>2. Bird-in-Hand Theory (Gordon &amp; Lintner):</b> Dividen tunai hari ini lebih pasti ('burung di tangan') daripada <i>capital gain</i> masa depan ('burung di angkasa'). Makin besar dividen, makin rendah tingkat diskonto, sehingga <b>return/nilai saham makin tinggi</b> (kurva miring positif)."><span class="stepnum">2</span><span><span class="rt">Bird-in-Hand Theory</span><span class="rp">Dividen ↑ → Nilai/Return ↑</span></span></div>
+ <div class="rcell" data-reveal data-detail="<b>3. Tax Preference Theory (Litzenberger &amp; Ramaswamy):</b> Dividen langsung kena pajak saat ini dan tarifnya cenderung lebih tinggi daripada pajak <i>capital gain</i> yang baru dibayar saat saham dijual. Akibatnya, makin tinggi dividen justru membuat <b>return bersih investor makin rendah</b> (kurva miring negatif)."><span class="stepnum">3</span><span><span class="rt">Tax Preference Theory</span><span class="rp">Dividen ↑ → Nilai/Return ↓</span></span></div>
+ </div>
+ <div class="rdetail" data-revealdetail><b>1. Dividend Irrelevance (Modigliani–Miller, 1961):</b> Pembagian dividen tidak memengaruhi nilai perusahaan; hanya laba dan risiko aset yang menentukan (Contoh PT Maidote: laba 100 ditahan → harga Rp11 + DPS Rp0 = Rp11; dibagi semua → harga Rp10 + DPS Rp1 = Rp11). Jika pasar bereaksi, itu akibat <b>informational content (signaling kas)</b> atau <b>clientele effects</b>.</div>
+ <p style="font-size:.88rem"><b>Temuan Empiris (Kotak 2–3 &amp; DDS 1992):</b> Regresi $E(r) = a + b(\text{DPS}) + e$ menguji teori mana yang berlaku ($b&gt;0$: Bird-in-Hand; $b&lt;0$: Tax Preference; $b\approx 0$: Irrelevance). Riset DDS (1992) menemukan hampir separuh perusahaan yang rugi sekali tetap mempertahankan dividen (sinyal kerugian tak berulang). Riset penulis (Kotak 3) membuktikan <b>laba (EPS)</b> lalu <b>kas (CPS)</b> adalah penentu utama DPS, bukan tipe kepemilikan.</p>
+
+ <div class="abc"><span class="ltr">E</span><h4>Enam Faktor yang Memengaruhi Kebijakan Dividen</h4></div>
+ <ol class="book">
+ <li><span class="term">Kendala Legal</span> — Dividen hanya boleh diambil dari <b>saldo laba (R/E)</b>; nilai par dan agio/disagio dilarang dibagikan karena menjadi jaminan kreditor.</li>
+ <li><span class="term">Kendala Kontraktual <span class="en">(Contractual Constraint)</span></span> — Batasan dalam perjanjian utang (<span class="en">debt covenant</span>) yang melarang/membatasi dividen sebelum target laba atau rasio tertentu tercapai.</li>
+ <li><span class="term">Kendala Internal</span> — Ketersediaan <b>likuiditas kas</b> perusahaan untuk membayar dividen tunai.</li>
+ <li><span class="term">Pertumbuhan</span> — Perusahaan tumbuh cepat (<i>high-tech</i>) menahan laba untuk investasi (dividen kecil/nol); perusahaan dewasa di pasar jenuh membagikan dividen besar.</li>
+ <li><span class="term">Pemilik <span class="en">(Owner / Clientele)</span></span> — Pemilik kaya cenderung menyukai <i>capital gain</i> (dividen rendah); pemilik yang butuh arus kas rutin menuntut dividen tinggi (Kotak 4: Jepang/<i>keiretsu</i> tidak masalah tanpa dividen; AS kepemilikan menyebar memakai dividen untuk kontrol agensi; Finlandia/institusi asuransi menuntut dividen rutin hingga mendorong <i>income smoothing</i>).</li>
+ <li><span class="term">Respons Pasar</span> — Pembagian dividen teratur dan meningkat memberi sinyal positif kepastian pendapatan.</li>
+ </ol>
+
+ <div class="abc"><span class="ltr">F</span><h4>Empat Tipe Pembagian Dividen</h4></div>
+ <div class="table-wrap">
+<table class="mini">
+ <thead><tr><th>Tipe Kebijakan Dividen</th><th>Mekanisme Pembayaran</th><th>Cocok untuk Tipe Investor</th></tr></thead>
+ <tbody>
+ <tr><td data-label="Tipe Kebijakan Dividen"><b>1. Reguler / Konstan</b></td><td data-label="Mekanisme Pembayaran">Nominal rupiah tetap tiap tahun (mis. Rp250/lbr) meski laba naik/turun/rugi.</td><td data-label="Cocok untuk Tipe Investor">Investor berkebutuhan arus kas tetap rutin (bayar premi/utang).</td></tr>
+ <tr><td data-label="Tipe Kebijakan Dividen"><b>2. Konstan Proporsional (DPR Tetap)</b></td><td data-label="Mekanisme Pembayaran">Persentase tetap dari laba (mis. 30%); jika rugi, dividen Rp0.</td><td data-label="Cocok untuk Tipe Investor">Investor pencari pendapatan tambahan yang siap menerima fluktuasi.</td></tr>
+ <tr><td data-label="Tipe Kebijakan Dividen"><b>3. Low-Regular-and-Extra</b></td><td data-label="Mekanisme Pembayaran">Dividen dasar kecil pasti (mis. Rp100) + dividen ekstra (mis. +Rp50) saat target laba tercapai.</td><td data-label="Cocok untuk Tipe Investor">Investor yang ingin kepastian dasar sekaligus bonus saat kinerja bagus.</td></tr>
+ <tr><td data-label="Tipe Kebijakan Dividen"><b>4. Residual Dividend</b></td><td data-label="Mekanisme Pembayaran">Dana investasi (sesuai target DER) dipenuhi dulu dari laba; hanya <b>sisanya</b> dibagikan dividen.</td><td data-label="Cocok untuk Tipe Investor"><i>Informed investor</i> yang percaya penuh pada manajer (mis. <i>keiretsu</i> Jepang).</td></tr>
+ </tbody>
+ </table>
+</div>
+
+ <div class="flow">Selain dividen tunai, perusahaan dapat membagikan <b>dividen saham</b>, melakukan <b>pemecahan saham (stock split)</b>, atau <b>membeli kembali saham (repurchase)</b>—ketiganya memengaruhi jumlah saham beredar dan struktur akun ekuitas secara berbeda (Bagian G–H).</div>
+
+ <div class="abc"><span class="ltr">G – H</span><h4>Dividen Saham, Stock Split, dan Pembelian Kembali (Repurchase)</h4></div>
+ <div class="rgrid c3" data-revealgroup>
+ <div class="rcell active" data-reveal data-detail="<b>1. Dividen Saham (Contoh PT UT: 100 rb lbr, Par Rp5, Pasar Rp9, Modal Rp1,4 jt):</b><br>• <i>Kecil (&lt;20%, mis. 10% = 10 rb lbr):</i> Saldo laba turun Rp90 rb (nilai pasar), pindah ke Saham Biasa (+Rp50 rb) &amp; Agio (+Rp40 rb).<br>• <i>Besar (mis. 100% = 100 rb lbr):</i> Saldo laba turun Rp500 rb (nilai par), pindah ke Saham Biasa (+Rp500 rb).<br><b>Dampak:</b> Total ekuitas tetap Rp1,4 jt; EPS &amp; harga saham terdilusi proporsional (Rp9 → Rp8,18), tetapi <b>total kekayaan investor (Pak Maman) tetap Rp90.000</b>."><span class="stepnum">1</span><span><span class="rt">Dividen Saham</span><span class="rp">Geser R/E → Saham &amp; Agio</span></span></div>
+ <div class="rcell" data-reveal data-detail="<b>2. Pemecahan Saham (Stock Split):</b> Tidak mengubah pos ekuitas sama sekali—hanya memecah nilai par (mis. 1:2 pada PT UT: 100 rb lbr par Rp5 menjadi 200 rb lbr par Rp2,5; nominal tetap Rp500 rb).<br>• <b>Up-stock split:</b> turunkan harga agar terjangkau dan lebih likuid di bursa.<br>• <b>Reverse-stock split (mis. 4:1):</b> kurangi jumlah saham agar harga &amp; EPS naik (menghindari sentimen saham murahan)."><span class="stepnum">2</span><span><span class="rt">Stock Split &amp; Reverse</span><span class="rp">Ubah nilai par &amp; likuiditas</span></span></div>
+ <div class="rcell" data-reveal data-detail="<b>3. Stock Repurchase (Contoh PT ABC: EAT 800 jt, 1 jt lbr, P=4.000, PER=5×):</b> Dana Rp400 jt dipakai beli kembali saham pada harga premium Rp4.400 (+10%) → beli 90.909 lbr, sisa 909.091 lbr. EPS naik dari Rp800 jadi <b>Rp880</b>; pada PER tetap 5×, harga naik ke <b>Rp4.400</b>. Investor <i>indifferent</i> (jual dapat +Rp400; tahan dapat <i>capital gain</i> +Rp400). Tujuan: cegah akuisisi, dividen terselubung, dan dongkrak EPS."><span class="stepnum">3</span><span><span class="rt">Stock Repurchase</span><span class="rp">Beli kembali &amp; naikkan EPS</span></span></div>
+ </div>
+ <div class="rdetail" data-revealdetail><b>1. Dividen Saham (Contoh PT UT: 100 rb lbr, Par Rp5, Pasar Rp9, Modal Rp1,4 jt):</b> Dividen kecil (&lt;20%) menggeser R/E senilai harga pasar ke Saham Biasa &amp; Agio; dividen besar (100%) menggeser R/E senilai par ke Saham Biasa. Total ekuitas dan total kekayaan investor tetap sama.</div>
+ </div>
+
+ <!-- GLOSARIUM -->
+ <h2 class="section" id="glosarium"><span class="dot"></span>Glosarium Kilat</h2>
+ <div class="card">
+ <dl class="glossary">
+ <dt>Bird-in-Hand vs Tax Preference</dt><dd>Dua teori relevansi dividen berlawanan: Bird-in-Hand menilai dividen lebih pasti daripada capital gain; Tax Preference menilai dividen merugikan karena pajak lebih cepat/tinggi.</dd>
+ <dt>Clientele Effect</dt><dd>Kecenderungan investor memilih perusahaan yang kebijakan dividennya sesuai kebutuhan arus kas atau preferensi pajak mereka.</dd>
+ <dt>Cum-Dividend &amp; Ex-Dividend Date</dt><dd>Cum-date adalah hari terakhir pembelian saham yang masih berhak atas dividen; ex-date adalah hari pertama saham diperdagangkan tanpa hak dividen.</dd>
+ <dt>DOL, DFL, &amp; DTL</dt><dd>Derajat pengungkit operasional ($\%\Delta\text{EBIT}/\%\Delta\text{Sales}$), pengungkit keuangan ($\%\Delta\text{EPS}/\%\Delta\text{EBIT}$), dan pengungkit total ($\text{DOL} \times \text{DFL}$).</dd>
+ <dt>Homemade Leverage</dt><dd>Strategi investor meniru struktur modal perusahaan berutang dengan membeli saham perusahaan tanpa utang menggunakan pinjaman pribadi.</dd>
+ <dt>Indifferent Point (EBIT–EPS)</dt><dd>Tingkat laba operasi (EBIT) di mana dua alternatif struktur modal menghasilkan laba per saham (EPS) yang sama persis.</dd>
+ <dt>Proposisi MM I &amp; II</dt><dd>Teorema Modigliani–Miller mengenai hubungan struktur modal dengan nilai perusahaan (MM I) dan biaya modal sendiri $k_e$ (MM II), baik tanpa pajak maupun dengan pajak.</dd>
+ <dt>Stock Repurchase</dt><dd>Pembelian kembali saham beredar oleh perusahaan dengan harga premium untuk mengurangi jumlah saham, menaikkan EPS, atau sebagai dividen terselubung.</dd>
+ </dl>
+ </div>
+</div>
+
+<footer><b>EKMA5205 — Manajemen Keuangan</b> · Modul 6: Teori Struktur Modal<br>Bahan belajar ringkas untuk persiapan ujian (berdasarkan BMP UT Edisi 3, Dr. Said Kelana Asnawi, M.M.).</footer>
+
+<script>
+(function(){
+ var pb=document.getElementById('progress');
+ function onScroll(){var h=document.documentElement;var sc=h.scrollTop||document.body.scrollTop;var max=(h.scrollHeight-h.clientHeight)||1;pb.style.width=(sc/max*100)+'%';}
+ document.addEventListener('scroll',onScroll,{passive:true});onScroll();
+
+ var list=document.getElementById('conceptList');var items=[].slice.call(list.querySelectorAll('li'));var boxes=items.map(function(li){return li.querySelector('input');});
+ document.getElementById('totalCount').textContent=items.length;var doneEl=document.getElementById('doneCount');var KEY='studi_ekma5205_m6_concepts_v1';
+ function load(){try{var a=JSON.parse(localStorage.getItem(KEY)||'[]');boxes.forEach(function(b,i){if(a[i])b.checked=true;});}catch(e){}}
+ function save(){try{localStorage.setItem(KEY,JSON.stringify(boxes.map(function(b){return b.checked?1:0;})));}catch(e){}}
+ function refresh(){var n=0;items.forEach(function(li,i){if(boxes[i].checked){li.classList.add('done');n++;}else li.classList.remove('done');});doneEl.textContent=n;}
+ load();refresh();boxes.forEach(function(b){b.addEventListener('change',function(){refresh();save();});});
+ document.getElementById('resetBtn').addEventListener('click',function(){boxes.forEach(function(b){b.checked=false;});refresh();save();});
+
+ [].slice.call(document.querySelectorAll('[data-revealgroup]')).forEach(function(g){
+ var det=g.querySelector('[data-revealdetail]');if(!det){var sib=g.nextElementSibling;if(sib&&sib.hasAttribute&&sib.hasAttribute('data-revealdetail'))det=sib;}
+ var cells=[].slice.call(g.querySelectorAll('[data-reveal]'));
+ cells.forEach(function(c){c.addEventListener('click',function(){cells.forEach(function(x){x.classList.remove('active');});c.classList.add('active');if(det){det.innerHTML=c.getAttribute('data-detail');if(window.MathJax&&window.MathJax.typesetPromise)window.MathJax.typesetPromise([det]);}});});
+ });
+
+ (function(){
+ var ROWH=46,NODE_H=32,PAD=13,GAP=52;var COL={root:'#0f5e8f',kb1:'#1a86c7',kb2:'#e08a1e',kb3:'#2a9d6f',kb4:'#7a5cc0',kb5:'#c75b7a'};
+ var mc=document.createElement('canvas').getContext('2d');mc.font='700 13px -apple-system,Segoe UI,Roboto,sans-serif';
+ function tw(t){return Math.ceil(mc.measureText(t).width);}function esc(t){return t.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');}
+ function rgba(hex,a){var h=hex.replace('#','');return 'rgba('+parseInt(h.substr(0,2),16)+','+parseInt(h.substr(2,2),16)+','+parseInt(h.substr(4,2),16)+','+a+')';}
+ var DATA={label:'MODUL 6 — Teori Struktur Modal',color:COL.root,children:[
+ {label:'KB 1 · Teori Pengungkit (Leverage)',color:COL.kb1,children:[
+ {label:'A. Breakeven Analysis (Q = FC / (P − AVC))'},
+ {label:'B–E. DOL, DFL & DTL (DOL × DFL)'},
+ {label:'F. Risiko Bisnis (CVu) vs Keuangan (CVL − CVu)'},
+ {label:'G. Pendekatan EBIT–EPS (Indifferent Point)'}
+ ]},
+ {label:'KB 2 · Teori Struktur Modal (MM)',color:COL.kb2,children:[
+ {label:'A–D. MM Tanpa Pajak & Homemade Leverage',children:[{label:'MM I: VL = VU (WACC = ko)'},{label:'MM II: ke = ko + (D/E)(ko − kd)'}]},
+ {label:'E–H. MM Dengan Pajak',children:[{label:'Debt Tax Shield (PV = t·D)'},{label:'VL = VU + t·D = EBIT(1−t)/WACC'},{label:'Struktur Modal Optimal vs Financial Distress'}]}
+ ]},
+ {label:'KB 3 · Kebijaksanaan Dividen',color:COL.kb3,children:[
+ {label:'A–B. Prosedur & Tanggal (Cum vs Ex-Date)'},
+ {label:'C–D. Teori (Irrelevance, Bird-in-Hand, Tax Pref)'},
+ {label:'E–F. 6 Faktor Penentu & 4 Tipe Kebijakan'},
+ {label:'G–H. Dividen Saham, Stock Split & Repurchase'}
+ ]}
+ ]};
+ var idc=0;(function w(n,c){n.id='n'+(idc++);n.color=n.color||c;(n.children||[]).forEach(function(k){w(k,n.color);});})(DATA,COL.root);
+ (function w(n,d){if(d>=2&&n.children&&n.children.length)n.collapsed=true;(n.children||[]).forEach(function(k){w(k,d+1);});})(DATA,0);
+ var host=document.getElementById('mindmap');
+ function render(){
+ var colW=[];(function w(n,d){var width=tw(n.label)+PAD*2+((n.children&&n.children.length)?20:0);colW[d]=Math.max(colW[d]||0,width);if(!n.collapsed)(n.children||[]).forEach(function(k){w(k,d+1);});})(DATA,0);
+ var colX=[],acc=14;for(var d=0;d<colW.length;d++){colX[d]=acc;acc+=colW[d]+GAP;}var row={v:0};
+ (function lay(n,d){if(!n.children||!n.children.length||n.collapsed){n._y=row.v*ROWH+ROWH/2+8;row.v++;return;}var f,l;n.children.forEach(function(k,i){lay(k,d+1);if(i===0)f=k._y;l=k._y;});n._y=(f+l)/2;})(DATA,0);
+ var totalW=acc,totalH=row.v*ROWH+24;var nodes=[],links=[];
+ (function col(n,d,p){n._x=colX[d];n._w=tw(n.label)+PAD*2+((n.children&&n.children.length)?20:0);nodes.push({n:n,d:d});if(p)links.push([p,n]);if(!n.collapsed)(n.children||[]).forEach(function(k){col(k,d+1,n);});})(DATA,0,null);
+ var s='<svg width="'+totalW+'" height="'+totalH+'" viewBox="0 0 '+totalW+' '+totalH+'" xmlns="http://www.w3.org/2000/svg">';
+ links.forEach(function(pr){var a=pr[0],b=pr[1],x1=a._x+a._w,y1=a._y,x2=b._x,y2=b._y,mx=(x1+x2)/2;s+='<path d="M'+x1+' '+y1+' C'+mx+' '+y1+' '+mx+' '+y2+' '+x2+' '+y2+'" fill="none" stroke="'+rgba(b.color,.5)+'" stroke-width="2"/>';});
+ nodes.forEach(function(o){var n=o.n,x=n._x,y=n._y-NODE_H/2,w=n._w,hk=n.children&&n.children.length;var fill=o.d===0?n.color:(o.d===1?rgba(n.color,.12):'#fff');var tf=o.d===0?'#fff':'#1c2733';
+ s+='<g data-id="'+n.id+'" style="cursor:'+(hk?'pointer':'default')+'"><rect x="'+x+'" y="'+y+'" rx="9" width="'+w+'" height="'+NODE_H+'" fill="'+fill+'" stroke="'+n.color+'" stroke-width="'+(o.d===0?0:1.6)+'"/><text x="'+(x+PAD)+'" y="'+(n._y+4)+'" font-size="13" font-weight="'+(o.d<=1?'700':'500')+'" fill="'+tf+'" font-family="-apple-system,Segoe UI,Roboto,sans-serif">'+esc(n.label)+'</text>';
+ if(hk){var cx=x+w-12,cy=n._y;s+='<circle cx="'+cx+'" cy="'+cy+'" r="8.5" fill="'+n.color+'"/><text x="'+cx+'" y="'+(cy+4.5)+'" font-size="13" font-weight="700" fill="#fff" text-anchor="middle" font-family="sans-serif">'+(n.collapsed?'+':'\u2013')+'</text>';}s+='</g>';});
+ s+='</svg>';host.innerHTML=s;
+ }
+ host.addEventListener('click',function(e){var g=e.target.closest('g[data-id]');if(!g)return;var id=g.getAttribute('data-id');(function f(n){if(n.id===id){if(n.children&&n.children.length)n.collapsed=!n.collapsed;return true;}return (n.children||[]).some(f);})(DATA);render();});
+ document.getElementById('mmExpand').addEventListener('click',function(){(function w(n){if(n.children)n.collapsed=false;(n.children||[]).forEach(w);})(DATA);render();});
+ document.getElementById('mmCollapse').addEventListener('click',function(){(function w(n,d){if(d>=1&&n.children&&n.children.length)n.collapsed=true;(n.children||[]).forEach(function(k){w(k,d+1);});})(DATA,0);render();});
+ render();
+ })();
+
+ 
+  // OFFLINE CARTESIAN SVG CHART ENGINE (zero external library, 100% offline)
+  function drawCartesian(hostId, cfg){
+    var host=document.getElementById(hostId);if(!host)return;
+    var W=cfg.w||680,H=cfg.h||300,P={t:24,r:28,b:44,l:58};
+    var pw=W-P.l-P.r,ph=H-P.t-P.b;
+    var x0=cfg.xmin,x1=cfg.xmax,y0=cfg.ymin,y1=cfg.ymax;
+    function sx(x){return P.l+(x-x0)/(x1-x0)*pw;}
+    function sy(y){return P.t+ph-(y-y0)/(y1-y0)*ph;}
+    function esc(t){return String(t).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');}
+    var s='<svg viewBox="0 0 '+W+' '+H+'" width="'+W+'" height="'+H+'" xmlns="http://www.w3.org/2000/svg">';
+    s+='<rect x="'+P.l+'" y="'+P.t+'" width="'+pw+'" height="'+ph+'" fill="#fff" stroke="#e4e9f0"/>';
+    var xticks=cfg.xticks||5,yticks=cfg.yticks||5;
+    for(var i=0;i<=xticks;i++){
+      var xv=x0+(x1-x0)*i/xticks,px=sx(xv);
+      s+='<line x1="'+px.toFixed(1)+'" y1="'+P.t+'" x2="'+px.toFixed(1)+'" y2="'+(P.t+ph)+'" stroke="#eef2f6" stroke-width="1"/>';
+      var xl=cfg.xfmt?cfg.xfmt(xv):(Math.round(xv*100)/100);
+      s+='<text x="'+px.toFixed(1)+'" y="'+(P.t+ph+16)+'" text-anchor="middle" font-size="11" fill="#5c6b7a" font-family="-apple-system,Segoe UI,sans-serif">'+esc(xl)+'</text>';
+    }
+    for(var j=0;j<=yticks;j++){
+      var yv=y0+(y1-y0)*j/yticks,py=sy(yv);
+      s+='<line x1="'+P.l+'" y1="'+py.toFixed(1)+'" x2="'+(P.l+pw)+'" y2="'+py.toFixed(1)+'" stroke="#eef2f6" stroke-width="1"/>';
+      var yl=cfg.yfmt?cfg.yfmt(yv):(Math.round(yv*100)/100);
+      s+='<text x="'+(P.l-8)+'" y="'+(py+4).toFixed(1)+'" text-anchor="end" font-size="11" fill="#5c6b7a" font-family="-apple-system,Segoe UI,sans-serif">'+esc(yl)+'</text>';
+    }
+    if(y0<0&&y1>0){var zy=sy(0);s+='<line x1="'+P.l+'" y1="'+zy.toFixed(1)+'" x2="'+(P.l+pw)+'" y2="'+zy.toFixed(1)+'" stroke="#94a3b8" stroke-width="1.3" stroke-dasharray="4 3"/>';}
+    if(x0<0&&x1>0){var zx=sx(0);s+='<line x1="'+zx.toFixed(1)+'" y1="'+P.t+'" x2="'+zx.toFixed(1)+'" y2="'+(P.t+ph)+'" stroke="#94a3b8" stroke-width="1.3" stroke-dasharray="4 3"/>';}
+    s+='<line x1="'+P.l+'" y1="'+(P.t+ph)+'" x2="'+(P.l+pw)+'" y2="'+(P.t+ph)+'" stroke="#64748b" stroke-width="1.5"/>';
+    s+='<line x1="'+P.l+'" y1="'+P.t+'" x2="'+P.l+'" y2="'+(P.t+ph)+'" stroke="#64748b" stroke-width="1.5"/>';
+    if(cfg.xlabel)s+='<text x="'+(P.l+pw/2)+'" y="'+(H-8)+'" text-anchor="middle" font-size="12" font-weight="700" fill="#1c2733" font-family="-apple-system,Segoe UI,sans-serif">'+esc(cfg.xlabel)+'</text>';
+    if(cfg.ylabel)s+='<text x="15" y="'+(P.t+ph/2)+'" text-anchor="middle" font-size="12" font-weight="700" fill="#1c2733" font-family="-apple-system,Segoe UI,sans-serif" transform="rotate(-90 15 '+(P.t+ph/2)+')">'+esc(cfg.ylabel)+'</text>';
+    (cfg.vlines||[]).forEach(function(vl){
+      var px=sx(vl.x);
+      s+='<line x1="'+px.toFixed(1)+'" y1="'+P.t+'" x2="'+px.toFixed(1)+'" y2="'+(P.t+ph)+'" stroke="'+(vl.color||'#94a3b8')+'" stroke-width="1.2" stroke-dasharray="5 4"/>';
+      if(vl.label)s+='<text x="'+(px+4).toFixed(1)+'" y="'+(P.t+14)+'" font-size="10.5" font-weight="700" fill="'+(vl.color||'#475569')+'" font-family="-apple-system,Segoe UI,sans-serif">'+esc(vl.label)+'</text>';
+    });
+    (cfg.hlines||[]).forEach(function(hl){
+      var py=sy(hl.y);
+      s+='<line x1="'+P.l+'" y1="'+py.toFixed(1)+'" x2="'+(P.l+pw)+'" y2="'+py.toFixed(1)+'" stroke="'+(hl.color||'#94a3b8')+'" stroke-width="1.2" stroke-dasharray="5 4"/>';
+      if(hl.label)s+='<text x="'+(P.l+pw-4)+'" y="'+(py-5).toFixed(1)+'" text-anchor="end" font-size="10.5" font-weight="700" fill="'+(hl.color||'#475569')+'" font-family="-apple-system,Segoe UI,sans-serif">'+esc(hl.label)+'</text>';
+    });
+    (cfg.series||[]).forEach(function(sr){
+      var pts=sr.pts.map(function(p){return sx(p[0]).toFixed(1)+','+sy(p[1]).toFixed(1);}).join(' ');
+      s+='<polyline fill="none" stroke="'+sr.color+'" stroke-width="'+(sr.w||2.5)+'"'+(sr.dash?' stroke-dasharray="'+sr.dash+'"':'')+' points="'+pts+'"/>';
+    });
+    (cfg.markers||[]).forEach(function(mk){
+      var cx=sx(mk.x),cy=sy(mk.y);
+      s+='<circle cx="'+cx.toFixed(1)+'" cy="'+cy.toFixed(1)+'" r="4.8" fill="'+(mk.color||'#0f5e8f')+'" stroke="#fff" stroke-width="1.6"/>';
+      var dx=mk.dx||8,dy=mk.dy||-8,anc=mk.anchor||'start';
+      if(mk.label)s+='<text x="'+(cx+dx).toFixed(1)+'" y="'+(cy+dy).toFixed(1)+'" text-anchor="'+anc+'" font-size="11" font-weight="700" fill="'+(mk.color||'#0f5e8f')+'" font-family="-apple-system,Segoe UI,sans-serif">'+esc(mk.label)+'</text>';
+    });
+    s+='</svg>';
+    var leg='';
+    if(cfg.series&&cfg.series.length>1){
+      leg='<div class="chart-legend">'+cfg.series.map(function(sr){
+        return '<span><i style="background:'+sr.color+';'+(sr.dash?'border-top:2px dashed '+sr.color+';background:none;height:0':'')+'"></i>'+esc(sr.name)+'</span>';
+      }).join('')+'</div>';
+    }
+    host.innerHTML=s+leg;
+  }
+
+
+  (function(){
+    drawCartesian('ch_m6_bep',{
+      xmin:0,xmax:5,ymin:0,ymax:2600,xticks:5,yticks:5,
+      xlabel:'Kuantitas Produksi Q (Juta Unit)',ylabel:'Nilai (Rp Juta)',
+      vlines:[{x:2.5,label:'Q-BEP = 2,5 jt',color:'#2a9d6f'}],
+      series:[
+        {name:'Penerimaan Total (TR = 500Q)',color:'#1a86c7',pts:[[0,0],[2.5,1250],[5,2500]]},
+        {name:'Biaya Total (TC = 1.000 + 100Q)',color:'#e08a1e',pts:[[0,1000],[2.5,1250],[5,1500]]},
+        {name:'Biaya Tetap (FC = 1.000)',color:'#94a3b8',dash:'5 4',pts:[[0,1000],[5,1000]]}
+      ],
+      markers:[{x:2.5,y:1250,label:'BEP (2,5 jt; Rp1.250 jt)',color:'#2a9d6f',dx:8,dy:-10}]
+    });
+    function epsA(eb){return ((eb-48)*0.8 - 45)/0.300;}
+    function epsB(eb){return ((eb-78)*0.8)/0.320;}
+    drawCartesian('ch_m6_ebit',{
+      xmin:100,xmax:800,ymin:0,ymax:2000,xticks:7,yticks:4,
+      xlabel:'EBIT (Rp Juta)',ylabel:'EPS (Rp)',
+      vlines:[{x:502,label:'Indifferent = 502 jt',color:'#c75b7a'}],
+      series:[
+        {name:'Alternatif A (Utang 400 + PS 300)',color:'#1a86c7',pts:[[150,epsA(150)],[502,epsA(502)],[800,epsA(800)]]},
+        {name:'Alternatif B (Utang 600)',color:'#e08a1e',pts:[[150,epsB(150)],[502,epsB(502)],[800,epsB(800)]]}
+      ],
+      markers:[{x:502,y:1060,label:'Potong (502; Rp1.060)',color:'#c75b7a',dx:-10,dy:-12,anchor:'end'}]
+    });
+    var keNo=[],keTax=[],waccTax=[],waccNo=[],kdLine=[];
+    for(var de=0;de<=2.0;de+=0.1){
+      var ke0=12.5+de*(12.5-10);
+      var ke1=12.5+de*0.9*(12.5-10);
+      var wd=de/(1+de),we=1/(1+de);
+      keNo.push([de,ke0]);keTax.push([de,ke1]);
+      waccNo.push([de,12.5]);
+      waccTax.push([de,we*ke1+wd*10*0.9]);
+      kdLine.push([de,9]);
+    }
+    drawCartesian('ch_m6_mm',{
+      xmin:0,xmax:2,ymin:8,ymax:18,xticks:4,yticks:5,
+      xlabel:'Debt to Equity Ratio (D/E)',ylabel:'Tingkat Biaya (%)',
+      yfmt:function(v){return v+'%';},
+      series:[
+        {name:'ke (tanpa pajak)',color:'#1a86c7',pts:keNo},
+        {name:'ke (pajak 10%)',color:'#7a5cc0',dash:'5 4',pts:keTax},
+        {name:'WACC tanpa pajak (= ko 12,5%)',color:'#94a3b8',dash:'3 3',pts:waccNo},
+        {name:'WACC dengan pajak (turun)',color:'#2a9d6f',w:2.8,pts:waccTax},
+        {name:'kd* = 9%',color:'#e08a1e',dash:'5 4',pts:kdLine}
+      ]
+    });
+  })();
+
+  window.addEventListener('load',function(){setTimeout(function(){if(window.MathJax&&window.MathJax.typesetPromise)window.MathJax.typesetPromise();},400);});
+})();
+</script></body></html>

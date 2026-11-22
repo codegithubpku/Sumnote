@@ -1,0 +1,601 @@
+<!DOCTYPE html>
+<html lang="id"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Modul 4 — Manajemen Kinerja dan Pengembangan Karier | EKMA5207</title>
+<script>window.MathJax={tex:{inlineMath:[['$','$']],displayMath:[['\\[','\\]'],['$$','$$']]},svg:{fontCache:'global'},startup:{typeset:true}};</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js" async></script>
+<style>
+:root{--bg:#f4f6f9;--panel:#fff;--ink:#1c2733;--muted:#5c6b7a;--line:#e4e9f0;--brand:#1a86c7;--brand-dark:#0f5e8f;--brand-soft:#e7f3fb;--kb1:#1a86c7;--kb2:#e08a1e;--kb3:#2a9d6f;--kb4:#7a5cc0;--kb5:#c75b7a;--radius:14px;--shadow:0 1px 2px rgba(16,42,67,.06),0 6px 20px rgba(16,42,67,.06);--maxw:900px}
+*{box-sizing:border-box}html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;line-height:1.72}
+#progress{position:fixed;top:0;left:0;height:4px;width:0;background:linear-gradient(90deg,var(--brand),#53c0ec);z-index:200;transition:width .1s}
+header.top{position:sticky;top:0;z-index:100;background:rgba(255,255,255,.92);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+.top-in{max-width:var(--maxw);margin:0 auto;padding:10px 20px;display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+.badge{background:var(--brand);color:#fff;font-weight:700;font-size:.72rem;letter-spacing:.5px;padding:4px 10px;border-radius:999px}
+.homebtn{text-decoration:none;display:inline-flex;align-items:center;gap:7px;background:var(--brand);color:#fff;font-weight:700;font-size:.8rem;padding:7px 15px;border-radius:999px;box-shadow:0 2px 6px rgba(16,42,67,.22);line-height:1}
+.top-title{font-size:.9rem;font-weight:600;color:var(--muted)}
+nav.jump{margin-left:auto;display:flex;gap:4px;flex-wrap:wrap}
+nav.jump a{font-size:.78rem;color:var(--muted);text-decoration:none;padding:5px 10px;border-radius:8px}
+nav.jump a:hover{background:var(--brand-soft);color:var(--brand-dark)}
+.wrap{max-width:var(--maxw);margin:0 auto;padding:0 20px 90px}
+.hero{margin-top:26px;padding:30px 28px;border-radius:var(--radius);color:#fff;background:linear-gradient(135deg,#0f5e8f,#1a86c7 60%,#2fa4df);box-shadow:var(--shadow);position:relative;overflow:hidden}
+.hero .eyebrow{font-size:.78rem;letter-spacing:1.5px;text-transform:uppercase;opacity:.9;font-weight:600}
+.hero h1{margin:.3em 0 .25em;font-size:1.62rem;line-height:1.25;max-width:92%}
+.hero .meta{display:flex;gap:18px;flex-wrap:wrap;font-size:.84rem;opacity:.95;margin-top:10px}
+h2.section{font-size:1.3rem;margin:48px 0 4px;display:flex;align-items:center;gap:10px;scroll-margin-top:70px}
+h2.section .dot{width:10px;height:22px;border-radius:4px;background:var(--brand)}
+.section-sub{color:var(--muted);font-size:.9rem;margin:0 0 18px}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);padding:22px 24px;margin:16px 0;--dot:var(--brand);overflow-x:clip;overflow-wrap:break-word;word-wrap:break-word}
+.concepts{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:minmax(0,1fr);gap:10px}
+.concepts li{display:flex;gap:12px;align-items:flex-start;padding:12px 14px;border:1px solid var(--line);border-radius:10px;background:#fcfdff;min-width:0;max-width:100%}
+.concepts li>span{min-width:0;max-width:100%;overflow-wrap:break-word;word-wrap:break-word}
+.concepts input{margin-top:4px;width:18px;height:18px;accent-color:var(--brand);flex:none;cursor:pointer}
+.concepts .ct{font-weight:600}.concepts .cd{display:block;font-weight:400;color:var(--muted);font-size:.86rem;margin-top:2px}
+.concepts li.done{background:var(--brand-soft);border-color:#bfe0f3}.concepts li.done .ct{text-decoration:line-through;opacity:.65}
+.cl-head{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-bottom:6px}
+.cl-head .count{font-size:.82rem;color:var(--muted);background:var(--brand-soft);padding:3px 10px;border-radius:999px;font-weight:600}
+.btn-reset{font-size:.78rem;border:1px solid var(--line);background:#fff;color:var(--muted);padding:5px 12px;border-radius:8px;cursor:pointer}
+.mm-toolbar{display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin-bottom:10px}
+.mm-btn{font-size:.78rem;border:1px solid var(--line);background:#fff;padding:6px 13px;border-radius:8px;cursor:pointer;color:var(--brand-dark);font-weight:600}
+.mindmap-host{height:580px;overflow:auto;border:1px solid var(--line);border-radius:10px;background:#fcfdff}.mindmap-host svg{display:block}
+.kb-tag{display:inline-flex;align-items:center;gap:8px;font-size:.78rem;font-weight:700;color:#fff;padding:5px 12px;border-radius:999px;margin-bottom:6px}
+.kb1t{background:var(--kb1)}.kb2t{background:var(--kb2)}.kb3t{background:var(--kb3)}.kb4t{background:var(--kb4)}.kb5t{background:var(--kb5)}
+.kb1b{--dot:var(--kb1)}.kb2b{--dot:var(--kb2)}.kb3b{--dot:var(--kb3)}.kb4b{--dot:var(--kb4)}.kb5b{--dot:var(--kb5)}
+.lead{font-size:1.02rem}.term{font-weight:700;color:var(--dot)}.en{font-style:italic;color:var(--muted);font-weight:500}
+.abc{display:flex;align-items:center;gap:10px;margin:28px 0 10px;padding-bottom:6px;border-bottom:2px solid color-mix(in srgb,var(--dot) 18%,#fff)}
+.abc .ltr{background:var(--dot);color:#fff;font-weight:800;min-width:30px;height:30px;padding:0 7px;border-radius:8px;display:grid;place-items:center;flex:none}
+.abc h4{margin:0;font-size:1.06rem;color:var(--dot)}
+.numh{font-weight:700;color:var(--dot);margin:22px 0 4px;font-size:1rem}
+.leth{font-weight:800;color:var(--dot);margin:20px 0 6px;font-size:.98rem;border-left:3px solid var(--dot);padding-left:10px}
+ol.book{margin:12px 0;padding-left:28px}ol.book>li{margin:10px 0;padding-left:6px}ol.book>li::marker{font-weight:700;color:var(--dot)}
+ul.exp{list-style:none;margin:12px 0;padding:0;display:grid;grid-template-columns:minmax(0,1fr);gap:10px}
+ul.exp>li{position:relative;padding-left:20px;min-width:0;max-width:100%;overflow-wrap:break-word;word-wrap:break-word}
+ul.exp>li::before{content:"";position:absolute;left:0;top:11px;width:8px;height:8px;border-radius:2px;background:var(--dot)}
+ul.let{list-style:lower-alpha;margin:10px 0;padding-left:28px}ul.let>li{margin:8px 0;padding-left:4px}ul.let>li::marker{color:var(--dot);font-weight:700}
+.flow{border-left:4px solid var(--dot);background:color-mix(in srgb,var(--dot) 9%,#fff);padding:11px 15px;border-radius:0 10px 10px 0;margin:18px 0;font-size:.9rem;min-width:0;max-width:100%;overflow-wrap:break-word;word-wrap:break-word}
+.flow::before{content:"🔗 Benang merah — ";font-weight:700;color:var(--dot)}.flow b{color:var(--dot)}
+.casebox{background:#f8fafc;border:1px solid var(--line);border-left:4px solid var(--dot);border-radius:0 10px 10px 0;padding:12px 15px;margin:14px 0;font-size:.88rem;min-width:0;max-width:100%;overflow-wrap:break-word;word-wrap:break-word}
+.casebox .ctitle{font-weight:700;color:var(--dot);margin-bottom:4px;display:block}
+.quotebox{background:color-mix(in srgb,var(--dot) 7%,#fff);border:1px solid color-mix(in srgb,var(--dot) 30%,#fff);border-left:4px solid var(--dot);border-radius:0 12px 12px 0;padding:14px 18px;margin:16px 0;font-size:.92rem;font-style:italic;min-width:0;max-width:100%;overflow-wrap:break-word;word-wrap:break-word}
+.table-wrap{width:100%;overflow-x:auto;-webkit-overflow-scrolling:touch;margin:14px 0;border-radius:10px}
+table.mini{width:100%;border-collapse:collapse;margin:0;font-size:.86rem;table-layout:auto}
+table.mini th,table.mini td{border:1px solid var(--line);padding:10px 12px;text-align:left;vertical-align:top;overflow-wrap:break-word;word-wrap:break-word}
+table.mini th{background:color-mix(in srgb,var(--dot) 12%,#fff);color:var(--dot);font-weight:700}
+.rgrid{display:grid;gap:8px;margin:14px 0}.rgrid.c2{grid-template-columns:repeat(2,minmax(0,1fr))}.rgrid.c3{grid-template-columns:repeat(3,minmax(0,1fr))}.rgrid.c4{grid-template-columns:repeat(4,minmax(0,1fr))}
+.rcell{border:1px solid var(--line);border-radius:10px;padding:11px 13px;cursor:pointer;background:#fff;display:flex;gap:10px;align-items:flex-start;transition:.15s;min-width:0;max-width:100%}
+.rcell>span{min-width:0;max-width:100%;overflow-wrap:break-word;word-wrap:break-word}
+.rcell:hover{border-color:var(--dot);box-shadow:var(--shadow);transform:translateY(-2px)}
+.rcell.active{border-color:var(--dot);background:color-mix(in srgb,var(--dot) 8%,#fff)}
+.rcell .stepnum{background:var(--dot);color:#fff;font-weight:700;min-width:24px;height:24px;border-radius:7px;display:grid;place-items:center;flex:none;font-size:.82rem}
+.rcell .rt{font-weight:700;font-size:.9rem;color:var(--dot);display:block}.rcell .rp{font-size:.78rem;color:var(--muted);display:block;margin-top:2px}
+.rdetail{font-size:.88rem;border-left:4px solid var(--dot);background:color-mix(in srgb,var(--dot) 8%,#fff);border-radius:0 10px 10px 0;padding:12px 15px;margin-top:6px;min-width:0;max-width:100%;overflow-wrap:break-word;word-wrap:break-word}
+.pill-row{display:flex;gap:8px;flex-wrap:wrap;margin:10px 0}.pill{font-size:.8rem;background:#eef3f8;color:#36506a;border:1px solid #e0e8f0;padding:4px 11px;border-radius:999px;font-weight:600}
+.diagram-box{border:1px solid var(--line);border-radius:12px;background:#fcfdff;padding:16px;margin:16px 0;text-align:center;min-width:0;max-width:100%}
+.diagram-cap{font-size:.8rem;color:var(--muted);margin-top:10px;font-weight:600}
+.flowchart{display:flex;align-items:center;gap:6px;flex-wrap:wrap;margin:12px 0;justify-content:center}
+.fc-node{background:color-mix(in srgb,var(--dot) 12%,#fff);border:1.5px solid var(--dot);color:var(--dot);font-weight:700;font-size:.8rem;padding:8px 12px;border-radius:9px;text-align:center;max-width:100%}
+.fc-arrow{color:var(--dot);font-weight:800;font-size:1.05rem}
+.quad-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;text-align:left}
+.quad-cell{border:1.5px solid color-mix(in srgb,var(--dot) 35%,#fff);border-radius:10px;padding:12px 14px;background:#fff;min-width:0;max-width:100%}
+.quad-cell .qt{font-weight:700;color:var(--dot);font-size:.88rem;margin-bottom:4px}
+.quad-cell .qd{font-size:.82rem;color:var(--muted);line-height:1.5}
+.eqbox{background:#fcfdff;border:1px solid var(--line);border-radius:10px;padding:8px 14px;margin:14px 0;overflow-x:auto}
+mjx-container{max-width:100%;overflow-x:auto;overflow-y:hidden}
+mjx-container:not([display="true"]){display:inline-block;vertical-align:middle}
+.acro-box{background:#f8fafc;border:1px solid var(--line);border-radius:10px;padding:12px 14px;margin:14px 0;font-size:.84rem;min-width:0;max-width:100%;overflow-wrap:break-word;word-wrap:break-word}
+.acro-title{font-weight:700;color:var(--dot);font-size:.86rem;margin-bottom:8px;display:block}
+.acro-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:6px 14px;margin:0;padding:0;list-style:none}
+.acro-grid li{min-width:0;line-height:1.5}.acro-grid b{color:var(--dot)}
+.glossary dt{font-weight:700;color:var(--brand-dark);margin-top:10px}.glossary dd{margin:0 0 2px;color:var(--muted);font-size:.9rem}
+footer{max-width:var(--maxw);margin:0 auto;padding:30px 20px 60px;color:var(--muted);font-size:.82rem;border-top:1px solid var(--line)}
+.offline-note{font-size:.76rem;color:var(--muted);background:#fff8e6;border:1px solid #f0e2b8;border-radius:8px;padding:8px 12px;margin:10px 0}
+@media(max-width:680px){
+  .table-wrap{overflow-x:visible}
+  table.mini,table.mini thead,table.mini tbody,table.mini th,table.mini td,table.mini tr{display:block;width:100%}
+  table.mini thead{display:none}
+  table.mini tr{margin-bottom:12px;border:1.5px solid color-mix(in srgb,var(--dot) 28%,#e4e9f0);border-radius:10px;background:#fff;overflow:hidden;box-shadow:0 1px 4px rgba(16,42,67,.05)}
+  table.mini td{border:none;border-bottom:1px solid var(--line);padding:10px 12px;text-align:left}
+  table.mini td:last-child{border-bottom:none}
+  table.mini td::before{content:attr(data-label);display:block;font-size:.74rem;font-weight:700;text-transform:uppercase;letter-spacing:.4px;color:var(--dot);margin-bottom:4px}
+}
+@media(max-width:640px){.hero h1{font-size:1.3rem;max-width:100%}nav.jump{display:none}.rgrid.c2,.rgrid.c3,.rgrid.c4,.quad-grid,.acro-grid{grid-template-columns:minmax(0,1fr)}.mindmap-host{height:440px}}
+</style></head><body>
+<div id="progress"></div>
+<header class="top"><div class="top-in">
+  <span class="badge">MODUL 4</span>
+  <a class="homebtn" href="index.html" title="Kembali ke daftar modul"><span style="font-size:1rem;line-height:1">&#8962;</span> Daftar Modul</a>
+  <span class="top-title">Manajemen Sumber Daya Manusia · EKMA5207</span>
+  <nav class="jump"><a href="#konsep">Konsep</a><a href="#peta">Peta Konsep</a><a href="#kb1">KB1</a><a href="#kb2">KB2</a><a href="#kb3">KB3</a><a href="#glosarium">Glosarium</a></nav>
+</div></header>
+
+<div class="wrap">
+  <section class="hero"><div class="eyebrow">Ringkasan Belajar · EKMA5207 Edisi 3</div>
+  <h1>Manajemen Kinerja dan Pengembangan Karier</h1>
+  <div class="meta"><span>⏱️ ±35–40 menit</span><span>📚 3 bagian (KB)</span><span>✍️ Prof. Dr. Mutiara Sibarani Panggabean, S.E., M.E.</span></div></section>
+
+  <p class="section-sub" style="margin-top:22px">Modul ini membahas dua pilar yang saling mengunci dalam pengembangan SDM: bagaimana organisasi mendefinisikan, mengukur, dan mengarahkan kinerja karyawan secara adil agar selaras dengan strategi perusahaan, lalu bagaimana hasil kinerja tersebut dijadikan pijakan bagi perencanaan dan pengembangan karier yang menumbuhkan komitmen jangka panjang.</p>
+  <p class="offline-note">ℹ️ Peta konsep, kartu penjelasan interaktif, tabel responsif, dan daftar cek konsep berjalan penuh tanpa internet. Koneksi internet hanya diperlukan untuk merender persamaan matematika (MathJax).</p>
+
+  <!-- PENDAHULUAN MODUL (STANDAR MODUL 1) -->
+  <div class="card">
+    <div class="abc" style="margin-top:0"><span class="ltr">★</span><h4>Pendahuluan Modul — Mengapa Kinerja dan Karier Tidak Terpisahkan?</h4></div>
+    <p>Kinerja dan karier merupakan dua konsep yang saling bergantung secara timbal balik: <b>tidak akan ada karier tanpa kinerja, dan kinerja akan menurun jika di dalam organisasi tidak ada peluang karier</b> (hal. 4.3). Hubungan timbal balik ini menuntut tanggung jawab aktif dari dua sisi sekaligus:</p>
+    <ul class="exp">
+      <li><b>Dari Sisi Karyawan — Kinerja Kontekstual <span class="en">(Contextual Performance)</span>:</b> Karyawan harus berupaya agar kinerjanya tidak sekadar memenuhi standar minimal, melainkan mencapai kinerja yang melebihi harapan (kinerja kontekstual) sehingga terpilih memperoleh kesempatan mengembangkan karier.</li>
+      <li><b>Dari Sisi Pengusaha / Organisasi:</b> Perusahaan berkewajiban menciptakan sistem penilaian yang objektif dan menyediakan jalur pertumbuhan agar karyawan yang berprestasi sungguh-sungguh memperoleh peluang mengembangkan kariernya di dalam organisasi.</li>
+    </ul>
+    <div class="flow"><b>Alur logis Modul 4:</b> <b>KB 1</b> meletakkan kerangka makro manajemen kinerja (keterkaitan definisi–penilaian–umpan balik, faktor penentu, 3 tujuan, dan 5 kriteria efektivitas) → <b>KB 2</b> membedah mekanisme teknis penilaian prestasi kerja (4 tahap, 5 pendekatan pengukuran, 5 sumber informasi/360°, bias penilai, umpan balik, karyawan marjinal, dan kepatuhan hukum) → <b>KB 3</b> mengarahkan hasil penilaian tersebut ke perencanaan, pengembangan karier, keputusan promosi/transfer, dan kontrak psikologis baru.</div>
+  </div>
+
+  <!-- KONSEP PENTING -->
+  <h2 class="section" id="konsep"><span class="dot"></span>Konsep Penting yang Harus Dikuasai</h2>
+  <div class="card"><div class="cl-head"><span class="count"><span id="doneCount">0</span>/<span id="totalCount">0</span> dikuasai</span><button class="btn-reset" id="resetBtn">Reset centang</button></div>
+  <ul class="concepts" id="conceptList">
+    <li><input type="checkbox"><span><span class="ct">Keterkaitan Kinerja–Karier &amp; Kinerja Kontekstual</span><span class="cd">Tidak ada karier tanpa kinerja dan kinerja merosot tanpa karier; kinerja kontekstual melampaui harapan untuk membuka peluang karier.</span></span></li>
+    <li><input type="checkbox"><span><span class="ct">Integrasi 3 Kegiatan Manajemen Kinerja (Noe 2006; Mondy 2010)</span><span class="cd">Mendefinisikan kinerja, mengukur/menilai kinerja secara formal, dan memberi umpan balik agar output individu/tim selaras tujuan organisasi.</span></span></li>
+    <li><input type="checkbox"><span><span class="ct">Model Penentu Kinerja Organisasi (Gambar 4.1) &amp; PPES</span><span class="cd">Atribut individu diubah menjadi hasil objektif lewat perilaku yang dipengaruhi strategi organisasi dan hambatan situasional (budaya, norma kelompok, ekonomi).</span></span></li>
+    <li><input type="checkbox"><span><span class="ct">3 Tujuan Umum Manajemen Kinerja (Gambar 4.2)</span><span class="cd">Tujuan stratejik (penyelarasan tujuan &amp; budaya), administratif (gaji, promosi, retensi, PHK), dan pengembangan (melacak penyebab penyimpangan).</span></span></li>
+    <li><input type="checkbox"><span><span class="ct">5 Kriteria Efektivitas Sistem Kinerja (Gambar 4.3 · Noe dkk., 2006)</span><span class="cd">Kesesuaian strategis, keabsahan/validitas isi (bebas deficient &amp; contaminated), keandalan (interrater &amp; konsistensi), penerimaan, dan kekhususan (specificity).</span></span></li>
+    <li><input type="checkbox"><span><span class="ct">3 Dimensi Keadilan dalam Penerimaan Penilaian</span><span class="cd">Keadilan prosedural (partisipasi &amp; konsistensi), keadilan antarpribadi/interaksional (hormat, lengkap, tepat waktu), dan keadilan hasil/distributif.</span></span></li>
+    <li><input type="checkbox"><span><span class="ct">4 Tahap Penilaian Prestasi, 5 Hambatan &amp; 13 Tip Pelaksanaan</span><span class="cd">Identifikasi → Observasi → Pengukuran → Pengembangan; alasan manajer enggan menilai (defensif/hostility) serta 13 syarat sistem yang efektif.</span></span></li>
+    <li><input type="checkbox"><span><span class="ct">5 Pendekatan Pengukuran Kinerja</span><span class="cd">Komparatif (ranking, forced distribution, berpasangan), Atribut (grafis/campuran), Perilaku (critical incidents, BARS, BOS, OBM, pusat penilaian), Hasil (MBO, ProMES), dan Kualitas (TQM).</span></span></li>
+    <li><input type="checkbox"><span><span class="ct">Kekhasan Pendekatan Kualitas (TQM) &amp; 5 Alat Statistiknya</span><span class="cd">Menilai orang + sistem, memisahkan penilaian dari kompensasi (contoh: Ensoniq), memakai analisis arus-proses, sebab-akibat, Pareto, peta kendali, histogram/scattergram.</span></span></li>
+    <li><input type="checkbox"><span><span class="ct">5 Sumber Informasi Kinerja (Gambar 4.4) &amp; Penilaian 360 Derajat</span><span class="cd">Manajer, rekan kerja (Perusahaan Peralatan Digital), bawahan (wajib anonim &amp; khusus pengembangan), diri sendiri (rentan inflasi), dan pelanggan.</span></span></li>
+    <li><input type="checkbox"><span><span class="ct">4 Kelompok Kesalahan Penilai (Gambar 4.5), Pelatihan &amp; Politik Penilaian</span><span class="cd">Serupa dengan saya, pertentangan (contrast), penyebaran (toleransi, keketatan, pemusatan), efek Halo &amp; Horn; diatasi lewat pelatihan kesalahan/kerangka acuan dan 9 langkah antipolitik.</span></span></li>
+    <li><input type="checkbox"><span><span class="ct">Umpan Balik Efektif, Karyawan Marjinal, 6 Syarat Hukum &amp; Teknologi</span><span class="cd">Umpan balik harian berbasis pemecahan masalah; diagnosis karyawan marjinal; 6 karakteristik tahan gugatan; database pemantauan elektronik.</span></span></li>
+    <li><input type="checkbox"><span><span class="ct">4 Konsep Karier &amp; Peran 3 Pihak dalam Pengembangan Karier</span><span class="cd">Jalur karier, tujuan karier, perencanaan karier (termasuk non-promosi), dan pengembangan karier; pembagian peran karyawan, manajer, dan organisasi.</span></span></li>
+    <li><input type="checkbox"><span><span class="ct">8 Pedoman Manajemen Karier (Kejutan Kenyataan &amp; Efek Pygmalion)</span><span class="cd">Pra-tinjauan jabatan realistik, jabatan awal menantang, efek Pygmalion, rotasi lintas fungsi, penilaian berorientasi karier, lokakarya, dan mentoring.</span></span></li>
+    <li><input type="checkbox"><span><span class="ct">4 Keputusan Promosi, Penanganan Transfer &amp; Kontrak Psikologis Baru</span><span class="cd">Senioritas vs kompetensi, ramalan potensi masa depan, proses formal (job posting) vs informal, arah vertikal/horizontal, transfer, dan kontrak psikologis modern.</span></span></li>
+  </ul></div>
+
+  <!-- PETA KONSEP -->
+  <h2 class="section" id="peta"><span class="dot"></span>Peta Konsep (Mind Map)</h2>
+  <div class="card"><div class="mm-toolbar"><button class="mm-btn" id="mmExpand">Perluas semua</button><button class="mm-btn" id="mmCollapse">Ciutkan</button><span style="font-size:.76rem;color:var(--muted)">Klik simpul (+) atau (–) untuk membuka/menutup cabang · Gulir untuk menggeser</span></div><div class="mindmap-host" id="mindmap"></div></div>
+
+  <!-- ==================== KB 1 ==================== -->
+  <h2 class="section" id="kb1"><span class="dot" style="background:var(--kb1)"></span>KB 1 — Manajemen Kinerja</h2>
+  <div class="card kb1b"><span class="kb-tag kb1t">KB 1 · Hal. 4.5–4.13</span>
+    <p class="lead">Daya saing organisasi sangat ditentukan oleh seberapa efektif kegiatan dan hasil kerja karyawan diselaraskan dengan tujuan perusahaan. Di sinilah <span class="term">manajemen kinerja <span class="en">(performance management)</span></span> berperan jauh lebih luas daripada sekadar mengisi formulir penilaian tahunan.</p>
+
+    <div class="acro-box"><span class="acro-title">📖 Kamus Konteks Singkatan &amp; Akronim KB 1</span>
+      <ul class="acro-grid">
+        <li><b>PPES</b>: <i>Performance Planning and Evaluation Systems</i> — sistem perencanaan &amp; evaluasi yang mengaitkan target awal periode dengan strategi organisasi.</li>
+        <li><b>PHK</b>: Pemutusan Hubungan Kerja — salah satu keputusan administratif yang bersandar pada hasil manajemen kinerja.</li>
+        <li><b>IPK</b>: Indeks Prestasi Kumulatif — dipakai buku (latihan) sebagai ilustrasi ukuran kinerja yang bisa <i>deficient</i> sekaligus <i>contaminated</i>.</li>
+        <li><b>SDM</b>: Sumber Daya Manusia — penggerak utama kinerja yang efektivitasnya dibentuk oleh atribut, perilaku, dan konteks situasional.</li>
+      </ul>
+    </div>
+
+    <!-- KB1 A -->
+    <div class="abc"><span class="ltr">A</span><h4>Keterkaitan Manajemen Kinerja, Penilaian Kinerja, dan Umpan Balik Kinerja</h4></div>
+    <p>Menurut <b>Noe (2006)</b>, <span class="term">manajemen kinerja</span> adalah proses untuk menjamin agar kegiatan karyawan dan hasil-hasilnya <span class="en">(outputs)</span> sesuai dengan berbagai tujuan organisasi. <b>Mondy (2010)</b> menambahkan bahwa manajemen kinerja adalah proses berorientasi tujuan untuk memastikan proses-proses keorganisasian berjalan demi memaksimalkan kinerja karyawan, tim, dan organisasi secara keseluruhan. Di dalamnya terdapat tiga kegiatan yang saling terhubung:</p>
+    <div class="diagram-box">
+      <div class="flowchart">
+        <span class="fc-node">1. Mendefinisikan Kinerja<br><small style="font-weight:400">Menetapkan standar &amp; target selaras strategi</small></span>
+        <span class="fc-arrow">→</span>
+        <span class="fc-node">2. Penilaian Kinerja<br><small style="font-weight:400">Proses formal mengukur mutu pelaksanaan kerja</small></span>
+        <span class="fc-arrow">→</span>
+        <span class="fc-node" style="background:var(--dot);color:#fff">3. Umpan Balik Kinerja<br><small style="font-weight:400;opacity:.92">Menyampaikan informasi efektivitas &amp; perbaikan</small></span>
+      </div>
+      <div class="diagram-cap">Tiga Komponen Terpadu dalam Siklus Manajemen Kinerja (Noe, 2006)</div>
+    </div>
+    <p>Dengan demikian, <b>penilaian kinerja</b> (proses formal organisasi memperoleh informasi mengenai seberapa baik seorang karyawan melakukan pekerjaannya) dan <b>umpan balik kinerja</b> (proses menyediakan informasi kepada karyawan mengenai efektivitas kinerjanya) bukanlah aktivitas terpisah, melainkan subsistem inti dari manajemen kinerja.</p>
+
+    <div class="flow">Setelah memahami bahwa penilaian dan umpan balik merupakan bagian dari manajemen kinerja, <b>Bagian B</b> menguraikan faktor-faktor apa saja yang sebenarnya menentukan tinggi-rendahnya kinerja seorang individu.</div>
+
+    <!-- KB1 B -->
+    <div class="abc"><span class="ltr">B</span><h4>Faktor-Faktor Penentu Kinerja Individu</h4></div>
+    <p>Riset MSDM dan psikologi organisasi industri bertujuan mengembangkan metode pengukuran kinerja yang andal <span class="en">(reliabel)</span> dan sah <span class="en">(valid)</span>. Menurut <b>Robbins &amp; Judge (2009)</b>, prestasi kerja karyawan ditentukan oleh interaksi tiga unsur: <b>motivasi</b> (kemauan), <b>kemampuan</b> (fisik, pengetahuan, keterampilan), dan <b>kesempatan</b> (baik yang diberikan pengusaha maupun yang dipengaruhi kondisi lingkungan seperti perekonomian). <b>Noe dkk. (2006)</b> memodelkan transformasi atribut individu menjadi hasil objektif dalam <b>Gambar 4.1</b>:</p>
+    <div class="diagram-box">
+      <div style="margin-bottom:8px"><span class="fc-node" style="display:inline-block">Strategi Organisasi <small style="font-weight:400">(Tujuan jangka panjang/pendek &amp; nilai perusahaan)</small></span></div>
+      <div class="fc-arrow" style="margin:2px 0">↓</div>
+      <div class="flowchart" style="margin:6px 0">
+        <span class="fc-node">Atribut Individual<br><small style="font-weight:400">Keterampilan, kemampuan, pengetahuan</small></span>
+        <span class="fc-arrow">→</span>
+        <span class="fc-node">Perilaku Individu<br><small style="font-weight:400">Aksi nyata di tempat kerja</small></span>
+        <span class="fc-arrow">→</span>
+        <span class="fc-node" style="background:var(--dot);color:#fff">Hasil Objektif<br><small style="font-weight:400;opacity:.92">Mis. angka penjualan / output</small></span>
+      </div>
+      <div class="fc-arrow" style="margin:2px 0">↑</div>
+      <div style="margin-top:8px"><span class="fc-node" style="display:inline-block">Hambatan Situasional <small style="font-weight:400">(Budaya organisasi, norma kelompok &amp; kondisi makroekonomi)</small></span></div>
+      <div class="diagram-cap">Reproduksi Gambar 4.1 — Model Manajemen Kinerja dari Sebuah Organisasi (Noe dkk., 2006)</div>
+    </div>
+    <ul class="exp">
+      <li><b>Transformasi Atribut ke Hasil melalui Perilaku:</b> Seorang tenaga penjual yang memiliki pengetahuan produk mendalam dan keterampilan antarpribadi tinggi tidak otomatis meraih penjualan besar; atribut tersebut hanya berubah menjadi hasil objektif apabila diwujudkan dalam perilaku penjualan yang tepat.</li>
+      <li><b>Sistem Perencanaan &amp; Evaluasi Kinerja <span class="en">(Performance Planning and Evaluation Systems / PPES)</span>:</b> Sistem formal yang mengaitkan evaluasi dengan strategi perusahaan dengan menetapkan tipe dan tingkat kinerja yang diharapkan pada awal periode, lalu menilai seberapa dekat hasil aktual terhadap rencana pada akhir periode.</li>
+      <li><b>Dampak Hambatan Situasional:</b> Budaya perusahaan, tekanan norma kelompok kerja (contoh di buku: <b>David</b> enggan menampilkan perilaku kerja terbaik karena terhambat tekanan norma kelompoknya), serta kondisi ekonomi makro (tingkat pengangguran tinggi, inflasi, melemahnya daya beli) dapat membatasi hasil objektif meskipun kemampuan karyawan tinggi.</li>
+    </ul>
+
+    <div class="flow">Setelah memetakan bagaimana atribut, perilaku, strategi, dan hambatan situasional membentuk kinerja, <b>Bagian C</b> menjawab pertanyaan: <b>untuk tujuan apa</b> informasi kinerja dimanfaatkan oleh organisasi?</div>
+
+    <!-- KB1 C -->
+    <div class="abc"><span class="ltr">C</span><h4>Tujuan Umum Manajemen Kinerja (Gambar 4.2)</h4></div>
+    <p>Organisasi menyelenggarakan manajemen kinerja untuk mencapai <b>tiga tujuan umum</b> yang saling melengkapi:</p>
+    <ol class="book">
+      <li><b>Tujuan Stratejik <span class="en">(Strategic Purpose)</span>:</b> Mengaitkan kegiatan karyawan dengan tujuan organisasi melalui penetapan hasil, perilaku, dan karakteristik yang diperlukan untuk mengeksekusi strategi. <i>Contoh buku:</i> bila organisasi mendorong kesetaraan kesempatan kerja, sistem penilaian harus menghargai manajer yang berhasil mempekerjakan dan mempromosikan perempuan serta kelompok minoritas.</li>
+      <li><b>Tujuan Administratif <span class="en">(Administrative Purpose)</span>:</b> (a) Menjadi dasar keputusan operasional seperti penentuan gaji/upah, promosi, mempertahankan karyawan, pemberhentian/PHK, dan pengakuan terhadap kinerja individu; (b) namun dalam praktiknya, banyak manajer memandang penilaian sebagai beban administratif dan merasa tidak nyaman memberi umpan balik negatif sehingga cenderung memberi peringkat tinggi atau seragam bagi semua karyawan.</li>
+      <li><b>Tujuan Pengembangan <span class="en">(Developmental Purpose)</span>:</b> (a) Mengembangkan karyawan yang efektif sekaligus memperbaiki karyawan yang belum mencapai standar; (b) sistem manajemen kinerja yang ideal tidak berhenti pada mengidentifikasi penyimpangan kinerja, tetapi juga melacak <b>penyebab penyimpangan</b> tersebut (apakah kurang pelatihan, kurang motivasi, atau hambatan sistem).</li>
+    </ol>
+
+    <div class="flow">Agar ketiga tujuan tersebut benar-benar tercapai tanpa bias atau penolakan, <b>Bagian D</b> merumuskan lima tolok ukur untuk mengevaluasi efektivitas sistem manajemen kinerja.</div>
+
+    <!-- KB1 D -->
+    <div class="abc"><span class="ltr">D</span><h4>Kriteria Manajemen Kinerja yang Efektif (Gambar 4.3 — Noe dkk., 2006)</h4></div>
+    <p>Noe dkk. (2006) merumuskan <b>lima kriteria efektivitas sistem manajemen kinerja</b> yang digambarkan sebagai bintang bersudut lima. Klik setiap kartu untuk menelaah definisi dan contoh konkretnya di buku:</p>
+    <div class="rgrid c3" data-revealgroup>
+      <div class="rcell active" data-reveal data-detail="<b>1. Kesesuaian Strategis (Strategic Congruence):</b> Sejauh mana sistem memunculkan prestasi kerja yang konsisten dengan strategi, tujuan, dan budaya organisasi. <i>Contoh:</i> perusahaan yang bersaing lewat layanan pelanggan prima wajib memasukkan mutu pelayanan pelanggan sebagai dimensi penilaian utama; lembaga riset universitas harus menekankan publikasi penelitian bagi guru besarnya."><span class="stepnum">1</span><span><span class="rt">Kesesuaian Strategis</span><span class="rp">Selaras strategi &amp; budaya</span></span></div>
+      <div class="rcell" data-reveal data-detail="<b>2. Keabsahan / Validitas Isi (Content Validity):</b> Ukuran harus menilai seluruh aspek kinerja yang relevan dan <i>hanya</i> aspek terkait pekerjaan. Hindari dua cacat utama: <b>deficient</b> (kekurangan ukuran—mis. dosen hanya dinilai dari penelitian tanpa pengajaran, pengabdian, &amp; bimbingan skripsi/tesis/disertasi; atau IPK yang abai pada kepemimpinan, organisasi kampus, &amp; magang) dan <b>contaminated</b> (ukuran tercemar—mis. menilai manajer dari daya tarik fisik; atau IPK yang mencakup mata kuliah tak relevan dengan pekerjaan)."><span class="stepnum">2</span><span><span class="rt">Keabsahan (Validity)</span><span class="rp">Bebas deficient &amp; contaminated</span></span></div>
+      <div class="rcell" data-reveal data-detail="<b>3. Keandalan (Reliability):</b> Konsistensi ukuran kinerja yang tidak berubah-ubah secara acak. Mencakup <i>interrater reliability</i> (konsistensi antarpenilai—mis. <b>Prof. Wagner</b> sama-sama dinilai di atas rata-rata oleh mahasiswa maupun rekan sejawat), konsistensi internal antar-item, dan stabilitas hasil uji-ulang sepanjang waktu."><span class="stepnum">3</span><span><span class="rt">Keandalan (Reliability)</span><span class="rp">Konsisten antarpenilai &amp; waktu</span></span></div>
+      <div class="rcell" data-reveal data-detail="<b>4. Penerimaan (Acceptability):</b> Sejauh mana manajer dan karyawan bersedia menerima dan menggunakan sistem penilaian. Sistem yang secara teknis canggih tetap gagal jika dianggap tidak adil; penerimaan ditopang oleh tiga dimensi keadilan: <b>prosedural</b>, <b>antarpribadi (interaksional)</b>, dan <b>hasil (distributif)</b>."><span class="stepnum">4</span><span><span class="rt">Penerimaan (Acceptability)</span><span class="rp">Berbasis 3 dimensi keadilan</span></span></div>
+      <div class="rcell" data-reveal data-detail="<b>5. Kekhususan (Specificity):</b> Sejauh mana sistem memberi petunjuk konkret mengenai apa yang diharapkan dari karyawan dan bagaimana mencapainya. <i>Contoh buku:</i> <b>Farida</b> (tenaga penjual) diberi standar khusus: menangani 25 telepon kurang ramah per hari, menghubungi tiap klien setiap 2 minggu, dan mencapai penjualan minimal Rp300 juta/bulan."><span class="stepnum">5</span><span><span class="rt">Kekhususan (Specificity)</span><span class="rp">Target konkret &amp; terukur</span></span></div>
+    </div>
+    <div class="rdetail" data-revealdetail><b>1. Kesesuaian Strategis (Strategic Congruence):</b> Sejauh mana sistem memunculkan prestasi kerja yang konsisten dengan strategi, tujuan, dan budaya organisasi. <i>Contoh:</i> perusahaan yang bersaing lewat layanan pelanggan prima wajib memasukkan mutu pelayanan pelanggan sebagai dimensi penilaian utama; lembaga riset universitas harus menekankan publikasi penelitian bagi guru besarnya.</div>
+
+    <div class="numh">Tiga Dimensi Keadilan Penopang Kriteria Penerimaan</div>
+    <div class="table-wrap">
+      <table class="mini">
+        <thead><tr><th style="width:30%">Dimensi Keadilan</th><th>Indikator Terpenuhinya Keadilan Menurut Buku</th></tr></thead>
+        <tbody>
+          <tr><td data-label="Dimensi Keadilan"><b>1. Keadilan Prosedural</b> <span class="en">(Procedural Justice)</span></td><td data-label="Indikator Terpenuhinya Keadilan">(a) Manajer dan karyawan diberi kesempatan berpartisipasi dalam mengembangkan sistem; (b) standar diterapkan secara konsisten bagi seluruh karyawan; (c) upaya sistematis meminimalkan kesalahan pemeringkatan dan bias.</td></tr>
+          <tr><td data-label="Dimensi Keadilan"><b>2. Keadilan Antarpribadi</b> <span class="en">(Interpersonal / Interactional)</span></td><td data-label="Indikator Terpenuhinya Keadilan">(a) Umpan balik disampaikan secara lengkap dan tepat waktu; (b) karyawan diberi ruang untuk menanggapi atau mempertanyakan hasil evaluasi; (c) penyampaian berlangsung dalam suasana hormat, sopan, dan membuat nyaman.</td></tr>
+          <tr><td data-label="Dimensi Keadilan"><b>3. Keadilan Hasil</b> <span class="en">(Outcome / Distributive)</span></td><td data-label="Indikator Terpenuhinya Keadilan">(a) Harapan mengenai evaluasi dan standar kinerja dikomunikasikan secara jelas; (b) harapan mengenai timbal jasa atau penghargaan yang dikaitkan dengan kinerja juga dikomunikasikan secara transparan.</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="casebox"><span class="ctitle">Kasus Buku KB 1 (Hal. 4.12–4.13) · Desentralisasi Fungsi SDM &amp; Pusat Penilaian di Bank Global</span>
+      <b>Bank Global</b> beroperasi di 3 negara dan kota-kota besar dunia (New York, London, Hongkong, Tokyo, serta 3 kota di Switzerland). Karena perbedaan budaya dan hukum, tiap negara memiliki departemen SDM lokal yang melapor ke manajer cabang, sementara kantor pusat SDM di New York memegang wewenang fungsional untuk keseragaman prosedur dan koordinasi kebijakan. Bank kerap mempekerjakan kembali manajer senior demi menjaga relasi dengan pelanggan istimewa dan investor besar, serta memakai <b>pusat penilaian <span class="en">(assessment center)</span></b> sejak tahap perencanaan. Tantangan utamanya adalah merancang komite perencanaan dan faktor penilaian bertaraf internasional yang adil lintas budaya, mengakomodasi keberagaman pekerja domestik–internasional, sekaligus mengendalikan biaya pendirian pusat penilaian global.
+    </div>
+
+    <div class="flow">Dengan memahami kerangka makro, tujuan, dan lima kriteria efektivitas di KB 1, kita masuk ke jantung operasionalnya di <b>KB 2: Penilaian Prestasi Kerja</b>—membedah tahapan, lima pendekatan pengukuran, sumber penilai 360°, bias, umpan balik, hingga perlindungan hukum.</div>
+  </div>
+
+  <!-- ==================== KB 2 ==================== -->
+  <h2 class="section" id="kb2"><span class="dot" style="background:var(--kb2)"></span>KB 2 — Penilaian Prestasi Kerja</h2>
+  <div class="card kb2b"><span class="kb-tag kb2t">KB 2 · Hal. 4.14–4.34</span>
+    <p class="lead">Penilaian prestasi kerja <span class="en">(performance appraisal)</span> adalah proses di mana pimpinan menilai pelaksanaan pekerjaan karyawannya—mencakup <i>job definition</i>, <i>performance definition</i>, dan <i>feedback</i>. Ketepatan memilih metode pengukuran, sumber penilai, dan teknik umpan balik menentukan apakah penilaian mendorong perbaikan atau justru memicu penolakan dan gugatan hukum.</p>
+
+    <div class="acro-box"><span class="acro-title">📖 Kamus Konteks Singkatan &amp; Akronim KB 2</span>
+      <ul class="acro-grid">
+        <li><b>BARS</b>: <i>Behaviorally Anchored Rating Scales</i> — skala penilaian perilaku yang menggunakan jangkar contoh perilaku konkret pada tiap skor.</li>
+        <li><b>BOS</b>: <i>Behavioral Observation Scales</i> — variasi BARS yang menilai seberapa sering (frekuensi) perilaku spesifik muncul.</li>
+        <li><b>OBM</b>: <i>Organizational Behavior Modification</i> — pendekatan 4 tahap modifikasi perilaku organisasi lewat pengukuran, umpan balik, dan penguatan.</li>
+        <li><b>MBO</b>: <i>Management by Objectives</i> — pendekatan berbasis hasil lewat penetapan sasaran khusus &amp; menantang bersama atasan–bawahan.</li>
+        <li><b>ProMES</b>: <i>Productivity Measurement and Evaluation System</i> — sistem pengukuran produktivitas 4 langkah berbasis indikator dan kontingensi kinerja.</li>
+        <li><b>TQM</b>: <i>Total Quality Management</i> — pendekatan kualitas yang menilai orang sekaligus sistem dan memisahkan penilaian dari kompensasi.</li>
+        <li><b>360°</b>: <i>360 Degree Appraisals</i> — penilaian multisumber (manajer, rekan kerja, bawahan, diri sendiri, dan pelanggan).</li>
+        <li><b>BUMN</b>: Badan Usaha Milik Negara — konteks kasus kegagalan penerapan metode penilaian ganda di akhir KB 2.</li>
+      </ul>
+    </div>
+
+    <!-- KB2 A -->
+    <div class="abc"><span class="ltr">A</span><h4>Arti Pentingnya Penilaian Prestasi Kerja</h4></div>
+
+    <div class="numh">1. Pengertian &amp; 4 Tahap Penilaian Kinerja</div>
+    <p>Agar penilaian berjalan objektif dan bermakna, prosesnya melewati empat tahapan berurutan:</p>
+    <div class="diagram-box">
+      <div class="flowchart">
+        <span class="fc-node">1. Identifikasi<br><small style="font-weight:400">Analisis pekerjaan &amp; skala ukur</small></span>
+        <span class="fc-arrow">→</span>
+        <span class="fc-node">2. Observasi<br><small style="font-weight:400">Pengamatan cermat &amp; rutin</small></span>
+        <span class="fc-arrow">→</span>
+        <span class="fc-node">3. Pengukuran<br><small style="font-weight:400">Pemberian nilai prestasi</small></span>
+        <span class="fc-arrow">→</span>
+        <span class="fc-node" style="background:var(--dot);color:#fff">4. Pengembangan<br><small style="font-weight:400;opacity:.92">Tindak lanjut &amp; perbaikan celah</small></span>
+      </div>
+      <div class="diagram-cap">Empat Tahap Sistematis Penilaian Prestasi Kerja</div>
+    </div>
+
+    <div class="numh">2. Tujuan Penilaian Prestasi Kerja</div>
+    <p>Berdasarkan kesepakatan para peneliti (<b>DeVries et al. 1981; Murphy &amp; Cleveland 1991; Sauser 1990; Thomas &amp; Bretz Jr. 1994</b>), penilaian prestasi kerja secara operasional digunakan untuk lima hal: (1) menjamin kenaikan gaji berbasis kinerja, (2) memperbaiki kinerja, (3) dasar pemilihan, penugasan, dan pemberhentian, (4) mengenali karyawan yang berpotensi maju, serta (5) perencanaan kebutuhan karyawan.</p>
+
+    <div class="numh">3. Mengapa Penilaian Prestasi Sering Tidak Dilakukan?</div>
+    <ul class="let">
+      <li><b>Minim rasa memiliki:</b> Penilai tidak dilibatkan dalam perancangan sistem, tidak memperoleh pelatihan memadai, dan masukannya diabaikan.</li>
+      <li><b>Keengganan memberi nilai buruk:</b> Pimpinan sungkan menilai rendah bawahan yang disukai secara pribadi, sementara bawahan yang dinilai buruk kerap bereaksi defensif dan memusuhi <span class="en">(hostility)</span>.</li>
+      <li><b>Konsekuensi karier yang berat:</b> Baik atasan maupun bawahan menyadari nilai buruk berdampak langsung pada masa depan karier karyawan.</li>
+      <li><b>Kesenjangan formal vs informal:</b> Hasil penilaian formal jarang dimanfaatkan secara konsisten untuk pemberian penghargaan, sedangkan penilaian buruk lebih sering muncul secara informal.</li>
+      <li><b>Cerminan kegagalan pimpinan:</b> Atasan khawatir memberi nilai buruk akan dianggap mencerminkan kegagalannya sendiri dalam memilih dan mengembangkan bawahan.</li>
+    </ul>
+
+    <div class="numh">4. Tip-Tip Pelaksanaan (13 Syarat) &amp; Temuan Riset Keadilan</div>
+    <p>Agar sistem penilaian berjalan efektif dan diterima, buku merangkum <b>13 tip pelaksanaan (a–m)</b>: (a) sesuai kebutuhan spesifik organisasi, (b) memakai faktor objektif dan konkret, (c) bebas dari bias, (d) prosedur seragam bagi semua, (e) mudah digunakan dan dipahami, (f) hasilnya benar-benar dipakai mengambil keputusan, (g) tersedia mekanisme peninjauan ulang, (h) dapat diterima pengguna, (i) ekonomis, (j) terdokumentasi rapi, (k) penilai terlatih dan berkualitas, (l) ada <i>monitoring</i> dan evaluasi berkala, serta (m) memperoleh dukungan penuh dan jelas dari manajemen puncak.</p>
+    <ul class="exp">
+      <li><b>Keadilan Distributif (Greenberg 1986; Korgaard &amp; Roberson 1995):</b> Diukur dari kewajaran nilai sebagai dasar promosi dan kenaikan gaji, penerimaan terhadap cara manajer mengukur, serta kesesuaian nilai dengan kinerja masa lampau.</li>
+      <li><b>Keadilan Prosedural (Greenberg 1986; Thomas &amp; Bretz Jr. 1994):</b> Diukur melalui pengumpulan <i>input</i> sebelum penilaian, komunikasi dua arah saat sesi wawancara, hak menyanggah nilai, pemahaman penilai atas tugas karyawan, serta konsistensi penerapan standar.</li>
+      <li><b>Indikator Gabungan Kepuasan Penilaian (Landy dkk. 1978, 1980; Tang &amp; Sarsfield-Baldwin 1996):</b> Mencakup frekuensi penilaian yang memadai, kejelasan tujuan, kesepakatan atasan–bawahan mengenai tugas, keterlibatan atasan menyusun rencana perbaikan kelemahan, keberadaan program formal, dan ruang bagi bawahan mengungkapkan perasaan.</li>
+    </ul>
+
+    <div class="flow">Setelah memahami tahapan, hambatan, dan prinsip keadilan penilaian, <b>Bagian B</b> membedah lima pendekatan utama beserta teknik-teknik konkret yang dipakai organisasi untuk mengukur kinerja.</div>
+
+    <!-- KB2 B -->
+    <div class="abc"><span class="ltr">B</span><h4>Berbagai Pendekatan dan Metode untuk Mengukur Kinerja</h4></div>
+    <p>Buku mengelompokkan metode pengukuran kinerja ke dalam <b>lima pendekatan utama</b>. Klik tiap kartu untuk menelaah metode spesifik, contoh buku, dan evaluasinya:</p>
+    <div class="rgrid c3" data-revealgroup>
+      <div class="rcell active" data-reveal data-detail="<b>1. Pendekatan Komparatif (The Comparative Approach):</b> Membandingkan kinerja satu karyawan terhadap karyawan lain dalam kelompok kerja.<br>• <i>Ranking:</i> pemeringkatan sederhana (terbaik → terburuk) &amp; pemeringkatan bergilir (<i>alternation ranking</i>: pilih terbaik, lalu terburuk, berulang hingga habis).<br>• <i>Forced Distribution:</i> mewajibkan penilai menempatkan persentase tertentu karyawan ke tiap kategori peringkat.<br>• <i>Perbandingan Berpasangan (Paired Comparison):</i> membandingkan tiap pasang karyawan, memberi skor 1 bagi yang lebih unggul, lalu menjumlahkan skor.<br><b>Evaluasi:</b> Sangat efektif membedakan kinerja &amp; menekan bias lunak/terpusat/ketat, tetapi lemah kaitannya dengan strategi, kurang valid/reliabel jika dimensi samar, dan tidak spesifik untuk umpan balik."><span class="stepnum">1</span><span><span class="rt">Komparatif</span><span class="rp">Ranking, forced distribution, berpasangan</span></span></div>
+      <div class="rcell" data-reveal data-detail="<b>2. Pendekatan Atribut (The Attribute Approach):</b> Mengukur sejauh mana individu memiliki ciri/karakteristik tertentu yang dianggap mendukung keberhasilan perusahaan.<br>• <i>Skala Pemeringkatan Grafis (Graphic Rating Scales):</i> menilai serangkaian sifat/ciri pada kontinum angka—mudah dibuat dan dipakai luas, tetapi sering dikritik pengadilan karena subjektif.<br>• <i>Skala Campuran (Mixed-Standard Scales):</i> menyajikan pernyataan kinerja baik, rata-rata, dan buruk untuk tiap dimensi; penilai menentukan apakah karyawan berada di atas, setara, atau di bawah pernyataan.<br><b>Evaluasi:</b> Paling populer dan mudah digeneralisasi lintas jabatan, namun kesesuaian strategis, validitas, dan reliabilitasnya cenderung rendah serta kerap memicu pembelaan diri."><span class="stepnum">2</span><span><span class="rt">Atribut</span><span class="rp">Skala grafis &amp; skala campuran</span></span></div>
+      <div class="rcell" data-reveal data-detail="<b>3. Pendekatan Perilaku (The Behavioral Approach):</b> Mendefinisikan dan menilai perilaku spesifik yang harus ditunjukkan karyawan agar efektif.<br>• <i>Critical Incidents:</i> mencatat contoh khusus perilaku sangat efektif atau sangat tidak efektif (mis. absen rapat 11 Desember tanpa menunjuk pengganti).<br>• <i>BARS (Behaviorally Anchored Rating Scales):</i> mengaitkan skala numerik dengan jangkar perilaku nyata—reliabilitas antarpenilai tinggi namun mahal dikembangkan &amp; rentan bias ingatan.<br>• <i>BOS (Behavioral Observation Scales):</i> variasi BARS yang menilai <b>frekuensi</b> kemunculan perilaku spesifik; disukai karyawan tetapi menyita waktu &amp; daya ingat.<br>• <i>OBM (Organizational Behavior Modification):</i> 4 komponen—definisi perilaku kunci, pengukuran frekuensi, pemberitahuan kepada karyawan, serta umpan balik &amp; penguatan formal (mis. kepatuhan K3).<br>• <i>Pusat Penilaian (Assessment Center):</i> simulasi tugas manajerial (contoh buku: <b>The California Highway Patrol Academy</b>, 3,5 hari untuk rencana pengembangan karier)—valid &amp; reliabel namun mahal."><span class="stepnum">3</span><span><span class="rt">Perilaku</span><span class="rp">Critical incidents, BARS, BOS, OBM, pusat penilaian</span></span></div>
+      <div class="rcell" data-reveal data-detail="<b>4. Pendekatan Hasil (The Results Approach):</b> Berfokus pada sasaran dan output objektif terukur untuk menghilangkan subjektivitas.<br>• <i>MBO (Management by Objectives):</i> bertumpu pada 3 komponen—sasaran khusus &amp; menantang, ditetapkan secara partisipatif bersama atasan–bawahan, dan disertai umpan balik berkala; terbukti efektif bila didukung komitmen manajemen puncak.<br>• <i>ProMES (Productivity Measurement and Evaluation System):</i> berjalan dalam 4 langkah—(1) identifikasi sasaran organisasi, (2) staf mendefinisikan indikator kinerja, (3) penetapan kontingensi hubungan indikator dengan level kinerja, dan (4) pembangunan sistem umpan balik; menaikkan produktivitas tetapi butuh waktu lama untuk dibangun.<br><b>Evaluasi:</b> Sangat objektif dan selaras tujuan organisasi, namun rentan terkontaminasi faktor luar/defisien dan berisiko membuat karyawan hanya mengejar angka yang diukur."><span class="stepnum">4</span><span><span class="rt">Hasil</span><span class="rp">MBO &amp; ProMES</span></span></div>
+      <div class="rcell" data-reveal data-detail="<b>5. Pendekatan Kualitas (TQM):</b> Berkarakter <b>orientasi pelanggan</b> dan <b>pencegahan kesalahan</b>. Berbeda dari pendekatan tradisional, TQM menilai <b>orang sekaligus sistem</b>, melibatkan pelanggan internal &amp; eksternal, dan memisahkan penilaian dari kompensasi (contoh buku: <b>Perusahaan Ensoniq</b>, produsen alat musik elektronik ~200 karyawan).<br>• <i>Umpan balik subjektif:</i> dialog mengenai kerja sama tim, sikap, inisiatif, dan jalur karier.<br>• <i>Umpan balik objektif (statistik):</i> memanfaatkan 5 alat statistik mutu—analisis arus-proses, diagram sebab-akibat, bagan Pareto, peta kendali, serta histogram &amp; <i>scattergram</i>."><span class="stepnum">5</span><span><span class="rt">Kualitas (TQM)</span><span class="rp">Orang + sistem &amp; 5 alat statistik</span></span></div>
+    </div>
+    <div class="rdetail" data-revealdetail><b>1. Pendekatan Komparatif (The Comparative Approach):</b> Membandingkan kinerja satu karyawan terhadap karyawan lain dalam kelompok kerja.<br>• <i>Ranking:</i> pemeringkatan sederhana (terbaik → terburuk) &amp; pemeringkatan bergilir (<i>alternation ranking</i>: pilih terbaik, lalu terburuk, berulang hingga habis).<br>• <i>Forced Distribution:</i> mewajibkan penilai menempatkan persentase tertentu karyawan ke tiap kategori peringkat.<br>• <i>Perbandingan Berpasangan (Paired Comparison):</i> membandingkan tiap pasang karyawan, memberi skor 1 bagi yang lebih unggul, lalu menjumlahkan skor.<br><b>Evaluasi:</b> Sangat efektif membedakan kinerja &amp; menekan bias lunak/terpusat/ketat, tetapi lemah kaitannya dengan strategi, kurang valid/reliabel jika dimensi samar, dan tidak spesifik untuk umpan balik.</div>
+
+    <div class="numh">Lima Alat Statistik dalam Pendekatan Kualitas (TQM)</div>
+    <div class="table-wrap">
+      <table class="mini">
+        <thead><tr><th style="width:32%">Alat Statistik TQM</th><th>Fungsi Utama dalam Evaluasi Objektif</th></tr></thead>
+        <tbody>
+          <tr><td data-label="Alat Statistik TQM"><b>1. Analisis Arus-Proses</b> <span class="en">(Process-Flow Analysis)</span></td><td data-label="Fungsi Utama">Mengidentifikasi setiap tindakan dan keputusan berurutan yang diperlukan untuk menyelesaikan suatu pekerjaan guna menemukan titik pemborosan/kesalahan.</td></tr>
+          <tr><td data-label="Alat Statistik TQM"><b>2. Diagram Sebab-Akibat</b> <span class="en">(Cause-and-Effect)</span></td><td data-label="Fungsi Utama">Melacak rangkaian kejadian dan akar penyebab yang menghasilkan <i>outcomes</i> atau cacat yang tidak diinginkan.</td></tr>
+          <tr><td data-label="Alat Statistik TQM"><b>3. Bagan Pareto</b> <span class="en">(Pareto Chart)</span></td><td data-label="Fungsi Utama">Mengurutkan penyebab utama masalah dari yang paling penting/paling besar dampaknya hingga yang paling kecil agar perbaikan terfokus.</td></tr>
+          <tr><td data-label="Alat Statistik TQM"><b>4. Peta Kendali</b> <span class="en">(Control Chart)</span></td><td data-label="Fungsi Utama">Mengumpulkan data kinerja lintas waktu untuk memantau faktor penyumbang hasil, variasi sistem, dan tren kecenderungannya.</td></tr>
+          <tr><td data-label="Alat Statistik TQM"><b>5. Histogram &amp; <i>Scattergram</i></b></td><td data-label="Fungsi Utama">Histogram mengelompokkan distribusi data ke kategori kecil; <i>scattergram</i> memperlihatkan pola hubungan antara dua variabel.</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="flow">Setelah memilih pendekatan pengukuran yang tepat, pertanyaan kunci berikutnya adalah: <b>siapa</b> yang paling layak dan objektif menjadi penilai? <b>Bagian C</b> mengulas lima sumber informasi kinerja.</div>
+
+    <!-- KB2 C -->
+    <div class="abc"><span class="ltr">C</span><h4>Sumber-Sumber Informasi Kinerja (Gambar 4.4)</h4></div>
+    <p>Gambar 4.4 menempatkan karyawan di pusat lima sumber informasi dengan panah dua arah. Penggabungan kelima sumber tersebut melahirkan tren <span class="term">penilaian 360 derajat <span class="en">(360 degree appraisals)</span></span> agar sudut pandang evaluasi lebih utuh:</p>
+    <div class="table-wrap">
+      <table class="mini">
+        <thead><tr><th style="width:22%">Sumber Penilai</th><th style="width:39%">Keunggulan Utama</th><th>Keterbatasan &amp; Catatan Penggunaan</th></tr></thead>
+        <tbody>
+          <tr><td data-label="Sumber Penilai"><b>1. Para Manajer</b></td><td data-label="Keunggulan Utama">Paling sering digunakan; memahami pekerjaan, memiliki kesempatan mengamati, dan termotivasi menilai akurat karena bertanggung jawab atas unitnya.</td><td data-label="Keterbatasan &amp; Catatan">Terkadang tidak sempat mengamati langsung pekerjaan harian di lapangan atau rentan melakukan kesalahan penilaian.</td></tr>
+          <tr><td data-label="Sumber Penilai"><b>2. Rekan Kerja</b> <span class="en">(Peers)</span></td><td data-label="Keunggulan Utama">Sumber terbaik ketika supervisor tidak bisa mengamati langsung (contoh buku: <b>Perusahaan Peralatan Digital</b> memakai komite penilaian tim kerja).</td><td data-label="Keterbatasan &amp; Catatan">Berpotensi memicu bias persahabatan atau rasa tidak nyaman jika dipakai untuk keputusan administratif (gaji/promosi).</td></tr>
+          <tr><td data-label="Sumber Penilai"><b>3. Para Bawahan</b></td><td data-label="Keunggulan Utama">Sangat berharga untuk menilai efektivitas kepemimpinan dan cara manajer memperlakukan bawahannya.</td><td data-label="Keterbatasan &amp; Catatan">Paling tepat <b>hanya untuk tujuan pengembangan</b>; wajib bersifat anonim agar bawahan tidak takut dan manajer tidak sekadar mencari popularitas.</td></tr>
+          <tr><td data-label="Sumber Penilai"><b>4. Diri Sendiri</b></td><td data-label="Keunggulan Utama">Sangat efektif sebagai pembuka diskusi umpan balik agar karyawan merefleksikan kekuatan, kelemahan, dan rencana perbaikannya sendiri.</td><td data-label="Keterbatasan &amp; Catatan">Rentan <b>inflasi nilai</b> (melebih-lebihkan penilaian diri), khususnya bila dikaitkan langsung dengan keputusan administratif.</td></tr>
+          <tr><td data-label="Sumber Penilai"><b>5. Para Pelanggan</b></td><td data-label="Keunggulan Utama">Sering kali menjadi satu-satunya pihak yang menyaksikan langsung kualitas interaksi dan layanan karyawan.</td><td data-label="Keterbatasan &amp; Catatan">Pelaksanaan survei pelanggan secara rutin membutuhkan biaya yang relatif mahal.</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="flow">Sumber penilai selengkap apa pun tetap dijalankan oleh manusia yang memiliki keterbatasan kognitif. <b>Bagian D</b> memetakan empat kelompok kesalahan penilai, lalu <b>Bagian E</b> membahas cara mengendalikannya.</div>
+
+    <!-- KB2 D -->
+    <div class="abc"><span class="ltr">D</span><h4>Kesalahan Penilai (Gambar 4.5)</h4></div>
+    <p>Penilaian oleh manusia rentan terhadap <b>empat kelompok kesalahan pemeringkatan</b> (Gambar 4.5). Klik tiap kartu untuk memahami mekanisme dan contoh kasus di buku:</p>
+    <div class="rgrid c2" data-revealgroup>
+      <div class="rcell active" data-reveal data-detail="<b>1. Serupa dengan Saya (Similar-to-Me Error):</b> Kecenderungan penilai memberi nilai lebih tinggi kepada karyawan yang memiliki kesamaan latar belakang dengan dirinya. <i>Contoh buku:</i> <b>Diana</b> memberi nilai lebih tinggi kepada <b>Beth</b> daripada <b>Paul</b> semata karena ia dan Beth sama-sama <i>single mother</i> dengan usia hampir sebaya."><span class="stepnum">1</span><span><span class="rt">Serupa dengan Saya</span><span class="rp">Bias kesamaan latar belakang</span></span></div>
+      <div class="rcell" data-reveal data-detail="<b>2. Pertentangan (Contrast Error):</b> Kesalahan membandingkan satu individu dengan individu lain alih-alih membandingkan dengan standar kerja objektif. <i>Contoh buku:</i> <b>Linda</b> dan <b>Mirna</b> sama-sama berkinerja di atas rata-rata, tetapi Mirna diberi nilai sangat baik hanya karena tampak lebih unggul daripada Linda."><span class="stepnum">2</span><span><span class="rt">Pertentangan (Contrast)</span><span class="rp">Membandingkan antarindividu</span></span></div>
+      <div class="rcell" data-reveal data-detail="<b>3. Kesalahan Penyebaran (Distributional Errors):</b> Penilai hanya memanfaatkan sebagian kecil skala peringkat—terdiri dari: (a) <b>Toleransi/Kelunakan <span class='en'>(Leniency)</span></b>: semua dinilai tinggi; (b) <b>Keketatan <span class='en'>(Strictness)</span></b>: semua dinilai rendah; dan (c) <b>Pemusatan Nilai <span class='en'>(Central Tendency)</span></b>: semua dinilai di tengah. Akibatnya organisasi gagal membedakan kinerja terbaik dan terburuk."><span class="stepnum">3</span><span><span class="rt">Kesalahan Penyebaran</span><span class="rp">Toleransi, keketatan, pemusatan</span></span></div>
+      <div class="rcell" data-reveal data-detail="<b>4. Efek Halo &amp; Horn:</b> <b>Efek Halo</b> terjadi saat satu sisi positif mengangkat nilai seluruh aspek lain (<i>contoh buku:</i> <b>Anton</b> bersahabat dan tak pernah bolos sehingga diberi skor tinggi pula pada kuantitas &amp; kualitas kerja). Sebaliknya, <b>Efek Horn</b> terjadi saat satu sisi negatif menjatuhkan skor pada seluruh dimensi lainnya."><span class="stepnum">4</span><span><span class="rt">Efek Halo &amp; Horn</span><span class="rp">Generalisasi 1 aspek positif/negatif</span></span></div>
+    </div>
+    <div class="rdetail" data-revealdetail><b>1. Serupa dengan Saya (Similar-to-Me Error):</b> Kecenderungan penilai memberi nilai lebih tinggi kepada karyawan yang memiliki kesamaan latar belakang dengan dirinya. <i>Contoh buku:</i> <b>Diana</b> memberi nilai lebih tinggi kepada <b>Beth</b> daripada <b>Paul</b> semata karena ia dan Beth sama-sama <i>single mother</i> dengan usia hampir sebaya.</div>
+
+    <!-- KB2 E -->
+    <div class="abc"><span class="ltr">E</span><h4>Upaya Mengurangi Kesalahan dan Politik Penilaian</h4></div>
+    <p>Untuk menekan kesalahan kognitif penilai, organisasi menyelenggarakan dua jenis pelatihan komplementer: (1) <b>pelatihan kesalahan penilaian <span class="en">(rater error training)</span></b> agar penilai menyadari jenis-jenis bias dan cara menghindarinya, serta (2) <b>pelatihan keakuratan / kerangka acuan <span class="en">(frame-of-reference training)</span></b> untuk menyamakan persepsi penilai mengenai sifat multidimensi pekerjaan dan standar nyata pada tiap dimensi.</p>
+    <p>Selain bias tak sengaja, penilaian juga dapat dirusak oleh <span class="term">politik penilaian <span class="en">(appraisal politics)</span></span>—tindakan penilai memutarbalikkan peringkat secara sengaja demi kepentingan pribadi atau unitnya. Penyebab utamanya meliputi: manajer merasa bertanggung jawab atas citra bawahan yang dinilai, adanya pertentangan tujuan antarunit, serta kaitan langsung antara skor penilaian dan tingginya penghargaan yang diperebutkan. Buku merinci <b>9 langkah pencegahan politik penilaian (a–i)</b>:</p>
+    <ul class="let">
+      <li>Melatih manajer tentang penggunaan sistem penilaian yang sesuai.</li>
+      <li>Membangun dukungan aktif manajemen puncak untuk mencegah manipulasi.</li>
+      <li>Menyediakan fleksibilitas penyesuaian tujuan bila kondisi kerja berubah.</li>
+      <li>Mengakui prestasi karyawan berkinerja baik yang tidak gemar mempromosikan diri sendiri.</li>
+      <li>Memastikan akses informasi yang transparan mengenai perilaku kerja yang diharapkan.</li>
+      <li>Mendorong karyawan aktif meminta umpan balik sebelum periode evaluasi berakhir.</li>
+      <li>Mencegah keterbatasan anggaran mendistorsi objektivitas nilai prestasi.</li>
+      <li>Melaksanakan penilaian secara teratur dan konsisten di seluruh lini perusahaan.</li>
+      <li>Membangun budaya dan iklim keterbukaan di dalam organisasi.</li>
+    </ul>
+
+    <div class="flow">Nilai yang akurat dan bebas politik belum menghasilkan perbaikan kinerja jika tidak dikomunikasikan dengan benar. <b>Bagian F–I</b> membahas teknik umpan balik efektif, penanganan karyawan marjinal, syarat hukum, dan teknologi pemantauan.</div>
+
+    <!-- KB2 F -->
+    <div class="abc"><span class="ltr">F</span><h4>Peran Manajer dalam Umpan Balik Efektif</h4></div>
+    <p>Agar sesi umpan balik benar-benar memperbaiki kinerja dan tidak memicu sikap defensif, manajer perlu menerapkan <b>empat prinsip utama</b>:</p>
+    <ol class="book">
+      <li><b>Berikan setiap hari, bukan setahun sekali:</b> Umpan balik berkelanjutan membuat kekurangan segera diperbaiki sehingga karyawan tidak terkejut saat evaluasi tahunan tiba.</li>
+      <li><b>Ciptakan konteks yang tepat:</b> Pilih lokasi yang netral, posisikan pertemuan sebagai peluang perbaikan bersama, dan buka dialog dua arah.</li>
+      <li><b>Minta karyawan menilai dirinya sebelum rapat:</b> Penilaian diri mendorong refleksi objektif dan menurunkan resistensi saat berdiskusi.</li>
+      <li><b>Gunakan pendekatan pemecahan masalah <span class="en">(problem-solving approach)</span>:</b> Hindari gaya <i>"katakan dan jual"</i> (<i>tell-and-sell</i>) maupun <i>"katakan dan dengar"</i> (<i>tell-and-listen</i>); akui kinerja efektif lewat pujian tulus, fokus pada perilaku/hasil bukan menyerang pribadi, perkecil kritik berlebih, lalu sepakati target konkret beserta jadwal peninjauan ulang.</li>
+    </ol>
+
+    <!-- KB2 G -->
+    <div class="abc"><span class="ltr">G</span><h4>Mengelola Karyawan Marjinal</h4></div>
+    <p><span class="term">Karyawan marjinal <span class="en">(marginal performers)</span></span> adalah karyawan dengan tingkat kinerja paling rendah akibat keterbatasan <b>kemampuan</b> dan/atau rendahnya <b>motivasi</b>. Tugas manajer adalah mendiagnosis akar penyebab secara cermat terlebih dahulu—bukan sekadar memberi teguran—sebelum menetapkan tindakan korektif terarah (pelatihan/bimbingan bila kurang mampu, penataan insentif/tugas bila kurang motivasi, atau pemindahan/separasi sebagai langkah terakhir).</p>
+
+    <!-- KB2 H -->
+    <div class="abc"><span class="ltr">H</span><h4>Sistem Penilaian Berpedoman Hukum</h4></div>
+    <p>Agar perusahaan terlindungi dari gugatan hukum (seperti tuduhan diskriminasi atau PHK tidak adil), sistem penilaian kinerja harus memenuhi <b>enam karakteristik tahan gugatan (a–f)</b>:</p>
+    <ul class="let">
+      <li>Dikembangkan berdasarkan <b>analisis pekerjaan yang valid</b>.</li>
+      <li>Mengukur <b>perilaku kerja atau hasil kerja</b> yang objektif (bukan ciri kepribadian samar).</li>
+      <li>Dilaksanakan oleh <b>penilai yang terlatih</b> dalam penggunaan sistem.</li>
+      <li>Dilengkapi <b>peninjauan ulang oleh manajer tingkat atas</b> serta mekanisme naik banding bagi karyawan.</li>
+      <li>Menyediakan <b>bimbingan dan petunjuk perbaikan</b> bagi karyawan berkinerja di bawah standar sebelum sanksi dijatuhkan.</li>
+      <li>Menggunakan <b>lebih dari satu penilai</b> dan disertai dialog terbuka antara penilai dan karyawan.</li>
+    </ul>
+
+    <!-- KB2 I -->
+    <div class="abc"><span class="ltr">I</span><h4>Penggunaan Teknologi (Pemantauan Elektronik)</h4></div>
+    <p>Perkembangan teknologi informasi memungkinkan perekaman peringkat kinerja, riwayat pendisiplinan, dan pelanggaran aturan kerja ke dalam <i>database</i> elektronik secara cepat dan terpusat. Karena pemantauan berbasis komputer menimbulkan isu privasi dan penerimaan karyawan, regulasi terkait batas pemantauan elektronik terus berkembang.</p>
+
+    <div class="casebox"><span class="ctitle">Kasus Buku KB 2 (Hal. 4.34) · Kegagalan Penilaian dengan Metode Ganda pada BUMN</span>
+      Sebuah BUMN awalnya menilai seluruh karyawan dengan metode sama, lalu beralih menguji metode <i>checklist</i> dan BARS karena perbedaan tugas antarunit. Namun, segera setelah BARS diterapkan, manajemen puncak mengalihkan seluruh sistem ke <b><i>critical incident method</i></b>. Metode ini berjalan baik kecuali di bagian produksi: penyelia menunda pencatatan insiden kritis hingga seminggu sebelum tenggat penyerahan ke bagian personalia, dan pelatihan yang diberikan hanya sedikit mengubah perilaku. Survei terhadap karyawan produksi mengungkap bahwa penyelia dianggap adil pada hampir semua dimensi kecuali menunjukkan <b><i>favoritism</i></b> (pilih kasih) yang tinggi—memicu evaluasi ulang untuk beralih ke metode lain.
+    </div>
+
+    <div class="flow">Hasil penilaian prestasi yang adil, bebas bias, dan sah secara hukum menjadi fondasi terpenting bagi keputusan pengembangan jangka panjang di <b>KB 3: Perencanaan dan Pengembangan Karier</b>.</div>
+  </div>
+
+  <!-- ==================== KB 3 ==================== -->
+  <h2 class="section" id="kb3"><span class="dot" style="background:var(--kb3)"></span>KB 3 — Perencanaan dan Pengembangan Karier</h2>
+  <div class="card kb3b"><span class="kb-tag kb3t">KB 3 · Hal. 4.35–4.43</span>
+    <p class="lead">Kata <i>karier</i> berakar dari bahasa Latin <i>Carrere</i> (lomba) dan bahasa Belanda <i>carriere</i> (kemajuan jenjang pekerjaan). Bagi karyawan, daya tarik perusahaan bukan sekadar pemenuhan kebutuhan fisik, melainkan juga ruang aktualisasi diri—seperti seorang dosen yang bercita-cita meraih jabatan fungsional guru besar sekaligus jabatan struktural ketua program, dekan, atau rektor.</p>
+
+    <div class="acro-box"><span class="acro-title">📖 Kamus Konteks Singkatan &amp; Istilah Kunci KB 3</span>
+      <ul class="acro-grid">
+        <li><b>Job Posting</b>: Sistem pengumuman lowongan jabatan internal secara terbuka beserta persyaratannya agar proses promosi formal dan transparan.</li>
+        <li><b>Mentoring</b>: Penasihatan karier oleh figur senior berpengalaman (mentor) yang mengajar, melatih, dan membimbing anak didik.</li>
+      </ul>
+    </div>
+
+    <div class="casebox"><span class="ctitle">Isu Menarik Saat Ini (Hal. 4.35) · Pensiun Dini &amp; Beban Usia Pensiun Generasi Berikut</span>
+      Akibat kondisi perekonomian yang terpuruk, banyak perusahaan memensiunkan karyawan secara dini. Para ahli menemukan bahwa konsekuensinya, <b>generasi pekerja berikutnya harus bekerja lebih lama sebelum pensiun</b> guna membiayai para pensiunan saat ini, sementara sistem jaminan sosial turut menaikkan batas usia pensiun generasi masa depan. Hal ini menjadikan perencanaan karier jangka panjang kian mendesak.
+    </div>
+
+    <!-- KB3 A -->
+    <div class="abc"><span class="ltr">A</span><h4>Arti Pentingnya Karier, Perencanaan Karier, dan Pengembangan Karier</h4></div>
+    <p><b>Mondy (2010)</b> mendefinisikan karier sebagai jalur umum urutan posisi terkait pekerjaan yang dipilih seseorang sepanjang masa kerjanya—tidak harus terbatas dalam satu organisasi saja. Empat konsep kunci yang wajib dibedakan:</p>
+    <ul class="exp">
+      <li><b>Jalur Karier <span class="en">(Career Path)</span>:</b> Urutan pekerjaan atau jabatan yang membentuk perjalanan karier seseorang, baik di dalam satu perusahaan maupun lintas perusahaan.</li>
+      <li><b>Tujuan Karier <span class="en">(Career Goals)</span>:</b> Posisi-posisi masa depan yang ingin dicapai seseorang sebagai tolok ukur keberhasilan kariernya.</li>
+      <li><b>Perencanaan Karier <span class="en">(Career Planning)</span>:</b> Proses berkelanjutan di mana individu menetapkan tujuan karier dan mengidentifikasi jalur mencapainya—di era ketika peluang promosi makin terbatas, keberhasilan karier juga mencakup pencapaian non-promosi.</li>
+      <li><b>Pengembangan Karier <span class="en">(Career Development)</span>:</b> Upaya peningkatan kemampuan agar rencana karier terwujud, melalui <b>pelatihan</b> (fokus memperbaiki kinerja pekerjaan saat ini) dan <b>pengembangan karyawan</b> (pendidikan formal—mis. dosen menempuh S1 → S2 → S3 dan pelatihan menuju Kaprodi/Dekan/Rektor—pengalaman kerja, penilaian kepribadian, serta persiapan kemampuan masa depan). Karier modern bersifat dinamis (mis. dosen beralih menjadi direktur keuangan atau pengusaha) demi keberhasilan psikologis dan sasaran hidup.</li>
+    </ul>
+
+    <div class="flow">Karena pengembangan karier tidak terwujud dengan sendirinya, <b>Bagian B</b> merinci pembagian tanggung jawab antara tiga aktor utama: karyawan, manajer, dan organisasi.</div>
+
+    <!-- KB3 B -->
+    <div class="abc"><span class="ltr">B</span><h4>Peran dalam Pengembangan Karier</h4></div>
+    <div class="table-wrap">
+      <table class="mini">
+        <thead><tr><th style="width:24%">Pihak</th><th>Tanggung Jawab Utama dalam Pengembangan Karier</th></tr></thead>
+        <tbody>
+          <tr><td data-label="Pihak"><b>1. Karyawan</b></td><td data-label="Tanggung Jawab Utama">Memegang tanggung jawab penuh atas kariernya sendiri: menilai minat, keterampilan, dan nilai pribadi; aktif mencari informasi peluang; menyusun tujuan dan rencana realistis; memanfaatkan peluang pengembangan; serta berdiskusi rutin dengan manajer.</td></tr>
+          <tr><td data-label="Pihak"><b>2. Pengusaha (Manajer)</b></td><td data-label="Tanggung Jawab Utama">(a) Memberikan umpan balik kinerja yang jujur dan tepat waktu; (b) memberikan dukungan dan penugasan yang menumbuhkan kemampuan; (c) mendukung pelaksanaan rencana pengembangan karier karyawan.</td></tr>
+          <tr><td data-label="Pihak"><b>3. Organisasi</b></td><td data-label="Tanggung Jawab Utama">(a) Mengomunikasikan misi, kebijakan, dan prosedur secara jelas; (b) menyediakan peluang pelatihan dan pengembangan; (c) menyediakan informasi dan program karier; (d) menawarkan beragam pilihan jalur karier.</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="flow">Untuk menerjemahkan peran manajer dan organisasi ke tindakan praktis sehari-hari, <b>Bagian C</b> menyajikan delapan pedoman manajemen karier.</div>
+
+    <!-- KB3 C -->
+    <div class="abc"><span class="ltr">C</span><h4>Tanggung Jawab Manajemen Karier dari Manajer dan Majikan (8 Pedoman)</h4></div>
+    <ol class="book">
+      <li><b>Hindari kejutan kenyataan <span class="en">(reality shock)</span>:</b> Mencegah benturan tajam antara harapan tinggi karyawan baru dan realitas pekerjaan awal yang membosankan atau tanpa tantangan.</li>
+      <li><b>Berikan jabatan awal yang menantang:</b> Pekerjaan tahun pertama yang menantang terbukti meningkatkan efektivitas dan keberhasilan karier karyawan hingga 5 tahun berikutnya.</li>
+      <li><b>Berikan pra-tinjauan jabatan realistik <span class="en">(realistic job preview)</span> dalam perekrutan:</b> Mengungkap sisi menarik sekaligus kesulitan pekerjaan secara jujur sejak rekrutmen agar kejutan kenyataan berkurang.</li>
+      <li><b>Jangan tanpa tuntutan — Terapkan Efek Pygmalion <span class="en">(Pygmalion Effect)</span>:</b> Semakin tinggi harapan, kepercayaan, dan dukungan positif manajer terhadap karyawan baru, semakin tinggi pula kinerja yang dicapai karyawan tersebut.</li>
+      <li><b>Berikan rotasi jabatan berkala dan penyaluran jabatan:</b> Rotasi lintas fungsi (keuangan, produksi, pemasaran, SDM) membantu karyawan mengenali minat dan bakatnya sekaligus mencetak manajer multifungsional.</li>
+      <li><b>Lakukan penilaian kinerja berorientasi karier:</b> Memanfaatkan evaluasi kinerja untuk menggali informasi konkret mengenai potensi jalur karier bawahan di masa depan.</li>
+      <li><b>Berikan lokakarya dan buku kerja perencanaan karier:</b> Meningkatkan keterlibatan dan kemandirian karyawan dalam memetakan arah kariernya secara berkala.</li>
+      <li><b>Berikan peluang dan penasihatan <span class="en">(mentoring)</span>:</b> Menghubungkan karyawan dengan figur senior berpengalaman (mentor) untuk mengajar, melatih, mentransfer informasi, memberi umpan balik, dan mendorong kemajuan anak didik.</li>
+    </ol>
+
+    <div class="flow">Salah satu wujud paling nyata dari pengembangan karier di dalam organisasi adalah pergerakan jabatan. <b>Bagian D</b> membedah empat keputusan kunci dalam promosi serta cara menangani transfer.</div>
+
+    <!-- KB3 D -->
+    <div class="abc"><span class="ltr">D</span><h4>Mengelola Promosi dan Pemindahan (Transfer)</h4></div>
+    <p>Pengambilan keputusan promosi menuntut jawaban yang jelas atas <b>empat keputusan kunci</b>. Klik setiap kartu untuk menelaahnya:</p>
+    <div class="rgrid c2" data-revealgroup>
+      <div class="rcell active" data-reveal data-detail="<b>Keputusan 1 — Senioritas atau Kompetensi?</b> Dari sudut pandang motivasi, promosi berbasis <i>kompetensi</i> (khususnya kompetensi unik, tak tertiru, dan tak tergantikan) paling ideal, meski sering berbenturan dengan tuntutan serikat pekerja. <i>Senioritas</i> banyak dipakai di sektor publik demi rasa keadilan (jika kompetensi setara, kandidat lebih senior dipilih); kriteria yang dipakai wajib dikomunikasikan secara terbuka."><span class="stepnum">1</span><span><span class="rt">Senioritas vs Kompetensi</span><span class="rp">Motivasi vs keadilan/serikat pekerja</span></span></div>
+      <div class="rcell" data-reveal data-detail="<b>Keputusan 2 — Bagaimana Kompetensi Diukur?</b> Promosi tidak cukup hanya bertumpu pada prestasi masa lalu pada jabatan sekarang; perusahaan memerlukan prosedur yang valid untuk <b>meramalkan potensi kinerja masa depan</b> pada jabatan yang lebih tinggi."><span class="stepnum">2</span><span><span class="rt">Pengukuran Kompetensi</span><span class="rp">Meramalkan potensi masa depan</span></span></div>
+      <div class="rcell" data-reveal data-detail="<b>Keputusan 3 — Proses Formal atau Informal?</b> Sistem formal menerapkan kebijakan penempatan jabatan dengan mengumumkan lowongan beserta persyaratannya secara terbuka (<i>job posting</i>) kepada seluruh karyawan agar transparan dan adil."><span class="stepnum">3</span><span><span class="rt">Formal vs Informal</span><span class="rp">Pengumuman lowongan terbuka</span></span></div>
+      <div class="rcell" data-reveal data-detail="<b>Keputusan 4 — Vertikal, Horizontal, atau Lainnya?</b> Promosi dapat bersifat <i>vertikal</i> (naik dalam fungsi sama) atau <i>horizontal</i> (berpindah lintas fungsi, mis. produksi ke SDM, pemasaran, atau keuangan). Di era restrukturisasi dan merger yang memangkas jabatan puncak, perpindahan horizontal dan pengayaan jabatan menjadi alternatif pengembangan karier yang efektif."><span class="stepnum">4</span><span><span class="rt">Arah Promosi</span><span class="rp">Vertikal, horizontal &amp; pengayaan</span></span></div>
+    </div>
+    <div class="rdetail" data-revealdetail><b>Keputusan 1 — Senioritas atau Kompetensi?</b> Dari sudut pandang motivasi, promosi berbasis <i>kompetensi</i> (khususnya kompetensi unik, tak tertiru, dan tak tergantikan) paling ideal, meski sering berbenturan dengan tuntutan serikat pekerja. <i>Senioritas</i> banyak dipakai di sektor publik demi rasa keadilan (jika kompetensi setara, kandidat lebih senior dipilih); kriteria yang dipakai wajib dikomunikasikan secara terbuka.</div>
+    <p><b>Menangani Transfer:</b> <span class="term">Transfer</span> adalah pemindahan dari satu pekerjaan ke pekerjaan lain, umumnya tanpa perubahan gaji maupun tingkat jabatan. Meski sering diasumsikan merusak kehidupan keluarga karena frekuensi relokasi, hasil penelitian tidak mendukung anggapan tersebut.</p>
+
+    <div class="flow">Pada akhirnya, seluruh praktik pengembangan karier di atas bermuara pada satu tujuan strategis bagi organisasi: membangun <b>komitmen karyawan</b> melalui kesepakatan baru yang dibahas di <b>Bagian E</b>.</div>
+
+    <!-- KB3 E -->
+    <div class="abc"><span class="ltr">E</span><h4>Pengembangan Karier dan Komitmen Karyawan</h4></div>
+    <p>Perusahaan yang mensponsori pengembangan profesionalisme, menyelaraskan penilaian kinerja berorientasi karier, dan mengelola <span class="term">catatan karier <span class="en">(career records / job posting systems)</span></span> secara terbuka mampu mencocokkan keterampilan karyawan dengan peluang promosi secara adil. Pendekatan ini mencerminkan pergeseran mendasar dalam hubungan kerja modern:</p>
+    <div class="quotebox"><b>Kontrak Psikologis yang Baru (Boks hal. 4.41):</b> "Kontrak kemarin adalah lakukan yang terbaik dan setia kepada kami dan kami akan mempedulikan karier Anda. Hari ini adalah lakukan yang terbaik dan setia kepada kami selama Anda ada di sini dan kami akan menyediakan Anda dengan kesempatan pengembangan yang akan Anda butuhkan untuk berpindah dan memiliki karier yang berhasil."</div>
+  </div>
+
+  <!-- GLOSARIUM -->
+  <h2 class="section" id="glosarium"><span class="dot"></span>Glosarium Istilah Kunci</h2>
+  <div class="card"><dl class="glossary">
+    <dt>360 Degree Appraisals (Penilaian 360 Derajat)</dt><dd>Teknik penilaian kinerja multisumber yang menggabungkan masukan dari manajer, rekan kerja, bawahan, diri sendiri, dan pelanggan.</dd>
+    <dt>Alternation Ranking</dt><dd>Teknik pemeringkatan bergilir dengan memilih karyawan terbaik lalu terburuk secara berulang dari daftar kelompok kerja.</dd>
+    <dt>BARS (Behaviorally Anchored Rating Scales)</dt><dd>Skala penilaian perilaku yang mendefinisikan dimensi kinerja melalui jangkar perilaku konkret (<i>behavioral anchors</i>) pada tiap tingkat skor.</dd>
+    <dt>BOS (Behavioral Observation Scales)</dt><dd>Variasi BARS yang menilai frekuensi kemunculan perilaku kerja spesifik karyawan selama periode penilaian.</dd>
+    <dt>Content Validity (Validitas Isi)</dt><dd>Sejauh mana alat ukur kinerja menilai seluruh aspek pekerjaan relevan tanpa kekurangan pengukuran (<i>deficient</i>) maupun pencemaran (<i>contaminated</i>).</dd>
+    <dt>Critical Incidents</dt><dd>Metode pendekatan perilaku dengan mencatat contoh khusus kinerja karyawan yang sangat efektif maupun sangat tidak efektif.</dd>
+    <dt>Efek Halo &amp; Horn</dt><dd>Bias penilai yang menggeneralisasi satu aspek positif (Halo) atau satu aspek negatif (Horn) ke seluruh dimensi penilaian lainnya.</dd>
+    <dt>Efek Pygmalion (Pygmalion Effect)</dt><dd>Fenomena di mana ekspektasi, kepercayaan, dan dukungan positif tinggi dari manajer mendorong peningkatan kinerja karyawan baru.</dd>
+    <dt>Forced Distribution</dt><dd>Metode komparatif yang mewajibkan penilai menempatkan persentase tertentu karyawan ke kategori peringkat yang telah ditetapkan.</dd>
+    <dt>Interrater Reliability</dt><dd>Tingkat konsistensi hasil penilaian di antara dua atau lebih penilai yang berbeda terhadap kinerja karyawan yang sama.</dd>
+    <dt>Karyawan Marjinal (Marginal Performers)</dt><dd>Karyawan dengan tingkat kinerja paling rendah akibat keterbatasan kemampuan dan/atau motivasi.</dd>
+    <dt>Kejutan Kenyataan (Reality Shock)</dt><dd>Kondisi tahap awal kerja ketika harapan tinggi karyawan baru berbenturan dengan realitas tugas awal yang membosankan/tanpa tantangan.</dd>
+    <dt>Kinerja Kontekstual (Contextual Performance)</dt><dd>Kinerja karyawan yang melampaui harapan standar pekerjaan sehingga membuka peluang lebih besar untuk pengembangan karier.</dd>
+    <dt>Kontrak Psikologis Baru</dt><dd>Kesepakatan implisit modern bahwa perusahaan menyediakan peluang pengembangan keterampilan sebagai imbalan atas kinerja dan kesetiaan karyawan selama bekerja.</dd>
+    <dt>MBO (Management by Objectives)</dt><dd>Pendekatan hasil melalui penetapan sasaran khusus dan menantang secara partisipatif disertai umpan balik berkala.</dd>
+    <dt>OBM (Organizational Behavior Modification)</dt><dd>Pengelolaan perilaku karyawan melalui definisi perilaku kunci, pengukuran, pemberitahuan, umpan balik, dan penguatan formal.</dd>
+    <dt>Politik Penilaian (Appraisal Politics)</dt><dd>Tindakan penilai yang sengaja memutarbalikkan pemeringkatan kinerja demi kepentingan pribadi atau unit tertentu.</dd>
+    <dt>ProMES (Productivity Measurement and Evaluation System)</dt><dd>Sistem pengukuran produktivitas 4 langkah berbasis sasaran, indikator kinerja, kontingensi level kinerja, dan umpan balik.</dd>
+    <dt>Strategic Congruence (Kesesuaian Strategis)</dt><dd>Keselarasan sistem manajemen kinerja dengan strategi, tujuan, dan budaya organisasi.</dd>
+  </dl></div>
+</div>
+
+<footer><b>EKMA5207 — Manajemen Sumber Daya Manusia (Edisi 3)</b> · Modul 4: Manajemen Kinerja dan Pengembangan Karier (Prof. Dr. Mutiara Sibarani Panggabean, S.E., M.E.)<br>Bahan belajar ringkas untuk persiapan ujian.</footer>
+
+<script>
+(function(){
+  var pb=document.getElementById('progress');
+  function onScroll(){var h=document.documentElement;var sc=h.scrollTop||document.body.scrollTop;var max=(h.scrollHeight-h.clientHeight)||1;pb.style.width=(sc/max*100)+'%';}
+  document.addEventListener('scroll',onScroll,{passive:true});onScroll();
+
+  var list=document.getElementById('conceptList');var items=[].slice.call(list.querySelectorAll('li'));var boxes=items.map(function(li){return li.querySelector('input');});
+  document.getElementById('totalCount').textContent=items.length;var doneEl=document.getElementById('doneCount');var KEY='studi_ekma5207_m4_concepts_v2';
+  function load(){try{var a=JSON.parse(localStorage.getItem(KEY)||'[]');boxes.forEach(function(b,i){if(a[i])b.checked=true;});}catch(e){}}
+  function save(){try{localStorage.setItem(KEY,JSON.stringify(boxes.map(function(b){return b.checked?1:0;})));}catch(e){}}
+  function refresh(){var n=0;items.forEach(function(li,i){if(boxes[i].checked){li.classList.add('done');n++;}else li.classList.remove('done');});doneEl.textContent=n;}
+  load();refresh();boxes.forEach(function(b){b.addEventListener('change',function(){refresh();save();});});
+  document.getElementById('resetBtn').addEventListener('click',function(){boxes.forEach(function(b){b.checked=false;});refresh();save();});
+
+  // REVEAL HELPER (perbaikan sibling + re-typeset MathJax dinamis)
+  [].slice.call(document.querySelectorAll('[data-revealgroup]')).forEach(function(g){
+    var det=g.querySelector('[data-revealdetail]');if(!det){var sib=g.nextElementSibling;if(sib&&sib.hasAttribute&&sib.hasAttribute('data-revealdetail'))det=sib;}
+    var cells=[].slice.call(g.querySelectorAll('[data-reveal]'));
+    cells.forEach(function(c){c.addEventListener('click',function(){cells.forEach(function(x){x.classList.remove('active');});c.classList.add('active');if(det){det.innerHTML=c.getAttribute('data-detail');if(window.MathJax&&window.MathJax.typesetPromise)window.MathJax.typesetPromise([det]);}});});
+  });
+
+  // MIND MAP ENGINE (SVG collapsible 3-level)
+  (function(){
+    var ROWH=46,NODE_H=32,PAD=13,GAP=52;var COL={root:'#0f5e8f',kb1:'#1a86c7',kb2:'#e08a1e',kb3:'#2a9d6f',kb4:'#7a5cc0',kb5:'#c75b7a'};
+    var mc=document.createElement('canvas').getContext('2d');mc.font='700 13px -apple-system,Segoe UI,Roboto,sans-serif';
+    function tw(t){return Math.ceil(mc.measureText(t).width);}function esc(t){return t.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');}
+    function rgba(hex,a){var h=hex.replace('#','');return 'rgba('+parseInt(h.substr(0,2),16)+','+parseInt(h.substr(2,2),16)+','+parseInt(h.substr(4,2),16)+','+a+')';}
+    var DATA={label:'MODUL 4 — Kinerja & Karier',color:COL.root,children:[
+      {label:'KB1 · Manajemen Kinerja',color:COL.kb1,children:[
+        {label:'A. 3 Kegiatan Terpadu',children:[{label:'Definisi, Penilaian & Umpan Balik'}]},
+        {label:'B. Faktor Penentu (Gbr 4.1)',children:[{label:'Atribut → Perilaku → Hasil'},{label:'Strategi, PPES & Hambatan Situasional'}]},
+        {label:'C. 3 Tujuan Umum (Gbr 4.2)',children:[{label:'Stratejik, Administratif & Pengembangan'}]},
+        {label:'D. 5 Kriteria Efektif (Gbr 4.3)',children:[{label:'Kesesuaian Strategis & Validitas Isi'},{label:'Keandalan, Kekhususan & 3 Keadilan'},{label:'Kasus: Bank Global'}]}
+      ]},
+      {label:'KB2 · Penilaian Prestasi Kerja',color:COL.kb2,children:[
+        {label:'A. 4 Tahap, 5 Hambatan & 13 Tip',children:[{label:'Identifikasi → Observasi → Ukur → Kembang'},{label:'Keadilan Distributif & Prosedural'}]},
+        {label:'B. 5 Pendekatan Pengukuran',children:[{label:'Komparatif (Ranking, Forced, Berpasangan)'},{label:'Atribut (Grafis & Campuran)'},{label:'Perilaku (Critical, BARS, BOS, OBM, AC)'},{label:'Hasil (MBO & ProMES)'},{label:'Kualitas (TQM, Ensoniq & 5 Alat Statistik)'}]},
+        {label:'C. 5 Sumber Informasi (360°)',children:[{label:'Manajer, Rekan, Bawahan, Diri, Pelanggan'}]},
+        {label:'D–E. 4 Bias Penilai & Politik',children:[{label:'Serupa, Pertentangan, Penyebaran, Halo/Horn'},{label:'2 Pelatihan & 9 Langkah Antipolitik'}]},
+        {label:'F–I. Umpan Balik, Hukum & Tech',children:[{label:'Umpan Balik Harian (Pemecahan Masalah)'},{label:'Karyawan Marjinal & 6 Syarat Hukum'},{label:'Pemantauan Elektronik & Kasus BUMN'}]}
+      ]},
+      {label:'KB3 · Perencanaan & Pengembangan Karier',color:COL.kb3,children:[
+        {label:'A. 4 Konsep Karier & Isu Pensiun',children:[{label:'Jalur, Tujuan, Perencanaan & Pengembangan'}]},
+        {label:'B. Peran 3 Pihak',children:[{label:'Karyawan, Manajer & Organisasi'}]},
+        {label:'C. 8 Pedoman Manajemen Karier',children:[{label:'Kejutan Kenyataan & Pra-Tinjauan Realistik'},{label:'Efek Pygmalion, Rotasi & Mentoring'}]},
+        {label:'D. 4 Keputusan Promosi & Transfer',children:[{label:'Senioritas vs Kompetensi & Job Posting'},{label:'Vertikal, Horizontal & Transfer'}]},
+        {label:'E. Komitmen & Kontrak Psikologis Baru'}
+      ]}
+    ]};
+    var idc=0;(function w(n,c){n.id='n'+(idc++);n.color=n.color||c;(n.children||[]).forEach(function(k){w(k,n.color);});})(DATA,COL.root);
+    (function w(n,d){if(d>=2&&n.children&&n.children.length)n.collapsed=true;(n.children||[]).forEach(function(k){w(k,d+1);});})(DATA,0);
+    var host=document.getElementById('mindmap');
+    function render(){
+      var colW=[];(function w(n,d){var width=tw(n.label)+PAD*2+((n.children&&n.children.length)?20:0);colW[d]=Math.max(colW[d]||0,width);if(!n.collapsed)(n.children||[]).forEach(function(k){w(k,d+1);});})(DATA,0);
+      var colX=[],acc=14;for(var d=0;d<colW.length;d++){colX[d]=acc;acc+=colW[d]+GAP;}var row={v:0};
+      (function lay(n,d){if(!n.children||!n.children.length||n.collapsed){n._y=row.v*ROWH+ROWH/2+8;row.v++;return;}var f,l;n.children.forEach(function(k,i){lay(k,d+1);if(i===0)f=k._y;l=k._y;});n._y=(f+l)/2;})(DATA,0);
+      var totalW=acc,totalH=row.v*ROWH+24;var nodes=[],links=[];
+      (function col(n,d,p){n._x=colX[d];n._w=tw(n.label)+PAD*2+((n.children&&n.children.length)?20:0);nodes.push({n:n,d:d});if(p)links.push([p,n]);if(!n.collapsed)(n.children||[]).forEach(function(k){col(k,d+1,n);});})(DATA,0,null);
+      var s='<svg width="'+totalW+'" height="'+totalH+'" viewBox="0 0 '+totalW+' '+totalH+'" xmlns="http://www.w3.org/2000/svg">';
+      links.forEach(function(pr){var a=pr[0],b=pr[1],x1=a._x+a._w,y1=a._y,x2=b._x,y2=b._y,mx=(x1+x2)/2;s+='<path d="M'+x1+' '+y1+' C'+mx+' '+y1+' '+mx+' '+y2+' '+x2+' '+y2+'" fill="none" stroke="'+rgba(b.color,.5)+'" stroke-width="2"/>';});
+      nodes.forEach(function(o){var n=o.n,x=n._x,y=n._y-NODE_H/2,w=n._w,hk=n.children&&n.children.length;var fill=o.d===0?n.color:(o.d===1?rgba(n.color,.12):'#fff');var tf=o.d===0?'#fff':'#1c2733';
+        s+='<g data-id="'+n.id+'" style="cursor:'+(hk?'pointer':'default')+'"><rect x="'+x+'" y="'+y+'" rx="9" width="'+w+'" height="'+NODE_H+'" fill="'+fill+'" stroke="'+n.color+'" stroke-width="'+(o.d===0?0:1.6)+'"/><text x="'+(x+PAD)+'" y="'+(n._y+4)+'" font-size="13" font-weight="'+(o.d<=1?'700':'500')+'" fill="'+tf+'" font-family="-apple-system,Segoe UI,Roboto,sans-serif">'+esc(n.label)+'</text>';
+        if(hk){var cx=x+w-12,cy=n._y;s+='<circle cx="'+cx+'" cy="'+cy+'" r="8.5" fill="'+n.color+'"/><text x="'+cx+'" y="'+(cy+4.5)+'" font-size="13" font-weight="700" fill="#fff" text-anchor="middle" font-family="sans-serif">'+(n.collapsed?'+':'\u2013')+'</text>';}s+='</g>';});
+      s+='</svg>';host.innerHTML=s;
+    }
+    host.addEventListener('click',function(e){var g=e.target.closest('g[data-id]');if(!g)return;var id=g.getAttribute('data-id');(function f(n){if(n.id===id){if(n.children&&n.children.length)n.collapsed=!n.collapsed;return true;}return (n.children||[]).some(f);})(DATA);render();});
+    document.getElementById('mmExpand').addEventListener('click',function(){(function w(n){if(n.children)n.collapsed=false;(n.children||[]).forEach(w);})(DATA);render();});
+    document.getElementById('mmCollapse').addEventListener('click',function(){(function w(n,d){if(d>=1&&n.children&&n.children.length)n.collapsed=true;(n.children||[]).forEach(function(k){w(k,d+1);});})(DATA,0);render();});
+    render();
+  })();
+
+  window.addEventListener('load',function(){setTimeout(function(){if(window.MathJax&&window.MathJax.typesetPromise)window.MathJax.typesetPromise();},400);});
+})();
+</script></body></html>

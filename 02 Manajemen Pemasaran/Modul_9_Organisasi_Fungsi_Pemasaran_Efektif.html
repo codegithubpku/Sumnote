@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Modul 9 — Organisasi Fungsi Pemasaran yang Efektif | EKMA5206</title>
+<script>window.MathJax={tex:{inlineMath:[['$','$']],displayMath:[['\\[','\\]']]},svg:{fontCache:'global'},startup:{typeset:true}};</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js" id="MathJax-script" async></script>
+<style>
+  :root{--bg:#f4f6f9;--panel:#fff;--ink:#1c2733;--muted:#5c6b7a;--line:#e4e9f0;--brand:#1a86c7;--brand-dark:#0f5e8f;--brand-soft:#e7f3fb;--kb1:#1a86c7;--kb2:#e08a1e;--kb3:#2a9d6f;--kb4:#7a5cc0;--radius:14px;--shadow:0 1px 2px rgba(16,42,67,.06),0 6px 20px rgba(16,42,67,.06);--maxw:900px}
+  *{box-sizing:border-box}html{scroll-behavior:smooth}
+  body{margin:0;background:var(--bg);color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;line-height:1.72;-webkit-font-smoothing:antialiased}
+  #progress{position:fixed;top:0;left:0;height:4px;width:0;background:linear-gradient(90deg,var(--brand),#53c0ec);z-index:200;transition:width .1s}
+  header.top{position:sticky;top:0;z-index:100;background:rgba(255,255,255,.92);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+  .top-in{max-width:var(--maxw);margin:0 auto;padding:10px 20px;display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+  .badge{background:var(--brand);color:#fff;font-weight:700;font-size:.72rem;letter-spacing:.5px;padding:4px 10px;border-radius:999px;white-space:nowrap}
+  .top-title{font-size:.9rem;font-weight:600;color:var(--muted)}
+  nav.jump{margin-left:auto;display:flex;gap:4px;flex-wrap:wrap}
+  nav.jump a{font-size:.78rem;color:var(--muted);text-decoration:none;padding:5px 10px;border-radius:8px}
+  nav.jump a:hover{background:var(--brand-soft);color:var(--brand-dark)}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 20px 90px}
+  .hero{margin-top:26px;padding:30px 28px;border-radius:var(--radius);color:#fff;background:linear-gradient(135deg,#0f5e8f 0%,#1a86c7 60%,#2fa4df 100%);box-shadow:var(--shadow);position:relative;overflow:hidden}
+  .hero::after{content:"09";position:absolute;right:18px;bottom:-26px;font-size:150px;font-weight:800;opacity:.12;line-height:1}
+  .hero .eyebrow{font-size:.78rem;letter-spacing:1.5px;text-transform:uppercase;opacity:.9;font-weight:600}
+  .hero h1{margin:.3em 0 .25em;font-size:1.62rem;line-height:1.25;max-width:90%}
+  .hero .meta{display:flex;gap:18px;flex-wrap:wrap;font-size:.84rem;opacity:.95;margin-top:10px}
+  h2.section{font-size:1.3rem;margin:48px 0 4px;display:flex;align-items:center;gap:10px;scroll-margin-top:70px}
+  h2.section .dot{width:10px;height:22px;border-radius:4px;background:var(--brand)}
+  .section-sub{color:var(--muted);font-size:.9rem;margin:0 0 18px}
+  .card{background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);padding:22px 24px;margin:16px 0;--dot:var(--brand)}
+  .concepts{list-style:none;margin:0;padding:0;display:grid;gap:10px}
+  .concepts li{display:flex;gap:12px;align-items:flex-start;padding:12px 14px;border:1px solid var(--line);border-radius:10px;background:#fcfdff;transition:.15s}
+  .concepts li:hover{border-color:#cfe3f2}
+  .concepts input{margin-top:4px;width:18px;height:18px;accent-color:var(--brand);flex:none;cursor:pointer}
+  .concepts .ct{font-weight:600}.concepts .cd{display:block;font-weight:400;color:var(--muted);font-size:.86rem;margin-top:2px}
+  .concepts li.done{background:var(--brand-soft);border-color:#bfe0f3}.concepts li.done .ct{text-decoration:line-through;opacity:.65}
+  .cl-head{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-bottom:6px}
+  .cl-head .count{font-size:.82rem;color:var(--muted);background:var(--brand-soft);padding:3px 10px;border-radius:999px;font-weight:600}
+  .btn-reset{font-size:.78rem;border:1px solid var(--line);background:#fff;color:var(--muted);padding:5px 12px;border-radius:8px;cursor:pointer}.btn-reset:hover{background:#f6f8fb}
+  .mm-toolbar{display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin-bottom:10px}
+  .mm-btn{font-size:.78rem;border:1px solid var(--line);background:#fff;padding:6px 13px;border-radius:8px;cursor:pointer;color:var(--brand-dark);font-weight:600}.mm-btn:hover{background:var(--brand-soft)}
+  .mm-hint{font-size:.76rem;color:var(--muted)}
+  .mindmap-host{height:600px;overflow:auto;border:1px solid var(--line);border-radius:10px;background:#fcfdff}.mindmap-host svg{display:block}
+  .kb-tag{display:inline-flex;align-items:center;gap:8px;font-size:.78rem;font-weight:700;letter-spacing:.3px;color:#fff;padding:5px 12px;border-radius:999px;margin-bottom:6px}
+  .kb1t{background:var(--kb1)}.kb2t{background:var(--kb2)}.kb3t{background:var(--kb3)}.kb4t{background:var(--kb4)}
+  .kb1b{--dot:var(--kb1)}.kb2b{--dot:var(--kb2)}.kb3b{--dot:var(--kb3)}.kb4b{--dot:var(--kb4)}
+  .lead{font-size:1.02rem}.term{font-weight:700;color:var(--dot)}.en{font-style:italic;color:var(--muted);font-weight:500}
+  .abc{display:flex;align-items:center;gap:10px;margin:28px 0 10px;padding-bottom:6px;border-bottom:2px solid currentColor;border-bottom-color:color-mix(in srgb,var(--dot) 18%,#fff)}
+  .abc .ltr{background:var(--dot);color:#fff;font-weight:800;min-width:30px;height:30px;padding:0 7px;border-radius:8px;display:grid;place-items:center;flex:none}
+  .abc h4{margin:0;font-size:1.06rem;color:var(--dot)}
+  .numh{font-weight:700;color:var(--dot);margin:22px 0 4px;font-size:1rem}
+  .leth{font-weight:800;color:var(--dot);margin:20px 0 6px;font-size:.98rem;border-left:3px solid var(--dot);padding-left:10px}
+  ol.book{margin:12px 0;padding-left:28px}ol.book>li{margin:10px 0;padding-left:6px}ol.book>li::marker{font-weight:700;color:var(--dot)}
+  ul.exp{list-style:none;margin:12px 0;padding:0;display:grid;gap:10px}ul.exp>li{position:relative;padding-left:20px}
+  ul.exp>li::before{content:"";position:absolute;left:0;top:11px;width:8px;height:8px;border-radius:2px;background:var(--dot)}
+  ol.book b,ul.exp b{color:var(--ink)}
+  ul.let{list-style:lower-alpha;margin:10px 0;padding-left:28px}ul.let>li{margin:8px 0;padding-left:4px}ul.let>li::marker{color:var(--dot);font-weight:700}
+  .flow{border-left:4px solid var(--dot);background:color-mix(in srgb,var(--dot) 9%,#fff);padding:11px 15px;border-radius:0 10px 10px 0;margin:18px 0;font-size:.9rem}
+  .flow::before{content:"🔗 Benang merah — ";font-weight:700;color:var(--dot)}.flow b{color:var(--dot)}
+  table.mini{width:100%;border-collapse:collapse;margin:14px 0;font-size:.86rem}
+  table.mini th,table.mini td{border:1px solid var(--line);padding:9px 11px;text-align:left;vertical-align:top}
+  table.mini th{background:color-mix(in srgb,var(--dot) 12%,#fff);color:var(--dot);font-weight:700}
+  table.mini tr:nth-child(even) td{background:#fafcfe}
+  .rgrid{display:grid;gap:8px;margin:14px 0}.rgrid.c3{grid-template-columns:repeat(3,1fr)}.rgrid.c2{grid-template-columns:repeat(2,1fr)}
+  .rcell{border:1px solid var(--line);border-radius:10px;padding:11px 13px;cursor:pointer;background:#fff;transition:.15s;display:flex;gap:10px;align-items:flex-start}
+  .rcell:hover{border-color:var(--dot);box-shadow:var(--shadow);transform:translateY(-2px)}
+  .rcell.active{border-color:var(--dot);background:color-mix(in srgb,var(--dot) 8%,#fff)}
+  .rcell .stepnum{background:var(--dot);color:#fff;font-weight:700;min-width:24px;height:24px;border-radius:7px;display:grid;place-items:center;flex:none;font-size:.82rem}
+  .rcell .rt{font-weight:700;font-size:.9rem;color:var(--dot);display:block}.rcell .rp{font-size:.78rem;color:var(--muted);display:block;margin-top:2px}
+  .rdetail{font-size:.88rem;border-left:4px solid var(--dot);background:color-mix(in srgb,var(--dot) 8%,#fff);border-radius:0 10px 10px 0;padding:12px 15px;margin-top:6px}
+  .pill-row{display:flex;gap:8px;flex-wrap:wrap;margin:10px 0}
+  .pill{font-size:.8rem;background:#eef3f8;color:#36506a;border:1px solid #e0e8f0;padding:4px 11px;border-radius:999px;font-weight:600}
+  .flowchart{display:flex;align-items:center;gap:6px;flex-wrap:wrap;margin:16px 0;justify-content:center}
+  .fc-node{background:color-mix(in srgb,var(--dot) 12%,#fff);border:1.5px solid var(--dot);color:var(--dot);font-weight:700;font-size:.8rem;padding:8px 12px;border-radius:9px;text-align:center}
+  .fc-arrow{color:var(--dot);font-weight:800;font-size:1.05rem}
+  .pyramid{display:flex;flex-direction:column;align-items:center;gap:4px;margin:16px 0}
+  .pyr-row{color:#fff;font-weight:700;text-align:center;padding:9px 12px;border-radius:7px;font-size:.84rem}
+  .eqbox{background:#fcfdff;border:1px solid var(--line);border-radius:10px;padding:8px 14px;margin:14px 0;overflow-x:auto}
+  .glossary dt{font-weight:700;color:var(--brand-dark);margin-top:10px}.glossary dd{margin:0 0 2px;color:var(--muted);font-size:.9rem}
+  footer{max-width:var(--maxw);margin:0 auto;padding:30px 20px 60px;color:var(--muted);font-size:.82rem;border-top:1px solid var(--line)}
+  footer .refs{margin-top:10px;font-size:.78rem;line-height:1.6}
+  .offline-note{font-size:.76rem;color:var(--muted);background:#fff8e6;border:1px solid #f0e2b8;border-radius:8px;padding:8px 12px;margin:10px 0}
+  @media(max-width:640px){.hero h1{font-size:1.3rem;max-width:100%}.hero::after{font-size:110px}nav.jump{display:none}.rgrid.c3,.rgrid.c2{grid-template-columns:1fr}.mindmap-host{height:440px}}
+  @media print{#progress,header.top,.btn-reset,.mm-toolbar{display:none}body{background:#fff}.card{box-shadow:none}}
+</style>
+</head>
+<body>
+<div id="progress"></div>
+<header class="top"><div class="top-in"><span class="badge">MODUL 9</span><a href="index.html" title="Kembali ke daftar modul" style="text-decoration:none;display:inline-flex;align-items:center;gap:7px;background:var(--brand);color:#fff;font-weight:700;font-size:.8rem;padding:7px 15px;border-radius:999px;white-space:nowrap;box-shadow:0 2px 6px rgba(16,42,67,.22);line-height:1"><span style="font-size:1rem;line-height:1">&#8962;</span> Daftar Modul</a><span class="top-title">Manajemen Pemasaran · EKMA5206</span>
+  <nav class="jump"><a href="#konsep">Konsep</a><a href="#peta">Peta Konsep</a><a href="#kb1">KB1</a><a href="#kb2">KB2</a><a href="#kb3">KB3</a><a href="#kb4">KB4</a></nav></div></header>
+<div class="wrap">
+  <section class="hero"><div class="eyebrow">Buku Materi Pokok · EKMA5206 · 3 SKS</div>
+    <h1>Organisasi Fungsi Pemasaran yang Efektif</h1>
+    <div class="meta"><span>⏱️ Estimasi belajar <b>±40 menit</b></span><span>📚 <b>4</b> Kegiatan Belajar</span><span>✍️ Dr. Ir. FX. Bambang Wiharto, M.M.</span></div></section>
+  <p class="section-sub" style="margin-top:22px">Modul penutup: bagaimana <b>mengorganisasikan</b> fungsi pemasaran agar seluruh strategi (Modul 1–8) terlaksana. Alur: konsep organisasi (KB1) → peran &amp; tanggung jawab sosial (KB2) → implementasi (KB3) → evaluasi &amp; pengendalian (KB4). Ringkasan mengikuti alur heading buku (A/1/a) dengan kotak <b>🔗 Benang merah</b>, penjelasan tiap poin, &amp; istilah asli + terjemahan.</p>
+  <p class="offline-note">ℹ️ Peta konsep &amp; elemen interaktif berjalan tanpa internet. Teks tetap terbaca offline.</p>
+
+  <h2 class="section" id="konsep"><span class="dot"></span>Konsep Penting yang Harus Dikuasai</h2>
+  <p class="section-sub">Istilah inti, urut sesuai buku. Centang sebagai penanda belajar (tersimpan otomatis).</p>
+  <div class="card"><div class="cl-head"><span class="count"><span id="doneCount">0</span>/<span id="totalCount">0</span> dikuasai</span><button class="btn-reset" id="resetBtn">Reset centang</button></div>
+    <ul class="concepts" id="conceptList">
+      <li><input type="checkbox"><span><span class="ct">Kecenderungan praktek pemasaran</span><span class="cd">Reengineering, outsourcing, benchmarking, partnering, merging, dll.</span></span></li>
+      <li><input type="checkbox"><span><span class="ct">Organisasi fungsional</span><span class="cd">Sederhana; kehilangan efektivitas saat produk/pasar bertambah.</span></span></li>
+      <li><input type="checkbox"><span><span class="ct">Organisasi geografis &amp; manajemen produk</span><span class="cd">Area specialist; product/brand manager.</span></span></li>
+      <li><input type="checkbox"><span><span class="ct">Product team &amp; category management</span><span class="cd">Vertikal, segitiga, horizontal.</span></span></li>
+      <li><input type="checkbox"><span><span class="ct">Organisasi pasar, matriks, divisi korporasi</span><span class="cd">Market-centered; multiproduct-multimarket.</span></span></li>
+      <li><input type="checkbox"><span><span class="ct">2 tugas wakil pimpinan pemasaran</span><span class="cd">Koordinasi internal &amp; lintas fungsi.</span></span></li>
+      <li><input type="checkbox"><span><span class="ct">7 peran organisasi pemasaran</span><span class="cd">Dari memahami konsumen sampai CSR.</span></span></li>
+      <li><input type="checkbox"><span><span class="ct">Piramida CSR (Carroll)</span><span class="cd">Ekonomik, legal, etikal, filantropik.</span></span></li>
+      <li><input type="checkbox"><span><span class="ct">Cause-related marketing</span><span class="cd">Self-branded, co-branded, jointly branded.</span></span></li>
+      <li><input type="checkbox"><span><span class="ct">Social marketing planning process</span><span class="cd">4 langkah: where are we → stay on course.</span></span></li>
+      <li><input type="checkbox"><span><span class="ct">Internal marketing</span><span class="cd">Pegawai = internal + external customer.</span></span></li>
+      <li><input type="checkbox"><span><span class="ct">Intended vs realized strategy</span><span class="cd">Strategi dipilih vs yang aktual dijalankan.</span></span></li>
+      <li><input type="checkbox"><span><span class="ct">3 objektif implementasi</span><span class="cd">Superior value, lebih cepat, biaya terendah.</span></span></li>
+      <li><input type="checkbox"><span><span class="ct">Analisis penjualan &amp; kinerja</span><span class="cd">Tren; performance analysis.</span></span></li>
+      <li><input type="checkbox"><span><span class="ct">Performance index &amp; analisis biaya</span><span class="cd">Full-cost vs contribution margin.</span></span></li>
+      <li><input type="checkbox"><span><span class="ct">Marketing audit</span><span class="cd">Peninjauan sistematik objektif &amp; kebijakan pemasaran.</span></span></li>
+    </ul>
+  </div>
+
+  <h2 class="section" id="peta"><span class="dot"></span>Peta Konsep (Mind Map)</h2>
+  <p class="section-sub">Struktur lengkap modul mengikuti outline buku. Klik +/− pada simpul untuk buka/tutup cabang.</p>
+  <div class="card"><div class="mm-toolbar"><button class="mm-btn" id="mmExpand">Perluas semua</button><button class="mm-btn" id="mmCollapse">Ciutkan</button><span class="mm-hint">Gulir di dalam kotak untuk menggeser</span></div><div class="mindmap-host" id="mindmap"></div></div>
+
+  <!-- KB1 -->
+  <h2 class="section" id="kb1"><span class="dot"></span>KB 1 — Konsep Organisasi Fungsi Pemasaran</h2>
+  <div class="card kb1b">
+    <span class="kb-tag kb1t">KONSEP ORGANISASI</span>
+    <p class="lead">Organisasi pemasaran berkembang dari sekadar <b>departemen penjualan</b> menjadi kelompok kegiatan penting &amp; rumit yang dilaksanakan bersama fungsi lain. Struktur harus memungkinkan pemasar bekerja terintegrasi demi kepuasan &amp; loyalitas pelanggan.</p>
+
+    <div class="numh">1 · Kecenderungan dalam Praktek Pemasaran</div>
+    <p>Perubahan lingkungan makro memaksa <b>restrukturisasi</b> organisasi. Sebelas kecenderungan — klik:</p>
+    <div class="rgrid c3" data-revealgroup>
+      <div class="rcell" data-reveal data-detail="<b>Reengineering</b> — menunjuk tim yang mengelola proses pembentukan nilai pelanggan &amp; meniadakan penghalang antar-departemen."><span><span class="rt">Reengineering</span></span></div>
+      <div class="rcell" data-reveal data-detail="<b>Outsourcing</b> — membeli barang/jasa dari vendor luar bila bisa diperoleh lebih murah &amp; lebih baik daripada dibuat sendiri."><span><span class="rt">Outsourcing</span></span></div>
+      <div class="rcell" data-reveal data-detail="<b>Benchmarking</b> — mempelajari best practice perusahaan lain untuk memperbaiki kinerja."><span><span class="rt">Benchmarking</span></span></div>
+      <div class="rcell" data-reveal data-detail="<b>Supplier partnering</b> — meningkatkan kemitraan dengan lebih sedikit pemasok yang mampu memberi nilai tambah lebih besar."><span><span class="rt">Supplier partnering</span></span></div>
+      <div class="rcell" data-reveal data-detail="<b>Customer partnering</b> — bekerja lebih dekat dengan pelanggan untuk meningkatkan nilai pelanggan."><span><span class="rt">Customer partnering</span></span></div>
+      <div class="rcell" data-reveal data-detail="<b>Merging</b> — bergabung dengan perusahaan lain di industri sama untuk skala &amp; lingkup ekonomi (scope) lebih baik."><span><span class="rt">Merging</span></span></div>
+      <div class="rcell" data-reveal data-detail="<b>Globalizing</b> — meningkatkan usaha untuk 'berpikir global &amp; bertindak lokal'."><span><span class="rt">Globalizing</span></span></div>
+      <div class="rcell" data-reveal data-detail="<b>Flattening</b> — memperkecil hierarki organisasional agar lebih dekat dengan pelanggan."><span><span class="rt">Flattening</span></span></div>
+      <div class="rcell" data-reveal data-detail="<b>Focusing</b> — menentukan bisnis (pasar-produk) &amp; pelanggan (pasar sasaran) paling menguntungkan &amp; berfokus padanya."><span><span class="rt">Focusing</span></span></div>
+      <div class="rcell" data-reveal data-detail="<b>Accelerating</b> — merancang organisasi yang mampu merespons lebih cepat perubahan lingkungan."><span><span class="rt">Accelerating</span></span></div>
+      <div class="rcell" data-reveal data-detail="<b>Empowering</b> — mendorong &amp; memberdayakan personil untuk membangun lebih banyak ide &amp; inisiatif."><span><span class="rt">Empowering</span></span></div>
+    </div>
+    <div class="rdetail" data-revealdetail>Klik salah satu kecenderungan untuk penjelasannya.</div>
+
+    <div class="numh">2 · Organisasi Departemen Pemasaran</div>
+    <p>Kotler &amp; Keller (2009): struktur departemen disusun berdasarkan fungsi, geografis, produk, atau pasar. Enam bentuk — klik:</p>
+    <div class="rgrid c2" data-revealgroup>
+      <div class="rcell" data-reveal data-detail="<b>a. Organisasi fungsional</b> — paling umum: spesialis (customer service, marketing planning, market logistic, direct marketing, digital marketing manager) melapor ke VP pemasaran. Keunggulan: sederhana secara administratif. Kelemahan: kehilangan efektivitas saat jumlah produk &amp; pasar meningkat; perencanaan sering tak sesuai; antar-fungsi bersaing anggaran."><span><span class="rt">a. Fungsional</span><span class="rp">Berbasis fungsi.</span></span></div>
+      <div class="rcell" data-reveal data-detail="<b>b. Organisasi geografis</b> — sales force diorganisasi per wilayah; menambah area marketing specialist (manajer regional/lokal) untuk volume tinggi. Contoh: McDonald's beralih regional (±50% anggaran iklan regional), disertai branching."><span><span class="rt">b. Geografis</span><span class="rp">Berbasis wilayah.</span></span></div>
+      <div class="rcell" data-reveal data-detail="<b>c. Organisasi manajemen produk/merek</b> — manajer produk mengawasi manajer kategori → manajer merek. 6 tugas: strategi kompetitif, rencana tahunan & ramalan, kerja dengan agen iklan, dukungan sales force/distributor, kumpulkan info pasar, awasi perbaikan produk. Tim produk: vertikal, segitiga, horizontal. Lalu product category management. Kelemahan: wewenang kurang, jarang kuasai keahlian fungsional, biaya tinggi, fokus jangka pendek, fragmentasi."><span><span class="rt">c. Manajemen produk/merek</b></span><span class="rp">Product/brand manager.</span></span></div>
+      <div class="rcell" data-reveal data-detail="<b>d. Organisasi manajemen pasar</b> — manajer pasar (pengembangan pasar, spesialis pasar/industri) memimpin bila pelanggan terbagi kelompok preferensi berbeda. Berfokus memenuhi kebutuhan kelompok pelanggan → market-centered organization."><span><span class="rt">d. Manajemen pasar</span><span class="rp">Market-centered.</span></span></div>
+      <div class="rcell" data-reveal data-detail="<b>e. Organisasi manajemen matriks</b> — untuk perusahaan multiproduct-multimarket; organisasi ramping (lean) & lintas fungsional (cross functional). Mahal & menciptakan konflik (siapa pegang wewenang, siapa tentukan harga)."><span><span class="rt">e. Matriks</span><span class="rp">Multiproduct-multimarket.</span></span></div>
+      <div class="rcell" data-reveal data-detail="<b>f. Organisasi divisi korporasi</b> — perusahaan besar membagi kelompok produk/pasar ke divisi terpisah. 3 tingkat corporate marketing: (1) tidak ada fungsi pemasaran di tingkat korporasi (tiap divisi punya sendiri), (2) moderat (staf kecil membantu evaluasi, konsultasi, promosi konsep), (3) kuat (staf + jasa iklan/promosi/riset/administrasi penjualan)."><span><span class="rt">f. Divisi korporasi</span><span class="rp">Corporate marketing 3 tingkat.</span></span></div>
+    </div>
+    <div class="rdetail" data-revealdetail>Klik salah satu bentuk organisasi untuk penjelasannya. Bentuk nyata biasanya kombinasi, disesuaikan visi &amp; misi.</div>
+
+    <div class="flow">Apapun bentuknya, departemen pemasaran tak berdiri sendiri — ia harus berhubungan harmonis dengan departemen lain. Itulah bagian 3.</div>
+
+    <div class="numh">3 · Hubungan Departemen Pemasaran dengan Departemen Lain</div>
+    <p>Dalam praktek, hubungan antar departemen ditandai persaingan &amp; rasa tak percaya (beda opini soal minat terbaik perusahaan). Konsep pemasaran menuntut semua departemen berorientasi pelanggan. <b>Dua tugas pokok wakil pimpinan pemasaran:</b></p>
+    <ol class="book">
+      <li><b>Mengoordinasikan</b> kegiatan pemasaran dalam lingkungan internal perusahaan.</li>
+      <li><b>Mengoordinasikan</b> kegiatan pemasaran dengan fungsi keuangan, operasional, &amp; fungsi lain untuk melayani pelanggan.</li>
+    </ol>
+    <p>Departemen lain bisa menolak mengikat usaha mereka pada pemenuhan keinginan pelanggan; konflik minat antar departemen tak sepenuhnya terhindarkan, tetapi harus dikelola lewat persuasi bukan sekadar wewenang.</p>
+  </div>
+
+  <!-- KB2 -->
+  <h2 class="section" id="kb2"><span class="dot"></span>KB 2 — Peran Organisasi Pemasaran</h2>
+  <div class="card kb2b">
+    <span class="kb-tag kb2t">PERAN &amp; TANGGUNG JAWAB SOSIAL</span>
+    <p class="lead">Organisasi pemasaran mengemban <b>tujuh peran</b> — dari memahami konsumen sampai tanggung jawab sosial. Pemasar modern memperhatikan konsep baru: CSR, cause-related marketing, social marketing, &amp; political marketing.</p>
+    <div class="numh">Tujuh Peran Organisasi Pemasaran</div>
+    <ol class="book">
+      <li>Memahami &amp; mengenali karakteristik &amp; perilaku konsumen.</li>
+      <li>Memahami &amp; mengenali situasi pasar &amp; persaingan.</li>
+      <li>Membangun merek yang kuat (termasuk <span class="term">brand equity</span> &amp; <span class="term">brand positioning</span>).</li>
+      <li>Membentuk penawaran pasar (strategi produk, layanan, &amp; harga).</li>
+      <li>Menyerahkan nilai lewat jalur distribusi &amp; ritel.</li>
+      <li>Mengomunikasikan nilai (IMC: direct, interactive, word of mouth, personal selling).</li>
+      <li>Melakukan <span class="term">cause-related marketing</span>, CSR, &amp; social marketing.</li>
+    </ol>
+
+    <div class="abc"><span class="ltr">1</span><h4>Corporate Social Responsibility (CSR)</h4></div>
+    <p><span class="term">CSR</span> = obligasi perusahaan memaksimalkan pengaruh positif sekaligus meminimalkan pengaruh negatif terhadap masyarakat. Dimensi: tanggung jawab sosial, <em>corporate citizenship</em>, stakeholders, marketing ethics, cause related marketing, &amp; strategic philanthropy. <b>Piramida CSR (Carroll 1991)</b> — empat tanggung jawab, dari fondasi ke puncak:</p>
+    <div class="pyramid">
+      <div class="pyr-row" style="background:#b07cd0;width:52%">Philanthropic — jadi "good corporate citizen"</div>
+      <div class="pyr-row" style="background:#2a9d6f;width:64%">Ethical — berperilaku etis, hindari merugikan</div>
+      <div class="pyr-row" style="background:#e08a1e;width:76%">Legal — patuhi peraturan &amp; hukum</div>
+      <div class="pyr-row" style="background:#1a86c7;width:88%">Economic — memperoleh keuntungan (fondasi)</div>
+    </div>
+    <p>Lima kekuatan mendorong tanggung jawab sosial tingkat tinggi: respons tepat atas ekspektasi pelanggan, ambisi pegawai, legislasi pemerintah yang ketat, minat investor atas kriteria sosial, &amp; perubahan praktek pengadaan barang/jasa.</p>
+
+    <div class="abc"><span class="ltr">2</span><h4>Cause-Related Marketing</h4></div>
+    <p><span class="term">Cause-related marketing</span> menghubungkan kontribusi perusahaan pada sebuah <em>cause</em> dengan keikutsertaan pelanggan bertransaksi (mis. Lifebuoy menyumbang Rp100/sabun untuk instalasi air bersih). <b>Enam manfaat:</b> bangun kesadaran merek, tingkatkan citra, bentuk kredibilitas, bentuk perasaan senang, bangun komunitas, &amp; keterikatan merek. <b>Tiga pendekatan</b> — klik:</p>
+    <div class="rgrid c3" data-revealgroup>
+      <div class="rcell" data-reveal data-detail="<b>Self-branded (own cause program)</b> — membangun program sendiri dengan memiliki/menciptakan sebuah 'cause' sebagai obyek program (mis. program cause-related Unilever dengan Lifebuoy)."><span><span class="rt">Self-branded</span><span class="rp">Cause milik sendiri.</span></span></div>
+      <div class="rcell" data-reveal data-detail="<b>Co-branded (link to existing cause)</b> — program cause-related dihubungkan dengan program/cause yang sudah ada."><span><span class="rt">Co-branded</span><span class="rp">Hubungkan cause yang ada.</span></span></div>
+      <div class="rcell" data-reveal data-detail="<b>Jointly branded (link to existing cause)</b> — sama seperti co-branded, dikerjakan bersama beberapa pihak atas satu cause yang sudah ada."><span><span class="rt">Jointly branded</span><span class="rp">Bersama beberapa pihak.</span></span></div>
+    </div>
+    <div class="rdetail" data-revealdetail>Klik salah satu pendekatan untuk penjelasannya.</div>
+
+    <div class="abc"><span class="ltr">3</span><h4>Social Marketing</h4></div>
+    <p><span class="term">Social marketing</span> dilakukan instansi pemerintah/organisasi nirlaba (tak berorientasi laba) untuk <b>mengubah pola perilaku</b> masyarakat yang buruk/berpotensi penyakit menjadi perilaku sehat (mis. kampanye berhenti merokok). <b>Social Marketing Planning Process</b> — empat langkah, klik:</p>
+    <div class="rgrid c2" data-revealgroup>
+      <div class="rcell" data-reveal data-detail="<b>1. Where are we?</b> — analisis atas lingkungan pemasaran sosial saat ini: tentukan fokus program, identifikasi tujuan kampanye, analisis SWOT, tinjau usaha pemasaran sosial sebelumnya."><span class="stepnum">1</span><span><span class="rt">Where are we?</span><span class="rp">Di mana kita sekarang.</span></span></div>
+      <div class="rcell" data-reveal data-detail="<b>2. Where do we want to go?</b> — tentukan pasar sasaran (segmentasi → pilih satu/lebih), tetapkan objektif &amp; sasaran, pahami apa yang diyakini pasar sasaran soal perubahan perilaku, analisis pasar &amp; persaingan."><span class="stepnum">2</span><span><span class="rt">Where do we want to go?</span><span class="rp">Tujuan yang dikehendaki.</span></span></div>
+      <div class="rcell" data-reveal data-detail="<b>3. How will we get there?</b> — tentukan strategi produk &amp; harga: rancang penawaran produk (perilaku diinginkan + manfaatnya), buat produk tersedia, susun 2 komponen strategi promosi (pesan + media komunikasi)."><span class="stepnum">3</span><span><span class="rt">How will we get there?</span><span class="rp">Cara mencapainya.</span></span></div>
+      <div class="rcell" data-reveal data-detail="<b>4. How will we stay on course?</b> — bangun perencanaan evaluasi &amp; pemantauan (apa diukur & bagaimana), susun anggaran & cari sumber dana, lengkapi rencana implementasi (siapa mengerjakan apa, kapan, bagaimana)."><span class="stepnum">4</span><span><span class="rt">How will we stay on course?</span><span class="rp">Menjaga arah.</span></span></div>
+    </div>
+    <div class="rdetail" data-revealdetail>Klik salah satu langkah untuk penjelasannya.</div>
+  </div>
+
+  <!-- KB3 -->
+  <h2 class="section" id="kb3"><span class="dot"></span>KB 3 — Implementasi Kegiatan Pemasaran</h2>
+  <div class="card kb3b">
+    <span class="kb-tag kb3t">IMPLEMENTASI</span>
+    <p class="lead">Rencana pemasaran yang baik menjadi <span class="term">framework</span> (kerangka kerja) implementasi. <span class="term">Implementasi</span> = proses mengubah rencana menjadi penugasan &amp; tindakan agar objektif tercapai. Empat pertanyaan: <b>siapa, di mana, kapan, bagaimana</b> kegiatan dilakukan. Empat keahlian: mendiagnosa persoalan, mencari tahu level masalah, melakukan implementasi, &amp; mengevaluasi solusi.</p>
+
+    <div class="numh">Tiga Isu (Ferrel, Hartline &amp; Lucas 2004)</div>
+    <ol class="book">
+      <li>Perencanaan &amp; implementasi saling berhubungan.</li>
+      <li>Perencanaan &amp; implementasi berevolusi secara konstan.</li>
+      <li>Dalam organisasi, keduanya cenderung dilakukan <b>terpisah</b> oleh orang yang berbeda.</li>
+    </ol>
+    <div class="flow">Karena dilakukan orang berbeda, dibutuhkan <b>internal marketing</b> agar seluruh anggota organisasi memahami &amp; menerima perannya dalam implementasi.</div>
+    <p><span class="term">Internal marketing</span> = kegiatan koordinasi pertukaran internal antar pegawai dengan perusahaan agar pertukaran eksternal (perusahaan ↔ pelanggan) berhasil. Tiap pegawai dilihat memiliki dua himpunan pelanggan: <span class="term">pelanggan internal</span> &amp; <span class="term">pelanggan eksternal</span>.</p>
+
+    <div class="numh">Tiga Tahapan Proses Implementasi</div>
+    <div class="rgrid c3" data-revealgroup>
+      <div class="rcell" data-reveal data-detail="<b>Marketing Implementation</b> — proses yang membuat & menyebabkan strategi pemasaran mulai diimplementasikan & dilaksanakan semua pihak yang ditugaskan."><span><span class="rt">Marketing Implementation</span><span class="rp">Pelaksanaan strategi.</span></span></div>
+      <div class="rcell" data-reveal data-detail="<b>Intended Strategy</b> — strategi yang sudah dipilih pada tahap perencanaan & ingin dilaksanakan perusahaan."><span><span class="rt">Intended Strategy</span><span class="rp">Strategi yang dipilih.</span></span></div>
+      <div class="rcell" data-reveal data-detail="<b>Realized Strategy</b> — strategi yang secara aktual dilaksanakan, bisa tidak sama dengan yang direncanakan; hasilnya dipantau & dievaluasi."><span><span class="rt">Realized Strategy</span><span class="rp">Strategi aktual.</span></span></div>
+    </div>
+    <div class="rdetail" data-revealdetail>Klik salah satu tahapan untuk penjelasannya.</div>
+
+    <div class="numh">Enam Persyaratan Implementasi Berhasil</div>
+    <ul class="exp">
+      <li>Mendapat <b>dukungan penuh manajemen puncak</b>.</li>
+      <li>Semua komponen punya <b>komitmen tinggi</b>.</li>
+      <li>Tersedia <b>sumber daya</b> yang mendukung.</li>
+      <li>Tersedia <b>informasi yang benar</b>.</li>
+      <li>Ada <b>jadwal &amp; target</b> yang diikuti, ditaati, dijadikan acuan.</li>
+      <li>Komponen <b>siap berubah</b> saat perlu.</li>
+    </ul>
+    <div class="numh">Tiga Objektif Implementasi (perlu Trade-off)</div>
+    <div class="rgrid c3" data-revealgroup>
+      <div class="rcell" data-reveal data-detail="<b>Lebih baik</b> — pelanggan memperoleh nilai superior (superior value) seperti yang direncanakan."><span><span class="rt">Superior value</span><span class="rp">Lebih baik.</span></span></div>
+      <div class="rcell" data-reveal data-detail="<b>Lebih cepat</b> — mencegah keterlambatan yang menimbulkan masalah bagi pelanggan."><span><span class="rt">Lebih cepat</span><span class="rp">Hindari keterlambatan.</span></span></div>
+      <div class="rcell" data-reveal data-detail="<b>Biaya terendah</b> — tanpa memboroskan uang untuk hal yang tak menambah nilai bagi pelanggan."><span><span class="rt">Biaya terendah</span><span class="rp">Efisien.</span></span></div>
+    </div>
+    <div class="rdetail" data-revealdetail>Klik salah satu objektif. Ketiganya sulit serempak → manajer membuat trade-off, didukung SOP.</div>
+    <p style="margin-top:12px"><b>Keluhan pelanggan perlu respon cepat</b> (pelanggan yang keluhannya ditangani cepat justru lebih loyal). <b>Implementasi perlu inovasi</b> — mis. <em>3-D Computer-Aided Design</em> untuk produk baru, <em>inventory reorder software</em> untuk masalah persediaan.</p>
+  </div>
+
+  <!-- KB4 -->
+  <h2 class="section" id="kb4"><span class="dot"></span>KB 4 — Evaluasi dan Pengendalian Kegiatan Pemasaran</h2>
+  <div class="card kb4b">
+    <span class="kb-tag kb4t">EVALUASI &amp; PENGENDALIAN</span>
+    <p class="lead">Manajer perlu <b>informasi rinci</b> untuk memperbaiki rencana. Informasi akuntansi sering terlalu umum. <span class="term">Metode Pareto</span> mengasumsikan <b>80% laba dari 20% produk</b> (tak selalu benar). Tiga sumber informasi: analisis penjualan, analisis kinerja, &amp; analisis biaya.</p>
+
+    <div class="numh">1 · Analisis Penjualan — Menunjukkan Apa yang Sedang Terjadi</div>
+    <p>Pengelompokan data penjualan (8 cara): <span class="pill">kategori/merek/kemasan/grade/warna</span> <span class="pill">area geografis</span> <span class="pill">karakteristik pelanggan</span> <span class="pill">saluran distribusi</span> <span class="pill">kelas harga/diskon</span> <span class="pill">metode penjualan</span> <span class="pill">tunai/kredit</span> <span class="pill">ukuran pesanan</span>.</p>
+    <ul class="exp">
+      <li><b>a. Analisis sepanjang waktu</b> — tunjukkan arah kecenderungan (tren) penjualan; dasar menyusun perkiraan lebih akurat. Catatan: keuntungan hari ini tak menjamin uang hasil penjualan besok.</li>
+      <li><b>b. Grafik setara ribuan kata</b> — sistem informasi mengubah data jadi <em>chart</em> yang lebih mudah dimengerti daripada tabel.</li>
+    </ul>
+
+    <div class="numh">2 · Analisis Kinerja — Mencari Perbedaan yang Ada</div>
+    <p><span class="term">Performance analysis</span> mencari pengecualian/variasi nilai penjualan dibanding kinerja direncanakan (bandingkan dengan daerah lain, tahun sebelumnya, atau yang diharapkan). Tujuan: mengidentifikasi wiraniaga/daerah berkinerja buruk untuk diperbaiki, atau yang bagus untuk disebarluaskan. Bentuk data lain: frekuensi kehabisan persediaan, jumlah <em>sales calls</em>, kepuasan pelanggan.</p>
+
+    <div class="numh">3 · Performance Index</div>
+    <p>Evaluasi kinerja tiap wiraniaga untuk memahami <b>mengapa</b> suatu hal terjadi (kinerja buruk sering bukan karena penjualan). Bandingkan apa yang terjadi vs apa yang harus terjadi lewat <span class="term">performance index</span>:</p>
+    <div class="eqbox"><div>\[ \text{Sales performance index} = \frac{\text{Penjualan aktual}}{\text{Penjualan yang diharapkan}} \times 100 \]</div></div>
+
+    <div class="numh">4 · Analisis Biaya Pemasaran</div>
+    <p>Kegiatan penjualan memerlukan biaya yang juga harus dianalisis &amp; dikontrol. Dua cara mengalokasikan biaya — klik:</p>
+    <div class="rgrid c2" data-revealgroup>
+      <div class="rcell" data-reveal data-detail="<b>Full-cost approach</b> — semua biaya dialokasikan ke berbagai produk/pelanggan/kategori, sehingga profitabilitas tiap item bisa dihitung. Perlu cara memisahkan biaya yang sulit dialokasikan (kadang alokasi mekanikal)."><span><span class="rt">Full-cost approach</span><span class="rp">Semua biaya dialokasikan.</span></span></div>
+      <div class="rcell" data-reveal data-detail="<b>Contribution margin approach</b> — tidak semua biaya dialokasikan; hanya biaya yang berhubungan langsung dengan alternatif tertentu (biaya variabel relevan). Lebih fokus pada biaya variabel, bukan total."><span><span class="rt">Contribution margin</span><span class="rp">Hanya biaya langsung.</span></span></div>
+    </div>
+    <div class="rdetail" data-revealdetail>Klik salah satu pendekatan biaya untuk penjelasannya.</div>
+
+    <div class="numh">5 · Marketing Audit</div>
+    <p><span class="term">Marketing audit</span> = peninjauan ulang &amp; penilaian sistematik &amp; kritikal atas objektif, kebijakan, metode, prosedur &amp; orang yang mengimplementasikan kebijakan pemasaran (mirip <em>accounting/personnel audit</em>). Dilakukan bagian terpisah dari pemasaran — <span class="term">marketing controller</span> — atau idealnya <b>konsultan pemasaran luar</b> agar obyektif. Audit mengambil <b>gambaran besar</b>, mewawancarai pelanggan, pesaing, anggota jalur distribusi &amp; pegawai; pantas dilakukan berkala untuk menjaga &amp; meningkatkan kinerja.</p>
+    <div class="flow">Evaluasi &amp; pengendalian menutup lingkaran manajemen pemasaran: hasil audit &amp; analisis kembali menjadi masukan bagi perencanaan (Modul 1) — siklus strategi berulang &amp; terus disempurnakan.</div>
+  </div>
+
+  <h2 class="section" id="glosarium"><span class="dot"></span>Glosarium Kilat</h2>
+  <div class="card"><dl class="glossary">
+    <dt>Reengineering / outsourcing / benchmarking</dt><dd>Perancangan ulang proses / beli dari luar / tiru best practice.</dd>
+    <dt>Product / brand manager</dt><dd>Manajer produk / merek dalam organisasi pemasaran.</dd>
+    <dt>Market-centered organization</dt><dd>Organisasi berpusat pada kebutuhan kelompok pelanggan.</dd>
+    <dt>CSR</dt><dd>Corporate Social Responsibility — tanggung jawab sosial perusahaan.</dd>
+    <dt>Piramida Carroll</dt><dd>Ekonomik → Legal → Etikal → Filantropik.</dd>
+    <dt>Cause-related marketing</dt><dd>Self-branded, co-branded, jointly branded.</dd>
+    <dt>Internal marketing</dt><dd>Koordinasi pertukaran internal antar pegawai &amp; perusahaan.</dd>
+    <dt>Intended / realized strategy</dt><dd>Strategi yang dipilih / yang aktual dijalankan.</dd>
+    <dt>Performance index</dt><dd>Penjualan aktual ÷ diharapkan × 100.</dd>
+    <dt>Full-cost / contribution margin</dt><dd>Semua biaya dialokasikan / hanya biaya langsung.</dd>
+    <dt>Marketing audit</dt><dd>Peninjauan sistematik objektif &amp; kebijakan pemasaran.</dd>
+  </dl></div>
+</div>
+
+<footer><b>EKMA5206 — Manajemen Pemasaran</b> · Modul 9: Organisasi Fungsi Pemasaran yang Efektif (Edisi 3) · Penulis: Dr. Ir. FX. Bambang Wiharto, M.M.<br>
+  Bahan belajar ringkas — disusun ulang mengikuti alur modul (hal. 9.1–9.37) untuk persiapan ujian. <b>Modul terakhir.</b>
+  <div class="refs"><b>Rujukan utama modul:</b> Kotler &amp; Keller (2009) <i>Marketing Management</i> 13e · Carroll (1991) · Ferrel, Hartline &amp; Lucas (2004) · Mullins &amp; Walker (2010).</div></footer>
+
+<script>
+(function(){
+  var pb=document.getElementById('progress');
+  function onScroll(){var h=document.documentElement;var sc=h.scrollTop||document.body.scrollTop;var max=(h.scrollHeight-h.clientHeight)||1;pb.style.width=(sc/max*100)+'%';}
+  document.addEventListener('scroll',onScroll,{passive:true});onScroll();
+  var list=document.getElementById('conceptList');var items=[].slice.call(list.querySelectorAll('li'));var boxes=items.map(function(li){return li.querySelector('input');});
+  document.getElementById('totalCount').textContent=items.length;var doneEl=document.getElementById('doneCount');var KEY='ekma5206_m9_concepts_v1';
+  function load(){try{var a=JSON.parse(localStorage.getItem(KEY)||'[]');boxes.forEach(function(b,i){if(a[i])b.checked=true;});}catch(e){}}
+  function save(){try{localStorage.setItem(KEY,JSON.stringify(boxes.map(function(b){return b.checked?1:0;})));}catch(e){}}
+  function refresh(){var n=0;items.forEach(function(li,i){if(boxes[i].checked){li.classList.add('done');n++;}else li.classList.remove('done');});doneEl.textContent=n;}
+  load();refresh();boxes.forEach(function(b){b.addEventListener('change',function(){refresh();save();});});
+  document.getElementById('resetBtn').addEventListener('click',function(){boxes.forEach(function(b){b.checked=false;});refresh();save();});
+  [].slice.call(document.querySelectorAll('[data-revealgroup]')).forEach(function(g){
+    var det=g.querySelector('[data-revealdetail]');if(!det){var sib=g.nextElementSibling;if(sib&&sib.hasAttribute&&sib.hasAttribute('data-revealdetail'))det=sib;}
+    var cells=[].slice.call(g.querySelectorAll('[data-reveal]'));
+    cells.forEach(function(c){c.addEventListener('click',function(){cells.forEach(function(x){x.classList.remove('active');});c.classList.add('active');if(det)det.innerHTML=c.getAttribute('data-detail');});});
+  });
+  (function(){
+    var ROWH=46,NODE_H=32,PAD=13,GAP=52;var COL={root:'#0f5e8f',kb1:'#1a86c7',kb2:'#e08a1e',kb3:'#2a9d6f',kb4:'#7a5cc0'};
+    var mc=document.createElement('canvas').getContext('2d');mc.font='700 13px -apple-system,Segoe UI,Roboto,sans-serif';
+    function tw(t){return Math.ceil(mc.measureText(t).width);}function esc(t){return t.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');}
+    function rgba(hex,a){var h=hex.replace('#','');return 'rgba('+parseInt(h.substr(0,2),16)+','+parseInt(h.substr(2,2),16)+','+parseInt(h.substr(4,2),16)+','+a+')';}
+    var DATA={label:'MODUL 9 — Organisasi Fungsi Pemasaran yang Efektif',color:COL.root,children:[
+      {label:'KB1 · Konsep Organisasi Fungsi Pemasaran',color:COL.kb1,children:[
+        {label:'Kecenderungan praktek (11)'},
+        {label:'Organisasi: fungsional, geografis, produk'},
+        {label:'Organisasi: pasar, matriks, divisi korporasi'},
+        {label:'Hubungan antar departemen'}
+      ]},
+      {label:'KB2 · Peran Organisasi Pemasaran',color:COL.kb2,children:[
+        {label:'7 peran organisasi pemasaran'},
+        {label:'CSR & piramida Carroll'},
+        {label:'Cause-related marketing (3 pendekatan)'},
+        {label:'Social marketing (4 langkah)'}
+      ]},
+      {label:'KB3 · Implementasi Kegiatan Pemasaran',color:COL.kb3,children:[
+        {label:'Framework & internal marketing'},
+        {label:'3 tahapan (intended/realized)'},
+        {label:'6 persyaratan berhasil'},
+        {label:'3 objektif & trade-off'}
+      ]},
+      {label:'KB4 · Evaluasi & Pengendalian',color:COL.kb4,children:[
+        {label:'Analisis penjualan (tren)'},
+        {label:'Analisis kinerja (performance)'},
+        {label:'Performance index'},
+        {label:'Analisis biaya (full-cost/contribution)'},
+        {label:'Marketing audit'}
+      ]}
+    ]};
+    var idc=0;(function w(n,c){n.id='n'+(idc++);n.color=n.color||c;(n.children||[]).forEach(function(k){w(k,n.color);});})(DATA,COL.root);
+    (function w(n,d){if(d>=2&&n.children&&n.children.length)n.collapsed=true;(n.children||[]).forEach(function(k){w(k,d+1);});})(DATA,0);
+    var host=document.getElementById('mindmap');
+    function render(){
+      var colW=[];(function w(n,d){var width=tw(n.label)+PAD*2+((n.children&&n.children.length)?20:0);colW[d]=Math.max(colW[d]||0,width);if(!n.collapsed)(n.children||[]).forEach(function(k){w(k,d+1);});})(DATA,0);
+      var colX=[],acc=14;for(var d=0;d<colW.length;d++){colX[d]=acc;acc+=colW[d]+GAP;}var row={v:0};
+      (function lay(n,d){if(!n.children||!n.children.length||n.collapsed){n._y=row.v*ROWH+ROWH/2+8;row.v++;return;}var f,l;n.children.forEach(function(k,i){lay(k,d+1);if(i===0)f=k._y;l=k._y;});n._y=(f+l)/2;})(DATA,0);
+      var totalW=acc,totalH=row.v*ROWH+24;var nodes=[],links=[];
+      (function col(n,d,p){n._x=colX[d];n._w=tw(n.label)+PAD*2+((n.children&&n.children.length)?20:0);nodes.push({n:n,d:d});if(p)links.push([p,n]);if(!n.collapsed)(n.children||[]).forEach(function(k){col(k,d+1,n);});})(DATA,0,null);
+      var s='<svg width="'+totalW+'" height="'+totalH+'" viewBox="0 0 '+totalW+' '+totalH+'" xmlns="http://www.w3.org/2000/svg">';
+      links.forEach(function(pr){var a=pr[0],b=pr[1],x1=a._x+a._w,y1=a._y,x2=b._x,y2=b._y,mx=(x1+x2)/2;s+='<path d="M'+x1+' '+y1+' C'+mx+' '+y1+' '+mx+' '+y2+' '+x2+' '+y2+'" fill="none" stroke="'+rgba(b.color,.5)+'" stroke-width="2"/>';});
+      nodes.forEach(function(o){var n=o.n,x=n._x,y=n._y-NODE_H/2,w=n._w,hk=n.children&&n.children.length;var fill=o.d===0?n.color:(o.d===1?rgba(n.color,.12):'#fff');var tf=o.d===0?'#fff':'#1c2733';
+        s+='<g data-id="'+n.id+'" style="cursor:'+(hk?'pointer':'default')+'"><rect x="'+x+'" y="'+y+'" rx="9" width="'+w+'" height="'+NODE_H+'" fill="'+fill+'" stroke="'+n.color+'" stroke-width="'+(o.d===0?0:1.6)+'"/><text x="'+(x+PAD)+'" y="'+(n._y+4)+'" font-size="13" font-weight="'+(o.d<=1?'700':'500')+'" fill="'+tf+'" font-family="-apple-system,Segoe UI,Roboto,sans-serif">'+esc(n.label)+'</text>';
+        if(hk){var cx=x+w-12,cy=n._y;s+='<circle cx="'+cx+'" cy="'+cy+'" r="8.5" fill="'+n.color+'"/><text x="'+cx+'" y="'+(cy+4.5)+'" font-size="13" font-weight="700" fill="#fff" text-anchor="middle" font-family="sans-serif">'+(n.collapsed?'+':'\u2013')+'</text>';}s+='</g>';});
+      s+='</svg>';host.innerHTML=s;
+    }
+    host.addEventListener('click',function(e){var g=e.target.closest('g[data-id]');if(!g)return;var id=g.getAttribute('data-id');(function f(n){if(n.id===id){if(n.children&&n.children.length)n.collapsed=!n.collapsed;return true;}return (n.children||[]).some(f);})(DATA);render();});
+    document.getElementById('mmExpand').addEventListener('click',function(){(function w(n){if(n.children)n.collapsed=false;(n.children||[]).forEach(w);})(DATA);render();});
+    document.getElementById('mmCollapse').addEventListener('click',function(){(function w(n,d){if(d>=1&&n.children&&n.children.length)n.collapsed=true;(n.children||[]).forEach(function(k){w(k,d+1);});})(DATA,0);render();});
+    render();
+  })();
+  window.addEventListener('load',function(){setTimeout(function(){if(window.MathJax&&window.MathJax.typesetPromise)window.MathJax.typesetPromise();},400);});
+})();
+</script>
+</body>
+</html>

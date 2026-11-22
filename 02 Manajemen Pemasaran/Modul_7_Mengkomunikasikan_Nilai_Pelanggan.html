@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Modul 7 — Mengkomunikasikan Nilai Pelanggan | EKMA5206</title>
+<script>window.MathJax={tex:{inlineMath:[['$','$']],displayMath:[['\\[','\\]']]},svg:{fontCache:'global'},startup:{typeset:true}};</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js" id="MathJax-script" async></script>
+<style>
+  :root{--bg:#f4f6f9;--panel:#fff;--ink:#1c2733;--muted:#5c6b7a;--line:#e4e9f0;--brand:#1a86c7;--brand-dark:#0f5e8f;--brand-soft:#e7f3fb;--kb1:#1a86c7;--kb2:#e08a1e;--kb3:#2a9d6f;--radius:14px;--shadow:0 1px 2px rgba(16,42,67,.06),0 6px 20px rgba(16,42,67,.06);--maxw:900px}
+  *{box-sizing:border-box}html{scroll-behavior:smooth}
+  body{margin:0;background:var(--bg);color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;line-height:1.72;-webkit-font-smoothing:antialiased}
+  #progress{position:fixed;top:0;left:0;height:4px;width:0;background:linear-gradient(90deg,var(--brand),#53c0ec);z-index:200;transition:width .1s}
+  header.top{position:sticky;top:0;z-index:100;background:rgba(255,255,255,.92);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+  .top-in{max-width:var(--maxw);margin:0 auto;padding:10px 20px;display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+  .badge{background:var(--brand);color:#fff;font-weight:700;font-size:.72rem;letter-spacing:.5px;padding:4px 10px;border-radius:999px;white-space:nowrap}
+  .top-title{font-size:.9rem;font-weight:600;color:var(--muted)}
+  nav.jump{margin-left:auto;display:flex;gap:4px;flex-wrap:wrap}
+  nav.jump a{font-size:.78rem;color:var(--muted);text-decoration:none;padding:5px 10px;border-radius:8px}
+  nav.jump a:hover{background:var(--brand-soft);color:var(--brand-dark)}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 20px 90px}
+  .hero{margin-top:26px;padding:30px 28px;border-radius:var(--radius);color:#fff;background:linear-gradient(135deg,#0f5e8f 0%,#1a86c7 60%,#2fa4df 100%);box-shadow:var(--shadow);position:relative;overflow:hidden}
+  .hero::after{content:"07";position:absolute;right:18px;bottom:-26px;font-size:150px;font-weight:800;opacity:.12;line-height:1}
+  .hero .eyebrow{font-size:.78rem;letter-spacing:1.5px;text-transform:uppercase;opacity:.9;font-weight:600}
+  .hero h1{margin:.3em 0 .25em;font-size:1.62rem;line-height:1.25;max-width:90%}
+  .hero .meta{display:flex;gap:18px;flex-wrap:wrap;font-size:.84rem;opacity:.95;margin-top:10px}
+  h2.section{font-size:1.3rem;margin:48px 0 4px;display:flex;align-items:center;gap:10px;scroll-margin-top:70px}
+  h2.section .dot{width:10px;height:22px;border-radius:4px;background:var(--brand)}
+  .section-sub{color:var(--muted);font-size:.9rem;margin:0 0 18px}
+  .card{background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);padding:22px 24px;margin:16px 0;--dot:var(--brand)}
+  .concepts{list-style:none;margin:0;padding:0;display:grid;gap:10px}
+  .concepts li{display:flex;gap:12px;align-items:flex-start;padding:12px 14px;border:1px solid var(--line);border-radius:10px;background:#fcfdff;transition:.15s}
+  .concepts li:hover{border-color:#cfe3f2}
+  .concepts input{margin-top:4px;width:18px;height:18px;accent-color:var(--brand);flex:none;cursor:pointer}
+  .concepts .ct{font-weight:600}.concepts .cd{display:block;font-weight:400;color:var(--muted);font-size:.86rem;margin-top:2px}
+  .concepts li.done{background:var(--brand-soft);border-color:#bfe0f3}.concepts li.done .ct{text-decoration:line-through;opacity:.65}
+  .cl-head{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-bottom:6px}
+  .cl-head .count{font-size:.82rem;color:var(--muted);background:var(--brand-soft);padding:3px 10px;border-radius:999px;font-weight:600}
+  .btn-reset{font-size:.78rem;border:1px solid var(--line);background:#fff;color:var(--muted);padding:5px 12px;border-radius:8px;cursor:pointer}.btn-reset:hover{background:#f6f8fb}
+  .mm-toolbar{display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin-bottom:10px}
+  .mm-btn{font-size:.78rem;border:1px solid var(--line);background:#fff;padding:6px 13px;border-radius:8px;cursor:pointer;color:var(--brand-dark);font-weight:600}.mm-btn:hover{background:var(--brand-soft)}
+  .mm-hint{font-size:.76rem;color:var(--muted)}
+  .mindmap-host{height:600px;overflow:auto;border:1px solid var(--line);border-radius:10px;background:#fcfdff}.mindmap-host svg{display:block}
+  .kb-tag{display:inline-flex;align-items:center;gap:8px;font-size:.78rem;font-weight:700;letter-spacing:.3px;color:#fff;padding:5px 12px;border-radius:999px;margin-bottom:6px}
+  .kb1t{background:var(--kb1)}.kb2t{background:var(--kb2)}.kb3t{background:var(--kb3)}
+  .kb1b{--dot:var(--kb1)}.kb2b{--dot:var(--kb2)}.kb3b{--dot:var(--kb3)}
+  .lead{font-size:1.02rem}.term{font-weight:700;color:var(--dot)}.en{font-style:italic;color:var(--muted);font-weight:500}
+  .abc{display:flex;align-items:center;gap:10px;margin:28px 0 10px;padding-bottom:6px;border-bottom:2px solid currentColor;border-bottom-color:color-mix(in srgb,var(--dot) 18%,#fff)}
+  .abc .ltr{background:var(--dot);color:#fff;font-weight:800;min-width:30px;height:30px;padding:0 7px;border-radius:8px;display:grid;place-items:center;flex:none}
+  .abc h4{margin:0;font-size:1.06rem;color:var(--dot)}
+  .numh{font-weight:700;color:var(--dot);margin:22px 0 4px;font-size:1rem}
+  .leth{font-weight:800;color:var(--dot);margin:20px 0 6px;font-size:.98rem;border-left:3px solid var(--dot);padding-left:10px}
+  ol.book{margin:12px 0;padding-left:28px}ol.book>li{margin:10px 0;padding-left:6px}ol.book>li::marker{font-weight:700;color:var(--dot)}
+  ul.exp{list-style:none;margin:12px 0;padding:0;display:grid;gap:10px}ul.exp>li{position:relative;padding-left:20px}
+  ul.exp>li::before{content:"";position:absolute;left:0;top:11px;width:8px;height:8px;border-radius:2px;background:var(--dot)}
+  ol.book b,ul.exp b{color:var(--ink)}
+  ul.let{list-style:lower-alpha;margin:10px 0;padding-left:28px}ul.let>li{margin:8px 0;padding-left:4px}ul.let>li::marker{color:var(--dot);font-weight:700}
+  .flow{border-left:4px solid var(--dot);background:color-mix(in srgb,var(--dot) 9%,#fff);padding:11px 15px;border-radius:0 10px 10px 0;margin:18px 0;font-size:.9rem}
+  .flow::before{content:"🔗 Benang merah — ";font-weight:700;color:var(--dot)}.flow b{color:var(--dot)}
+  table.mini{width:100%;border-collapse:collapse;margin:14px 0;font-size:.86rem}
+  table.mini th,table.mini td{border:1px solid var(--line);padding:9px 11px;text-align:left;vertical-align:top}
+  table.mini th{background:color-mix(in srgb,var(--dot) 12%,#fff);color:var(--dot);font-weight:700}
+  table.mini tr:nth-child(even) td{background:#fafcfe}
+  .rgrid{display:grid;gap:8px;margin:14px 0}.rgrid.c3{grid-template-columns:repeat(3,1fr)}.rgrid.c2{grid-template-columns:repeat(2,1fr)}.rgrid.c4{grid-template-columns:repeat(4,1fr)}
+  .rcell{border:1px solid var(--line);border-radius:10px;padding:11px 13px;cursor:pointer;background:#fff;transition:.15s;display:flex;gap:10px;align-items:flex-start}
+  .rcell:hover{border-color:var(--dot);box-shadow:var(--shadow);transform:translateY(-2px)}
+  .rcell.active{border-color:var(--dot);background:color-mix(in srgb,var(--dot) 8%,#fff)}
+  .rcell .stepnum{background:var(--dot);color:#fff;font-weight:700;min-width:24px;height:24px;border-radius:7px;display:grid;place-items:center;flex:none;font-size:.82rem}
+  .rcell .rt{font-weight:700;font-size:.9rem;color:var(--dot);display:block}.rcell .rp{font-size:.78rem;color:var(--muted);display:block;margin-top:2px}
+  .rdetail{font-size:.88rem;border-left:4px solid var(--dot);background:color-mix(in srgb,var(--dot) 8%,#fff);border-radius:0 10px 10px 0;padding:12px 15px;margin-top:6px}
+  .pill-row{display:flex;gap:8px;flex-wrap:wrap;margin:10px 0}
+  .pill{font-size:.8rem;background:#eef3f8;color:#36506a;border:1px solid #e0e8f0;padding:4px 11px;border-radius:999px;font-weight:600}
+  .flowchart{display:flex;align-items:center;gap:6px;flex-wrap:wrap;margin:16px 0;justify-content:center}
+  .fc-node{background:color-mix(in srgb,var(--dot) 12%,#fff);border:1.5px solid var(--dot);color:var(--dot);font-weight:700;font-size:.8rem;padding:8px 12px;border-radius:9px;text-align:center}
+  .fc-arrow{color:var(--dot);font-weight:800;font-size:1.05rem}
+  .glossary dt{font-weight:700;color:var(--brand-dark);margin-top:10px}.glossary dd{margin:0 0 2px;color:var(--muted);font-size:.9rem}
+  footer{max-width:var(--maxw);margin:0 auto;padding:30px 20px 60px;color:var(--muted);font-size:.82rem;border-top:1px solid var(--line)}
+  footer .refs{margin-top:10px;font-size:.78rem;line-height:1.6}
+  .offline-note{font-size:.76rem;color:var(--muted);background:#fff8e6;border:1px solid #f0e2b8;border-radius:8px;padding:8px 12px;margin:10px 0}
+  @media(max-width:640px){.hero h1{font-size:1.3rem;max-width:100%}.hero::after{font-size:110px}nav.jump{display:none}.rgrid.c3,.rgrid.c2,.rgrid.c4{grid-template-columns:1fr}.mindmap-host{height:440px}}
+  @media print{#progress,header.top,.btn-reset,.mm-toolbar{display:none}body{background:#fff}.card{box-shadow:none}}
+</style>
+</head>
+<body>
+<div id="progress"></div>
+<header class="top"><div class="top-in"><span class="badge">MODUL 7</span><a href="index.html" title="Kembali ke daftar modul" style="text-decoration:none;display:inline-flex;align-items:center;gap:7px;background:var(--brand);color:#fff;font-weight:700;font-size:.8rem;padding:7px 15px;border-radius:999px;white-space:nowrap;box-shadow:0 2px 6px rgba(16,42,67,.22);line-height:1"><span style="font-size:1rem;line-height:1">&#8962;</span> Daftar Modul</a><span class="top-title">Manajemen Pemasaran · EKMA5206</span>
+  <nav class="jump"><a href="#konsep">Konsep</a><a href="#peta">Peta Konsep</a><a href="#kb1">KB1</a><a href="#kb2">KB2</a><a href="#kb3">KB3</a><a href="#glosarium">Glosarium</a></nav></div></header>
+<div class="wrap">
+  <section class="hero"><div class="eyebrow">Buku Materi Pokok · EKMA5206 · 3 SKS</div>
+    <h1>Mengkomunikasikan Nilai Pelanggan</h1>
+    <div class="meta"><span>⏱️ Estimasi belajar <b>±40 menit</b></span><span>📚 <b>3</b> Kegiatan Belajar</span><span>✍️ Dr. Ir. FX. Bambang Wiharto, M.M.</span></div></section>
+  <p class="section-sub" style="margin-top:22px">Nilai yang sudah dibuat &amp; diserahkan (Modul 5–6) harus <b>dikomunikasikan</b>. Modul ini menata komunikasi pemasaran terpadu (KB1), lalu dua kanalnya: <b>komunikasi massa</b> (KB2) &amp; <b>komunikasi personal</b> (KB3). Ringkasan mengikuti alur heading buku (A/1/a) dengan kotak <b>🔗 Benang merah</b>, penjelasan tiap poin, &amp; istilah asli + terjemahan.</p>
+  <p class="offline-note">ℹ️ Peta konsep &amp; elemen interaktif berjalan tanpa internet. Teks tetap terbaca offline.</p>
+
+  <h2 class="section" id="konsep"><span class="dot"></span>Konsep Penting yang Harus Dikuasai</h2>
+  <p class="section-sub">Istilah inti, urut sesuai buku. Centang sebagai penanda belajar (tersimpan otomatis).</p>
+  <div class="card"><div class="cl-head"><span class="count"><span id="doneCount">0</span>/<span id="totalCount">0</span> dikuasai</span><button class="btn-reset" id="resetBtn">Reset centang</button></div>
+    <ul class="concepts" id="conceptList">
+      <li><input type="checkbox"><span><span class="ct">8 moda komunikasi pemasaran</span><span class="cd">Advertising, sales promotion, events, PR, direct, interactive, WOM, personal selling.</span></span></li>
+      <li><input type="checkbox"><span><span class="ct">Macromodel &amp; micromodel komunikasi</span><span class="cd">Sender→receiver; response hierarchy (AIDA dll).</span></span></li>
+      <li><input type="checkbox"><span><span class="ct">4 objektif komunikasi (Rossiter &amp; Percy)</span><span class="cd">Category need, awareness, attitude, purchase intention.</span></span></li>
+      <li><input type="checkbox"><span><span class="ct">Creative strategy &amp; message source</span><span class="cd">Informational/transformational appeals; expertise/trust/likability.</span></span></li>
+      <li><input type="checkbox"><span><span class="ct">4 metode anggaran komunikasi</span><span class="cd">Affordable, % of sales, competitive-parity, objective-and-task.</span></span></li>
+      <li><input type="checkbox"><span><span class="ct">5M program periklanan</span><span class="cd">Mission, Money, Message, Media, Measurement.</span></span></li>
+      <li><input type="checkbox"><span><span class="ct">4 objektif iklan</span><span class="cd">Informative, persuasive, reminder, reinforcement.</span></span></li>
+      <li><input type="checkbox"><span><span class="ct">Reach, frequency, impact &amp; media timing</span><span class="cd">Continuity/concentration/flighting/pulsing.</span></span></li>
+      <li><input type="checkbox"><span><span class="ct">Promosi penjualan &amp; pengujian iklan</span><span class="cd">Consumer/trade promotion; pretesting.</span></span></li>
+      <li><input type="checkbox"><span><span class="ct">Sponsorship &amp; experiential marketing</span><span class="cd">Peristiwa &amp; pengalaman.</span></span></li>
+      <li><input type="checkbox"><span><span class="ct">Public Relations &amp; MPR</span><span class="cd">Fungsi PR &amp; marketing public relations.</span></span></li>
+      <li><input type="checkbox"><span><span class="ct">Direct marketing &amp; R-F-M</span><span class="cd">Recency, frequency, monetary amount.</span></span></li>
+      <li><input type="checkbox"><span><span class="ct">7C interactive marketing</span><span class="cd">Context, content, community, customization, communication, connection, commerce.</span></span></li>
+      <li><input type="checkbox"><span><span class="ct">Word of mouth (buzz &amp; viral)</span><span class="cd">Opinion leader, jaringan sosial.</span></span></li>
+      <li><input type="checkbox"><span><span class="ct">6 posisi tenaga penjualan</span><span class="cd">Deliverer sampai solution vendor.</span></span></li>
+      <li><input type="checkbox"><span><span class="ct">SPIN &amp; 6 langkah proses penjualan</span><span class="cd">Situation/Problem/Implication/Need-payoff; prospecting→follow-up.</span></span></li>
+    </ul>
+  </div>
+
+  <h2 class="section" id="peta"><span class="dot"></span>Peta Konsep (Mind Map)</h2>
+  <p class="section-sub">Struktur lengkap modul mengikuti outline buku. Klik +/− pada simpul untuk buka/tutup cabang.</p>
+  <div class="card"><div class="mm-toolbar"><button class="mm-btn" id="mmExpand">Perluas semua</button><button class="mm-btn" id="mmCollapse">Ciutkan</button><span class="mm-hint">Gulir di dalam kotak untuk menggeser</span></div><div class="mindmap-host" id="mindmap"></div></div>
+
+  <!-- KB1 -->
+  <h2 class="section" id="kb1"><span class="dot"></span>KB 1 — Merancang &amp; Mengelola Komunikasi Pemasaran Terpadu (IMC)</h2>
+  <div class="card kb1b">
+    <span class="kb-tag kb1t">KOMUNIKASI TERPADU</span>
+    <p class="lead"><span class="term">Komunikasi pemasaran</span> adalah sarana untuk <b>memberitahu, mempengaruhi, &amp; mengingatkan</b> konsumen tentang produk/merek — mewakili suara perusahaan &amp; membangun dialog dengan konsumen. Pertanyaannya bukan <em>perlu/tidak</em> berkomunikasi, tetapi <b>apa</b> yang dikatakan, <b>bagaimana</b>, <b>kapan</b>, <b>kepada siapa</b>, &amp; <b>seberapa sering</b>.</p>
+
+    <div class="abc"><span class="ltr">A</span><h4>Peran Komunikasi Pemasaran</h4></div>
+    <div class="numh">1 · Lingkungan Komunikasi yang Berubah</div>
+    <p>Teknologi (internet cepat, <em>recorder</em> video tanpa iklan, telepon seluler) mengubah cara konsumen mengolah komunikasi &amp; <b>merusak efektivitas media massa</b>. Konsumen kini lebih aktif memilih komunikasi yang mereka terima.</p>
+    <div class="numh">2 · Komunikasi, Ekuitas Merek &amp; Penjualan — 8 Moda</div>
+    <p>Bauran komunikasi = kombinasi delapan moda yang membangun <span class="term">ekuitas merek</span> (brand awareness, image, responses, relationships). Klik:</p>
+    <div class="rgrid c4" data-revealgroup>
+      <div class="rcell" data-reveal data-detail="<b>Advertising</b> (periklanan) — bentuk berbayar &amp; non-pribadi atas penyajian ide/barang/jasa oleh sponsor teridentifikasi."><span><span class="rt">Advertising</span></span></div>
+      <div class="rcell" data-reveal data-detail="<b>Sales promotion</b> — insentif jangka pendek untuk mendorong percobaan/pembelian produk."><span><span class="rt">Sales promotion</span></span></div>
+      <div class="rcell" data-reveal data-detail="<b>Events &amp; experience</b> — program &amp; kegiatan yang disponsori untuk menciptakan interaksi merek harian."><span><span class="rt">Events &amp; experience</span></span></div>
+      <div class="rcell" data-reveal data-detail="<b>Public relation &amp; publicity</b> — program untuk mempromosikan/melindungi citra perusahaan atau produk."><span><span class="rt">PR &amp; publicity</span></span></div>
+      <div class="rcell" data-reveal data-detail="<b>Direct marketing</b> — surat, telepon, fax, e-mail, internet untuk berkomunikasi langsung/berdialog dengan pelanggan tertentu."><span><span class="rt">Direct marketing</span></span></div>
+      <div class="rcell" data-reveal data-detail="<b>Interactive marketing</b> — program online yang dirancang untuk melibatkan pelanggan &amp; membangun kesadaran/citra/penjualan."><span><span class="rt">Interactive marketing</span></span></div>
+      <div class="rcell" data-reveal data-detail="<b>Word-of-mouth marketing</b> — pembicaraan lisan/tertulis/elektronik antar orang tentang pengalaman membeli &amp; memakai produk."><span><span class="rt">Word-of-mouth</span></span></div>
+      <div class="rcell" data-reveal data-detail="<b>Personal selling</b> — interaksi tatap muka dengan pelanggan potensial: presentasi, menjawab pertanyaan, menerima pesanan."><span><span class="rt">Personal selling</span></span></div>
+    </div>
+    <div class="rdetail" data-revealdetail>Klik salah satu moda komunikasi untuk penjelasannya.</div>
+    <div class="numh">3 · Dampak Komunikasi Pemasaran</div>
+    <p>Komunikasi harus terpadu agar pesan konsisten dengan <em>positioning</em>. Pemasar melakukan <b>audit</b> atas semua interaksi pelanggan dengan merek, &amp; memahami tahap <em>learn-feel-do</em> agar alokasi dana efisien.</p>
+
+    <div class="flow">Setelah tahu moda &amp; dampaknya, pemasar perlu model untuk memahami bagaimana komunikasi bekerja — itulah model proses komunikasi.</div>
+
+    <div class="abc"><span class="ltr">B</span><h4>Model Proses Komunikasi</h4></div>
+    <div class="leth">a. Macromodel</div>
+    <div class="flowchart">
+      <span class="fc-node">Sender</span><span class="fc-arrow">→</span><span class="fc-node">Encoding</span><span class="fc-arrow">→</span>
+      <span class="fc-node">Message / Media</span><span class="fc-arrow">→</span><span class="fc-node">Decoding</span><span class="fc-arrow">→</span><span class="fc-node">Receiver</span>
+    </div>
+    <p>Dua peserta utama: <span class="term">sender</span> (pengirim) &amp; <span class="term">receiver</span> (penerima). Elemen fungsi: <em>encoding, decoding, response, feedback</em>; elemen pengganggu: <span class="term">noise</span>. Pengirim harus tahu khalayaknya, meng-<em>encode</em> pesan sesuai media, &amp; membangun saluran umpan balik.</p>
+    <div class="leth">b. Micromodel — Response Hierarchy Models</div>
+    <p>Semua model berasumsi pembeli melalui tahap <span class="term">cognitive → affective → behavioral</span> (urutan "learn-feel-do"). Empat model klasik — klik:</p>
+    <div class="rgrid c4" data-revealgroup>
+      <div class="rcell" data-reveal data-detail="<b>AIDA Model</b> — Attention → Interest → Desire → Action. Menarik perhatian, membangun minat &amp; hasrat, lalu tindakan beli."><span><span class="rt">AIDA</span></span></div>
+      <div class="rcell" data-reveal data-detail="<b>Hierarchy-of-Effects</b> — Awareness → Knowledge → Liking → Preference → Conviction → Purchase."><span><span class="rt">Hierarchy-of-Effects</span></span></div>
+      <div class="rcell" data-reveal data-detail="<b>Innovation-Adoption</b> — Awareness → Interest → Evaluation → Trial → Adoption. Cocok untuk produk baru."><span><span class="rt">Innovation-Adoption</span></span></div>
+      <div class="rcell" data-reveal data-detail="<b>Communications Model</b> — Exposure → Reception → Cognitive response → Attitude → Intention → Behavior."><span><span class="rt">Communications</span></span></div>
+    </div>
+    <div class="rdetail" data-revealdetail>Klik salah satu model respons untuk tahapannya. Urutan "learn-feel-do" cocok untuk produk keterlibatan tinggi &amp; beda nyata.</div>
+
+    <div class="abc"><span class="ltr">C</span><h4>Membangun Komunikasi yang Efektif</h4></div>
+    <div class="flowchart">
+      <span class="fc-node">1. Khalayak sasaran</span><span class="fc-arrow">→</span><span class="fc-node">2. Objektif</span><span class="fc-arrow">→</span>
+      <span class="fc-node">3. Rancang pesan</span><span class="fc-arrow">→</span><span class="fc-node">4. Pilih saluran</span><span class="fc-arrow">→</span><span class="fc-node">5. Anggaran</span>
+    </div>
+    <div class="numh">1–2 · Khalayak Sasaran &amp; Objektif Komunikasi</div>
+    <p>Identifikasi khalayak (pembeli potensial, pemakai, pembuat keputusan). <b>Empat objektif</b> (Rossiter &amp; Percy) — klik:</p>
+    <div class="rgrid c2" data-revealgroup>
+      <div class="rcell" data-reveal data-detail="<b>Category need</b> — membangun kategori produk/jasa saat diperlukan untuk menghilangkan persepsi penyimpangan antara kondisi saat ini &amp; yang diinginkan (mis. mobil listrik membangun kebutuhan kategori)."><span><span class="rt">Category need</span><span class="rp">Bangun kebutuhan kategori.</span></span></div>
+      <div class="rcell" data-reveal data-detail="<b>Brand awareness</b> — kemampuan mengenali/mengingat merek. <em>Brand recall</em> penting saat konsumen di luar toko; <em>brand recognition</em> penting saat di dalam toko. Dasar ekuitas merek."><span><span class="rt">Brand awareness</span><span class="rp">Kesadaran merek.</span></span></div>
+      <div class="rcell" data-reveal data-detail="<b>Brand attitude</b> — sikap/evaluasi merek berdasar kemampuan memenuhi kebutuhan. Berorientasi negatif (pemecahan masalah) atau positif (stimulasi/sosial). Produk pembersih pakai orientasi masalah; makanan pakai sensory-oriented ads."><span><span class="rt">Brand attitude</span><span class="rp">Sikap terhadap merek.</span></span></div>
+      <div class="rcell" data-reveal data-detail="<b>Brand purchase intention</b> — niat membeli. Penawaran promosi (kupon, beli-1-dapat-2) mendorong komitmen mental untuk membeli."><span><span class="rt">Purchase intention</span><span class="rp">Niat membeli.</span></span></div>
+    </div>
+    <div class="rdetail" data-revealdetail>Klik salah satu objektif komunikasi untuk penjelasannya.</div>
+    <div class="numh">3–5 · Merancang Komunikasi, Sumber Pesan &amp; Adaptasi Global</div>
+    <p>Merancang menjawab: <b>apa</b> disampaikan (<span class="term">message strategy</span>), <b>bagaimana</b> (<span class="term">creative strategy</span>), <b>siapa</b> (<span class="term">message source</span>).</p>
+    <div class="rgrid c2" data-revealgroup>
+      <div class="rcell" data-reveal data-detail="<b>Informational appeals</b> — elaborasi atas karakteristik/atribut/manfaat produk (iklan solusi masalah, demonstrasi, iklan pembanding)."><span><span class="rt">Informational appeals</span><span class="rp">Himbauan rasional.</span></span></div>
+      <div class="rcell" data-reveal data-detail="<b>Transformational appeals</b> — elaborasi manfaat/citra non-produk; membangun emosi (rasa takut, bersalah, malu) agar memotivasi. Harus kredibel &amp; menjanjikan solusi."><span><span class="rt">Transformational appeals</span><span class="rp">Himbauan emosional.</span></span></div>
+    </div>
+    <div class="rdetail" data-revealdetail>Klik salah satu jenis himbauan (appeal) untuk penjelasannya.</div>
+    <p style="margin-top:12px"><b>Kredibilitas sumber pesan</b> (selebriti/ahli) bersandar tiga syarat: <span class="pill">expertise (keterampilan)</span> <span class="pill">trustworthiness (dapat dipercaya)</span> <span class="pill">likability (daya tarik)</span>. <b>Adaptasi global:</b> sesuaikan gaya iklan dengan budaya &amp; peraturan setempat.</p>
+    <div class="numh">6–7 · Memilih &amp; Mengintegrasikan Jalur Komunikasi</div>
+    <table class="mini">
+      <tr><th>Jalur</th><th>Isi</th></tr>
+      <tr><td><b>Personal</b></td><td>Dua orang berkomunikasi tatap muka, telepon, atau e-mail (advocate, expert, social channel).</td></tr>
+      <tr><td><b>Nonpersonal</b></td><td>Media komunikasi (print/network/electronic/display), promosi penjualan, peristiwa &amp; pengalaman, public relations.</td></tr>
+    </table>
+    <p>Integrasi: pengaruh media massa pada opini sering lewat <span class="term">two-step flow</span> — di-mediasi <span class="term">opinion leader</span> (efek <em>trickle down/up</em>). Komunikator mengarahkan pesan ke opinion leader.</p>
+    <div class="numh">8 · Menyusun Anggaran Komunikasi Total</div>
+    <div class="rgrid c2" data-revealgroup>
+      <div class="rcell" data-reveal data-detail="<b>Affordable method</b> — anggaran sebatas kemampuan perusahaan. Abaikan peran promosi sebagai investasi; menyulitkan perencanaan jangka panjang."><span><span class="rt">Affordable</span><span class="rp">Sebatas kemampuan.</span></span></div>
+      <div class="rcell" data-reveal data-detail="<b>Percentage-of-sales</b> — persentase dari penjualan (saat ini/mendatang) atau harga jual. Memuaskan manajer finansial tetapi logika terbalik: promosi jadi hasil, bukan penyebab penjualan."><span><span class="rt">% of sales</span><span class="rp">Persentase penjualan.</span></span></div>
+      <div class="rcell" data-reveal data-detail="<b>Competitive-parity</b> — menyamakan dengan pesaing (share-of-voice parity). Asumsi 'collective wisdom' industri &amp; mencegah perang promosi — keduanya lemah karena tiap perusahaan berbeda."><span><span class="rt">Competitive-parity</span><span class="rp">Menyamai pesaing.</span></span></div>
+      <div class="rcell" data-reveal data-detail="<b>Objective-and-task</b> (paling dianjurkan) — definisikan objektif spesifik → tentukan kegiatan → estimasi biaya. Menuntut manajer menyatakan hubungan anggaran dengan exposure, percobaan, &amp; penggunaan."><span><span class="rt">Objective-and-task</span><span class="rp">Objektif → kegiatan → biaya.</span></span></div>
+    </div>
+    <div class="rdetail" data-revealdetail>Klik salah satu metode anggaran untuk penjelasannya.</div>
+    <div class="numh">9–10 · Bauran &amp; Karakteristik Komunikasi</div>
+    <p>Anggaran komunikasi cenderung lebih tinggi pada: dukungan jalur distribusi rendah, program berubah, pelanggan sulit dijangkau, keputusan rumit, &amp; pembelian jarang. Tiga karakteristik kunci:</p>
+    <table class="mini">
+      <tr><th>Sarana</th><th>Karakteristik</th></tr>
+      <tr><td><b>Periklanan</b></td><td><em>Pervasiveness</em> (berulang), <em>amplified expressiveness</em> (dramatisasi seni), <em>impersonality</em> (monolog).</td></tr>
+      <tr><td><b>Promosi penjualan</b></td><td><em>Communication</em>, <em>incentive</em> (konsesi), <em>invitation</em> (ajakan transaksi sekarang).</td></tr>
+      <tr><td><b>Public relation</b></td><td><em>High credibility</em>, <em>ability to catch buyers off guard</em>, <em>dramatization</em>.</td></tr>
+    </table>
+  </div>
+
+  <!-- KB2 -->
+  <h2 class="section" id="kb2"><span class="dot"></span>KB 2 — Mengelola Komunikasi Massa</h2>
+  <div class="card kb2b">
+    <span class="kb-tag kb2t">KOMUNIKASI MASSA</span>
+    <p class="lead">Komunikasi massa tetap efektif meski komunikasi personal meningkat. KB2 menata empat sarananya: <b>periklanan, promosi penjualan, peristiwa &amp; pengalaman, public relations</b>.</p>
+
+    <div class="abc"><span class="ltr">A</span><h4>Membangun Program Periklanan — 5M</h4></div>
+    <div class="rgrid c3" data-revealgroup>
+      <div class="rcell" data-reveal data-detail="<b>Mission</b> — apa objektif iklan? Pengaruh yang diharapkan pada volume penjualan."><span class="stepnum">1</span><span><span class="rt">Mission</span><span class="rp">Objektif iklan.</span></span></div>
+      <div class="rcell" data-reveal data-detail="<b>Money</b> — berapa anggaran? Besarnya biasanya fungsi dari volume penjualan."><span class="stepnum">2</span><span><span class="rt">Money</span><span class="rp">Anggaran.</span></span></div>
+      <div class="rcell" data-reveal data-detail="<b>Message</b> — pesan apa yang dikirim, ke siapa, bagaimana memilih &amp; mengevaluasinya, bagaimana eksekusinya."><span class="stepnum">3</span><span><span class="rt">Message</span><span class="rp">Pesan.</span></span></div>
+      <div class="rcell" data-reveal data-detail="<b>Media</b> — media mana, seberapa jauh jangkauan, alokasi media berdasar lokasi geografis."><span class="stepnum">4</span><span><span class="rt">Media</span><span class="rp">Media.</span></span></div>
+      <div class="rcell" data-reveal data-detail="<b>Measurement</b> — bagaimana mengevaluasi hasil: dampak pesan terhadap merek &amp; volume penjualan."><span class="stepnum">5</span><span><span class="rt">Measurement</span><span class="rp">Pengukuran.</span></span></div>
+    </div>
+    <div class="rdetail" data-revealdetail>Klik salah satu dari 5M untuk penjelasannya.</div>
+    <div class="numh">1 · Objektif Iklan</div>
+    <div class="rgrid c2" data-revealgroup>
+      <div class="rcell" data-reveal data-detail="<b>Informative advertising</b> — membangun kesadaran &amp; pengetahuan tentang produk/fitur baru."><span><span class="rt">Informative</span><span class="rp">Menginformasikan.</span></span></div>
+      <div class="rcell" data-reveal data-detail="<b>Persuasive advertising</b> — membangun rasa suka, preferensi &amp; mendorong pembelian; bisa pakai comparative advertising (membandingkan 2+ merek)."><span><span class="rt">Persuasive</span><span class="rp">Mempengaruhi.</span></span></div>
+      <div class="rcell" data-reveal data-detail="<b>Reminder advertising</b> — mendorong pembelian ulang produk yang sudah ada."><span><span class="rt">Reminder</span><span class="rp">Mengingatkan.</span></span></div>
+      <div class="rcell" data-reveal data-detail="<b>Reinforcement advertising</b> — meyakinkan konsumen bahwa mereka telah membuat pilihan tepat (mis. iklan mobil menampilkan pemilik yang puas)."><span><span class="rt">Reinforcement</span><span class="rp">Memperkuat.</span></span></div>
+    </div>
+    <div class="rdetail" data-revealdetail>Klik salah satu objektif iklan untuk penjelasannya.</div>
+    <div class="numh">2 · Anggaran Periklanan — 5 Faktor</div>
+    <ul class="exp">
+      <li><b>Posisi produk dalam siklus hidup</b> — produk baru perlu anggaran besar membangun awareness &amp; consumer trial; merek mapan perlu sedikit.</li>
+      <li><b>Pangsa pasar &amp; basis konsumen</b> — pangsa besar perlu biaya iklan lebih sedikit (per unit); membangun pangsa perlu biaya besar.</li>
+      <li><b>Persaingan &amp; keriuhan iklan</b> — pasar riuh menuntut anggaran besar agar merek "terdengar".</li>
+      <li><b>Frekuensi iklan</b> — makin banyak pengulangan yang diperlukan, makin besar anggaran.</li>
+      <li><b>Kemampuan menggantikan produk</b> — produk komoditas/diferensiasi rendah perlu iklan intensif agar dibedakan.</li>
+    </ul>
+    <div class="numh">3 · Kampanye &amp; B · Mengukur Efektivitas Media</div>
+    <p><b>Media utama:</b> <span class="pill">TV</span> <span class="pill">cetak (koran/majalah)</span> <span class="pill">radio</span> <span class="pill">direct-mail</span> <span class="pill">outdoor/billboard</span> <span class="pill">internet</span>. <b>Place advertising:</b> billboard, public space, <em>product placement</em>, advertorial. Media diukur dengan — klik:</p>
+    <div class="rgrid c3" data-revealgroup>
+      <div class="rcell" data-reveal data-detail="<b>Reach</b> (jangkauan) — banyaknya individu/keluarga yang terpapar iklan minimal sekali dalam satu periode."><span><span class="rt">Reach</span><span class="rp">Jangkauan.</span></span></div>
+      <div class="rcell" data-reveal data-detail="<b>Frequency</b> (frekuensi) — berapa kali seseorang terpapar iklan dalam periode."><span><span class="rt">Frequency</span><span class="rp">Frekuensi paparan.</span></span></div>
+      <div class="rcell" data-reveal data-detail="<b>Impact</b> — nilai kualitatif sebuah paparan (seberapa kuat pesan diterima)."><span><span class="rt">Impact</span><span class="rp">Dampak kualitatif.</span></span></div>
+    </div>
+    <div class="rdetail" data-revealdetail>Klik salah satu ukuran media untuk penjelasannya.</div>
+    <p style="margin-top:12px"><b>Media timing — pola penjadwalan</b> (mempertimbangkan buyer turnover, purchase frequency, forgetting rate):</p>
+    <div class="rgrid c4" data-revealgroup>
+      <div class="rcell" data-reveal data-detail="<b>Continuity</b> — paparan seragam sepanjang periode; untuk pasar yang terus diperluas &amp; item sering dibeli."><span><span class="rt">Continuity</span></span></div>
+      <div class="rcell" data-reveal data-detail="<b>Concentration</b> — habiskan semua dana dalam satu periode saja."><span><span class="rt">Concentration</span></span></div>
+      <div class="rcell" data-reveal data-detail="<b>Flighting</b> — iklan di satu periode, berhenti, lalu iklan lagi. Cocok bila dana terbatas, pembelian jarang/musiman."><span><span class="rt">Flighting</span></span></div>
+      <div class="rcell" data-reveal data-detail="<b>Pulsing</b> — iklan berkesinambungan bobot rendah + lonjakan intensitas tinggi berkala."><span><span class="rt">Pulsing</span></span></div>
+    </div>
+    <div class="rdetail" data-revealdetail>Klik salah satu pola penjadwalan media untuk penjelasannya.</div>
+    <p style="margin-top:12px"><b>Pengujian efektivitas iklan (pretesting):</b> <span class="pill">consumer feedback method</span> <span class="pill">portfolio test (recall)</span> <span class="pill">laboratory test (reaksi fisiologis)</span>.</p>
+
+    <div class="abc"><span class="ltr">C</span><h4>Promosi Penjualan</h4></div>
+    <p><span class="term">Sales promotion</span> = himpunan <em>incentive tools</em> jangka pendek untuk mendorong pembelian lebih cepat/besar. Tiga sasaran: <span class="pill">consumer promotion (pull)</span> <span class="pill">trade promotion (push)</span> <span class="pill">business &amp; sales force promotion</span>. Keputusan: susun objektif → pilih sarana (manufacturer/retailer promotion) → program → <em>pretest</em> → implementasi (<em>lead time</em> &amp; <em>sell-in time</em>) → evaluasi.</p>
+    <div class="flow">Promosi menaikkan penjualan jangka pendek tetapi bisa menggerus ekuitas merek jangka panjang; iklan lebih efektif memperdalam loyalitas merek.</div>
+
+    <div class="abc"><span class="ltr">D</span><h4>Peristiwa &amp; Pengalaman</h4></div>
+    <p><b>Objektif peristiwa</b>: identifikasi pasar sasaran, tingkatkan kesadaran perusahaan, perkuat asosiasi citra, tingkatkan citra, bangun pengalaman, ekspresikan komitmen sosial, menjamu klien kunci, perkenalkan produk. <b>Keputusan sponsor:</b> pilih peristiwa → rancang <em>sponsorship program</em> → ukur efek (<span class="term">supply-side method</span>: waktu/ruang paparan media; <span class="term">demand-side method</span>: pengaruh pada kesadaran, penjualan, retensi, ROI). <span class="term">Experiential marketing</span> menghubungkan produk dengan pengalaman unik yang <em>"live"</em>.</p>
+
+    <div class="abc"><span class="ltr">E</span><h4>Public Relations</h4></div>
+    <p><b>Fungsi Departemen PR:</b> <span class="pill">press relations</span> <span class="pill">product publicity</span> <span class="pill">corporate communication</span> <span class="pill">lobbying</span> <span class="pill">counseling</span>. <span class="term">Marketing Public Relations (MPR)</span> mendukung pemasaran: meluncurkan produk baru, <em>repositioning</em> produk lama, membangun minat kategori, mempengaruhi segmen khusus, mempertahankan produk bermasalah, &amp; membangun citra perusahaan.</p>
+  </div>
+
+  <!-- KB3 -->
+  <h2 class="section" id="kb3"><span class="dot"></span>KB 3 — Mengelola Komunikasi Personal</h2>
+  <div class="card kb3b">
+    <span class="kb-tag kb3t">KOMUNIKASI PERSONAL</span>
+    <p class="lead">Komunikasi pemasaran makin menjadi <b>dialog personal</b>: bukan hanya "bagaimana meraih pelanggan" tetapi "bagaimana pelanggan &amp; kita saling mencari &amp; menemukan". KB3 menata direct marketing, interactive marketing, word of mouth, &amp; tenaga penjualan.</p>
+
+    <div class="abc"><span class="ltr">A</span><h4>Direct Marketing</h4></div>
+    <p><span class="term">Direct marketing</span> = jalur distribusi langsung ke pelanggan tanpa perantara. Bentuk: <span class="pill">direct mail</span> <span class="pill">catalog marketing</span> <span class="pill">telemarketing</span> <span class="pill">interactive TV</span> <span class="pill">kios</span> <span class="pill">website/mobile</span>. Memungkinkan <em>up-sell</em> &amp; <em>cross-sell</em> dengan kustomisasi.</p>
+    <div class="numh">Direct Mail &amp; Formula R-F-M</div>
+    <p>Direct mail: terseleksi, dapat dikustomisasi, luwes, terukur (<em>response rate</em>). Pemilihan pelanggan pakai formula <span class="term">R-F-M</span> — klik:</p>
+    <div class="rgrid c3" data-revealgroup>
+      <div class="rcell" data-reveal data-detail="<b>Recency</b> — berapa waktu berlalu sejak pembelian terakhir pelanggan."><span><span class="rt">Recency</span><span class="rp">Kebaruan pembelian.</span></span></div>
+      <div class="rcell" data-reveal data-detail="<b>Frequency</b> — berapa kali pelanggan melakukan pembelian."><span><span class="rt">Frequency</span><span class="rp">Frekuensi pembelian.</span></span></div>
+      <div class="rcell" data-reveal data-detail="<b>Monetary amount</b> — berapa besar uang yang sudah dihabiskan pelanggan. RFM-point besar = pelanggan menarik."><span><span class="rt">Monetary amount</span><span class="rp">Nilai belanja.</span></span></div>
+    </div>
+    <div class="rdetail" data-revealdetail>Klik salah satu komponen R-F-M untuk penjelasannya.</div>
+    <p style="margin-top:12px"><b>Catalog marketing</b> (cetak/CD/online, hemat biaya global). <b>Telemarketing</b> via <em>call center</em>: <span class="term">inbound</span> (menerima panggilan pelanggan) &amp; <span class="term">outbound</span> (mengawali panggilan ke prospek).</p>
+
+    <div class="abc"><span class="ltr">B</span><h4>Interactive Marketing — 7C</h4></div>
+    <p>Internet memberi akuntabilitas tinggi (ukur <em>click</em>, penempatan iklan kontekstual, <em>keyword</em>). Tujuh elemen rancangan website (Rayport &amp; Jaworski) — klik:</p>
+    <div class="rgrid c4" data-revealgroup>
+      <div class="rcell" data-reveal data-detail="<b>Context</b> — layout &amp; design website."><span><span class="rt">Context</span></span></div>
+      <div class="rcell" data-reveal data-detail="<b>Content</b> — isi website: teks, gambar, suara, video."><span><span class="rt">Content</span></span></div>
+      <div class="rcell" data-reveal data-detail="<b>Community</b> — bagaimana website memungkinkan komunikasi antar pemakai."><span><span class="rt">Community</span></span></div>
+      <div class="rcell" data-reveal data-detail="<b>Customization</b> — kemampuan menyesuaikan diri ke tiap pelanggan."><span><span class="rt">Customization</span></span></div>
+      <div class="rcell" data-reveal data-detail="<b>Communication</b> — komunikasi dua arah antara website &amp; pemakai."><span><span class="rt">Communication</span></span></div>
+      <div class="rcell" data-reveal data-detail="<b>Connection</b> — derajat hubungan sebuah website dengan website lain."><span><span class="rt">Connection</span></span></div>
+      <div class="rcell" data-reveal data-detail="<b>Commerce</b> — kemampuan website melakukan transaksi komersial."><span><span class="rt">Commerce</span></span></div>
+    </div>
+    <div class="rdetail" data-revealdetail>Klik salah satu dari 7C untuk penjelasannya. Daya tarik fisik website: download cepat, mudah dimengerti, navigasi, kebersihan, font terbaca, warna, &amp; keamanan/privacy.</div>
+
+    <div class="abc"><span class="ltr">C</span><h4>Word of Mouth</h4></div>
+    <p>Jaringan sosial (Facebook, Twitter) jadi kekuatan penting (B2C &amp; B2B). Bentuk — klik:</p>
+    <div class="rgrid c3" data-revealgroup>
+      <div class="rcell" data-reveal data-detail="<b>Buzz marketing</b> — membangun kenikmatan, minat, &amp; menyalurkan informasi baru lewat sarana tak terduga yang 'outrageous' agar pantas dibicarakan."><span><span class="rt">Buzz marketing</span><span class="rp">Bikin ramai dibicarakan.</span></span></div>
+      <div class="rcell" data-reveal data-detail="<b>Viral marketing</b> — mendorong konsumen menyalurkan produk/jasa ke orang lain secara online; ditandai 'iklan yang membuat orang ketagihan' yang tersalur alami."><span><span class="rt">Viral marketing</span><span class="rp">Menyebar online.</span></span></div>
+      <div class="rcell" data-reveal data-detail="<b>Opinion leader</b> — pemimpin pendapat dalam kelompok yang informasinya dipercaya &amp; dijadikan acuan. Juga ada 'special interest group' (kelompok diskusi)."><span><span class="rt">Opinion leader</span><span class="rp">Pemimpin pendapat.</span></span></div>
+    </div>
+    <div class="rdetail" data-revealdetail>Klik salah satu bentuk word of mouth untuk penjelasannya.</div>
+
+    <div class="abc"><span class="ltr">D</span><h4>Merancang Tenaga Penjualan <span class="en">(Sales Force)</span></h4></div>
+    <p>Enam posisi <span class="term">sales representative</span> (urut dari kreativitas rendah ke tinggi) — klik:</p>
+    <div class="rgrid c3" data-revealgroup>
+      <div class="rcell" data-reveal data-detail="<b>Deliverer</b> — tugas utama menjual &amp; menyerahkan produk (air, minyak, oli) langsung ke pelanggan."><span class="stepnum">1</span><span><span class="rt">Deliverer</span></span></div>
+      <div class="rcell" data-reveal data-detail="<b>Order taker</b> — menerima pesanan (di dalam = counter; di luar = wakil pabrikan ke manajer supermarket)."><span class="stepnum">2</span><span><span class="rt">Order taker</span></span></div>
+      <div class="rcell" data-reveal data-detail="<b>Missionary</b> — tidak menerima pesanan; membangun hubungan baik &amp; edukasi pemakai aktual/potensial."><span class="stepnum">3</span><span><span class="rt">Missionary</span></span></div>
+      <div class="rcell" data-reveal data-detail="<b>Technician</b> — keterampilan &amp; pengetahuan tinggi (engineer); konsultan bagi klien, memecahkan masalah kualitas."><span class="stepnum">4</span><span><span class="rt">Technician</span></span></div>
+      <div class="rcell" data-reveal data-detail="<b>Demand creator</b> — metode kreatif menjual produk kasatmata (tangible) maupun tak kasatmata (jasa); mengajak konsumen mengonsumsi."><span class="stepnum">5</span><span><span class="rt">Demand creator</span></span></div>
+      <div class="rcell" data-reveal data-detail="<b>Solution vendor</b> — memecahkan berbagai masalah pelanggan, kadang terkait sistem produk/jasa perusahaan."><span class="stepnum">6</span><span><span class="rt">Solution vendor</span></span></div>
+    </div>
+    <div class="rdetail" data-revealdetail>Klik salah satu posisi tenaga penjualan untuk penjelasannya.</div>
+    <p style="margin-top:12px"><b>Keputusan perancangan:</b> strategi &amp; objektif (7 kegiatan: prospecting, targeting, communicating, selling, servicing, information gathering, allocating) · struktur (teritorial/produk/pasar) · jumlah (<em>workload method</em>) · kompensasi (gaji saja / komisi saja / kombinasi).</p>
+
+    <div class="abc"><span class="ltr">E</span><h4>Mengelola Tenaga Penjualan</h4></div>
+    <div class="flowchart">
+      <span class="fc-node">Recruiting</span><span class="fc-arrow">→</span><span class="fc-node">Selecting</span><span class="fc-arrow">→</span><span class="fc-node">Training</span><span class="fc-arrow">→</span>
+      <span class="fc-node">Supervising</span><span class="fc-arrow">→</span><span class="fc-node">Motivating</span><span class="fc-arrow">→</span><span class="fc-node">Evaluating</span>
+    </div>
+    <div class="numh">Metode SPIN (Personal Selling)</div>
+    <div class="rgrid c4" data-revealgroup>
+      <div class="rcell" data-reveal data-detail="<b>Situation questions</b> — menanyakan fakta/situasi pembeli saat ini (mis. 'Sistem apa yang Anda gunakan saat menagih dengan invoice?')."><span><span class="rt">Situation</span></span></div>
+      <div class="rcell" data-reveal data-detail="<b>Problem questions</b> — menggali masalah, kesulitan, ketidakpuasan pembeli (mis. 'Bagian mana dari sistem yang menyebabkan kesalahan?')."><span><span class="rt">Problem</span></span></div>
+      <div class="rcell" data-reveal data-detail="<b>Implication questions</b> — mengetahui konsekuensi/dampak masalah (mis. 'Bagaimana masalah ini berpengaruh pada produktivitas?')."><span><span class="rt">Implication</span></span></div>
+      <div class="rcell" data-reveal data-detail="<b>Need-payoff questions</b> — menanyakan nilai/manfaat solusi (mis. 'Seberapa besar Anda bisa hemat jika kami kurangi kesalahan 80%?')."><span><span class="rt">Need-payoff</span></span></div>
+    </div>
+    <div class="rdetail" data-revealdetail>Klik salah satu jenis pertanyaan SPIN untuk contohnya.</div>
+    <div class="numh">Enam Langkah Proses Penjualan</div>
+    <div class="flowchart">
+      <span class="fc-node">1. Prospecting &amp; qualifying</span><span class="fc-arrow">→</span><span class="fc-node">2. Preapproach</span><span class="fc-arrow">→</span><span class="fc-node">3. Presentation &amp; demonstration</span>
+    </div>
+    <div class="flowchart">
+      <span class="fc-node">4. Overcoming objections</span><span class="fc-arrow">→</span><span class="fc-node">5. Closing</span><span class="fc-arrow">→</span><span class="fc-node">6. Follow-up &amp; maintenance</span>
+    </div>
+    <div class="flow">Proses penjualan bukan sekadar transaksi; tujuannya <b>relationship marketing</b> — hubungan jangka panjang yang <em>adaptive</em> terhadap kebutuhan pelanggan kunci (tak berlaku di semua situasi; pilih segmen yang menguntungkan).</div>
+  </div>
+
+  <h2 class="section" id="glosarium"><span class="dot"></span>Glosarium Kilat</h2>
+  <div class="card"><dl class="glossary">
+    <dt>IMC</dt><dd>Integrated Marketing Communication — komunikasi pemasaran terpadu.</dd>
+    <dt>Macromodel / micromodel</dt><dd>Model proses komunikasi menyeluruh / model respons hierarki.</dd>
+    <dt>AIDA</dt><dd>Attention, Interest, Desire, Action.</dd>
+    <dt>5M periklanan</dt><dd>Mission, Money, Message, Media, Measurement.</dd>
+    <dt>Reach / frequency / impact</dt><dd>Jangkauan / frekuensi paparan / dampak kualitatif.</dd>
+    <dt>Objective-and-task</dt><dd>Metode anggaran berbasis objektif → kegiatan → biaya.</dd>
+    <dt>MPR</dt><dd>Marketing Public Relations.</dd>
+    <dt>R-F-M</dt><dd>Recency, Frequency, Monetary amount.</dd>
+    <dt>7C</dt><dd>Context, Content, Community, Customization, Communication, Connection, Commerce.</dd>
+    <dt>SPIN</dt><dd>Situation, Problem, Implication, Need-payoff questions.</dd>
+    <dt>Up-sell / cross-sell</dt><dd>Menawarkan produk kelas lebih tinggi / kategori berbeda.</dd>
+  </dl></div>
+</div>
+
+<footer><b>EKMA5206 — Manajemen Pemasaran</b> · Modul 7: Mengkomunikasikan Nilai Pelanggan (Edisi 3) · Penulis: Dr. Ir. FX. Bambang Wiharto, M.M.<br>
+  Bahan belajar ringkas — disusun ulang mengikuti alur modul (hal. 7.1–7.55) untuk persiapan ujian.
+  <div class="refs"><b>Rujukan utama modul:</b> Kotler &amp; Keller (2009) <i>Marketing Management</i> 13e · Rossiter &amp; Percy · Rayport &amp; Jaworski (2001) · Mullins &amp; Walker (2010).</div></footer>
+
+<script>
+(function(){
+  var pb=document.getElementById('progress');
+  function onScroll(){var h=document.documentElement;var sc=h.scrollTop||document.body.scrollTop;var max=(h.scrollHeight-h.clientHeight)||1;pb.style.width=(sc/max*100)+'%';}
+  document.addEventListener('scroll',onScroll,{passive:true});onScroll();
+  var list=document.getElementById('conceptList');var items=[].slice.call(list.querySelectorAll('li'));var boxes=items.map(function(li){return li.querySelector('input');});
+  document.getElementById('totalCount').textContent=items.length;var doneEl=document.getElementById('doneCount');var KEY='ekma5206_m7_concepts_v1';
+  function load(){try{var a=JSON.parse(localStorage.getItem(KEY)||'[]');boxes.forEach(function(b,i){if(a[i])b.checked=true;});}catch(e){}}
+  function save(){try{localStorage.setItem(KEY,JSON.stringify(boxes.map(function(b){return b.checked?1:0;})));}catch(e){}}
+  function refresh(){var n=0;items.forEach(function(li,i){if(boxes[i].checked){li.classList.add('done');n++;}else li.classList.remove('done');});doneEl.textContent=n;}
+  load();refresh();boxes.forEach(function(b){b.addEventListener('change',function(){refresh();save();});});
+  document.getElementById('resetBtn').addEventListener('click',function(){boxes.forEach(function(b){b.checked=false;});refresh();save();});
+  [].slice.call(document.querySelectorAll('[data-revealgroup]')).forEach(function(g){
+    var det=g.querySelector('[data-revealdetail]');if(!det){var sib=g.nextElementSibling;if(sib&&sib.hasAttribute&&sib.hasAttribute('data-revealdetail'))det=sib;}
+    var cells=[].slice.call(g.querySelectorAll('[data-reveal]'));
+    cells.forEach(function(c){c.addEventListener('click',function(){cells.forEach(function(x){x.classList.remove('active');});c.classList.add('active');if(det)det.innerHTML=c.getAttribute('data-detail');});});
+  });
+  (function(){
+    var ROWH=46,NODE_H=32,PAD=13,GAP=52;var COL={root:'#0f5e8f',kb1:'#1a86c7',kb2:'#e08a1e',kb3:'#2a9d6f'};
+    var mc=document.createElement('canvas').getContext('2d');mc.font='700 13px -apple-system,Segoe UI,Roboto,sans-serif';
+    function tw(t){return Math.ceil(mc.measureText(t).width);}function esc(t){return t.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');}
+    function rgba(hex,a){var h=hex.replace('#','');return 'rgba('+parseInt(h.substr(0,2),16)+','+parseInt(h.substr(2,2),16)+','+parseInt(h.substr(4,2),16)+','+a+')';}
+    var DATA={label:'MODUL 7 — Mengkomunikasikan Nilai Pelanggan',color:COL.root,children:[
+      {label:'KB1 · Komunikasi Pemasaran Terpadu (IMC)',color:COL.kb1,children:[
+        {label:'Peran komunikasi (8 moda, ekuitas merek)'},
+        {label:'Model proses (macro/micro, AIDA)'},
+        {label:'Membangun komunikasi efektif (5 langkah)'},
+        {label:'4 objektif (Rossiter & Percy)'},
+        {label:'Merancang pesan (appeals, source)'},
+        {label:'4 metode anggaran'},
+        {label:'Bauran & karakteristik'}
+      ]},
+      {label:'KB2 · Mengelola Komunikasi Massa',color:COL.kb2,children:[
+        {label:'Program periklanan (5M)'},
+        {label:'4 objektif iklan'},
+        {label:'Anggaran iklan (5 faktor)'},
+        {label:'Media: reach/frequency/impact & timing'},
+        {label:'Promosi penjualan'},
+        {label:'Peristiwa & pengalaman (sponsorship)'},
+        {label:'Public Relations & MPR'}
+      ]},
+      {label:'KB3 · Mengelola Komunikasi Personal',color:COL.kb3,children:[
+        {label:'Direct marketing (R-F-M)'},
+        {label:'Interactive marketing (7C)'},
+        {label:'Word of mouth (buzz/viral)'},
+        {label:'Merancang tenaga penjualan (6 posisi)'},
+        {label:'Mengelola tenaga penjualan (SPIN, 6 langkah)'}
+      ]}
+    ]};
+    var idc=0;(function w(n,c){n.id='n'+(idc++);n.color=n.color||c;(n.children||[]).forEach(function(k){w(k,n.color);});})(DATA,COL.root);
+    (function w(n,d){if(d>=2&&n.children&&n.children.length)n.collapsed=true;(n.children||[]).forEach(function(k){w(k,d+1);});})(DATA,0);
+    var host=document.getElementById('mindmap');
+    function render(){
+      var colW=[];(function w(n,d){var width=tw(n.label)+PAD*2+((n.children&&n.children.length)?20:0);colW[d]=Math.max(colW[d]||0,width);if(!n.collapsed)(n.children||[]).forEach(function(k){w(k,d+1);});})(DATA,0);
+      var colX=[],acc=14;for(var d=0;d<colW.length;d++){colX[d]=acc;acc+=colW[d]+GAP;}var row={v:0};
+      (function lay(n,d){if(!n.children||!n.children.length||n.collapsed){n._y=row.v*ROWH+ROWH/2+8;row.v++;return;}var f,l;n.children.forEach(function(k,i){lay(k,d+1);if(i===0)f=k._y;l=k._y;});n._y=(f+l)/2;})(DATA,0);
+      var totalW=acc,totalH=row.v*ROWH+24;var nodes=[],links=[];
+      (function col(n,d,p){n._x=colX[d];n._w=tw(n.label)+PAD*2+((n.children&&n.children.length)?20:0);nodes.push({n:n,d:d});if(p)links.push([p,n]);if(!n.collapsed)(n.children||[]).forEach(function(k){col(k,d+1,n);});})(DATA,0,null);
+      var s='<svg width="'+totalW+'" height="'+totalH+'" viewBox="0 0 '+totalW+' '+totalH+'" xmlns="http://www.w3.org/2000/svg">';
+      links.forEach(function(pr){var a=pr[0],b=pr[1],x1=a._x+a._w,y1=a._y,x2=b._x,y2=b._y,mx=(x1+x2)/2;s+='<path d="M'+x1+' '+y1+' C'+mx+' '+y1+' '+mx+' '+y2+' '+x2+' '+y2+'" fill="none" stroke="'+rgba(b.color,.5)+'" stroke-width="2"/>';});
+      nodes.forEach(function(o){var n=o.n,x=n._x,y=n._y-NODE_H/2,w=n._w,hk=n.children&&n.children.length;var fill=o.d===0?n.color:(o.d===1?rgba(n.color,.12):'#fff');var tf=o.d===0?'#fff':'#1c2733';
+        s+='<g data-id="'+n.id+'" style="cursor:'+(hk?'pointer':'default')+'"><rect x="'+x+'" y="'+y+'" rx="9" width="'+w+'" height="'+NODE_H+'" fill="'+fill+'" stroke="'+n.color+'" stroke-width="'+(o.d===0?0:1.6)+'"/><text x="'+(x+PAD)+'" y="'+(n._y+4)+'" font-size="13" font-weight="'+(o.d<=1?'700':'500')+'" fill="'+tf+'" font-family="-apple-system,Segoe UI,Roboto,sans-serif">'+esc(n.label)+'</text>';
+        if(hk){var cx=x+w-12,cy=n._y;s+='<circle cx="'+cx+'" cy="'+cy+'" r="8.5" fill="'+n.color+'"/><text x="'+cx+'" y="'+(cy+4.5)+'" font-size="13" font-weight="700" fill="#fff" text-anchor="middle" font-family="sans-serif">'+(n.collapsed?'+':'\u2013')+'</text>';}s+='</g>';});
+      s+='</svg>';host.innerHTML=s;
+    }
+    host.addEventListener('click',function(e){var g=e.target.closest('g[data-id]');if(!g)return;var id=g.getAttribute('data-id');(function f(n){if(n.id===id){if(n.children&&n.children.length)n.collapsed=!n.collapsed;return true;}return (n.children||[]).some(f);})(DATA);render();});
+    document.getElementById('mmExpand').addEventListener('click',function(){(function w(n){if(n.children)n.collapsed=false;(n.children||[]).forEach(w);})(DATA);render();});
+    document.getElementById('mmCollapse').addEventListener('click',function(){(function w(n,d){if(d>=1&&n.children&&n.children.length)n.collapsed=true;(n.children||[]).forEach(function(k){w(k,d+1);});})(DATA,0);render();});
+    render();
+  })();
+  window.addEventListener('load',function(){setTimeout(function(){if(window.MathJax&&window.MathJax.typesetPromise)window.MathJax.typesetPromise();},400);});
+})();
+</script>
+</body>
+</html>

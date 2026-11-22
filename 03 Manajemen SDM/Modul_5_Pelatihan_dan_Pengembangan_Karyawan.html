@@ -1,0 +1,846 @@
+<!DOCTYPE html>
+<html lang="id"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Modul 5 — Pelatihan dan Pengembangan Karyawan | EKMA5207</title>
+<script>window.MathJax={tex:{inlineMath:[['$','$']],displayMath:[['\\[','\\]'],['$$','$$']]},svg:{fontCache:'global'},startup:{typeset:true}};</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js" async></script>
+<style>
+:root{--bg:#f4f6f9;--panel:#fff;--ink:#1c2733;--muted:#5c6b7a;--line:#e4e9f0;--brand:#1a86c7;--brand-dark:#0f5e8f;--brand-soft:#e7f3fb;--kb1:#1a86c7;--kb2:#e08a1e;--kb3:#2a9d6f;--kb4:#7a5cc0;--kb5:#c75b7a;--radius:14px;--shadow:0 1px 2px rgba(16,42,67,.06),0 6px 20px rgba(16,42,67,.06);--maxw:900px}
+*{box-sizing:border-box}html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;line-height:1.72}
+#progress{position:fixed;top:0;left:0;height:4px;width:0;background:linear-gradient(90deg,var(--brand),#53c0ec);z-index:200;transition:width .1s}
+header.top{position:sticky;top:0;z-index:100;background:rgba(255,255,255,.92);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+.top-in{max-width:var(--maxw);margin:0 auto;padding:10px 20px;display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+.badge{background:var(--brand);color:#fff;font-weight:700;font-size:.72rem;letter-spacing:.5px;padding:4px 10px;border-radius:999px}
+.homebtn{text-decoration:none;display:inline-flex;align-items:center;gap:7px;background:var(--brand);color:#fff;font-weight:700;font-size:.8rem;padding:7px 15px;border-radius:999px;box-shadow:0 2px 6px rgba(16,42,67,.22);line-height:1}
+.top-title{font-size:.9rem;font-weight:600;color:var(--muted)}
+nav.jump{margin-left:auto;display:flex;gap:4px;flex-wrap:wrap}
+nav.jump a{font-size:.78rem;color:var(--muted);text-decoration:none;padding:5px 10px;border-radius:8px}
+nav.jump a:hover{background:var(--brand-soft);color:var(--brand-dark)}
+.wrap{max-width:var(--maxw);margin:0 auto;padding:0 20px 90px}
+.hero{margin-top:26px;padding:30px 28px;border-radius:var(--radius);color:#fff;background:linear-gradient(135deg,#0f5e8f,#1a86c7 60%,#2fa4df);box-shadow:var(--shadow);position:relative;overflow:hidden}
+.hero .eyebrow{font-size:.78rem;letter-spacing:1.5px;text-transform:uppercase;opacity:.9;font-weight:600}
+.hero h1{margin:.3em 0 .25em;font-size:1.62rem;line-height:1.25;max-width:92%}
+.hero .meta{display:flex;gap:18px;flex-wrap:wrap;font-size:.84rem;opacity:.95;margin-top:10px}
+h2.section{font-size:1.3rem;margin:48px 0 4px;display:flex;align-items:center;gap:10px;scroll-margin-top:70px}
+h2.section .dot{width:10px;height:22px;border-radius:4px;background:var(--brand)}
+.section-sub{color:var(--muted);font-size:.9rem;margin:0 0 18px}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);padding:22px 24px;margin:16px 0;--dot:var(--brand);overflow-x:clip;overflow-wrap:break-word;word-wrap:break-word}
+.concepts{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:minmax(0,1fr);gap:10px}
+.concepts li{display:flex;gap:12px;align-items:flex-start;padding:12px 14px;border:1px solid var(--line);border-radius:10px;background:#fcfdff;min-width:0;max-width:100%}
+.concepts li>span{min-width:0;max-width:100%;overflow-wrap:break-word;word-wrap:break-word}
+.concepts input{margin-top:4px;width:18px;height:18px;accent-color:var(--brand);flex:none;cursor:pointer}
+.concepts .ct{font-weight:600}.concepts .cd{display:block;font-weight:400;color:var(--muted);font-size:.86rem;margin-top:2px}
+.concepts li.done{background:var(--brand-soft);border-color:#bfe0f3}.concepts li.done .ct{text-decoration:line-through;opacity:.65}
+.cl-head{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-bottom:6px}
+.cl-head .count{font-size:.82rem;color:var(--muted);background:var(--brand-soft);padding:3px 10px;border-radius:999px;font-weight:600}
+.btn-reset{font-size:.78rem;border:1px solid var(--line);background:#fff;color:var(--muted);padding:5px 12px;border-radius:8px;cursor:pointer}
+.mm-toolbar{display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin-bottom:10px}
+.mm-btn{font-size:.78rem;border:1px solid var(--line);background:#fff;padding:6px 13px;border-radius:8px;cursor:pointer;color:var(--brand-dark);font-weight:600}
+.mindmap-host{height:580px;overflow:auto;border:1px solid var(--line);border-radius:10px;background:#fcfdff}.mindmap-host svg{display:block}
+.kb-tag{display:inline-flex;align-items:center;gap:8px;font-size:.78rem;font-weight:700;color:#fff;padding:5px 12px;border-radius:999px;margin-bottom:6px}
+.kb1t{background:var(--kb1)}.kb2t{background:var(--kb2)}.kb3t{background:var(--kb3)}.kb4t{background:var(--kb4)}.kb5t{background:var(--kb5)}
+.kb1b{--dot:var(--kb1)}.kb2b{--dot:var(--kb2)}.kb3b{--dot:var(--kb3)}.kb4b{--dot:var(--kb4)}.kb5b{--dot:var(--kb5)}
+.lead{font-size:1.02rem}.term{font-weight:700;color:var(--dot)}.en{font-style:italic;color:var(--muted);font-weight:500}
+.abc{display:flex;align-items:center;gap:10px;margin:28px 0 10px;padding-bottom:6px;border-bottom:2px solid color-mix(in srgb,var(--dot) 18%,#fff)}
+.abc .ltr{background:var(--dot);color:#fff;font-weight:800;min-width:30px;height:30px;padding:0 7px;border-radius:8px;display:grid;place-items:center;flex:none}
+.abc h4{margin:0;font-size:1.06rem;color:var(--dot)}
+.numh{font-weight:700;color:var(--dot);margin:22px 0 6px;font-size:1rem}
+.leth{font-weight:800;color:var(--dot);margin:16px 0 6px;font-size:.95rem;border-left:3px solid var(--dot);padding-left:10px}
+ol.book{margin:12px 0;padding-left:28px}ol.book>li{margin:10px 0;padding-left:6px}ol.book>li::marker{font-weight:700;color:var(--dot)}
+ul.exp{list-style:none;margin:12px 0;padding:0;display:grid;grid-template-columns:minmax(0,1fr);gap:10px}
+ul.exp>li{position:relative;padding-left:20px;min-width:0;max-width:100%;overflow-wrap:break-word;word-wrap:break-word}
+ul.exp>li::before{content:"";position:absolute;left:0;top:11px;width:8px;height:8px;border-radius:2px;background:var(--dot)}
+ul.let{list-style:lower-alpha;margin:10px 0;padding-left:28px}ul.let>li{margin:8px 0;padding-left:4px}ul.let>li::marker{color:var(--dot);font-weight:700}
+.flow{border-left:4px solid var(--dot);background:color-mix(in srgb,var(--dot) 9%,#fff);padding:11px 15px;border-radius:0 10px 10px 0;margin:18px 0;font-size:.9rem;min-width:0;max-width:100%;overflow-wrap:break-word;word-wrap:break-word}
+.flow::before{content:"🔗 Benang merah — ";font-weight:700;color:var(--dot)}.flow b{color:var(--dot)}
+.casebox{background:#f8fafc;border:1px solid var(--line);border-left:4px solid var(--dot);border-radius:0 10px 10px 0;padding:12px 15px;margin:14px 0;font-size:.88rem;min-width:0;max-width:100%;overflow-wrap:break-word;word-wrap:break-word}
+.casebox .ctitle{font-weight:700;color:var(--dot);margin-bottom:4px;display:block}
+.table-wrap{width:100%;overflow-x:auto;-webkit-overflow-scrolling:touch;margin:14px 0;border-radius:10px}
+table.mini{width:100%;border-collapse:collapse;margin:0;font-size:.86rem;table-layout:auto}
+table.mini th,table.mini td{border:1px solid var(--line);padding:10px 12px;text-align:left;vertical-align:top;overflow-wrap:break-word;word-wrap:break-word}
+table.mini th{background:color-mix(in srgb,var(--dot) 12%,#fff);color:var(--dot);font-weight:700}
+.rgrid{display:grid;gap:8px;margin:14px 0}.rgrid.c2{grid-template-columns:repeat(2,minmax(0,1fr))}.rgrid.c3{grid-template-columns:repeat(3,minmax(0,1fr))}.rgrid.c4{grid-template-columns:repeat(4,minmax(0,1fr))}
+.rcell{border:1px solid var(--line);border-radius:10px;padding:11px 13px;cursor:pointer;background:#fff;display:flex;gap:10px;align-items:flex-start;transition:.15s;min-width:0;max-width:100%}
+.rcell>span{min-width:0;max-width:100%;overflow-wrap:break-word;word-wrap:break-word}
+.rcell:hover{border-color:var(--dot);box-shadow:var(--shadow);transform:translateY(-2px)}
+.rcell.active{border-color:var(--dot);background:color-mix(in srgb,var(--dot) 8%,#fff)}
+.rcell .stepnum{background:var(--dot);color:#fff;font-weight:700;min-width:24px;height:24px;border-radius:7px;display:grid;place-items:center;flex:none;font-size:.82rem}
+.rcell .rt{font-weight:700;font-size:.9rem;color:var(--dot);display:block}.rcell .rp{font-size:.78rem;color:var(--muted);display:block;margin-top:2px}
+.rdetail{font-size:.88rem;border-left:4px solid var(--dot);background:color-mix(in srgb,var(--dot) 8%,#fff);border-radius:0 10px 10px 0;padding:12px 15px;margin-top:6px;min-width:0;max-width:100%;overflow-wrap:break-word;word-wrap:break-word}
+.pill-row{display:flex;gap:8px;flex-wrap:wrap;margin:10px 0}.pill{font-size:.8rem;background:#eef3f8;color:#36506a;border:1px solid #e0e8f0;padding:4px 11px;border-radius:999px;font-weight:600}
+.diagram-box{border:1px solid var(--line);border-radius:12px;background:#fcfdff;padding:16px;margin:16px 0;text-align:center;min-width:0;max-width:100%}
+.diagram-cap{font-size:.8rem;color:var(--muted);margin-top:10px;font-weight:600}
+.flowchart{display:flex;align-items:center;gap:6px;flex-wrap:wrap;margin:12px 0;justify-content:center}
+.fc-node{background:color-mix(in srgb,var(--dot) 12%,#fff);border:1.5px solid var(--dot);color:var(--dot);font-weight:700;font-size:.8rem;padding:8px 12px;border-radius:9px;text-align:center;max-width:100%}
+.fc-arrow{color:var(--dot);font-weight:800;font-size:1.05rem}
+.eqbox{background:#fcfdff;border:1px solid var(--line);border-radius:10px;padding:10px 14px;margin:14px 0;overflow-x:auto}
+mjx-container{max-width:100%;overflow-x:auto;overflow-y:hidden}
+mjx-container:not([display="true"]){display:inline-block;vertical-align:middle}
+.acro-box{background:#f8fafc;border:1px solid var(--line);border-radius:10px;padding:12px 14px;margin:14px 0;font-size:.84rem;min-width:0;max-width:100%;overflow-wrap:break-word;word-wrap:break-word}
+.acro-title{font-weight:700;color:var(--dot);font-size:.86rem;margin-bottom:8px;display:block}
+.acro-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:6px 14px;margin:0;padding:0;list-style:none}
+.acro-grid li{min-width:0;line-height:1.5}.acro-grid b{color:var(--dot)}
+.fguide{background:color-mix(in srgb,var(--dot) 5%,#fff);border:1px solid color-mix(in srgb,var(--dot) 22%,#e4e9f0);border-radius:10px;padding:12px 15px;margin:-6px 0 16px;font-size:.86rem;min-width:0;max-width:100%;overflow-wrap:break-word;word-wrap:break-word}
+.fguide .fg-head{font-weight:700;color:var(--dot);font-size:.84rem;text-transform:uppercase;letter-spacing:.35px;margin:0 0 6px}
+.fguide ul{margin:4px 0 8px;padding-left:18px}.fguide ul li{margin:3px 0}
+.fguide .fg-core{border-top:1px dashed color-mix(in srgb,var(--dot) 30%,#cbd5e1);padding-top:8px;margin-top:8px;display:grid;grid-template-columns:minmax(0,1fr);gap:4px}
+.fguide .fg-core div{min-width:0}
+.glossary dt{font-weight:700;color:var(--brand-dark);margin-top:10px}.glossary dd{margin:0 0 2px;color:var(--muted);font-size:.9rem}
+footer{max-width:var(--maxw);margin:0 auto;padding:30px 20px 60px;color:var(--muted);font-size:.82rem;border-top:1px solid var(--line)}
+.offline-note{font-size:.76rem;color:var(--muted);background:#fff8e6;border:1px solid #f0e2b8;border-radius:8px;padding:8px 12px;margin:10px 0}
+@media(max-width:680px){
+  .table-wrap{overflow-x:visible}
+  table.mini,table.mini thead,table.mini tbody,table.mini th,table.mini td,table.mini tr{display:block;width:100%}
+  table.mini thead{display:none}
+  table.mini tr{margin-bottom:12px;border:1.5px solid color-mix(in srgb,var(--dot) 28%,#e4e9f0);border-radius:10px;background:#fff;overflow:hidden;box-shadow:0 1px 4px rgba(16,42,67,.05)}
+  table.mini td{border:none;border-bottom:1px solid var(--line);padding:10px 12px;text-align:left}
+  table.mini td:last-child{border-bottom:none}
+  table.mini td::before{content:attr(data-label);display:block;font-size:.74rem;font-weight:700;text-transform:uppercase;letter-spacing:.4px;color:var(--dot);margin-bottom:4px}
+}
+@media(max-width:640px){.hero h1{font-size:1.3rem;max-width:100%}nav.jump{display:none}.rgrid.c2,.rgrid.c3,.rgrid.c4,.acro-grid{grid-template-columns:minmax(0,1fr)}.mindmap-host{height:440px}}
+</style></head><body>
+<div id="progress"></div>
+<header class="top"><div class="top-in">
+  <span class="badge">MODUL 5</span>
+  <a class="homebtn" href="index.html" title="Kembali ke daftar modul"><span style="font-size:1rem;line-height:1">&#8962;</span> Daftar Modul</a>
+  <span class="top-title">Manajemen Sumber Daya Manusia · EKMA5207</span>
+  <nav class="jump"><a href="#konsep">Konsep</a><a href="#peta">Peta Konsep</a><a href="#kb1">KB1</a><a href="#kb2">KB2</a><a href="#kb3">KB3</a><a href="#glosarium">Glosarium</a></nav>
+</div></header>
+
+<div class="wrap">
+  <section class="hero"><div class="eyebrow">Ringkasan Belajar Lengkap · EKMA5207 Edisi 3</div>
+  <h1>Pelatihan dan Pengembangan Karyawan</h1>
+  <div class="meta"><span>📚 3 Kegiatan Belajar (KB 1: A–G · KB 2: A–K · KB 3: A–H)</span><span>📖 Hal. 5.1–5.80</span><span>✍️ Prof. Dr. Mutiara Sibarani Panggabean, S.E., M.E.</span></div></section>
+
+  <p class="section-sub" style="margin-top:22px">Ringkasan komprehensif mengikuti urutan dan struktur outline asli buku tanpa penggabungan sub-bab: <b>KB 1 Pelatihan</b> (Bagian A–G), <b>KB 2 Pengembangan Karyawan</b> (Bagian A–K), dan <b>KB 3 Retensi dan Separasi</b> (Bagian A–H).</p>
+  <p class="offline-note">ℹ️ Peta konsep, kartu penjelasan interaktif, tabel responsif, dan daftar cek konsep berjalan penuh tanpa internet. Koneksi internet hanya diperlukan untuk merender persamaan matematika (MathJax).</p>
+
+  <!-- PENDAHULUAN MODUL -->
+  <div class="card">
+    <div class="abc" style="margin-top:0"><span class="ltr">★</span><h4>Pendahuluan Modul — Mengapa Pelatihan, Pengembangan, &amp; Retensi Tak Terhindarkan?</h4></div>
+    <p>Melatih dan mengembangkan karyawan merupakan kegiatan yang hampir tidak dapat dihindari dalam setiap perusahaan, terlepas dari siapa yang melaksanakan dan di mana pelaksanaannya (hal. 5.3):</p>
+    <ul class="exp">
+      <li><b>Mengapa Pelatihan Diperlukan:</b> Banyak lulusan lembaga pendidikan belum pernah bekerja; kalaupun sudah pernah bekerja, selalu terdapat perbedaan cara mengerjakan pekerjaan yang sama antara perusahaan satu dengan perusahaan lainnya.</li>
+      <li><b>Mengapa Pengembangan &amp; Retensi Diperlukan:</b> Pengembangan organisasi menuntut peningkatan kapabilitas SDM, sekaligus selalu ada posisi di berbagai tingkatan yang harus digantikan akibat pemutusan hubungan kerja secara sukarela maupun terpaksa—di mana penggantian tersebut biasanya diutamakan dari dalam organisasi.</li>
+    </ul>
+    <div class="flow"><b>Alur logis Modul 5:</b> <b>KB 1 (Pelatihan)</b> membedah sistem pelatihan kerja saat ini secara utuh dari analisis kebutuhan hingga evaluasi ROI dan pelatihan khusus → <b>KB 2 (Pengembangan Karyawan)</b> memperluas fokus ke persiapan masa depan, karier modern (<i>protean career</i>), pendidikan formal, penilaian, pengalaman kerja, hubungan antarpribadi, manajemen karier, hingga isu khusus → <b>KB 3 (Retensi &amp; Separasi)</b> menata pergantian terpaksa secara berkeadilan sekaligus mencegah pergantian sukarela melalui pengelolaan kepuasan kerja dan survei JDI.</div>
+  </div>
+
+  <!-- KONSEP PENTING -->
+  <h2 class="section" id="konsep"><span class="dot"></span>Konsep Penting yang Harus Dikuasai</h2>
+  <div class="card"><div class="cl-head"><span class="count"><span id="doneCount">0</span>/<span id="totalCount">0</span> dikuasai</span><button class="btn-reset" id="resetBtn">Reset centang</button></div>
+  <ul class="concepts" id="conceptList">
+    <li><input type="checkbox"><span><span class="ct">Pengertian, 6 Tujuan (Noe dkk.) &amp; Manfaat Pelatihan bagi 3 Pihak (Panggabean)</span><span class="cd">Manfaat bagi karyawan (6 poin), perusahaan (4 poin), dan konsumen (2 poin); penekanan Nokia pada perbaikan operasional dan hasil bisnis.</span></span></li>
+    <li><input type="checkbox"><span><span class="ct">6 Tahap Proses Pelatihan (Noe dkk., 2006)</span><span class="cd">Penilaian kebutuhan, kesiapan karyawan, lingkungan belajar, peralihan pelatihan, pemilihan metode, dan evaluasi program/ROI.</span></span></li>
+    <li><input type="checkbox"><span><span class="ct">3 Pilar Analisis Kebutuhan Pelatihan (Gambar 5.1)</span><span class="cd">Analisis organisasi (dukungan, strategi FE Trisakti, sumber daya BNI &amp; 7 tanya konsultan), analisis individu (5 faktor + 7 kondisi), dan analisis tugas (4 langkah + 5 tanya).</span></span></li>
+    <li><input type="checkbox"><span><span class="ct">Kesiapan Pelatihan (Self-Efficacy) &amp; 7 Kondisi Lingkungan Belajar</span><span class="cd">4 cara tingkatkan self-efficacy, kendala situasional &amp; 5 langkah manajer, kemampuan kognitif (verbal, kuantitatif, penalaran), praktik keseluruhan/sebagian, Communities of Practice.</span></span></li>
+    <li><input type="checkbox"><span><span class="ct">6 Faktor Peralihan Pelatihan / Transfer of Training (Gambar 5.2)</span><span class="cd">Iklim peralihan, dukungan manajer (rencana kegiatan), dukungan rekan kerja (jaringan pendukung), peluang praktik, teknologi (EPSSs), dan manajemen diri.</span></span></li>
+    <li><input type="checkbox"><span><span class="ct">3 Kelompok Metode Pelatihan (Presentasi, Hands-On 9 Metode, Membangun Kelompok 3 Metode)</span><span class="cd">Presentasi (4), Hands-On (OJT 8 langkah, self-directed, magang Trisakti, simulasi/VR, business games, behavior modeling, video interaktif, e-learning, blended), Kelompok (adventure, tim, Six Sigma).</span></span></li>
+    <li><input type="checkbox"><span><span class="ct">Evaluasi Program (5 Kategori Hasil, 4 Rancangan) &amp; 7 Langkah ROI</span><span class="cd">Kognitif, keterampilan/perilaku, afektif, akibat, ROI; model kebutuhan sumber daya serta rumus Biaya Pelatihan, Penghematan, dan ROI.</span></span></li>
+    <li><input type="checkbox"><span><span class="ct">Pelatihan Khusus: Lintas Budaya (Gambar 5.3), Keragaman (Diversity) &amp; Sosialisasi (Gambar 5.4)</span><span class="cd">5 syarat expatriate, 3 tahap lintas budaya (sebelum berangkat, di lokasi, repatriasi); program kesadaran vs berbasis perilaku (cultural immersion) &amp; 11 ciri berhasil; 3 tahap sosialisasi.</span></span></li>
+    <li><input type="checkbox"><span><span class="ct">5 Langkah Pelatihan Dessler (2005): OJT vs Off-the-Job &amp; 4 Level Evaluasi</span><span class="cd">Rancangan instruksional, validasi (5 langkah), implementasi (peserta, pelatih, OJT 3 metode vs Off-the-Job 8 metode), evaluasi 4 level &amp; 3 pendekatan penilaian prestasi.</span></span></li>
+    <li><input type="checkbox"><span><span class="ct">Pengembangan Manajemen (5 Aspek), Pengembangan Organisasi (2 Metode) &amp; Tabel 5.1</span><span class="cd">Pengambilan keputusan, antarpribadi (pelatihan kepekaan 5 tujuan), pengetahuan pekerjaan/organisasi/umum; OD (antarkelompok &amp; tim); Pelatihan vs Pengembangan (Garuda Indonesia).</span></span></li>
+    <li><input type="checkbox"><span><span class="ct">Protean Career, Kontrak Psikologis &amp; Knowing How / Why / Whom</span><span class="cd">Karier tradisional linier (dosen) vs protean career demi keberhasilan psikologis; pendidikan formal (MBA Univ. Tennessee, PJJ UT).</span></span></li>
+    <li><input type="checkbox"><span><span class="ct">5 Alat Penilaian (Assessment) Pengembangan Karyawan</span><span class="cd">Tes kepribadian (5 dimensi), MBTI (4 dimensi/16 tipe), Assessment Center (diskusi tanpa pimpinan, in-basket, role-play), Benchmarks (16 keterampilan), dan Umpan Balik 360°/Upward.</span></span></li>
+    <li><input type="checkbox"><span><span class="ct">Pengalaman Kerja (Gambar 5.5), Externship/Sabbatical, Mentoring &amp; Coaching</span><span class="cd">Job enlargement (Santi), rotasi, transfer/promosi/gerakan ke bawah (+10 dukungan), lecturer exchange, mentoring (formal/informal, 3 manfaat, 5 tujuan), coaching (3 peran &amp; 4 hambatan).</span></span></li>
+    <li><input type="checkbox"><span><span class="ct">Sistem Manajemen Karier (Gambar 5.6) &amp; 3 Isu Khusus Pengembangan</span><span class="cd">4 langkah (Penilaian diri, Pengecekan kebenaran, Penetapan tujuan, Perencanaan tindakan); Glass Ceiling, Perencanaan Suksesi (3 tahap), dan ICE untuk manajer disfungsional.</span></span></li>
+    <li><input type="checkbox"><span><span class="ct">Pergantian Terpaksa: Employment-at-Will, 3 Prinsip Keadilan, Disiplin Progresif, ADR, EAPs &amp; Outplacement</span><span class="cd">Keadilan hasil (Adams/Greenberg), prosedural (6 prinsip), interaksional (4 faktor); UU 13/2003 Ps. 158; 4 tahap ADR; EAPs (carve-out) &amp; konseling outplacement.</span></span></li>
+    <li><input type="checkbox"><span><span class="ct">Pergantian Sukarela, 3 Wujud Penarikan Diri, 4 Sumber Ketidakpuasan (Gambar 5.7–5.8) &amp; JDI</span><span class="cd">Perubahan perilaku (Ryan, Maria/whistle blowing), fisik (turnover, absensi Rp450–550rb, tardiness), psikologis; watak pribadi, tugas/peran (Linda, Abigail, bank), supervisor/rekan, gaji; JDI &amp; 4 alasan survei.</span></span></li>
+  </ul></div>
+
+  <!-- PETA KONSEP -->
+  <h2 class="section" id="peta"><span class="dot"></span>Peta Konsep (Mind Map)</h2>
+  <div class="card"><div class="mm-toolbar"><button class="mm-btn" id="mmExpand">Perluas semua</button><button class="mm-btn" id="mmCollapse">Ciutkan</button><span style="font-size:.76rem;color:var(--muted)">Klik simpul (+) atau (–) untuk membuka/menutup cabang · Gulir untuk menggeser</span></div><div class="mindmap-host" id="mindmap"></div></div>
+
+  <!-- ==================== KB 1 ==================== -->
+  <h2 class="section" id="kb1"><span class="dot" style="background:var(--kb1)"></span>KB 1 — Pelatihan</h2>
+  <div class="card kb1b"><span class="kb-tag kb1t">KB 1 · Hal. 5.5–5.43</span>
+    <p class="lead">Setelah calon karyawan terpilih, ditempatkan, dan mengikuti orientasi atau sosialisasi, hampir semua karyawan baru (maupun karyawan lama menghadapi perubahan) tetap memerlukan pelatihan agar dapat melaksanakan pekerjaannya dengan baik dan mendukung strategi bisnis.</p>
+
+    <div class="acro-box"><span class="acro-title">📖 Kamus Konteks Singkatan &amp; Akronim KB 1</span>
+      <ul class="acro-grid">
+        <li><b>OJT</b>: <i>On-the-Job Training</i> — pelatihan langsung di tempat kerja yang sesungguhnya (magang, rotasi, <i>understudy/coaching</i>).</li>
+        <li><b>EPSSs</b>: <i>Electronic Performance Support Systems</i> — aplikasi komputer yang jika diminta menyediakan pelatihan keterampilan, akses informasi, dan saran ahli.</li>
+        <li><b>ROI</b>: <i>Return on Investment</i> — rasio pengembalian investasi (manfaat operasi dibagi total biaya pelatihan) dalam rupiah per rupiah investasi.</li>
+        <li><b>PBL</b>: <i>Problem-Based Learning</i> — pembelajaran berbasis pemecahan masalah/kasus (contoh di buku: pelatihan dosen kelas unggulan FE Universitas Trisakti).</li>
+        <li><b>MBO</b>: <i>Management by Objectives</i> — penetapan tujuan dan sasaran kerja bersama antara karyawan dan pimpinan.</li>
+        <li><b>NASA</b>: <i>National Aeronautics and Space Administration</i> — contoh pengguna <i>vestibule training</i> (simulator tiruan) bagi calon astronot.</li>
+      </ul>
+    </div>
+
+    <!-- KB1 A -->
+    <div class="abc"><span class="ltr">A</span><h4>Arti Pentingnya Pelatihan</h4></div>
+
+    <div class="numh">1. Pengertian Pelatihan</div>
+    <p><span class="term">Pelatihan <span class="en">(training)</span></span> adalah cara yang digunakan untuk mempelajari keterampilan yang dibutuhkan karyawan baru untuk melaksanakan pekerjaannya sekarang, sekaligus pembelajaran berkesinambungan guna mendukung strategi bisnis dan memperoleh keunggulan bersaing. Contohnya: mengajarkan cara mengoperasikan mesin baru kepada mekanis baru, cara menjual produk kepada tenaga penjual baru, atau cara mewawancarai dan menilai karyawan kepada penyelia baru. <b>Nokia</b> menekankan bahwa pembelajaran seharusnya menghasilkan perbaikan operasional dan hasil bisnis yang lebih baik. Selain membekali keterampilan, pelatihan juga mempertahankan dan memotivasi karyawan.</p>
+
+    <div class="numh">2. Tujuan Pelatihan</div>
+    <p>Menurut <b>Noe dkk. (2006)</b>, pelatihan bertujuan mencapai enam sasaran strategis:</p>
+    <ul class="let">
+      <li>Meningkatkan pengetahuan karyawan tentang pesaing dan budaya asing untuk keberhasilan di pasar internasional.</li>
+      <li>Memastikan karyawan memiliki keterampilan dasar untuk bekerja dengan teknologi baru.</li>
+      <li>Membantu karyawan memahami cara bekerja dalam tim secara efektif demi produk dan jasa berkualitas.</li>
+      <li>Menjamin budaya perusahaan menekankan inovasi, kreativitas, dan pembelajaran.</li>
+      <li>Menjamin keamanan pekerjaan dengan memberi cara baru berkontribusi ketika pekerjaan, minat, atau keterampilan lama berubah/usang.</li>
+      <li>Mempersiapkan karyawan menerima dan bekerja lebih efektif dengan orang lain, terutama kaum minoritas dan perempuan.</li>
+    </ul>
+
+    <p>Sementara menurut <b>Panggabean (2004)</b>, pelatihan membawa manfaat nyata bagi <b>tiga pihak</b>:</p>
+    <div class="table-wrap">
+      <table class="mini">
+        <thead><tr><th style="width:20%">Pihak</th><th>Rincian Manfaat Pelatihan Menurut Buku (Hal. 5.6–5.8)</th></tr></thead>
+        <tbody>
+          <tr><td data-label="Pihak"><b>1. Bagi Karyawan (6 manfaat)</b></td><td data-label="Rincian Manfaat">(1) Memberikan keterampilan &amp; pengetahuan kerja; (2) Meningkatkan semangat kerja &amp; antusiasme; (3) Memperbaiki kinerja yang kurang memuaskan akibat kurang terampil; (4) Membantu menghadapi perubahan struktur, teknologi, &amp; SDM; (5) Meningkatkan peluang karier/promosi; (6) Meningkatkan balas jasa/gaji berbasis prestasi.</td></tr>
+          <tr><td data-label="Pihak"><b>2. Bagi Perusahaan (4 manfaat)</b></td><td data-label="Rincian Manfaat">(1) Memenuhi kebutuhan perencanaan SDM; (2) Penghematan biaya produksi (kerja lebih cepat, hemat bahan baku, mesin awet karena meningkatnya keterampilan teknis, antarpribadi, &amp; konseptual); (3) Mengurangi tingkat kerusakan barang/mesin dan kecelakaan kerja; (4) Memperkuat komitmen karyawan sehingga mencegah karyawan berorientasi prestasi pindah ke perusahaan lain.</td></tr>
+          <tr><td data-label="Pihak"><b>3. Bagi Konsumen (2 manfaat)</b></td><td data-label="Rincian Manfaat">(1) Memperoleh produk lebih baik secara kualitas dan kuantitas; (2) Memperoleh pelayanan lebih baik dan tepat waktu (daya tarik penting bagi rekanan, terutama di industri jasa yang berfokus pada pelayanan pelanggan dan penjualan).</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="flow">Setelah memahami pengertian, tujuan, dan manfaat pelatihan bagi karyawan, perusahaan, serta konsumen, <b>Bagian B</b> menguraikan enam tahapan sistematis proses pelatihan menurut Noe dkk. (2006).</div>
+
+    <!-- KB1 B -->
+    <div class="abc"><span class="ltr">B</span><h4>Proses Pelatihan (6 Tahap Noe dkk., 2006)</h4></div>
+    <p>Agar pelatihan berkontribusi nyata terhadap strategi bisnis, prosesnya berjalan dalam <b>enam langkah berurutan</b>: (1) Penilaian kebutuhan, (2) Menjamin kesediaan/kesiapan karyawan, (3) Menciptakan lingkungan pembelajaran, (4) Meyakinkan transfer pelatihan, (5) Memilih metode pelatihan, dan (6) Penilaian/evaluasi program pelatihan.</p>
+
+    <div class="numh">1. Penilaian Kebutuhan <span class="en">(Needs Assessment)</span></div>
+    <p>Penilaian kebutuhan menentukan apakah pelatihan memang diperlukan. Tujuannya secara rinci: (a) mengidentifikasi keterampilan prestasi kerja khusus untuk memperbaiki kinerja &amp; produktivitas, (b) menganalisis karakteristik peserta agar cocok dengan pendidikan, pengalaman, keterampilan, sikap, &amp; motivasi, serta (c) mengembangkan pengetahuan khusus yang terukur dan objektif. <i>Catatan penting:</i> harus dipastikan bahwa penurunan kinerja memang disebabkan kurangnya pengetahuan/keterampilan, bukan ketidakpuasan pada aspek lain (gaji, penyelia, kondisi kerja, promosi, atau rekan). <i>Contoh buku:</i> seorang supir truk berbuat salah karena merasa gajinya tidak sebanding dengan tanggung jawab—masalah ini <b>tidak dapat</b> diselesaikan melalui pelatihan.</p>
+
+    <div class="leth">a. Teknik Utama Menentukan Kebutuhan Training (Gambar 5.1)</div>
+    <div class="diagram-box">
+      <div class="flowchart">
+        <span class="fc-node">1) Analisis Organisasi<br><small style="font-weight:400">Dukungan · Strategi · Sumber Daya</small></span>
+        <span class="fc-arrow">↔</span>
+        <span class="fc-node">2) Analisis Individu<br><small style="font-weight:400">Karakteristik, Input, Output, Akibat, Umpan Balik</small></span>
+        <span class="fc-arrow">↔</span>
+        <span class="fc-node">3) Analisis Tugas<br><small style="font-weight:400">4 langkah + 5 pertanyaan verifikasi</small></span>
+      </div>
+      <div class="diagram-cap">Reproduksi Gambar 5.1 — Analisis Kebutuhan Pelatihan</div>
+    </div>
+    <ol class="book">
+      <li><b>Analisis Organisasi:</b> Menentukan kelayakan pelatihan dari tiga sisi:
+        <ul class="let">
+          <li><b>Dukungan manajer dan rekan kerja:</b> Sikap positif terhadap partisipasi pelatihan, kesediaan memberi informasi cara menerapkan materi, dan peluang praktik; tanpa dukungan ini karyawan tidak mungkin menerapkan hasil pelatihan.</li>
+          <li><b>Strategi perusahaan:</b> Strategi berbeda (konsentrasi, pertumbuhan internal, pertumbuhan eksternal, disinvestasi) menuntut pelatihan berbeda (<i>pelatihan strategis</i>). <i>Contoh buku:</i> <b>Fakultas Ekonomi Universitas Trisakti</b> menjalankan strategi diferensiasi lewat kelas unggulan berbasis kasus berbahasa Inggris (mulai semester 3, maks. 20 mahasiswa ber-IPK ≥ 3 dan TOEFL ≥ 450), sehingga para dosennya dilatih <b><i>problem-based learning</i></b> sebelum mengajar.</li>
+          <li><b>Sumber daya pelatihan:</b> Mengecek anggaran, waktu, dan pengalaman internal/eksternal. <i>Contoh buku:</i> <b>BNI</b> memiliki <b>Divisi Pendidikan Profesional BNI</b> di mana hampir semua kursus diajarkan praktisi berpengalaman dari lini operasi. Jika memakai konsultan luar melalui permohonan proposal, ajukan <b>7 pertanyaan evaluasi (a–g)</b>: kesesuaian produk/jasa dengan kebutuhan, pengalaman perusahaan pelatihan, keahlian &amp; pengalaman pelatih, contoh program yang pernah dikembangkan, lama waktu pengembangan, biaya pelatihan, dan metode pelatihan.</li>
+        </ul>
+      </li>
+      <li><b>Analisis Individu (Kinerja Karyawan):</b> Menilai siapa yang butuh pelatihan dan apakah pelatihan tepat dibanding solusi lain (seperti rotasi). Lima faktor yang memengaruhi kinerja &amp; pembelajaran: (a) <i>karakteristik individu</i> (pengetahuan, keterampilan, kemampuan, sikap), (b) <i>input</i> (instruksi apa/bagaimana/kapan bekerja), (c) <i>output</i> (standar kinerja), (d) <i>akibat</i> (insentif atas prestasi melampaui standar), dan (e) <i>umpan balik</i>. Manajer mempertimbangkan pelatihan jika: penurunan kinerja berpotensi menelan biaya besar; karyawan tak mampu menunjukkan pengetahuan/perilaku benar; karyawan tak tahu cara bekerja efektif; pengharapan kinerja sudah jelas tanpa hambatan; ada konsekuensi positif bagi kinerja baik dan tidak ada penghargaan bagi kinerja buruk; karyawan menerima umpan balik memadai; serta pilihan solusi lain terlalu mahal/tidak realistis.</li>
+      <li><b>Analisis Tugas:</b> Menentukan kebutuhan pelatihan karyawan baru berbasis uraian dan spesifikasi pekerjaan (<i>contoh:</i> pekerjaan dosen mencakup tugas pengajaran, penelitian, dan pengabdian masyarakat). Berjalan dalam <b>4 langkah</b>: (a) memilih pekerjaan yang dianalisis, (b) mengamati karyawan &amp; manajer, (c) memverifikasi pentingnya tugas bersama komite ahli lewat <b>5 pertanyaan</b> (seberapa sering dilakukan, berapa lama waktu dihabiskan, seberapa penting bagi keberhasilan kerja, seberapa sulit dipelajari, dan apakah diharapkan dari pemula), serta (d) mengidentifikasi pengetahuan, keterampilan, atau kemampuan (KSA) via wawancara dan kuesioner.</li>
+    </ol>
+
+    <div class="numh">2. Memastikan Kesiapan Karyawan untuk Mengikuti Pelatihan</div>
+    <p>Mengevaluasi apakah (a) karyawan memiliki karakteristik pribadi (kemampuan, sikap, keyakinan, motivasi belajar) dan (b) lingkungan pekerjaan mempermudah pembelajaran. Lima elemen pembentuk motivasi belajar:</p>
+    <ul class="exp">
+      <li><b>Keyakinan Diri <span class="en">(Self-Efficacy)</span>:</b> Keyakinan karyawan mampu berhasil mempelajari isi pelatihan. Manajer meningkatkannya dengan 4 cara: (1) menegaskan tujuan pelatihan adalah memperbaiki kinerja bukan mencari ketidakmampuan, (2) memberi informasi lengkap sebelum pelatihan, (3) memperlihatkan keberhasilan rekan kerja yang sudah dilatih, dan (4) memberi umpan balik bahwa pembelajaran berada dalam kendali mereka sendiri.</li>
+      <li><b>Memahami Manfaat dan Konsekuensi Pelatihan:</b> Mengomunikasikan secara realistis manfaat kerja, pribadi, dan karier (efisiensi prosedur, jejaring, peluang jalur karier) karena harapan yang tidak terpenuhi justru menurunkan motivasi belajar.</li>
+      <li><b>Kesadaran Kebutuhan Pelatihan, Minat Karier, dan Sasaran Karier:</b> Karyawan harus mengenali kekuatan/kelemahan keterampilannya dan melihat kaitan langsung pelatihan dengan perbaikan kelemahan tersebut.</li>
+      <li><b>Karakteristik Lingkungan Kerja:</b> Mencakup (a) <i>kendala situasional</i> (kekurangan peralatan, bahan baku, dana, pasokan, waktu) dan (b) <i>dukungan sosial</i> manajer/rekan. Manajer perlu melakukan <b>5 hal (a–e)</b>: menyediakan materi/waktu/alat bantu sebelum pelatihan, membicarakan program perusahaan secara positif, mengakui karyawan yang menerapkan materi di pekerjaan, mendorong kelompok kerja saling berbagi pengalaman &amp; umpan balik, serta memberi waktu dan kesempatan praktik di tempat kerja.</li>
+      <li><b>Berbagai Keterampilan Dasar &amp; Kemampuan Kognitif:</b> Keterampilan membaca/menulis serta tiga kemampuan kognitif—<i>pemahaman verbal</i> (bahasa lisan/tulisan), <i>kemampuan kuantitatif</i> (kecepatan &amp; akurasi matematika), dan <i>kemampuan penalaran</i> (logika pemecahan masalah).</li>
+    </ul>
+
+    <div class="numh">3. Menciptakan Lingkungan Belajar</div>
+    <p>Pembelajaran mengubah perilaku secara relatif tetap. Tujuh kondisi agar karyawan belajar optimal:</p>
+    <ul class="let">
+      <li><b>Sasaran pelatihan yang jelas</b> (3 komponen): (1) kinerja/hasil yang diharapkan, (2) kualitas/tingkat prestasi yang diterima, dan (3) kondisi pelaksanaan.</li>
+      <li><b>Materi pelatihan yang berarti</b> dan berkaitan langsung dengan pekerjaan.</li>
+      <li><b>Peluang mempraktikkan secara aktif &amp; berulang:</b> Memilih antara <i>praktik keseluruhan</i> (mempraktikkan semua tugas sekaligus) dan <i>praktik sebagian</i> (mempraktikkan tiap tugas secara terpisah segera setelah diperkenalkan).</li>
+      <li><b>Umpan balik yang efektif:</b> Berfokus pada perilaku khusus, disampaikan secepat mungkin, menguatkan perilaku positif, dan memanfaatkan alat ampuh seperti <i>videotape</i> dalam sesi praktik.</li>
+      <li><b>Pengamatan, pengalaman, dan interaksi sosial:</b> Melalui teknik pemodelan perilaku dan <b>khalayak praktisi <span class="en">(communities of practice)</span></b>—kelompok karyawan yang bekerja sama, saling belajar, dan membangun pemahaman bersama.</li>
+      <li><b>Keterikatan mengingat materi:</b> Memproses rangsangan dari persepsi ke ingatan jangka pendek (<i>working memory</i>) lalu ingatan jangka panjang.</li>
+      <li><b>Administrasi dan koordinasi program yang tertata (3 syarat):</b> (1) mencegah gangguan teknis/ruangan tak nyaman, (2) komunikasi prapelatihan yang jelas (tujuan, lokasi, narahubung), dan (3) pengaturan fisik ruangan yang mendukung teknik pelatihan.</li>
+    </ul>
+
+    <div class="numh">4. Memastikan Peralihan Pelatihan <span class="en">(Transfer of Training)</span></div>
+    <p>Peralihan pelatihan adalah penerapan pengetahuan, keterampilan, dan perilaku hasil pelatihan ke pekerjaan nyata. Gambar 5.2 memetakan <b>enam karakteristik lingkungan kerja</b> penentunya:</p>
+    <div class="diagram-box">
+      <div class="flowchart">
+        <span class="fc-node">a. Iklim Peralihan</span>
+        <span class="fc-node">b. Dukungan Manajer<br><small style="font-weight:400">(Rencana Kegiatan)</small></span>
+        <span class="fc-node">c. Dukungan Rekan Kerja<br><small style="font-weight:400">(Jaringan Pendukung)</small></span>
+        <span class="fc-node">d. Peluang Praktik</span>
+        <span class="fc-node">e. Dukungan Teknologi<br><small style="font-weight:400">(EPSSs)</small></span>
+        <span class="fc-node">f. Manajemen Diri</span>
+        <span class="fc-arrow">➔</span>
+        <span class="fc-node" style="background:var(--dot);color:#fff">PERALIHAN PELATIHAN</span>
+      </div>
+      <div class="diagram-cap">Reproduksi Gambar 5.2 — Karakteristik Lingkungan Pekerjaan yang Memengaruhi Peralihan Pelatihan</div>
+    </div>
+    <ul class="let">
+      <li><b>Iklim peralihan:</b> Persepsi peserta apakah lingkungan kerja mempermudah atau menghambat penggunaan keterampilan baru.</li>
+      <li><b>Dukungan manajer:</b> Menekankan pentingnya penerapan materi dan memfasilitasinya melalui <b>rencana kegiatan</b> (dokumen tertulis langkah peserta &amp; manajer berisi proyek khusus serta alat/sumber daya pendukung).</li>
+      <li><b>Dukungan rekan kerja:</b> Membentuk <b>jaringan pendukung</b> (dua orang atau lebih peserta pelatihan yang rutin bertemu membahas kemajuan penerapan materi).</li>
+      <li><b>Peluang menggunakan kemampuan yang dipelajari:</b> Dipengaruhi lingkungan kerja, motivasi, dan inisiatif aktif peserta mencari tugas baru.</li>
+      <li><b>Dukungan teknologi:</b> Memanfaatkan <b><i>Electronic Performance Support Systems</i> (EPSSs)</b>—aplikasi komputer penyedia bantuan keterampilan, akses informasi, dan saran ahli saat dibutuhkan.</li>
+      <li><b>Keterampilan manajemen diri:</b> Kemampuan karyawan mengelola dirinya sendiri untuk tetap menerapkan keterampilan dan perilaku baru di pekerjaan.</li>
+    </ul>
+
+    <div class="numh">5. Memilih Metode-Metode Pelatihan</div>
+    <p>Buku membagi metode pelatihan ke dalam <b>tiga kelompok besar</b>—presentasi, pengalaman praktis (<i>hands-on</i>), dan membangun kelompok:</p>
+
+    <div class="leth">a. Metode Presentasi (Peserta Pasif)</div>
+    <p>Ideal untuk menyajikan fakta baru, filsafat, dan alternatif pemecahan masalah:</p>
+    <ol class="book">
+      <li><b>Pengajaran di ruang kelas (ceramah):</b> Paling murah dan hemat waktu; makin efektif bila dilengkapi tanya jawab, diskusi, studi kasus, dan contoh kerja nyata.</li>
+      <li><b>Pembelajaran jarak jauh:</b> Komunikasi dua arah lintas lokasi geografis—mencakup <i>audio conferencing</i>, <i>video conferencing</i>, dan <i>docuconferencing</i> (kolaborasi berbagi dokumen via komputer).</li>
+      <li><b>Video teleconferencing:</b> Pertukaran audio/teks dua lokasi atau lebih; menghemat biaya perjalanan namun berisiko kurang interaksi sehingga perlu komunikasi dua arah dan fasilitator di lokasi peserta.</li>
+      <li><b>Teknik audiovisual (<i>overhead</i>, <i>slide</i>, video):</b> Video paling populer untuk melatih komunikasi, wawancara, pelayanan pelanggan, dan prosedur; memungkinkan variasi kecepatan, konsistensi pengajaran, dan observasi diri, serta paling efektif bila dipadukan dengan kuliah.</li>
+    </ol>
+
+    <div class="leth">b. Metode Pengalaman Praktis (<span class="en">Hands-On Methods</span> — Peserta Aktif)</div>
+    <div class="rgrid c3" data-revealgroup>
+      <div class="rcell active" data-reveal data-detail="<b>1) Pelatihan di Tempat Kerja (OJT):</b> Belajar sambil mengamati dan meniru rekan/manajer. Prinsip <b>OJT berstruktur</b>:<br>• <i>Mempersiapkan (3 langkah):</i> merinci pekerjaan menjadi langkah penting, menyiapkan alat/materi, menentukan lama waktu &amp; target kecakapan.<br>• <i>Pengajaran sebenarnya (8 langkah):</i> (1) arahkan tujuan &amp; minta mengamati, (2) demonstrasikan tanpa bicara, (3) jelaskan/tuliskan perilaku utama, (4) demonstrasikan lagi, (5) peserta praktik sebagian &amp; dipuji, (6) peserta praktik keseluruhan &amp; dipuji, (7) perbaiki kesalahan hingga akurat, (8) puji keberhasilan."><span class="stepnum">1</span><span><span class="rt">OJT Berstruktur</span><span class="rp">3 persiapan + 8 langkah</span></span></div>
+      <div class="rcell" data-reveal data-detail="<b>2) Belajar Mandiri (Self-Directed Learning):</b> Karyawan bertanggung jawab penuh atas kapan dan dengan siapa belajar; peserta bebas mengatur kecepatan sendiri, sementara perusahaan menghemat jumlah pelatih, biaya perjalanan, dan ruang pertemuan."><span class="stepnum">2</span><span><span class="rt">Belajar Mandiri</span><span class="rp">Self-directed learning</span></span></div>
+      <div class="rcell" data-reveal data-detail="<b>3) Magang (Apprenticeship):</b> Gabungan pelatihan di tempat kerja dan ruang kelas. <i>Contoh buku:</i> <b>FE Universitas Trisakti</b> menawarkan magang pengganti skripsi setara <b>6 SKS</b> (1 semester / 3 bulan, 8 jam/hari, 5 hari/minggu + bimbingan laporan). Peserta meraih pengalaman, sertifikat, uang saku/gaji, dan peluang besar menjadi karyawan tetap."><span class="stepnum">3</span><span><span class="rt">Magang</span><span class="rp">Apprenticeship (Trisakti)</span></span></div>
+      <div class="rcell" data-reveal data-detail="<b>4) Simulasi &amp; Virtual Reality (VR):</b> Menggambarkan situasi nyata bebas risiko untuk keterampilan produksi maupun antarpribadi; simulator mereplikasi alat fisik, sedangkan <i>VR</i> memberi pengalaman 3D interaktif. <b>5 alasan efektif:</b> hapus biaya perjalanan, keterlibatan emosional tinggi, terus memberi umpan balik belajar, aman untuk situasi berbahaya, dan terbukti memberi hasil positif."><span class="stepnum">4</span><span><span class="rt">Simulasi &amp; VR</span><span class="rp">Bebas risiko · 5 keunggulan</span></span></div>
+      <div class="rcell" data-reveal data-detail="<b>5) Permainan Bisnis &amp; Studi Kasus:</b> Peserta aktif mengumpulkan/menganalisis informasi dan mengambil keputusan kompetitif lintas fungsi—hubungan tenaga kerja (negosiasi kontrak), pemasaran (harga produk baru), hingga keuangan (pembiayaan teknologi baru)—seraya melatih kerja tim dan berpikir strategis."><span class="stepnum">5</span><span><span class="rt">Business Games &amp; Kasus</span><span class="rp">Keputusan lintas fungsi</span></span></div>
+      <div class="rcell" data-reveal data-detail="<b>6) Pemodelan Perilaku (Behavior Modeling):</b> Riset membuktikan teknik ini <b>paling efektif untuk keterampilan antarpribadi</b>. Tiap sesi mencakup presentasi rasional perilaku inti, tayangan <i>videotape</i> model, praktik bermain peran, evaluasi kinerja model, serta sesi perencanaan transfer ke tempat kerja."><span class="stepnum">6</span><span><span class="rt">Behavior Modeling</span><span class="rp">Terbaik utk antarpribadi</span></span></div>
+      <div class="rcell" data-reveal data-detail="<b>7) Video Interaktif:</b> Menggabungkan video dan komputer satu-lawan-satu (tombol/layar sentuh) untuk prosedur teknikal &amp; keterampilan antarpribadi; bersifat individual, nyaman, dan langsung memberi umpan balik, namun <b>biaya pengembangannya tinggi</b>."><span class="stepnum">7</span><span><span class="rt">Video Interaktif</span><span class="rp">Individual · biaya tinggi</span></span></div>
+      <div class="rcell" data-reveal data-detail="<b>8) E-Learning (Pembelajaran Online):</b> Lewat Internet/Intranet (berbasis situs, ruang kelas maya, CD-ROM, portal). <b>3 ciri penting:</b> jaringan elektronik (pembaruan seketika), berbasis komputer/internet, dan melampaui pelatihan tradisional lewat alat peningkat kinerja. Memuat konsep <b><i>repurposing</i></b> (alih bentuk ke/dari tatap muka) dan <b><i>learner control</i></b> (kendali kecepatan &amp; eksplorasi oleh peserta)."><span class="stepnum">8</span><span><span class="rt">E-Learning</span><span class="rp">3 ciri, repurposing, learner control</span></span></div>
+      <div class="rcell" data-reveal data-detail="<b>9) Pembelajaran Campuran (Blended Learning):</b> Dipilih karena 3 hal—(1) keterbatasan teknologi <i>online</i>, (2) kebutuhan tatap muka peserta, dan (3) sulitnya mencari waktu luang belajar lewat desktop saat jam kerja. Didukung <b>portal pembelajaran</b> (website akses kursus, layanan, &amp; komunitas belajar <i>online</i>)."><span class="stepnum">9</span><span><span class="rt">Blended Learning</span><span class="rp">Gabungan + portal belajar</span></span></div>
+    </div>
+    <div class="rdetail" data-revealdetail><b>1) Pelatihan di Tempat Kerja (OJT):</b> Belajar sambil mengamati dan meniru rekan/manajer. Prinsip <b>OJT berstruktur</b>:<br>• <i>Mempersiapkan (3 langkah):</i> merinci pekerjaan menjadi langkah penting, menyiapkan alat/materi, menentukan lama waktu &amp; target kecakapan.<br>• <i>Pengajaran sebenarnya (8 langkah):</i> (1) arahkan tujuan &amp; minta mengamati, (2) demonstrasikan tanpa bicara, (3) jelaskan/tuliskan perilaku utama, (4) demonstrasikan lagi, (5) peserta praktik sebagian &amp; dipuji, (6) peserta praktik keseluruhan &amp; dipuji, (7) perbaiki kesalahan hingga akurat, (8) puji keberhasilan.</div>
+
+    <div class="leth">c. Metode Membangun Kelompok</div>
+    <p>Bertujuan berbagi ide, membangun identitas tim, dan memahami dinamika antarpribadi. Dua pedoman wajib: (1) dikaitkan dengan masalah bisnis nyata, dan (2) peserta diajak keluar zona nyaman dalam batas aman agar motivasi tak turun.</p>
+    <ul class="let">
+      <li><b>Petualangan Belajar <span class="en">(Adventure Learning)</span>:</b> Aktivitas terstruktur di alam terbuka untuk kesadaran diri, pemecahan masalah, manajemen konflik, dan pengambilan risiko; wajib diakhiri refleksi terarah oleh fasilitator untuk mengaitkannya ke pekerjaan.</li>
+      <li><b>Pelatihan Tim:</b> Mencakup (1) <b><i>cross-training</i></b> (pelatihan silang agar anggota siap menggantikan peran rekan), (2) <b><i>coordination training</i></b> (berbagi informasi &amp; keputusan—krusial pada penerbangan komersial dan tim bedah), serta (3) <b><i>team leader training</i></b> (pelatihan pemimpin tim).</li>
+      <li><b>Pembelajaran Tindakan <span class="en">(Action Learning)</span>:</b> Tim memecahkan masalah bisnis nyata dan bertanggung jawab mengeksekusi rencana aksinya. Contoh unggulannya adalah <b>Pelatihan Six Sigma</b> yang membekali alat pengukuran statistik untuk menekan kerusakan dan memangkas biaya.</li>
+    </ul>
+
+    <div class="flow">Setelah memilih dan menjalankan metode pelatihan pada Bagian B, <b>Bagian C</b> membahas cara mengevaluasi efektivitas program pelatihan secara menyeluruh.</div>
+
+    <!-- KB1 C -->
+    <div class="abc"><span class="ltr">C</span><h4>Evaluasi Program Pelatihan</h4></div>
+    <p>Evaluasi menelaah hasil program dibandingkan tujuannya ke dalam <b>lima kategori ukuran</b>:</p>
+    <div class="table-wrap">
+      <table class="mini">
+        <thead><tr><th style="width:26%">Kategori Hasil</th><th style="width:38%">Apa yang Diukur &amp; Cara Ukur</th><th>Contoh di Buku (Hal. 5.25–5.26)</th></tr></thead>
+        <tbody>
+          <tr><td data-label="Kategori Hasil"><b>1. Kognitif (Pengetahuan)</b></td><td data-label="Apa yang Diukur">Perolehan ilmu pengetahuan via ujian tertulis (pensil &amp; kertas) atau sampel kerja.</td><td data-label="Contoh di Buku">Peraturan keselamatan, prinsip-prinsip kelistrikan.</td></tr>
+          <tr><td data-label="Kategori Hasil"><b>2. Keterampilan / Perilaku</b></td><td data-label="Apa yang Diukur">Penguasaan perilaku &amp; keterampilan via observasi, sampel pekerjaan, dan pemeringkatan.</td><td data-label="Contoh di Buku">Keterampilan mendengar, keterampilan melatih, pendaratan pesawat.</td></tr>
+          <tr><td data-label="Kategori Hasil"><b>3. Perasaan (Afektif)</b></td><td data-label="Apa yang Diukur">Sikap, reaksi terhadap program, dan motivasi via wawancara, kelompok fokus, dan survei sikap.</td><td data-label="Contoh di Buku">Kepuasan terhadap pelatihan, keyakinan mengenai budaya lain.</td></tr>
+          <tr><td data-label="Kategori Hasil"><b>4. Akibat (Hasil Perusahaan)</b></td><td data-label="Apa yang Diukur">Dampak organisasi via pengamatan, sistem informasi, dan catatan kinerja.</td><td data-label="Contoh di Buku">Tingkat absensi, tingkat kecelakaan kerja, jumlah hak paten.</td></tr>
+          <tr><td data-label="Kategori Hasil"><b>5. Tingkat Pengembalian Investasi (ROI)</b></td><td data-label="Apa yang Diukur">Nilai ekonomi pelatihan melalui perbandingan manfaat terhadap total biaya.</td><td data-label="Contoh di Buku">Nilai dalam rupiah.</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p><b>Empat Alasan Mengevaluasi Pelatihan:</b> (1) memastikan program memenuhi tujuan &amp; menghasilkan transfer pelatihan, (2) memastikan kepuasan peserta terhadap isi dan administrasi, (3) menentukan manfaat keuangan dan biaya program, serta (4) membandingkan beberapa program alternatif guna memilih yang terbaik.</p>
+    <p><b>Empat Rancangan Evaluasi:</b> (1) <i>Test/posttest</i> dengan kelompok pembanding (membandingkan peserta vs nonpeserta), (2) <i>Pretest/posttest</i> tanpa kelompok pembanding, (3) <i>Posttest</i> saja, dan (4) <i>Time series</i> (pengumpulan data secara berkala dalam beberapa interval). Pemilihannya mempertimbangkan ukuran program, tujuan, implikasi jika pelatihan gagal, norma evaluasi perusahaan, biaya evaluasi, dan kecepatan informasi yang dibutuhkan.</p>
+
+    <div class="flow">Untuk menjawab alasan keuangan dan perbandingan nilai ekonomi antar-program pada Bagian C, <b>Bagian D</b> merinci metode akuntansi dalam menentukan <b>Return on Investment (ROI)</b>.</div>
+
+    <!-- KB1 D -->
+    <div class="abc"><span class="ltr">D</span><h4>Menentukan Tingkat Pengembalian Investasi (<span class="en">Return on Investment</span>)</h4></div>
+    <p>Analisis biaya-manfaat menggunakan metode akuntansi untuk menilai manfaat ekonomi pelatihan. Informasi biaya penting karena <b>tiga alasan</b>: (1) memahami total pengeluaran langsung dan tidak langsung, (2) membandingkan biaya beberapa program alternatif, dan (3) mengendalikan biaya.</p>
+    <ol class="book">
+      <li><b>Menentukan Biaya:</b> Mencakup biaya langsung dan tidak langsung; perbandingan alternatif dapat memakai <b>model kebutuhan sumber daya</b> (membandingkan biaya peralatan, fasilitas, karyawan, dan materi di setiap tahap: penilaian kebutuhan, perancangan, pengembangan, pelaksanaan, dan evaluasi).</li>
+      <li><b>Menentukan Manfaat:</b> Meninjau kembali alasan awal penyelenggaraan pelatihan untuk mengidentifikasi manfaat ekonomi potensialnya.</li>
+      <li><b>Membuat Analisis (7 Langkah Perhitungan ROI, a–g):</b> (a) mengidentifikasi hasil-hasil (mis. kualitas produk atau angka kecelakaan), (b) menempatkan nilai moneter pada hasil, (c) menentukan perubahan kinerja bersih setelah menyaring pengaruh faktor lain, (d) menghitung manfaat tahunan (hasil operasi sesudah dikurangi sebelum pelatihan dalam rupiah), (e) menentukan total biaya pelatihan, (f) menghitung biaya penghematan, dan (g) menghitung rasio ROI.</li>
+    </ol>
+    <div class="eqbox">
+      <div>\[\text{Biaya Pelatihan} = \text{Biaya Langsung} + \text{Biaya Tidak Langsung} + \text{Biaya Pengembangan} + \text{Biaya Overhead} + \text{Biaya Peserta}\]</div>
+      <div>\[\text{Penghematan} = \text{Manfaat (Hasil Operasi)} - \text{Biaya Pelatihan} \qquad\qquad \text{ROI} = \frac{\text{Manfaat (Hasil Operasi)}}{\text{Biaya Pelatihan}}\]</div>
+    </div>
+    <div class="fguide">
+      <div class="fg-head">Bedah Variabel &amp; Intisari Formula Biaya &amp; ROI Pelatihan</div>
+      <ul>
+        <li><b>Biaya Langsung &amp; Tidak Langsung:</b> Pengeluaran langsung sesi (honor pelatih, materi, konsumsi, lokasi) ditambah persiapan administrasi.</li>
+        <li><b>Biaya Pengembangan, Overhead, &amp; Peserta:</b> Perancangan kurikulum, fasilitas umum, dan gaji peserta selama meninggalkan pekerjaan.</li>
+        <li><b>Manfaat (Hasil Operasi):</b> Selisih nilai ekonomi hasil kerja setelah pelatihan dibandingkan sebelum pelatihan (dalam rupiah).</li>
+        <li><b>Makna formula:</b> Rasio ROI menunjukkan perkiraan tingkat pengembalian dalam rupiah untuk setiap Rp1 yang diinvestasikan pada pelatihan ($\text{ROI} > 1$ berarti menguntungkan).</li>
+      </ul>
+      <div class="fg-core">
+        <div>🧭 <b>Filosofis:</b> Pelatihan adalah investasi modal manusia yang dampak ekonominya harus terukur secara akuntabel, bukan sekadar pos pengeluaran rutin.</div>
+        <div>📏 <b>Mengukur:</b> Efisiensi finansial dan tingkat pengembalian bersih per rupiah anggaran pelatihan yang dikeluarkan perusahaan.</div>
+        <div>🎯 <b>Manfaat:</b> Menjadi dasar objektif bagi manajemen SDM dalam mempertahankan anggaran pelatihan dan memilih program dengan imbal hasil tertinggi.</div>
+      </div>
+    </div>
+
+    <div class="flow">Di luar siklus pelatihan reguler (Bagian B–D), ekspansi global dan perubahan demografi memunculkan tantangan pelatihan khusus yang dibahas di <b>Bagian E</b>.</div>
+
+    <!-- KB1 E -->
+    <div class="abc"><span class="ltr">E</span><h4>Masalah-Masalah Pelatihan Khusus</h4></div>
+    <ol class="book">
+      <li><b>Persiapan Lintas Budaya:</b> Karyawan yang dikirim mengelola bisnis di luar negeri disebut <span class="term"><i>expatriate</i></span>. Mereka akan berhasil apabila memenuhi <b>5 syarat (a–e)</b>: ahli di bidangnya, mampu berkomunikasi lisan maupun nonlisan di negara tuan rumah, luwes/sabar terhadap ketidakpastian &amp; peka budaya, termotivasi menikmati tantangan serta bersedia belajar bahasa/budaya lokal, dan didukung penuh oleh keluarganya.</li>
+      <li><b>Tiga Tahapan Persiapan Lintas Budaya (Gambar 5.3):</b>
+        <div class="diagram-box" style="margin:10px 0">
+          <div class="flowchart">
+            <span class="fc-node">Tahap 1: Sebelum Keberangkatan<br><small style="font-weight:400">Bahasa, budaya &amp; keluarga</small></span>
+            <span class="fc-arrow">→</span>
+            <span class="fc-node">Tahap 2: Di Lokasi<br><small style="font-weight:400">Orientasi lanjutan &amp; mentor lokal</small></span>
+            <span class="fc-arrow">→</span>
+            <span class="fc-node" style="background:var(--dot);color:#fff">Tahap 3: Pemulangan (Repatriation)<br><small style="font-weight:400;opacity:.92">Adaptasi kembali ke kantor pusat</small></span>
+          </div>
+          <div class="diagram-cap">Reproduksi Gambar 5.3 — Persiapan Lintas Budaya</div>
+        </div>
+      </li>
+      <li><b>Tahap Sebelum Keberangkatan (4 poin a–d):</b> (a) pelatihan bahasa dan orientasi budaya/kebiasaan negara tujuan, (b) wajib mengikutsertakan keluarga dalam orientasi, (c) metode berjenjang dari kuliah hingga pengalaman nyata negara tujuan, dan (d) metode kelompok serta pengalaman nyata paling efektif saat interaksi antarpribadi intensif.</li>
+      <li><b>Tahap di Lokasi:</b> Orientasi berkelanjutan via program formal atau <i>mentoring relationship</i> dengan memasangkan ekspatriat dan keluarganya bersama karyawan lokal, serta situs internal untuk panduan praktis (mis. tata cara rapat setempat).</li>
+      <li><b>Tahap Pemulangan ke Negara Asal <span class="en">(Repatriation)</span>:</b> Mempersiapkan ekspatriat dan keluarganya kembali ke perusahaan induk (<i>parent company</i>) karena mereka kerap mengalami stres dan kecemasan tinggi akibat berbagai perubahan selama ditinggal.</li>
+      <li><b>Mengelola Keragaman Tenaga Kerja:</b> Menghilangkan nilai, stereotip, dan praktik manajerial penghambat pertumbuhan pribadi tanpa memandang ras, orientasi seksual, gender, status keluarga, agama, atau budaya. Pekerja asing/imigran baru pun perlu memahami karakter budaya tuan rumah (mis. buku mencontohkan budaya Indonesia yang cenderung berorientasi jangka pendek, gotong-royong, kurang menyukai risiko, dan masih membedakan gender).</li>
+    </ol>
+
+    <div class="flow">Karena keragaman tenaga kerja tidak cukup hanya ditangani lewat aturan formal, <b>Bagian F</b> membedah keterbatasan kepatuhan undang-undang, program pelatihan keragaman, serta proses sosialisasi karyawan baru.</div>
+
+    <!-- KB1 F -->
+    <div class="abc"><span class="ltr">F</span><h4>Mengelola Keragaman Melalui Kepatuhan Terhadap Undang-Undang</h4></div>
+    <p>Pendekatan kepatuhan hukum semata (peluang kerja yang sama) jarang mengubah stereotip dan perilaku terdalam karyawan. Perusahaan perlu memastikan 3 hal lewat <span class="term">pelatihan keragaman <span class="en">(diversity training)</span></span>: (1) karyawan paham bagaimana nilai &amp; stereotip memengaruhi perilaku, (2) menghargai perbedaan budaya, dan (3) memperbaiki perilaku yang mengucilkan atau mengintimidasi minoritas.</p>
+    <ol class="book">
+      <li><b>Program Kesadaran dan Perubahan Sikap:</b> Memakai <i>videotape</i> dan latihan pengalaman untuk menumbuhkan kepedulian terhadap dampak negatif stereotip. Namun program ini menuai <b>2 kritik</b>: (a) fokus pada perbedaan kelompok dapat seolah membenarkan stereotip tertentu (mis. manajer pria belajar bahwa perempuan lebih suka mencari kesepakatan daripada berdebat), dan (b) berbagi stereotip justru bisa memicu rasa bersalah, marah, dan mengaburkan kesamaan serta manfaat kerja sama.</li>
+      <li><b>Program-Program Berbasis Perilaku (3 pendekatan):</b> (a) mengidentifikasi peristiwa yang mematahkan semangat kerja karyawan, (b) mengajarkan kaidah dasar peraturan perilaku di tempat kerja, dan (c) <b>pencelupan budaya <span class="en">(cultural immersion)</span></b>—mengirim karyawan terjun langsung berinteraksi dengan masyarakat berbeda budaya, ras, dan bangsa.</li>
+      <li><b>11 Karakteristik Upaya Keragaman yang Berhasil Jangka Panjang (a–k):</b> (a) dukungan sumber daya &amp; teladan publik manajemen puncak, (b) program terstruktur, (c) keragaman didefinisikan sebagai tujuan bisnis, (d) dipandang sebagai pendorong pendapatan &amp; laba, (e) dievaluasi lewat metrik terukur (penjualan, biaya pemeliharaan, jumlah promosi), (f) keterlibatan manajer diwajibkan, (g) dipandang sebagai perubahan budaya berkelanjutan bukan program sekali jadi, (h) tidak menyalahkan manajer/kelompok demografi tertentu, (i) mengajarkan perilaku &amp; keterampilan interaksi nyata, (j) manajer dihargai atas kemajuan sasaran keragaman, dan (k) manajemen mengumpulkan serta menanggapi umpan balik karyawan.</li>
+      <li><b>Sosialisasi dan Orientasi (Gambar 5.4):</b> Mengubah karyawan baru menjadi anggota organisasi efektif melalui tiga fase berurutan:
+        <div class="diagram-box" style="margin:10px 0">
+          <div class="flowchart">
+            <span class="fc-node">1. Sosialisasi Antisipasi<br><small style="font-weight:400">Harapan sebelum bergabung</small></span>
+            <span class="fc-arrow">→</span>
+            <span class="fc-node">2. Fase Perjumpaan<br><small style="font-weight:400">Awal kerja &amp; kejutan realitas</small></span>
+            <span class="fc-arrow">→</span>
+            <span class="fc-node" style="background:var(--dot);color:#fff">3. Tahap Penyesuaian<br><small style="font-weight:400;opacity:.92">Nyaman &amp; atasi konflik peran</small></span>
+          </div>
+          <div class="diagram-cap">Reproduksi Gambar 5.4 — Sosialisasi dan Orientasi</div>
+        </div>
+      </li>
+    </ol>
+
+    <div class="flow">Sebagai pembanding kerangka 6 tahap Noe dkk., <b>Bagian G</b> memaparkan <b>5 langkah proses pelatihan menurut Gary Dessler (2005)</b> beserta rincian metode OJT vs Off-the-Job dan evaluasi 4 levelnya.</div>
+
+    <!-- KB1 G -->
+    <div class="abc"><span class="ltr">G</span><h4>Program-Program Sosialisasi dan Orientasi (5 Langkah Pelatihan Dessler, 2005)</h4></div>
+    <p><b>Orientasi</b> memperkenalkan karyawan baru pada peraturan, kebijakan, dan prosedur perusahaan. Sebagai pembanding Noe dkk., <b>Gary Dessler (2005)</b> merumuskan proses pelatihan dalam 5 langkah: penilaian kebutuhan → (1) rancangan instruksional → (2) validasi → (3) implementasi → (4) evaluasi:</p>
+
+    <div class="numh">1. Rancangan Instruksional (3 langkah)</div>
+    <ul class="let">
+      <li>Mengumpulkan sasaran instruksional, metode, media, urutan isi, contoh, dan latihan ke dalam kurikulum berbasis teori pembelajaran dewasa.</li>
+      <li>Memastikan seluruh bahan (naskah video, pedoman pemimpin, buku kerja peserta) saling melengkapi dan cocok dengan sasaran belajar.</li>
+      <li>Menangani produksi seluruh unsur program secara profesional demi mutu dan efektivitas.</li>
+    </ul>
+
+    <div class="numh">2. Validasi (5 langkah uji coba &amp; revisi akhir)</div>
+    <ul class="let">
+      <li>Sajikan ikhtisar dari tugas.</li>
+      <li>Mulai dari yang diketahui ke yang tidak diketahui, dari yang mudah ke yang sulit.</li>
+      <li>Sesuaikan kecepatan penyajian dengan perbedaan perorangan.</li>
+      <li>Bicarakan seluruh tugas dan jelaskan setiap tahapannya.</li>
+      <li>Minta peserta menceritakan kembali kepada instruktur apa yang harus dilakukan.</li>
+    </ul>
+
+    <div class="numh">3. Implementasi (Peserta, Pelatih, &amp; Metode OJT vs Off-the-Job)</div>
+    <ul class="let">
+      <li><b>Peserta:</b> Mencakup (1) <i>karyawan baru</i> (agar teori dasar teraplikasi efektif dan efisien) dan (2) <i>karyawan lama</i> (mis. di Balai Pusat Latihan Kerja karena perluasan perusahaan, mesin/metode baru, atau persiapan promosi).</li>
+      <li><b>Pelatih (Trainer):</b> (1) <i>Pelatih internal</i> (mis. Kepala Bagian bagi bawahannya), (2) <i>Pelatih eksternal</i> (lembaga/konsultan luar), dan (3) <i>Gabungan internal–eksternal</i> (<b>paling baik</b> karena dasar teoritis dan praktis saling melengkapi).</li>
+      <li><b>Metode Pelatihan (OJT vs Off-the-Job):</b>
+        <div class="table-wrap" style="margin-top:8px">
+          <table class="mini">
+            <thead><tr><th style="width:24%">Kelompok</th><th>Rincian Metode, Manfaat, &amp; Kelemahan (Hal. 5.35–5.38)</th></tr></thead>
+            <tbody>
+              <tr><td data-label="Kelompok"><b>1) On-the-Job Training (OJT)</b></td><td data-label="Rincian">Melatih sambil bekerja di tempat sesungguhnya: (1) <b>Program Magang</b> (ahli listrik, tukang las, dokter baru di RS); (2) <b>Rotasi Pekerjaan</b> (contoh sarjana teknik kimia berpindah antarunit; <b>4 manfaat:</b> wawasan umum organisasi, kerja sama antardepartemen, sudut pandang segar, fleksibilitas SDM); (3) <b>Understudy/Coaching</b>.<br><b>7 Manfaat OJT:</b> murah, pekerjaan nyata bukan simulasi, dibimbing senior berpengalaman, tanpa fasilitas khusus, informal &amp; mudah dijadwalkan, bangun kerja sama, motivasi kerja kuat.<br><b>4 Kelemahan OJT:</b> pelatih kurang bermotivasi (serampangan), ahli kerja belum tentu pandai melatih, kurang waktu sehingga melewatkan elemen penting, kurang efektif dibanding pelatihan terstruktur karena satu per satu.</td></tr>
+              <tr><td data-label="Kelompok"><b>2) Off-the-Job Training (8 Metode)</b></td><td data-label="Rincian">Dilaksanakan di lokasi &amp; waktu terpisah dari kerja reguler: (a) <b>Training Instruksi Pekerjaan</b> (daftar tugas langkah demi langkah beserta titik kunci—contoh buku: 7 langkah + titik kunci keselamatan mengoperasikan <b>mesin potong kertas bermotor</b>); (b) <b>Pembelajaran Terprogram</b> (pertanyaan/fakta → tanggapan → umpan balik segera); (c) <b>Vestibule Training</b> (peralatan khusus tiruan di luar kerja—contoh simulator pilot &amp; astronot <b>NASA</b>); (d) <b>Studi Kasus</b>; (e) <b>Management Games</b> (simulasi persaingan pasar: HPP, jumlah barang, pemasaran); (f) <b>Seminar</b> (melatih menilai &amp; memberi saran konstruktif); (g) <b>Role Playing</b>; (h) <b>Pengajaran melalui Komputer</b> (sesuai kecepatan individu).</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </li>
+    </ul>
+
+    <div class="numh">4. Evaluasi (4 Kategori) &amp; 3 Pendekatan Penilaian Prestasi</div>
+    <p>Keberhasilan program dinilai pada <b>4 kategori</b>: (1) <b>Reaksi</b> (apakah peserta menyukai &amp; merasa bermanfaat?), (2) <b>Pembelajaran</b> (<i>pretest/posttest</i> penguasaan prinsip/keterampilan), (3) <b>Perilaku</b> (reaksi penyelia atas perubahan perilaku kerja &amp; keluhan konsumen), dan (4) <b>Hasil</b> (tercapainya tujuan training, berkurangnya keluhan/kesalahan, kuota produksi, ketepatan/kerapian, pelaksanaan perintah, ketepatan jadwal). Agar efektif, karyawan juga dinilai lewat <b>3 pendekatan penilaian prestasi</b>: (a) <i>sambil lalu/serampangan</i> (subjektif, lemah), (b) <i>tradisional dan sistematik</i>—memakai <b>6 sistem</b> (<i>ranking</i>, <i>employee comparison</i>, <i>checklist</i>, <i>forced choice description</i>, skala penilaian perilaku, dan <i>essay</i>), serta (c) <i>Manajemen Berdasarkan Objektif (MBO)</i>.</p>
+
+    <div class="casebox"><span class="ctitle">Kasus Buku KB 1 (Hal. 5.41–5.43) · Pelatihan Ekspor-Impor &amp; Perpajakan di PT Kawan Lama Sejahtera (PT KLS)</span>
+      <b>PT Kawan Lama Sejahtera (PT KLS)</b>, pemasok alat industri dari AS, menguraikan <b>15 tugas harian sekretaris</b> (mulai dari korespondensi, perjalanan/visa, penawaran pelanggan, tindak lanjut pengiriman kantor pusat, kontrol pembayaran, kas kecil, hingga pelaporan pajak &amp; biaya bulanan/tahunan). Dari analisis tugas tersebut diketahui minimnya pengetahuan sekretaris di bidang <b>ekspor-impor dan perpajakan</b>. PT KLS memilih kursus berbiaya rendah di luar jam kerja yang dikoordinasikan perusahaan, lalu merancang <b>11 pertanyaan evaluasi</b> mencakup reaksi, pembelajaran (<i>pretest/posttest</i>), perilaku kerja, dan hasil organisasi.
+    </div>
+
+    <div class="flow">Bila KB 1 berfokus pada pelatihan untuk pekerjaan saat ini, maka <b>KB 2: Pengembangan Karyawan</b> memperluas horizon ke pendidikan, penilaian, pengalaman kerja, dan pertumbuhan kepribadian untuk masa depan (Bagian A–K).</div>
+  </div>
+
+  <!-- ==================== KB 2 ==================== -->
+  <h2 class="section" id="kb2"><span class="dot" style="background:var(--kb2)"></span>KB 2 — Pengembangan Karyawan</h2>
+  <div class="card kb2b"><span class="kb-tag kb2t">KB 2 · Hal. 5.44–5.64</span>
+    <p class="lead">Pelatihan berfokus pada tugas saat ini (mis. lulusan S-1 Manajemen Pemasaran tetap butuh pelatihan produk &amp; wilayah kerja), sedangkan <span class="term">pengembangan karyawan</span> berorientasi masa depan—meningkatkan kemampuan memahami, menginterpretasi pengetahuan, dan menumbuhkan kepribadian karyawan.</p>
+
+    <div class="acro-box"><span class="acro-title">📖 Kamus Konteks Singkatan &amp; Akronim KB 2</span>
+      <ul class="acro-grid">
+        <li><b>MBTI</b>: <i>Myers-Briggs Type Indicator</i> — tes psikologi (>100 pertanyaan, 4 dimensi) yang memetakan 16 tipe kepribadian (mis. ISTJ).</li>
+        <li><b>MBA</b>: <i>Master of Business Administration</i> — program pendidikan formal eksekutif (contoh: Univ. Tennessee di Chattanooga).</li>
+        <li><b>PJJ</b>: Pendidikan Jarak Jauh — model pendidikan formal fleksibel bagi eksekutif/pekerja (contoh: Universitas Terbuka).</li>
+        <li><b>ICE</b>: <i>Individual Coaching for Effectiveness</i> — program pembinaan individual (diagnosis, <i>coaching</i>, <i>support</i>) bagi manajer disfungsional.</li>
+      </ul>
+    </div>
+
+    <!-- KB2 A -->
+    <div class="abc"><span class="ltr">A</span><h4>Pengembangan Manajemen</h4></div>
+    <p>Pelatihan dan pendidikan bagi para eksekutif untuk meningkatkan kemampuan manajemen pada <b>lima aspek</b>:</p>
+    <ol class="book">
+      <li><b>Keterampilan Pengambilan Keputusan:</b> (a) <i>Business game</i> (simulasi masalah ketidakpastian berbasis persaingan), (b) <i>Studi kasus</i> (analisis tertulis, diagnosis, diskusi), dan (c) <i>Kotak suara (assessment center)</i> (evaluasi kekuatan dan kelemahan potensi secara pribadi).</li>
+      <li><b>Keterampilan Antarpribadi:</b> (a) <i>Role playing</i> (memainkan peran penanganan masalah) dan (b) <i>Pelatihan kepekaan</i> (kesadaran pola perilaku diri &amp; orang lain) dengan <b>5 tujuan</b>: (1) sikap terbuka &amp; perhatian, (2) toleransi perbedaan individual, (3) pengurangan prasangka, (4) keterampilan mendengar, dan (5) kepercayaan &amp; dukungan.</li>
+      <li><b>Pengetahuan tentang Pekerjaan:</b> Melalui (a) <i>pengalaman di tempat kerja</i> (memecahkan masalah &amp; interaksi rekan) dan (b) <i>latihan memimpin</i> (bekerja bersama pelatih terampil/atasan berwenang).</li>
+      <li><b>Pengetahuan Organisasional:</b> Meningkatkan pemahaman menyeluruh organisasi melalui <b>rotasi jabatan</b> secara periodik lintas jabatan.</li>
+      <li><b>Pengetahuan Umum:</b> Dikembangkan lewat kursus khusus, pertemuan ilmiah/bisnis, dan program membaca.</li>
+    </ol>
+
+    <div class="flow">Selain mengembangkan individu manajer (Bagian A), organisasi juga perlu menata iklim kerja sama antarunit melalui <b>Bagian B: Pengembangan Organisasi</b>.</div>
+
+    <!-- KB2 B -->
+    <div class="abc"><span class="ltr">B</span><h4>Pengembangan Organisasi</h4></div>
+    <p>Strategi campur tangan untuk mengubah lingkungan umum organisasi agar menekankan kerja sama, kemampuan, keyakinan, kejujuran, dan dukungan melalui dua cara:</p>
+    <ol class="book">
+      <li><b>Pertemuan Antarkelompok:</b> Menyelesaikan persaingan dan konflik yang menghambat kerja sama antarunit secara bersama-sama.</li>
+      <li><b>Pengembangan Tim:</b> Melibatkan peran konsultan untuk mengatasi keengganan bawahan bersikap jujur kepada rekan dan atasan, sekaligus mendorong penyelia terbuka terhadap saran konstruktif. Program pengembangan disusun manajer personalia/tim dengan sasaran, proses, waktu, dan metode yang jelas.</li>
+    </ol>
+
+    <!-- KB2 C -->
+    <div class="abc"><span class="ltr">C</span><h4>Metode Pengembangan (Tabel 5.1)</h4></div>
+    <p>Pemilihan metode didasarkan pada sasaran: meningkatkan keterampilan teknis (<i>technical skills</i>) atau keahlian memimpin dan mengambil keputusan (<i>human &amp; conceptual skills</i>). Perbedaan mendasar antara pelatihan dan pengembangan dirangkum pada <b>Tabel 5.1</b>:</p>
+    <div class="table-wrap">
+      <table class="mini">
+        <thead><tr><th style="width:28%">Dimensi (Tabel 5.1)</th><th style="width:36%">Pelatihan</th><th>Pengembangan</th></tr></thead>
+        <tbody>
+          <tr><td data-label="Dimensi (Tabel 5.1)"><b>Fokus</b></td><td data-label="Pelatihan">Sekarang</td><td data-label="Pengembangan">Masa depan</td></tr>
+          <tr><td data-label="Dimensi (Tabel 5.1)"><b>Pengalaman Pekerjaan</b></td><td data-label="Pelatihan">Rendah</td><td data-label="Pengembangan">Tinggi</td></tr>
+          <tr><td data-label="Dimensi (Tabel 5.1)"><b>Tujuan</b></td><td data-label="Pelatihan">Persiapan untuk pekerjaan sekarang</td><td data-label="Pengembangan">Persiapan untuk perubahan (<i>contoh buku:</i> <b>Garuda Indonesia</b> membentuk tim khusus mengidentifikasi dan memenuhi kebutuhan pelanggan)</td></tr>
+          <tr><td data-label="Dimensi (Tabel 5.1)"><b>Partisipasi</b></td><td data-label="Pelatihan">Diharuskan</td><td data-label="Pengembangan">Sukarela</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p>Pengembangan mencakup pendidikan formal, pengalaman kerja, hubungan antarpribadi, dan penilaian kepribadian yang tidak harus berkaitan langsung dengan pekerjaan sekarang, melainkan menyiapkan karyawan untuk pekerjaan lain di masa depan.</p>
+
+    <div class="flow">Orientasi masa depan pada pengembangan karyawan mengubah makna karier di dunia kerja modern—dibahas pada <b>Bagian D</b>.</div>
+
+    <!-- KB2 D -->
+    <div class="abc"><span class="ltr">D</span><h4>Pengembangan dan Karier</h4></div>
+    <p><b>Karier tradisional</b> berupa urutan posisi linier hierarkis (<i>contoh buku:</i> dosen berawal dari asisten ahli → lektor → lektor kepala → guru besar; asisten ahli/lektor bergelar doktor membimbing skripsi/tesis &amp; bantu disertasi, sedangkan lektor kepala/guru besar S-3 membimbing ketiganya). Kini karier berkembang menjadi <span class="term"><i>a protean career</i></span>—karier yang senantiasa berubah mengikuti minat, kemampuan, nilai, dan lingkungan kerja dengan karyawan sebagai pengelola utamanya. Pergeseran <b>kontrak psikologis</b> mengarahkan sasaran karyawan ke <b>keberhasilan psikologis</b> (kebanggaan meraih sasaran hidup termasuk kesehatan keluarga).</p>
+    <p>Empat implikasi utama perubahan karier modern (a–d):</p>
+    <ul class="let">
+      <li><b>Perubahan jenis pengetahuan:</b> Tidak cukup hanya <i>knowing how</i> (cara menghasilkan produk/jasa), karyawan juga wajib menguasai <b><i>knowing why</i></b> (memahami bisnis &amp; budaya perusahaan) dan <b><i>knowing whom</i></b> (jaringan relasi dengan penjual, pemasok, masyarakat, pelanggan, dan pakar industri).</li>
+      <li><b>Pergeseran arah &amp; frekuensi gerakan karier</b> akibat tuntutan pembelajaran berkelanjutan dan kontrak psikologis baru.</li>
+      <li><b>Karier melampaui batas satu perusahaan:</b> Tidak lagi terbatas pada tangga hierarki linier, melainkan dapat berpindah lintas perusahaan dan lintas jabatan.</li>
+      <li><b>Kebutuhan sistem manajemen karier:</b> Perusahaan perlu menyiapkan sistem perencanaan pengembangan untuk memotivasi dan mempertahankan karyawan.</li>
+    </ul>
+
+    <div class="flow">Untuk mewujudkan pengembangan karyawan yang efektif, perusahaan memadukan empat pendekatan utama: <b>Pendidikan Formal (Bagian E)</b>, <b>Penilaian (Bagian F)</b>, <b>Pengalaman Kerja (Bagian G)</b>, dan <b>Penugasan Sementara &amp; Hubungan Antarpribadi (Bagian H)</b>.</div>
+
+    <!-- KB2 E -->
+    <div class="abc"><span class="ltr">E</span><h4>Berbagai Pendekatan Pengembangan Karyawan — Pendidikan Formal</h4></div>
+    <p><b>Pendidikan formal</b> mencakup program <i>off-site</i> dan <i>on-site</i> khusus bagi karyawan perusahaan, kursus singkat konsultan/universitas, hingga program MBA eksekutif di mana peserta tinggal dan belajar di kampus (<i>contoh buku:</i> program MBA eksekutif <b>Universitas Tennessee di Chattanooga</b>). Tren mutakhir meliputi: (1) pemanfaatan <b>pembelajaran jarak jauh (PJJ)</b> seperti yang dijalankan <b>Universitas Terbuka (UT)</b>, (2) kursus singkat bermateri khusus sesuai kebutuhan perusahaan, dan (3) penggabungan kursus formal dengan tipe kegiatan pengembangan lainnya.</p>
+
+    <!-- KB2 F -->
+    <div class="abc"><span class="ltr">F</span><h4>Penilaian (<span class="en">Assessment</span>)</h4></div>
+    <p>Penilaian meliputi pengumpulan informasi dan pemberian umpan balik mengenai perilaku, gaya komunikasi, kepribadian, dan keterampilan melalui <b>lima alat penilaian populer</b>:</p>
+    <div class="rgrid c3" data-revealgroup>
+      <div class="rcell active" data-reveal data-detail="<b>1. Tes-Tes Kepribadian:</b> Mengukur <b>lima dimensi utama</b>—<i>keterbukaan</i>, <i>penyesuaian diri</i>, <i>keramahan</i>, <i>kerajinan</i>, dan <i>keingintahuan</i>—untuk menentukan kecocokan karyawan pada jabatan manajerial atau penugasan internasional."><span class="stepnum">1</span><span><span class="rt">Tes Kepribadian</span><span class="rp">5 dimensi utama</span></span></div>
+      <div class="rcell" data-reveal data-detail="<b>2. Indikator Myers-Briggs Type (MBTI):</b> Tes psikologi terpopuler (>100 pertanyaan) memetakan <b>4 dimensi</b>: (1) Energi — <i>Introversion (I)</i> vs <i>Extroversion (E)</i>, (2) Pengumpulan informasi — <i>Sensing (S)</i> (fakta/rinci) vs <i>Intuition (N)</i> (kemungkinan/ide), (3) Pengambilan keputusan — <i>Thinking (T)</i> (netral) vs <i>Feeling (F)</i> (dampak ke orang lain), dan (4) Gaya hidup — <i>Judging (J)</i> (sasaran/tenggat) vs <i>Perceiving (P)</i> (fleksibel/kejutan) → menghasilkan <b>16 tipe kepribadian</b> (mis. ISTJ). Berguna bagi komunikasi &amp; tim (<i>Intuition</i> untuk curah gagasan, <i>Feeling</i> untuk evaluasi ide), namun validitas, reliabilitas, &amp; stabilitasnya lintas waktu belum meyakinkan."><span class="stepnum">2</span><span><span class="rt">MBTI</span><span class="rp">4 dimensi · 16 tipe</span></span></div>
+      <div class="rcell" data-reveal data-detail="<b>3. Pusat Penilaian (Assessment Center):</b> Manajer terlatih menilai keterampilan administratif &amp; antarpribadi melalui 4 latihan: (1) <i>diskusi kelompok tanpa pemimpin</i> (5–7 peserta memecahkan masalah berbatas waktu), (2) <i>wawancara</i> (pengalaman, kekuatan/kelemahan, rencana karier), (3) <b><i>in-basket</i></b> (simulasi dokumen di keranjang masuk meja manajer), dan (4) <i>role-plays</i>."><span class="stepnum">3</span><span><span class="rt">Pusat Penilaian</span><span class="rp">Diskusi, in-basket, role-play</span></span></div>
+      <div class="rcell" data-reveal data-detail="<b>4. Penentuan Tolok Ukur (Benchmarks):</b> Instrumen berbasis riset pelajaran karier eksekutif untuk mengukur <b>16 keterampilan dan sudut pandang kunci</b> keberhasilan manajer (menghadapi bawahan, memperoleh sumber daya, iklim produktif) melalui penilaian diri, supervisor, dan rekan kerja lengkap dengan petunjuk pengembangan."><span class="stepnum">4</span><span><span class="rt">Benchmarks</span><span class="rp">16 keterampilan manajer</span></span></div>
+      <div class="rcell" data-reveal data-detail="<b>5. Penilaian Kinerja &amp; Umpan Balik 360 Derajat:</b> Mencakup <i>upward feedback</i> (bawahan menilai manajer) dan <b>360°</b> (bawahan, rekan, pelanggan internal/eksternal, dan diri sendiri). <i>Kelebihan:</i> multiperspektif &amp; memformalkan komunikasi. <i>4 Keterbatasan:</i> tuntutan waktu tinggi, risiko manajer menghukum penilai negatif, butuh fasilitator interpretasi, dan kegagalan perusahaan menyediakan tindak lanjut pengalaman kerja."><span class="stepnum">5</span><span><span class="rt">Umpan Balik 360°</span><span class="rp">Upward + multiperspektif</span></span></div>
+    </div>
+    <div class="rdetail" data-revealdetail><b>1. Tes-Tes Kepribadian:</b> Mengukur <b>lima dimensi utama</b>—<i>keterbukaan</i>, <i>penyesuaian diri</i>, <i>keramahan</i>, <i>kerajinan</i>, dan <i>keingintahuan</i>—untuk menentukan kecocokan karyawan pada jabatan manajerial atau penugasan internasional.</div>
+
+    <!-- KB2 G -->
+    <div class="abc"><span class="ltr">G</span><h4>Pengalaman Kerja (Gambar 5.5)</h4></div>
+    <p>Sebagian besar pengembangan terjadi melalui pengalaman kerja nyata, terutama saat muncul tantangan baru yang menuntut keterampilan di luar pengalaman masa lampau:</p>
+    <div class="diagram-box">
+      <div class="flowchart">
+        <span class="fc-node">1. Job Enlargement<br><small style="font-weight:400">Perluasan tugas sekarang</small></span>
+        <span class="fc-arrow">↔</span>
+        <span class="fc-node">2. Rotasi Pekerjaan<br><small style="font-weight:400">Antar- / intra-fungsi</small></span>
+        <span class="fc-arrow">↔</span>
+        <span class="fc-node">3. Transfer · Promosi · Gerakan ke Bawah</span>
+        <span class="fc-arrow">↔</span>
+        <span class="fc-node">Penugasan Sementara<br><small style="font-weight:400">Ke organisasi lain</small></span>
+      </div>
+      <div class="diagram-cap">Reproduksi Gambar 5.5 — Pengalaman Pengembangan Karyawan</div>
+    </div>
+    <ol class="book">
+      <li><b>Memperluas Pekerjaan Sekarang <span class="en">(Job Enlargement)</span>:</b> Menambah tantangan dan tanggung jawab baru pada pekerjaan sekarang (<i>contoh buku:</i> pekerjaan manajemen <b>Santi</b> diperluas dengan menambah jumlah karyawan yang disupervisi).</li>
+      <li><b>Perputaran Pekerjaan (Rotasi):</b> Serangkaian penugasan lintas bidang fungsional atau antarpekerjaan dalam satu departemen untuk memahami tujuan perusahaan secara utuh, memperluas jejaring, dan mengasah pemecahan masalah.</li>
+      <li><b>Peralihan (Transfer), Promosi, dan Pergerakan ke Bawah:</b>
+        <ul class="exp">
+          <li><b>Transfer:</b> Gerakan menyamping (horizontal/lateral) ke bidang berbeda tanpa keharusan naik tanggung jawab/gaji. Karyawan yang paling bersedia menerima transfer umumnya berambisi karier tinggi, yakin masa depannya cerah, memandang transfer penting bagi perusahaan, serta belum menikah/tidak terlalu terikat komunitas.</li>
+          <li><b>Promosi:</b> Kenaikan posisi dengan tantangan, tanggung jawab, dan gaji lebih besar.</li>
+          <li><b>Gerakan ke Bawah:</b> Penurunan tanggung jawab/wewenang ke posisi lebih rendah—sering dipakai sebagai gerakan lintas fungsional untuk menambah pengalaman di bidang baru.</li>
+          <li><b>10 Dukungan Perusahaan agar Peralihan/Promosi/Gerakan ke Bawah Diterima (a–j):</b> (a) informasi materi, tantangan, &amp; manfaat lokasi baru; (b) pelibatan karyawan mengunjungi lokasi baru; (c) tujuan kinerja jelas &amp; umpan balik segera; (d) pengurus rumah bantu adaptasi; (e) info dampak pendapatan, pajak, &amp; cicilan; (f) bantuan jual/beli/sewa tempat tinggal; (g) program orientasi lokasi &amp; kerja baru; (h) info kaitan dengan rencana karier; (i) bantuan keluarga (sekolah, penitipan anak, perawatan lansia); dan (j) bantuan pencarian kerja bagi pasangan hidup.</li>
+        </ul>
+      </li>
+    </ol>
+
+    <!-- KB2 H -->
+    <div class="abc"><span class="ltr">H</span><h4>Penugasan Sementara ke Perusahaan Lain &amp; Hubungan-Hubungan Antarpribadi</h4></div>
+    <p><b>Penugasan Sementara:</b> Perusahaan mengirim karyawan ke organisasi nonprofit atau perguruan tinggi mitra (<i>contoh buku:</i> <i>lecturer exchange</i> antara <b>Universitas Trisakti</b> dan <b>Indiana University–Purdue University</b> di Illinois, AS). Bentuk lainnya meliputi <b>magang di luar perusahaan <span class="en">(externship)</span></b> (peran penuh waktu sementara di perusahaan lain) dan <b>cuti panjang <span class="en">(sabbatical)</span></b> untuk memperbarui keterampilan.</p>
+    <p><b>Hubungan-Hubungan Antarpribadi</b> dijalankan lewat dua mekanisme utama:</p>
+    <ol class="book">
+      <li><b>Pembimbingan (<span class="en">Mentoring</span>):</b> Karyawan senior produktif (<i>mentor</i>) membimbing karyawan kurang berpengalaman (anak didik). Program <i>formal</i> menjamin akses merata tanpa memandang gender/ras dan kejelasan ekspektasi (meski berisiko terasa <i>artificial</i>), berhasil bila bersifat sukarela, berdurasi jelas, dan ada interaksi tatap muka/konferensi video. <b>3 Manfaat:</b> (1) <i>dukungan karier</i> (membina, melindungi, mensponsori, eksposur &amp; visibilitas), (2) <i>dukungan psikologis</i> (sahabat, panutan, ruang berbagi kecemasan → promosi &amp; gaji lebih tinggi), dan (3) <i>manfaat bagi mentor</i> (asah keterampilan antarpribadi &amp; rasa berharga). <b>5 Tujuan Program Kepenasihatan:</b> menyosialisasikan karyawan baru, meningkatkan transfer keterampilan, menentukan arah pekerjaan, memberi peluang bagi perempuan, dan membantu minoritas mencapai posisi manajerial. Dapat pula dijalankan sebagai <b>kepenasihatan kelompok</b> (1 senior membimbing 4–6 anak didik).</li>
+      <li><b>Pembinaan (<span class="en">Coaching</span>):</b> Rekan kerja atau manajer memotivasi, mengembangkan keterampilan, serta memberi penguatan dan umpan balik melalui <b>3 peran</b>: (1) umpan balik <i>one-on-one</i>, (2) membantu karyawan belajar mandiri, dan (3) menyediakan akses sumber daya (mentor, kursus, pengalaman kerja). Pelatihan pembinaan harus mengatasi <b>4 alasan keengganan manajer membina</b>: (1) enggan membahas isu kinerja/konfrontasi (terutama manajer baru terhadap karyawan senior), (2) lebih pandai mengenali masalah daripada membantu memecahkannya, (3) khawatir pembinaan ditafsirkan sebagai kritik, dan (4) merasa kekurangan waktu saat perusahaan melakukan perampingan.</li>
+    </ol>
+
+    <div class="flow">Keempat pendekatan pengembangan (Bagian E–H) disatukan dalam satu siklus perencanaan karier yang sistematis pada <b>Bagian I</b>.</div>
+
+    <!-- KB2 I -->
+    <div class="abc"><span class="ltr">I</span><h4>Manajemen Karier dan Sistem-Sistem Perencanaan Pengembangan (Gambar 5.6)</h4></div>
+    <div class="diagram-box">
+      <div class="flowchart">
+        <span class="fc-node">1. Penilaian Diri<br><small style="font-weight:400">Minat, nilai, bakat (MBTI)</small></span>
+        <span class="fc-arrow">→</span>
+        <span class="fc-node">2. Pengecekan Kebenaran<br><small style="font-weight:400">Uji realitas dari manajer</small></span>
+        <span class="fc-arrow">→</span>
+        <span class="fc-node">3. Penetapan Tujuan<br><small style="font-weight:400">Jangka pendek &amp; panjang</small></span>
+        <span class="fc-arrow">→</span>
+        <span class="fc-node" style="background:var(--dot);color:#fff">4. Perencanaan Tindakan<br><small style="font-weight:400;opacity:.92">Kursus, pengalaman, mentor</small></span>
+      </div>
+      <div class="diagram-cap">Reproduksi Gambar 5.6 — Proses Manajemen Karier</div>
+    </div>
+    <ol class="book">
+      <li><b>Penilaian Diri:</b> Menentukan minat, nilai, bakat, dan kecenderungan perilaku (sering memakai tes psikologi seperti MBTI).</li>
+      <li><b>Pengecekan Kebenaran <span class="en">(Reality Check)</span>:</b> Karyawan menerima umpan balik jujur dari manajer mengenai evaluasi keterampilan dan posisinya dalam rencana jangka panjang perusahaan. <i>Catatan Latihan (hal. 5.63):</i> peran <b>uji realitas</b> adalah peran <b>paling sulit</b> bagi manajer karena rentan konflik/sikap defensif.</li>
+      <li><b>Penetapan Tujuan:</b> Menyusun sasaran karier jangka pendek &amp; panjang yang ditulis ke rencana pengembangan—berupa posisi (mis. manajer penjualan dalam 3 tahun), penerapan keterampilan (anggaran untuk arus kas), pengaturan kerja (pindah ke pemasaran 2 tahun), atau perolehan keterampilan (SIM SDM). Ini peran <b>paling mudah</b> bagi manajer.</li>
+      <li><b>Perencanaan Tindakan:</b> Menentukan kombinasi pendekatan pengembangan (kursus, seminar, penilaian tambahan, pengalaman kerja baru, mentor/pembina) untuk mencapai sasaran.</li>
+    </ol>
+
+    <!-- KB2 J -->
+    <div class="abc"><span class="ltr">J</span><h4>Isu-Isu Khusus dalam Pengembangan Karyawan</h4></div>
+    <ol class="book">
+      <li><b>Pencairan Pembatas Kaca <span class="en">(The Glass Ceiling)</span>:</b> Hambatan tak terlihat yang menghalangi perempuan dan kaum minoritas naik ke jenjang manajemen puncak akibat stereotip atau sistem perusahaan; diatasi antara lain lewat program kepenasihatan (<i>mentoring</i>) agar mereka memperoleh keterampilan dan visibilitas.</li>
+      <li><b>Perencanaan Suksesi <span class="en">(Succession Planning)</span>:</b> Proses mengidentifikasi dan menelusuri <b>karyawan berpotensi tinggi</b> untuk mengisi posisi manajemen puncak yang kosong akibat pensiun atau restrukturisasi melalui program pengembangan cepat (pendidikan, <i>mentoring</i> eksekutif, <i>coaching</i>, rotasi). Berjalan dalam <b>3 tahapan</b>: (1) pemilihan karyawan berpotensi tinggi, (2) pemberian pengalaman pengembangan intensif, dan (3) penilaian kecocokan budaya serta kepribadian oleh manajemen puncak.</li>
+    </ol>
+
+    <!-- KB2 K -->
+    <div class="abc"><span class="ltr">K</span><h4>Membantu Manajer yang Berperilaku Disfungsional</h4></div>
+    <p>Manajer yang berperilaku disfungsional (tidak peka terhadap orang lain, tidak mampu bekerja dalam tim, sombong, dan lemah dalam mengelola konflik) ditangani melalui kombinasi penilaian, pelatihan, dan pembinaan—khususnya program <b><i>Individual Coaching for Effectiveness</i> (ICE)</b>. Program ICE mencakup tiga kegiatan terpadu—<b>diagnosis, pembinaan (<i>coaching</i>), dan dukungan (<i>support</i>)</b>—yang melibatkan psikolog klinis atau psikolog industri/organisasi pada setiap tahapnya.</p>
+
+    <div class="casebox"><span class="ctitle">Kasus Buku KB 2 (Hal. 5.64) · Program Pengembangan Manajemen di Perusahaan Asuransi Jiwa</span>
+      Sebuah <b>Perusahaan Asuransi Jiwa</b> dengan <b>5.000 karyawan</b> di Jakarta menghadapi dua tipe manajer dalam program pengembangannya: (1) manajer berketerampilan tepat namun talentanya tidak diketahui manajemen puncak, dan (2) pimpinan sombong yang merasa sudah memiliki semua keterampilan yang dibutuhkan. Kasus ini menguji ketepatan memilih alat <i>assessment</i> (360°, <i>Benchmarks</i>, <i>Assessment Center</i>), perencanaan suksesi, <i>mentoring</i>, dan program <b>ICE</b>.
+    </div>
+
+    <div class="flow">Setelah melatih (KB 1) dan mengembangkan (KB 2) karyawan, tantangan terakhir di <b>KB 3: Retensi dan Separasi</b> adalah mempertahankan talenta berprestasi tinggi sekaligus mengelola pemutusan hubungan kerja secara adil (Bagian A–H).</div>
+  </div>
+
+  <!-- ==================== KB 3 ==================== -->
+  <h2 class="section" id="kb3"><span class="dot" style="background:var(--kb3)"></span>KB 3 — Retensi dan Separasi</h2>
+  <div class="card kb3b"><span class="kb-tag kb3t">KB 3 · Hal. 5.65–5.79</span>
+    <p class="lead">Keunggulan bersaing menuntut perusahaan memotivasi karyawan berprestasi tinggi agar bertahan sekaligus mendorong atau memberhentikan karyawan berkinerja buruk. Perputaran tenaga kerja terbagi menjadi: <b>(1) Pergantian secara paksa <span class="en">(involuntary turnover)</span></b> yang diinisiasi organisasi (sering terhadap orang yang masih ingin tinggal), dan <b>(2) Pergantian sukarela <span class="en">(voluntary turnover)</span></b> yang diinisiasi karyawan (sering justru orang yang ingin dipertahankan perusahaan).</p>
+
+    <div class="acro-box"><span class="acro-title">📖 Kamus Konteks Singkatan &amp; Akronim KB 3</span>
+      <ul class="acro-grid">
+        <li><b>ADR</b>: <i>Alternative Dispute Resolution</i> — resolusi perselisihan alternatif 4 tahap di luar jalur pengadilan.</li>
+        <li><b>EAPs</b>: <i>Employee Assistance Programs</i> — program pendampingan karyawan untuk ketergantungan obat, alkohol, atau masalah psikologis.</li>
+        <li><b>JDI</b>: <i>The Job Descriptive Index</i> — instrumen survei baku pengukur kepuasan kerja (gaji, pekerjaan itu sendiri, supervisor, rekan kerja).</li>
+        <li><b>P4P / PTUN</b>: Panitia Penyelesaian Perselisihan Perburuhan Pusat &amp; Pengadilan Tata Usaha Negara — lembaga sengketa PHK pada Kasus PT DI.</li>
+      </ul>
+    </div>
+
+    <!-- KB3 A -->
+    <div class="abc"><span class="ltr">A</span><h4>Mengelola Pergantian Terpaksa</h4></div>
+    <p>Meski seleksi telah dilakukan cermat, sebagian karyawan tetap gagal memenuhi standar kinerja atau melanggar kebijakan perusahaan. Pemecatan harus ditangani secara terstandar dan sistematis karena dua alasan krusial:</p>
+    <ol class="book">
+      <li><b>Batasan <i>The Employment-at-Will Doctrine</i> (Doktrin Kerja Sekehendak):</b> Doktrin lama yang mengizinkan pemecatan dengan sebab baik, tanpa sebab, atau sebab buruk kini tidak lagi dibenarkan secara mutlak; karyawan dapat menggugat pengusaha atas pemecatan yang salah (<i>wrongful discharge</i>).</li>
+      <li><b>Risiko Keuangan dan Keselamatan Kerja Pribadi:</b> Selain biaya sengketa hukum, kekerasan di tempat kerja akibat pemecatan yang tidak adil telah menjadi masalah serius organisasi.</li>
+    </ol>
+
+    <!-- KB3 B -->
+    <div class="abc"><span class="ltr">B</span><h4>Prinsip-Prinsip Keadilan</h4></div>
+    <p>Reaksi dendam dan gugatan hukum akibat disiplin maupun pemecatan diminimalkan melalui <b>tiga prinsip keadilan</b>:</p>
+    <ol class="book">
+      <li><b>Keadilan Hasil <span class="en">(Outcomes Fairness / Distributive Justice)</span>:</b> Penilaian kewajaran hasil yang diterima dibandingkan orang lain yang menjadi acuan (<i>contoh buku:</i> membandingkan gaji sendiri dengan rekan berpangkat, masa kerja, pendidikan, dan tugas serupa). Disebut <b>Teori Ekuitas</b> oleh <b>Stacy J. Adams (1965)</b> dan <b>keadilan distributif</b> oleh <b>Greenberg (1991)</b>.</li>
+      <li><b>Keadilan Prosedural <span class="en">(Procedural Justice)</span> — 6 prinsip (a–f):</b> (a) <i>Konsistensi</i> (diterapkan sama kapan pun dan kepada siapa pun), (b) <i>Peniadaan bias</i> (penilai tak berkepentingan &amp; tanpa praduga), (c) <i>Keakuratan informasi</i>, (d) <i>Kebermungkinan koreksi</i> (ada mekanisme banding), (e) <i>Keberwakilan</i> (diinformasikan ke semua pemangku kepentingan termasuk pihak terpecat), dan (f) <i>Kesantunan</i> (sesuai nilai moral, bebas pelanggaran privasi/penipuan).</li>
+      <li><b>Keadilan Interaksional <span class="en">(Interactional Justice)</span> — 4 faktor (a–d):</b> (a) <i>Penjelasan</i> alasan di balik keputusan, (b) <i>Kepekaan sosial</i> memperlakukan secara bermartabat, (c) <i>Tenggang waktu</i> mendengarkan pertimbangan karyawan, dan (d) <i>Empati</i> menyelami perasaan yang bersangkutan.</li>
+    </ol>
+
+    <!-- KB3 C -->
+    <div class="abc"><span class="ltr">C</span><h4>Pendisiplinan Progresif</h4></div>
+    <div class="numh">1. Pendisiplinan Progresif dan Resolusi Perselisihan</div>
+    <p>Berdasarkan <b>UU No. 13 Tahun 2003 Pasal 158 ayat 1</b>, karyawan tidak boleh langsung diberhentikan pada pelanggaran pertama kecuali melakukan pelanggaran ekstrem (kekejaman, membahayakan orang lain, pencurian besar/kriminal). Program pendisiplinan yang efektif memiliki <b>dua komponen utama</b>: (1) <b>dokumentasi</b> (publikasi aturan &amp; deskripsi kerja sebelum sanksi) dan (2) <b>hukuman progresif bertahap</b>: peringatan tidak resmi → teguran tertulis → skors sementara &amp; peringatan terakhir → pemecatan.</p>
+
+    <div class="numh">2. Resolusi Perselisihan Alternatif (<span class="en">Alternative Dispute Resolution / ADR</span>)</div>
+    <p>Metode penyelesaian perselisihan di luar jalur pengadilan yang berjalan melalui <b>empat tahapan berjenjang</b>:</p>
+    <div class="rgrid c4" data-revealgroup>
+      <div class="rcell active" data-reveal data-detail="<b>Tahap 1 — Kebijakan Pintu Terbuka:</b> Kedua pihak yang bermasalah (mis. supervisor dan bawahan) berusaha menyelesaikan perselisihan secara musyawarah langsung; jika tak mufakat lanjut ke Tahap 2."><span class="stepnum">1</span><span><span class="rt">Pintu Terbuka</span><span class="rp">Musyawarah langsung</span></span></div>
+      <div class="rcell" data-reveal data-detail="<b>Tahap 2 — Penilaian Rekan Kerja (Peer Review):</b> Panel wakil organisasi yang setara levelnya dengan pihak berselisih menyimak kasus dan membantu penyelesaian; jika gagal lanjut ke Tahap 3."><span class="stepnum">2</span><span><span class="rt">Peer Review</span><span class="rp">Panel rekan sejawat</span></span></div>
+      <div class="rcell" data-reveal data-detail="<b>Tahap 3 — Mediasi:</b> Pihak ketiga yang netral dari luar organisasi mendengarkan kasus dan membantu mencari jalan keluar melalui proses yang <b>tidak mengikat</b>; jika gagal lanjut ke Tahap 4."><span class="stepnum">3</span><span><span class="rt">Mediasi</span><span class="rp">Netral · tak mengikat</span></span></div>
+      <div class="rcell" data-reveal data-detail="<b>Tahap 4 — Arbitrase:</b> Juri atau arbitrator profesional dari luar organisasi (umumnya jaksa berpengalaman atau hakim pensiun) mendengar kasus dan menetapkan keputusan unilateral yang <b>mengikat</b>."><span class="stepnum">4</span><span><span class="rt">Arbitrase</span><span class="rp">Profesional · mengikat</span></span></div>
+    </div>
+    <div class="rdetail" data-revealdetail><b>Tahap 1 — Kebijakan Pintu Terbuka:</b> Kedua pihak yang bermasalah (mis. supervisor dan bawahan) berusaha menyelesaikan perselisihan secara musyawarah langsung; jika tak mufakat lanjut ke Tahap 2.</div>
+
+    <!-- KB3 D -->
+    <div class="abc"><span class="ltr">D</span><h4>Program Pendampingan Karyawan</h4></div>
+    <ul class="exp">
+      <li><b>Employee Assistance Programs (EAPs):</b> Layanan rujukan profesional yang dipublikasikan dalam buku pegangan karyawan untuk menangani ketergantungan obat, alkohol, atau masalah psikologis. Perusahaan dapat memakai <b><i>carve-out plan</i></b> (menyatukan seluruh manfaat kesehatan mental ke satu vendor EAPs). Supervisor dilatih merujuk karyawan bermasalah, dan karyawan dilatih melakukan rujukan mandiri, disertai evaluasi efektivitas biaya jangka pendek vs jangka panjang (mis. perawatan depresi).</li>
+      <li><b>Konseling Outplacement <span class="en">(Outplacement Counseling)</span>:</b> Layanan pendampingan bagi karyawan yang telah diberhentikan untuk mengelola transisi menuju pekerjaan berikutnya—penting guna meredam kemarahan, kebingungan, potensi kekerasan, dan tuntutan hukum.</li>
+    </ul>
+
+    <div class="flow">Selesai membahas pengelolaan pergantian terpaksa (Bagian A–D), kita beralih ke paruh kedua KB 3: <b>Mengelola Pergantian Sukarela (Bagian E–H)</b>.</div>
+
+    <!-- KB3 E -->
+    <div class="abc"><span class="ltr">E</span><h4>Mengelola Pergantian Sukarela</h4></div>
+    <p><span class="term">Proses Penarikan Diri dari Pekerjaan <span class="en">(Process of Job Withdrawal)</span></span> adalah serangkaian perilaku yang dilakukan individu yang tidak puas untuk menghindari situasi kerja. Perilaku tersebut dikelompokkan ke dalam <b>tiga kategori</b>: (1) perubahan perilaku, (2) pindah kerja secara fisik, dan (3) berpindah secara psikologis.</p>
+
+    <!-- KB3 F -->
+    <div class="abc"><span class="ltr">F</span><h4>Perubahan Perilaku</h4></div>
+    <p>Respons pertama terhadap ketidakpuasan adalah berupaya mengubah kondisi kerja yang mengganggu, melalui empat saluran:</p>
+    <ul class="exp">
+      <li><b>Konfrontasi / Diskusi dengan Atasan:</b> <i>Contoh buku:</i> <b>Ryan</b> yang tidak puas dengan penugasan barunya menjadwalkan pertemuan dengan atasannya agar atasan memahami perasaannya.</li>
+      <li><b>Serikat Pekerja:</b> Jika sudah berserikat memicu lonjakan jumlah keluhan; jika belum berserikat dapat mendorong pembentukan serikat pekerja.</li>
+      <li><b><i>Whistle Blowing</i>:</b> Mengungkap pelanggaran perusahaan melalui media massa atau otoritas. <i>Contoh buku:</i> <b>Maria</b> mengetahui perusahaannya memberi suap/bayaran ilegal kepada pemerintah lalu melaporkannya kepada pejabat berwenang.</li>
+      <li><b>Tuntutan Hukum:</b> Menggugat pengusaha bila perselisihan menyangkut aspek ketenagakerjaan yang dilindungi undang-undang (ras, gender, K3, dsb.).</li>
+    </ul>
+
+    <!-- KB3 G -->
+    <div class="abc"><span class="ltr">G</span><h4>Pindah Kerja secara Fisik &amp; Berpindah secara Psikologis</h4></div>
+    <ul class="exp">
+      <li><b>Transfer Internal &amp; Perputaran Tenaga Kerja (<span class="en">Turnover</span>):</b> Berpindah bagian di dalam perusahaan atau keluar bila sumber ketidakpuasan adalah kebijakan organisasi (kurangnya jaminan kerja, upah di bawah rata-rata). Perusahaan wajib memantau <i>siapa</i> yang keluar—buku mencatat tingkat <i>turnover</i> perempuan dan minoritas di level manajerial dapat mencapai <b>3 kali lebih tinggi</b> dibanding pria kulit putih.</li>
+      <li><b>Ketidakhadiran (<span class="en">Absenteeism</span>):</b> Sangat mengganggu dan mahal—diperkirakan menelan biaya rata-rata <b>Rp450.000/hari</b> di perusahaan besar dan <b>Rp550.000/hari</b> di perusahaan kecil (&lt;1.000 karyawan), dengan tren meningkat di sektor manufaktur.</li>
+      <li><b>Datang Terlambat (<span class="en">Tardiness</span>):</b> Menghambat alur kerja, terutama bila rekan lain bergantung pada kehadiran orang tersebut.</li>
+      <li><b>Berpindah secara Psikologis <span class="en">(Psychological Withdrawal)</span>:</b> Terjadi ketika karyawan tidak mampu keluar secara fisik, tampak pada dua gejala: (1) rendahnya <b>keterlibatan kerja <span class="en">(job involvement)</span></b>—menganggap pekerjaan tidak penting bagi hidupnya sehingga sulit dimotivasi, dan (2) rendahnya <b>komitmen organisasi <span class="en">(organizational commitment)</span></b>—tidak memihak organisasi dan sekadar menunggu kesempatan pertama untuk pergi.</li>
+    </ul>
+
+    <div class="flow">Untuk mencegah ketiga bentuk penarikan diri pada Bagian E–G, <b>Bagian H</b> membedah hakikat kepuasan kerja, empat sumber ketidakpuasan, serta instrumen pemantauannya.</div>
+
+    <!-- KB3 H -->
+    <div class="abc"><span class="ltr">H</span><h4>Kepuasan Kerja dan Perpindahan Pekerjaan (Gambar 5.7 &amp; 5.8)</h4></div>
+    <p><span class="term">Kepuasan kerja <span class="en">(job satisfaction)</span></span> adalah perasaan menyenangkan yang muncul dari persepsi bahwa pekerjaan memenuhi nilai-nilai penting seseorang—mencakup tiga aspek: <b>nilai-nilai, persepsi, dan tingkat pentingnya</b>.</p>
+
+    <div class="numh">1. Kepuasan Kerja Merupakan Fungsi dari Nilai-Nilai</div>
+    <p>Persepsi karyawan atas situasi kerja sangat dipengaruhi oleh <b><i>frame</i> referensi</b> (poin standar pembanding yang mencerminkan pengalaman rata-rata masa lampau atau pengalaman orang lain).</p>
+
+    <div class="numh">2. Sumber-Sumber Ketidakpuasan (Gambar 5.7): Watak Pribadi &amp; Tugas/Peran</div>
+    <ul class="exp">
+      <li><b>a. Watak Pribadi <span class="en">(Personal Disposition)</span>:</b> Mencakup (1) <b><i>Negative affectivity</i></b>—dimensi disposisional berupa suasana hati negatif (marah, muak, takut, gugup) yang bahkan dipengaruhi faktor genetik (riset kembar identik) sehingga tetap cenderung tidak puas apa pun kebijakan organisasi; serta (2) <b>Evaluasi Diri Inti <span class="en">(Core Self-Evaluations)</span></b>—evaluasi positif (harga diri tinggi, percaya diri, lokus kontrol internal, stabilitas emosional) meningkatkan kepuasan, sedangkan evaluasi negatif cenderung menyalahkan orang lain dan bersikap pasif atau agresif.</li>
+      <li><b>b. Tugas dan Peran:</b> Faktor paling dominan. Kerumitan pekerjaan berkorelasi positif dengan kepuasan; kebosanan diatasi lewat <b>pengayaan pekerjaan <span class="en">(job enrichment)</span></b> (menambah kerumitan &amp; tanggung jawab) dan <b>rotasi pekerjaan <span class="en">(job rotation)</span></b> (memindah antarbidang/intrabidang secara sistematis). Terkait peran sosial, buku menekankan empat konsep:
+        <ol class="book" style="margin-top:6px">
+          <li><b>Ketaksaan Peran <span class="en">(Role Ambiguity)</span>:</b> Ketidakpastian tentang apa yang diharapkan organisasi. <i>Contoh buku:</i> <b>Linda</b>, <i>management trainee</i> baru, belum menerima uraian pekerjaan sehingga bingung apa yang harus dilakukan.</li>
+          <li><b>Konflik Peran <span class="en">(Role Conflict)</span>:</b> Tuntutan peran yang saling bertentangan. <i>Contoh buku:</i> <b>Abigail</b> diminta meningkatkan layanan pelanggan sekaligus memangkas biaya 20%.</li>
+          <li><b>Peran Berlebihan <span class="en">(Role Overload)</span>:</b> Beban tuntutan melampaui kapasitas. <i>Contoh buku:</i> sebuah bank menutup satu departemen namun tetap meminta layanan sama dengan <b>60 karyawan</b> (turun dari 70).</li>
+          <li><b>Teknik Menganalisis Peran:</b> Metode kolaboratif antara pemegang peran, supervisor, dan rekan untuk memperjelas ekspektasi peran tanpa mengubah isi pekerjaan.</li>
+        </ol>
+      </li>
+    </ul>
+
+    <div class="numh">3. Penyelia/Supervisor dan Rekan Kerja</div>
+    <p>Seseorang merasa puas dengan rekan kerja dan supervisor karena <b>tiga alasan (a–c)</b>: (a) kesamaan nilai, sikap, dan filosofi, (b) tersedianya dukungan sosial (simpati &amp; kepedulian), dan (c) bantuan nyata meraih hasil kerja bernilai. Banyak perusahaan memperkuatnya lewat tim di luar kerja (mis. liga bowling atau liga sofball).</p>
+
+    <div class="numh">4. Gaji dan Tunjangan (serta Model Proses Gambar 5.8)</div>
+    <p>Gaji sering dipandang sebagai refleksi harga diri dan mencakup tiga istilah kunci: (a) <b>tingkat gaji</b> (jumlah pendapatan terkait pekerjaan), (b) <b>kenaikan gaji</b> (tambahan gaji sepanjang waktu), dan (c) <b>struktur gaji</b> (peringkat gaji antarkategori pekerjaan dalam organisasi).</p>
+    <div class="diagram-box">
+      <div class="flowchart">
+        <span class="fc-node">4 Penyebab Ketidakpuasan (Gambar 5.7)<br><small style="font-weight:400">Personal Disposition · Tugas &amp; Peran · Supervisor/Rekan · Gaji</small></span>
+        <span class="fc-arrow">→</span>
+        <span class="fc-node">Ketidakpuasan Kerja</span>
+        <span class="fc-arrow">→</span>
+        <span class="fc-node" style="background:var(--dot);color:#fff">3 Wujud Peninggalan Kerja (Gambar 5.8)<br><small style="font-weight:400;opacity:.92">Perubahan Perilaku · Fisik · Psikologis</small></span>
+      </div>
+      <div class="diagram-cap">Reproduksi Gabungan Gambar 5.7 &amp; Gambar 5.8 — Model Proses Kepuasan Kerja – Pindah Kerja</div>
+    </div>
+
+    <div class="numh">5. Mengukur dan Memantau Kepuasan Kerja &amp; 6. Survei Intervensi Umpan Balik</div>
+    <p>Pengukuran umumnya mengandalkan laporan mandiri karyawan menggunakan skala baku seperti <b><i>The Job Descriptive Index</i> (JDI)</b> (mengukur kepuasan terhadap gaji, pekerjaan itu sendiri, supervisor, dan rekan kerja). <b>Empat alasan rutin melakukan survei intervensi umpan balik (a–d):</b> (a) memantau tren sikap karyawan sepanjang waktu, (b) menilai dampak empiris perubahan kebijakan, (c) membandingkan diri dengan perusahaan lain dalam industri sama (<i>benchmarking</i> memakai skala baku JDI), dan (d) mengubah ketidakpuasan menjadi kepuasan lewat umpan balik dan rencana tindakan korektif nyata.</p>
+
+    <div class="casebox"><span class="ctitle">Kasus Buku KB 3 (Hal. 5.79) · Pemutusan Hubungan Kerja 6.600 Karyawan PT Dirgantara Indonesia (PT DI)</span>
+      <b>Panitia Penyelesaian Perselisihan Perburuhan Pusat (P4P)</b> di kantor Depnakertrans memberi kesempatan negosiasi bipartit hingga 27 Januari 2004 antara direksi <b>PT DI</b> (Dirut Edwin Soedarmo)—yang bersikeras mem-PHK <b>6.600 karyawan</b> dengan menyiapkan pesangon &amp; dana pensiun—dan Serikat Karyawan Forum Kontak Karyawan PT DI yang menilai prosedur PHK tidak benar (sebelumnya pertemuan bipartit Menakertrans Jacob Nuwa Wea pada Desember 2003 tak dihadiri serikat). Jika gagal, P4P menggelar rapat pleno yang keputusannya masih dapat digugat ke <b>PTUN</b> hingga kasasi <b>Mahkamah Agung</b>.
+    </div>
+  </div>
+
+  <!-- GLOSARIUM -->
+  <h2 class="section" id="glosarium"><span class="dot"></span>Glosarium Istilah Kunci Modul 5</h2>
+  <div class="card"><dl class="glossary">
+    <dt>ADR (Alternative Dispute Resolution)</dt><dd>Penyelesaian perselisihan kerja 4 tahap di luar pengadilan: kebijakan pintu terbuka, penilaian rekan kerja (<i>peer review</i>), mediasi, dan arbitrase.</dd>
+    <dt>Communities of Practice (Khalayak Praktisi)</dt><dd>Kelompok karyawan yang bekerja sama, saling belajar, dan membangun pemahaman bersama tentang cara menyelesaikan pekerjaan.</dd>
+    <dt>Core Self-Evaluations &amp; Negative Affectivity</dt><dd>Opini inti positif/negatif seseorang terhadap dirinya; <i>negative affectivity</i> adalah dimensi disposisional kecenderungan suasana hati negatif di segala situasi.</dd>
+    <dt>Cultural Immersion (Pencelupan Budaya)</dt><dd>Program pelatihan keragaman berbasis perilaku dengan mengirim karyawan terjun langsung berinteraksi di masyarakat berbeda budaya, ras, dan bangsa.</dd>
+    <dt>EAPs &amp; Outplacement Counseling</dt><dd>Program pendampingan profesional bagi masalah psikologis/kecanduan karyawan (EAPs); konseling pendampingan transisi kerja bagi karyawan ter-PHK (<i>outplacement</i>).</dd>
+    <dt>EPSSs (Electronic Performance Support Systems)</dt><dd>Aplikasi komputer yang bila diminta menyediakan pelatihan keterampilan, akses informasi, dan saran ahli di tempat kerja.</dd>
+    <dt>Expatriate &amp; Repatriation</dt><dd>Karyawan yang ditugaskan mengelola bisnis di luar negeri; <i>repatriation</i> adalah pemulangan dan adaptasi kembali ke perusahaan induk.</dd>
+    <dt>Glass Ceiling &amp; ICE</dt><dd>Hambatan tak terlihat bagi perempuan/minoritas menuju manajemen puncak; <i>Individual Coaching for Effectiveness</i> (ICE) adalah program diagnosis, pembinaan, dan dukungan bagi manajer disfungsional.</dd>
+    <dt>JDI (The Job Descriptive Index)</dt><dd>Skala survei baku pengukur kepuasan kerja mencakup gaji, pekerjaan itu sendiri, supervisor, dan rekan kerja.</dd>
+    <dt>Protean Career</dt><dd>Karier modern yang terus berubah mengikuti minat, kemampuan, nilai, dan lingkungan kerja dengan karyawan sebagai pengelola utamanya.</dd>
+    <dt>Role Ambiguity / Conflict / Overload</dt><dd>Tiga masalah peran: ketidakjelasan ekspektasi tugas, tuntutan saling bertentangan, dan beban tugas melampaui kapasitas.</dd>
+    <dt>Self-Efficacy &amp; Transfer of Training</dt><dd>Keyakinan diri mampu menguasai isi pelatihan; <i>transfer of training</i> adalah penerapan nyata hasil pelatihan di tempat kerja.</dd>
+    <dt>Vestibule Training</dt><dd>Pelatihan di luar tempat kerja nyata menggunakan peralatan khusus tiruan (mis. simulator pilot dan astronot NASA).</dd>
+  </dl></div>
+</div>
+
+<footer><b>EKMA5207 — Manajemen Sumber Daya Manusia (Edisi 3)</b> · Modul 5: Pelatihan dan Pengembangan Karyawan (Prof. Dr. Mutiara Sibarani Panggabean, S.E., M.E.)<br>Bahan belajar lengkap mengikuti outline asli modul untuk persiapan ujian.</footer>
+
+<script>
+(function(){
+  var pb=document.getElementById('progress');
+  function onScroll(){var h=document.documentElement;var sc=h.scrollTop||document.body.scrollTop;var max=(h.scrollHeight-h.clientHeight)||1;pb.style.width=(sc/max*100)+'%';}
+  document.addEventListener('scroll',onScroll,{passive:true});onScroll();
+
+  var list=document.getElementById('conceptList');var items=[].slice.call(list.querySelectorAll('li'));var boxes=items.map(function(li){return li.querySelector('input');});
+  document.getElementById('totalCount').textContent=items.length;var doneEl=document.getElementById('doneCount');var KEY='studi_ekma5207_m5_concepts_v3';
+  function load(){try{var a=JSON.parse(localStorage.getItem(KEY)||'[]');boxes.forEach(function(b,i){if(a[i])b.checked=true;});}catch(e){}}
+  function save(){try{localStorage.setItem(KEY,JSON.stringify(boxes.map(function(b){return b.checked?1:0;})));}catch(e){}}
+  function refresh(){var n=0;items.forEach(function(li,i){if(boxes[i].checked){li.classList.add('done');n++;}else li.classList.remove('done');});doneEl.textContent=n;}
+  load();refresh();boxes.forEach(function(b){b.addEventListener('change',function(){refresh();save();});});
+  document.getElementById('resetBtn').addEventListener('click',function(){boxes.forEach(function(b){b.checked=false;});refresh();save();});
+
+  [].slice.call(document.querySelectorAll('[data-revealgroup]')).forEach(function(g){
+    var det=g.querySelector('[data-revealdetail]');if(!det){var sib=g.nextElementSibling;if(sib&&sib.hasAttribute&&sib.hasAttribute('data-revealdetail'))det=sib;}
+    var cells=[].slice.call(g.querySelectorAll('[data-reveal]'));
+    cells.forEach(function(c){c.addEventListener('click',function(){cells.forEach(function(x){x.classList.remove('active');});c.classList.add('active');if(det){det.innerHTML=c.getAttribute('data-detail');if(window.MathJax&&window.MathJax.typesetPromise)window.MathJax.typesetPromise([det]);}});});
+  });
+
+  (function(){
+    var ROWH=46,NODE_H=32,PAD=13,GAP=52;var COL={root:'#0f5e8f',kb1:'#1a86c7',kb2:'#e08a1e',kb3:'#2a9d6f',kb4:'#7a5cc0',kb5:'#c75b7a'};
+    var mc=document.createElement('canvas').getContext('2d');mc.font='700 13px -apple-system,Segoe UI,Roboto,sans-serif';
+    function tw(t){return Math.ceil(mc.measureText(t).width);}function esc(t){return t.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');}
+    function rgba(hex,a){var h=hex.replace('#','');return 'rgba('+parseInt(h.substr(0,2),16)+','+parseInt(h.substr(2,2),16)+','+parseInt(h.substr(4,2),16)+','+a+')';}
+    var DATA={label:'MODUL 5 — Pelatihan & Pengembangan',color:COL.root,children:[
+      {label:'KB1 · Pelatihan (A–G)',color:COL.kb1,children:[
+        {label:'A. Arti Pentingnya Pelatihan',children:[{label:'1. Pengertian (Nokia)'},{label:'2. Tujuan (Noe 6 & Manfaat 3 Pihak)'}]},
+        {label:'B. Proses Pelatihan (6 Tahap)',children:[{label:'1. Analisis Kebutuhan (Gbr 5.1)'},{label:'2. Kesiapan (Self-Efficacy & Kognitif)'},{label:'3. Lingkungan Belajar (7 Kondisi)'},{label:'4. Peralihan Pelatihan (Gbr 5.2)'},{label:'5. Metode: Presentasi, Hands-On (9), Kelompok (3)'}]},
+        {label:'C. Evaluasi Program Pelatihan',children:[{label:'5 Kategori Hasil & 4 Alasan'},{label:'4 Rancangan Evaluasi'}]},
+        {label:'D. Return on Investment (ROI)',children:[{label:'Biaya, Manfaat & 7 Langkah ROI'}]},
+        {label:'E. Masalah Pelatihan Khusus',children:[{label:'Expatriate & 3 Tahap (Gbr 5.3)'},{label:'Keragaman Tenaga Kerja'}]},
+        {label:'F. Mengelola Keragaman & Hukum',children:[{label:'Kesadaran vs Perilaku (Cultural Immersion)'},{label:'11 Ciri Berhasil & Sosialisasi (Gbr 5.4)'}]},
+        {label:'G. Sosialisasi & 5 Langkah Dessler',children:[{label:'Rancangan, Validasi, Implementasi (OJT vs Off-the-Job)'},{label:'4 Level Evaluasi, 3 Penilaian & Kasus PT KLS'}]}
+      ]},
+      {label:'KB2 · Pengembangan Karyawan (A–K)',color:COL.kb2,children:[
+        {label:'A. Pengembangan Manajemen (5 Aspek)'},
+        {label:'B. Pengembangan Organisasi (2 Metode)'},
+        {label:'C. Metode Pengembangan (Tabel 5.1)'},
+        {label:'D. Pengembangan & Karier (Protean)'},
+        {label:'E. Pendidikan Formal (MBA, PJJ UT)'},
+        {label:'F. Penilaian / Assessment (5 Alat)',children:[{label:'Kepribadian, MBTI, Assessment Center'},{label:'Benchmarks & Umpan Balik 360°'}]},
+        {label:'G. Pengalaman Kerja (Gbr 5.5)',children:[{label:'Enlargement, Rotasi, Transfer/Promosi/Bawah'}]},
+        {label:'H. Penugasan Luar & Antarpribadi',children:[{label:'Externship, Sabbatical, Mentoring & Coaching'}]},
+        {label:'I. Manajemen Karier (Gbr 5.6 · 4 Tahap)'},
+        {label:'J. Isu Khusus (Glass Ceiling & Suksesi)'},
+        {label:'K. Manajer Disfungsional (ICE) & Kasus Asuransi'}
+      ]},
+      {label:'KB3 · Retensi & Separasi (A–H)',color:COL.kb3,children:[
+        {label:'A. Pergantian Terpaksa (Employment-at-Will)'},
+        {label:'B. 3 Prinsip Keadilan (Hasil, Prosedural, Interaksional)'},
+        {label:'C. Disiplin Progresif (UU 13/2003) & 4 Tahap ADR'},
+        {label:'D. EAPs (Carve-Out) & Outplacement'},
+        {label:'E. Pergantian Sukarela (Job Withdrawal)'},
+        {label:'F. Perubahan Perilaku (Ryan, Maria/Whistle Blowing)'},
+        {label:'G. Pindah Fisik & Psikologis (Absensi, Komitmen)'},
+        {label:'H. Kepuasan Kerja (Gbr 5.7–5.8), JDI & Kasus PT DI'}
+      ]}
+    ]};
+    var idc=0;(function w(n,c){n.id='n'+(idc++);n.color=n.color||c;(n.children||[]).forEach(function(k){w(k,n.color);});})(DATA,COL.root);
+    (function w(n,d){if(d>=2&&n.children&&n.children.length)n.collapsed=true;(n.children||[]).forEach(function(k){w(k,d+1);});})(DATA,0);
+    var host=document.getElementById('mindmap');
+    function render(){
+      var colW=[];(function w(n,d){var width=tw(n.label)+PAD*2+((n.children&&n.children.length)?20:0);colW[d]=Math.max(colW[d]||0,width);if(!n.collapsed)(n.children||[]).forEach(function(k){w(k,d+1);});})(DATA,0);
+      var colX=[],acc=14;for(var d=0;d<colW.length;d++){colX[d]=acc;acc+=colW[d]+GAP;}var row={v:0};
+      (function lay(n,d){if(!n.children||!n.children.length||n.collapsed){n._y=row.v*ROWH+ROWH/2+8;row.v++;return;}var f,l;n.children.forEach(function(k,i){lay(k,d+1);if(i===0)f=k._y;l=k._y;});n._y=(f+l)/2;})(DATA,0);
+      var totalW=acc,totalH=row.v*ROWH+24;var nodes=[],links=[];
+      (function col(n,d,p){n._x=colX[d];n._w=tw(n.label)+PAD*2+((n.children&&n.children.length)?20:0);nodes.push({n:n,d:d});if(p)links.push([p,n]);if(!n.collapsed)(n.children||[]).forEach(function(k){col(k,d+1,n);});})(DATA,0,null);
+      var s='<svg width="'+totalW+'" height="'+totalH+'" viewBox="0 0 '+totalW+' '+totalH+'" xmlns="http://www.w3.org/2000/svg">';
+      links.forEach(function(pr){var a=pr[0],b=pr[1],x1=a._x+a._w,y1=a._y,x2=b._x,y2=b._y,mx=(x1+x2)/2;s+='<path d="M'+x1+' '+y1+' C'+mx+' '+y1+' '+mx+' '+y2+' '+x2+' '+y2+'" fill="none" stroke="'+rgba(b.color,.5)+'" stroke-width="2"/>';});
+      nodes.forEach(function(o){var n=o.n,x=n._x,y=n._y-NODE_H/2,w=n._w,hk=n.children&&n.children.length;var fill=o.d===0?n.color:(o.d===1?rgba(n.color,.12):'#fff');var tf=o.d===0?'#fff':'#1c2733';
+        s+='<g data-id="'+n.id+'" style="cursor:'+(hk?'pointer':'default')+'"><rect x="'+x+'" y="'+y+'" rx="9" width="'+w+'" height="'+NODE_H+'" fill="'+fill+'" stroke="'+n.color+'" stroke-width="'+(o.d===0?0:1.6)+'"/><text x="'+(x+PAD)+'" y="'+(n._y+4)+'" font-size="13" font-weight="'+(o.d<=1?'700':'500')+'" fill="'+tf+'" font-family="-apple-system,Segoe UI,Roboto,sans-serif">'+esc(n.label)+'</text>';
+        if(hk){var cx=x+w-12,cy=n._y;s+='<circle cx="'+cx+'" cy="'+cy+'" r="8.5" fill="'+n.color+'"/><text x="'+cx+'" y="'+(cy+4.5)+'" font-size="13" font-weight="700" fill="#fff" text-anchor="middle" font-family="sans-serif">'+(n.collapsed?'+':'\u2013')+'</text>';}s+='</g>';});
+      s+='</svg>';host.innerHTML=s;
+    }
+    host.addEventListener('click',function(e){var g=e.target.closest('g[data-id]');if(!g)return;var id=g.getAttribute('data-id');(function f(n){if(n.id===id){if(n.children&&n.children.length)n.collapsed=!n.collapsed;return true;}return (n.children||[]).some(f);})(DATA);render();});
+    document.getElementById('mmExpand').addEventListener('click',function(){(function w(n){if(n.children)n.collapsed=false;(n.children||[]).forEach(w);})(DATA);render();});
+    document.getElementById('mmCollapse').addEventListener('click',function(){(function w(n,d){if(d>=1&&n.children&&n.children.length)n.collapsed=true;(n.children||[]).forEach(function(k){w(k,d+1);});})(DATA,0);render();});
+    render();
+  })();
+
+  window.addEventListener('load',function(){setTimeout(function(){if(window.MathJax&&window.MathJax.typesetPromise)window.MathJax.typesetPromise();},400);});
+})();
+</script></body></html>

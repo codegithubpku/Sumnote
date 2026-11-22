@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html lang="id"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Modul 2 — Metode Statistik | EKMA5104</title>
+<script>window.MathJax={tex:{inlineMath:[['$','$']],displayMath:[['\\[','\\]'],['$$','$$']]},svg:{fontCache:'global'},startup:{typeset:true}};</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js" async></script>
+<style>
+:root{--bg:#f4f6f9;--panel:#fff;--ink:#1c2733;--muted:#5c6b7a;--line:#e4e9f0;--brand:#1a86c7;--brand-dark:#0f5e8f;--brand-soft:#e7f3fb;--kb1:#1a86c7;--kb2:#e08a1e;--kb3:#2a9d6f;--kb4:#7a5cc0;--kb5:#c75b7a;--radius:14px;--shadow:0 1px 2px rgba(16,42,67,.06),0 6px 20px rgba(16,42,67,.06);--maxw:900px}
+*{box-sizing:border-box}html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;line-height:1.72}
+#progress{position:fixed;top:0;left:0;height:4px;width:0;background:linear-gradient(90deg,var(--brand),#53c0ec);z-index:200;transition:width .1s}
+header.top{position:sticky;top:0;z-index:100;background:rgba(255,255,255,.92);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+.top-in{max-width:var(--maxw);margin:0 auto;padding:10px 20px;display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+.badge{background:var(--brand);color:#fff;font-weight:700;font-size:.72rem;letter-spacing:.5px;padding:4px 10px;border-radius:999px}
+.homebtn{text-decoration:none;display:inline-flex;align-items:center;gap:7px;background:var(--brand);color:#fff;font-weight:700;font-size:.8rem;padding:7px 15px;border-radius:999px;box-shadow:0 2px 6px rgba(16,42,67,.22);line-height:1}
+.top-title{font-size:.9rem;font-weight:600;color:var(--muted)}
+nav.jump{margin-left:auto;display:flex;gap:4px;flex-wrap:wrap}
+nav.jump a{font-size:.78rem;color:var(--muted);text-decoration:none;padding:5px 10px;border-radius:8px}
+nav.jump a:hover{background:var(--brand-soft);color:var(--brand-dark)}
+.wrap{max-width:var(--maxw);margin:0 auto;padding:0 20px 90px}
+.hero{margin-top:26px;padding:30px 28px;border-radius:var(--radius);color:#fff;background:linear-gradient(135deg,#0f5e8f,#1a86c7 60%,#2fa4df);box-shadow:var(--shadow);position:relative;overflow:hidden}
+.hero .eyebrow{font-size:.78rem;letter-spacing:1.5px;text-transform:uppercase;opacity:.9;font-weight:600}
+.hero h1{margin:.3em 0 .25em;font-size:1.62rem;line-height:1.25;max-width:90%}
+.hero .meta{display:flex;gap:18px;flex-wrap:wrap;font-size:.84rem;opacity:.95;margin-top:10px}
+h2.section{font-size:1.3rem;margin:48px 0 4px;display:flex;align-items:center;gap:10px;scroll-margin-top:70px}
+h2.section .dot{width:10px;height:22px;border-radius:4px;background:var(--brand)}
+.section-sub{color:var(--muted);font-size:.9rem;margin:0 0 18px}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);padding:22px 24px;margin:16px 0;--dot:var(--brand);overflow-x:clip;overflow-wrap:break-word;word-wrap:break-word}
+.concepts{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:minmax(0,1fr);gap:10px}
+.concepts li{display:flex;gap:12px;align-items:flex-start;padding:12px 14px;border:1px solid var(--line);border-radius:10px;background:#fcfdff;min-width:0;max-width:100%}
+.concepts li>span{min-width:0;max-width:100%;overflow-wrap:break-word;word-wrap:break-word}
+.concepts input{margin-top:4px;width:18px;height:18px;accent-color:var(--brand);flex:none;cursor:pointer}
+.concepts .ct{font-weight:600}.concepts .cd{display:block;font-weight:400;color:var(--muted);font-size:.86rem;margin-top:2px}
+.concepts li.done{background:var(--brand-soft);border-color:#bfe0f3}.concepts li.done .ct{text-decoration:line-through;opacity:.65}
+.cl-head{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-bottom:6px}
+.cl-head .count{font-size:.82rem;color:var(--muted);background:var(--brand-soft);padding:3px 10px;border-radius:999px;font-weight:600}
+.btn-reset{font-size:.78rem;border:1px solid var(--line);background:#fff;color:var(--muted);padding:5px 12px;border-radius:8px;cursor:pointer}
+.mm-toolbar{display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin-bottom:10px}
+.mm-btn{font-size:.78rem;border:1px solid var(--line);background:#fff;padding:6px 13px;border-radius:8px;cursor:pointer;color:var(--brand-dark);font-weight:600}
+.mindmap-host{height:580px;overflow:auto;border:1px solid var(--line);border-radius:10px;background:#fcfdff}.mindmap-host svg{display:block}
+.kb-tag{display:inline-flex;align-items:center;gap:8px;font-size:.78rem;font-weight:700;color:#fff;padding:5px 12px;border-radius:999px;margin-bottom:6px}
+.kb1t{background:var(--kb1)}.kb2t{background:var(--kb2)}.kb3t{background:var(--kb3)}.kb4t{background:var(--kb4)}.kb5t{background:var(--kb5)}
+.kb1b{--dot:var(--kb1)}.kb2b{--dot:var(--kb2)}.kb3b{--dot:var(--kb3)}.kb4b{--dot:var(--kb4)}.kb5b{--dot:var(--kb5)}
+.lead{font-size:1.02rem}.term{font-weight:700;color:var(--dot)}.en{font-style:italic;color:var(--muted);font-weight:500}
+.abc{display:flex;align-items:center;gap:10px;margin:28px 0 10px;padding-bottom:6px;border-bottom:2px solid color-mix(in srgb,var(--dot) 18%,#fff)}
+.abc .ltr{background:var(--dot);color:#fff;font-weight:800;min-width:30px;height:30px;padding:0 7px;border-radius:8px;display:grid;place-items:center;flex:none}
+.abc h4{margin:0;font-size:1.06rem;color:var(--dot)}
+.numh{font-weight:700;color:var(--dot);margin:22px 0 4px;font-size:1rem}
+.leth{font-weight:800;color:var(--dot);margin:20px 0 6px;font-size:.98rem;border-left:3px solid var(--dot);padding-left:10px}
+ol.book{margin:12px 0;padding-left:28px}ol.book>li{margin:10px 0;padding-left:6px}ol.book>li::marker{font-weight:700;color:var(--dot)}
+ul.exp{list-style:none;margin:12px 0;padding:0;display:grid;grid-template-columns:minmax(0,1fr);gap:10px}
+ul.exp>li{position:relative;padding-left:20px;min-width:0;max-width:100%;overflow-wrap:break-word;word-wrap:break-word}
+ul.exp>li::before{content:"";position:absolute;left:0;top:11px;width:8px;height:8px;border-radius:2px;background:var(--dot)}
+ul.let{list-style:lower-alpha;margin:10px 0;padding-left:28px}ul.let>li{margin:8px 0;padding-left:4px}ul.let>li::marker{color:var(--dot);font-weight:700}
+.flow{border-left:4px solid var(--dot);background:color-mix(in srgb,var(--dot) 9%,#fff);padding:11px 15px;border-radius:0 10px 10px 0;margin:18px 0;font-size:.9rem;min-width:0;max-width:100%;overflow-wrap:break-word;word-wrap:break-word}
+.flow::before{content:"🔗 Benang merah — ";font-weight:700;color:var(--dot)}.flow b{color:var(--dot)}
+.casebox{background:#f8fafc;border:1px solid var(--line);border-left:4px solid var(--dot);border-radius:0 10px 10px 0;padding:12px 15px;margin:14px 0;font-size:.88rem;min-width:0;max-width:100%;overflow-wrap:break-word;word-wrap:break-word}
+.casebox .ctitle{font-weight:700;color:var(--dot);margin-bottom:4px;display:block}
+.table-wrap{width:100%;overflow-x:auto;-webkit-overflow-scrolling:touch;margin:14px 0;border-radius:10px}
+table.mini{width:100%;border-collapse:collapse;margin:0;font-size:.86rem;table-layout:auto}
+table.mini th,table.mini td{border:1px solid var(--line);padding:10px 12px;text-align:left;vertical-align:top;overflow-wrap:break-word;word-wrap:break-word}
+table.mini th{background:color-mix(in srgb,var(--dot) 12%,#fff);color:var(--dot);font-weight:700}
+.rgrid{display:grid;gap:8px;margin:14px 0}.rgrid.c2{grid-template-columns:repeat(2,1fr)}.rgrid.c3{grid-template-columns:repeat(3,1fr)}.rgrid.c4{grid-template-columns:repeat(4,1fr)}
+.rcell{border:1px solid var(--line);border-radius:10px;padding:11px 13px;cursor:pointer;background:#fff;display:flex;gap:10px;align-items:flex-start;transition:.15s;min-width:0;max-width:100%}
+.rcell>span{min-width:0;max-width:100%;overflow-wrap:break-word;word-wrap:break-word}
+.rcell:hover{border-color:var(--dot);box-shadow:var(--shadow);transform:translateY(-2px)}
+.rcell.active{border-color:var(--dot);background:color-mix(in srgb,var(--dot) 8%,#fff)}
+.rcell .stepnum{background:var(--dot);color:#fff;font-weight:700;min-width:24px;height:24px;border-radius:7px;display:grid;place-items:center;flex:none;font-size:.82rem}
+.rcell .rt{font-weight:700;font-size:.9rem;color:var(--dot);display:block}.rcell .rp{font-size:.78rem;color:var(--muted);display:block;margin-top:2px}
+.rdetail{font-size:.88rem;border-left:4px solid var(--dot);background:color-mix(in srgb,var(--dot) 8%,#fff);border-radius:0 10px 10px 0;padding:12px 15px;margin-top:6px;min-width:0;max-width:100%;overflow-wrap:break-word;word-wrap:break-word}
+.pill-row{display:flex;gap:8px;flex-wrap:wrap;margin:10px 0}.pill{font-size:.8rem;background:#eef3f8;color:#36506a;border:1px solid #e0e8f0;padding:4px 11px;border-radius:999px;font-weight:600}
+.flowchart{display:flex;align-items:center;gap:6px;flex-wrap:wrap;margin:16px 0;justify-content:center}
+.fc-node{background:color-mix(in srgb,var(--dot) 12%,#fff);border:1.5px solid var(--dot);color:var(--dot);font-weight:700;font-size:.8rem;padding:8px 12px;border-radius:9px;text-align:center}
+.fc-arrow{color:var(--dot);font-weight:800;font-size:1.05rem}
+.pyramid{display:flex;flex-direction:column;align-items:center;gap:4px;margin:16px 0}.pyr-row{color:#fff;font-weight:700;text-align:center;padding:9px 12px;border-radius:7px;font-size:.84rem}
+.bs-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:14px 0}
+.bs-col{border:1.5px solid var(--dot);border-radius:10px;overflow:hidden;min-width:0;max-width:100%}
+.bs-head{background:var(--dot);color:#fff;font-weight:700;font-size:.84rem;padding:7px 12px;text-align:center}
+.bs-box{padding:10px 12px;border-bottom:1px dashed var(--line);font-size:.84rem}.bs-box:last-child{border-bottom:none}
+.eqbox{background:#fcfdff;border:1px solid var(--line);border-radius:10px;padding:8px 14px;margin:14px 0;overflow-x:auto}
+mjx-container{max-width:100%;overflow-x:auto;overflow-y:hidden}
+mjx-container:not([display="true"]){display:inline-block;vertical-align:middle}
+.chart-wrap{background:#fcfdff;border:1px solid var(--line);border-radius:12px;padding:14px 16px;margin:16px 0}
+.chart-title{font-weight:700;font-size:.9rem;color:var(--dot);margin:0 0 4px}
+.chart-sub{font-size:.78rem;color:var(--muted);margin:0 0 10px}
+.chart-host{width:100%;overflow-x:auto;position:relative}.chart-host svg{display:block;max-width:100%;height:auto;margin:0 auto}
+.chart-legend{display:flex;gap:14px;flex-wrap:wrap;justify-content:center;margin-top:8px;font-size:.78rem;color:var(--muted)}
+.chart-legend span{display:inline-flex;align-items:center;gap:6px}.chart-legend i{display:inline-block;width:14px;height:3px;border-radius:2px}
+.glossary dt{font-weight:700;color:var(--brand-dark);margin-top:10px}.glossary dd{margin:0 0 2px;color:var(--muted);font-size:.9rem}
+footer{max-width:var(--maxw);margin:0 auto;padding:30px 20px 60px;color:var(--muted);font-size:.82rem;border-top:1px solid var(--line)}
+.offline-note{font-size:.76rem;color:var(--muted);background:#fff8e6;border:1px solid #f0e2b8;border-radius:8px;padding:8px 12px;margin:10px 0}
+@media(max-width:680px){
+  .table-wrap{overflow-x:visible}
+  table.mini,table.mini thead,table.mini tbody,table.mini th,table.mini td,table.mini tr{display:block;width:100%}
+  table.mini thead{display:none}
+  table.mini tr{margin-bottom:12px;border:1.5px solid color-mix(in srgb,var(--dot) 28%,#e4e9f0);border-radius:10px;background:#fff;overflow:hidden;box-shadow:0 1px 4px rgba(16,42,67,.05)}
+  table.mini td{border:none;border-bottom:1px solid var(--line);padding:10px 12px;text-align:left}
+  table.mini td:last-child{border-bottom:none}
+  table.mini td::before{content:attr(data-label);display:block;font-size:.74rem;font-weight:700;text-transform:uppercase;letter-spacing:.4px;color:var(--dot);margin-bottom:4px}
+}
+.acro-box{background:#f8fafc;border:1px solid var(--line);border-radius:10px;padding:12px 14px;margin:14px 0;font-size:.84rem;min-width:0;max-width:100%;overflow-wrap:break-word;word-wrap:break-word}
+.acro-title{font-weight:700;color:var(--dot);font-size:.86rem;margin-bottom:8px;display:block}
+.acro-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:6px 14px;margin:0;padding:0;list-style:none}
+.acro-grid li{min-width:0;line-height:1.5}.acro-grid b{color:var(--dot)}
+.fguide{background:color-mix(in srgb,var(--dot) 5%,#fff);border:1px solid color-mix(in srgb,var(--dot) 22%,#e4e9f0);border-radius:10px;padding:12px 15px;margin:-6px 0 16px;font-size:.86rem;min-width:0;max-width:100%;overflow-wrap:break-word;word-wrap:break-word}
+.fguide .fg-head{font-weight:700;color:var(--dot);font-size:.84rem;text-transform:uppercase;letter-spacing:.35px;margin:0 0 6px}
+.fguide ul{margin:4px 0 8px;padding-left:18px}.fguide ul li{margin:3px 0}
+.fguide .fg-core{border-top:1px dashed color-mix(in srgb,var(--dot) 30%,#cbd5e1);padding-top:8px;margin-top:8px;display:grid;grid-template-columns:minmax(0,1fr);gap:4px}
+.fguide .fg-core div{min-width:0}
+@media(max-width:640px){.hero h1{font-size:1.3rem;max-width:100%}nav.jump{display:none}.rgrid.c2,.rgrid.c3,.rgrid.c4,.bs-grid,.acro-grid{grid-template-columns:minmax(0,1fr)}.mindmap-host{height:440px}}
+</style></head><body>
+<div id="progress"></div>
+<header class="top"><div class="top-in">
+  <span class="badge">MODUL 2</span>
+  <a class="homebtn" href="index.html" title="Kembali ke daftar modul"><span style="font-size:1rem;line-height:1">&#8962;</span> Daftar Modul</a>
+  <span class="top-title">Metode Penelitian Bisnis · EKMA5104</span>
+  <nav class="jump"><a href="#konsep">Konsep</a><a href="#peta">Peta Konsep</a><a href="#kb1">KB1</a><a href="#kb2">KB2</a><a href="#glosarium">Glosarium</a></nav>
+</div></header>
+<div class="wrap">
+  <section class="hero"><div class="eyebrow">Ringkasan Belajar · EKMA5104 (Edisi 3)</div>
+    <h1>Metode Statistik</h1>
+    <div class="meta"><span>⏱️ ±40 menit</span><span>📚 2 bagian (KB)</span><span>✍️ Dr. Lerbin Roberto Aritonang R., M.M.</span></div></section>
+  <p class="section-sub" style="margin-top:22px">Modul 2 menyajikan fondasi statistik penelitian kuantitatif dalam dua bagian: dasar-dasar skala, distribusi, penyampelan, dan estimasi (KB 1), serta statistik induktif untuk pengujian hipotesis proporsi, rata-rata, korelasi, dan regresi (KB 2).</p>
+  <p class="offline-note">ℹ️ Peta konsep, grafik SVG, kartu penjelasan, dan checklist konsep berjalan tanpa internet. Koneksi internet hanya diperlukan untuk merender persamaan matematika (MathJax).</p>
+
+  <h2 class="section" id="konsep"><span class="dot"></span>Konsep Penting yang Harus Dikuasai</h2>
+  <div class="card"><div class="cl-head"><span class="count"><span id="doneCount">0</span>/<span id="totalCount">0</span> dikuasai</span><button class="btn-reset" id="resetBtn">Reset centang</button></div>
+    <ul class="concepts" id="conceptList">
+      <li><input type="checkbox"><span><span class="ct">4 Jenis Skala Pengukuran (Nominal, Ordinal, Interval, Rasio)</span><span class="cd">Nominal = kode pilah (diskrit); Ordinal = peringkat; Interval = jarak sama &amp; nol relatif; Rasio = jarak sama &amp; nol mutlak (terbaik untuk operasi matematika &amp; penentu pilihan uji statistik).</span></span></li>
+      <li><input type="checkbox"><span><span class="ct">Ukuran Tendensi Sentral &amp; Variabilitas</span><span class="cd">Tendensi sentral: Mean (paling stabil), Median, Mode. Variabilitas: Variansi ($\sigma^2$), Deviasi Standar ($\sigma$), Koefisien Variansi ($KV = \sigma/\mu$ untuk satuan berbeda), dan Kovariansi ($JP/N$).</span></span></li>
+      <li><input type="checkbox"><span><span class="ct">Distribusi Normal Standar ($Z$) &amp; Kurva Teoritis</span><span class="cd">Simetris, berbentuk lonceng, asimptotis; luas $\pm 1\sigma = 68.26\%$, $\pm 1.96\sigma = 95\%$, $\pm 2\sigma = 95.44\%$. Skala interval memakai $Z, t, F$; skala nominal memakai Binomial &amp; Multinomial ($\chi^2$).</span></span></li>
+      <li><input type="checkbox"><span><span class="ct">Statistik Deskriptif vs Inferensial &amp; Parametrik vs Nonparametrik</span><span class="cd">Deskriptif hanya berlaku pada data sampel; inferensial menggeneralisasi ke populasi. Parametrik menuntut skala interval/rasio &amp; distribusi normal; nonparametrik (bebas distribusi) dipakai sebagai alternatif bila syarat parametrik dilanggar.</span></span></li>
+      <li><input type="checkbox"><span><span class="ct">Distribusi Penyampelan &amp; Standard Error (SEM)</span><span class="cd">Deviasi standar dari rata-rata seluruh sampel yang mungkin terpilih disebut Standard Error of Mean ($SEM = \sigma/\sqrt{n}$). Makin besar $n$, makin kecil $SE$ dan makin besar statistik uji.</span></span></li>
+      <li><input type="checkbox"><span><span class="ct">Estimasi Titik vs Interval &amp; 3 Syarat Estimator Baik</span><span class="cd">Estimasi interval lebih disukai karena peluang kebenarannya lebih tinggi ($1 - \alpha$). Tiga syarat estimator baik: tidak bias ($E(\bar{X})=\mu$), efisien ($SE$ kecil), dan konsisten (variansi mengecil seiring naiknya $n$).</span></span></li>
+      <li><input type="checkbox"><span><span class="ct">Hipotesis Penelitian ($H_a$) vs Hipotesis Statistik ($H_0$)</span><span class="cd">Statistik menguji $H_0$ ("tidak ada"); menolak $H_0$ berarti tidak menolak $H_a$. $H_a$ terarah (1 ekor, $Z_{0.05}=\pm 1.64$) lebih baik dari tak terarah (2 ekor, $Z_{0.05}=\pm 1.96$) bila teori mendukung.</span></span></li>
+      <li><input type="checkbox"><span><span class="ct">9 Tahap Pengujian Hipotesis &amp; Syarat Sampel Acak</span><span class="cd">Rumus $H_a$ → $H_0$ → tetapkan $\alpha$ sebelum ambil data → kumpulkan sampel acak → pilih uji → uji asumsi → hitung statistik uji → bandingkan nilai teoritis → interpretasi.</span></span></li>
+      <li><input type="checkbox"><span><span class="ct">Uji Proporsi ($Z$ &amp; Kai-Kuadrat $\chi^2$) + Koefisien Kontingensi</span><span class="cd">Uji-$Z$ untuk 1–2 proporsi; Uji $\chi^2$ untuk $\ge 2$ kelompok (1 jalur &amp; 2 jalur, syarat $f_e \ge 5$). Keeratan asosiasi nominal diukur lewat Koefisien Kontingensi ($KK$) atau $\phi^2 = \chi^2/n$.</span></span></li>
+      <li><input type="checkbox"><span><span class="ct">Uji Rata-Rata ($Z$, $t$ Independen/Dependen, &amp; Anava $F$)</span><span class="cd">Uji-$t$ lebih sering dipakai dari Uji-$Z$ karena berlaku untuk sampel kecil ($n \le 30$) maupun besar. Anava (Uji-$F$) membandingkan $\ge 3$ rata-rata (1 jalur &amp; faktorial 2 jalur: efek utama + interaksi), dilanjutkan uji pasca-Anava (LSD).</span></span></li>
+      <li><input type="checkbox"><span><span class="ct">Analisis Korelasi Pearson &amp; Regresi (Sederhana &amp; Ganda)</span><span class="cd">Korelasi mengukur hubungan linier ($r \in [-1, +1]$); Regresi OLS ($\hat{Y} = a + bX$) memprediksi $Y$. Pada regresi ganda wajib lolos 5 asumsi (linier, homoskedastisitas, bebas autokorelasi, normalitas residu, bebas multikolinieritas).</span></span></li>
+      <li><input type="checkbox"><span><span class="ct">Eror Tipe I ($\alpha$), Eror Tipe II ($\beta$), dan Power Uji</span><span class="cd">$\alpha$ = peluang menolak $H_0$ yang benar; $\beta$ = peluang tidak menolak $H_0$ yang salah (keduanya saling bertukar/trade-off). Tren modern menekankan power uji statistik dan perangkat lunak (SPSS/LISREL).</span></span></li>
+    </ul></div>
+
+  <h2 class="section" id="peta"><span class="dot"></span>Peta Konsep (Mind Map)</h2>
+  <div class="card"><div class="mm-toolbar"><button class="mm-btn" id="mmExpand">Perluas semua</button><button class="mm-btn" id="mmCollapse">Ciutkan</button><span style="font-size:.76rem;color:var(--muted)">Klik simpul bertanda + / – untuk buka-tutup · Gulir untuk menggeser</span></div><div class="mindmap-host" id="mindmap"></div></div>
+
+  <!-- KB 1 -->
+  <h2 class="section" id="kb1"><span class="dot" style="background:var(--kb1)"></span>KB 1 — Dasar-Dasar Analisis Statistik</h2>
+  <div class="card kb1b"><span class="kb-tag kb1t">KEGIATAN BELAJAR 1 · HAL. 2.4–2.33</span>
+    <div class="acro-box">
+      <span class="acro-title">📖 Kamus Konteks Singkatan &amp; Akronim KB 1</span>
+      <ul class="acro-grid">
+        <li><b>JK / JP</b>: Jumlah Kuadrat ($\sum(X-\mu)^2$) dan Jumlah Produk ($\sum(X-\mu_X)(Y-\mu_Y)$) — pembilang rumus variansi dan kovariansi.</li>
+        <li><b>KV</b>: Koefisien Variansi ($\sigma/\mu$) — ukuran variabilitas relatif untuk membandingkan dua kelompok dengan satuan berbeda.</li>
+        <li><b>SEM / SE</b>: <i>Standard Error of Mean</i> ($\sigma/\sqrt{n}$) — deviasi standar dari distribusi penyampelan rata-rata sampel.</li>
+        <li><b>dk</b>: Derajat Kebebasan (<i>degrees of freedom</i>, mis. $n-1$) — parameter penentu bentuk kurva distribusi $t$, $F$, dan $\chi^2$.</li>
+      </ul>
+    </div>
+
+    <p class="lead">Meski analisis data berada di tahap akhir proses riset, Modul 2 disajikan di awal karena <b>metode statistik</b> menopang tiga fungsi utama: mendeskripsikan data subyek/obyek, menguji validitas &amp; reliabilitas instrumen (mis. Alpha Cronbach), dan menguji hipotesis penelitian.</p>
+
+    <div class="abc"><span class="ltr">A</span><h4>Variabel: Skala dan Jenis</h4></div>
+    <p>Pengukuran variabel menghasilkan <span class="term">skala <span class="en">(scale)</span></span> dalam bentuk angka/kode (McDaniels &amp; Gates, 2010). Jenis variabel terbagi menjadi <b>diskrit</b> (atribut pilah, mis. jenis kelamin/agama → skala nominal) dan <b>kontinu</b> (selalu ada nilai di antara dua titik berdekatan, mis. tinggi badan → skala ordinal, interval, rasio). Jenis skala (Stevens) menentukan teknik statistik yang sah digunakan:</p>
+    <div class="table-wrap">
+      <table class="mini">
+        <thead><tr><th>Skala</th><th>Sifat Utama</th><th>Contoh Bisnis</th><th>Catatan Transformasi &amp; Uji</th></tr></thead>
+        <tbody>
+          <tr><td data-label="Skala"><b>1. Nominal</b></td><td data-label="Sifat Utama">Hanya kode/simbol pembeda (tanpa besaran).</td><td data-label="Contoh Bisnis">Jenis kelamin (0/1), jenis industri, kepemilikan modal.</td><td data-label="Catatan Transformasi &amp; Uji">Paling lemah; uji proporsi / $\chi^2$.</td></tr>
+          <tr><td data-label="Skala"><b>2. Ordinal</b></td><td data-label="Sifat Utama">Kode + urutan/peringkat (jarak antarperingkat belum tentu sama).</td><td data-label="Contoh Bisnis">Peringkat prestasi pekerja (1, 2, 3), tingkat pendidikan.</td><td data-label="Catatan Transformasi &amp; Uji">Korelasi <i>rank-order</i> Spearman (nonparametrik).</td></tr>
+          <tr><td data-label="Skala"><b>3. Interval</b></td><td data-label="Sifat Utama">Kode + besaran + jarak antarnilai sama + <b>nol relatif</b>.</td><td data-label="Contoh Bisnis">Skor sikap (Skala Likert), suhu Celsius.</td><td data-label="Catatan Transformasi &amp; Uji">Syarat minimal statistik parametrik (Pearson, $t$, $F$, regresi).</td></tr>
+          <tr><td data-label="Skala"><b>4. Rasio</b></td><td data-label="Sifat Utama">Semua sifat interval + <b>nilai nol mutlak</b>.</td><td data-label="Contoh Bisnis">Rasio keuangan, harga saham, frekuensi, persentase.</td><td data-label="Catatan Transformasi &amp; Uji">Kualitas matematis tertinggi; bisa diturunkan ke nominal/ordinal.</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="abc"><span class="ltr">B</span><h4>Penataan dan Presentasi Data</h4></div>
+    <p>Data mentah dalam jumlah besar (mis. 15.500 pelanggan) ditata dan diringkas melalui tabel distribusi frekuensi atau grafik agar pola utamanya mudah dibaca dan informatif.</p>
+
+    <div class="abc"><span class="ltr">C</span><h4>Ukuran Tendensi Sentral (Central Tendency)</h4></div>
+    <p>Tiga ukuran pemusatan data utama adalah <b>Mean / Rata-rata hitung</b> ($\mu = \sum X / N$, paling sering dipakai karena paling stabil), <b>Median</b> (nilai tengah setelah data diurutkan), dan <b>Mode / Modus</b> (nilai yang paling sering muncul; bisa lebih dari satu).</p>
+
+    <div class="abc"><span class="ltr">D</span><h4>Ukuran Variabilitas Data (Dispersion)</h4></div>
+    <p>Dua kelompok bisa memiliki rata-rata sama tetapi tingkat risiko/sebarannya berbeda (mis. jasa kirim 2 &amp; 4 jam vs 3 &amp; 3 jam). Ukuran variabilitas utamanya:</p>
+    <div class="eqbox">\[ \sigma^2 = \frac{JK}{N} = \frac{\sum (X - \mu)^2}{N}, \quad \sigma = \sqrt{\sigma^2}, \quad KV = \frac{\sigma}{\mu}, \quad \text{Kov} = \frac{JP}{N} \]</div>
+    <div class="fguide">
+      <div class="fg-head">Bedah Variabel &amp; Intisari Formula Variabilitas</div>
+      <ul>
+        <li><b>$\sigma^2, \sigma$</b> = variansi dan deviasi standar populasi; <b>$X, \mu, N$</b> = skor individu, mean populasi, dan jumlah unit populasi; <b>$JK$</b> = jumlah kuadrat deviasi; <b>$JP$</b> = jumlah perkalian silang deviasi $X$ dan $Y$; <b>$KV$</b> = koefisien variansi; <b>$\text{Kov}$</b> = kovariansi.</li>
+        <li><b>Makna formula:</b> Mengukur rata-rata jarak penyebaran skor dari titik pusatnya (mean), baik dalam satuan kuadrat ($\sigma^2$), satuan asli ($\sigma$), rasio tak bersatuan ($KV$), maupun variasi bersama dua variabel ($\text{Kov}$).</li>
+      </ul>
+      <div class="fg-core">
+        <div>🧭 <b>Filosofis:</b> Rata-rata saja bisa menipu; dua bisnis dengan rata-rata sama dapat memiliki tingkat risiko atau ketidakpastian yang sangat berbeda.</div>
+        <div>📏 <b>Mengukur:</b> Derajat homogenitas/heterogenitas sebaran data (serta arah gerak bersama dua variabel pada kovariansi).</div>
+        <div>🎯 <b>Manfaat:</b> Menilai risiko/konsistensi kinerja, membandingkan variabilitas bersatuan beda (kg vs rupiah via $KV$), dan menjadi fondasi korelasi/regresi.</div>
+      </div>
+    </div>
+    <p>Ukuran variabilitas lainnya meliputi <i>rentang (range)</i>, jarak antarkuartil (4 bagian), antardesil (10 bagian), dan antarpersentil (100 bagian).</p>
+
+    <div class="flow">Setelah memahami cara meringkas data lewat tendensi sentral dan variabilitas, kita perlu mengetahui <b>bentuk distribusi data</b> sebagai jembatan menuju statistik inferensial dan probabilitas.</div>
+
+    <div class="abc"><span class="ltr">E</span><h4>Bentuk Distribusi Data (Distribusi Teoritis)</h4></div>
+    <p>Untuk data berskala interval digunakan <b>Distribusi Normal Standar ($Z$)</b>, <b>Distribusi $t$ Student</b> (puncak lebih landai), dan <b>Distribusi $F$</b> (tidak simetris). Untuk data berskala nominal digunakan <b>Distribusi Binomial</b> (2 kategori: sukses $\pi$ dan gagal $1-\pi$; $\sigma^2 = N\pi(1-\pi)$) dan <b>Multinomial / Kai-Kuadrat ($\chi^2$)</b> (&gt;2 kategori). Ciri kunci <b>Kurva Normal Standar</b> ($\mu = 0, \sigma = 1$):</p>
+    <div class="eqbox">\[ Z = \frac{X - \mu}{\sigma} \quad \Big|\quad \text{Luas } \pm 1\sigma = 68.26\%, \;\; \pm 1.96\sigma = 95.00\%, \;\; \pm 2\sigma = 95.44\% \]</div>
+    <div class="fguide">
+      <div class="fg-head">Bedah Variabel &amp; Intisari Formula Skor Standar (Z)</div>
+      <ul>
+        <li><b>$Z$</b> = skor standar (jumlah deviasi standar suatu nilai dari mean); <b>$X$</b> = nilai pengamatan mentah; <b>$\mu$</b> = rata-rata populasi; <b>$\sigma$</b> = deviasi standar populasi.</li>
+        <li><b>Makna formula:</b> Mengonversi distribusi normal apa pun ke dalam kurva normal baku berpusat di $\mu=0$ dengan simpangan $\sigma=1$ agar luas peluangnya dapat dibaca dari satu Tabel $Z$ universal.</li>
+      </ul>
+      <div class="fg-core">
+        <div>🧭 <b>Filosofis:</b> Menyamakan "bahasa" dan satuan dari variabel yang berbeda-beda agar posisi relatifnya dapat dibandingkan secara adil.</div>
+        <div>📏 <b>Mengukur:</b> Seberapa jauh (dalam satuan simpangan baku) dan ke arah mana suatu skor menyimpang dari rata-ratanya.</div>
+        <div>🎯 <b>Manfaat:</b> Menentukan peluang (luas kurva) dan batas kritis penolakan hipotesis nol ($H_0$) seperti $\pm 1.96$ untuk $\alpha=5\%$ dua ekor.</div>
+      </div>
+    </div>
+
+    <div class="chart-wrap">
+      <div class="chart-title">Kurva Distribusi Normal Standar $N(0,1)$ &amp; Batas Luas Kunci</div>
+      <div class="chart-sub">Simetris (50% kiri, 50% kanan), asimptotis terhadap sumbu horizontal; luas $\pm 1\sigma = 68.26\%$ dan $\pm 1.96\sigma = 95\%$.</div>
+      <div class="chart-host" id="ch_normal"></div>
+    </div>
+
+    <div class="abc"><span class="ltr">F</span><h4>Jenis Metode Statistik</h4></div>
+    <div class="table-wrap">
+      <table class="mini">
+        <thead><tr><th>Pembedaan</th><th>Kelompok 1</th><th>Kelompok 2</th></tr></thead>
+        <tbody>
+          <tr><td data-label="Pembedaan"><b>Cakupan kesimpulan</b></td><td data-label="Kelompok 1"><b>Deskriptif</b>: hasil hanya berlaku pada data/kelompok yang diamati.</td><td data-label="Kelompok 2"><b>Induktif / Inferensial</b>: mengestimasi parameter populasi &amp; menguji hipotesis dari sampel (generalisasi).</td></tr>
+          <tr><td data-label="Pembedaan"><b>Persyaratan skala &amp; distribusi</b></td><td data-label="Kelompok 1"><b>Parametrik</b>: menuntut skala minimal interval &amp; distribusi normal (lebih tajam; data tak normal bisa ditransformasi logaritma).</td><td data-label="Kelompok 2"><b>Nonparametrik</b> (<i>bebas distribusi</i>): cukup skala ordinal &amp; tak wajib normal; dipakai sebagai <b>alternatif</b> jika syarat parametrik sangat dilanggar (mis. Spearman menggantikan Pearson).</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="flow">Statistik inferensial bertumpu pada bagaimana statistik dari satu sampel dapat mewakili populasi—konsep ini dijelaskan melalui <b>Distribusi Penyampelan, Eror Standar, dan Estimasi</b>.</div>
+
+    <div class="abc"><span class="ltr">G</span><h4>Distribusi Penyampelan dan Eror Standar (SEM)</h4></div>
+    <p>Jumlah sampel berukuran $n$ tanpa pengembalian dari populasi $N$ adalah $k = \frac{N!}{n!(N-n)!}$. Deviasi standar dari distribusi rata-rata seluruh sampel disebut <span class="term">Standard Error of Mean <span class="en">(SEM)</span></span> ($\sigma_{\bar{X}} = \sigma/\sqrt{n}$, atau $S/\sqrt{n}$ bila $\sigma$ tak diketahui; penyebut variansi sampel adalah $n-1$ agar tak bias). Distribusi penyampelan rata-rata mendekati normal jika populasi infinit, pengambilan acak dengan pengembalian, atau ukuran sampel besar ($n > 30$).</p>
+
+    <div class="abc"><span class="ltr">H</span><h4>Estimasi Titik vs Estimasi Interval</h4></div>
+    <p>Estimasi satu titik berisiko tinggi (benar mutlak atau salah mutlak), sehingga riset memakai <b>estimasi interval</b> dengan batas kiri–kanan $\bar{X} \pm Z_{\alpha/2}(\sigma/\sqrt{n})$ (atau $t_{\alpha/2}$ dengan $dk = n-1$ bila $\sigma$ tak diketahui &amp; $n < 30$).</p>
+
+    <div class="abc"><span class="ltr">I</span><h4>Taraf Signifikansi ($\alpha$) dan Taraf Keyakinan ($1-\alpha$)</h4></div>
+    <p><b>Taraf signifikansi ($\alpha$)</b> (lazim 1% atau 5%) adalah kebalikan dari <b>taraf keyakinan ($1-\alpha$)</b> dan <i>wajib ditetapkan sebelum data sampel dikumpulkan</i>.</p>
+
+    <div class="abc"><span class="ltr">J</span><h4>Tiga Syarat Estimator yang Baik</h4></div>
+    <div class="rgrid c3" data-revealgroup>
+      <div class="rcell active" data-reveal data-detail="<b>1. Tidak Bias (Unbiased)</b> — Nilai yang diperkirakan (<i>expected value</i>) dari keseluruhan estimator sama dengan parameter populasinya: $E(\bar{X}) = \mu$. Rata-rata, median (pada populasi normal), proporsi, dan variansi sampel (dengan $n-1$) bersifat tak bias."><span class="stepnum">1</span><span><span class="rt">Tidak Bias</span><span class="rp">$E(\bar{X}) = \mu$</span></span></div>
+      <div class="rcell" data-reveal data-detail="<b>2. Efisien (Efficient)</b> — Memiliki eror standar ($SE$) distribusi penyampelan paling kecil sehingga rentang penyimpangan estimator dari parameternya sempit. $SE$ rata-rata lebih kecil dari $SE$ median sehingga rata-rata lebih efisien."><span class="stepnum">2</span><span><span class="rt">Efisien</span><span class="rp">Eror standar terkecil</span></span></div>
+      <div class="rcell" data-reveal data-detail="<b>3. Konsisten (Consistent)</b> — Variansi antarestimator kecil dan makin mengecil (makin mendekati parameter populasi) seiring diperbesarnya ukuran sampel ($n$)."><span class="stepnum">3</span><span><span class="rt">Konsisten</span><span class="rp">Stabil saat $n$ membesar</span></span></div>
+    </div>
+    <div class="rdetail" data-revealdetail><b>1. Tidak Bias (Unbiased)</b> — Nilai yang diperkirakan (<i>expected value</i>) dari keseluruhan estimator sama dengan parameter populasinya: $E(\bar{X}) = \mu$. Rata-rata, median (pada populasi normal), proporsi, dan variansi sampel (dengan $n-1$) bersifat tak bias.</div>
+  </div>
+
+  <!-- KB 2 -->
+  <h2 class="section" id="kb2"><span class="dot" style="background:var(--kb2)"></span>KB 2 — Statistik Pengujian Hipotesis</h2>
+  <div class="card kb2b"><span class="kb-tag kb2t">KEGIATAN BELAJAR 2 · HAL. 2.34–2.75</span>
+    <div class="acro-box">
+      <span class="acro-title">📖 Kamus Konteks Singkatan &amp; Akronim KB 2</span>
+      <ul class="acro-grid">
+        <li><b>$H_a$ / $H_0$</b>: Hipotesis Alternatif (penelitian) dan Hipotesis Nol/Nihil (statistik, menyatakan "tidak ada").</li>
+        <li><b>SEP</b>: <i>Standard Error of Proportion</i> — eror standar untuk pengujian hipotesis proporsi.</li>
+        <li><b>Anava / ANOVA</b>: Analisis Variansi (Uji-$F$) — membandingkan rata-rata $\ge 3$ kelompok (1 jalur &amp; faktorial 2 jalur).</li>
+        <li><b>LSD</b>: <i>Least Significant Difference</i> — uji pasca-Anava (<i>post-hoc</i>) untuk mencari pasangan rata-rata yang berbeda signifikan.</li>
+        <li><b>KK</b>: Koefisien Kontingensi ($\sqrt{\chi^2/(\chi^2+n)}$) — ukuran keeratan asosiasi variabel nominal.</li>
+        <li><b>OLS</b>: <i>Ordinary Least Squares</i> — metode kuadrat terkecil untuk mengestimasi garis regresi linier.</li>
+        <li><b>SPSS / LISREL</b>: Perangkat lunak statistik (<i>PASW/SPSS</i>) dan pemodelan persamaan struktural (<i>LISREL</i>).</li>
+      </ul>
+    </div>
+
+    <p class="lead">Untuk memverifikasi hipotesis penelitian (<b>$H_a$</b>) secara statistik, peneliti merumuskan <b>hipotesis nol/nihil ($H_0$)</b> yang menyatakan "tidak ada". Pengujian dilakukan terhadap $H_0$: jika $H_0$ ditolak maka $H_a$ tidak ditolak; jika $H_0$ tak ditolak maka $H_a$ ditolak.</p>
+
+    <div class="abc"><span class="ltr">A</span><h4>Sembilan Tahap Pengujian Hipotesis</h4></div>
+    <div class="flowchart">
+      <span class="fc-node">1. Rumus $H_a$<br><small>(Terarah lebih baik)</small></span><span class="fc-arrow">→</span>
+      <span class="fc-node">2. Rumus $H_0$<br><small>($=$, $\le$, $\ge$)</small></span><span class="fc-arrow">→</span>
+      <span class="fc-node">3. Tetapkan $\alpha$<br><small>(1% / 5%)</small></span><span class="fc-arrow">→</span>
+      <span class="fc-node">4. Ambil Sampel Acak<br><small>(Syarat probabilitas)</small></span><span class="fc-arrow">→</span>
+      <span class="fc-node">5–6. Pilih Uji &amp; Cek Asumsi<br><small>(Gagal → Nonparametrik)</small></span><span class="fc-arrow">→</span>
+      <span class="fc-node">7–9. Hitung, Bandingkan, Interpretasi<br><small>($Z_0$ vs $Z_t$)</small></span>
+    </div>
+    <p><b>Aturan Kritis Uji-$Z$ ($\alpha = 5\%$):</b> Dua arah ($H_a: \mu \ne 0$) → batas $\pm 1.96$; Satu arah ($H_a: \mu > 0$ atau $\mu < 0$) → batas $+1.64$ atau $-1.64$. Bila sampel tak dipilih acak, uji signifikansi hanya layak jika peneliti punya argumen kuat bahwa sampel tersebut merepresentasikan populasinya (Dunn; Remington &amp; Schork).</p>
+
+    <div class="abc"><span class="ltr">B</span><h4>Uji Proporsi Satu Kelompok (Uji-$Z$)</h4></div>
+    <p>Digunakan untuk menguji satu proporsi populasi ($\pi$) dengan syarat sampel besar ($n\pi \ge 5$ dan $n(1-\pi) \ge 5$): $Z = \frac{p - \pi}{\sigma_p}$ dengan $\sigma_p = \sqrt{\frac{\pi(1-\pi)}{n}}$.</p>
+
+    <div class="abc"><span class="ltr">C</span><h4>Uji Perbedaan Proporsi Dua Kelompok (Uji-$Z$)</h4></div>
+    <p>Menguji perbedaan proporsi antara dua kelompok sampel besar menggunakan statistik $Z = \frac{p_1 - p_2}{\sigma_{p_1-p_2}}$, dengan penyebut <i>Standard Error of Proportion</i> (SEP).</p>
+
+    <div class="abc"><span class="ltr">D</span><h4>Uji Proporsi $\ge 2$ Kelompok (Kai-Kuadrat $\chi^2$) &amp; Koefisien Kontingensi</h4></div>
+    <p>Untuk DV rasio (frekuensi/proporsi) dan IV nominal ($\ge 2$ kelompok): $\chi^2 = \sum \frac{(f_o - f_e)^2}{f_e}$ dengan <b>syarat wajib $f_e \ge 5$ per sel</b> (jika kurang, gabungkan kategori). Derajat kebebasan 1 jalur: $dk = b-1$; 2 jalur (uji independensi): $dk = (b-1)(k-1)$. Keeratan asosiasi nominal diukur lewat Koefisien Kontingensi $KK = \sqrt{\frac{\chi^2}{\chi^2 + n}}$ ($0$ s.d. $+1$, bergantung $n$) atau $\phi^2 = \chi^2/n$.</p>
+
+    <div class="abc"><span class="ltr">E</span><h4>Uji Rata-Rata Satu Kelompok (Uji-$Z$ vs Uji-$t$)</h4></div>
+    <p>Pakai Uji-$Z$ jika $\sigma$ diketahui atau $n > 30$; pakai Uji-$t$ ($t = \frac{\bar{X}-\mu}{S/\sqrt{n}}$, $dk = n-1$) jika $\sigma$ tak diketahui &amp; $n \le 30$ (populasi normal). <b>Uji-$t$ lebih dominan di praktik</b> karena berlaku untuk sampel kecil, dan saat $n > 30$ kurva $t$ mendekati $Z$.</p>
+
+    <div class="abc"><span class="ltr">F</span><h4>Uji Perbedaan Rata-Rata Dua Kelompok (Uji-$t$)</h4></div>
+    <p><b>Uji-$t$ Independen</b> untuk dua kelompok tak saling tergantung (asumsi independen, normal, variansi homogen) memakai variansi gabungan $S_p^2$ dengan $dk = n_1 + n_2 - 2$. <b>Uji-$t$ Dependen/berkorelasi</b> (sebelum–sesudah pada subyek sama atau berpasangan) memakai $t = \bar{X}_D / SE_D$ dengan $dk = n - 1$.</p>
+
+    <div class="abc"><span class="ltr">G</span><h4>Uji Rata-Rata $\ge 3$ Kelompok (Anava / Uji-$F$), Homogenitas, &amp; LSD</h4></div>
+    <p>DV interval, IV nominal; 3 asumsi: normalitas tiap sel, homogenitas variansi ($F = S_1^2/S_2^2$), dan sampel acak independen. <b>Anava 1 Jalur:</b> $F = RK_A / RK_D$ (untuk 2 kelompok, $F = t^2$). <b>Anava Faktorial 2 Jalur:</b> menguji efek utama A, efek utama B, dan efek interaksi AB (idealnya $n > 30$/sel &amp; seimbang). Jika $F$ signifikan pada $>2$ kelompok, lanjutkan uji pasca-Anava <b>LSD</b> (<i>Least Significant Difference</i>, paling efektif menurut Carmer &amp; Swanson).</p>
+
+    <div class="flow">Bila kedua variabel (independen dan dependen) sama-sama berskala minimal interval dan peneliti ingin mengukur keeratan hubungan atau melakukan prediksi, digunakan <b>Analisis Korelasi dan Regresi</b>.</div>
+
+    <div class="abc"><span class="ltr">H</span><h4>Analisis Regresi dan Korelasi</h4></div>
+    <p><b>Korelasi Product-Moment Pearson ($r$)</b> menguji hubungan linier dua variabel kontinu (asumsi: pasangan independen, minimal skala interval, hubungan linier) sebagai syarat awal pemilihan prediktor ($X$) sebelum regresi—dengan <b>tanda korelasi</b> lebih penting daripada signifikansinya. <b>Analisis Regresi (OLS)</b> memprediksi $Y$ (kriterium) dari $X$ (prediktor):</p>
+    <div class="eqbox">\[ \text{Sederhana: } \hat{Y} = a + bX \;\; (\text{skor standar: } Z_{\hat{Y}} = \beta Z_X, \; \beta = r) \qquad \text{Ganda: } \hat{Y} = a + b_1 X_1 + b_2 X_2 \]</div>
+    <div class="fguide">
+      <div class="fg-head">Bedah Variabel &amp; Intisari Formula Regresi Linier (OLS)</div>
+      <ul>
+        <li><b>$\hat{Y}$</b> = nilai prediksi variabel dependen (kriterium); <b>$a$</b> = intersep (konstanta saat $X=0$); <b>$b, b_1, b_2$</b> = koefisien regresi / regresi parsial; <b>$X, X_1, X_2$</b> = variabel independen (prediktor); <b>$\beta$</b> = koefisien regresi terstandar (pada regresi sederhana, $\beta = r$).</li>
+        <li><b>Makna formula:</b> Memodelkan garis lurus terbaik (meminimumkan jumlah kuadrat residu) untuk memprediksi perubahan $Y$ setiap terjadi perubahan satu satuan pada $X$ (dengan mengontrol $X$ lain pada regresi ganda).</li>
+      </ul>
+      <div class="fg-core">
+        <div>🧭 <b>Filosofis:</b> Menarik pola hubungan sistematis dari data empiris untuk memperkirakan nilai variabel akibat dari satu atau lebih variabel penjelas.</div>
+        <div>📏 <b>Mengukur:</b> Arah (tanda $+$ atau $-$) serta besar perubahan prediksi $Y$ per satuan perubahan $X$.</div>
+        <div>🎯 <b>Manfaat:</b> Menguji hipotesis prediksi/pengaruh parsial ($t$) &amp; serentak ($F$) serta dasar peramalan keputusan bisnis.</div>
+      </div>
+    </div>
+
+    <ul class="exp">
+      <li><span class="term">Prioritas uji regresi sederhana</span>: uji serentak lewat Anava ($F$) dan uji parsial ($t$) untuk $b$ dan $a$. Jika intersep $a$ tak signifikan tapi koefisien $b$ signifikan, persamaan tetap layak dipakai (sebaliknya tidak layak), dan <b>tanda $b$ wajib sesuai teori</b>.</li>
+      <li><span class="term">5 Asumsi Regresi Ganda</span>: (a) hubungan $X$–$Y$ linier, (b) <b>homoskedastisitas</b> (variansi residu konstan), (c) bebas <b>autokorelasi</b> (residu independen), (d) residu berdistribusi normal, dan (e) <b>tidak ada multikolinieritas</b> (antar-$X$ tidak berkorelasi tinggi).</li>
+      <li><span class="term">Gejala &amp; Solusi Multikolinieritas</span>: uji-$F$ serentak signifikan dan $R^2$ sangat tinggi, tetapi uji-$t$ masing-masing koefisien regresi parsial ($b_1, b_2$) justru tidak signifikan karena $X_1$ dan $X_2$ tumpang-tindih. Solusi: hilangkan variabel independen yang korelasinya dengan $Y$ lebih kecil.</li>
+    </ul>
+
+    <div class="abc"><span class="ltr">I</span><h4>Eror Standar (Standard Error)</h4></div>
+    <p>Eror standar selalu menjadi penyebut statistik uji: makin besar ukuran sampel ($n$) → makin kecil $SE$ → makin besar statistik uji → makin mudah menolak $H_0$. Nilai $SE$ wajib selalu dilaporkan dalam laporan penelitian.</p>
+
+    <div class="abc"><span class="ltr">J</span><h4>Eror Tipe I ($\alpha$) dan Eror Tipe II ($\beta$)</h4></div>
+    <p>$\alpha$ adalah peluang menolak $H_0$ yang benar, sedangkan $\beta$ adalah peluang tidak menolak $H_0$ yang salah. Keduanya mengalami <i>trade-off</i> (menurunkan $\alpha$ akan menaikkan $\beta$), sehingga pemilihannya didasarkan pada biaya/konsekuensi kesalahan.</p>
+
+    <div class="abc"><span class="ltr">K</span><h4>Kemampuan (Power) Uji Statistik</h4></div>
+    <p>Tren metodologi modern mulai bergeser dari ketergantungan pada uji signifikansi semata menuju perhatian pada <b>kemampuan (<i>power</i>) uji statistik</b> ($1-\beta$) untuk mendeteksi efek yang benar-benar ada.</p>
+
+    <div class="abc"><span class="ltr">L</span><h4>Perangkat Lunak Statistik</h4></div>
+    <p>Komputasi statistik dalam praktik riset bisnis dilakukan menggunakan perangkat lunak seperti <b>SPSS (PASW)</b> dan <b>LISREL</b> (untuk pemodelan persamaan struktural lanjut), bukan dihitung manual.</p>
+  </div>
+
+  <h2 class="section" id="glosarium"><span class="dot"></span>Glosarium Kilat</h2>
+  <div class="card"><dl class="glossary">
+    <dt>Analisis Regresi (Regression Analysis)</dt><dd>Teknik statistik untuk memprediksi nilai suatu variabel dependen ($Y$) berdasarkan nilai satu atau lebih variabel independen ($X$).</dd>
+    <dt>Analisis Variansi / Anava (ANOVA)</dt><dd>Analisis statistik (uji-$F$) untuk membandingkan signifikansi perbedaan dua atau lebih rata-rata populasi; versi faktorial menguji efek utama dan efek interaksi.</dd>
+    <dt>Deviasi Standar &amp; Variansi</dt><dd>Variansi ($\sigma^2$) adalah rata-rata deviasi kuadrat dari mean; deviasi standar ($\sigma$) adalah akar kuadrat dari variansi.</dd>
+    <dt>Eror Standar (Standard Error)</dt><dd>Ukuran variabilitas (deviasi standar) dari distribusi penyampelan statistik sampel; selalu menjadi penyebut statistik uji.</dd>
+    <dt>Eror Tipe I ($\alpha$) &amp; Eror Tipe II ($\beta$)</dt><dd>Eror Tipe I = peluang menolak $H_0$ yang benar (taraf signifikansi); Eror Tipe II = peluang tidak menolak $H_0$ yang salah.</dd>
+    <dt>Estimator (Tidak Bias, Efisien, Konsisten)</dt><dd>Statistik sampel untuk memperkirakan parameter populasi; baik jika nilai harapannya sama dengan parameter, $SE$ terkecil, dan variansinya mengecil saat $n$ membesar.</dd>
+    <dt>Hipotesis Nihil ($H_0$) vs Hipotesis Alternatif ($H_a$)</dt><dd>$H_0$ adalah hipotesis statistik yang menyatakan "tidak ada" dan diuji langsung; $H_a$ adalah hipotesis penelitian/substantif.</dd>
+    <dt>Koefisien Determinasi ($R^2$) &amp; Adjusted $R^2$</dt><dd>Persentase variabilitas $Y$ yang dijelaskan oleh $X$; versi disesuaikan (Adjusted) memperhitungkan ukuran sampel dan jumlah prediktor (bisa bernilai negatif).</dd>
+    <dt>Koefisien Kontingensi ($KK$)</dt><dd>Ukuran keeratan asosiasi untuk variabel diskrit kategorik (nominal), bergerak dari $0$ sampai $+1$.</dd>
+    <dt>Koefisien Regresi Parsial</dt><dd>Koefisien regresi suatu variabel independen pada regresi ganda ketika variabel independen lainnya dibuat konstan (dikontrol).</dd>
+    <dt>Kovariansi</dt><dd>Ukuran variasi bersama antara kebervariasian dua variabel ($JP/N$).</dd>
+    <dt>LSD (Least Significant Difference)</dt><dd>Uji signifikansi perbedaan tiap pasang dua rata-rata setelah Anava (uji-$F$) menunjukkan hasil signifikan.</dd>
+    <dt>Parameter vs Statistik</dt><dd>Parameter adalah ukuran yang diperoleh dari populasi ($\mu, \sigma, \pi$); statistik adalah ukuran yang diperoleh dari sampel ($\bar{X}, S, p$).</dd>
+    <dt>Skala (Nominal, Ordinal, Interval, Rasio)</dt><dd>Tingkatan hasil pengukuran variabel: kode pilah (nominal), peringkat (ordinal), jarak sama + nol relatif (interval), dan jarak sama + nol mutlak (rasio).</dd>
+    <dt>Statistik Parametrik vs Nonparametrik</dt><dd>Parametrik untuk variabel kontinu berskala minimal interval dengan asumsi distribusi tertentu; nonparametrik bebas distribusi sebagai alternatif bila syarat parametrik tak terpenuhi.</dd>
+    <dt>Taraf Keyakinan ($1 - \alpha$)</dt><dd>Peluang bahwa estimasi interval terhadap parameter populasi adalah benar; kebalikan dari taraf signifikansi ($\alpha$).</dd>
+  </dl></div>
+</div>
+<footer><b>EKMA5104 — Metode Penelitian Bisnis (Edisi 3)</b> · Modul 2: Metode Statistik<br>Bahan belajar ringkas untuk persiapan ujian · Dr. Lerbin Roberto Aritonang R., M.M.</footer>
+<script>
+(function(){
+  var pb=document.getElementById('progress');
+  function onScroll(){var h=document.documentElement;var sc=h.scrollTop||document.body.scrollTop;var max=(h.scrollHeight-h.clientHeight)||1;pb.style.width=(sc/max*100)+'%';}
+  document.addEventListener('scroll',onScroll,{passive:true});onScroll();
+
+  var list=document.getElementById('conceptList');var items=[].slice.call(list.querySelectorAll('li'));var boxes=items.map(function(li){return li.querySelector('input');});
+  document.getElementById('totalCount').textContent=items.length;var doneEl=document.getElementById('doneCount');var KEY='studi_ekma5104_m2_concepts_v1';
+  function load(){try{var a=JSON.parse(localStorage.getItem(KEY)||'[]');boxes.forEach(function(b,i){if(a[i])b.checked=true;});}catch(e){}}
+  function save(){try{localStorage.setItem(KEY,JSON.stringify(boxes.map(function(b){return b.checked?1:0;})));}catch(e){}}
+  function refresh(){var n=0;items.forEach(function(li,i){if(boxes[i].checked){li.classList.add('done');n++;}else li.classList.remove('done');});doneEl.textContent=n;}
+  load();refresh();boxes.forEach(function(b){b.addEventListener('change',function(){refresh();save();});});
+  document.getElementById('resetBtn').addEventListener('click',function(){boxes.forEach(function(b){b.checked=false;});refresh();save();});
+
+  [].slice.call(document.querySelectorAll('[data-revealgroup]')).forEach(function(g){
+    var det=g.querySelector('[data-revealdetail]');if(!det){var sib=g.nextElementSibling;if(sib&&sib.hasAttribute&&sib.hasAttribute('data-revealdetail'))det=sib;}
+    var cells=[].slice.call(g.querySelectorAll('[data-reveal]'));
+    cells.forEach(function(c){c.addEventListener('click',function(){cells.forEach(function(x){x.classList.remove('active');});c.classList.add('active');if(det){det.innerHTML=c.getAttribute('data-detail');if(window.MathJax&&window.MathJax.typesetPromise)window.MathJax.typesetPromise([det]);}});});
+  });
+
+  (function(){
+    var ROWH=46,NODE_H=32,PAD=13,GAP=52;var COL={root:'#0f5e8f',kb1:'#1a86c7',kb2:'#e08a1e',kb3:'#2a9d6f',kb4:'#7a5cc0',kb5:'#c75b7a'};
+    var mc=document.createElement('canvas').getContext('2d');mc.font='700 13px -apple-system,Segoe UI,Roboto,sans-serif';
+    function tw(t){return Math.ceil(mc.measureText(t).width);}function esc(t){return t.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');}
+    function rgba(hex,a){var h=hex.replace('#','');return 'rgba('+parseInt(h.substr(0,2),16)+','+parseInt(h.substr(2,2),16)+','+parseInt(h.substr(4,2),16)+','+a+')';}
+    var DATA={label:'MODUL 2 — Metode Statistik',color:COL.root,children:[
+  {label:'KB1 · Dasar-Dasar Analisis Statistik',color:COL.kb1,children:[
+    {label:'A. Variabel & 4 Skala (Nominal, Ordinal, Interval, Rasio)'},
+    {label:'B. Penataan & Presentasi Data'},
+    {label:'C. Ukuran Tendensi Sentral (Mean, Median, Mode)'},
+    {label:'D. Ukuran Variabilitas (Variansi, SD, KV, Kovariansi, Rentang)'},
+    {label:'E. Bentuk Distribusi Data (Normal Z, t, F, Binomial, Multinomial)'},
+    {label:'F. Jenis Metode Statistik (Deskriptif/Inferensial · Parametrik/Non)'},
+    {label:'G. Distribusi Penyampelan & Standard Error (SEM)'},
+    {label:'H. Estimasi Titik vs Estimasi Interval'},
+    {label:'I. Taraf Signifikansi (α) & Taraf Keyakinan (1−α)'},
+    {label:'J. 3 Syarat Estimator Baik (Tak Bias, Efisien, Konsisten)'}
+  ]},
+  {label:'KB2 · Statistik Pengujian Hipotesis',color:COL.kb2,children:[
+    {label:'A. 9 Tahap Pengujian Hipotesis (Ha vs H0)'},
+    {label:'B. Uji Proporsi 1 Kelompok (Z)'},
+    {label:'C. Uji Perbedaan Proporsi 2 Kelompok (Z)'},
+    {label:'D. Uji Proporsi ≥2 Kelompok (Kai-Kuadrat & KK)'},
+    {label:'E. Uji Rata-Rata 1 Kelompok (Z vs t)'},
+    {label:'F. Uji Perbedaan Rata-Rata 2 Kelompok (t Independen/Dependen)'},
+    {label:'G. Uji Rata-Rata ≥3 Kelompok (Anava 1 & 2 Jalur, Homogenitas, LSD)'},
+    {label:'H. Analisis Korelasi Pearson & Regresi (Sederhana & Ganda)'},
+    {label:'I. Eror Standar (SE)'},
+    {label:'J. Eror Tipe I (α) & Eror Tipe II (β)'},
+    {label:'K. Kemampuan (Power) Uji Statistik'},
+    {label:'L. Perangkat Lunak Statistik (SPSS/LISREL)'}
+  ]}
+]};
+    var idc=0;(function w(n,c){n.id='n'+(idc++);n.color=n.color||c;(n.children||[]).forEach(function(k){w(k,n.color);});})(DATA,COL.root);
+    (function w(n,d){if(d>=2&&n.children&&n.children.length)n.collapsed=true;(n.children||[]).forEach(function(k){w(k,d+1);});})(DATA,0);
+    var host=document.getElementById('mindmap');
+    function render(){
+      var colW=[];(function w(n,d){var width=tw(n.label)+PAD*2+((n.children&&n.children.length)?20:0);colW[d]=Math.max(colW[d]||0,width);if(!n.collapsed)(n.children||[]).forEach(function(k){w(k,d+1);});})(DATA,0);
+      var colX=[],acc=14;for(var d=0;d<colW.length;d++){colX[d]=acc;acc+=colW[d]+GAP;}var row={v:0};
+      (function lay(n,d){if(!n.children||!n.children.length||n.collapsed){n._y=row.v*ROWH+ROWH/2+8;row.v++;return;}var f,l;n.children.forEach(function(k,i){lay(k,d+1);if(i===0)f=k._y;l=k._y;});n._y=(f+l)/2;})(DATA,0);
+      var totalW=acc,totalH=row.v*ROWH+24;var nodes=[],links=[];
+      (function col(n,d,p){n._x=colX[d];n._w=tw(n.label)+PAD*2+((n.children&&n.children.length)?20:0);nodes.push({n:n,d:d});if(p)links.push([p,n]);if(!n.collapsed)(n.children||[]).forEach(function(k){col(k,d+1,n);});})(DATA,0,null);
+      var s='<svg width="'+totalW+'" height="'+totalH+'" viewBox="0 0 '+totalW+' '+totalH+'" xmlns="http://www.w3.org/2000/svg">';
+      links.forEach(function(pr){var a=pr[0],b=pr[1],x1=a._x+a._w,y1=a._y,x2=b._x,y2=b._y,mx=(x1+x2)/2;s+='<path d="M'+x1+' '+y1+' C'+mx+' '+y1+' '+mx+' '+y2+' '+x2+' '+y2+'" fill="none" stroke="'+rgba(b.color,.5)+'" stroke-width="2"/>';});
+      nodes.forEach(function(o){var n=o.n,x=n._x,y=n._y-NODE_H/2,w=n._w,hk=n.children&&n.children.length;var fill=o.d===0?n.color:(o.d===1?rgba(n.color,.12):'#fff');var tf=o.d===0?'#fff':'#1c2733';
+        s+='<g data-id="'+n.id+'" style="cursor:'+(hk?'pointer':'default')+'"><rect x="'+x+'" y="'+y+'" rx="9" width="'+w+'" height="'+NODE_H+'" fill="'+fill+'" stroke="'+n.color+'" stroke-width="'+(o.d===0?0:1.6)+'"/><text x="'+(x+PAD)+'" y="'+(n._y+4)+'" font-size="13" font-weight="'+(o.d<=1?'700':'500')+'" fill="'+tf+'" font-family="-apple-system,Segoe UI,Roboto,sans-serif">'+esc(n.label)+'</text>';
+        if(hk){var cx=x+w-12,cy=n._y;s+='<circle cx="'+cx+'" cy="'+cy+'" r="8.5" fill="'+n.color+'"/><text x="'+cx+'" y="'+(cy+4.5)+'" font-size="13" font-weight="700" fill="#fff" text-anchor="middle" font-family="sans-serif">'+(n.collapsed?'+':'\u2013')+'</text>';}s+='</g>';});
+      s+='</svg>';host.innerHTML=s;
+    }
+    host.addEventListener('click',function(e){var g=e.target.closest('g[data-id]');if(!g)return;var id=g.getAttribute('data-id');(function f(n){if(n.id===id){if(n.children&&n.children.length)n.collapsed=!n.collapsed;return true;}return (n.children||[]).some(f);})(DATA);render();});
+    document.getElementById('mmExpand').addEventListener('click',function(){(function w(n){if(n.children)n.collapsed=false;(n.children||[]).forEach(w);})(DATA);render();});
+    document.getElementById('mmCollapse').addEventListener('click',function(){(function w(n,d){if(d>=1&&n.children&&n.children.length)n.collapsed=true;(n.children||[]).forEach(function(k){w(k,d+1);});})(DATA,0);render();});
+    render();
+  })();
+
+  function drawCartesian(hostId, cfg){
+    var host=document.getElementById(hostId);if(!host)return;
+    var W=cfg.w||680,H=cfg.h||300,P={t:24,r:28,b:44,l:58};
+    var pw=W-P.l-P.r,ph=H-P.t-P.b;
+    var x0=cfg.xmin,x1=cfg.xmax,y0=cfg.ymin,y1=cfg.ymax;
+    function sx(x){return P.l+(x-x0)/(x1-x0)*pw;}
+    function sy(y){return P.t+ph-(y-y0)/(y1-y0)*ph;}
+    function esc(t){return String(t).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');}
+    var s='<svg viewBox="0 0 '+W+' '+H+'" width="'+W+'" height="'+H+'" xmlns="http://www.w3.org/2000/svg">';
+    s+='<rect x="'+P.l+'" y="'+P.t+'" width="'+pw+'" height="'+ph+'" fill="#fff" stroke="#e4e9f0"/>';
+    var xticks=cfg.xticks||5,yticks=cfg.yticks||5;
+    for(var i=0;i<=xticks;i++){var xv=x0+(x1-x0)*i/xticks,px=sx(xv);s+='<line x1="'+px.toFixed(1)+'" y1="'+P.t+'" x2="'+px.toFixed(1)+'" y2="'+(P.t+ph)+'" stroke="#eef2f6" stroke-width="1"/>';var xl=cfg.xfmt?cfg.xfmt(xv):(Math.round(xv*100)/100);s+='<text x="'+px.toFixed(1)+'" y="'+(P.t+ph+16)+'" text-anchor="middle" font-size="11" fill="#5c6b7a" font-family="-apple-system,Segoe UI,sans-serif">'+esc(xl)+'</text>';}
+    for(var j=0;j<=yticks;j++){var yv=y0+(y1-y0)*j/yticks,py=sy(yv);s+='<line x1="'+P.l+'" y1="'+py.toFixed(1)+'" x2="'+(P.l+pw)+'" y2="'+py.toFixed(1)+'" stroke="#eef2f6" stroke-width="1"/>';var yl=cfg.yfmt?cfg.yfmt(yv):(Math.round(yv*100)/100);s+='<text x="'+(P.l-8)+'" y="'+(py+4).toFixed(1)+'" text-anchor="end" font-size="11" fill="#5c6b7a" font-family="-apple-system,Segoe UI,sans-serif">'+esc(yl)+'</text>';}
+    if(y0<0&&y1>0){var zy=sy(0);s+='<line x1="'+P.l+'" y1="'+zy.toFixed(1)+'" x2="'+(P.l+pw)+'" y2="'+zy.toFixed(1)+'" stroke="#94a3b8" stroke-width="1.3" stroke-dasharray="4 3"/>';}
+    if(x0<0&&x1>0){var zx=sx(0);s+='<line x1="'+zx.toFixed(1)+'" y1="'+P.t+'" x2="'+zx.toFixed(1)+'" y2="'+(P.t+ph)+'" stroke="#94a3b8" stroke-width="1.3" stroke-dasharray="4 3"/>';}
+    s+='<line x1="'+P.l+'" y1="'+(P.t+ph)+'" x2="'+(P.l+pw)+'" y2="'+(P.t+ph)+'" stroke="#64748b" stroke-width="1.5"/>';
+    s+='<line x1="'+P.l+'" y1="'+P.t+'" x2="'+P.l+'" y2="'+(P.t+ph)+'" stroke="#64748b" stroke-width="1.5"/>';
+    if(cfg.xlabel)s+='<text x="'+(P.l+pw/2)+'" y="'+(H-8)+'" text-anchor="middle" font-size="12" font-weight="700" fill="#1c2733" font-family="-apple-system,Segoe UI,sans-serif">'+esc(cfg.xlabel)+'</text>';
+    if(cfg.ylabel)s+='<text x="15" y="'+(P.t+ph/2)+'" text-anchor="middle" font-size="12" font-weight="700" fill="#1c2733" font-family="-apple-system,Segoe UI,sans-serif" transform="rotate(-90 15 '+(P.t+ph/2)+')">'+esc(cfg.ylabel)+'</text>';
+    (cfg.vlines||[]).forEach(function(vl){var px=sx(vl.x);s+='<line x1="'+px.toFixed(1)+'" y1="'+P.t+'" x2="'+px.toFixed(1)+'" y2="'+(P.t+ph)+'" stroke="'+(vl.color||'#94a3b8')+'" stroke-width="1.2" stroke-dasharray="5 4"/>';if(vl.label)s+='<text x="'+(px+4).toFixed(1)+'" y="'+(P.t+14)+'" font-size="10.5" font-weight="700" fill="'+(vl.color||'#475569')+'" font-family="-apple-system,Segoe UI,sans-serif">'+esc(vl.label)+'</text>';});
+    (cfg.hlines||[]).forEach(function(hl){var py=sy(hl.y);s+='<line x1="'+P.l+'" y1="'+py.toFixed(1)+'" x2="'+(P.l+pw)+'" y2="'+py.toFixed(1)+'" stroke="'+(hl.color||'#94a3b8')+'" stroke-width="1.2" stroke-dasharray="5 4"/>';if(hl.label)s+='<text x="'+(P.l+pw-4)+'" y="'+(py-5).toFixed(1)+'" text-anchor="end" font-size="10.5" font-weight="700" fill="'+(hl.color||'#475569')+'" font-family="-apple-system,Segoe UI,sans-serif">'+esc(hl.label)+'</text>';});
+    (cfg.series||[]).forEach(function(sr){var pts=sr.pts.map(function(p){return sx(p[0]).toFixed(1)+','+sy(p[1]).toFixed(1);}).join(' ');s+='<polyline fill="none" stroke="'+sr.color+'" stroke-width="'+(sr.w||2.5)+'"'+(sr.dash?' stroke-dasharray="'+sr.dash+'"':'')+' points="'+pts+'"/>';});
+    (cfg.markers||[]).forEach(function(mk){var cx=sx(mk.x),cy=sy(mk.y);s+='<circle cx="'+cx.toFixed(1)+'" cy="'+cy.toFixed(1)+'" r="4.8" fill="'+(mk.color||'#0f5e8f')+'" stroke="#fff" stroke-width="1.6"/>';var dx=mk.dx||8,dy=mk.dy||-8,anc=mk.anchor||'start';if(mk.label)s+='<text x="'+(cx+dx).toFixed(1)+'" y="'+(cy+dy).toFixed(1)+'" text-anchor="'+anc+'" font-size="11" font-weight="700" fill="'+(mk.color||'#0f5e8f')+'" font-family="-apple-system,Segoe UI,sans-serif">'+esc(mk.label)+'</text>';});
+    s+='</svg>';
+    var leg=(cfg.series&&cfg.series.length>1)?'<div class="chart-legend">'+cfg.series.map(function(sr){return '<span><i style="background:'+sr.color+';'+(sr.dash?'border-top:2px dashed '+sr.color+';background:none;height:0':'')+'"></i>'+esc(sr.name)+'</span>';}).join('')+'</div>':'';
+    host.innerHTML=s+leg;
+  }
+  (function(){
+    var pts=[];for(var z=-3.5;z<=3.501;z+=0.1){pts.push([z, Math.exp(-0.5*z*z)/Math.sqrt(2*Math.PI)]);}
+    drawCartesian('ch_normal',{
+      xmin:-3.5,xmax:3.5,ymin:0,ymax:0.45,xticks:7,yticks:4,
+      xlabel:'Skor Standar (Z)',ylabel:'Kepadatan f(Z)',
+      vlines:[
+        {x:-1.96,color:'#e08a1e',label:'-1.96'},
+        {x:-1,color:'#2a9d6f',label:'-1σ'},
+        {x:1,color:'#2a9d6f',label:'+1σ'},
+        {x:1.96,color:'#e08a1e',label:'+1.96'}
+      ],
+      series:[{name:'Kurva Normal Standar N(0,1)',color:'#1a86c7',pts:pts}],
+      markers:[{x:0,y:0.3989,color:'#0f5e8f',label:'μ = 0 (Puncak)',dx:8,dy:2}]
+    });
+  })();
+
+  window.addEventListener('load',function(){setTimeout(function(){if(window.MathJax&&window.MathJax.typesetPromise)window.MathJax.typesetPromise();},400);});
+})();
+</script></body></html>

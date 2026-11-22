@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Modul 5 — Membangun Program Pemasaran Strategic | EKMA5206</title>
+<script>window.MathJax={tex:{inlineMath:[['$','$']],displayMath:[['\\[','\\]']]},svg:{fontCache:'global'},startup:{typeset:true}};</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js" id="MathJax-script" async></script>
+<style>
+  :root{--bg:#f4f6f9;--panel:#fff;--ink:#1c2733;--muted:#5c6b7a;--line:#e4e9f0;--brand:#1a86c7;--brand-dark:#0f5e8f;--brand-soft:#e7f3fb;--kb1:#1a86c7;--kb2:#e08a1e;--kb3:#2a9d6f;--kb4:#7a5cc0;--kb5:#c75b7a;--radius:14px;--shadow:0 1px 2px rgba(16,42,67,.06),0 6px 20px rgba(16,42,67,.06);--maxw:900px}
+  *{box-sizing:border-box}html{scroll-behavior:smooth}
+  body{margin:0;background:var(--bg);color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;line-height:1.72;-webkit-font-smoothing:antialiased}
+  #progress{position:fixed;top:0;left:0;height:4px;width:0;background:linear-gradient(90deg,var(--brand),#53c0ec);z-index:200;transition:width .1s}
+  header.top{position:sticky;top:0;z-index:100;background:rgba(255,255,255,.92);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+  .top-in{max-width:var(--maxw);margin:0 auto;padding:10px 20px;display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+  .badge{background:var(--brand);color:#fff;font-weight:700;font-size:.72rem;letter-spacing:.5px;padding:4px 10px;border-radius:999px;white-space:nowrap}
+  .top-title{font-size:.9rem;font-weight:600;color:var(--muted)}
+  nav.jump{margin-left:auto;display:flex;gap:4px;flex-wrap:wrap}
+  nav.jump a{font-size:.78rem;color:var(--muted);text-decoration:none;padding:5px 10px;border-radius:8px}
+  nav.jump a:hover{background:var(--brand-soft);color:var(--brand-dark)}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 20px 90px}
+  .hero{margin-top:26px;padding:30px 28px;border-radius:var(--radius);color:#fff;background:linear-gradient(135deg,#0f5e8f 0%,#1a86c7 60%,#2fa4df 100%);box-shadow:var(--shadow);position:relative;overflow:hidden}
+  .hero::after{content:"05";position:absolute;right:18px;bottom:-26px;font-size:150px;font-weight:800;opacity:.12;line-height:1}
+  .hero .eyebrow{font-size:.78rem;letter-spacing:1.5px;text-transform:uppercase;opacity:.9;font-weight:600}
+  .hero h1{margin:.3em 0 .25em;font-size:1.62rem;line-height:1.25;max-width:90%}
+  .hero .meta{display:flex;gap:18px;flex-wrap:wrap;font-size:.84rem;opacity:.95;margin-top:10px}
+  h2.section{font-size:1.3rem;margin:48px 0 4px;display:flex;align-items:center;gap:10px;scroll-margin-top:70px}
+  h2.section .dot{width:10px;height:22px;border-radius:4px;background:var(--brand)}
+  .section-sub{color:var(--muted);font-size:.9rem;margin:0 0 18px}
+  .card{background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);padding:22px 24px;margin:16px 0;--dot:var(--brand)}
+  .concepts{list-style:none;margin:0;padding:0;display:grid;gap:10px}
+  .concepts li{display:flex;gap:12px;align-items:flex-start;padding:12px 14px;border:1px solid var(--line);border-radius:10px;background:#fcfdff;transition:.15s}
+  .concepts li:hover{border-color:#cfe3f2}
+  .concepts input{margin-top:4px;width:18px;height:18px;accent-color:var(--brand);flex:none;cursor:pointer}
+  .concepts .ct{font-weight:600}.concepts .cd{display:block;font-weight:400;color:var(--muted);font-size:.86rem;margin-top:2px}
+  .concepts li.done{background:var(--brand-soft);border-color:#bfe0f3}.concepts li.done .ct{text-decoration:line-through;opacity:.65}
+  .cl-head{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-bottom:6px}
+  .cl-head .count{font-size:.82rem;color:var(--muted);background:var(--brand-soft);padding:3px 10px;border-radius:999px;font-weight:600}
+  .btn-reset{font-size:.78rem;border:1px solid var(--line);background:#fff;color:var(--muted);padding:5px 12px;border-radius:8px;cursor:pointer}.btn-reset:hover{background:#f6f8fb}
+  .mm-toolbar{display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin-bottom:10px}
+  .mm-btn{font-size:.78rem;border:1px solid var(--line);background:#fff;padding:6px 13px;border-radius:8px;cursor:pointer;color:var(--brand-dark);font-weight:600}.mm-btn:hover{background:var(--brand-soft)}
+  .mm-hint{font-size:.76rem;color:var(--muted)}
+  .mindmap-host{height:580px;overflow:auto;border:1px solid var(--line);border-radius:10px;background:#fcfdff}.mindmap-host svg{display:block}
+  .kb-tag{display:inline-flex;align-items:center;gap:8px;font-size:.78rem;font-weight:700;letter-spacing:.3px;color:#fff;padding:5px 12px;border-radius:999px;margin-bottom:6px}
+  .kb1t{background:var(--kb1)}.kb2t{background:var(--kb2)}.kb3t{background:var(--kb3)}.kb4t{background:var(--kb4)}.kb5t{background:var(--kb5)}
+  .kb1b{--dot:var(--kb1)}.kb2b{--dot:var(--kb2)}.kb3b{--dot:var(--kb3)}.kb4b{--dot:var(--kb4)}.kb5b{--dot:var(--kb5)}
+  .lead{font-size:1.02rem}.term{font-weight:700;color:var(--dot)}.en{font-style:italic;color:var(--muted);font-weight:500}
+  .abc{display:flex;align-items:center;gap:10px;margin:28px 0 10px;padding-bottom:6px;border-bottom:2px solid currentColor;border-bottom-color:color-mix(in srgb,var(--dot) 18%,#fff)}
+  .abc .ltr{background:var(--dot);color:#fff;font-weight:800;min-width:30px;height:30px;padding:0 7px;border-radius:8px;display:grid;place-items:center;flex:none}
+  .abc h4{margin:0;font-size:1.06rem;color:var(--dot)}
+  .numh{font-weight:700;color:var(--dot);margin:22px 0 4px;font-size:1rem}
+  .leth{font-weight:800;color:var(--dot);margin:20px 0 6px;font-size:.98rem;border-left:3px solid var(--dot);padding-left:10px}
+  ol.book{margin:12px 0;padding-left:28px}ol.book>li{margin:10px 0;padding-left:6px}ol.book>li::marker{font-weight:700;color:var(--dot)}
+  ul.exp{list-style:none;margin:12px 0;padding:0;display:grid;gap:10px}ul.exp>li{position:relative;padding-left:20px}
+  ul.exp>li::before{content:"";position:absolute;left:0;top:11px;width:8px;height:8px;border-radius:2px;background:var(--dot)}
+  ol.book b,ul.exp b{color:var(--ink)}
+  ul.let{list-style:lower-alpha;margin:10px 0;padding-left:28px}ul.let>li{margin:8px 0;padding-left:4px}ul.let>li::marker{color:var(--dot);font-weight:700}
+  .flow{border-left:4px solid var(--dot);background:color-mix(in srgb,var(--dot) 9%,#fff);padding:11px 15px;border-radius:0 10px 10px 0;margin:18px 0;font-size:.9rem}
+  .flow::before{content:"🔗 Benang merah — ";font-weight:700;color:var(--dot)}.flow b{color:var(--dot)}
+  table.mini{width:100%;border-collapse:collapse;margin:14px 0;font-size:.86rem}
+  table.mini th,table.mini td{border:1px solid var(--line);padding:9px 11px;text-align:left;vertical-align:top}
+  table.mini th{background:color-mix(in srgb,var(--dot) 12%,#fff);color:var(--dot);font-weight:700}
+  table.mini tr:nth-child(even) td{background:#fafcfe}
+  .rgrid{display:grid;gap:8px;margin:14px 0}.rgrid.c3{grid-template-columns:repeat(3,1fr)}.rgrid.c2{grid-template-columns:repeat(2,1fr)}
+  .rcell{border:1px solid var(--line);border-radius:10px;padding:11px 13px;cursor:pointer;background:#fff;transition:.15s;display:flex;gap:10px;align-items:flex-start}
+  .rcell:hover{border-color:var(--dot);box-shadow:var(--shadow);transform:translateY(-2px)}
+  .rcell.active{border-color:var(--dot);background:color-mix(in srgb,var(--dot) 8%,#fff)}
+  .rcell .stepnum{background:var(--dot);color:#fff;font-weight:700;min-width:24px;height:24px;border-radius:7px;display:grid;place-items:center;flex:none;font-size:.82rem}
+  .rcell .rt{font-weight:700;font-size:.9rem;color:var(--dot);display:block}.rcell .rp{font-size:.78rem;color:var(--muted);display:block;margin-top:2px}
+  .rdetail{font-size:.88rem;border-left:4px solid var(--dot);background:color-mix(in srgb,var(--dot) 8%,#fff);border-radius:0 10px 10px 0;padding:12px 15px;margin-top:6px}
+  .pill-row{display:flex;gap:8px;flex-wrap:wrap;margin:10px 0}
+  .pill{font-size:.8rem;background:#eef3f8;color:#36506a;border:1px solid #e0e8f0;padding:4px 11px;border-radius:999px;font-weight:600}
+  .glossary dt{font-weight:700;color:var(--brand-dark);margin-top:10px}.glossary dd{margin:0 0 2px;color:var(--muted);font-size:.9rem}
+  footer{max-width:var(--maxw);margin:0 auto;padding:30px 20px 60px;color:var(--muted);font-size:.82rem;border-top:1px solid var(--line)}
+  footer .refs{margin-top:10px;font-size:.78rem;line-height:1.6}
+  .offline-note{font-size:.76rem;color:var(--muted);background:#fff8e6;border:1px solid #f0e2b8;border-radius:8px;padding:8px 12px;margin:10px 0}
+  @media(max-width:640px){.hero h1{font-size:1.3rem;max-width:100%}.hero::after{font-size:110px}nav.jump{display:none}.rgrid.c3,.rgrid.c2{grid-template-columns:1fr}.mindmap-host{height:440px}}
+  @media print{#progress,header.top,.btn-reset,.mm-toolbar{display:none}body{background:#fff}.card{box-shadow:none}}
+</style>
+</head>
+<body>
+<div id="progress"></div>
+<header class="top"><div class="top-in"><span class="badge">MODUL 5</span><a href="index.html" title="Kembali ke daftar modul" style="text-decoration:none;display:inline-flex;align-items:center;gap:7px;background:var(--brand);color:#fff;font-weight:700;font-size:.8rem;padding:7px 15px;border-radius:999px;white-space:nowrap;box-shadow:0 2px 6px rgba(16,42,67,.22);line-height:1"><span style="font-size:1rem;line-height:1">&#8962;</span> Daftar Modul</a><span class="top-title">Manajemen Pemasaran · EKMA5206</span>
+  <nav class="jump"><a href="#konsep">Konsep</a><a href="#peta">Peta Konsep</a><a href="#kb1">KB1</a><a href="#kb2">KB2</a><a href="#kb3">KB3</a><a href="#kb4">KB4</a><a href="#kb5">KB5</a></nav></div></header>
+<div class="wrap">
+  <section class="hero"><div class="eyebrow">Buku Materi Pokok · EKMA5206 · 3 SKS</div>
+    <h1>Membangun Program Pemasaran Strategic</h1>
+    <div class="meta"><span>⏱️ Estimasi belajar <b>±40 menit</b></span><span>📚 <b>5</b> Kegiatan Belajar</span><span>✍️ Dr. Ir. FX. Bambang Wiharto, M.M.</span></div></section>
+  <p class="section-sub" style="margin-top:22px">Modul ini menautkan <b>strategi bisnis</b> dengan lima keputusan program pemasaran (produk, harga, distribusi, komunikasi). Ringkasan mengikuti alur heading buku (A/1/a) dengan kotak <b>🔗 Benang merah</b>, penjelasan tiap poin, &amp; istilah asli + terjemahan.</p>
+  <p class="offline-note">ℹ️ Peta konsep &amp; elemen interaktif berjalan tanpa internet. Persamaan memuat pustaka dari internet saat pertama dibuka; teks tetap terbaca offline.</p>
+
+  <h2 class="section" id="konsep"><span class="dot"></span>Konsep Penting yang Harus Dikuasai</h2>
+  <p class="section-sub">Istilah inti, urut sesuai buku. Centang sebagai penanda belajar (tersimpan otomatis).</p>
+  <div class="card"><div class="cl-head"><span class="count"><span id="doneCount">0</span>/<span id="totalCount">0</span> dikuasai</span><button class="btn-reset" id="resetBtn">Reset centang</button></div>
+    <ul class="concepts" id="conceptList">
+      <li><input type="checkbox"><span><span class="ct">5 komponen strategi</span><span class="cd">Lingkup, sasaran, sumber daya, keunggulan kompetitif, sinergi.</span></span></li>
+      <li><input type="checkbox"><span><span class="ct">3 tingkat strategi</span><span class="cd">Korporasi, bisnis, fungsional (pemasaran).</span></span></li>
+      <li><input type="checkbox"><span><span class="ct">6 keputusan strategi korporasi</span><span class="cd">Misi, objektif, keunggulan, pertumbuhan, alokasi, sinergi.</span></span></li>
+      <li><input type="checkbox"><span><span class="ct">Strategi pertumbuhan &amp; integrasi vertikal</span><span class="cd">Ekspansi, diversifikasi, forward/backward integration.</span></span></li>
+      <li><input type="checkbox"><span><span class="ct">3 strategi generik Porter</span><span class="cd">Cost leadership, differentiation, focus.</span></span></li>
+      <li><input type="checkbox"><span><span class="ct">Tipologi Miles &amp; Snow</span><span class="cd">Prospector, defender, analyzer, reactor.</span></span></li>
+      <li><input type="checkbox"><span><span class="ct">Pengaruh strategi pada 4P</span><span class="cd">Kebijakan produk, harga, distribusi, promosi.</span></span></li>
+      <li><input type="checkbox"><span><span class="ct">Mengelola lini produk</span><span class="cd">Line filling, stretching, extension, deletion.</span></span></li>
+      <li><input type="checkbox"><span><span class="ct">Pengembangan produk baru</span><span class="cd">Cocreation, time to market.</span></span></li>
+      <li><input type="checkbox"><span><span class="ct">5 objektif harga strategic</span><span class="cd">Sales growth, quality differentiation, skimming, harvesting, survival.</span></span></li>
+      <li><input type="checkbox"><span><span class="ct">Experience curve &amp; metode harga</span><span class="cd">Biaya, persaingan, pelanggan, geografik.</span></span></li>
+      <li><input type="checkbox"><span><span class="ct">6 objektif &amp; 4 institusi jalur distribusi</span><span class="cd">Merchant wholesaler, agent, retailer, facilitating agency.</span></span></li>
+      <li><input type="checkbox"><span><span class="ct">Strategi distribusi &amp; VMS</span><span class="cd">Intensive/exclusive/selective; corporate/contracted/administered/relational.</span></span></li>
+      <li><input type="checkbox"><span><span class="ct">Kekuasaan jalur &amp; pull/push</span><span class="cd">Economic, coercive, expert, referent, legitimate.</span></span></li>
+      <li><input type="checkbox"><span><span class="ct">Promotional mix &amp; 5 langkah IMC</span><span class="cd">Advertising, personal selling, sales promotion, PR.</span></span></li>
+      <li><input type="checkbox"><span><span class="ct">Reach, frequency, media &amp; SMART</span><span class="cd">Jenis media; objektif promosi SMART.</span></span></li>
+    </ul>
+  </div>
+
+  <h2 class="section" id="peta"><span class="dot"></span>Peta Konsep (Mind Map)</h2>
+  <p class="section-sub">Struktur lengkap modul mengikuti outline buku. Klik +/− pada simpul untuk buka/tutup cabang.</p>
+  <div class="card"><div class="mm-toolbar"><button class="mm-btn" id="mmExpand">Perluas semua</button><button class="mm-btn" id="mmCollapse">Ciutkan</button><span class="mm-hint">Gulir di dalam kotak untuk menggeser</span></div><div class="mindmap-host" id="mindmap"></div></div>
+
+  <!-- KB1 -->
+  <h2 class="section" id="kb1"><span class="dot"></span>KB 1 — Strategi Bisnis: Fondasi Keputusan Program Pemasaran</h2>
+  <div class="card kb1b">
+    <span class="kb-tag kb1t">STRATEGI BISNIS</span>
+    <p class="lead">Program pemasaran strategic berpijak pada strategi perusahaan. <span class="term">Strategi</span> (Hofer &amp; Schendel 1978) adalah pola mendasar dari objektif, penyebaran sumber daya, &amp; interaksi organisasi dengan pasar, pesaing, &amp; lingkungan — ia menyatakan <b>apa</b> (objektif), <b>di mana</b> (industri &amp; pasar-produk), &amp; <b>bagaimana</b> (sumber daya &amp; kegiatan).</p>
+
+    <div class="abc"><span class="ltr">A</span><h4>Tiga Tingkatan Strategi</h4></div>
+    <p><b>Lima komponen strategi</b> (Mullins &amp; Walker 2010): <span class="term">lingkup (scope)</span>, <span class="term">sasaran &amp; objektif</span>, <span class="term">penggunaan sumber daya</span>, <span class="term">keunggulan kompetitif berkesinambungan</span>, &amp; <span class="term">sinergi</span>. Ketiga tingkatnya — klik:</p>
+    <div class="rgrid c3" data-revealgroup>
+      <div class="rcell" data-reveal data-detail="<b>Strategi korporasi</b> — mengoordinasi kegiatan lintas unit bisnis; keputusan tentang lingkup organisasi &amp; alokasi sumber daya (bisnis apa yang dijalankan?). Membangun distinctive competencies di tingkat korporat &amp; sinergi antar-bisnis."><span><span class="rt">Korporasi</span><span class="rp">Bisnis apa yang dijalankan.</span></span></div>
+      <div class="rcell" data-reveal data-detail="<b>Strategi bisnis</b> — bagaimana sebuah unit bisnis (SBU) bersaing dalam industrinya; membangun &amp; memelihara keunggulan kompetitif berkesinambungan lewat distinctive competencies."><span><span class="rt">Bisnis (SBU)</span><span class="rp">Cara bersaing di industri.</span></span></div>
+      <div class="rcell" data-reveal data-detail="<b>Strategi fungsional / pemasaran</b> — mengalokasikan &amp; mengoordinasikan sumber daya agar objektif pasar-produk tercapai; isu kritikal: menentukan target market &amp; menyusun bauran pemasaran (4P)."><span><span class="rt">Fungsional / Pemasaran</span><span class="rp">Alokasi sumber daya pasar-produk.</span></span></div>
+    </div>
+    <div class="rdetail" data-revealdetail>Klik salah satu tingkat strategi untuk penjelasannya.</div>
+
+    <div class="abc"><span class="ltr">B</span><h4>Implikasi Pemasaran Keputusan Strategi Korporasi</h4></div>
+    <p>Manajemen membuat <b>enam keputusan korporasi</b> yang saling terkait: <b>(1)</b> lingkup &amp; misi, <b>(2)</b> sasaran &amp; objektif, <b>(3)</b> sumber keunggulan kompetitif, <b>(4)</b> strategi pertumbuhan, <b>(5)</b> alokasi sumber daya lintas kegiatan, <b>(6)</b> mencari sinergi. Mendefinisikan <span class="term">misi</span> sebaiknya berbasis <em>kebutuhan pelanggan yang dipenuhi</em> (bukan produk/teknologi) agar tak terjebak <em>marketing myopia</em>; ditambah dimensi <b>etika</b> &amp; <span class="term">sustainability</span>.</p>
+
+    <div class="abc"><span class="ltr">C–D</span><h4>Sumber Keunggulan &amp; Strategi Pertumbuhan</h4></div>
+    <p>Keunggulan kompetitif berkesinambungan dibangun dari <b>sumber daya unik</b> (sulit ditiru: merek, basis pelanggan loyal, sistem informasi, aliansi). Pertumbuhan ditempuh lewat <b>ekspansi</b> (penetrasi pasar, pengembangan produk/pasar) atau <b>diversifikasi</b> — klik:</p>
+    <div class="rgrid c2" data-revealgroup>
+      <div class="rcell" data-reveal data-detail="<b>Ekspansi — penetrasi pasar</b>: tingkatkan pangsa pasar produk yang ada di pasar yang ada (perbaiki fitur/kualitas, tekan harga, naikkan promosi, dorong pelanggan loyal konsumsi lebih)."><span><span class="rt">Penetrasi pasar</span><span class="rp">Produk lama, pasar lama.</span></span></div>
+      <div class="rcell" data-reveal data-detail="<b>Ekspansi — pengembangan produk</b>: produk baru bagi pelanggan saat ini (perluasan lini)."><span><span class="rt">Pengembangan produk</span><span class="rp">Produk baru, pasar lama.</span></span></div>
+      <div class="rcell" data-reveal data-detail="<b>Ekspansi — pengembangan pasar</b>: produk yang ada ke segmen/negara baru (ekspor ke negara berkembang/maju)."><span><span class="rt">Pengembangan pasar</span><span class="rp">Produk lama, pasar baru.</span></span></div>
+      <div class="rcell" data-reveal data-detail="<b>Diversifikasi</b>: bisnis baru (produk &amp; pasar baru) — lebih berisiko. Termasuk integrasi vertikal: <em>forward</em> (ke hilir/distribusi), <em>backward</em> (ke hulu/pemasok); serta related (concentric) &amp; unrelated (conglomerate) diversification."><span><span class="rt">Diversifikasi</span><span class="rp">Produk baru, pasar baru (+ integrasi vertikal).</span></span></div>
+    </div>
+    <div class="rdetail" data-revealdetail>Klik salah satu strategi pertumbuhan untuk penjelasannya.</div>
+
+    <div class="abc"><span class="ltr">E–G</span><h4>Bagaimana Unit Bisnis Bersaing</h4></div>
+    <p><b>Tiga strategi generik Porter (1985)</b> — klik (tanpa strategi khas, perusahaan "terjepit di tengah"):</p>
+    <div class="rgrid c3" data-revealgroup>
+      <div class="rcell" data-reveal data-detail="<b>Overall cost leadership</b> — menjadi produsen berbiaya terendah di industri; bersaing lewat harga/efisiensi."><span><span class="rt">Cost leadership</span><span class="rp">Biaya terendah.</span></span></div>
+      <div class="rcell" data-reveal data-detail="<b>Differentiation</b> — membangun persepsi kualitas, rancangan, atau produk/jasa yang unggul &amp; unik."><span><span class="rt">Differentiation</span><span class="rp">Keunikan yang dihargai.</span></span></div>
+      <div class="rcell" data-reveal data-detail="<b>Focus</b> — berkonsentrasi pada ceruk pasar terdefinisi, menghindari konfrontasi langsung dengan pesaing besar."><span><span class="rt">Focus</span><span class="rp">Konsentrasi pada ceruk.</span></span></div>
+    </div>
+    <div class="rdetail" data-revealdetail>Klik salah satu strategi generik untuk penjelasannya.</div>
+    <p style="margin-top:14px"><b>Tipologi Miles &amp; Snow (1978)</b> — klik tiap tipe &amp; kondisi yang cocok:</p>
+    <div class="rgrid c2" data-revealgroup>
+      <div class="rcell" data-reveal data-detail="<b>Prospector</b> — fokus pertumbuhan lewat produk &amp; pasar baru. Cocok untuk lingkungan belum stabil &amp; berubah cepat (industri bertumbuh, teknologi/segmen belum mapan); kuat di litbang &amp; riset pemasaran."><span><span class="rt">Prospector</span><span class="rp">Pembangunan produk/pasar baru.</span></span></div>
+      <div class="rcell" data-reveal data-detail="<b>Analyzer</b> — hibrid: pertahankan posisi di pasar-produk inti + perhatian pada produk baru agar tak 'dilompati'. Cocok untuk industri mapan namun masih bertumbuh (mis. otomotif)."><span><span class="rt">Analyzer</span><span class="rp">Hibrid: inti + inovasi.</span></span></div>
+      <div class="rcell" data-reveal data-detail="<b>Defender</b> — memelihara posisi di segmen industri stabil &amp; dewasa (prinsip constant improvement/TQM). Differentiated defender (kualitas unggul) atau low-cost defender (efisiensi &amp; skala ekonomi)."><span><span class="rt">Defender</span><span class="rp">Pelihara posisi mapan.</span></span></div>
+      <div class="rcell" data-reveal data-detail="<b>Reactor</b> — tidak mendefinisikan strategi secara jelas; hanya bereaksi terhadap tekanan lingkungan."><span><span class="rt">Reactor</span><span class="rp">Tanpa strategi jelas.</span></span></div>
+    </div>
+    <div class="rdetail" data-revealdetail>Klik salah satu tipe Miles &amp; Snow untuk penjelasannya.</div>
+
+    <div class="flow">Strategi bisnis membatasi kebebasan manajer pemasaran — itulah bagian H: pengaruhnya pada keputusan 4P.</div>
+
+    <div class="abc"><span class="ltr">H</span><h4>Pengaruh Strategi Bisnis pada Keputusan Pemasaran (4P)</h4></div>
+    <table class="mini">
+      <tr><th>Elemen</th><th>Prospector / Differentiated defender</th><th>Low-cost defender</th></tr>
+      <tr><td><b>Produk</b></td><td>Lini teknikal maju / kualitas superior; layanan tinggi</td><td>Lini standar, efisien</td></tr>
+      <tr><td><b>Harga</b></td><td>Premium (menutup biaya inovasi/diferensiasi)</td><td>Harga rendah = senjata bersaing</td></tr>
+      <tr><td><b>Distribusi</b></td><td>Forward integration / kontrol jalur ketat (defender); jalur fleksibel (prospector)</td><td>Efisien, biaya minimal</td></tr>
+      <tr><td><b>Promosi</b></td><td>Iklan &amp; personal selling intensif</td><td>Biaya promosi ditekan</td></tr>
+    </table>
+    <p>Bila program pemasaran terbaik tak cocok dengan strategi bersaing, solusinya <b>mengubah strategi produk</b> (mis. SBU prospector → analyzer/defender) atau <b>membentuk SBU baru</b>.</p>
+  </div>
+
+  <!-- KB2 -->
+  <h2 class="section" id="kb2"><span class="dot"></span>KB 2 — Keputusan Produk</h2>
+  <div class="card kb2b">
+    <span class="kb-tag kb2t">KEPUTUSAN PRODUK</span>
+    <p class="lead"><span class="term">Produk</span> = segala sesuatu yang memuaskan kebutuhan melalui penggunaan/konsumsi; ia adalah <b>pemecah persoalan</b> — pelanggan membeli <em>manfaat</em>, bukan <em>fitur</em>. Keputusan produk berbeda untuk barang (<em>tangible</em>) &amp; jasa (<em>intangible</em>).</p>
+    <div class="numh">1–5 · Keputusan Fitur/Kualitas, Merek, Kemasan, Layanan</div>
+    <ul class="exp">
+      <li><b>Fitur &amp; kualitas</b> — dituntun pernyataan <em>positioning</em>; pakai 8 dimensi kualitas barang atau 5 dimensi kualitas jasa; gunakan <em>conjoint analysis</em> untuk menemukan preferred trade-offs (hindari terlalu banyak fitur).</li>
+      <li><b>Merek</b> — nama/tanda/simbol pembeda; <em>individual name</em> (kurangi risiko, beberapa market entry) vs <em>family/blanket name</em> (biaya rendah, tetapi batasi keluwesan); hati-hati co-branding &amp; global branding.</li>
+      <li><b>Kemasan</b> — menjaga/melindungi, memfasilitasi penggunaan, mempromosikan (impulse buying), &amp; menginformasikan; tren kemasan ramah lingkungan.</li>
+      <li><b>Layanan &amp; jaminan</b> — kehandalan penyerahan, pemeliharaan, penanganan keluhan/returns, kredit, pelatihan; <em>warranties</em> mengurangi risiko &amp; menaikkan persepsi kualitas.</li>
+    </ul>
+    <div class="numh">A · Mengelola Lini Produk</div>
+    <p>Keputusan lini — klik:</p>
+    <div class="rgrid c2" data-revealgroup>
+      <div class="rcell" data-reveal data-detail="<b>Line filling</b> (pengisian lini) — menambah item dalam kisaran produk yang ada untuk memuaskan lebih banyak pelanggan, menaikkan penjualan, menenangkan distributor (full-line supplier), &amp; membangun proteksi dari pesaing."><span><span class="rt">Line filling</span><span class="rp">Tambah item di kisaran ada.</span></span></div>
+      <div class="rcell" data-reveal data-detail="<b>Line stretching</b> (penguatan lini) — memperluas rentang ke atas (harga lebih tinggi) atau ke bawah (lebih terjangkau)."><span><span class="rt">Line stretching</span><span class="rp">Perluas rentang atas/bawah.</span></span></div>
+      <div class="rcell" data-reveal data-detail="<b>Line extension</b> (perluasan lini) — memperkenalkan produk baru yang berbeda signifikan (dari sisi harga); risiko finansial lebih tinggi tetapi membuka basis teknologi &amp; segmen baru."><span><span class="rt">Line extension</span><span class="rp">Produk berbeda signifikan.</span></span></div>
+      <div class="rcell" data-reveal data-detail="<b>Membuang produk (deletion)</b> — audit kinerja; buang produk lemah yang tak lagi menutup biaya, dengan mempertimbangkan pengaruh pada saluran, biaya penghentian, &amp; joint cost dengan produk lain."><span><span class="rt">Deletion</span><span class="rp">Buang produk lemah.</span></span></div>
+    </div>
+    <div class="rdetail" data-revealdetail>Klik salah satu keputusan lini untuk penjelasannya.</div>
+    <div class="numh">B · Pengembangan Produk Baru</div>
+    <p>Produk baru = darah keberhasilan jangka panjang, tetapi penuh risiko (kegagalan sering karena kurang disukai, bukan teknikal). Perusahaan besar membangun <b>open innovation</b> &amp; <span class="term">cocreation</span> (pelanggan sebagai sumber inovasi) serta <em>collective customer commitment</em>. Inovasi radikal ditangani <b>tim lintas fungsional</b> agar <span class="term">time to market</span> cepat → profitabilitas.</p>
+  </div>
+
+  <!-- KB3 -->
+  <h2 class="section" id="kb3"><span class="dot"></span>KB 3 — Keputusan Harga</h2>
+  <div class="card kb3b">
+    <span class="kb-tag kb3t">KEPUTUSAN HARGA</span>
+    <p class="lead">Harga harus menangkap <b>bagian yang adil dari nilai pelanggan</b> tanpa melanggar batasan biaya (batas bawah) &amp; sensitivitas harga permintaan (batas atas). Perusahaan membangun <b>struktur harga</b>, bukan satu harga.</p>
+    <div class="abc"><span class="ltr">A</span><h4>Proses Pembuatan Keputusan Harga</h4></div>
+    <p><b>Lima objektif harga strategic</b> — klik:</p>
+    <div class="rgrid c2" data-revealgroup>
+      <div class="rcell" data-reveal data-detail="<b>Maximized sales growth</b> — masuk dini pasar bertumbuh; harga rendah (penetration pricing) untuk raih pangsa besar. Cocok bila pasar peka harga &amp; biaya turun dengan volume."><span><span class="rt">Sales growth</span><span class="rp">Penetration pricing.</span></span></div>
+      <div class="rcell" data-reveal data-detail="<b>Maintain quality &amp; service differentiation</b> — harga premium untuk membiayai keunggulan kualitas/layanan; kualitas tinggi menurunkan elastisitas permintaan."><span><span class="rt">Quality differentiation</span><span class="rp">Harga premium.</span></span></div>
+      <div class="rcell" data-reveal data-detail="<b>Skimming</b> — pelopor pasar baru menetapkan harga sangat tinggi untuk segmen tak peka harga, lalu menurunkannya bertahap; cocok untuk prospector dengan teknologi khas."><span><span class="rt">Skimming</span><span class="rp">Harga tinggi lalu turun.</span></span></div>
+      <div class="rcell" data-reveal data-detail="<b>Harvesting</b> — pasar menurun; maksimalkan laba sebelum permintaan lenyap dengan memangkas biaya &amp; mempertahankan harga relatif tinggi (bergantung exit barrier)."><span><span class="rt">Harvesting</span><span class="rp">Memanen pasar menurun.</span></span></div>
+      <div class="rcell" data-reveal data-detail="<b>Survival</b> — saat over-capacity/persaingan keras; harga menutup biaya variabel + sebagian tetap. Objektif jangka pendek."><span><span class="rt">Survival</span><span class="rp">Bertahan hidup.</span></span></div>
+    </div>
+    <div class="rdetail" data-revealdetail>Klik salah satu objektif harga untuk penjelasannya.</div>
+    <div class="numh">2–3 · Estimasi Biaya</div>
+    <p>Biaya = batas bawah. <em>Fixed + variable = total cost</em>; <em>average cost = total/jumlah</em>. <span class="term">Activity-based costing (ABC)</span> memberi biaya akurat per pelanggan. Dua hubungan biaya-volume: <span class="term">economies of scale</span> &amp; <span class="term">experience curve</span> (biaya per unit turun seiring pengalaman → kemampuan bersaing).</p>
+    <div class="eqbox"><div>\[ \text{Average cost} = \frac{\text{Total cost}}{\text{Jumlah unit}} = \frac{\text{Fixed cost} + \text{Variable cost}}{\text{Jumlah unit}} \]</div></div>
+    <div class="numh">Metode Penentuan Harga</div>
+    <ul class="exp">
+      <li><b>Berorientasi biaya</b> — markup di atas biaya; mudah tetapi abaikan permintaan &amp; nilai.</li>
+      <li><b>Berorientasi persaingan</b> — <em>going rate</em> / competitive parity; premium atau potongan terhadap harga pesaing.</li>
+      <li><b>Berorientasi pelanggan</b> — berbasis <span class="term">perceived value</span> (good price vs bad price); tentukan rata-rata persepsi nilai target pasar.</li>
+      <li><b>Penyesuaian geografik &amp; global</b> — <em>FOB origin pricing</em>, <em>uniform delivery pricing</em>; harga global memperhitungkan exchange rate &amp; regulasi.</li>
+    </ul>
+    <div class="numh">Diskon, Allowance &amp; Differential Pricing</div>
+    <div class="pill-row">
+      <span class="pill">Trade discount</span><span class="pill">Quantity discount</span><span class="pill">Cash discount</span><span class="pill">Allowance (trade-in)</span>
+      <span class="pill">Price-off promotion</span><span class="pill">Kupon/rabat/refund</span><span class="pill">Premium</span>
+    </div>
+    <p><span class="term">Differential pricing</span> (diskriminasi harga): <em>time, location, &amp; customer-segment pricing</em>. Pada beberapa lini produk, perhatikan <span class="term">cross-elasticity</span> antar produk substitusi.</p>
+  </div>
+
+  <!-- KB4 -->
+  <h2 class="section" id="kb4"><span class="dot"></span>KB 4 — Keputusan Jalur Distribusi</h2>
+  <div class="card kb4b">
+    <span class="kb-tag kb4t">JALUR DISTRIBUSI</span>
+    <p class="lead">Dua keputusan jalur yang terkait erat: <b>merancang</b> struktur jalur (berapa tingkat &amp; jumlah perantara) &amp; <b>mengelola</b> jalur <span class="en">(channel management)</span>. Jalur efektif menyediakan produk yang tepat, jumlah tepat, waktu tepat; jalur efisien menekan biaya.</p>
+    <div class="abc"><span class="ltr">A–B</span><h4>Jalur Pemasaran &amp; Objektifnya</h4></div>
+    <p>Enam objektif jalur: <b>(1)</b> ketersediaan produk, <b>(2)</b> memenuhi kebutuhan layanan pelanggan, <b>(3)</b> usaha promosional, <b>(4)</b> informasi pasar, <b>(5)</b> efektivitas biaya, <b>(6)</b> fleksibilitas. Perantara independen sering lebih efisien daripada distribusi langsung (dasar: <em>trade-off</em> biaya vs manfaat).</p>
+    <div class="abc"><span class="ltr">C</span><h4>Empat Institusi Jalur</h4></div>
+    <div class="rgrid c2" data-revealgroup>
+      <div class="rcell" data-reveal data-detail="<b>Merchant wholesalers</b> — memperoleh kepemilikan barang; menjual ke reseller/retailer &amp; pelanggan industrial, bukan individual."><span><span class="rt">Merchant wholesalers</span><span class="rp">Pedagang besar (punya kepemilikan).</span></span></div>
+      <div class="rcell" data-reveal data-detail="<b>Agent middlemen</b> — perwakilan &amp; broker; menjual tanpa kepemilikan barang, berdasar komisi; mewakili organisasi dalam menjual/membeli."><span><span class="rt">Agent middlemen</span><span class="rp">Agen/broker (komisi).</span></span></div>
+      <div class="rcell" data-reveal data-detail="<b>Retailers</b> — menjual ke konsumen akhir untuk kebutuhan pribadi; kompensasi berupa marjin."><span><span class="rt">Retailers</span><span class="rp">Pengecer ke konsumen akhir.</span></span></div>
+      <div class="rcell" data-reveal data-detail="<b>Facilitating agencies</b> — agen periklanan, riset, transportasi; ahli pada satu fungsi pemasaran, bekerja berdasar fee."><span><span class="rt">Facilitating agencies</span><span class="rp">Agen penunjang fungsi.</span></span></div>
+    </div>
+    <div class="rdetail" data-revealdetail>Klik salah satu institusi jalur untuk penjelasannya.</div>
+    <div class="abc"><span class="ltr">D–F</span><h4>Alternatif &amp; Strategi Distribusi</h4></div>
+    <p>Jalur barang konsumen (5 cara, produsen→…→konsumen) &amp; barang industrial (4 cara, tanpa retailer). Tiga strategi dasar — klik:</p>
+    <div class="rgrid c3" data-revealgroup>
+      <div class="rcell" data-reveal data-detail="<b>Intensive distribution</b> — jumlah pengecer maksimal; cocok untuk barang low-involvement (permen, minuman); maksimalkan ketersediaan &amp; impulse buying; kelemahan: dukungan peritel rendah."><span><span class="rt">Intensive</span><span class="rp">Cakupan maksimal.</span></span></div>
+      <div class="rcell" data-reveal data-detail="<b>Exclusive distribution</b> — satu peritel per wilayah; cocok untuk specialty/shopping goods high-involvement; membedakan produk via kualitas &amp; layanan."><span><span class="rt">Exclusive</span><span class="rp">Satu peritel per wilayah.</span></span></div>
+      <div class="rcell" data-reveal data-detail="<b>Selective distribution</b> — kompromi: beberapa peritel terpilih tetapi tak sebanyak intensif; cocok untuk shopping goods."><span><span class="rt">Selective</span><span class="rp">Beberapa peritel terpilih.</span></span></div>
+    </div>
+    <div class="rdetail" data-revealdetail>Klik salah satu strategi distribusi untuk penjelasannya.</div>
+    <p style="margin-top:12px"><b>Multichannel distribution</b> memakai lebih dari satu jalur; pasar global ditempuh lewat ekspor, lisensi, atau investasi langsung; jalur jasa cenderung lebih pendek (langsung oleh pegawai penyedia).</p>
+    <div class="abc"><span class="ltr">H</span><h4>Mengelola Jalur: VMS, Kekuasaan &amp; Pull/Push</h4></div>
+    <p><span class="term">Vertical Marketing System (VMS)</span> memperbaiki koordinasi antar anggota — klik:</p>
+    <div class="rgrid c2" data-revealgroup>
+      <div class="rcell" data-reveal data-detail="<b>Corporate VMS</b> — integrasi vertikal: satu perusahaan memiliki beberapa tahap jalur."><span><span class="rt">Corporate</span><span class="rp">Integrasi vertikal.</span></span></div>
+      <div class="rcell" data-reveal data-detail="<b>Contracted VMS</b> — persetujuan formal yang menjelaskan hak &amp; kewajiban tiap anggota (mis. waralaba/franchising)."><span><span class="rt">Contracted</span><span class="rp">Persetujuan formal.</span></span></div>
+      <div class="rcell" data-reveal data-detail="<b>Administered VMS</b> — satu perusahaan memakai kekuasaan ekonomi/keahliannya untuk memberi stimulus &amp; insentif kerja sama."><span><span class="rt">Administered</span><span class="rp">Dipimpin kekuasaan.</span></span></div>
+      <div class="rcell" data-reveal data-detail="<b>Relational VMS</b> — kerja sama berbasis norma kepercayaan; menguntungkan semua anggota secara seimbang tanpa dominasi."><span><span class="rt">Relational</span><span class="rp">Berbasis kepercayaan.</span></span></div>
+    </div>
+    <div class="rdetail" data-revealdetail>Klik salah satu jenis VMS untuk penjelasannya.</div>
+    <p style="margin-top:12px"><b>Lima sumber kekuasaan jalur:</b> <span class="pill">economic</span> <span class="pill">coercive</span> <span class="pill">expert</span> <span class="pill">referent</span> <span class="pill">legitimate</span>. <b>Strategi kontrol:</b> <em>pull</em> (bangun permintaan konsumen → "menarik" produk; produsen besar) vs <em>push</em> (dorong wholesaler/retailer; perusahaan kecil), didukung <b>promosi perdagangan</b>.</p>
+  </div>
+
+  <!-- KB5 -->
+  <h2 class="section" id="kb5"><span class="dot"></span>KB 5 — Keputusan Komunikasi Pemasaran Terpadu (IMC)</h2>
+  <div class="card kb5b">
+    <span class="kb-tag kb5t">KOMUNIKASI (IMC)</span>
+    <p class="lead"><span class="term">Integrated Marketing Communication (IMC)</span> memadukan seluruh komunikasi berbasis satu tujuan agar pesan konsisten — ibarat orkestra yang menyajikan lagu yang sama.</p>
+    <div class="abc"><span class="ltr">A</span><h4>Promotional Mix (Bauran Promosi)</h4></div>
+    <div class="rgrid c2" data-revealgroup>
+      <div class="rcell" data-reveal data-detail="<b>Advertising</b> (periklanan) — penyajian berbayar &amp; non-pribadi atas ide/barang/jasa oleh sponsor teridentifikasi melalui medium (TV, radio, cetak, internet)."><span><span class="rt">Advertising</span><span class="rp">Iklan berbayar non-pribadi.</span></span></div>
+      <div class="rcell" data-reveal data-detail="<b>Personal selling</b> — membantu/membujuk prospek membeli lewat komunikasi orang-ke-orang (oral presentation)."><span><span class="rt">Personal selling</span><span class="rp">Penjualan pribadi.</span></span></div>
+      <div class="rcell" data-reveal data-detail="<b>Sales promotion</b> — insentif jangka pendek untuk mendorong pembelian; promosi konsumen (pull) &amp; promosi perdagangan (push)."><span><span class="rt">Sales promotion</span><span class="rp">Insentif jangka pendek.</span></span></div>
+      <div class="rcell" data-reveal data-detail="<b>Public relations</b> — menanamkan berita signifikan; non-pribadi &amp; tak berbayar; keunggulannya isinya lebih dipercaya, tetapi di luar kontrol perusahaan."><span><span class="rt">Public relations</span><span class="rp">Publisitas yang dipercaya.</span></span></div>
+    </div>
+    <div class="rdetail" data-revealdetail>Klik salah satu elemen bauran promosi untuk penjelasannya.</div>
+    <div class="abc"><span class="ltr">B</span><h4>Lima Langkah Membangun Rencana IMC</h4></div>
+    <div data-revealgroup>
+      <div class="rgrid">
+        <div class="rcell" data-reveal data-detail="<b>1. Mendefinisikan audiens sasaran</b> — segmentasi (siapa pelanggan, di mana, bagaimana perilakunya) untuk mengidentifikasi pasar sasaran."><span class="stepnum">1</span><span><span class="rt">Audiens sasaran</span><span class="rp">Segmentasi &amp; target.</span></span></div>
+        <div class="rcell" data-reveal data-detail="<b>2. Menentukan objektif promosi</b> — objektif <em>SMART</em> (Specific, Measurable, Attainable, Relevant, Time-bond)."><span class="stepnum">2</span><span><span class="rt">Objektif (SMART)</span><span class="rp">Sasaran promosi terukur.</span></span></div>
+        <div class="rcell" data-reveal data-detail="<b>3. Menetapkan anggaran</b> — percentage of sales (topdown), competitive parity, atau objective-and-task (paling dianjurkan: definisikan objektif → kegiatan → biaya)."><span class="stepnum">3</span><span><span class="rt">Anggaran</span><span class="rp">% sales / parity / objective-and-task.</span></span></div>
+        <div class="rcell" data-reveal data-detail="<b>4. Merancang bauran promosi</b> — (a) pilih komponen, (b) pilih kegiatan spesifik, (c) pilih kendaraan/medium spesifik."><span class="stepnum">4</span><span><span class="rt">Merancang bauran</span><span class="rp">Komponen → kegiatan → medium.</span></span></div>
+        <div class="rcell" data-reveal data-detail="<b>5. Evaluasi hasil</b> — ukur apakah objektif tercapai (kesadaran, perubahan sikap, niat beli)."><span class="stepnum">5</span><span><span class="rt">Evaluasi hasil</span><span class="rp">Ukur pencapaian objektif.</span></span></div>
+      </div>
+      <div class="rdetail" data-revealdetail>Klik salah satu langkah IMC untuk penjelasannya.</div>
+    </div>
+    <div class="abc"><span class="ltr">C–D</span><h4>Keputusan Advertising, Personal Selling &amp; Evaluasi</h4></div>
+    <ul class="exp">
+      <li><b>Advertising</b> — tentukan objektif, anggaran, &amp; media. <span class="term">Reach</span> = % khalayak terpapar minimal sekali; <span class="term">frequency</span> = berapa kali terpapar. Media tradisional (TV, radio, cetak, out-of-home, pameran) &amp; media baru (website, email, media sosial). Strategi kreatif berpusat pada <em>major selling idea</em>; hasil diuji via <em>message/copy testing</em>.</li>
+      <li><b>Personal selling</b> — empat keputusan: organisasi tenaga penjualan, kebijakan <em>account management</em>, penguraian wilayah, &amp; kuota kinerja. Perhatikan <em>siklus penjualan</em> &amp; layanan pelanggan; lalu rekrut, latih, &amp; beri kompensasi.</li>
+      <li><b>Evaluasi &amp; kontrol</b> — analisis penjualan, biaya, &amp; perilaku tenaga penjualan.</li>
+      <li><b>Sales promotion &amp; public relations</b> — insentif jangka pendek terukur (risiko menggerus nilai jangka panjang); PR memperkuat kredibilitas &amp; <em>awareness</em>.</li>
+    </ul>
+  </div>
+
+  <h2 class="section" id="glosarium"><span class="dot"></span>Glosarium Kilat</h2>
+  <div class="card"><dl class="glossary">
+    <dt>SBU — Strategic Business Unit</dt><dd>Unit bisnis dengan strategi bersaingnya sendiri.</dd>
+    <dt>Distinctive competencies</dt><dd>Kompetensi yang membedakan dari pesaing.</dd>
+    <dt>Miles &amp; Snow</dt><dd>Prospector, defender, analyzer, reactor.</dd>
+    <dt>Cocreation</dt><dd>Pelanggan ikut serta sebagai sumber inovasi produk.</dd>
+    <dt>Experience curve</dt><dd>Biaya per unit turun seiring pengalaman produksi.</dd>
+    <dt>Skimming / penetration pricing</dt><dd>Harga tinggi awal / harga rendah untuk pangsa.</dd>
+    <dt>VMS — Vertical Marketing System</dt><dd>Corporate, contracted, administered, relational.</dd>
+    <dt>Pull / push strategy</dt><dd>Menarik permintaan konsumen / mendorong lewat perantara.</dd>
+    <dt>IMC</dt><dd>Integrated Marketing Communication — komunikasi pemasaran terpadu.</dd>
+    <dt>Reach / frequency</dt><dd>Jangkauan khalayak / banyaknya paparan iklan.</dd>
+    <dt>SMART</dt><dd>Specific, Measurable, Attainable, Relevant, Time-bond.</dd>
+  </dl></div>
+</div>
+
+<footer><b>EKMA5206 — Manajemen Pemasaran</b> · Modul 5: Membangun Program Pemasaran Strategic (Edisi 3) · Penulis: Dr. Ir. FX. Bambang Wiharto, M.M.<br>
+  Bahan belajar ringkas — disusun ulang mengikuti alur modul (hal. 5.1–5.9x) untuk persiapan ujian.
+  <div class="refs"><b>Rujukan utama modul:</b> Mullins &amp; Walker (2010) <i>Marketing Management: A Strategic Decision-Making Approach</i> 7e · Kotler &amp; Keller (2009) · Porter (1985) · Miles &amp; Snow (1978) · Hofer &amp; Schendel (1978).</div></footer>
+
+<script>
+(function(){
+  var pb=document.getElementById('progress');
+  function onScroll(){var h=document.documentElement;var sc=h.scrollTop||document.body.scrollTop;var max=(h.scrollHeight-h.clientHeight)||1;pb.style.width=(sc/max*100)+'%';}
+  document.addEventListener('scroll',onScroll,{passive:true});onScroll();
+  var list=document.getElementById('conceptList');var items=[].slice.call(list.querySelectorAll('li'));var boxes=items.map(function(li){return li.querySelector('input');});
+  document.getElementById('totalCount').textContent=items.length;var doneEl=document.getElementById('doneCount');var KEY='ekma5206_m5_concepts_v1';
+  function load(){try{var a=JSON.parse(localStorage.getItem(KEY)||'[]');boxes.forEach(function(b,i){if(a[i])b.checked=true;});}catch(e){}}
+  function save(){try{localStorage.setItem(KEY,JSON.stringify(boxes.map(function(b){return b.checked?1:0;})));}catch(e){}}
+  function refresh(){var n=0;items.forEach(function(li,i){if(boxes[i].checked){li.classList.add('done');n++;}else li.classList.remove('done');});doneEl.textContent=n;}
+  load();refresh();boxes.forEach(function(b){b.addEventListener('change',function(){refresh();save();});});
+  document.getElementById('resetBtn').addEventListener('click',function(){boxes.forEach(function(b){b.checked=false;});refresh();save();});
+  [].slice.call(document.querySelectorAll('[data-revealgroup]')).forEach(function(g){
+    var det=g.querySelector('[data-revealdetail]');if(!det){var sib=g.nextElementSibling;if(sib&&sib.hasAttribute&&sib.hasAttribute('data-revealdetail'))det=sib;}
+    var cells=[].slice.call(g.querySelectorAll('[data-reveal]'));
+    cells.forEach(function(c){c.addEventListener('click',function(){cells.forEach(function(x){x.classList.remove('active');});c.classList.add('active');if(det)det.innerHTML=c.getAttribute('data-detail');});});
+  });
+  (function(){
+    var ROWH=46,NODE_H=32,PAD=13,GAP=52;var COL={root:'#0f5e8f',kb1:'#1a86c7',kb2:'#e08a1e',kb3:'#2a9d6f',kb4:'#7a5cc0',kb5:'#c75b7a'};
+    var mc=document.createElement('canvas').getContext('2d');mc.font='700 13px -apple-system,Segoe UI,Roboto,sans-serif';
+    function tw(t){return Math.ceil(mc.measureText(t).width);}function esc(t){return t.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');}
+    function rgba(hex,a){var h=hex.replace('#','');return 'rgba('+parseInt(h.substr(0,2),16)+','+parseInt(h.substr(2,2),16)+','+parseInt(h.substr(4,2),16)+','+a+')';}
+    var DATA={label:'MODUL 5 — Membangun Program Pemasaran Strategic',color:COL.root,children:[
+      {label:'KB1 · Strategi Bisnis',color:COL.kb1,children:[
+        {label:'5 komponen strategi'},{label:'3 tingkat strategi'},{label:'6 keputusan korporasi'},
+        {label:'Strategi pertumbuhan & integrasi vertikal'},{label:'3 generik Porter'},{label:'Miles & Snow (4 tipe)'},{label:'Pengaruh pada 4P'}
+      ]},
+      {label:'KB2 · Keputusan Produk',color:COL.kb2,children:[
+        {label:'Fitur, merek, kemasan, layanan'},{label:'Mengelola lini produk'},{label:'Pengembangan produk baru (cocreation)'}
+      ]},
+      {label:'KB3 · Keputusan Harga',color:COL.kb3,children:[
+        {label:'5 objektif harga strategic'},{label:'Estimasi biaya & experience curve'},{label:'Metode penentuan harga'},{label:'Diskon & differential pricing'}
+      ]},
+      {label:'KB4 · Jalur Distribusi',color:COL.kb4,children:[
+        {label:'6 objektif jalur'},{label:'4 institusi jalur'},{label:'Strategi: intensive/exclusive/selective'},{label:'VMS (4 jenis)'},{label:'Kekuasaan jalur & pull/push'}
+      ]},
+      {label:'KB5 · Komunikasi (IMC)',color:COL.kb5,children:[
+        {label:'Promotional mix (4)'},{label:'5 langkah IMC plan'},{label:'Advertising (reach/frequency)'},{label:'Personal selling'},{label:'Sales promotion & PR'}
+      ]}
+    ]};
+    var idc=0;(function w(n,c){n.id='n'+(idc++);n.color=n.color||c;(n.children||[]).forEach(function(k){w(k,n.color);});})(DATA,COL.root);
+    (function w(n,d){if(d>=2&&n.children&&n.children.length)n.collapsed=true;(n.children||[]).forEach(function(k){w(k,d+1);});})(DATA,0);
+    var host=document.getElementById('mindmap');
+    function render(){
+      var colW=[];(function w(n,d){var width=tw(n.label)+PAD*2+((n.children&&n.children.length)?20:0);colW[d]=Math.max(colW[d]||0,width);if(!n.collapsed)(n.children||[]).forEach(function(k){w(k,d+1);});})(DATA,0);
+      var colX=[],acc=14;for(var d=0;d<colW.length;d++){colX[d]=acc;acc+=colW[d]+GAP;}var row={v:0};
+      (function lay(n,d){if(!n.children||!n.children.length||n.collapsed){n._y=row.v*ROWH+ROWH/2+8;row.v++;return;}var f,l;n.children.forEach(function(k,i){lay(k,d+1);if(i===0)f=k._y;l=k._y;});n._y=(f+l)/2;})(DATA,0);
+      var totalW=acc,totalH=row.v*ROWH+24;var nodes=[],links=[];
+      (function col(n,d,p){n._x=colX[d];n._w=tw(n.label)+PAD*2+((n.children&&n.children.length)?20:0);nodes.push({n:n,d:d});if(p)links.push([p,n]);if(!n.collapsed)(n.children||[]).forEach(function(k){col(k,d+1,n);});})(DATA,0,null);
+      var s='<svg width="'+totalW+'" height="'+totalH+'" viewBox="0 0 '+totalW+' '+totalH+'" xmlns="http://www.w3.org/2000/svg">';
+      links.forEach(function(pr){var a=pr[0],b=pr[1],x1=a._x+a._w,y1=a._y,x2=b._x,y2=b._y,mx=(x1+x2)/2;s+='<path d="M'+x1+' '+y1+' C'+mx+' '+y1+' '+mx+' '+y2+' '+x2+' '+y2+'" fill="none" stroke="'+rgba(b.color,.5)+'" stroke-width="2"/>';});
+      nodes.forEach(function(o){var n=o.n,x=n._x,y=n._y-NODE_H/2,w=n._w,hk=n.children&&n.children.length;var fill=o.d===0?n.color:(o.d===1?rgba(n.color,.12):'#fff');var tf=o.d===0?'#fff':'#1c2733';
+        s+='<g data-id="'+n.id+'" style="cursor:'+(hk?'pointer':'default')+'"><rect x="'+x+'" y="'+y+'" rx="9" width="'+w+'" height="'+NODE_H+'" fill="'+fill+'" stroke="'+n.color+'" stroke-width="'+(o.d===0?0:1.6)+'"/><text x="'+(x+PAD)+'" y="'+(n._y+4)+'" font-size="13" font-weight="'+(o.d<=1?'700':'500')+'" fill="'+tf+'" font-family="-apple-system,Segoe UI,Roboto,sans-serif">'+esc(n.label)+'</text>';
+        if(hk){var cx=x+w-12,cy=n._y;s+='<circle cx="'+cx+'" cy="'+cy+'" r="8.5" fill="'+n.color+'"/><text x="'+cx+'" y="'+(cy+4.5)+'" font-size="13" font-weight="700" fill="#fff" text-anchor="middle" font-family="sans-serif">'+(n.collapsed?'+':'\u2013')+'</text>';}s+='</g>';});
+      s+='</svg>';host.innerHTML=s;
+    }
+    host.addEventListener('click',function(e){var g=e.target.closest('g[data-id]');if(!g)return;var id=g.getAttribute('data-id');(function f(n){if(n.id===id){if(n.children&&n.children.length)n.collapsed=!n.collapsed;return true;}return (n.children||[]).some(f);})(DATA);render();});
+    document.getElementById('mmExpand').addEventListener('click',function(){(function w(n){if(n.children)n.collapsed=false;(n.children||[]).forEach(w);})(DATA);render();});
+    document.getElementById('mmCollapse').addEventListener('click',function(){(function w(n,d){if(d>=1&&n.children&&n.children.length)n.collapsed=true;(n.children||[]).forEach(function(k){w(k,d+1);});})(DATA,0);render();});
+    render();
+  })();
+  window.addEventListener('load',function(){setTimeout(function(){if(window.MathJax&&window.MathJax.typesetPromise)window.MathJax.typesetPromise();},400);});
+})();
+</script>
+</body>
+</html>

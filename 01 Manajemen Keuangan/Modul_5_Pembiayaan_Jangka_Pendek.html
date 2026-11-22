@@ -1,0 +1,614 @@
+<!DOCTYPE html>
+<html lang="id"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Modul 5 — Pembiayaan Jangka Pendek | EKMA5205</title>
+<script>window.MathJax={tex:{inlineMath:[['$','$']],displayMath:[['\\[','\\]'],['$$','$$']]},svg:{fontCache:'global'},startup:{typeset:true}};</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js" async></script>
+<style>
+:root{--bg:#f4f6f9;--panel:#fff;--ink:#1c2733;--muted:#5c6b7a;--line:#e4e9f0;--brand:#1a86c7;--brand-dark:#0f5e8f;--brand-soft:#e7f3fb;--kb1:#1a86c7;--kb2:#e08a1e;--kb3:#2a9d6f;--kb4:#7a5cc0;--kb5:#c75b7a;--radius:14px;--shadow:0 1px 2px rgba(16,42,67,.06),0 6px 20px rgba(16,42,67,.06);--maxw:900px}
+*{box-sizing:border-box}html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;line-height:1.72}
+#progress{position:fixed;top:0;left:0;height:4px;width:0;background:linear-gradient(90deg,var(--brand),#53c0ec);z-index:200;transition:width .1s}
+header.top{position:sticky;top:0;z-index:100;background:rgba(255,255,255,.92);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+.top-in{max-width:var(--maxw);margin:0 auto;padding:10px 20px;display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+.badge{background:var(--brand);color:#fff;font-weight:700;font-size:.72rem;letter-spacing:.5px;padding:4px 10px;border-radius:999px}
+.homebtn{text-decoration:none;display:inline-flex;align-items:center;gap:7px;background:var(--brand);color:#fff;font-weight:700;font-size:.8rem;padding:7px 15px;border-radius:999px;box-shadow:0 2px 6px rgba(16,42,67,.22);line-height:1}
+.top-title{font-size:.9rem;font-weight:600;color:var(--muted)}
+nav.jump{margin-left:auto;display:flex;gap:4px;flex-wrap:wrap}
+nav.jump a{font-size:.78rem;color:var(--muted);text-decoration:none;padding:5px 10px;border-radius:8px}
+nav.jump a:hover{background:var(--brand-soft);color:var(--brand-dark)}
+.wrap{max-width:var(--maxw);margin:0 auto;padding:0 20px 90px}
+.hero{margin-top:26px;padding:30px 28px;border-radius:var(--radius);color:#fff;background:linear-gradient(135deg,#0f5e8f,#1a86c7 60%,#2fa4df);box-shadow:var(--shadow);position:relative;overflow:hidden}
+.hero .eyebrow{font-size:.78rem;letter-spacing:1.5px;text-transform:uppercase;opacity:.9;font-weight:600}
+.hero h1{margin:.3em 0 .25em;font-size:1.62rem;line-height:1.25;max-width:90%}
+.hero .meta{display:flex;gap:18px;flex-wrap:wrap;font-size:.84rem;opacity:.95;margin-top:10px}
+h2.section{font-size:1.3rem;margin:48px 0 4px;display:flex;align-items:center;gap:10px;scroll-margin-top:70px}
+h2.section .dot{width:10px;height:22px;border-radius:4px;background:var(--brand)}
+.section-sub{color:var(--muted);font-size:.9rem;margin:0 0 18px}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);padding:22px 24px;margin:16px 0;--dot:var(--brand)}
+.concepts{list-style:none;margin:0;padding:0;display:grid;gap:10px}
+.concepts li{display:flex;gap:12px;align-items:flex-start;padding:12px 14px;border:1px solid var(--line);border-radius:10px;background:#fcfdff}
+.concepts input{margin-top:4px;width:18px;height:18px;accent-color:var(--brand);flex:none;cursor:pointer}
+.concepts .ct{font-weight:600}.concepts .cd{display:block;font-weight:400;color:var(--muted);font-size:.86rem;margin-top:2px}
+.concepts li.done{background:var(--brand-soft);border-color:#bfe0f3}.concepts li.done .ct{text-decoration:line-through;opacity:.65}
+.cl-head{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-bottom:6px}
+.cl-head .count{font-size:.82rem;color:var(--muted);background:var(--brand-soft);padding:3px 10px;border-radius:999px;font-weight:600}
+.btn-reset{font-size:.78rem;border:1px solid var(--line);background:#fff;color:var(--muted);padding:5px 12px;border-radius:8px;cursor:pointer}
+.mm-toolbar{display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin-bottom:10px}
+.mm-btn{font-size:.78rem;border:1px solid var(--line);background:#fff;padding:6px 13px;border-radius:8px;cursor:pointer;color:var(--brand-dark);font-weight:600}
+.mindmap-host{height:580px;overflow:auto;border:1px solid var(--line);border-radius:10px;background:#fcfdff}.mindmap-host svg{display:block}
+.kb-tag{display:inline-flex;align-items:center;gap:8px;font-size:.78rem;font-weight:700;color:#fff;padding:5px 12px;border-radius:999px;margin-bottom:6px}
+.kb1t{background:var(--kb1)}.kb2t{background:var(--kb2)}.kb3t{background:var(--kb3)}.kb4t{background:var(--kb4)}.kb5t{background:var(--kb5)}
+.kb1b{--dot:var(--kb1)}.kb2b{--dot:var(--kb2)}.kb3b{--dot:var(--kb3)}.kb4b{--dot:var(--kb4)}.kb5b{--dot:var(--kb5)}
+.lead{font-size:1.02rem}.term{font-weight:700;color:var(--dot)}.en{font-style:italic;color:var(--muted);font-weight:500}
+.abc{display:flex;align-items:center;gap:10px;margin:28px 0 10px;padding-bottom:6px;border-bottom:2px solid color-mix(in srgb,var(--dot) 18%,#fff)}
+.abc .ltr{background:var(--dot);color:#fff;font-weight:800;min-width:30px;height:30px;padding:0 7px;border-radius:8px;display:grid;place-items:center;flex:none}
+.abc h4{margin:0;font-size:1.06rem;color:var(--dot)}
+.numh{font-weight:700;color:var(--dot);margin:22px 0 4px;font-size:1rem}
+.leth{font-weight:800;color:var(--dot);margin:20px 0 6px;font-size:.98rem;border-left:3px solid var(--dot);padding-left:10px}
+ol.book{margin:12px 0;padding-left:28px}ol.book>li{margin:10px 0;padding-left:6px}ol.book>li::marker{font-weight:700;color:var(--dot)}
+ul.exp{list-style:none;margin:12px 0;padding:0;display:grid;gap:10px}ul.exp>li{position:relative;padding-left:20px}
+ul.exp>li::before{content:"";position:absolute;left:0;top:11px;width:8px;height:8px;border-radius:2px;background:var(--dot)}
+ul.let{list-style:lower-alpha;margin:10px 0;padding-left:28px}ul.let>li{margin:8px 0;padding-left:4px}ul.let>li::marker{color:var(--dot);font-weight:700}
+.flow{border-left:4px solid var(--dot);background:color-mix(in srgb,var(--dot) 9%,#fff);padding:11px 15px;border-radius:0 10px 10px 0;margin:18px 0;font-size:.9rem}
+.flow::before{content:"🔗 Benang merah — ";font-weight:700;color:var(--dot)}.flow b{color:var(--dot)}
+table.mini{width:100%;border-collapse:collapse;margin:14px 0;font-size:.86rem}
+table.mini th,table.mini td{border:1px solid var(--line);padding:9px 11px;text-align:left;vertical-align:top}
+table.mini th{background:color-mix(in srgb,var(--dot) 12%,#fff);color:var(--dot);font-weight:700}
+.rgrid{display:grid;gap:8px;margin:14px 0}.rgrid.c2{grid-template-columns:repeat(2,1fr)}.rgrid.c3{grid-template-columns:repeat(3,1fr)}.rgrid.c4{grid-template-columns:repeat(4,1fr)}
+.rcell{border:1px solid var(--line);border-radius:10px;padding:11px 13px;cursor:pointer;background:#fff;display:flex;gap:10px;align-items:flex-start;transition:.15s}
+.rcell:hover{border-color:var(--dot);box-shadow:var(--shadow);transform:translateY(-2px)}
+.rcell.active{border-color:var(--dot);background:color-mix(in srgb,var(--dot) 8%,#fff)}
+.rcell .stepnum{background:var(--dot);color:#fff;font-weight:700;min-width:24px;height:24px;border-radius:7px;display:grid;place-items:center;flex:none;font-size:.82rem}
+.rcell .rt{font-weight:700;font-size:.9rem;color:var(--dot);display:block}.rcell .rp{font-size:.78rem;color:var(--muted);display:block;margin-top:2px}
+.rdetail{font-size:.88rem;border-left:4px solid var(--dot);background:color-mix(in srgb,var(--dot) 8%,#fff);border-radius:0 10px 10px 0;padding:12px 15px;margin-top:6px}
+.flowchart{display:flex;align-items:center;gap:6px;flex-wrap:wrap;margin:16px 0;justify-content:center}
+.fc-node{background:color-mix(in srgb,var(--dot) 12%,#fff);border:1.5px solid var(--dot);color:var(--dot);font-weight:700;font-size:.8rem;padding:8px 12px;border-radius:9px;text-align:center}
+.fc-arrow{color:var(--dot);font-weight:800;font-size:1.05rem}
+.eqbox{background:#fcfdff;border:1px solid var(--line);border-radius:10px;padding:8px 14px;margin:14px 0;overflow-x:auto}
+.glossary dt{font-weight:700;color:var(--brand-dark);margin-top:10px}.glossary dd{margin:0 0 2px;color:var(--muted);font-size:.9rem}
+footer{max-width:var(--maxw);margin:0 auto;padding:30px 20px 60px;color:var(--muted);font-size:.82rem;border-top:1px solid var(--line)}
+.offline-note{font-size:.76rem;color:var(--muted);background:#fff8e6;border:1px solid #f0e2b8;border-radius:8px;padding:8px 12px;margin:10px 0}
+.casebox{background:#f8fafc;border:1px solid var(--line);border-left:4px solid var(--dot);border-radius:0 10px 10px 0;padding:12px 15px;margin:14px 0;font-size:.88rem}
+.casebox .ctitle{font-weight:700;color:var(--dot);margin-bottom:4px;display:block}
+
+.chart-wrap{background:#fcfdff;border:1px solid var(--line);border-radius:12px;padding:14px 16px;margin:16px 0}
+.chart-title{font-weight:700;font-size:.9rem;color:var(--dot);margin:0 0 4px}
+.chart-sub{font-size:.78rem;color:var(--muted);margin:0 0 10px}
+.chart-host{width:100%;overflow-x:auto;position:relative}
+.chart-host svg{display:block;max-width:100%;height:auto;margin:0 auto}
+.chart-legend{display:flex;gap:14px;flex-wrap:wrap;justify-content:center;margin-top:8px;font-size:.78rem;color:var(--muted)}
+.chart-legend span{display:inline-flex;align-items:center;gap:6px}
+.chart-legend i{display:inline-block;width:14px;height:3px;border-radius:2px}
+@media(max-width:640px){.hero h1{font-size:1.3rem;max-width:100%}nav.jump{display:none}.rgrid.c2,.rgrid.c3,.rgrid.c4{grid-template-columns:1fr}.mindmap-host{height:440px}}
+
+/* GLOBAL RESPONSIVE & OVERFLOW PROTECTION */
+.card{overflow-x:clip;overflow-wrap:break-word;word-wrap:break-word}
+ul.exp,.concepts{grid-template-columns:minmax(0,1fr)}
+ul.exp>li,.concepts li,.concepts li>span,.rcell,.rcell>span,.bs-col,.casebox,.rdetail,.flow{min-width:0;max-width:100%;overflow-wrap:break-word;word-wrap:break-word}
+mjx-container{max-width:100%;overflow-x:auto;overflow-y:hidden}
+mjx-container:not([display="true"]){display:inline-block;vertical-align:middle}
+.table-wrap{width:100%;overflow-x:auto;-webkit-overflow-scrolling:touch;margin:14px 0;border-radius:10px}
+table.mini{width:100%;border-collapse:collapse;margin:0;font-size:.86rem;table-layout:auto}
+table.mini th,table.mini td{border:1px solid var(--line);padding:10px 12px;text-align:left;vertical-align:top;overflow-wrap:break-word;word-wrap:break-word}
+@media(max-width:680px){
+  .table-wrap{overflow-x:visible}
+  table.mini,table.mini thead,table.mini tbody,table.mini th,table.mini td,table.mini tr{display:block;width:100%}
+  table.mini thead{display:none}
+  table.mini tr{margin-bottom:12px;border:1.5px solid color-mix(in srgb,var(--dot) 28%,#e4e9f0);border-radius:10px;background:#fff;overflow:hidden;box-shadow:0 1px 4px rgba(16,42,67,.05)}
+  table.mini td{border:none;border-bottom:1px solid var(--line);padding:10px 12px;text-align:left}
+  table.mini td:last-child{border-bottom:none}
+  table.mini td::before{content:attr(data-label);display:block;font-size:.74rem;font-weight:700;text-transform:uppercase;letter-spacing:.4px;color:var(--dot);margin-bottom:4px}
+}
+
+/* KAMUS AKRONIM & BEDAH FORMULA */
+.acro-box{background:#f8fafc;border:1px solid var(--line);border-radius:10px;padding:12px 14px;margin:14px 0;font-size:.84rem;min-width:0;max-width:100%;overflow-wrap:break-word;word-wrap:break-word}
+.acro-title{font-weight:700;color:var(--dot);font-size:.86rem;margin-bottom:8px;display:block}
+.acro-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:6px 14px;margin:0;padding:0;list-style:none}
+.acro-grid li{min-width:0;line-height:1.5}
+.acro-grid b{color:var(--dot)}
+.fguide{background:color-mix(in srgb,var(--dot) 5%,#fff);border:1px solid color-mix(in srgb,var(--dot) 22%,#e4e9f0);border-radius:10px;padding:12px 15px;margin:-6px 0 16px;font-size:.86rem;min-width:0;max-width:100%;overflow-wrap:break-word;word-wrap:break-word}
+.fguide .fg-head{font-weight:700;color:var(--dot);font-size:.84rem;text-transform:uppercase;letter-spacing:.35px;margin:0 0 6px}
+.fguide ul{margin:4px 0 8px;padding-left:18px}
+.fguide ul li{margin:3px 0}
+.fguide .fg-core{border-top:1px dashed color-mix(in srgb,var(--dot) 30%,#cbd5e1);padding-top:8px;margin-top:8px;display:grid;grid-template-columns:minmax(0,1fr);gap:4px}
+.fguide .fg-core div{min-width:0}
+@media(max-width:640px){.acro-grid{grid-template-columns:minmax(0,1fr)}}
+</style></head><body>
+<div id="progress"></div>
+<header class="top"><div class="top-in">
+ <span class="badge">MODUL 5</span>
+ <a class="homebtn" href="index.html" title="Kembali ke daftar modul"><span style="font-size:1rem;line-height:1">&#8962;</span> Daftar Modul</a>
+ <span class="top-title">Manajemen Keuangan · EKMA5205</span>
+ <nav class="jump">
+ <a href="#konsep">Konsep</a>
+ <a href="#peta">Peta Konsep</a>
+ <a href="#kb1">KB 1</a>
+ <a href="#kb2">KB 2</a>
+ <a href="#kb3">KB 3</a>
+ <a href="#glosarium">Glosarium</a>
+ </nav>
+</div></header>
+
+<div class="wrap">
+ <section class="hero">
+ <div class="eyebrow">Ringkasan Belajar · EKMA5205 (Edisi 3)</div>
+ <h1>Pembiayaan Jangka Pendek</h1>
+ <div class="meta">
+ <span>⏱️ ±35 menit</span>
+ <span>📚 3 Kegiatan Belajar (KB)</span>
+ <span>✍️ Dr. Said Kelana Asnawi, M.M.</span>
+ </div>
+ </section>
+
+ <p class="section-sub" style="margin-top:22px">Modul 5 membuka bagian ketiga mata kuliah (keputusan keuangan) dengan fokus pada pengelolaan operasi rutin jangka pendek: mulai dari <b>manajemen modal kerja</b>, strategi pendanaan fleksibel vs ketat, siklus konversi kas, anggaran kas, dan sumber dana jangka pendek (KB 1); dilanjutkan <b>manajemen kas</b> melalui Model Baumol, Model Miller-Orr, dan pengelolaan <i>float</i> (KB 2); hingga <b>manajemen piutang</b> mencakup biaya dana tertanam, <i>terms of sale</i>, prinsip 5C, evaluasi penjualan kredit vs tunai, serta <i>factoring</i> dan <i>securitization</i> (KB 3).</p>
+ <p class="offline-note">ℹ️ Peta konsep, kartu penjelasan interaktif, dan checklist konsep berjalan tanpa internet. Koneksi internet hanya diperlukan untuk merender persamaan matematika (MathJax).</p>
+
+ <!-- KONSEP PENTING -->
+ <h2 class="section" id="konsep"><span class="dot"></span>Konsep Penting yang Harus Dikuasai</h2>
+ <div class="card">
+ <div class="cl-head">
+ <span class="count"><span id="doneCount">0</span>/<span id="totalCount">0</span> dikuasai</span>
+ <button class="btn-reset" id="resetBtn">Reset centang</button>
+ </div>
+ <ul class="concepts" id="conceptList">
+ <li><input type="checkbox"><span><span class="ct">Pola Pendanaan Modal Kerja (Hedging/Moderat, Fleksibel, &amp; Kaku)</span><span class="cd">Hedging menyelaraskan umur aset &amp; utang (moderat); fleksibel memakai dana jangka panjang berlebih (risiko &amp; return rendah); kaku mendanai aset tetap dengan utang jangka pendek (risiko &amp; return tinggi).</span></span></li>
+ <li><input type="checkbox"><span><span class="ct">Trade-off Carrying Costs vs Shortage Costs</span><span class="cd">Aset lancar banyak menekan shortage costs (order/safety reserve) tapi menaikkan carrying costs (gudang &amp; opportunity cost); optimal saat total biaya minimum.</span></span></li>
+ <li><input type="checkbox"><span><span class="ct">Siklus Operasi (OC) &amp; Siklus Konversi Kas (CCC)</span><span class="cd">$\text{OC} = \text{AAI} + \text{ACP} = \text{APP} + \text{CCC}$; memperpendek CCC dilakukan dengan menekan AAI/ACP dan memperpanjang APP.</span></span></li>
+ <li><input type="checkbox"><span><span class="ct">Penganggaran Kas &amp; Alternatif Pembiayaan Jangka Pendek</span><span class="cd">Proyeksi kas masuk-keluar kuartalan + kas minimum; kekurangan dana ditutup via unsecured loans (noncommitted/committed line, compensating balance), factoring, atau commercial paper.</span></span></li>
+ <li><input type="checkbox"><span><span class="ct">Tiga Motif Memegang Uang</span><span class="cd">Motif transaksi (operasi rutin), motif berjaga-jaga (antisipasi lonjakan musiman/tak terduga), dan motif spekulatif (hanya boleh dari uang lebih).</span></span></li>
+ <li><input type="checkbox"><span><span class="ct">Model Baumol (Motif Transaksi)</span><span class="cd">Meminimalkan total biaya kas $\text{TC} = (M/C)F + (C/2)r$ menghasilkan kas optimal $C^* = \sqrt{2MF/r}$ (biaya transaksi = biaya kesempatan).</span></span></li>
+ <li><input type="checkbox"><span><span class="ct">Model Miller-Orr (Fluktuasi Kas Harian)</span><span class="cd">Menentukan batas bawah ($L$), titik target ($Z = \sqrt[3]{3F\sigma^2/4r}+L$), batas atas ($U = 3Z-2L$), dan rerata kas $C = (4Z-L)/3$.</span></span></li>
+ <li><input type="checkbox"><span><span class="ct">Pengelolaan Float (Collection vs Disbursement Float)</span><span class="cd">Time lag antara book cash dan bank cash; perusahaan diuntungkan oleh disbursement float dan dirugikan oleh collection float; biaya float = opportunity cost keterlambatan.</span></span></li>
+ <li><input type="checkbox"><span><span class="ct">Biaya Dana Tertanam pada Piutang &amp; Aging Schedule</span><span class="cd">$\text{ARTO} = 360/\text{ACP}$, rerata piutang $= S_k/\text{ARTO}$, dana tertanam $= \text{HPP}\% \times \text{AR}$, opportunity cost $= r \times \text{dana tertanam}$; aging schedule memetakan risiko macet.</span></span></li>
+ <li><input type="checkbox"><span><span class="ct">Terms of Sale (2/10 net 30) &amp; Evaluasi Kredit Macet</span><span class="cd">Diskon memperpendek ACP &amp; menurunkan opportunity cost, namun harus dibandingkan dengan kehilangan penerimaan diskon, bad debt, dan biaya debt collector.</span></span></li>
+ <li><input type="checkbox"><span><span class="ct">Prinsip 5C Kredit &amp; Cut-off Penjualan Kredit vs Tunai</span><span class="cd">5C (Character, Capacity, Capital, Collateral, Conditions); membandingkan PV laba kredit $[p(P_k-C_1)Q_1]/(1+r)$ vs laba tunai serta batas peluang bayar minimal ($p$).</span></span></li>
+ <li><input type="checkbox"><span><span class="ct">Factoring vs Securitization</span><span class="cd">Keduanya mencairkan piutang ke institusi keuangan secara diskonto: pada factoring piutang dijual (beralih milik), pada securitization piutang dijadikan jaminan pinjaman.</span></span></li>
+ </ul>
+ </div>
+
+ <!-- PETA KONSEP -->
+ <h2 class="section" id="peta"><span class="dot"></span>Peta Konsep (Mind Map)</h2>
+ <div class="card">
+ <div class="mm-toolbar">
+ <button class="mm-btn" id="mmExpand">Perluas semua</button>
+ <button class="mm-btn" id="mmCollapse">Ciutkan</button>
+ <span style="font-size:.76rem;color:var(--muted)">Klik simpul bertanda + / – untuk buka-tutup · Gulir untuk menggeser</span>
+ </div>
+ <div class="mindmap-host" id="mindmap"></div>
+ </div>
+
+ <!-- ========================================================= -->
+ <!-- KB 1 -->
+ <!-- ========================================================= -->
+ <h2 class="section" id="kb1"><span class="dot" style="background:var(--kb1)"></span>KB 1 — Manajemen Modal Kerja</h2>
+ <div class="card kb1b">
+ <span class="kb-tag kb1t">KB 1 · MODAL KERJA, SIKLUS KAS, &amp; ANGGARAN (Hal. 5.5 – 5.14)</span>
+ <p class="lead"><span class="term">Modal kerja bersih <span class="en">(Net Working Capital / NWC)</span></span> adalah selisih aset lancar dan utang lancar yang menopang kelangsungan produksi harian (seperti kasus PD Nur Cake menghadapi lonjakan kebutuhan terigu Lebaran dari 200 kg ke 500 kg/minggu). Aset lancar ber-return rendah tetapi likuid: terlalu banyak menurunkan profitabilitas, terlalu sedikit mengganggu produksi.</p>
+ <div class="acro-box">
+ <span class="acro-title">📖 Kamus Konteks Singkatan &amp; Akronim KB 1</span>
+ <ul class="acro-grid">
+ <li><b>NWC</b>: <i>Net Working Capital</i> (modal kerja bersih = aset lancar − utang lancar).</li>
+ <li><b>OC &amp; CC</b>: <i>Operating Cycle</i> (siklus operasi) &amp; <i>Cash Cycle</i> (siklus kas).</li>
+ <li><b>AAI</b>: <i>Average Age of Inventory</i> — rata-rata hari persediaan tersimpan sebelum terjual.</li>
+ <li><b>ACP</b>: <i>Average Collection Period</i> — rata-rata hari penagihan piutang menjadi kas.</li>
+ <li><b>APP</b>: <i>Average Payment Period</i> — rata-rata hari penundaan pembayaran utang dagang ke pemasok.</li>
+ <li><b>CCC</b>: <i>Cash Conversion Cycle</i> — jumlah hari bersih kas perusahaan tertahan dalam siklus operasi.</li>
+ <li><b>HPP</b>: <i>Harga Pokok Penjualan</i> — biaya bahan baku &amp; produksi langsung barang terjual.</li>
+ <li><b>CP</b>: <i>Commercial Paper</i> — surat utang jangka pendek tanpa jaminan terbitan korporasi bereputasi tinggi.</li>
+ </ul>
+ </div>
+
+ <div class="numh">Sumber &amp; Penggunaan Dana: Matriks Strategi Pendanaan (Tabel 5.1)</div>
+ <div class="table-wrap">
+<table class="mini">
+ <thead><tr><th>Aset \ Pembiayaan</th><th>Pembiayaan Jangka Pendek (Bunga Rendah, Volatil)</th><th>Pembiayaan Jangka Panjang (Bunga Lebih Tinggi)</th></tr></thead>
+ <tbody>
+ <tr><td data-label="Aset \ Pembiayaan"><b>Aset Lancar</b></td><td data-label="Pembiayaan Jangka Pendek (Bunga Rendah, Volatil)"><b>Moderate Risk – Profitability</b> (Pola <i>Hedging</i> / Ideal)</td><td data-label="Pembiayaan Jangka Panjang (Bunga Lebih Tinggi)"><b>Low Risk – Low Profitability</b> (<i>Strategi Fleksibel</i>: surplus kas ditaruh di <i>marketable securities</i>; cocok untuk perusahaan tumbuh/kecil)</td></tr>
+ <tr><td data-label="Aset \ Pembiayaan"><b>Aset Tetap</b></td><td data-label="Pembiayaan Jangka Pendek (Bunga Rendah, Volatil)"><b>High Risk – High Profitability</b> (<i>Strategi Kaku/Ketat</i>: rawan <i>financial distress</i> karena utang cepat jatuh tempo)</td><td data-label="Pembiayaan Jangka Panjang (Bunga Lebih Tinggi)"><b>Moderate Risk – Profitability</b> (Pola <i>Hedging</i> / Ideal)</td></tr>
+ </tbody>
+ </table>
+</div>
+
+ <div class="abc"><span class="ltr">A</span><h4>Beberapa Hal Berkenaan dengan Pembiayaan Jangka Pendek</h4></div>
+ <p>Menentukan jumlah aset lancar (fleksibel vs terbatas/<i>restrictive</i>) menghadapi <i>trade-off</i> dua jenis biaya (Gambar 5.4):</p>
+ <div class="rgrid c2" data-revealgroup>
+ <div class="rcell active" data-reveal data-detail="<b>Carrying Costs (Biaya Penyimpanan &amp; Peluang):</b> Naik seiring bertambahnya aset lancar. Meliputi biaya gudang penyimpanan inventori serta <i>opportunity costs</i> (kehilangan pendapatan bunga karena dana tertanam di inventori/piutang). Dominan tinggi pada <b>strategi fleksibel</b>."><span class="stepnum">1</span><span><span class="rt">Carrying Costs</span><span class="rp">Tinggi jika aset lancar banyak</span></span></div>
+ <div class="rcell" data-reveal data-detail="<b>Shortage Costs (Biaya Kekurangan):</b> Naik jika aset lancar terlalu sedikit. Terdiri atas (i) <b>trading/order costs</b> (biaya pesan ulang inventori, biaya jual surat berharga/utang) dan (ii) <b>safety reserves costs</b> (kehilangan penjualan, pelanggan, dan gangguan produksi). Dominan tinggi pada <b>strategi terbatas</b>."><span class="stepnum">2</span><span><span class="rt">Shortage Costs</span><span class="rp">Tinggi jika aset lancar sedikit</span></span></div>
+ </div>
+ <div class="rdetail" data-revealdetail><b>Carrying Costs (Biaya Penyimpanan &amp; Peluang):</b> Naik seiring bertambahnya aset lancar. Meliputi biaya gudang penyimpanan inventori serta <i>opportunity costs</i> (kehilangan pendapatan bunga karena dana tertanam di inventori/piutang). Dominan tinggi pada <b>strategi fleksibel</b>.</div>
+
+ <div class="flow">Setelah memahami biaya memiliki aset lancar, bagian B menghitung <b>berapa lama (hari)</b> kas tertahan dalam satu siklus produksi, sebelum bagian C menghitung <b>berapa rupiah</b> kas yang dibutuhkan.</div>
+
+ <div class="abc"><span class="ltr">B</span><h4>Siklus Operasi dan Siklus Konversi Kas</h4></div>
+ <p><span class="term">Siklus operasi <span class="en">(Operating Cycle / OC)</span></span> adalah waktu penyelesaian produksi hingga penagihan piutang, yang selalu sama dengan <span class="term">siklus kas <span class="en">(Cash Cycle / CC)</span></span>. Target manajer adalah <b>memperpendek <span class="en">Cash Conversion Cycle (CCC)</span></b>—terutama lewat memperpendek umur inventori (AAI) yang berada dalam kontrol internal, mempercepat penagihan piutang (ACP), dan memperpanjang pembayaran utang dagang (APP).</p>
+ <div class="eqbox">
+ \[\text{OC} = \text{CC} \quad\Longrightarrow\quad \text{AAI} + \text{ACP} = \text{APP} + \text{CCC}\]
+ </div>
+ <div class="fguide">
+ <div class="fg-head">Bedah Variabel &amp; Intisari Formula Siklus Konversi Kas (CCC)</div>
+ <ul>
+ <li><b>$\text{OC}$</b> = siklus operasi ($\text{AAI}+\text{ACP}$); <b>$\text{AAI}$</b> = umur persediaan (hari); <b>$\text{ACP}$</b> = umur piutang (hari); <b>$\text{APP}$</b> = masa tunda bayar utang dagang (hari); <b>$\text{CCC} = \text{AAI} + \text{ACP} - \text{APP}$</b>.</li>
+ <li><b>Makna formula:</b> Mengukur jumlah hari bersih sejak kas keluar membayar pemasok hingga kas kembali masuk dari penagihan pelanggan.</li>
+ </ul>
+ <div class="fg-core">
+ <div>🧭 <b>Filosofis:</b> Makin lama kas 'terjebak' di gudang (AAI) dan tangan pembeli (ACP), makin besar modal kerja yang harus dibiayai; memperpanjang utang dagang (APP) membantu meringankan beban kas tersebut.</div>
+ <div>📏 <b>Mengukur:</b> Durasi waktu (hari) dan besaran dana yang tertanam dalam modal kerja operasional.</div>
+ <div>🎯 <b>Manfaat:</b> Menjadi peta jalan efisiensi kas jangka pendek: perpendek AAI (kontrol internal utama), percepat ACP, dan negosiasikan APP secara wajar.</div>
+ </div>
+ </div>
+ <div class="casebox">
+ <span class="ctitle">Contoh Buku · Perusahaan Mainan Anak (Sales Rp1.000 jt, HPP 70%, 60% bahan baku utang dagang)</span>
+ Diketahui $\text{AAI}=30$ hr, $\text{ACP}=25$ hr, $\text{APP}=20$ hr $\implies \mathbf{\text{CCC} = 30 + 25 - 20 = 35\text{ hari}}$.<br>
+ Dana tertanam: Inventori $(1.000 \times 0{,}7 \times 30/360) = \text{Rp58,33 jt}$ $+$ Piutang $(1.000 \times 25/360) = \text{Rp69,44 jt}$ $-$ Utang dagang $(700 \times 0{,}6 \times 20/360) = \text{Rp23,33 jt} \implies \mathbf{\text{Rp104,44 juta}}$.
+ </div>
+
+ <div class="abc"><span class="ltr">C</span><h4>Penganggaran Kas &amp; Sumber Pembiayaan Jangka Pendek</h4></div>
+ <p><span class="term">Penganggaran kas</span> memproyeksikan arus kas masuk (pola penjualan tunai &amp; kredit) dan kas keluar (HPP, upah, investasi, bunga/dividen, plus kas minimum) secara berkala. Surplus ditanam di pasar uang; defisit ditutup lewat tiga alternatif utama:</p>
+ <ol class="book">
+ <li><span class="term">Pinjaman Bank Tanpa Jaminan <span class="en">(Unsecured Loans)</span></span> — Berbunga relatif tinggi; tersedia dalam bentuk perjanjian informal (<span class="term">noncommitted line</span>) maupun mengikat secara hukum (<span class="term">committed line</span> dengan <i>committed fee</i>). Bank sering mensyaratkan <span class="term">compensating balance</span> (tabungan mengendap 5–10% dari pinjaman tanpa bunga sebagai sumber dana murah bank).</li>
+ <li><span class="term">Anjak Piutang <span class="en">(Factoring — Secured Loans)</span></span> — Memperoleh dana dengan menjaminkan/menjual piutang perusahaan kepada lembaga keuangan.</li>
+ <li><span class="term">Commercial Paper (CP)</span> — Surat utang jangka pendek yang diterbitkan perusahaan berkredibilitas tinggi langsung kepada investor.</li>
+ </ol>
+ </div>
+
+ <!-- ========================================================= -->
+ <!-- KB 2 -->
+ <!-- ========================================================= -->
+ <h2 class="section" id="kb2"><span class="dot" style="background:var(--kb2)"></span>KB 2 — Manajemen Kas</h2>
+ <div class="card kb2b">
+ <span class="kb-tag kb2t">KB 2 · MOTIF KAS, BAUMOL, MILLER-ORR, &amp; FLOAT (Hal. 5.18 – 5.26)</span>
+ <p class="lead"><span class="term">Manajemen kas</span> berfokus menentukan jumlah kas optimal agar total biaya memegang uang (biaya transaksi pencairan surat berharga + <i>opportunity cost</i> kehilangan bunga) berada di titik minimum.</p>
+ <div class="acro-box">
+ <span class="acro-title">📖 Kamus Konteks Singkatan &amp; Akronim KB 2</span>
+ <ul class="acro-grid">
+ <li><b>TC</b>: <i>Total Cost</i> — total biaya memegang kas (biaya transaksi + <i>opportunity cost</i>).</li>
+ <li><b>$M, C, C^*$</b>: Kebutuhan kas tahunan ($M$), saldo kas ditarik per transaksi ($C$), &amp; saldo kas optimal ($C^*$).</li>
+ <li><b>$F$ &amp; $r$</b>: Biaya tetap per transaksi pencairan surat berharga ($F$) &amp; tingkat bunga/<i>opportunity cost</i> ($r$).</li>
+ <li><b>$L, Z, U$</b>: Batas kontrol Model Miller-Orr: <i>Lower Limit</i> ($L$), <i>Return Point/Target</i> ($Z$), &amp; <i>Upper Limit</i> ($U$).</li>
+ <li><b>$\sigma^2$</b>: Varian fluktuasi arus kas bersih harian pada Model Miller-Orr.</li>
+ <li><b>PV</b>: <i>Present Value</i> — nilai sekarang dari biaya keterlambatan kas (<i>float</i>).</li>
+ </ul>
+ </div>
+
+ <div class="numh">Tiga Motif Memegang Uang</div>
+ <div class="rgrid c3" data-revealgroup>
+ <div class="rcell active" data-reveal data-detail="<b>a. Motif Transaksi (Transaction Motive):</b> Kebutuhan uang tunai untuk membiayai operasi rutin harian perusahaan sesuai anggaran kas. Wajib tersedia agar kelangsungan usaha tidak terhenti."><span class="stepnum">a</span><span><span class="rt">Motif Transaksi</span><span class="rp">Operasional rutin harian</span></span></div>
+ <div class="rcell" data-reveal data-detail="<b>b. Motif Berjaga-jaga (Precautionary Motive):</b> Cadangan kas untuk kejadian di luar kebiasaan—baik yang dapat diprediksi (mis. kenaikan permintaan hari raya 20–30% berdasarkan data <i>ex-post</i>) maupun tak terduga (perubahan teknologi/selera)."><span class="stepnum">b</span><span><span class="rt">Motif Berjaga-jaga</span><span class="rp">Antisipasi lonjakan/tak terduga</span></span></div>
+ <div class="rcell" data-reveal data-detail="<b>c. Motif Spekulatif (Speculative Motive):</b> Investasi di luar produksi (mis. derivatif) untuk mencari return besar dengan risiko tinggi. <b>Aturan ketat:</b> hanya boleh memakai uang <i>lebih</i> di luar dua motif pertama agar tidak memicu kebangkrutan."><span class="stepnum">c</span><span><span class="rt">Motif Spekulatif</span><span class="rp">Hanya dari dana lebih</span></span></div>
+ </div>
+ <div class="rdetail" data-revealdetail><b>a. Motif Transaksi (Transaction Motive):</b> Kebutuhan uang tunai untuk membiayai operasi rutin harian perusahaan sesuai anggaran kas. Wajib tersedia agar kelangsungan usaha tidak terhenti.</div>
+
+ <div class="abc"><span class="ltr">A</span><h4>Motif Transaksi: Model Baumol</h4></div>
+ <p>Model Baumol mengasumsikan pemakaian kas yang stabil setiap hari (rerata kas dipegang $= C/2$) sehingga total biaya memegang kas terdiri atas biaya transaksi $(M/C)F$ dan biaya kesempatan $(C/2)r$:</p>
+ <div class="eqbox">
+ \[\text{TC} = \left(\frac{M}{C}\right)F + \left(\frac{C}{2}\right)r \qquad\Longrightarrow\qquad C^* = \sqrt{\frac{2MF}{r}}\]
+ </div>
+ <div class="fguide">
+ <div class="fg-head">Bedah Variabel &amp; Intisari Formula Model Baumol</div>
+ <ul>
+ <li><b>$\text{TC}$</b> = total biaya tahunan memegang kas; <b>$M$</b> = kebutuhan kas total setahun; <b>$C$</b> = jumlah kas yang ditarik tiap transaksi; <b>$F$</b> = biaya tetap per transaksi; <b>$r$</b> = suku bunga surat berharga (<i>opportunity cost</i>); <b>$C^*$</b> = saldo kas optimal.</li>
+ <li><b>Makna formula:</b> Total biaya kas adalah penjumlahan biaya transaksi $(M/C)F$ (turun jika $C$ besar) dan biaya kesempatan $(C/2)r$ (naik jika $C$ besar); titik minimum tercapai saat keduanya tepat sama pada $C^*$.</li>
+ </ul>
+ <div class="fg-core">
+ <div>🧭 <b>Filosofis:</b> Memegang kas terlalu sedikit membuat perusahaan bolak-balik mencairkan surat berharga (boros biaya transaksi); memegang kas terlalu banyak membuat dana menganggur kehilangan bunga.</div>
+ <div>📏 <b>Mengukur:</b> Saldo kas penarikan optimal ($C^*$) yang meminimalkan total biaya pengelolaan kas.</div>
+ <div>🎯 <b>Manfaat:</b> Menentukan jadwal dan nominal pencairan surat berharga untuk perusahaan dengan pola pengeluaran kas rutin dan stabil.</div>
+ </div>
+ </div>
+ <ul class="exp">
+ <li><span class="term">Contoh Buku (PT ABC)</span> — Kebutuhan kas setahun $M = \text{Rp3.600 jt}$, biaya transaksi $F = \text{Rp50.000}$, bunga $r = 10\%$. Diperoleh kas optimal $C^* = \sqrt{(2 \times 3.600\text{ jt} \times 50.000)/0{,}1} = \mathbf{\text{Rp60 juta}}$ (60 transaksi/th; biaya transaksi Rp3 jt + biaya kesempatan Rp3 jt = <b>TC minimum Rp6 juta</b>). Jika memegang terlalu kecil ($C=30$ jt) atau terlalu besar ($C=120$ jt), total biaya sama-sama naik menjadi Rp7,5 juta!</li>
+ </ul>
+
+ 
+    <div class="chart-wrap">
+      <div class="chart-title">Grafik Model Baumol · Total Biaya Memegang Kas vs Saldo Kas $C$ (PT ABC)</div>
+      <div class="chart-sub">Total biaya minimum (Rp6 jt) tercapai tepat di perpotongan Biaya Transaksi dan Biaya Kesempatan pada $C^* = \text{Rp60 juta}$.</div>
+      <div class="chart-host" id="ch_m5_baumol"></div>
+    </div>
+    <div class="flow">Model Baumol mengasumsikan arus kas keluar seragam dan pasti. Ketika arus kas harian berfluktuasi acak mengikuti distribusi normal, digunakan <b>Model Miller-Orr</b> pada bagian B.</div>
+
+ <div class="abc"><span class="ltr">B</span><h4>Motif Transaksi: Model Miller-Orr</h4></div>
+ <p>Mempelajari kebiasaan fluktuasi kas harian ($\sigma^2$) dengan menetapkan tiga batas: <span class="term">batas bawah ($L$, ditentukan perusahaan)</span>, <span class="term">titik target ($Z$, return point)</span>, dan <span class="term">batas atas ($U$, upper limit)</span>. Jika kas menyentuh $U$, kelebihan $(U-Z)$ dibelikan surat berharga; jika menyentuh $L$, surat berharga dijual untuk menambah kas kembali ke $Z$.</p>
+ <div class="eqbox">
+ \[Z = \sqrt[3]{\frac{3F\sigma^2}{4r}} + L \qquad\big|\qquad U = 3Z - 2L \qquad\big|\qquad C_{\text{rerata}} = \frac{4Z - L}{3}\]
+ </div>
+ <div class="fguide">
+ <div class="fg-head">Bedah Variabel &amp; Intisari Formula Model Miller-Orr</div>
+ <ul>
+ <li><b>$L$</b> = batas bawah kas (ditentukan manajemen); <b>$Z$</b> = titik target kas (<i>return point</i>); <b>$U$</b> = batas atas kas (<i>upper limit</i>); <b>$F$</b> = biaya per transaksi; <b>$\sigma^2$</b> = varian arus kas harian; <b>$r$</b> = bunga harian.</li>
+ <li><b>Makna formula:</b> Membentuk koridor kontrol kas $[L, U]$; kas dibiarkan bergerak bebas di dalam koridor dan hanya ditransaksikan kembali ke $Z$ saat menyentuh batas $U$ (beli surat berharga $U-Z$) atau batas $L$ (jual surat berharga $Z-L$).</li>
+ </ul>
+ <div class="fg-core">
+ <div>🧭 <b>Filosofis:</b> Di dunia nyata arus kas harian berfluktuasi acak—mengintervensi kas setiap hari tidak efisien, sehingga manajemen cukup bertindak saat saldo menyentuh batas ekstrem atas atau bawah.</div>
+ <div>📏 <b>Mengukur:</b> Batas kendali otomatis saldo kas ($L, Z, U$) serta rata-rata kas harian yang dipegang perusahaan.</div>
+ <div>🎯 <b>Manfaat:</b> Mengelola likuiditas harian secara otomatis dan hemat biaya transaksi pada bisnis dengan arus kas tidak menentu.</div>
+ </div>
+ </div>
+ <ul class="exp">
+ <li><span class="term">Contoh Buku (PT Assarie Chan)</span> — Varian kas harian $\sigma^2 = 960.000$, $r = 7\%/\text{th} = 0{,}0194\%/\text{hari}$, $L = \text{Rp150.000}$, $F = \text{Rp500}$. Diperoleh target kas $Z = \mathbf{\text{Rp162.289}}$, batas atas $U = \mathbf{\text{Rp186.866}}$, dan rerata kas $C = \mathbf{\text{Rp166.385}}$. (<i>Catatan:</i> jika biaya transaksi $F$ naik 8 kali, komponen pangkat $\frac{1}{3}$ naik $\sqrt[3]{8} = 2$ kali.)</li>
+ </ul>
+
+ 
+    <div class="chart-wrap">
+      <div class="chart-title">Grafik 5.6 · Model Miller-Orr: Batas Kontrol Kas ($U$, $Z$, $L$) pada PT Assarie Chan</div>
+      <div class="chart-sub">Kas dibiarkan berfluktuasi antara $L$ (Rp150 rb) dan $U$ (Rp186,9 rb); saat menyentuh $U$ beli surat berharga sebesar $U-Z$, saat menyentuh $L$ jual surat berharga sebesar $Z-L$.</div>
+      <div class="chart-host" id="ch_m5_mo"></div>
+    </div>
+    <div class="abc"><span class="ltr">C</span><h4>Mengelola Kas: Float &amp; Investasi Kas Menganggur</h4></div>
+ <p><span class="term">Float</span> adalah jeda waktu (<span class="en">time lag</span>) antara saldo catatan buku (<span class="en">book cash</span>) dan saldo di bank (<span class="en">bank cash</span>). Manajer keuangan harus fokus pada <b>bank cash</b> dan <b>net float</b> (jumlah <i>collection float</i> + <i>disbursement float</i>):</p>
+ <ul class="exp">
+ <li><span class="term">Disbursement Float (Menguntungkan) vs Collection Float (Merugikan)</span> — <b>Disbursement float</b> terjadi saat buku mencatat pembayaran tetapi bank belum mendebetnya (dana masih bisa diputar <i>overnight</i>). <b>Collection float</b> terjadi saat buku mencatat penerimaan tetapi bank belum mengkreditnya. Idealnya <i>collection float</i> diperpendek dan <i>disbursement float</i> diperpanjang—namun tetap menjaga relasi baik dengan mitra bisnis.</li>
+ <li><span class="term">Besaran &amp; Biaya Float</span> — $\text{Float} = \text{Rupiah} \times \text{Hari keterlambatan}$. Contoh PT A: penerimaan Rp1 jt telat 10 hari (float 10 jt) + Rp3 jt telat 5 hari (float 15 jt) → total float Rp25 jt/bln, rerata hari telat 6,25 hari, rerata float/hari Rp833.331. Dengan bunga 10%/th ($0{,}17\%$ per 6,25 hari), kerugian PV $= \text{Rp1.414/hari}$ atau <b>Rp509.040/tahun</b>.</li>
+ <li><span class="term">Investasi Kas Menganggur</span> — Kas surplus sementara ditempatkan pada instrumen <b>pasar uang</b> (tenor 1 hari s.d. 1 tahun, sangat likuid, risiko gagal bayar rendah namun tetap butuh kehati-hatian).</li>
+ </ul>
+ </div>
+
+ <!-- ========================================================= -->
+ <!-- KB 3 -->
+ <!-- ========================================================= -->
+ <h2 class="section" id="kb3"><span class="dot" style="background:var(--kb3)"></span>KB 3 — Manajemen Piutang</h2>
+ <div class="card kb3b">
+ <span class="kb-tag kb3t">KB 3 · PIUTANG, TERMS OF SALE, 5C, &amp; FACTORING (Hal. 5.30 – 5.38)</span>
+ <p class="lead">Penjualan kredit mendongkrak volume penjualan, namun menimbulkan <span class="term">biaya dana tertanam</span> pada piutang, potongan harga (<span class="en">terms of sale</span>), potensi <span class="term">kredit macet <span class="en">(bad debt)</span></span>, serta biaya penagihan. Semua biaya ini harus ditimbang terhadap tambahan margin laba.</p>
+ <div class="acro-box">
+ <span class="acro-title">📖 Kamus Konteks Singkatan &amp; Akronim KB 3</span>
+ <ul class="acro-grid">
+ <li><b>$S, S_k$</b>: Total penjualan ($S$) &amp; porsi penjualan secara kredit ($S_k$).</li>
+ <li><b>AR &amp; ARTO</b>: <i>Accounts Receivable</i> (piutang usaha) &amp; <i>AR Turnover</i> (perputaran piutang $= 360/\text{ACP}$).</li>
+ <li><b>ACP</b>: <i>Average Collection Period</i> — umur rata-rata piutang tertagih (dalam hari).</li>
+ <li><b>5C</b>: Kriteria kelayakan debitur: <i>Character, Capacity, Capital, Collateral, Conditions</i>.</li>
+ <li><b>$p$ &amp; $(1-p)$</b>: Probabilitas pelanggan melunasi utang ($p$) &amp; peluang kredit macet/<i>bad debt</i> ($1-p$).</li>
+ <li><b>$P_0, C_0, Q_0$</b>: Harga jual, biaya per unit, dan kuantitas penjualan pada skema tunai ($0$) vs kredit ($P_k, C_1, Q_1$).</li>
+ </ul>
+ </div>
+
+ <div class="numh">7 Langkah Menghitung Biaya Dana Piutang &amp; Aging Schedule</div>
+ <div class="flowchart">
+ <span class="fc-node">1–2. Sales ($S$) &amp; Kredit ($S_k$)</span><span class="fc-arrow">→</span>
+ <span class="fc-node">3–4. ACP &amp; ARTO $= 360/\text{ACP}$</span><span class="fc-arrow">→</span>
+ <span class="fc-node">5. Rerata AR $= S_k/\text{ARTO}$</span><span class="fc-arrow">→</span>
+ <span class="fc-node">6. Dana Tertanam $= \text{HPP}\% \times \text{AR}$</span><span class="fc-arrow">→</span>
+ <span class="fc-node">7. Opp. Cost $= r \times \text{Dana}$</span>
+ </div>
+ <ul class="exp">
+ <li><span class="term">Umur Rerata Piutang (ACP) &amp; Aging Schedule</span> — Dapat dihitung dari bobot syarat bayar (mis. 40% bayar hari ke-20 + 60% bayar hari ke-40 $\implies \text{ACP}=32$ hr), rasio $\text{Piutang}/\text{Sales harian}$, atau dipantau via <b>aging schedule</b> (jika 25% piutang lewat dari batas 60 hari → sinyal potensi kredit macet).</li>
+ <li><span class="term">Evaluasi Berjenjang PT AAA (Contoh 1–4)</span> —
+ <div class="table-wrap">
+<table class="mini">
+ <thead><tr><th>Kebijakan PT AAA (HPP 70%, Margin 30%, $r=10\%$)</th><th>Penjualan</th><th>Margin Kotor</th><th>Opp. Cost</th><th>Diskon / Macet / Collector</th><th>Margin Bersih</th></tr></thead>
+ <tbody>
+ <tr><td data-label="Kebijakan PT AAA (HPP 70%, Margin 30%, r=10%)">1. Tunai Penuh (Lama)</td><td data-label="Penjualan">1.000 jt</td><td data-label="Margin Kotor">300 jt</td><td data-label="Opp. Cost">0</td><td data-label="Diskon / Macet / Collector">0</td><td data-label="Margin Bersih"><b>300,00 jt</b></td></tr>
+ <tr><td data-label="Kebijakan PT AAA (HPP 70%, Margin 30%, r=10%)">2. Kredit 30% (ACP 45 hr, tanpa diskon/macet)</td><td data-label="Penjualan">1.500 jt</td><td data-label="Margin Kotor">450 jt</td><td data-label="Opp. Cost">3,94 jt</td><td data-label="Diskon / Macet / Collector">0</td><td data-label="Margin Bersih"><b>446,06 jt</b></td></tr>
+ <tr><td data-label="Kebijakan PT AAA (HPP 70%, Margin 30%, r=10%)">3. Kredit + Diskon <b>3/20 net 45</b> (40% ambil, ACP 40 hr)</td><td data-label="Penjualan">1.500 jt</td><td data-label="Margin Kotor">450 jt</td><td data-label="Opp. Cost">3,50 jt</td><td data-label="Diskon / Macet / Collector">Diskon 5,40 jt</td><td data-label="Margin Bersih"><b>441,10 jt</b> (turun 4,96 jt)</td></tr>
+ <tr><td data-label="Kebijakan PT AAA (HPP 70%, Margin 30%, r=10%)">4. Kredit + Diskon + <b>Macet 10%</b> (45 jt) + <b>Collector</b> (72 jt/th)</td><td data-label="Penjualan">1.500 jt</td><td data-label="Margin Kotor">450 jt</td><td data-label="Opp. Cost">3,50 jt</td><td data-label="Diskon / Macet / Collector">5,4 + 45 + 72 jt</td><td data-label="Margin Bersih"><b>324,10 jt</b> (+24,1 jt vs tunai)</td></tr>
+ </tbody>
+ </table>
+</div>
+ </li>
+ </ul>
+
+ <div class="abc"><span class="ltr">A</span><h4>Potensi Kredit Macet &amp; Prinsip 5C</h4></div>
+ <p>Untuk menekan risiko kredit macet sebelum memberi kredit, perusahaan wajib menilai calon pelanggan menggunakan prinsip <span class="term">5C</span>:</p>
+ <div class="rgrid c3" data-revealgroup>
+ <div class="rcell active" data-reveal data-detail="<b>1. Character (Karakter):</b> Itikad dan keinginan debitur untuk memenuhi kewajibannya, dipelajari melalui <i>track record</i> pembayaran selama ini."><span class="stepnum">1</span><span><span class="rt">Character</span><span class="rp">Itikad &amp; rekam jejak</span></span></div>
+ <div class="rcell" data-reveal data-detail="<b>2. Capacity (Kapasitas):</b> Kemampuan finansial debitur membayar secara rutin yang dinilai dari kekuatan arus kas usahanya; hindari memberi kredit melebihi kapasitas wajar."><span class="stepnum">2</span><span><span class="rt">Capacity</span><span class="rp">Kemampuan arus kas</span></span></div>
+ <div class="rcell" data-reveal data-detail="<b>3. Capital (Kapital):</b> Cadangan keuangan dan total kekayaan bersih yang dimiliki debitur sebagai penyangga jika arus kas terganggu."><span class="stepnum">3</span><span><span class="rt">Capital</span><span class="rp">Cadangan kekayaan total</span></span></div>
+ <div class="rcell" data-reveal data-detail="<b>4. Collateral (Jaminan):</b> Aset yang dijaminkan untuk setiap tagihan debitur; makin jelas dan likuid jaminannya, makin aman kreditnya."><span class="stepnum">4</span><span><span class="rt">Collateral</span><span class="rp">Aset jaminan kredit</span></span></div>
+ <div class="rcell" data-reveal data-detail="<b>5. Conditions (Kondisi Ekonomi):</b> Siklus ekonomi saat ini dan prospek ke depan; saat ekonomi lesu, pemberian kredit sebaiknya diperketat."><span class="stepnum">5</span><span><span class="rt">Conditions</span><span class="rp">Situasi &amp; siklus ekonomi</span></span></div>
+ </div>
+ <div class="rdetail" data-revealdetail><b>1. Character (Karakter):</b> Itikad dan keinginan debitur untuk memenuhi kewajibannya, dipelajari melalui <i>track record</i> pembayaran selama ini.</div>
+
+ <div class="flow">Selain membandingkan margin laba sederhana, penjualan kredit berarti menerima kas di masa depan dengan peluang gagal bayar ($1-p$). Bagian B dan C menggunakan nilai sekarang (PV) untuk menentukan <b>titik cut-off</b> kelayakan kredit.</div>
+
+ <div class="abc"><span class="ltr">B – C</span><h4>Penentuan Penjualan Kredit, Cut-Off, &amp; Factoring vs Securitization</h4></div>
+ <div class="eqbox">
+ \[\text{Laba Tunai} = (P_0 - C_0)Q_0 \qquad\text{vs}\qquad \text{PV Laba Kredit} = \frac{p \cdot (P_k - C_1) \cdot Q_1}{1 + r}\]
+ </div>
+ <div class="fguide">
+ <div class="fg-head">Bedah Variabel &amp; Intisari Formula Evaluasi Penjualan Kredit vs Tunai</div>
+ <ul>
+ <li><b>$P_0, C_0, Q_0$</b> = harga, biaya per unit, dan volume penjualan tunai; <b>$P_k, C_1, Q_1$</b> = harga, biaya per unit, dan volume penjualan kredit; <b>$p$</b> = peluang pelanggan membayar lunas; <b>$r$</b> = tingkat diskonto periode kredit.</li>
+ <li><b>Makna formula:</b> Membandingkan laba tunai instan hari ini terhadap nilai sekarang ekspektasi laba penjualan kredit setelah memperhitungkan risiko macet ($p$) dan waktu tunggu ($1+r$).</li>
+ </ul>
+ <div class="fg-core">
+ <div>🧭 <b>Filosofis:</b> Lonjakan volume penjualan akibat fasilitas kredit hanya menguntungkan bila nilai sekarang tambahan marginnya mampu menutup risiko gagal bayar, kenaikan biaya, dan biaya waktu uang.</div>
+ <div>📏 <b>Mengukur:</b> Kelayakan ekonomis kebijakan penjualan kredit serta batas peluang bayar minimal ($p$ <i>cut-off</i>).</div>
+ <div>🎯 <b>Manfaat:</b> Menetapkan batas toleransi maksimal kredit macet (<i>bad debt</i>) sebelum perusahaan melonggarkan syarat penjualan kredit.</div>
+ </div>
+ </div>
+ <ul class="exp">
+ <li><span class="term">Contoh Buku (PT AAA Industri Plastik)</span> — Tunai: $Q_0=1\text{ jt}$, $P_0=1.000, C_0=700 \implies \text{Laba} = \mathbf{\text{Rp300 jt}}$. Kredit: $Q_1=1{,}5\text{ jt}$, $C_1=750$, $p=90\%$ (macet 10%), $r=5\% \implies \text{PV Laba} = [0{,}9(250)(1{,}5\text{ jt})]/1{,}05 = \mathbf{\text{Rp321,43 jt}}$ (unggul Rp21,43 jt).</li>
+ <li><span class="term">Cut-Off Peluang Bayar Minimal ($p$)</span> — Empat faktor penentu batas kelayakan kredit: peluang <i>bad debt</i>, kenaikan biaya ($C_1$), lonjakan volume ($Q_1$), serta lama kredit &amp; diskonto ($r$). Pada contoh di atas: $300\text{ jt} \le [p(250)(1{,}5\text{ jt})]/1{,}05 \implies \mathbf{p \ge 0{,}84}$ (batas maksimal <i>bad debt</i> <b>16%</b>).</li>
+ <li><span class="term">Factoring vs Securitization</span> — Keduanya mengubah piutang menjadi kas segera melalui institusi keuangan secara diskonto. Perbedaannya: pada <b>factoring</b>, piutang <b>dijual</b> (hak milik beralih ke institusi keuangan); pada <b>securitization</b>, piutang hanya dijadikan <b>jaminan</b> pinjaman.</li>
+ </ul>
+ </div>
+
+ <!-- GLOSARIUM -->
+ <h2 class="section" id="glosarium"><span class="dot"></span>Glosarium Kilat</h2>
+ <div class="card">
+ <dl class="glossary">
+ <dt>Aging Schedule</dt><dd>Tabel klasifikasi umur piutang pelanggan untuk memantau kepatuhan syarat bayar dan mendeteksi dini potensi kredit macet.</dd>
+ <dt>Carrying Costs vs Shortage Costs</dt><dd>Biaya penyimpanan &amp; peluang karena aset lancar berlebih vs biaya pemesanan ulang &amp; kehilangan penjualan karena aset lancar kurang.</dd>
+ <dt>Cash Conversion Cycle (CCC)</dt><dd>Jumlah hari kas tertanam dalam operasi ($\text{AAI} + \text{ACP} - \text{APP}$).</dd>
+ <dt>Compensating Balance</dt><dd>Saldo tabungan minimum tanpa bunga (mis. 5–10% pinjaman) yang diwajibkan bank sebagai syarat kredit jangka pendek.</dd>
+ <dt>Factoring vs Securitization</dt><dd>Pencairan piutang dengan menjual hak milik piutang (<i>factoring</i>) vs menjadikannya jaminan pinjaman (<i>securitization</i>).</dd>
+ <dt>Float (Collection &amp; Disbursement)</dt><dd>Jeda waktu antara pencatatan kas di buku perusahaan dan realisasi mutasi di bank.</dd>
+ <dt>Model Baumol &amp; Model Miller-Orr</dt><dd>Model optimasi saldo kas: Baumol untuk kebutuhan kas konstan ($C^*=\sqrt{2MF/r}$), Miller-Orr untuk kas berfluktuasi acak ($L, Z, U$).</dd>
+ <dt>Terms of Sale (mis. 2/10 net 30)</dt><dd>Syarat penjualan kredit: diskon 2% bila dilunasi maksimal 10 hari, jatuh tempo penuh 30 hari.</dd>
+ </dl>
+ </div>
+</div>
+
+<footer><b>EKMA5205 — Manajemen Keuangan</b> · Modul 5: Pembiayaan Jangka Pendek<br>Bahan belajar ringkas untuk persiapan ujian (berdasarkan BMP UT Edisi 3, Dr. Said Kelana Asnawi, M.M.).</footer>
+
+<script>
+(function(){
+ var pb=document.getElementById('progress');
+ function onScroll(){var h=document.documentElement;var sc=h.scrollTop||document.body.scrollTop;var max=(h.scrollHeight-h.clientHeight)||1;pb.style.width=(sc/max*100)+'%';}
+ document.addEventListener('scroll',onScroll,{passive:true});onScroll();
+
+ var list=document.getElementById('conceptList');var items=[].slice.call(list.querySelectorAll('li'));var boxes=items.map(function(li){return li.querySelector('input');});
+ document.getElementById('totalCount').textContent=items.length;var doneEl=document.getElementById('doneCount');var KEY='studi_ekma5205_m5_concepts_v1';
+ function load(){try{var a=JSON.parse(localStorage.getItem(KEY)||'[]');boxes.forEach(function(b,i){if(a[i])b.checked=true;});}catch(e){}}
+ function save(){try{localStorage.setItem(KEY,JSON.stringify(boxes.map(function(b){return b.checked?1:0;})));}catch(e){}}
+ function refresh(){var n=0;items.forEach(function(li,i){if(boxes[i].checked){li.classList.add('done');n++;}else li.classList.remove('done');});doneEl.textContent=n;}
+ load();refresh();boxes.forEach(function(b){b.addEventListener('change',function(){refresh();save();});});
+ document.getElementById('resetBtn').addEventListener('click',function(){boxes.forEach(function(b){b.checked=false;});refresh();save();});
+
+ [].slice.call(document.querySelectorAll('[data-revealgroup]')).forEach(function(g){
+ var det=g.querySelector('[data-revealdetail]');if(!det){var sib=g.nextElementSibling;if(sib&&sib.hasAttribute&&sib.hasAttribute('data-revealdetail'))det=sib;}
+ var cells=[].slice.call(g.querySelectorAll('[data-reveal]'));
+ cells.forEach(function(c){c.addEventListener('click',function(){cells.forEach(function(x){x.classList.remove('active');});c.classList.add('active');if(det){det.innerHTML=c.getAttribute('data-detail');if(window.MathJax&&window.MathJax.typesetPromise)window.MathJax.typesetPromise([det]);}});});
+ });
+
+ (function(){
+ var ROWH=46,NODE_H=32,PAD=13,GAP=52;var COL={root:'#0f5e8f',kb1:'#1a86c7',kb2:'#e08a1e',kb3:'#2a9d6f',kb4:'#7a5cc0',kb5:'#c75b7a'};
+ var mc=document.createElement('canvas').getContext('2d');mc.font='700 13px -apple-system,Segoe UI,Roboto,sans-serif';
+ function tw(t){return Math.ceil(mc.measureText(t).width);}function esc(t){return t.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');}
+ function rgba(hex,a){var h=hex.replace('#','');return 'rgba('+parseInt(h.substr(0,2),16)+','+parseInt(h.substr(2,2),16)+','+parseInt(h.substr(4,2),16)+','+a+')';}
+ var DATA={label:'MODUL 5 — Pembiayaan Jangka Pendek',color:COL.root,children:[
+ {label:'KB 1 · Manajemen Modal Kerja',color:COL.kb1,children:[
+ {label:'Strategi Pendanaan (Hedging, Fleksibel, Kaku)'},
+ {label:'A. Carrying Costs vs Shortage Costs'},
+ {label:'B. Siklus Operasi & CCC (AAI + ACP − APP)'},
+ {label:'C. Anggaran Kas & Sumber Dana (Loan, Factoring, CP)'}
+ ]},
+ {label:'KB 2 · Manajemen Kas',color:COL.kb2,children:[
+ {label:'3 Motif Memegang Uang (Transaksi, Jaga-jaga, Spekulatif)'},
+ {label:'A. Model Baumol (C* = √(2MF/r))'},
+ {label:'B. Model Miller-Orr (Batas L, Target Z, Batas U)'},
+ {label:'C. Float (Collection vs Disbursement) & Pasar Uang'}
+ ]},
+ {label:'KB 3 · Manajemen Piutang',color:COL.kb3,children:[
+ {label:'Biaya Dana Tertanam, ACP, ARTO & Aging Schedule'},
+ {label:'Terms of Sale (Diskon) & Kredit Macet'},
+ {label:'A. Prinsip 5C Kredit'},
+ {label:'B–C. PV Kredit vs Tunai, Cut-off & Factoring/Securitization'}
+ ]}
+ ]};
+ var idc=0;(function w(n,c){n.id='n'+(idc++);n.color=n.color||c;(n.children||[]).forEach(function(k){w(k,n.color);});})(DATA,COL.root);
+ (function w(n,d){if(d>=2&&n.children&&n.children.length)n.collapsed=true;(n.children||[]).forEach(function(k){w(k,d+1);});})(DATA,0);
+ var host=document.getElementById('mindmap');
+ function render(){
+ var colW=[];(function w(n,d){var width=tw(n.label)+PAD*2+((n.children&&n.children.length)?20:0);colW[d]=Math.max(colW[d]||0,width);if(!n.collapsed)(n.children||[]).forEach(function(k){w(k,d+1);});})(DATA,0);
+ var colX=[],acc=14;for(var d=0;d<colW.length;d++){colX[d]=acc;acc+=colW[d]+GAP;}var row={v:0};
+ (function lay(n,d){if(!n.children||!n.children.length||n.collapsed){n._y=row.v*ROWH+ROWH/2+8;row.v++;return;}var f,l;n.children.forEach(function(k,i){lay(k,d+1);if(i===0)f=k._y;l=k._y;});n._y=(f+l)/2;})(DATA,0);
+ var totalW=acc,totalH=row.v*ROWH+24;var nodes=[],links=[];
+ (function col(n,d,p){n._x=colX[d];n._w=tw(n.label)+PAD*2+((n.children&&n.children.length)?20:0);nodes.push({n:n,d:d});if(p)links.push([p,n]);if(!n.collapsed)(n.children||[]).forEach(function(k){col(k,d+1,n);});})(DATA,0,null);
+ var s='<svg width="'+totalW+'" height="'+totalH+'" viewBox="0 0 '+totalW+' '+totalH+'" xmlns="http://www.w3.org/2000/svg">';
+ links.forEach(function(pr){var a=pr[0],b=pr[1],x1=a._x+a._w,y1=a._y,x2=b._x,y2=b._y,mx=(x1+x2)/2;s+='<path d="M'+x1+' '+y1+' C'+mx+' '+y1+' '+mx+' '+y2+' '+x2+' '+y2+'" fill="none" stroke="'+rgba(b.color,.5)+'" stroke-width="2"/>';});
+ nodes.forEach(function(o){var n=o.n,x=n._x,y=n._y-NODE_H/2,w=n._w,hk=n.children&&n.children.length;var fill=o.d===0?n.color:(o.d===1?rgba(n.color,.12):'#fff');var tf=o.d===0?'#fff':'#1c2733';
+ s+='<g data-id="'+n.id+'" style="cursor:'+(hk?'pointer':'default')+'"><rect x="'+x+'" y="'+y+'" rx="9" width="'+w+'" height="'+NODE_H+'" fill="'+fill+'" stroke="'+n.color+'" stroke-width="'+(o.d===0?0:1.6)+'"/><text x="'+(x+PAD)+'" y="'+(n._y+4)+'" font-size="13" font-weight="'+(o.d<=1?'700':'500')+'" fill="'+tf+'" font-family="-apple-system,Segoe UI,Roboto,sans-serif">'+esc(n.label)+'</text>';
+ if(hk){var cx=x+w-12,cy=n._y;s+='<circle cx="'+cx+'" cy="'+cy+'" r="8.5" fill="'+n.color+'"/><text x="'+cx+'" y="'+(cy+4.5)+'" font-size="13" font-weight="700" fill="#fff" text-anchor="middle" font-family="sans-serif">'+(n.collapsed?'+':'\u2013')+'</text>';}s+='</g>';});
+ s+='</svg>';host.innerHTML=s;
+ }
+ host.addEventListener('click',function(e){var g=e.target.closest('g[data-id]');if(!g)return;var id=g.getAttribute('data-id');(function f(n){if(n.id===id){if(n.children&&n.children.length)n.collapsed=!n.collapsed;return true;}return (n.children||[]).some(f);})(DATA);render();});
+ document.getElementById('mmExpand').addEventListener('click',function(){(function w(n){if(n.children)n.collapsed=false;(n.children||[]).forEach(w);})(DATA);render();});
+ document.getElementById('mmCollapse').addEventListener('click',function(){(function w(n,d){if(d>=1&&n.children&&n.children.length)n.collapsed=true;(n.children||[]).forEach(function(k){w(k,d+1);});})(DATA,0);render();});
+ render();
+ })();
+
+ 
+  // OFFLINE CARTESIAN SVG CHART ENGINE (zero external library, 100% offline)
+  function drawCartesian(hostId, cfg){
+    var host=document.getElementById(hostId);if(!host)return;
+    var W=cfg.w||680,H=cfg.h||300,P={t:24,r:28,b:44,l:58};
+    var pw=W-P.l-P.r,ph=H-P.t-P.b;
+    var x0=cfg.xmin,x1=cfg.xmax,y0=cfg.ymin,y1=cfg.ymax;
+    function sx(x){return P.l+(x-x0)/(x1-x0)*pw;}
+    function sy(y){return P.t+ph-(y-y0)/(y1-y0)*ph;}
+    function esc(t){return String(t).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');}
+    var s='<svg viewBox="0 0 '+W+' '+H+'" width="'+W+'" height="'+H+'" xmlns="http://www.w3.org/2000/svg">';
+    s+='<rect x="'+P.l+'" y="'+P.t+'" width="'+pw+'" height="'+ph+'" fill="#fff" stroke="#e4e9f0"/>';
+    var xticks=cfg.xticks||5,yticks=cfg.yticks||5;
+    for(var i=0;i<=xticks;i++){
+      var xv=x0+(x1-x0)*i/xticks,px=sx(xv);
+      s+='<line x1="'+px.toFixed(1)+'" y1="'+P.t+'" x2="'+px.toFixed(1)+'" y2="'+(P.t+ph)+'" stroke="#eef2f6" stroke-width="1"/>';
+      var xl=cfg.xfmt?cfg.xfmt(xv):(Math.round(xv*100)/100);
+      s+='<text x="'+px.toFixed(1)+'" y="'+(P.t+ph+16)+'" text-anchor="middle" font-size="11" fill="#5c6b7a" font-family="-apple-system,Segoe UI,sans-serif">'+esc(xl)+'</text>';
+    }
+    for(var j=0;j<=yticks;j++){
+      var yv=y0+(y1-y0)*j/yticks,py=sy(yv);
+      s+='<line x1="'+P.l+'" y1="'+py.toFixed(1)+'" x2="'+(P.l+pw)+'" y2="'+py.toFixed(1)+'" stroke="#eef2f6" stroke-width="1"/>';
+      var yl=cfg.yfmt?cfg.yfmt(yv):(Math.round(yv*100)/100);
+      s+='<text x="'+(P.l-8)+'" y="'+(py+4).toFixed(1)+'" text-anchor="end" font-size="11" fill="#5c6b7a" font-family="-apple-system,Segoe UI,sans-serif">'+esc(yl)+'</text>';
+    }
+    if(y0<0&&y1>0){var zy=sy(0);s+='<line x1="'+P.l+'" y1="'+zy.toFixed(1)+'" x2="'+(P.l+pw)+'" y2="'+zy.toFixed(1)+'" stroke="#94a3b8" stroke-width="1.3" stroke-dasharray="4 3"/>';}
+    if(x0<0&&x1>0){var zx=sx(0);s+='<line x1="'+zx.toFixed(1)+'" y1="'+P.t+'" x2="'+zx.toFixed(1)+'" y2="'+(P.t+ph)+'" stroke="#94a3b8" stroke-width="1.3" stroke-dasharray="4 3"/>';}
+    s+='<line x1="'+P.l+'" y1="'+(P.t+ph)+'" x2="'+(P.l+pw)+'" y2="'+(P.t+ph)+'" stroke="#64748b" stroke-width="1.5"/>';
+    s+='<line x1="'+P.l+'" y1="'+P.t+'" x2="'+P.l+'" y2="'+(P.t+ph)+'" stroke="#64748b" stroke-width="1.5"/>';
+    if(cfg.xlabel)s+='<text x="'+(P.l+pw/2)+'" y="'+(H-8)+'" text-anchor="middle" font-size="12" font-weight="700" fill="#1c2733" font-family="-apple-system,Segoe UI,sans-serif">'+esc(cfg.xlabel)+'</text>';
+    if(cfg.ylabel)s+='<text x="15" y="'+(P.t+ph/2)+'" text-anchor="middle" font-size="12" font-weight="700" fill="#1c2733" font-family="-apple-system,Segoe UI,sans-serif" transform="rotate(-90 15 '+(P.t+ph/2)+')">'+esc(cfg.ylabel)+'</text>';
+    (cfg.vlines||[]).forEach(function(vl){
+      var px=sx(vl.x);
+      s+='<line x1="'+px.toFixed(1)+'" y1="'+P.t+'" x2="'+px.toFixed(1)+'" y2="'+(P.t+ph)+'" stroke="'+(vl.color||'#94a3b8')+'" stroke-width="1.2" stroke-dasharray="5 4"/>';
+      if(vl.label)s+='<text x="'+(px+4).toFixed(1)+'" y="'+(P.t+14)+'" font-size="10.5" font-weight="700" fill="'+(vl.color||'#475569')+'" font-family="-apple-system,Segoe UI,sans-serif">'+esc(vl.label)+'</text>';
+    });
+    (cfg.hlines||[]).forEach(function(hl){
+      var py=sy(hl.y);
+      s+='<line x1="'+P.l+'" y1="'+py.toFixed(1)+'" x2="'+(P.l+pw)+'" y2="'+py.toFixed(1)+'" stroke="'+(hl.color||'#94a3b8')+'" stroke-width="1.2" stroke-dasharray="5 4"/>';
+      if(hl.label)s+='<text x="'+(P.l+pw-4)+'" y="'+(py-5).toFixed(1)+'" text-anchor="end" font-size="10.5" font-weight="700" fill="'+(hl.color||'#475569')+'" font-family="-apple-system,Segoe UI,sans-serif">'+esc(hl.label)+'</text>';
+    });
+    (cfg.series||[]).forEach(function(sr){
+      var pts=sr.pts.map(function(p){return sx(p[0]).toFixed(1)+','+sy(p[1]).toFixed(1);}).join(' ');
+      s+='<polyline fill="none" stroke="'+sr.color+'" stroke-width="'+(sr.w||2.5)+'"'+(sr.dash?' stroke-dasharray="'+sr.dash+'"':'')+' points="'+pts+'"/>';
+    });
+    (cfg.markers||[]).forEach(function(mk){
+      var cx=sx(mk.x),cy=sy(mk.y);
+      s+='<circle cx="'+cx.toFixed(1)+'" cy="'+cy.toFixed(1)+'" r="4.8" fill="'+(mk.color||'#0f5e8f')+'" stroke="#fff" stroke-width="1.6"/>';
+      var dx=mk.dx||8,dy=mk.dy||-8,anc=mk.anchor||'start';
+      if(mk.label)s+='<text x="'+(cx+dx).toFixed(1)+'" y="'+(cy+dy).toFixed(1)+'" text-anchor="'+anc+'" font-size="11" font-weight="700" fill="'+(mk.color||'#0f5e8f')+'" font-family="-apple-system,Segoe UI,sans-serif">'+esc(mk.label)+'</text>';
+    });
+    s+='</svg>';
+    var leg='';
+    if(cfg.series&&cfg.series.length>1){
+      leg='<div class="chart-legend">'+cfg.series.map(function(sr){
+        return '<span><i style="background:'+sr.color+';'+(sr.dash?'border-top:2px dashed '+sr.color+';background:none;height:0':'')+'"></i>'+esc(sr.name)+'</span>';
+      }).join('')+'</div>';
+    }
+    host.innerHTML=s+leg;
+  }
+
+
+  (function(){
+    var tc=[],tr=[],op=[];
+    for(var c=20;c<=130;c+=2){
+      var tCost=(3600/c)*0.05;
+      var oCost=(c/2)*0.10;
+      tr.push([c,tCost]);op.push([c,oCost]);tc.push([c,tCost+oCost]);
+    }
+    drawCartesian('ch_m5_baumol',{
+      xmin:20,xmax:130,ymin:0,ymax:11,xticks:5,yticks:5,
+      xlabel:'Saldo Kas Dipegang C (Rp Juta)',ylabel:'Biaya Tahunan (Rp Juta)',
+      vlines:[{x:60,label:'C* = 60 jt',color:'#2a9d6f'}],
+      series:[
+        {name:'Total Cost (TC)',color:'#0f5e8f',w:2.8,pts:tc},
+        {name:'Opportunity Cost (C/2)·r',color:'#e08a1e',dash:'5 4',pts:op},
+        {name:'Transaction Cost (M/C)·F',color:'#7a5cc0',dash:'5 4',pts:tr}
+      ],
+      markers:[
+        {x:60,y:6,label:'TC Min = Rp6 jt',color:'#0f5e8f',dx:8,dy:-8},
+        {x:60,y:3,label:'Potong (3 jt)',color:'#2a9d6f',dx:8,dy:12}
+      ]
+    });
+    var moPts=[[0,162.3],[1,168],[2,165],[3,174],[4,180],[5,186.9],[5.01,162.3],[6,158],[7,164],[8,155],[9,150],[9.01,162.3],[10,169],[11,166],[12,175]];
+    drawCartesian('ch_m5_mo',{
+      xmin:0,xmax:12,ymin:140,ymax:196,xticks:6,yticks:4,
+      xlabel:'Waktu (Hari)',ylabel:'Saldo Kas (Rp Ribu)',
+      hlines:[
+        {y:186.9,label:'Upper Limit U = 186,9 rb (Beli SB: U − Z)',color:'#c75b7a'},
+        {y:162.3,label:'Return Point Z = 162,3 rb',color:'#2a9d6f'},
+        {y:150.0,label:'Lower Limit L = 150,0 rb (Jual SB: Z − L)',color:'#e08a1e'}
+      ],
+      series:[{name:'Fluktuasi Kas Harian',color:'#1a86c7',pts:moPts}],
+      markers:[
+        {x:5,y:186.9,label:'Sentuh U → Turun ke Z',color:'#c75b7a',dx:6,dy:-4},
+        {x:9,y:150,label:'Sentuh L → Naik ke Z',color:'#e08a1e',dx:6,dy:12}
+      ]
+    });
+  })();
+
+  window.addEventListener('load',function(){setTimeout(function(){if(window.MathJax&&window.MathJax.typesetPromise)window.MathJax.typesetPromise();},400);});
+})();
+</script></body></html>

@@ -1,0 +1,786 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Modul 2 — Peluang Pasar, Kepuasan, Loyalitas, Nilai Pelanggan & Analisis Pasar | EKMA5206</title>
+
+<!-- MathJax (persamaan, output SVG — tanpa CSS eksternal) -->
+<script>window.MathJax={tex:{inlineMath:[['$','$']],displayMath:[['\\[','\\]']]},svg:{fontCache:'global'},startup:{typeset:true}};</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js" id="MathJax-script" async></script>
+<!-- Chart.js -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+
+<style>
+  :root{
+    --bg:#f4f6f9;--panel:#fff;--ink:#1c2733;--muted:#5c6b7a;--line:#e4e9f0;
+    --brand:#1a86c7;--brand-dark:#0f5e8f;--brand-soft:#e7f3fb;
+    --kb1:#1a86c7;--kb1soft:#e7f3fb;--kb2:#e08a1e;--kb2soft:#fcf1df;
+    --kb3:#2a9d6f;--kb3soft:#e3f5ec;--kb4:#7a5cc0;--kb4soft:#efeafb;
+    --radius:14px;--shadow:0 1px 2px rgba(16,42,67,.06),0 6px 20px rgba(16,42,67,.06);--maxw:900px;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{margin:0;background:var(--bg);color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;line-height:1.72;-webkit-font-smoothing:antialiased}
+  #progress{position:fixed;top:0;left:0;height:4px;width:0;background:linear-gradient(90deg,var(--brand),#53c0ec);z-index:200;transition:width .1s}
+  header.top{position:sticky;top:0;z-index:100;background:rgba(255,255,255,.92);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+  .top-in{max-width:var(--maxw);margin:0 auto;padding:10px 20px;display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+  .badge{background:var(--brand);color:#fff;font-weight:700;font-size:.72rem;letter-spacing:.5px;padding:4px 10px;border-radius:999px;white-space:nowrap}
+  .top-title{font-size:.9rem;font-weight:600;color:var(--muted)}
+  nav.jump{margin-left:auto;display:flex;gap:4px;flex-wrap:wrap}
+  nav.jump a{font-size:.78rem;color:var(--muted);text-decoration:none;padding:5px 10px;border-radius:8px}
+  nav.jump a:hover{background:var(--brand-soft);color:var(--brand-dark)}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 20px 90px}
+  .hero{margin-top:26px;padding:30px 28px;border-radius:var(--radius);color:#fff;background:linear-gradient(135deg,#0f5e8f 0%,#1a86c7 60%,#2fa4df 100%);box-shadow:var(--shadow);position:relative;overflow:hidden}
+  .hero::after{content:"02";position:absolute;right:18px;bottom:-26px;font-size:150px;font-weight:800;opacity:.12;line-height:1}
+  .hero .eyebrow{font-size:.78rem;letter-spacing:1.5px;text-transform:uppercase;opacity:.9;font-weight:600}
+  .hero h1{margin:.3em 0 .25em;font-size:1.62rem;line-height:1.25;max-width:90%}
+  .hero .meta{display:flex;gap:18px;flex-wrap:wrap;font-size:.84rem;opacity:.95;margin-top:10px}
+  h2.section{font-size:1.3rem;margin:48px 0 4px;display:flex;align-items:center;gap:10px;scroll-margin-top:70px}
+  h2.section .dot{width:10px;height:22px;border-radius:4px;background:var(--brand)}
+  .section-sub{color:var(--muted);font-size:.9rem;margin:0 0 18px}
+  .card{background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);padding:22px 24px;margin:16px 0;--dot:var(--brand)}
+
+  /* checklist */
+  .concepts{list-style:none;margin:0;padding:0;display:grid;gap:10px}
+  .concepts li{display:flex;gap:12px;align-items:flex-start;padding:12px 14px;border:1px solid var(--line);border-radius:10px;background:#fcfdff;transition:.15s}
+  .concepts li:hover{border-color:#cfe3f2}
+  .concepts input{margin-top:4px;width:18px;height:18px;accent-color:var(--brand);flex:none;cursor:pointer}
+  .concepts .ct{font-weight:600}
+  .concepts .cd{display:block;font-weight:400;color:var(--muted);font-size:.86rem;margin-top:2px}
+  .concepts li.done{background:var(--brand-soft);border-color:#bfe0f3}
+  .concepts li.done .ct{text-decoration:line-through;opacity:.65}
+  .cl-head{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-bottom:6px}
+  .cl-head .count{font-size:.82rem;color:var(--muted);background:var(--brand-soft);padding:3px 10px;border-radius:999px;font-weight:600}
+  .btn-reset{font-size:.78rem;border:1px solid var(--line);background:#fff;color:var(--muted);padding:5px 12px;border-radius:8px;cursor:pointer}
+  .btn-reset:hover{background:#f6f8fb}
+
+  /* mindmap */
+  .mm-toolbar{display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin-bottom:10px}
+  .mm-btn{font-size:.78rem;border:1px solid var(--line);background:#fff;padding:6px 13px;border-radius:8px;cursor:pointer;color:var(--brand-dark);font-weight:600}
+  .mm-btn:hover{background:var(--brand-soft)}
+  .mm-hint{font-size:.76rem;color:var(--muted)}
+  .mindmap-host{height:560px;overflow:auto;border:1px solid var(--line);border-radius:10px;background:#fcfdff}
+  .mindmap-host svg{display:block}
+
+  /* KB blocks */
+  .kb-tag{display:inline-flex;align-items:center;gap:8px;font-size:.78rem;font-weight:700;letter-spacing:.3px;color:#fff;padding:5px 12px;border-radius:999px;margin-bottom:6px}
+  .kb1t{background:var(--kb1)}.kb2t{background:var(--kb2)}.kb3t{background:var(--kb3)}.kb4t{background:var(--kb4)}
+  .kb1b{--dot:var(--kb1)}.kb2b{--dot:var(--kb2)}.kb3b{--dot:var(--kb3)}.kb4b{--dot:var(--kb4)}
+  .lead{font-size:1.02rem}
+  .term{font-weight:700;color:var(--dot)}
+  .en{font-style:italic;color:var(--muted);font-weight:500}
+
+  .abc{display:flex;align-items:center;gap:10px;margin:28px 0 10px;padding-bottom:6px;border-bottom:2px solid currentColor}
+  .abc{border-bottom-color:color-mix(in srgb,var(--dot) 18%,#fff)}
+  .abc .ltr{background:var(--dot);color:#fff;font-weight:800;min-width:30px;height:30px;padding:0 7px;border-radius:8px;display:grid;place-items:center;flex:none}
+  .abc h4{margin:0;font-size:1.08rem;color:var(--dot)}
+  .subh{font-weight:700;color:var(--ink);margin:20px 0 4px;font-size:1rem}
+  .numh{font-weight:700;color:var(--dot);margin:18px 0 4px;font-size:.98rem}
+  .leth{font-weight:800;color:var(--dot);margin:22px 0 6px;font-size:1rem;border-left:3px solid var(--dot);padding-left:10px}
+  .subn{margin:12px 0 2px}
+
+  /* person-making-decision scheme */
+  .scheme{border:1px solid var(--line);border-radius:12px;padding:16px;margin:14px 0;background:#fcfdff}
+  .scheme .row{display:flex;gap:10px;justify-content:center;flex-wrap:wrap}
+  .sbox{border-radius:10px;padding:10px 14px;text-align:center;font-weight:700;font-size:.84rem}
+  .sbox span{font-weight:400;color:var(--muted);font-size:.73rem;display:block}
+  .sbox.in{background:#eef3f8;border:1px solid #e0e8f0;color:#36506a;min-width:180px}
+  .sarrow{text-align:center;color:var(--muted);font-size:1.3rem;margin:4px 0}
+  .person{background:#f3faf6;border:1.6px solid var(--kb3);border-radius:12px;padding:14px}
+  .person .ptitle{text-align:center;font-weight:800;color:#1c7a54;margin-bottom:12px}
+  .person .ptitle span{font-weight:400;color:var(--muted);font-size:.74rem;display:block}
+  .infl-row{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-bottom:12px}
+  .infl{border-radius:8px;padding:9px 6px;font-size:.78rem;color:#fff;font-weight:700;text-align:center;line-height:1.3}
+  .infl small{display:block;font-weight:400;font-size:.67rem;opacity:.92}
+  .i1{background:#5c6b7a}.i2{background:#1a86c7}.i3{background:#2a9d6f}.i4{background:#e08a1e}
+  .cdp{background:#fff;border:1px dashed var(--kb3);border-radius:8px;padding:9px;text-align:center;font-weight:800;color:#1c7a54;font-size:.82rem}
+  .cdp span{font-weight:400;color:var(--muted);font-size:.72rem;display:block}
+  .sbox.out{background:var(--kb3);color:#fff;max-width:460px;margin:0 auto}
+  .sbox.out span{color:rgba(255,255,255,.85)}
+  @media(max-width:640px){.infl-row{grid-template-columns:1fr 1fr}}
+
+  ol.book{margin:12px 0;padding-left:28px}
+  ol.book>li{margin:10px 0;padding-left:6px}
+  ol.book>li::marker{font-weight:700;color:var(--dot)}
+  ul.exp{list-style:none;margin:12px 0;padding:0;display:grid;gap:10px}
+  ul.exp>li{position:relative;padding-left:20px}
+  ul.exp>li::before{content:"";position:absolute;left:0;top:11px;width:8px;height:8px;border-radius:2px;background:var(--dot)}
+  ol.book b,ul.exp b{color:var(--ink)}
+  ul.let{list-style:lower-alpha;margin:10px 0;padding-left:28px}
+  ul.let>li{margin:8px 0;padding-left:4px}
+  ul.let>li::marker{color:var(--dot);font-weight:700}
+
+  .flow{border-left:4px solid var(--dot);background:color-mix(in srgb,var(--dot) 9%,#fff);padding:11px 15px;border-radius:0 10px 10px 0;margin:18px 0;font-size:.9rem}
+  .flow::before{content:"🔗 Benang merah — ";font-weight:700;color:var(--dot)}
+  .flow b{color:var(--dot)}
+
+  table.mini{width:100%;border-collapse:collapse;margin:14px 0;font-size:.86rem}
+  table.mini th,table.mini td{border:1px solid var(--line);padding:9px 11px;text-align:left;vertical-align:top}
+  table.mini th{background:color-mix(in srgb,var(--dot) 12%,#fff);color:var(--dot);font-weight:700}
+  table.mini tr:nth-child(even) td{background:#fafcfe}
+
+  .eqbox{background:#fbfcfe;border:1px solid var(--line);border-radius:10px;padding:14px 16px;margin:14px 0;text-align:center;overflow-x:auto}
+  .eqbox .cap{font-size:.78rem;color:var(--muted);margin-top:6px}
+
+  .chartbox{background:#fff;border:1px solid var(--line);border-radius:12px;padding:14px;margin:16px 0}
+  .chartbox .cw{position:relative;height:320px}
+  .chartbox .cap{font-size:.8rem;color:var(--muted);text-align:center;margin-top:8px}
+
+  /* generic reveal components */
+  .rgrid{display:grid;gap:8px;margin:14px 0}
+  .rgrid.c3{grid-template-columns:repeat(3,1fr)}
+  .rgrid.c2{grid-template-columns:repeat(2,1fr)}
+  .rcell{border:1px solid var(--line);border-radius:10px;padding:11px 13px;cursor:pointer;background:#fff;transition:.15s;display:flex;gap:10px;align-items:flex-start}
+  .rcell:hover{border-color:var(--dot);box-shadow:var(--shadow);transform:translateY(-2px)}
+  .rcell.active{border-color:var(--dot);background:color-mix(in srgb,var(--dot) 8%,#fff)}
+  .rcell .stepnum{background:var(--dot);color:#fff;font-weight:700;min-width:24px;height:24px;border-radius:7px;display:grid;place-items:center;flex:none;font-size:.82rem}
+  .rcell .rt{font-weight:700;font-size:.9rem;color:var(--dot);display:block}
+  .rcell .rp{font-size:.78rem;color:var(--muted);display:block;margin-top:2px}
+  .rdetail{font-size:.88rem;border-left:4px solid var(--dot);background:color-mix(in srgb,var(--dot) 8%,#fff);border-radius:0 10px 10px 0;padding:12px 15px;margin-top:6px}
+
+  /* pyramid (Maslow) */
+  .pyramid{display:flex;flex-direction:column;align-items:center;gap:7px;margin:14px 0}
+  .ptier{cursor:pointer;color:#fff;text-align:center;padding:11px 10px;border-radius:8px;font-weight:600;font-size:.85rem;transition:.15s;box-shadow:var(--shadow)}
+  .ptier:hover{filter:brightness(1.06);transform:scale(1.02)}
+  .ptier.active{outline:3px solid rgba(42,157,111,.35)}
+
+  /* flow chain */
+  .flowchain{display:flex;align-items:center;gap:6px;flex-wrap:wrap;margin:14px 0;justify-content:center}
+  .fnode{cursor:pointer;border:1.6px solid var(--dot);border-radius:10px;padding:10px 14px;font-weight:700;font-size:.85rem;background:#fff;color:var(--dot);transition:.15s}
+  .fnode:hover,.fnode.active{background:color-mix(in srgb,var(--dot) 10%,#fff)}
+  .farrow{color:var(--muted);font-weight:700;font-size:1.1rem}
+
+  /* continuum */
+  .continuum{display:flex;margin:14px 0 2px;border-radius:10px;overflow:hidden;border:1px solid var(--line)}
+  .cseg{flex:1;cursor:pointer;padding:12px 10px;text-align:center;font-size:.82rem;font-weight:700;color:#fff;transition:.15s}
+  .cseg:hover{filter:brightness(1.07)}
+  .clabels{display:flex;justify-content:space-between;font-size:.72rem;color:var(--muted);margin-bottom:8px}
+
+  /* tabs */
+  .tabwrap{margin:12px 0}
+  .tabs{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:10px}
+  .tab{font-size:.82rem;font-weight:600;border:1px solid var(--line);background:#fff;color:var(--muted);padding:7px 13px;border-radius:999px;cursor:pointer}
+  .tab.active{background:var(--dot);color:#fff;border-color:var(--dot)}
+  .tabpane{display:none;border:1px solid var(--line);border-radius:12px;padding:14px 18px;background:#fff}
+  .tabpane.active{display:block}
+  .tabpane ul{margin:6px 0}
+
+  .pill-row{display:flex;gap:8px;flex-wrap:wrap;margin:10px 0}
+  .pill{font-size:.8rem;background:#eef3f8;color:#36506a;border:1px solid #e0e8f0;padding:4px 11px;border-radius:999px;font-weight:600}
+
+  .glossary dt{font-weight:700;color:var(--brand-dark);margin-top:10px}
+  .glossary dd{margin:0 0 2px;color:var(--muted);font-size:.9rem}
+  footer{max-width:var(--maxw);margin:0 auto;padding:30px 20px 60px;color:var(--muted);font-size:.82rem;border-top:1px solid var(--line)}
+  footer .refs{margin-top:10px;font-size:.78rem;line-height:1.6}
+  .offline-note{font-size:.76rem;color:var(--muted);background:#fff8e6;border:1px solid #f0e2b8;border-radius:8px;padding:8px 12px;margin:10px 0}
+
+  @media(max-width:640px){
+    .hero h1{font-size:1.32rem;max-width:100%}.hero::after{font-size:110px}
+    nav.jump{display:none}
+    .rgrid.c3,.rgrid.c2{grid-template-columns:1fr}
+    .chartbox .cw{height:280px}.mindmap-host{height:440px}
+  }
+  @media print{#progress,header.top,.btn-reset,.mm-toolbar{display:none}body{background:#fff}.card{box-shadow:none}}
+</style>
+</head>
+<body>
+<div id="progress"></div>
+
+<header class="top">
+  <div class="top-in">
+    <span class="badge">MODUL 2</span>
+    <a href="index.html" title="Kembali ke daftar modul" style="text-decoration:none;display:inline-flex;align-items:center;gap:7px;background:var(--brand);color:#fff;font-weight:700;font-size:.8rem;padding:7px 15px;border-radius:999px;white-space:nowrap;box-shadow:0 2px 6px rgba(16,42,67,.22);line-height:1"><span style="font-size:1rem;line-height:1">&#8962;</span> Daftar Modul</a><span class="top-title">Manajemen Pemasaran · EKMA5206</span>
+    <nav class="jump">
+      <a href="#konsep">Konsep Penting</a>
+      <a href="#peta">Peta Konsep</a>
+      <a href="#kb1">KB 1</a>
+      <a href="#kb2">KB 2</a>
+      <a href="#kb3">KB 3</a>
+      <a href="#kb4">KB 4</a>
+      <a href="#glosarium">Glosarium</a>
+    </nav>
+  </div>
+</header>
+
+<div class="wrap">
+
+  <section class="hero">
+    <div class="eyebrow">Buku Materi Pokok · EKMA5206 · 3 SKS</div>
+    <h1>Peluang Pasar, Kepuasan, Loyalitas, Nilai Pelanggan, dan Analisis Pasar</h1>
+    <div class="meta">
+      <span>⏱️ Estimasi belajar <b>±30–40 menit</b></span>
+      <span>📚 <b>4</b> Kegiatan Belajar</span>
+      <span>✍️ Dr. Ir. FX. Bambang Wiharto, M.M.</span>
+    </div>
+  </section>
+
+  <p class="section-sub" style="margin-top:22px">
+    Ringkasan disusun <b>mengikuti alur heading buku</b> dengan kotak <b>🔗 Benang merah</b> yang menjelaskan
+    keterkaitan antar-bagian, dan setiap poin diberi penjelasan konteks. Istilah pemasaran memakai bentuk aslinya
+    bila lebih lazim (CPV, CLV, CRM, derived demand, dll.) dengan terjemahan mengikuti.
+  </p>
+  <p class="offline-note">ℹ️ Peta konsep &amp; komponen interaktif berjalan tanpa internet. Grafik dan persamaan memuat pustaka dari internet saat pertama dibuka; seluruh teks materi tetap terbaca penuh secara offline.</p>
+
+  <!-- KONSEP PENTING -->
+  <h2 class="section" id="konsep"><span class="dot"></span>Konsep Penting yang Harus Dikuasai</h2>
+  <p class="section-sub">Istilah &amp; konsep inti, diurutkan sesuai kemunculan di buku. Centang sebagai penanda belajar (tersimpan otomatis).</p>
+  <div class="card">
+    <div class="cl-head">
+      <span class="count"><span id="doneCount">0</span>/<span id="totalCount">0</span> dikuasai</span>
+      <button class="btn-reset" id="resetBtn">Reset centang</button>
+    </div>
+    <ul class="concepts" id="conceptList">
+      <li><input type="checkbox"><span><span class="ct">Perbedaan pasar vs industri</span><span class="cd">Pasar = pembeli; industri = penjual.</span></span></li>
+      <li><input type="checkbox"><span><span class="ct">Kerangka kemenarikan peluang pasar</span><span class="cd">Company–Context–Competition–Customer + 3 pertanyaan Mullins.</span></span></li>
+      <li><input type="checkbox"><span><span class="ct">6 kecenderungan lingkungan makro</span><span class="cd">Demografi, sosiokultural, ekonomi, teknologi, lingkungan, regulasi.</span></span></li>
+      <li><input type="checkbox"><span><span class="ct">4 situasi pasar &amp; competitive barrier</span><span class="cd">Persaingan murni, oligopoli, monopolistik, monopoli.</span></span></li>
+      <li><input type="checkbox"><span><span class="ct">Customer Perceived Value (CPV)</span><span class="cd">Total customer benefit − total customer cost.</span></span></li>
+      <li><input type="checkbox"><span><span class="ct">Kepuasan, loyalitas &amp; value delivery</span><span class="cd">Kinerja vs ekspektasi; proposisi &amp; sistem penyerahan nilai.</span></span></li>
+      <li><input type="checkbox"><span><span class="ct">Customer Lifetime Value (CLV) &amp; aturan 20-80</span><span class="cd">NPV laba sepanjang hidup pelanggan.</span></span></li>
+      <li><input type="checkbox"><span><span class="ct">CRM &amp; one-to-one marketing</span><span class="cd">Touch point; identify–differentiate–interact–customize.</span></span></li>
+      <li><input type="checkbox"><span><span class="ct">Database marketing &amp; data mining</span><span class="cd">Datawarehouse; 5 guna &amp; 4 kelemahan.</span></span></li>
+      <li><input type="checkbox"><span><span class="ct">Hierarki kebutuhan (Maslow → 4 tingkat)</span><span class="cd">Physiological, safety, social, personal needs.</span></span></li>
+      <li><input type="checkbox"><span><span class="ct">Proses pembelajaran konsumen</span><span class="cd">Drive → Cue → Response → Reinforcement.</span></span></li>
+      <li><input type="checkbox"><span><span class="ct">Pengaruh sosial</span><span class="cd">Keluarga, kelas sosial, reference group, opinion leader, budaya.</span></span></li>
+      <li><input type="checkbox"><span><span class="ct">Kontinum pemecahan masalah konsumen</span><span class="cd">Routinized → limited → extensive; dissonance.</span></span></li>
+      <li><input type="checkbox"><span><span class="ct">Permintaan B2B</span><span class="cd">Derived, inelastic, fluctuating, joint demand.</span></span></li>
+      <li><input type="checkbox"><span><span class="ct">Buy class &amp; buying center</span><span class="cd">Straight/modified/new-task; user–initiator–gatekeeper–influencer–decider–buyer.</span></span></li>
+      <li><input type="checkbox"><span><span class="ct">Proses pembelian bisnis (5 tahap)</span><span class="cd">Kenali masalah → cari info → evaluasi → pilih → evaluasi pasca.</span></span></li>
+    </ul>
+  </div>
+
+  <!-- PETA KONSEP -->
+  <h2 class="section" id="peta"><span class="dot"></span>Peta Konsep (Mind Map)</h2>
+  <p class="section-sub">Struktur lengkap modul mengikuti outline buku. Klik tanda +/− pada simpul untuk membuka/menutup cabang.</p>
+  <div class="card">
+    <div class="mm-toolbar">
+      <button class="mm-btn" id="mmExpand">Perluas semua</button>
+      <button class="mm-btn" id="mmCollapse">Ciutkan</button>
+      <span class="mm-hint">Gulir di dalam kotak untuk menggeser · simpul bertanda +/− bisa dibuka-tutup</span>
+    </div>
+    <div class="mindmap-host" id="mindmap"></div>
+  </div>
+
+  <!-- ===================== KB1 ===================== -->
+  <h2 class="section" id="kb1"><span class="dot"></span>KB 1 — Memahami Peluang Pasar</h2>
+  <div class="card kb1b">
+    <span class="kb-tag kb1t">PELUANG PASAR</span>
+    <p class="lead">Memahami peluang pasar adalah fondasi strategi pemasaran yang tepat sasaran. Mengikuti <span class="term">Mullins (2010)</span>, kemenarikan sebuah peluang pasar dinilai dari empat sudut — perusahaan <span class="en">(company)</span>, konteks <span class="en">(context)</span>, persaingan <span class="en">(competition)</span>, dan kebutuhan/keinginan pelanggan — dan tiga pertanyaan kunci:</p>
+    <ol class="book">
+      <li><b>Seberapa menarik pasar</b> yang sedang dilayani atau direncanakan untuk dilayani?</li>
+      <li><b>Seberapa menarik industri</b> tempat perusahaan akan bersaing?</li>
+      <li><b>Apakah tersedia sumber daya</b> (SDM, keterampilan, keahlian) untuk meraih peluang itu secara efektif?</li>
+    </ol>
+
+    <div class="numh">1 · Perbedaan Pasar dan Industri</div>
+    <p>Dua konsep dasar yang harus dipisahkan sejak awal: <span class="term">pasar</span> adalah himpunan individu &amp; organisasi yang ingin membeli produk/jasa untuk memenuhi kebutuhan (sisi <b>pembeli</b>), sedangkan <span class="term">industri</span> adalah kelompok perusahaan yang menawarkan produk sejenis atau saling menggantikan (sisi <b>penjual</b>). Keduanya dinilai dari <em>kemenarikannya</em> masing-masing.</p>
+
+    <div class="numh">2 · Memahami Peluang Pasar</div>
+    <p>Menilai kemenarikan peluang menuntut pemeriksaan lingkungan eksternal atas dua isu makro: <b>(a)</b> kecenderungan lingkungan yang mendorong atau membatasi permintaan, dan <b>(b)</b> karakteristik struktural industri serta apa yang dibawa perusahaan ke pasar. Manajemen juga memeriksa tim pelaksana strategi.</p>
+
+    <div class="numh">3 · Mengukur Kemenarikan Pasar dan Industri</div>
+    <p>Pengukuran dilakukan pada <b>dua tingkat</b>: <em>makro</em> (kondisi lingkungan yang berpengaruh pada pasar/industri secara keseluruhan, tanpa melihat strategi satu perusahaan) dan <em>mikro</em> (pelanggan sasaran tertentu &amp; perusahaan itu sendiri). Lingkungan makro dibagi <b>enam komponen</b> — klik untuk penjelasan:</p>
+    <div class="tabwrap">
+      <div class="tabs">
+        <button class="tab active" data-t="d">Demografi</button>
+        <button class="tab" data-t="s">Sosiokultural</button>
+        <button class="tab" data-t="e">Ekonomi</button>
+        <button class="tab" data-t="t">Teknologi</button>
+        <button class="tab" data-t="l">Lingkungan</button>
+        <button class="tab" data-t="r">Teregulasi</button>
+      </div>
+      <div class="tabpane active" data-p="d"><b>Lingkungan demografik.</b> Perubahan struktur penduduk memengaruhi permintaan. Mullins (2010) menyebut 5 kecenderungan global: populasi dunia menua, pengaruh wabah penyakit, ketimpangan pertumbuhan penduduk negara kaya vs miskin, naiknya imigrasi, dan menurunnya jumlah rumah tangga pernikahan.</div>
+      <div class="tabpane" data-p="s"><b>Lingkungan sosiokultural.</b> Perubahan nilai, sikap, &amp; perilaku masyarakat; berubah perlahan (lintas generasi). Dua kecenderungan menonjol: tuntutan berbisnis etis (mis. <em>cause-related marketing</em>) dan kesadaran kebugaran &amp; nutrisi.</div>
+      <div class="tabpane" data-p="e"><b>Lingkungan ekonomi.</b> Naik-turun pendapatan, suku bunga, dan kebijakan fiskal berdampak seketika &amp; dramatis pada pengeluaran konsumen; sering bergerak bersama kecenderungan makro lain.</div>
+      <div class="tabpane" data-p="t"><b>Lingkungan teknologikal.</b> Mengubah cara perusahaan beroperasi &amp; memakai sumber daya; menjadi dasar terbentuknya lingkungan ekonomi baru (dibahas lebih dalam di bagian 6).</div>
+      <div class="tabpane" data-p="l"><b>Lingkungan (fisik).</b> Isu lingkungan hidup memengaruhi kegiatan usaha &amp; pilihan konsumen (mis. produk ramah lingkungan).</div>
+      <div class="tabpane" data-p="r"><b>Lingkungan teregulasi.</b> Kondisi berubah mengikuti regulasi &amp; deregulasi. Regulasi berlebihan melindungi ketidakefisienan, menghambat pemain baru, &amp; menekan inflasi; deregulasi mengubah struktur industri &amp; menurunkan harga sehingga pasar tumbuh cepat.</div>
+    </div>
+
+    <div class="numh">4 · Sumber Daya Perusahaan Membatasi Pencarian Peluang</div>
+    <p>Setiap perusahaan punya sumber daya unik yang membedakannya. Peluang terbaik datang dari memanfaatkan kekuatan sambil <em>menghindari persaingan langsung</em> dengan pemain berkekuatan serupa. Tiga sumber kekuatan:</p>
+    <ul class="let">
+      <li><b>Kekuatan finansial</b> — sebagian peluang menuntut modal besar (litbang, fasilitas, riset, iklan) sebelum penjualan pertama; tanpanya, pasar menarik pun tak terjangkau.</li>
+      <li><b>Keluwesan &amp; kemampuan produksi</b> — biaya per unit turun saat volume naik (skala ekonomi), tetapi perusahaan kecil unggul dalam keluwesan karena struktur manajemen lebih sederhana dan tak terbebani fasilitas besar yang usang.</li>
+      <li><b>Kekuatan pemasaran</b> — merek yang dikenal, paten (monopoli hingga 20 tahun), hubungan baik dengan distributor/pengecer, serta sistem informasi yang mempercepat pengiriman &amp; kontrol inventori.</li>
+    </ul>
+
+    <div class="numh">5 · Menganalisis Pesaing dan Lingkungan Kompetitif</div>
+    <p>Manajer sebaiknya memilih peluang yang <b>menghindari persaingan langsung</b>. Para ekonom mengenal empat situasi pasar — klik untuk penjelasan:</p>
+    <div class="rgrid c2" data-revealgroup>
+      <div class="rcell" data-reveal data-detail="<b>Persaingan murni (pure competition)</b> — banyak penjual produk mirip; pelanggan melihatnya sebagai substitusi sempurna, sehingga persaingan jatuh ke harga terendah &amp; margin menyusut. Hindari dengan keunggulan kompetitif, bukan perang harga."><span><span class="rt">Persaingan murni</span><span class="rp">Banyak penjual, produk mirip, perang harga.</span></span></div>
+      <div class="rcell" data-reveal data-detail="<b>Oligopoli</b> — sedikit penjual besar saling bergantung; sebagian besar pasar produk menuju situasi ini dalam jangka panjang; keputusan satu pemain memengaruhi yang lain."><span><span class="rt">Oligopoli</span><span class="rp">Sedikit penjual besar, saling bergantung.</span></span></div>
+      <div class="rcell" data-reveal data-detail="<b>Persaingan monopolistik</b> — tiap perusahaan menawarkan bauran yang dilihat berbeda oleh sebagian pelanggan; berusaha memperoleh kendali (monopoli) atas pasar sasarannya melalui diferensiasi (harga, promosi, distribusi)."><span><span class="rt">Persaingan monopolistik</span><span class="rp">Produk didiferensiasi; kendali atas segmen.</span></span></div>
+      <div class="rcell" data-reveal data-detail="<b>Monopoli</b> — satu penjual tanpa pesaing dekat; jarang bertahan karena pemerintah biasanya meregulasi harga &amp; mencegah monopoli."><span><span class="rt">Monopoli</span><span class="rp">Satu penjual; biasanya diregulasi pemerintah.</span></span></div>
+    </div>
+    <div class="rdetail" data-revealdetail>Klik salah satu situasi pasar di atas untuk penjelasannya.</div>
+    <p style="margin-top:14px">Langkah penting lain dalam bagian ini:</p>
+    <ul class="exp">
+      <li><b>Lakukan analisis pesaing <span class="en">(competitor analysis)</span></b> — pahami kekuatan/kelemahan pesaing, mulai dari sudut pandang pelanggan sasaran; identifikasi pesaing potensial (produk substitusi), lalu persempit ke <b>pesaing terdekat</b> <span class="en">(competitive rivals)</span>.</li>
+      <li><b>Antisipasi persaingan yang muncul</b> — strategi yang berhasil menarik peniru; keunggulan kompetitif harus terus dijaga.</li>
+      <li><b>Amati <span class="en">competitive barrier</span></b> (penghalang persaingan) — kondisi yang membuat perusahaan sulit/tak mungkin bersaing di sebuah pasar.</li>
+      <li><b>Cari informasi tentang pesaing</b> dari sumber publik (publikasi perdagangan, wiraniaga, pemasok, industry experts, website) — namun <b>isu etika</b> muncul; mengambil rahasia dagang jelas ilegal.</li>
+      <li><b>Persaingan langsung tidak selalu bisa dihindari</b> — kadang perusahaan sudah terlanjur berada di industri yang kemudian menjadi sangat kompetitif.</li>
+    </ul>
+
+    <div class="numh">6 · Lingkungan Ekonomik dan Teknologi</div>
+    <ul class="exp">
+      <li><b>Lingkungan ekonomik</b> — kondisi ekonomi berubah cepat &amp; memengaruhi strategi; suku bunga &amp; inflasi memengaruhi pembelian (terutama barang kredit). Ekonomi dunia saling terhubung sehingga perdagangan internasional &amp; perubahan nilai tukar menjadi penting.</li>
+      <li><b>Lingkungan teknologi</b> — teknologi (aplikasi ilmiah yang mengubah sumber daya menjadi keluaran) membuka peluang <em>produk baru</em> atau <em>proses baru</em>. Transfer teknologi berlangsung cepat (Google belum ada 10 tahun lalu); Internet membentuk ulang pemasaran — tetapi juga membawa <em>tantangan</em> (terbawa euforia ide baru) &amp; <em>isu etika</em> (menjual data pengunjung, e-mail tak diundang = pelanggaran privasi).</li>
+    </ul>
+
+    <div class="numh">7 · Lingkungan Politikal</div>
+    <p><b>Nasionalisme</b> dapat menjadi pembatas di pasar internasional — rasa kebangsaan bisa menurunkan penjualan atau memblok kegiatan pemasaran. <b>Pengelompokan regional</b> makin penting karena membentuk pembatas ekonomi yang melindungi kepentingan kawasan.</p>
+
+    <div class="numh">8 · Lingkungan Legal</div>
+    <p>Perubahan politik sering mengarah pada perubahan hukum &amp; cara penerapannya. Lingkungan legal menetapkan aturan dasar kegiatan usaha — bisa <b>membatasi</b> pilihan, namun perubahan aturan juga bisa <b>membangun</b> peluang bisnis baru.</p>
+
+    <div class="numh">9 · Lingkungan Sosial dan Budaya</div>
+    <p>Memengaruhi perilaku membeli pelanggan sekaligus lingkungan ekonomi, politik, &amp; legal. Variabel pembentuknya: bahasa, tingkat pendidikan, kepercayaan/agama, jenis makanan, gaya pakaian &amp; rumah, serta pandangan atas pekerjaan, perkawinan, &amp; keluarga. Masyarakat yang makin multibudaya membuat perbedaan ini kian penting bagi <b>segmentasi pasar</b>.</p>
+
+    <div class="numh">10 · Menggunakan Kriteria Saringan untuk Menyaring Strategi</div>
+    <p>Perusahaan tak bisa meraih semua peluang, sehingga peluang perlu dipilah &amp; dievaluasi:</p>
+    <ul class="let">
+      <li><b>Menyusun kriteria penyaringan</b> dari analisis sumber daya, kecenderungan lingkungan, &amp; objektif manajemen; mencakup komponen <em>kualitatif</em> (bisnis yang ingin/tak ingin dijalankan) &amp; <em>kuantitatif</em> (target penjualan, laba, ROI). Kini kerap memakai konsep <span class="term">sustainability</span> (keberlanjutan).</li>
+      <li><b>Evaluasi rencana secara keseluruhan</b> berdasar kriteria kuantitatif.</li>
+      <li><b>Pendekatan laba total</b> — memperkirakan penjualan &amp; biaya selama umur rencana untuk menilai <em>profitability</em>.</li>
+      <li><b>ROI</b> — menghitung tingkat pengembalian atas sumber daya untuk mengevaluasi &amp; memilih rencana.</li>
+      <li><b>Strategic Business Unit (SBU)</b> — unit yang diperlakukan sebagai <em>profit center</em> terpisah; lini berposisi buruk ditutup/dijual.</li>
+      <li><b>Manajemen portofolio</b> — memperlakukan produk/divisi seperti investasi saham <span class="en">(trade off)</span>; kelemahannya menekankan return jangka pendek, diatasi dengan perencanaan strategik berorientasi pasar.</li>
+    </ul>
+
+    <div class="numh">11 · Mengevaluasi Peluang dalam Pasar Internasional</div>
+    <p>Lebih sulit dari pasar domestik karena sulit memahami variabel lingkungan yang berbeda. Produk industrial kurang peka terhadap kondisi sosial-budaya, sedangkan produk konsumen sangat peka (mis. Diet Pepsi gagal di beberapa negara). Maka bijak memulai lewat <b>ekspor</b> lebih dulu untuk memperoleh pengalaman sebelum komitmen lebih besar.</p>
+  </div>
+
+  <!-- ===================== KB2 ===================== -->
+  <h2 class="section" id="kb2"><span class="dot"></span>KB 2 — Membangun Kepuasan, Loyalitas dan Nilai Pelanggan</h2>
+  <div class="card kb2b">
+    <span class="kb-tag kb2t">NILAI PELANGGAN</span>
+    <p class="lead">Persaingan yang makin ketat mendorong perusahaan ke filosofi pemasaran holistik: membangun <b>hubungan yang harmonis &amp; kuat</b> dengan pelanggan. Menyerahkan nilai pelanggan menempuh lima langkah (Kotler dkk. 2009): membuat keputusan tentang nilai → memahami kebutuhan nilai → membangun proposisi nilai → mengomunikasikannya → menyerahkannya. Nilai yang memenuhi kebutuhan membuat pelanggan <b>puas</b> lalu <b>loyal</b>.</p>
+
+    <div class="numh">1 · Nilai Yang Dirasakan Pelanggan (CPV)</div>
+    <p>Kemajuan teknologi membuat pelanggan lebih terdidik &amp; mampu membandingkan. <span class="term">Customer Perceived Value (CPV)</span> — nilai yang dirasakan pelanggan (Kotler &amp; Keller 2009) — adalah selisih antara seluruh manfaat &amp; seluruh biaya dari sebuah penawaran dibanding alternatifnya:</p>
+    <div class="eqbox">
+      <div>\[ \text{CPV} \;=\; \underbrace{\text{Total Customer Benefit}}_{\text{manfaat: produk, jasa, personel, citra}} \;-\; \underbrace{\text{Total Customer Cost}}_{\text{biaya: moneter, waktu, energi, psikologis}} \]</div>
+      <div class="cap">Pemasar meningkatkan nilai dengan menaikkan manfaat <em>atau</em> menurunkan biaya. Analisis nilai pelanggan menilai kekuatan/kelemahan perusahaan relatif terhadap pesaing.</div>
+    </div>
+    <p>Tahapan <b>analisis nilai pelanggan</b> (Kotler dkk. 2009): <b>(a)</b> identifikasi atribut &amp; manfaat yang dinilai pelanggan; <b>(b)</b> nilai kepentingan kuantitatif tiap atribut (cluster per segmen); <b>(c)</b> bandingkan kinerja perusahaan vs pesaing; <b>(d)</b> telaah penilaian per segmen — bila melampaui pesaing, perusahaan dapat menaikkan harga (laba) atau menyamai harga (pangsa); <b>(e)</b> pantau nilai pelanggan sepanjang waktu.</p>
+
+    <div class="numh">2 · Menyerahkan Nilai Pelanggan yang Tinggi</div>
+    <p><span class="term">Loyalitas</span> (Oliver 1999) = komitmen kuat untuk membeli kembali produk/jasa yang disukai di masa depan, tanpa terpengaruh situasi atau usaha pemasaran yang mendorong perpindahan. Perusahaan menjanjikan <span class="term">value proposition</span> (proposisi nilai) — lebih luas dari sekadar <em>core positioning</em> (mis. Volvo = keselamatan + manfaat lain) — dan memenuhinya lewat <span class="term">value delivery system</span> (sistem penyerahan nilai): seluruh pengalaman pelanggan saat memperoleh &amp; memakai penawaran.</p>
+
+    <div class="numh">3 · Kepuasan Pelanggan Total</div>
+    <p><span class="term">Kepuasan</span> = tingkat perasaan dari perbandingan kinerja produk yang dirasakan terhadap harapan. Ekspektasi terbentuk dari pengalaman sebelumnya, saran teman, serta janji pemasar/pesaing. Promosi yang terlalu berlebihan menaikkan ekspektasi &amp; berisiko mengecewakan; ekspektasi terlalu rendah membuat produk tak menarik. Perusahaan juga tak boleh memaksimalkan kepuasan dengan mengorbankan laba &amp; kepentingan pemangku kepentingan lain — harus seimbang.</p>
+
+    <div class="numh">4 · Memantau Kepuasan</div>
+    <ul class="let">
+      <li><b>Teknik mengukur kepuasan</b> — survei periodik, pertanyaan niat beli ulang &amp; kemungkinan merekomendasikan, memantau <em>laju kehilangan pelanggan</em>, menghubungi yang berhenti, &amp; melacak kinerja pesaing.</li>
+      <li><b>Pengaruh kepuasan</b> — kepuasan adalah sasaran sekaligus sarana; Internet mempercepat penyebaran kepuasan maupun ketidakpuasan.</li>
+      <li><b>Komplain pelanggan</b> — kegagalan layanan pasti terjadi; yang ditangani dengan baik (<em>strategi pemulihan</em>) justru membuat pelanggan lebih loyal. Kiat: sediakan saluran keluhan 24/7, hubungi pengeluh dengan cepat, bertanggung jawab, layani dengan empati, &amp; selesaikan secara cepat-tepat.</li>
+    </ul>
+
+    <div class="numh">5 · Kualitas Produk dan Jasa</div>
+    <p>Kepuasan bergantung pada <b>kualitas</b> — kecocokan untuk digunakan, kesesuaian dengan kebutuhan, atau keseluruhan fitur yang mampu memenuhi kebutuhan. Definisi yang berfokus pelanggan: kualitas tercapai saat produk <em>memenuhi atau melampaui</em> ekspektasi. Kualitas, kepuasan, &amp; profitabilitas berhubungan erat, dan <b>kualitas total</b> adalah tugas semua orang di organisasi (pemasar: mengidentifikasi kebutuhan, mengomunikasikannya ke perancang, memastikan pemenuhan pesanan, menyediakan pelatihan, tetap dekat pelanggan, &amp; mengumpulkan ide penyempurnaan).</p>
+
+    <div class="numh">6 · Memaksimalkan Customer Lifetime Value (CLV)</div>
+    <p>Pemasaran adalah seni menarik &amp; memelihara pelanggan yang menguntungkan. Aturan terkenal <b>20–80</b>: sebagian kecil pelanggan menyumbang sebagian besar laba.</p>
+    <div class="chartbox">
+      <div class="cw"><canvas id="paretoChart"></canvas></div>
+      <div class="cap">Ilustrasi aturan 20–80 — pelanggan teratas menyumbang porsi laba terbesar. (Catatan: pelanggan terbesar belum tentu paling menguntungkan; pelanggan menengah sering justru paling menguntungkan.)</div>
+    </div>
+    <p><b>Profitabilitas pelanggan</b> diukur lewat <em>Customer Profitability Analysis</em> dengan <span class="en">activity-based costing (ABC)</span>, lalu dikelola sebagai <em>customer portfolios</em> ("teman", "kenalan", "mitra"). Profitabilitas jangka panjang diukur dengan <span class="term">CLV</span>:</p>
+    <div class="eqbox">
+      <div>\[ \text{CLV} \;=\; \sum_{t=1}^{n}\frac{(\text{Pendapatan}_t - \text{Biaya}_t)}{(1+d)^{t}} \]</div>
+      <div class="cap">Nilai kini bersih <span class="en">(net present value)</span> dari aliran laba selama masa hidup pelanggan; <em>d</em> = discount rate.</div>
+    </div>
+
+    <div class="numh">7 · Memupuk Hubungan Dengan Pelanggan</div>
+    <p>Maksimasi nilai pelanggan menuntut hubungan jangka panjang; perusahaan beralih dari pemasaran massal ke <span class="term">precision marketing</span>. Buku merinci empat cara membina hubungan dengan pelanggan:</p>
+
+    <p class="leth">a · Customer Relationship Management (CRM)</p>
+    <p><span class="term">CRM</span> adalah proses mengelola informasi rinci setiap pelanggan serta seluruh <em>touch point</em> (titik pertemuan — mis. saat reservasi, check-in, layanan kamar pada hotel) dengan tujuan memaksimalkan loyalitas. Dua komponennya:</p>
+    <p class="subn"><b>1) One-to-one marketing</b> (Peppers &amp; Rogers) — landasan CRM; empat langkah, klik tiap langkah:</p>
+    <div class="rgrid" data-revealgroup>
+      <div class="rcell" data-reveal data-detail="<b>Identify</b> (identifikasi) — kenali calon pelanggan (prospects) &amp; pelanggan. Jangan kejar semua orang; bangun, pelihara, &amp; tambang basis data yang kaya dari semua saluran &amp; titik singgung."><span class="stepnum">1</span><span><span class="rt">Identifikasi pelanggan</span><span class="rp">Bangun basis data; jangan kejar semua orang.</span></span></div>
+      <div class="rcell" data-reveal data-detail="<b>Differentiate</b> (bedakan) — bedakan pelanggan berdasar kebutuhan &amp; nilainya bagi perusahaan; curahkan usaha proporsional ke yang paling bernilai (pakai activity-based costing &amp; CLV)."><span class="stepnum">2</span><span><span class="rt">Bedakan pelanggan</span><span class="rp">Berdasar kebutuhan &amp; nilai (ABC, CLV).</span></span></div>
+      <div class="rcell" data-reveal data-detail="<b>Interact</b> (berinteraksi) — berinteraksi dengan pelanggan secara individual untuk memperdalam pemahaman atas kebutuhan mereka &amp; membangun hubungan yang lebih kuat; formulasikan penawaran 'customized'."><span class="stepnum">3</span><span><span class="rt">Berinteraksi</span><span class="rp">Dialog individual, perkuat hubungan.</span></span></div>
+      <div class="rcell" data-reveal data-detail="<b>Customize</b> (kustomisasi) — sesuaikan produk, jasa, &amp; pesan bagi setiap pelanggan; fasilitasi interaksi lewat website &amp; contact center. Tidak cocok untuk semua perusahaan karena investasinya besar; paling pas untuk yang menjual produk beragam, penggantian periodik, atau bernilai tinggi."><span class="stepnum">4</span><span><span class="rt">Kustomisasi</span><span class="rp">Produk/pesan "customized" per pelanggan.</span></span></div>
+    </div>
+    <div class="rdetail" data-revealdetail>Klik salah satu langkah one-to-one marketing di atas untuk penjelasannya.</div>
+    <p class="subn"><b>2) Meningkatkan nilai dari basis pelanggan</b> — nilai agregasi seluruh basis pelanggan adalah pendorong kunci. Ditingkatkan dengan:</p>
+    <ul class="exp">
+      <li>Mengurangi laju pelanggan yang mengundurkan diri <span class="en">(churn)</span> — pilih &amp; latih pegawai agar mampu menjawab kebutuhan pelanggan dengan baik.</li>
+      <li>Meningkatkan umur &amp; ketahanan hubungan — makin tinggi keterlibatan pelanggan dengan perusahaan, makin erat kedekatannya.</li>
+      <li>Memperbaiki potensi pertumbuhan tiap pelanggan lewat <em>share of wallet</em> (pangsa dompet), <em>cross-selling</em> (penjualan silang), &amp; <em>up-selling</em> (peningkatan nilai jual).</li>
+      <li>Menangani pelanggan berlaba kecil — minta mereka membeli lebih banyak atau dalam jumlah besar, kurangi layanan, atau kenakan biaya; bila perlu, lepaskan.</li>
+      <li>Memberi perhatian lebih besar pada pelanggan yang memberi laba bagi perusahaan.</li>
+    </ul>
+
+    <p class="leth">b · Attracting &amp; Retaining Customers (menarik &amp; mempertahankan)</p>
+    <p class="subn"><b>1) Mengurangi churn rate</b> — perusahaan tak hanya mencari pelanggan baru, tetapi juga memelihara yang ada (mis. industri seluler churn-nya tinggi karena mudah berpindah). Langkahnya: definisikan &amp; ukur <em>retention rate</em>, cari tahu penyebab pengunduran diri, lalu bandingkan kehilangan laba dengan CLV. Selama biaya mempertahankan lebih kecil dari laba yang hilang, pertahankan pelanggan.</p>
+    <p class="subn"><b>2) Retention dynamics</b> — tahapan menaik hubungan pelanggan: suspek/prospek → pelanggan pertama kali → pelanggan berulang → klien → anggota → <em>advocates</em> (antusias merekomendasikan) → <em>partner</em>/mitra (tingkat tertinggi). Banyak teori pemasaran keliru karena terlalu fokus menarik pelanggan baru, bukan memelihara yang sudah ada.</p>
+
+    <p class="leth">c · Building Loyalty (membangun loyalitas)</p>
+    <p>Membangun hubungan yang kuat &amp; erat dilakukan lewat ikatan manfaat finansial, sosial, atau struktural — melalui empat cara:</p>
+    <ul class="exp">
+      <li><b>1) Berinteraksi dengan pelanggan</b> — mendengarkan suara pelanggan adalah inti CRM; bangun mekanisme umpan balik yang berkesinambungan &amp; permanen.</li>
+      <li><b>2) Membangun program loyalitas</b> (Kotler dkk. 2009) — <em>frequency program</em> (penghargaan/poin bagi pembeli yang sering atau besar) &amp; <em>club marketing program</em>; sekaligus membuka peluang <em>cross-selling</em>.</li>
+      <li><b>3) Personalizing marketing</b> — mengubah pelanggan menjadi <em>client</em> yang dilayani secara individual (mis. <em>priority banking client</em>), memperkuat ikatan emosional &amp; pribadi.</li>
+      <li><b>4) Membangun ikatan institusional</b> — melengkapi pelanggan dengan peralatan/akses sistem (payroll, persediaan) sehingga biaya beralih menjadi tinggi &amp; mereka enggan berpindah ke pesaing.</li>
+    </ul>
+
+    <p class="leth">d · Memperoleh Kembali Pelanggan yang Hilang (Win Backs)</p>
+    <p>Sebaik apa pun pelayanan, selalu ada pelanggan yang lepas. Merebut kembali bekas pelanggan sering lebih mudah daripada menarik yang sama sekali baru, karena perusahaan sudah mengenal nama &amp; perilaku pembeliannya. Analisis penyebab pengunduran diri lewat <em>exit interview</em> &amp; <em>lost customer survey</em> untuk menyusun strategi <span class="term">win backs</span>.</p>
+
+    <div class="numh">8 · Customers Database dan Database Marketing</div>
+    <p><span class="term">Database marketing</span> = proses membangun, memelihara, &amp; menggunakan database pelanggan (dan database produk, pemasok, distributor). Beda dengan daftar alamat biasa, <b>customer database</b> memuat akumulasi transaksi + data demografi &amp; psikografi. Data disimpan di <em>datawarehouse</em> lalu digali dengan <em>data mining</em> (cluster/conjoint/factor analysis).</p>
+    <p>Database dipakai untuk lima hal: mengidentifikasi prospek, memilih pelanggan untuk penawaran tertentu, memperdalam loyalitas, mengaktifkan kembali pembelian, &amp; menghindari kesalahan. Namun ada <b>empat kelemahan</b>: <b>(1)</b> biaya membangun &amp; memelihara mahal dan tak selalu bermanfaat (produk sekali beli, loyalitas rendah, unit kecil); <b>(2)</b> sulit membuat semua pegawai berorientasi pelanggan; <b>(3)</b> tak semua konsumen menginginkan hubungan (isu privasi); <b>(4)</b> asumsi CRM tak selalu benar (pelanggan loyal bisa menuntut lebih).</p>
+  </div>
+
+  <!-- ===================== KB3 ===================== -->
+  <h2 class="section" id="kb3"><span class="dot"></span>KB 3 — Analisis Pasar Konsumen</h2>
+  <div class="card kb3b">
+    <span class="kb-tag kb3t">PASAR KONSUMEN</span>
+    <p class="lead">Perencanaan strategi menuntut pemahaman <b>mengapa &amp; apa</b> yang dibeli konsumen sasaran. Model perilaku konsumen (Perreault dkk. 2009) menempatkan si pembuat keputusan di bawah pengaruh empat kelompok faktor — kebutuhan ekonomik, variabel psikologis, pengaruh sosial, &amp; situasi pembelian — yang bermuara pada proses keputusan dan respons (beli / tidak beli).</p>
+
+    <div class="numh">1 · Perilaku Konsumen: Mengapa &amp; Apa yang Mereka Beli</div>
+    <p>Model perilaku konsumen (Perreault dkk. 2009) memetakan bagaimana berbagai rangsangan &amp; faktor memengaruhi keputusan beli — stimuli masuk, diproses oleh konsumen di bawah empat kelompok pengaruh, lalu menghasilkan respons beli / tidak beli:</p>
+    <div class="scheme">
+      <div class="row">
+        <div class="sbox in">Marketing mixes<span>bauran pemasaran (4P)</span></div>
+        <div class="sbox in">All other stimuli<span>rangsangan lain dari lingkungan</span></div>
+      </div>
+      <div class="sarrow">&#8595;</div>
+      <div class="person">
+        <div class="ptitle">Person Making Decision <span>konsumen sebagai pengambil keputusan</span></div>
+        <div class="infl-row">
+          <div class="infl i1">Economic needs<small>kebutuhan ekonomik</small></div>
+          <div class="infl i2">Psychological variables<small>variabel psikologis</small></div>
+          <div class="infl i3">Social influences<small>pengaruh sosial</small></div>
+          <div class="infl i4">Purchase situation<small>situasi pembelian</small></div>
+        </div>
+        <div class="cdp">Consumer Decision Process <span>proses pembuatan keputusan konsumen</span></div>
+      </div>
+      <div class="sarrow">&#8595;</div>
+      <div class="sbox out">Konsumen membeli / tidak membeli <span>response</span></div>
+    </div>
+    <p class="section-sub" style="margin-top:-2px">Gambar 2.1 / 2.3 — Model Perilaku Konsumen. Empat kelompok faktor di bawah ini dibahas berurutan (a–o).</p>
+    <p>Konsumen sebagian adalah <b>pembeli ekonomik</b> yang membandingkan pilihan secara logis. <b>Kebutuhan ekonomik</b> mencakup ekonomi pembelian, efisiensi penggunaan, kehandalan, peningkatan pendapatan, &amp; kenyamanan — tetapi perilaku tak sesederhana model ekonomik semata.</p>
+    <p><b>Kebutuhan memotivasi konsumen.</b> Kebutuhan lebih mendasar dari keinginan (keinginan = kebutuhan yang dipelajari). Kebutuhan tak terpenuhi menimbulkan <em>dorongan</em>. Perreault menyederhanakan hierarki Maslow menjadi <b>empat tingkat</b> — klik tiap tingkat:</p>
+    <div data-revealgroup>
+      <div class="pyramid">
+        <div class="ptier" data-reveal style="width:48%;background:#c9972e" data-detail="<b>Personal needs</b> (kebutuhan pribadi) — kepuasan &amp; pemenuhan diri tanpa harus berhubungan dengan orang lain.">Personal</div>
+        <div class="ptier" data-reveal style="width:64%;background:#2a9d6f" data-detail="<b>Social needs</b> (kebutuhan sosial) — cinta, kasih sayang, pertemanan, status, &amp; interaksi dengan orang lain.">Social</div>
+        <div class="ptier" data-reveal style="width:80%;background:#1a86c7" data-detail="<b>Safety needs</b> (kebutuhan keselamatan) — perlindungan &amp; keamanan: kesehatan, obat-obatan, olahraga.">Safety</div>
+        <div class="ptier" data-reveal style="width:96%;background:#5c6b7a" data-detail="<b>Physiological needs</b> (kebutuhan fisiologis) — kebutuhan biologis dasar: papan, makanan, air, hubungan intim.">Physiological</div>
+      </div>
+      <div class="rdetail" data-revealdetail>Klik tingkat kebutuhan untuk penjelasannya. (Puncak = kebutuhan tingkat tinggi; dasar = kebutuhan paling mendasar.)</div>
+    </div>
+    <p style="margin-top:14px"><b>Persepsi</b> menentukan bagaimana konsumen melihat &amp; merasakan (bergantung minat &amp; kepentingan kebutuhan). <b>Pembelajaran</b> <span class="en">(learning)</span> adalah perubahan proses berpikir akibat pengalaman — klik tiap tahap prosesnya:</p>
+    <div data-revealgroup>
+      <div class="flowchain">
+        <div class="fnode" data-reveal data-detail="<b>Drive</b> (dorongan) — stimulus kuat yang mendorong terjadinya tindakan (mis. rasa haus).">Drive</div>
+        <span class="farrow">→</span>
+        <div class="fnode" data-reveal data-detail="<b>Cue</b> (penanda/petunjuk) — informasi di lingkungan (produk, tanda, iklan) yang mengarahkan respons tertentu.">Cue</div>
+        <span class="farrow">→</span>
+        <div class="fnode" data-reveal data-detail="<b>Response</b> (respons) — usaha yang dilakukan untuk menjawab dorongan.">Response</div>
+        <span class="farrow">→</span>
+        <div class="fnode" data-reveal data-detail="<b>Reinforcement</b> (penguatan) — kepuasan yang mengurangi dorongan; memperkuat hubungan respons–penanda sehingga membentuk kebiasaan/rutin.">Reinforcement</div>
+      </div>
+      <div class="rdetail" data-revealdetail>Klik tiap tahap proses pembelajaran untuk penjelasannya.</div>
+    </div>
+    <p style="margin-top:14px">Lanjutan variabel psikologis:</p>
+    <ul class="exp">
+      <li><b>Cue membantu bauran pemasaran</b> — pemasar menghubungkan penanda beraosiasi positif dengan bauran (mis. aroma lemon = kesegaran).</li>
+      <li><b>Kebutuhan dipelajari secara kultural</b> — budaya membentuk keinginan atas jenis makanan/produk tertentu.</li>
+      <li><b>Sikap &amp; keyakinan</b> — <em>attitude</em> (pandangan suka/tidak suka) berimplikasi pada tindakan; <em>beliefs</em> (opini) membentuk sikap. Sikap/keyakinan "hijau" mengubah bauran pemasaran, namun klaim hijau berlebihan justru menimbulkan sikap negatif.</li>
+      <li><b>Mengubah sikap negatif</b> sering perlu tetapi sulit (mis. ritual minum teh orang Inggris); <b>isu etika</b> muncul saat promosi menyesatkan.</li>
+      <li><b>Memenuhi harapan itu penting</b> — temukan keseimbangan agar ekspektasi tak melampaui kenyataan.</li>
+      <li><b>Kepribadian</b> sulit dimanfaatkan langsung, sehingga banyak peneliti beralih ke <b>psikografik/gaya hidup</b> — dianalisis lewat <span class="term">AIO</span> (Activities, Interests, Opinions), berguna untuk menyusun tema iklan.</li>
+    </ul>
+
+    <div class="numh">2 · Pengaruh Sosial Berdampak pada Perilaku Konsumen</div>
+    <ul class="exp">
+      <li><b>Keluarga</b> — siklus &amp; peran keluarga memengaruhi pola pengeluaran; peran berbeda antar budaya; bahkan anak-anak ikut menentukan pilihan. Keputusan personal pun bisa dipengaruhi pertimbangan keluarga.</li>
+      <li><b>Kelas sosial</b> — kelompok dengan posisi sosial serupa (ditentukan pekerjaan, pendidikan, peran komunitas, bukan sekadar pendapatan); memengaruhi tempat belanja, merek, serta sikap belanja &amp; menabung.</li>
+      <li><b>Reference group</b> (kelompok acuan) — kelompok rujukan dalam membangun sikap, baik tatap muka maupun yang ditiru.</li>
+      <li><b>Opinion leader</b> — orang yang memengaruhi orang lain (tak harus lebih kaya/berpendidikan); menggerakkan <em>word of mouth</em> (WOM) positif maupun negatif.</li>
+      <li><b>Budaya</b> — himpunan keyakinan, sikap, &amp; cara bertindak yang homogen; sangat penting dipertimbangkan, terlebih di pasar internasional yang budayanya berbeda-beda.</li>
+    </ul>
+
+    <div class="numh">3 · Individu Dipengaruhi oleh Situasi Pembelian</div>
+    <p>Alasan membeli bisa beragam (mahasiswa membeli ballpoint murah untuk kuliah tetapi Cross untuk hadiah); <b>waktu</b> &amp; urgensi kebutuhan memengaruhi keputusan; dan <b>lingkungan</b> dapat memicu <em>impulse buying</em> (pembelian tanpa rencana) maupun mencegah pembelian. Maka situasi yang berbeda bisa menuntut bauran pemasaran yang berbeda — bahkan untuk target pasar yang sama.</p>
+
+    <div class="numh">4 · Proses Pembuatan Keputusan Konsumen</div>
+    <p>Proses dimulai saat konsumen <b>mengenali kebutuhan</b> yang belum terpenuhi, lalu menempuh tahapan pemecahan masalah: <em>information search → identify alternatives → set criteria → evaluate alternatives</em>. Tingkat usaha bergantung keterlibatan — klik tiap tingkat:</p>
+    <div data-revealgroup>
+      <div class="clabels"><span>Low involvement</span><span>High involvement</span></div>
+      <div class="continuum">
+        <div class="cseg" data-reveal style="background:#2a9d6f" data-detail="<b>Routinized Response Behavior</b> — keterlibatan rendah: produk sering dibeli, murah, risiko kecil, perlu sedikit informasi; dipilih secara rutin/kebiasaan.">Routinized Response</div>
+        <div class="cseg" data-reveal style="background:#e08a1e" data-detail="<b>Limited Problem Solving</b> — ada pengalaman dengan produk, tetapi belum yakin pilihan mana; usaha pencarian tidak terlalu besar.">Limited Problem Solving</div>
+        <div class="cseg" data-reveal style="background:#d14a6a" data-detail="<b>Extensive Problem Solving</b> — keterlibatan tinggi: jarang dibeli, mahal, risiko tinggi, butuh banyak informasi (mis. produk baru atau kebutuhan penting).">Extensive Problem Solving</div>
+      </div>
+      <div class="rdetail" data-revealdetail>Klik tiap tingkat pemecahan masalah untuk penjelasannya.</div>
+    </div>
+    <p style="margin-top:14px">Catatan penting pada proses ini:</p>
+    <ul class="exp">
+      <li>Pembelian <b>tidak selalu rasional</b>, dan proses pemecahan masalah <b>tidak selalu berakhir dengan pembelian</b> (konsumen bisa menunda/batal).</li>
+      <li>Setelah membeli, muncul <b>dissonance</b> (disonansi pasca-pembelian) — keraguan apakah keputusannya tepat; pemasar dapat meredakannya (mis. e-mail pengingat manfaat). Kecewa pasca-pembelian adalah masalah besar.</li>
+      <li>Konsumen <b>menyebarkan informasi</b> (WOM) setelah membeli; informasi Internet kadang tak akurat.</li>
+      <li>Konsep/produk baru menuntut <b>proses adopsi</b> — langkah menerima/menolak ide baru, di mana peran promosi lebih nyata.</li>
+    </ul>
+
+    <div class="numh">5 · Perilaku Konsumen pada Pasar Internasional</div>
+    <p>Semua pengaruh saling berinteraksi, sering secara tidak jelas; makin sedikit pemasar memahami variabel sosial &amp; interpersonal, makin besar risiko strategi salah arah. Hindari menyederhanakan <b>stereotype</b> &amp; waspadai perubahan; sebaiknya gunakan tenaga lokal yang memahami pengalaman, sikap, &amp; minat pelanggan setempat.</p>
+  </div>
+
+  <!-- ===================== KB4 ===================== -->
+  <h2 class="section" id="kb4"><span class="dot"></span>KB 4 — Analisis Pasar Bisnis</h2>
+  <div class="card kb4b">
+    <span class="kb-tag kb4t">PASAR BISNIS (B2B)</span>
+    <p class="lead">Perilaku pembeli organisasi sangat berbeda dari konsumen akhir. Organisasi bisnis bukan hanya menjual, tetapi juga <b>membeli</b> bahan baku, komponen, pabrik, peralatan, &amp; jasa dalam jumlah besar. Untuk itu penjual harus memahami kebutuhan, kebijakan, &amp; prosedur pembelian pelanggan bisnisnya.</p>
+
+    <div class="abc"><span class="ltr">A</span><h4>Pasar Bisnis: Membeli &amp; Menjual Antar Perusahaan</h4></div>
+    <div class="numh">1 · Faktor-Faktor yang Membedakan Pasar Bisnis</div>
+    <p>Prinsip pemasaran dasar tetap berlaku, tetapi empat faktor membuat pasar bisnis lebih rumit (Gambar 2.6):</p>
+    <ul class="exp">
+      <li><b>Sekelompok pembeli</b> — produk harus memuaskan sekelompok orang yang terlibat dalam keputusan (mis. furnitur kelas → mahasiswa, pengajar, administrator), bukan satu individu.</li>
+      <li><b>Jumlah pelanggan</b> — pelanggan organisasional jauh lebih sedikit dibanding konsumen akhir.</li>
+      <li><b>Ukuran pembelian <span class="en">(size of purchase)</span></b> — pembelian B2B biasanya dalam jumlah &amp; nilai yang besar.</li>
+      <li><b>Konsentrasi geografis</b> — banyak pelanggan bisnis terpusat di kawasan tertentu (kompleks industri), sehingga pemasar dapat memusatkan distribusi.</li>
+    </ul>
+
+    <div class="numh">2 · Permintaan B2B</div>
+    <p>Permintaan pasar bisnis berbeda dari pasar konsumen — klik tiap jenis:</p>
+    <div class="rgrid c2" data-revealgroup>
+      <div class="rcell" data-reveal data-detail="<b>Derived demand</b> (permintaan turunan) — permintaan bisnis berasal dari permintaan konsumen atas produk yang dihasilkannya. Keberhasilan bergantung pada perusahaan lain di industri berbeda (mis. sedikit mahasiswa → permintaan buku teks turun → industri kertas terdampak)."><span><span class="rt">Derived demand</span><span class="rp">Turunan dari permintaan konsumen.</span></span></div>
+      <div class="rcell" data-reveal data-detail="<b>Inelastic demand</b> (permintaan tidak elastis) — naik-turun harga tak banyak mengubah jumlah pembelian, karena komponen hanya bagian kecil dari biaya produk akhir. Tidak selalu inelastis."><span><span class="rt">Inelastic demand</span><span class="rp">Kurang sensitif terhadap harga.</span></span></div>
+      <div class="rcell" data-reveal data-detail="<b>Fluctuating demand</b> (permintaan berfluktuasi) — perubahan kecil permintaan konsumen dapat menyebabkan perubahan besar permintaan bisnis (efek akselerasi), mis. industri penerbangan terhadap harga bahan bakar jet."><span><span class="rt">Fluctuating demand</span><span class="rp">Berfluktuasi tajam (efek akselerasi).</span></span></div>
+      <div class="rcell" data-reveal data-detail="<b>Joint demand</b> (permintaan gabungan) — dua/lebih barang diperlukan bersama untuk memproduksi satu produk; bila satu pasokan turun, pembelian barang lain ikut turun (mis. Porsche butuh ban, aki, &amp; busi sekaligus)."><span><span class="rt">Joint demand</span><span class="rp">Beberapa input dibutuhkan bersama.</span></span></div>
+    </div>
+    <div class="rdetail" data-revealdetail>Klik salah satu jenis permintaan B2B di atas untuk penjelasannya.</div>
+    <div class="chartbox">
+      <div class="cw"><canvas id="demandChart"></canvas></div>
+      <div class="cap">Efek akselerasi — perubahan kecil pada permintaan konsumen (biru) memicu perubahan besar pada permintaan bisnis turunan (ungu).</div>
+    </div>
+
+    <div class="numh">3 · Jenis Pelanggan B2B</div>
+    <ul class="exp">
+      <li><b>Produsen</b> — membeli untuk membuat barang/jasa lain yang dijual untuk laba (mis. Dell membeli <em>microprocessor</em> dari Intel/AMD).</li>
+      <li><b>Resellers</b> — membeli <em>finished goods</em> untuk dijual kembali/disewakan; memberi manfaat kepemilikan, waktu, &amp; tempat (mis. Carrefour).</li>
+      <li><b>Pemerintah &amp; organisasi nirlaba</b> — pembeli terbesar; organisasi nirlaba (rumah sakit, universitas, museum) beranggaran terbatas &amp; pembelinya bukan profesional, sehingga perlu dibantu pemasar.</li>
+    </ul>
+
+    <div class="abc"><span class="ltr">B</span><h4>B2B E-Commerce dan Media Sosial</h4></div>
+    <p><span class="term">B2B e-commerce</span> = pertukaran informasi, barang, jasa, &amp; pembayaran antar perusahaan melalui Internet; menghubungkan pemasok–pabrik–distributor–pelanggan secara langsung dan memangkas waktu &amp; biaya. Infrastrukturnya: <b>Intranet</b> (jaringan internal untuk pegawai berwenang), <b>Extranet</b> (akses bagi pemasok/pelanggan tepercaya untuk memesan &amp; berkolaborasi), &amp; <b>private exchange</b> (sistem khusus yang menghubungkan kelompok mitra undangan).</p>
+    <p><b>Sisi gelapnya</b> adalah risiko keamanan; perlindungan memakai <em>firewall</em> (membatasi akses) &amp; <em>encryption</em> (mengacak pesan). Di sisi lain, <b>media sosial</b> (LinkedIn, Twitter, Facebook) dipakai lewat webinars/podcasts, online rating, halaman perusahaan, blog, &amp; pencarian informasi berbasis lokasi.</p>
+
+    <div class="abc"><span class="ltr">C</span><h4>Situasi &amp; Proses Keputusan Pembelian Bisnis</h4></div>
+    <p>Kerangka <span class="term">buy class</span> membedakan tiga situasi pembelian — klik tiap kelas:</p>
+    <div class="rgrid c3" data-revealgroup>
+      <div class="rcell" data-reveal data-detail="<b>Straight rebuy</b> — pemesanan ulang rutin barang yang sama saat persediaan menipis, dari pemasok yang sama; perlu sedikit waktu. Penjual menjaga hubungan agar pelanggan tak berpikir ulang."><span><span class="rt">Straight rebuy</span><span class="rp">Pembelian rutin berulang.</span></span></div>
+      <div class="rcell" data-reveal data-detail="<b>Modified rebuy</b> — perusahaan mempertimbangkan berpindah ke pemasok lain yang menawarkan harga/kualitas/waktu lebih baik; butuh lebih banyak waktu &amp; usaha."><span><span class="rt">Modified rebuy</span><span class="rp">Meninjau ulang pemasok/syarat.</span></span></div>
+      <div class="rcell" data-reveal data-detail="<b>New-task buy</b> — pembelian pertama kali; penuh risiko &amp; ketidakpastian karena belum ada pengalaman; menuntut usaha paling besar. Pemasar membangun hubungan jangka panjang."><span><span class="rt">New-task buy</span><span class="rp">Pembelian pertama kali, risiko tinggi.</span></span></div>
+    </div>
+    <div class="rdetail" data-revealdetail>Klik salah satu kelas pembelian di atas untuk penjelasannya.</div>
+
+    <p style="margin-top:16px">Dalam organisasi, beberapa orang mengisi <b>buying center</b> (pusat pembelian) — klik tiap peran:</p>
+    <div class="rgrid c3" data-revealgroup>
+      <div class="rcell" data-reveal data-detail="<b>User</b> (pemakai) — anggota yang benar-benar membutuhkan &amp; menggunakan produk; memberi masukan tentang fitur yang dibutuhkan."><span><span class="rt">User</span><span class="rp">Pemakai produk.</span></span></div>
+      <div class="rcell" data-reveal data-detail="<b>Initiator</b> (inisiator) — memulai proses pembelian saat menyadari perusahaan perlu membeli (mis. supervisor melaporkan peralatan rusak)."><span><span class="rt">Initiator</span><span class="rp">Memulai proses pembelian.</span></span></div>
+      <div class="rcell" data-reveal data-detail="<b>Gatekeeper</b> (penjaga gerbang) — mengontrol aliran informasi &amp; akses pemasok ke anggota lain (sering agen pembelian). Penting dibangun hubungan baik dengannya."><span><span class="rt">Gatekeeper</span><span class="rp">Mengontrol informasi &amp; akses.</span></span></div>
+      <div class="rcell" data-reveal data-detail="<b>Influencer</b> (pemberi pengaruh) — memengaruhi keputusan lewat nasihat/keahlian (insinyur, quality-control specialist, ahli teknik)."><span><span class="rt">Influencer</span><span class="rp">Memengaruhi lewat keahlian.</span></span></div>
+      <div class="rcell" data-reveal data-detail="<b>Decider</b> (pemutus) — membuat keputusan akhir &amp; memegang kekuasaan terbesar (CEO/manajer untuk pembelian rumit)."><span><span class="rt">Decider</span><span class="rp">Membuat keputusan akhir.</span></span></div>
+      <div class="rcell" data-reveal data-detail="<b>Buyer</b> (pembeli) — bertanggung jawab atas pelaksanaan pembelian: negosiasi, tanggal pengiriman, &amp; pembayaran."><span><span class="rt">Buyer</span><span class="rp">Menangani transaksi rinci.</span></span></div>
+    </div>
+    <div class="rdetail" data-revealdetail>Klik salah satu peran dalam buying center di atas untuk penjelasannya.</div>
+
+    <p style="margin-top:16px">Prosesnya menempuh <b>lima tahap</b> (Gambar 2.8) — klik tiap tahap:</p>
+    <div data-revealgroup>
+      <div class="rgrid">
+        <div class="rcell" data-reveal data-detail="Proses dimulai saat seseorang melihat pembelian bisa memecahkan masalah. Dibuat permintaan pembelian, dan bila perlu dibentuk organisasi/pusat pembelian."><span class="stepnum">1</span><span><span class="rt">Mengenali masalah</span><span class="rp">Permintaan pembelian dibuat.</span></span></div>
+        <div class="rcell" data-reveal data-detail="Organisasi membangun spesifikasi produk, mengidentifikasi pemasok potensial, &amp; memperoleh proposal/penawaran tertulis (kecuali pada straight rebuy)."><span class="stepnum">2</span><span><span class="rt">Mencari informasi</span><span class="rp">Spesifikasi, pemasok, proposal.</span></span></div>
+        <div class="rcell" data-reveal data-detail="Proposal dievaluasi (harga, diskon, kebijakan pengembalian, pemeliharaan, pelayanan ekstra); sampel diperoleh &amp; dinilai."><span class="stepnum">3</span><span><span class="rt">Mengevaluasi alternatif</span><span class="rp">Menilai proposal &amp; sampel.</span></span></div>
+        <div class="rcell" data-reveal data-detail="Memilih produk &amp; pemasok berdasar spesifikasi, lalu menerbitkan Pesanan Pembelian (PO). Keputusan kunci: pemasok tunggal (single sourcing) vs beberapa pemasok (multiple sourcing); kadang berdasar reciprocity."><span class="stepnum">4</span><span><span class="rt">Memilih produk &amp; pemasok</span><span class="rp">Menerbitkan PO; single vs multiple sourcing.</span></span></div>
+        <div class="rcell" data-reveal data-detail="Evaluasi pasca-pembelian: survei pemakai &amp; dokumentasi kinerja pemasok; umpan balik menentukan pembelian ulang."><span class="stepnum">5</span><span><span class="rt">Mengevaluasi pasca-pembelian</span><span class="rp">Survei pemakai &amp; kinerja pemasok.</span></span></div>
+      </div>
+      <div class="rdetail" data-revealdetail>Klik salah satu tahap proses pembelian bisnis di atas untuk penjelasannya.</div>
+    </div>
+  </div>
+
+  <!-- GLOSARIUM -->
+  <h2 class="section" id="glosarium"><span class="dot"></span>Glosarium Kilat</h2>
+  <div class="card">
+    <dl class="glossary">
+      <dt>CPV — Customer Perceived Value</dt><dd>Nilai yang dirasakan = total manfaat − total biaya, relatif terhadap alternatif.</dd>
+      <dt>CLV — Customer Lifetime Value</dt><dd>Nilai kini bersih dari laba sepanjang masa hidup pelanggan.</dd>
+      <dt>CRM — Customer Relationship Management</dt><dd>Mengelola informasi &amp; touch point tiap pelanggan untuk memaksimalkan loyalitas.</dd>
+      <dt>Touch point</dt><dd>Setiap titik pertemuan pelanggan dengan produk/jasa/pegawai perusahaan.</dd>
+      <dt>Churn rate / retention rate</dt><dd>Laju pelanggan berhenti / laju pelanggan bertahan.</dd>
+      <dt>AIO — Activities, Interests, Opinions</dt><dd>Dimensi analisis psikografik / gaya hidup.</dd>
+      <dt>Derived demand</dt><dd>Permintaan bisnis yang turunan dari permintaan konsumen akhir.</dd>
+      <dt>Buy class</dt><dd>Straight rebuy, modified rebuy, new-task buy.</dd>
+      <dt>Buying center</dt><dd>Kumpulan peran pembelian: user, initiator, gatekeeper, influencer, decider, buyer.</dd>
+      <dt>Reciprocity</dt><dd>Pemilihan pemasok atas dasar kesepakatan saling membeli.</dd>
+      <dt>Single / multiple sourcing</dt><dd>Membeli dari satu pemasok vs beberapa pemasok bersaing.</dd>
+    </dl>
+  </div>
+
+</div>
+
+<footer>
+  <b>EKMA5206 — Manajemen Pemasaran</b> · Modul 2: Peluang Pasar, Kepuasan, Loyalitas, Nilai Pelanggan, dan Analisis Pasar (Edisi 3) · Penulis: Dr. Ir. FX. Bambang Wiharto, M.M.<br>
+  Bahan belajar ringkas — disusun ulang mengikuti alur modul (hal. 2.1–2.72) untuk persiapan ujian.
+  <div class="refs">
+    <b>Rujukan utama modul:</b> Kotler &amp; Keller (2009) <i>Marketing Management</i> 13e · Perreault, Cannon &amp; McCarthy (2009) <i>Basic Marketing</i> 17e ·
+    Solomon, Marshall &amp; Stuart (2012) <i>Marketing — Real People Real Choices</i> 7e · Mullins &amp; Walker (2010) · Oliver (1999) <i>Whence Consumer Loyalty?</i> · Porter (1985) <i>Competitive Advantage</i>.
+  </div>
+</footer>
+
+<script>
+(function(){
+  /* progress */
+  var pb=document.getElementById('progress');
+  function onScroll(){var h=document.documentElement;var sc=h.scrollTop||document.body.scrollTop;var max=(h.scrollHeight-h.clientHeight)||1;pb.style.width=(sc/max*100)+'%';}
+  document.addEventListener('scroll',onScroll,{passive:true});onScroll();
+
+  /* checklist */
+  var list=document.getElementById('conceptList');
+  var items=[].slice.call(list.querySelectorAll('li'));
+  var boxes=items.map(function(li){return li.querySelector('input');});
+  document.getElementById('totalCount').textContent=items.length;
+  var doneEl=document.getElementById('doneCount');var KEY='ekma5206_m2_concepts_v1';
+  function load(){try{var a=JSON.parse(localStorage.getItem(KEY)||'[]');boxes.forEach(function(b,i){if(a[i])b.checked=true;});}catch(e){}}
+  function save(){try{localStorage.setItem(KEY,JSON.stringify(boxes.map(function(b){return b.checked?1:0;})));}catch(e){}}
+  function refresh(){var n=0;items.forEach(function(li,i){if(boxes[i].checked){li.classList.add('done');n++;}else li.classList.remove('done');});doneEl.textContent=n;}
+  load();refresh();
+  boxes.forEach(function(b){b.addEventListener('change',function(){refresh();save();});});
+  document.getElementById('resetBtn').addEventListener('click',function(){boxes.forEach(function(b){b.checked=false;});refresh();save();});
+
+  /* generic reveal */
+  [].slice.call(document.querySelectorAll('[data-revealgroup]')).forEach(function(g){
+    var det=g.querySelector('[data-revealdetail]');
+    if(!det){var sib=g.nextElementSibling;if(sib&&sib.hasAttribute&&sib.hasAttribute('data-revealdetail'))det=sib;}
+    var cells=[].slice.call(g.querySelectorAll('[data-reveal]'));
+    cells.forEach(function(c){c.addEventListener('click',function(){
+      cells.forEach(function(x){x.classList.remove('active');});c.classList.add('active');
+      if(det) det.innerHTML=c.getAttribute('data-detail');
+    });});
+  });
+
+  /* generic tabs */
+  [].slice.call(document.querySelectorAll('.tabwrap')).forEach(function(w){
+    var tabs=[].slice.call(w.querySelectorAll('.tab'));
+    var panes=[].slice.call(w.querySelectorAll('.tabpane'));
+    tabs.forEach(function(t){t.addEventListener('click',function(){
+      tabs.forEach(function(x){x.classList.remove('active');});t.classList.add('active');
+      var k=t.getAttribute('data-t');
+      panes.forEach(function(p){p.classList.toggle('active',p.getAttribute('data-p')===k);});
+    });});
+  });
+
+  /* ===== MIND MAP ===== */
+  (function(){
+    var ROWH=46,NODE_H=32,PAD=13,GAP=52;
+    var COL={root:'#0f5e8f',kb1:'#1a86c7',kb2:'#e08a1e',kb3:'#2a9d6f',kb4:'#7a5cc0'};
+    var mc=document.createElement('canvas').getContext('2d');mc.font='700 13px -apple-system,Segoe UI,Roboto,sans-serif';
+    function tw(t){return Math.ceil(mc.measureText(t).width);}
+    function esc(t){return t.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');}
+    function rgba(hex,a){var h=hex.replace('#','');return 'rgba('+parseInt(h.substr(0,2),16)+','+parseInt(h.substr(2,2),16)+','+parseInt(h.substr(4,2),16)+','+a+')';}
+    var DATA={label:'MODUL 2 — Peluang Pasar, Kepuasan, Loyalitas, Nilai & Analisis Pasar',color:COL.root,children:[
+      {label:'KB1 · Memahami Peluang Pasar',color:COL.kb1,children:[
+        {label:'Pasar vs Industri'},
+        {label:'Kerangka kemenarikan (4C + 3 pertanyaan)'},
+        {label:'6 lingkungan makro'},
+        {label:'Sumber daya perusahaan',children:[{label:'Finansial'},{label:'Produksi'},{label:'Pemasaran'}]},
+        {label:'Analisis pesaing & 4 situasi pasar'},
+        {label:'Kriteria saringan (ROI, SBU, portfolio)'},
+        {label:'Peluang pasar internasional'}
+      ]},
+      {label:'KB2 · Kepuasan, Loyalitas & Nilai',color:COL.kb2,children:[
+        {label:'Customer Perceived Value (CPV)'},
+        {label:'Value proposition & delivery'},
+        {label:'Kepuasan total & ekspektasi'},
+        {label:'Kualitas produk & jasa'},
+        {label:'CLV & profitabilitas (20-80)'},
+        {label:'CRM & one-to-one marketing'},
+        {label:'Attract · retain · win-back'},
+        {label:'Database marketing'}
+      ]},
+      {label:'KB3 · Analisis Pasar Konsumen',color:COL.kb3,children:[
+        {label:'Kebutuhan ekonomik'},
+        {label:'Motivasi & Maslow (4 tingkat)'},
+        {label:'Persepsi & pembelajaran'},
+        {label:'Sikap, keyakinan & AIO'},
+        {label:'Pengaruh sosial',children:[{label:'Keluarga & kelas sosial'},{label:'Reference group & opinion leader'},{label:'Budaya'}]},
+        {label:'Situasi pembelian'},
+        {label:'Proses keputusan & kontinum'}
+      ]},
+      {label:'KB4 · Analisis Pasar Bisnis',color:COL.kb4,children:[
+        {label:'Faktor pembeda pasar bisnis'},
+        {label:'Permintaan B2B',children:[{label:'Derived'},{label:'Inelastic'},{label:'Fluctuating'},{label:'Joint'}]},
+        {label:'Jenis pelanggan B2B'},
+        {label:'B2B e-commerce & media sosial'},
+        {label:'Buy class (straight/modified/new-task)'},
+        {label:'Buying center (6 peran)'},
+        {label:'Proses pembelian bisnis (5 tahap)'}
+      ]}
+    ]};
+    var idc=0;(function w(n,c){n.id='n'+(idc++);n.color=n.color||c;(n.children||[]).forEach(function(k){w(k,n.color);});})(DATA,COL.root);
+    (function w(n,d){if(d>=2&&n.children&&n.children.length)n.collapsed=true;(n.children||[]).forEach(function(k){w(k,d+1);});})(DATA,0);
+    var host=document.getElementById('mindmap');
+    function render(){
+      var colW=[];(function w(n,d){var width=tw(n.label)+PAD*2+((n.children&&n.children.length)?20:0);colW[d]=Math.max(colW[d]||0,width);if(!n.collapsed)(n.children||[]).forEach(function(k){w(k,d+1);});})(DATA,0);
+      var colX=[],acc=14;for(var d=0;d<colW.length;d++){colX[d]=acc;acc+=colW[d]+GAP;}
+      var row={v:0};
+      (function lay(n,d){if(!n.children||!n.children.length||n.collapsed){n._y=row.v*ROWH+ROWH/2+8;row.v++;return;}var f,l;n.children.forEach(function(k,i){lay(k,d+1);if(i===0)f=k._y;l=k._y;});n._y=(f+l)/2;})(DATA,0);
+      var totalW=acc,totalH=row.v*ROWH+24;
+      var nodes=[],links=[];
+      (function col(n,d,p){n._x=colX[d];n._w=tw(n.label)+PAD*2+((n.children&&n.children.length)?20:0);nodes.push({n:n,d:d});if(p)links.push([p,n]);if(!n.collapsed)(n.children||[]).forEach(function(k){col(k,d+1,n);});})(DATA,0,null);
+      var s='<svg width="'+totalW+'" height="'+totalH+'" viewBox="0 0 '+totalW+' '+totalH+'" xmlns="http://www.w3.org/2000/svg">';
+      links.forEach(function(pr){var a=pr[0],b=pr[1],x1=a._x+a._w,y1=a._y,x2=b._x,y2=b._y,mx=(x1+x2)/2;s+='<path d="M'+x1+' '+y1+' C'+mx+' '+y1+' '+mx+' '+y2+' '+x2+' '+y2+'" fill="none" stroke="'+rgba(b.color,.5)+'" stroke-width="2"/>';});
+      nodes.forEach(function(o){var n=o.n,x=n._x,y=n._y-NODE_H/2,w=n._w,hk=n.children&&n.children.length;var fill=o.d===0?n.color:(o.d===1?rgba(n.color,.12):'#fff');var tf=o.d===0?'#fff':'#1c2733';
+        s+='<g data-id="'+n.id+'" style="cursor:'+(hk?'pointer':'default')+'">';
+        s+='<rect x="'+x+'" y="'+y+'" rx="9" width="'+w+'" height="'+NODE_H+'" fill="'+fill+'" stroke="'+n.color+'" stroke-width="'+(o.d===0?0:1.6)+'"/>';
+        s+='<text x="'+(x+PAD)+'" y="'+(n._y+4)+'" font-size="13" font-weight="'+(o.d<=1?'700':'500')+'" fill="'+tf+'" font-family="-apple-system,Segoe UI,Roboto,sans-serif">'+esc(n.label)+'</text>';
+        if(hk){var cx=x+w-12,cy=n._y;s+='<circle cx="'+cx+'" cy="'+cy+'" r="8.5" fill="'+n.color+'"/><text x="'+cx+'" y="'+(cy+4.5)+'" font-size="13" font-weight="700" fill="#fff" text-anchor="middle" font-family="sans-serif">'+(n.collapsed?'+':'\u2013')+'</text>';}
+        s+='</g>';});
+      s+='</svg>';host.innerHTML=s;
+    }
+    host.addEventListener('click',function(e){var g=e.target.closest('g[data-id]');if(!g)return;var id=g.getAttribute('data-id');(function f(n){if(n.id===id){if(n.children&&n.children.length)n.collapsed=!n.collapsed;return true;}return (n.children||[]).some(f);})(DATA);render();});
+    document.getElementById('mmExpand').addEventListener('click',function(){(function w(n){if(n.children)n.collapsed=false;(n.children||[]).forEach(w);})(DATA);render();});
+    document.getElementById('mmCollapse').addEventListener('click',function(){(function w(n,d){if(d>=1&&n.children&&n.children.length)n.collapsed=true;(n.children||[]).forEach(function(k){w(k,d+1);});})(DATA,0);render();});
+    render();
+  })();
+
+  /* MathJax */
+  window.addEventListener('load',function(){setTimeout(function(){if(window.MathJax&&window.MathJax.typesetPromise)window.MathJax.typesetPromise();},400);});
+
+  /* Charts */
+  var chartsBuilt=false;
+  function buildCharts(){
+    if(chartsBuilt||!window.Chart)return;chartsBuilt=true;
+    var p=document.getElementById('paretoChart');
+    if(p)new Chart(p,{type:'bar',
+      data:{labels:['20% pelanggan teratas','80% pelanggan lainnya'],
+        datasets:[{label:'Kontribusi laba (%)',data:[80,20],backgroundColor:['rgba(224,138,30,.8)','rgba(120,120,120,.5)']}]},
+      options:{maintainAspectRatio:false,plugins:{legend:{display:false},tooltip:{callbacks:{label:function(c){return c.raw+'% dari total laba';}}}},
+        scales:{y:{min:0,max:100,title:{display:true,text:'Kontribusi laba (%)'}}}}});
+    var d=document.getElementById('demandChart');
+    if(d)new Chart(d,{type:'line',
+      data:{labels:['T1','T2','T3','T4','T5'],
+        datasets:[
+          {label:'Permintaan konsumen',data:[100,104,101,106,103],borderColor:'#1a86c7',backgroundColor:'rgba(26,134,199,.1)',tension:.3,fill:false},
+          {label:'Permintaan bisnis (derived)',data:[100,125,92,140,110],borderColor:'#7a5cc0',backgroundColor:'rgba(122,92,192,.1)',tension:.3,fill:false}
+        ]},
+      options:{maintainAspectRatio:false,plugins:{legend:{position:'bottom'}},
+        scales:{y:{title:{display:true,text:'Indeks permintaan'}},x:{title:{display:true,text:'Waktu →'}}}}});
+  }
+  if(document.readyState!=='loading')buildCharts();else document.addEventListener('DOMContentLoaded',buildCharts);
+  window.addEventListener('load',buildCharts);
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="id"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Modul 9 — Proposal dan Laporan Penelitian | EKMA5104</title>
+<script>window.MathJax={tex:{inlineMath:[['$','$']],displayMath:[['\\[','\\]'],['$$','$$']]},svg:{fontCache:'global'},startup:{typeset:true}};</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js" async></script>
+<style>
+:root{--bg:#f4f6f9;--panel:#fff;--ink:#1c2733;--muted:#5c6b7a;--line:#e4e9f0;--brand:#1a86c7;--brand-dark:#0f5e8f;--brand-soft:#e7f3fb;--kb1:#1a86c7;--kb2:#e08a1e;--kb3:#2a9d6f;--kb4:#7a5cc0;--kb5:#c75b7a;--radius:14px;--shadow:0 1px 2px rgba(16,42,67,.06),0 6px 20px rgba(16,42,67,.06);--maxw:900px}
+*{box-sizing:border-box}html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;line-height:1.72}
+#progress{position:fixed;top:0;left:0;height:4px;width:0;background:linear-gradient(90deg,var(--brand),#53c0ec);z-index:200;transition:width .1s}
+header.top{position:sticky;top:0;z-index:100;background:rgba(255,255,255,.92);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+.top-in{max-width:var(--maxw);margin:0 auto;padding:10px 20px;display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+.badge{background:var(--brand);color:#fff;font-weight:700;font-size:.72rem;letter-spacing:.5px;padding:4px 10px;border-radius:999px}
+.homebtn{text-decoration:none;display:inline-flex;align-items:center;gap:7px;background:var(--brand);color:#fff;font-weight:700;font-size:.8rem;padding:7px 15px;border-radius:999px;box-shadow:0 2px 6px rgba(16,42,67,.22);line-height:1}
+.top-title{font-size:.9rem;font-weight:600;color:var(--muted)}
+nav.jump{margin-left:auto;display:flex;gap:4px;flex-wrap:wrap}
+nav.jump a{font-size:.78rem;color:var(--muted);text-decoration:none;padding:5px 10px;border-radius:8px}
+nav.jump a:hover{background:var(--brand-soft);color:var(--brand-dark)}
+.wrap{max-width:var(--maxw);margin:0 auto;padding:0 20px 90px}
+.hero{margin-top:26px;padding:30px 28px;border-radius:var(--radius);color:#fff;background:linear-gradient(135deg,#0f5e8f,#1a86c7 60%,#2fa4df);box-shadow:var(--shadow);position:relative;overflow:hidden}
+.hero .eyebrow{font-size:.78rem;letter-spacing:1.5px;text-transform:uppercase;opacity:.9;font-weight:600}
+.hero h1{margin:.3em 0 .25em;font-size:1.62rem;line-height:1.25;max-width:90%}
+.hero .meta{display:flex;gap:18px;flex-wrap:wrap;font-size:.84rem;opacity:.95;margin-top:10px}
+h2.section{font-size:1.3rem;margin:48px 0 4px;display:flex;align-items:center;gap:10px;scroll-margin-top:70px}
+h2.section .dot{width:10px;height:22px;border-radius:4px;background:var(--brand)}
+.section-sub{color:var(--muted);font-size:.9rem;margin:0 0 18px}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);padding:22px 24px;margin:16px 0;--dot:var(--brand);overflow-x:clip;overflow-wrap:break-word;word-wrap:break-word}
+.concepts{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:minmax(0,1fr);gap:10px}
+.concepts li{display:flex;gap:12px;align-items:flex-start;padding:12px 14px;border:1px solid var(--line);border-radius:10px;background:#fcfdff;min-width:0;max-width:100%}
+.concepts li>span{min-width:0;max-width:100%;overflow-wrap:break-word;word-wrap:break-word}
+.concepts input{margin-top:4px;width:18px;height:18px;accent-color:var(--brand);flex:none;cursor:pointer}
+.concepts .ct{font-weight:600}.concepts .cd{display:block;font-weight:400;color:var(--muted);font-size:.86rem;margin-top:2px}
+.concepts li.done{background:var(--brand-soft);border-color:#bfe0f3}.concepts li.done .ct{text-decoration:line-through;opacity:.65}
+.cl-head{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-bottom:6px}
+.cl-head .count{font-size:.82rem;color:var(--muted);background:var(--brand-soft);padding:3px 10px;border-radius:999px;font-weight:600}
+.btn-reset{font-size:.78rem;border:1px solid var(--line);background:#fff;color:var(--muted);padding:5px 12px;border-radius:8px;cursor:pointer}
+.mm-toolbar{display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin-bottom:10px}
+.mm-btn{font-size:.78rem;border:1px solid var(--line);background:#fff;padding:6px 13px;border-radius:8px;cursor:pointer;color:var(--brand-dark);font-weight:600}
+.mindmap-host{height:580px;overflow:auto;border:1px solid var(--line);border-radius:10px;background:#fcfdff}.mindmap-host svg{display:block}
+.kb-tag{display:inline-flex;align-items:center;gap:8px;font-size:.78rem;font-weight:700;color:#fff;padding:5px 12px;border-radius:999px;margin-bottom:6px}
+.kb1t{background:var(--kb1)}.kb2t{background:var(--kb2)}.kb3t{background:var(--kb3)}.kb4t{background:var(--kb4)}.kb5t{background:var(--kb5)}
+.kb1b{--dot:var(--kb1)}.kb2b{--dot:var(--kb2)}.kb3b{--dot:var(--kb3)}.kb4b{--dot:var(--kb4)}.kb5b{--dot:var(--kb5)}
+.lead{font-size:1.02rem}.term{font-weight:700;color:var(--dot)}.en{font-style:italic;color:var(--muted);font-weight:500}
+.abc{display:flex;align-items:center;gap:10px;margin:28px 0 10px;padding-bottom:6px;border-bottom:2px solid color-mix(in srgb,var(--dot) 18%,#fff)}
+.abc .ltr{background:var(--dot);color:#fff;font-weight:800;min-width:30px;height:30px;padding:0 7px;border-radius:8px;display:grid;place-items:center;flex:none}
+.abc h4{margin:0;font-size:1.06rem;color:var(--dot)}
+.numh{font-weight:700;color:var(--dot);margin:22px 0 4px;font-size:1rem}
+.leth{font-weight:800;color:var(--dot);margin:20px 0 6px;font-size:.98rem;border-left:3px solid var(--dot);padding-left:10px}
+ol.book{margin:12px 0;padding-left:28px}ol.book>li{margin:10px 0;padding-left:6px}ol.book>li::marker{font-weight:700;color:var(--dot)}
+ul.exp{list-style:none;margin:12px 0;padding:0;display:grid;grid-template-columns:minmax(0,1fr);gap:10px}
+ul.exp>li{position:relative;padding-left:20px;min-width:0;max-width:100%;overflow-wrap:break-word;word-wrap:break-word}
+ul.exp>li::before{content:"";position:absolute;left:0;top:11px;width:8px;height:8px;border-radius:2px;background:var(--dot)}
+ul.let{list-style:lower-alpha;margin:10px 0;padding-left:28px}ul.let>li{margin:8px 0;padding-left:4px}ul.let>li::marker{color:var(--dot);font-weight:700}
+.flow{border-left:4px solid var(--dot);background:color-mix(in srgb,var(--dot) 9%,#fff);padding:11px 15px;border-radius:0 10px 10px 0;margin:18px 0;font-size:.9rem;min-width:0;max-width:100%;overflow-wrap:break-word;word-wrap:break-word}
+.flow::before{content:"🔗 Benang merah — ";font-weight:700;color:var(--dot)}.flow b{color:var(--dot)}
+.casebox{background:#f8fafc;border:1px solid var(--line);border-left:4px solid var(--dot);border-radius:0 10px 10px 0;padding:12px 15px;margin:14px 0;font-size:.88rem;min-width:0;max-width:100%;overflow-wrap:break-word;word-wrap:break-word}
+.casebox .ctitle{font-weight:700;color:var(--dot);margin-bottom:4px;display:block}
+.table-wrap{width:100%;overflow-x:auto;-webkit-overflow-scrolling:touch;margin:14px 0;border-radius:10px}
+table.mini{width:100%;border-collapse:collapse;margin:0;font-size:.86rem;table-layout:auto}
+table.mini th,table.mini td{border:1px solid var(--line);padding:10px 12px;text-align:left;vertical-align:top;overflow-wrap:break-word;word-wrap:break-word}
+table.mini th{background:color-mix(in srgb,var(--dot) 12%,#fff);color:var(--dot);font-weight:700}
+.rgrid{display:grid;gap:8px;margin:14px 0}.rgrid.c2{grid-template-columns:repeat(2,1fr)}.rgrid.c3{grid-template-columns:repeat(3,1fr)}.rgrid.c4{grid-template-columns:repeat(4,1fr)}
+.rcell{border:1px solid var(--line);border-radius:10px;padding:11px 13px;cursor:pointer;background:#fff;display:flex;gap:10px;align-items:flex-start;transition:.15s;min-width:0;max-width:100%}
+.rcell>span{min-width:0;max-width:100%;overflow-wrap:break-word;word-wrap:break-word}
+.rcell:hover{border-color:var(--dot);box-shadow:var(--shadow);transform:translateY(-2px)}
+.rcell.active{border-color:var(--dot);background:color-mix(in srgb,var(--dot) 8%,#fff)}
+.rcell .stepnum{background:var(--dot);color:#fff;font-weight:700;min-width:24px;height:24px;border-radius:7px;display:grid;place-items:center;flex:none;font-size:.82rem}
+.rcell .rt{font-weight:700;font-size:.9rem;color:var(--dot);display:block}.rcell .rp{font-size:.78rem;color:var(--muted);display:block;margin-top:2px}
+.rdetail{font-size:.88rem;border-left:4px solid var(--dot);background:color-mix(in srgb,var(--dot) 8%,#fff);border-radius:0 10px 10px 0;padding:12px 15px;margin-top:6px;min-width:0;max-width:100%;overflow-wrap:break-word;word-wrap:break-word}
+.pill-row{display:flex;gap:8px;flex-wrap:wrap;margin:10px 0}.pill{font-size:.8rem;background:#eef3f8;color:#36506a;border:1px solid #e0e8f0;padding:4px 11px;border-radius:999px;font-weight:600}
+.flowchart{display:flex;align-items:center;gap:6px;flex-wrap:wrap;margin:16px 0;justify-content:center}
+.fc-node{background:color-mix(in srgb,var(--dot) 12%,#fff);border:1.5px solid var(--dot);color:var(--dot);font-weight:700;font-size:.8rem;padding:8px 12px;border-radius:9px;text-align:center}
+.fc-arrow{color:var(--dot);font-weight:800;font-size:1.05rem}
+.pyramid{display:flex;flex-direction:column;align-items:center;gap:4px;margin:16px 0}.pyr-row{color:#fff;font-weight:700;text-align:center;padding:9px 12px;border-radius:7px;font-size:.84rem}
+.bs-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:14px 0}
+.bs-col{border:1.5px solid var(--dot);border-radius:10px;overflow:hidden;min-width:0;max-width:100%}
+.bs-head{background:var(--dot);color:#fff;font-weight:700;font-size:.84rem;padding:7px 12px;text-align:center}
+.bs-box{padding:10px 12px;border-bottom:1px dashed var(--line);font-size:.84rem}.bs-box:last-child{border-bottom:none}
+.eqbox{background:#fcfdff;border:1px solid var(--line);border-radius:10px;padding:8px 14px;margin:14px 0;overflow-x:auto}
+mjx-container{max-width:100%;overflow-x:auto;overflow-y:hidden}
+mjx-container:not([display="true"]){display:inline-block;vertical-align:middle}
+.chart-wrap{background:#fcfdff;border:1px solid var(--line);border-radius:12px;padding:14px 16px;margin:16px 0}
+.chart-title{font-weight:700;font-size:.9rem;color:var(--dot);margin:0 0 4px}
+.chart-sub{font-size:.78rem;color:var(--muted);margin:0 0 10px}
+.chart-host{width:100%;overflow-x:auto;position:relative}.chart-host svg{display:block;max-width:100%;height:auto;margin:0 auto}
+.chart-legend{display:flex;gap:14px;flex-wrap:wrap;justify-content:center;margin-top:8px;font-size:.78rem;color:var(--muted)}
+.chart-legend span{display:inline-flex;align-items:center;gap:6px}.chart-legend i{display:inline-block;width:14px;height:3px;border-radius:2px}
+.glossary dt{font-weight:700;color:var(--brand-dark);margin-top:10px}.glossary dd{margin:0 0 2px;color:var(--muted);font-size:.9rem}
+footer{max-width:var(--maxw);margin:0 auto;padding:30px 20px 60px;color:var(--muted);font-size:.82rem;border-top:1px solid var(--line)}
+.offline-note{font-size:.76rem;color:var(--muted);background:#fff8e6;border:1px solid #f0e2b8;border-radius:8px;padding:8px 12px;margin:10px 0}
+@media(max-width:680px){
+  .table-wrap{overflow-x:visible}
+  table.mini,table.mini thead,table.mini tbody,table.mini th,table.mini td,table.mini tr{display:block;width:100%}
+  table.mini thead{display:none}
+  table.mini tr{margin-bottom:12px;border:1.5px solid color-mix(in srgb,var(--dot) 28%,#e4e9f0);border-radius:10px;background:#fff;overflow:hidden;box-shadow:0 1px 4px rgba(16,42,67,.05)}
+  table.mini td{border:none;border-bottom:1px solid var(--line);padding:10px 12px;text-align:left}
+  table.mini td:last-child{border-bottom:none}
+  table.mini td::before{content:attr(data-label);display:block;font-size:.74rem;font-weight:700;text-transform:uppercase;letter-spacing:.4px;color:var(--dot);margin-bottom:4px}
+}
+.acro-box{background:#f8fafc;border:1px solid var(--line);border-radius:10px;padding:12px 14px;margin:14px 0;font-size:.84rem;min-width:0;max-width:100%;overflow-wrap:break-word;word-wrap:break-word}
+.acro-title{font-weight:700;color:var(--dot);font-size:.86rem;margin-bottom:8px;display:block}
+.acro-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:6px 14px;margin:0;padding:0;list-style:none}
+.acro-grid li{min-width:0;line-height:1.5}.acro-grid b{color:var(--dot)}
+.fguide{background:color-mix(in srgb,var(--dot) 5%,#fff);border:1px solid color-mix(in srgb,var(--dot) 22%,#e4e9f0);border-radius:10px;padding:12px 15px;margin:-6px 0 16px;font-size:.86rem;min-width:0;max-width:100%;overflow-wrap:break-word;word-wrap:break-word}
+.fguide .fg-head{font-weight:700;color:var(--dot);font-size:.84rem;text-transform:uppercase;letter-spacing:.35px;margin:0 0 6px}
+.fguide ul{margin:4px 0 8px;padding-left:18px}.fguide ul li{margin:3px 0}
+.fguide .fg-core{border-top:1px dashed color-mix(in srgb,var(--dot) 30%,#cbd5e1);padding-top:8px;margin-top:8px;display:grid;grid-template-columns:minmax(0,1fr);gap:4px}
+.fguide .fg-core div{min-width:0}
+@media(max-width:640px){.hero h1{font-size:1.3rem;max-width:100%}nav.jump{display:none}.rgrid.c2,.rgrid.c3,.rgrid.c4,.bs-grid,.acro-grid{grid-template-columns:minmax(0,1fr)}.mindmap-host{height:440px}}
+</style></head><body>
+<div id="progress"></div>
+<header class="top"><div class="top-in">
+  <span class="badge">MODUL 9</span>
+  <a class="homebtn" href="index.html" title="Kembali ke daftar modul"><span style="font-size:1rem;line-height:1">&#8962;</span> Daftar Modul</a>
+  <span class="top-title">Metode Penelitian Bisnis · EKMA5104</span>
+  <nav class="jump"><a href="#konsep">Konsep</a><a href="#peta">Peta Konsep</a><a href="#kb1">KB1</a><a href="#kb2">KB2</a><a href="#glosarium">Glosarium</a></nav>
+</div></header>
+<div class="wrap">
+  <section class="hero"><div class="eyebrow">Ringkasan Belajar · EKMA5104 (Edisi 3)</div>
+    <h1>Proposal dan Laporan Penelitian</h1>
+    <div class="meta"><span>⏱️ ±35 menit</span><span>📚 2 bagian (KB)</span><span>✍️ Dr. Lerbin Roberto Aritonang R., M.M.</span></div></section>
+  <p class="section-sub" style="margin-top:22px">Modul 9 mengintegrasikan seluruh rangkaian riset ke dalam dua dokumen utama: penyusunan &amp; penilaian Proposal Penelitian (Bab I–III) serta penulisan, presentasi lisan, dan penilaian Laporan Penelitian (Bab I–V).</p>
+  <p class="offline-note">ℹ️ Peta konsep, grafik SVG, kartu penjelasan, dan checklist konsep berjalan tanpa internet. Koneksi internet hanya diperlukan untuk merender persamaan matematika (MathJax).</p>
+
+  <h2 class="section" id="konsep"><span class="dot"></span>Konsep Penting yang Harus Dikuasai</h2>
+  <div class="card"><div class="cl-head"><span class="count"><span id="doneCount">0</span>/<span id="totalCount">0</span> dikuasai</span><button class="btn-reset" id="resetBtn">Reset centang</button></div>
+    <ul class="concepts" id="conceptList">
+      <li><input type="checkbox"><span><span class="ct">Struktur 3 Bagian Proposal Penelitian</span><span class="cd">Bagian Awal (Judul &amp; Daftar Isi), Bagian Utama (Bab I Pendahuluan, Bab II Landasan Teori, Bab III Metode Penelitian), dan Bagian Akhir (Daftar Pustaka &amp; Lampiran).</span></span></li>
+      <li><input type="checkbox"><span><span class="ct">4 Unsur Wajib Judul Penelitian</span><span class="cd">Variabel utama (eksplisit atributnya, bukan sekadar konsep), kaitan antarvariabel (mengacu alat analisis &amp; sebisa mungkin terarah), subyek, dan esensi penelitian. Hindari kata "analisis".</span></span></li>
+      <li><input type="checkbox"><span><span class="ct">4 Ayat Masalah pada Bab I Pendahuluan</span><span class="cd">Latar belakang (umum → khusus + urgensi/data), identifikasi masalah (berdasar jurnal), pembatasan masalah (keluasan &amp; kedalaman + alasan obyektif), dan rumusan masalah.</span></span></li>
+      <li><input type="checkbox"><span><span class="ct">Penelitian Replikasi &amp; Anti-Plagiarisme</span><span class="cd">Replikasi sah bila ada alasan logis, subyek berbeda, dan referensi baru; hindari penjiplakan sesuai Permendiknas No. 17/2010 dengan mencantumkan semua sumber kutipan.</span></span></li>
+      <li><input type="checkbox"><span><span class="ct">Tujuan &amp; Manfaat Penelitian (Praktis vs Teoritis)</span><span class="cd">Jumlah tujuan &amp; manfaat minimal sama dengan rumusan masalah; riset praktis punya manfaat praktis &amp; teoritis, riset murni fokus manfaat teoritis (implikasi).</span></span></li>
+      <li><input type="checkbox"><span><span class="ct">Bab II Landasan Teori (Definisi, Kaitan, Kerangka &amp; Hipotesis)</span><span class="cd">Teori tak harus formal ("dibaptis" nama khusus); wajib kutip &amp; ulas riset relevan (termasuk hasil yang bertentangan!); kerangka pemikiran milik peneliti sendiri tanpa nama orang.</span></span></li>
+      <li><input type="checkbox"><span><span class="ct">Bab III Metode Penelitian (6 Fasal Utama)</span><span class="cd">Desain penelitian, populasi &amp; sampel (rumus statistik hanya untuk acak!), operasionalisasi variabel, instrumen, uji validitas/reliabilitas, dan analisis data (asumsi, $\alpha$, versi software).</span></span></li>
+      <li><input type="checkbox"><span><span class="ct">Prinsip Replikabilitas Proposal &amp; TOR</span><span class="cd">Proposal harus cukup rinci dan operasional agar dapat dilaksanakan orang lain tanpa perlu bertanya ke penyusunnya; pada kontrak konsultan–klien digunakan Terms of Reference (TOR).</span></span></li>
+      <li><input type="checkbox"><span><span class="ct">Laporan Penelitian sebagai Realisasi Proposal (5 Bab)</span><span class="cd">Memuat 3 bab proposal (termasuk laporan jujur atas penyimpangan dari rencana + cara mengatasi &amp; referensinya) ditambah Bab IV Hasil Penelitian dan Bab V Penutup.</span></span></li>
+      <li><input type="checkbox"><span><span class="ct">Bagian Awal Laporan &amp; Abstrak</span><span class="cd">Menambah halaman persetujuan (syarat ujian), halaman pengesahan (pasca lulus), kata pengantar (≤2 hal), dan abstrak (1 spasi, 1 lembar, bahasa berlawanan, ditulis belakangan + keywords).</span></span></li>
+      <li><input type="checkbox"><span><span class="ct">Bab IV Hasil Penelitian (5 Fasal Berurutan)</span><span class="cd">Statistik deskriptif subyek &amp; obyek (diulas, bukan angka saja), hasil validitas &amp; reliabilitas, hasil uji asumsi, hasil analisis (cek tanda dulu baru signifikansi), dan Pembahasan (Discussion).</span></span></li>
+      <li><input type="checkbox"><span><span class="ct">Tanda, Signifikansi Statistik, Power, dan Effect Size</span><span class="cd">Tanda kaitan lebih penting daripada signifikansi statistik; signifikansi sensitif ukuran sampel &amp; butuh sampel acak, sehingga disarankan melihat power dan effect size (mis. $r^2$).</span></span></li>
+      <li><input type="checkbox"><span><span class="ct">Bab V Penutup (Kesimpulan &amp; Saran)</span><span class="cd">Kesimpulan bersumber dari pembahasan (bukan otomatis dari angka statistik) dan sejajar jumlah hipotesis; saran teoritis/praktis harus rinci, operasional, dan realistis.</span></span></li>
+      <li><input type="checkbox"><span><span class="ct">Ringkasan Eksekutif &amp; Presentasi Lisan</span><span class="cd">Ringkasan eksekutif (≤3 halaman) untuk pengambil keputusan; presentasi lisan (Murphy &amp; Hildebrandt) menekankan penguasaan materi, simulasi, kontak mata, visual sederhana, dan 5 etika tanya-jawab.</span></span></li>
+    </ul></div>
+
+  <h2 class="section" id="peta"><span class="dot"></span>Peta Konsep (Mind Map)</h2>
+  <div class="card"><div class="mm-toolbar"><button class="mm-btn" id="mmExpand">Perluas semua</button><button class="mm-btn" id="mmCollapse">Ciutkan</button><span style="font-size:.76rem;color:var(--muted)">Klik simpul bertanda + / – untuk buka-tutup · Gulir untuk menggeser</span></div><div class="mindmap-host" id="mindmap"></div></div>
+
+  <!-- KB 1 -->
+  <h2 class="section" id="kb1"><span class="dot" style="background:var(--kb1)"></span>KB 1 — Arti dan Komponen Proposal</h2>
+  <div class="card kb1b"><span class="kb-tag kb1t">KEGIATAN BELAJAR 1 · HAL. 9.4–9.24</span>
+    <div class="acro-box">
+      <span class="acro-title">📖 Kamus Konteks Singkatan &amp; Akronim KB 1</span>
+      <ul class="acro-grid">
+        <li><b>APA</b>: <i>American Psychological Association</i> — standar format penulisan dan sitasi ilmiah.</li>
+        <li><b>TOR</b>: <i>Terms of Reference</i> — kerangka acuan kerja kesepakatan konsultan riset &amp; klien.</li>
+        <li><b>MM UT</b>: Magister Manajemen Universitas Terbuka — acuan pedoman penulisan proposal/tesis.</li>
+        <li><b>Permendiknas</b>: Peraturan Menteri Pendidikan Nasional (No. 17/2010 tentang Pencegahan &amp; Penanggulangan Plagiat).</li>
+      </ul>
+    </div>
+
+    <p class="lead">Modul 9 merangkum seluruh Modul 1–8 menjadi dua produk akhir penelitian: <b>Proposal Penelitian</b> (rencana sebelum meneliti) dan <b>Laporan Penelitian</b> (realisasi setelah meneliti). Format umumnya mengikuti lembaga tujuan atau pedoman <b>APA</b> (<i>American Psychological Association</i>).</p>
+
+    <div class="abc"><span class="ltr">A</span><h4>Proposal Penelitian</h4></div>
+    <p>Proposal adalah usulan/rencana kegiatan penelitian yang terbagi menjadi <b>tiga bagian besar</b>:</p>
+    <div class="flowchart">
+      <span class="fc-node">Bagian Awal<br><small>Judul, Daftar Isi,<br>(Tabel/Gambar)</small></span>
+      <span class="fc-arrow">→</span>
+      <span class="fc-node">Bagian Utama (3 Bab)<br><small>I. Pendahuluan · II. Landasan Teori<br>III. Metode Penelitian</small></span>
+      <span class="fc-arrow">→</span>
+      <span class="fc-node">Bagian Akhir<br><small>Daftar Pustaka &amp; Lampiran<br>(Instrumen, TOR)</small></span>
+    </div>
+
+    <div class="abc"><span class="ltr">B</span><h4>Judul dan Daftar Isi</h4></div>
+    <div class="numh">1. Judul Penelitian</div>
+    <p>Judul harus memuat secara eksplisit <b>4 unsur</b>: (1) <b>variabel utama</b> (variasi atributnya jelas—mis. <i>gaya kepemimpinan</i> atau <i>harga saham</i>, bukan sekadar konsep "kepemimpinan" atau "saham"); (2) <b>kaitan antarvariabel</b> yang mengacu pada alat analisis (hubungan, prediksi, perbedaan, mediasi, moderasi; sebisa mungkin terarah mis. "positif"; gunakan kata "kaitan" bila banyak analisis, dan <b>hindari kata "analisis"</b> di judul); (3) <b>subyek penelitian</b>; dan (4) <b>esensi penelitian</b> (mis. "pengaruh" khusus untuk eksperimen). Hindari singkatan tak lazim, serta cantumkan tahun, kota, dan lembaga.</p>
+    <div class="numh">2. Daftar Isi</div>
+    <p>Memuat halaman judul, seluruh judul bab/fasal/ayat bagian utama, daftar pustaka, dan lampiran beserta nomor halamannya.</p>
+
+    <div class="flow">Setelah judul dan daftar isi menetapkan peta dokumen, Bab I <b>Pendahuluan</b> menjelaskan mengapa topik tersebut penting dan masalah spesifik apa yang akan dijawab.</div>
+
+    <div class="abc"><span class="ltr">C</span><h4>Pendahuluan (Bab I)</h4></div>
+    <div class="numh">1. Masalah (4 Ayat)</div>
+    <ul class="let">
+      <li><span class="term">Latar belakang masalah</span>: menjelaskan kedudukan topik/variabel dependen dalam konteks yang lebih luas (alur umum → khusus) serta argumentasi urgensi/konsekuensi negatif bila diabaikan (didukung referensi dan data praktik untuk riset terapan).</li>
+      <li><span class="term">Identifikasi masalah</span>: hasil telaah literatur (jurnal) mengenai berbagai celah masalah—baik variabel independen baru, bentuk model (non-linier, mediasi, moderasi), maupun validitas instrumen; dirumuskan dalam kalimat pertanyaan berlatar referensi.</li>
+      <li><span class="term">Pembatasan masalah</span>: memilih sebagian masalah berdasarkan <b>keluasan</b> (variabel tertentu, 1 industri/periode) dan <b>kedalaman</b> (mengisi celah teori, bukan langsung meruntuhkan teori mapan) disertai alasan obyektif. Boleh berupa <b>penelitian replikasi</b> asalkan berargumen logis, subyek berbeda, referensi terbaru, dan bebas plagiat (Permendiknas No. 17/2010).</li>
+      <li><span class="term">Rumusan masalah</span>: kalimat pertanyaan dengan variabel, kaitan (mengacu alat analisis), dan subyek yang eksplisit.</li>
+    </ul>
+    <div class="numh">2. Tujuan dan Manfaat Penelitian</div>
+    <p><b>Tujuan</b> dibuat sejajar dengan tiap rumusan masalah (mengacu pengujian empiris). <b>Manfaat</b> mencakup <b>manfaat praktis</b> (aplikasi bagi praktisi tertentu) dan <b>manfaat teoritis</b> (implikasi bagi bangunan ilmu). Riset terapan memiliki keduanya; riset murni berfokus pada manfaat teoritis. Jumlah manfaat minimal sama dengan jumlah rumusan masalah.</p>
+
+    <div class="flow">Rumusan masalah di Bab I adalah pertanyaan yang wajib dijawab secara logis terlebih dahulu sebelum turun ke lapangan—itulah fungsi Bab II <b>Landasan Teori</b>.</div>
+
+    <div class="abc"><span class="ltr">D</span><h4>Landasan Teori (Bab II)</h4></div>
+    <p>Bertujuan menghasilkan jawaban teoritis (<b>hipotesis</b>) dengan mengutip <i>sekaligus mengulas</i> sumber berkualitas, relevan, dan mutakhir (utamanya jurnal ilmiah bereputasi seperti <i>Journal of Marketing</i> atau <i>Journal of Finance</i>). Catatan penting: "teori" tidak harus berupa teori formal yang sudah "dibaptis" nama khusus (mis. Maslow/Herzberg), melainkan penjelasan masuk akal atas kaitan antarvariabel.</p>
+    <ol class="book">
+      <li><span class="term">Definisi Variabel</span>: kutip &amp; ulas definisi para ahli lalu simpulkan sendiri. Buat 1 ayat per variabel, <b>dimulai dari variabel dependen (DV)</b> karena DV-lah yang dijelaskan dalam penelitian.</li>
+      <li><span class="term">Kaitan Antarvariabel</span>: gabungkan aspek logis (teori) dan empiris (riset relevan dari awal hingga terkini). <b>Dilarang hanya memilih hasil riset yang sesuai harapan</b>—jika ada hasil bertentangan, wajib dikutip lalu nyatakan posisi/sikap peneliti dengan argumen obyektif. Jumlah ayat sejajar jumlah rumusan masalah.</li>
+      <li><span class="term">Kerangka Pemikiran dan Hipotesis</span>: sebaiknya disatukan dalam satu fasal. Kerangka pemikiran adalah argumentasi peneliti sendiri sehingga <b>tidak boleh mencantumkan nama orang/kutipan</b>, dan berfungsi langsung melahirkan kesimpulan berupa hipotesis.</li>
+    </ol>
+
+    <div class="flow">Setelah jawaban logis (hipotesis) tersusun di Bab II, Bab III <b>Metode Penelitian</b> merancang seluruh prosedur teknis untuk menguji kebenaran empiris hipotesis tersebut.</div>
+
+    <div class="abc"><span class="ltr">E</span><h4>Metode Penelitian (Bab III — 6 Fasal)</h4></div>
+    <p>Judul yang lebih tepat adalah <i>Metode Penelitian</i> (penggunaan metode), bukan "Metodologi" (ilmu tentang metode), kecuali peneliti memang mengulas perbandingan metodologis. Klik 6 fasal utamanya:</p>
+    <div class="rgrid c3" data-revealgroup>
+      <div class="rcell active" data-reveal data-detail="<b>1. Desain Penelitian</b> — Rencana strategik mengontrol variansi sistematis dan eror. Pada riset non-eksperimen, kontrol diimplementasikan di tiap fasal metode; pada eksperimen, wajib dibuat fasal tersendiri."><span class="stepnum">1</span><span><span class="rt">Desain Penelitian</span><span class="rp">Kontrol variansi riset</span></span></div>
+      <div class="rcell" data-reveal data-detail="<b>2. Populasi &amp; Teknik Sampel</b> — Batasi subyek tegas. Jika semua diteliti, judul fasalnya 'Subyek Penelitian'; jika sebagian, jelaskan metode, teknik, dan ukuran sampel beserta alasan &amp; referensinya. <b>Penting:</b> rumus statistik ukuran sampel hanya sah untuk sampel acak dan berbeda untuk tiap teknik acak."><span class="stepnum">2</span><span><span class="rt">Populasi &amp; Sampel</span><span class="rp">Definisi, teknik, ukuran</span></span></div>
+      <div class="rcell" data-reveal data-detail="<b>3. Operasionalisasi Variabel</b> — Menjabarkan urutan operasi untuk mengukur variabel (mengidentifikasi atribut, indikator, dan dimensi) hingga menghasilkan skor/kode."><span class="stepnum">3</span><span><span class="rt">Operasionalisasi</span><span class="rp">Atribut, indikator, dimensi</span></span></div>
+      <div class="rcell" data-reveal data-detail="<b>4. Instrumen Penelitian</b> — Pilih alat yang tepat (angket, skala sikap, wawancara, observasi, tes) sesuai literatur, termasuk kaidah penulisan pernyataan dan jumlah rentang alternatif tanggapan."><span class="stepnum">4</span><span><span class="rt">Instrumen</span><span class="rp">Kesesuaian alat &amp; rentang</span></span></div>
+      <div class="rcell" data-reveal data-detail="<b>5. Validitas &amp; Reliabilitas</b> — Kutip &amp; ulas definisi, nyatakan tipe validitas/reliabilitas, alat analisis, kriteria lolos beserta referensinya, serta subyek dan ukuran sampel uji coba."><span class="stepnum">5</span><span><span class="rt">Validitas &amp; Reliabilitas</span><span class="rp">Tipe, kriteria &amp; uji coba</span></span></div>
+      <div class="rcell" data-reveal data-detail="<b>6. Analisis Data</b> — Pilih uji statistik yang cocok dengan tipe kaitan dan skala variabel. Wajib tuliskan: nama uji, asumsi + cara uji + standar + konsekuensi/solusi jika dilanggar, taraf signifikansi ($\alpha$) sebelum ambil data, serta nama &amp; versi perangkat lunak."><span class="stepnum">6</span><span><span class="rt">Analisis Data</span><span class="rp">Uji, asumsi, α &amp; software</span></span></div>
+    </div>
+    <div class="rdetail" data-revealdetail><b>1. Desain Penelitian</b> — Rencana strategik mengontrol variansi sistematis dan eror. Pada riset non-eksperimen, kontrol diimplementasikan di tiap fasal metode; pada eksperimen, wajib dibuat fasal tersendiri.</div>
+
+    <div class="abc"><span class="ltr">F</span><h4>Bagian Akhir: Daftar Pustaka, Lampiran, dan TOR</h4></div>
+    <p>Daftar pustaka hanya memuat referensi yang benar-benar dikutip di Bab I–III (gaya APA / pedoman MM UT). Lampiran memuat instrumen lengkap (surat pengantar, petunjuk, butir). Pada kontrak riset konsultan–klien, disertakan <b>TOR</b> (<i>Terms of Reference</i>) berisi kesepakatan utama kedua pihak.</p>
+
+    <div class="abc"><span class="ltr">G</span><h4>Prinsip Replikabilitas (Proposal Harus Dapat Dilaksanakan Orang Lain)</h4></div>
+    <p>Proposal harus ditulis sangat rinci, argumentatif, dan operasional agar peneliti lain dapat merealisasikan atau mereplikasinya tanpa perlu bertanya lagi kepada pembuat proposal.</p>
+
+    <div class="abc"><span class="ltr">H</span><h4>Kriteria Penilaian Proposal (Tabel 9.1)</h4></div>
+    <p><b>Tabel 9.1</b> menjadi pedoman pemeriksaan mandiri dan telaah sejawat (skala Baik/Cukup/Kurang/Tidak Ada) terhadap seluruh komponen Bab I–III sebelum proposal diserahkan ke pembimbing.</p>
+  </div>
+
+  <!-- KB 2 -->
+  <h2 class="section" id="kb2"><span class="dot" style="background:var(--kb2)"></span>KB 2 — Laporan Penelitian</h2>
+  <div class="card kb2b"><span class="kb-tag kb2t">KEGIATAN BELAJAR 2 · HAL. 9.25–9.54</span>
+    <div class="acro-box">
+      <span class="acro-title">📖 Kamus Konteks Singkatan &amp; Akronim KB 2</span>
+      <ul class="acro-grid">
+        <li><b>BTR</b>: Bimbingan Tesis Residensial — forum pembahasan proposal tesis di Universitas Terbuka.</li>
+        <li><b>TAPM</b>: Tugas Akhir Program Magister — pedoman baku format fisik &amp; tata bahasa tesis di UT.</li>
+        <li><b>SD</b>: <i>Standard Deviation</i> — simpangan baku pada pelaporan statistik deskriptif Bab IV.</li>
+        <li><b>ID / EN</b>: Bahasa Indonesia dan Bahasa Inggris — aturan bahasa abstrak berlawanan dengan bahasa laporan.</li>
+      </ul>
+    </div>
+
+    <p class="lead"><b>Laporan penelitian</b> adalah realisasi proposal di lapangan—termasuk laporan jujur atas setiap penyimpangan dari rencana awal, cara mengatasinya, serta alasan/referensinya. Untuk tesis, panjangnya umumnya 50–200 halaman (Creswell, 2008) dan dipertanggungjawabkan tertulis maupun lisan (ujian tesis; di UT proposal juga dibahas di forum <b>BTR</b> / <i>Bimbingan Tesis Residensial</i>).</p>
+
+    <div class="abc"><span class="ltr">A</span><h4>Pedoman Pembuatan Laporan Penelitian</h4></div>
+    <p>Laporan diorientasikan untuk kepentingan <i>penerima laporan</i> (bahasa jelas, efisien, hindari jargon teknis berlebih, data mentah ditaruh di lampiran, tata bahasa &amp; fisik rapi mengikuti TAPM UT), namun <b>objektivitas tetap mutlak dijaga</b> tanpa manipulasi meski hasil tak sesuai harapan penerima.</p>
+
+    <div class="abc"><span class="ltr">B</span><h4>Bagian Awal Laporan</h4></div>
+    <p>Tambahan pada Bagian Awal Laporan di luar komponen proposal meliputi:</p>
+    <ol class="book">
+      <li><span class="term">Halaman Persetujuan</span>: tanda persetujuan pembimbing bahwa tesis layak diuji (syarat ujian; dilepas setelah lulus).</li>
+      <li><span class="term">Halaman Pengesahan</span>: dibuat setelah tesis dinyatakan lulus oleh tim penguji.</li>
+      <li><span class="term">Kata Pengantar</span>: pengalaman umum meneliti, tujuan, dan ucapan terima kasih (maksimal 2 halaman).</li>
+      <li><span class="term">Abstrak <span class="en">(Abstract)</span></span>: ringkasan 1 lembar (1 spasi, ditulis belakangan setelah laporan selesai) mencakup masalah/tujuan, metode, hasil, kesimpulan &amp; saran, plus <i>keywords</i> (minimal variabel rumusan masalah). Bahasa abstrak berlawanan dengan bahasa laporan (ID ↔ EN). Panjang: 100–120 kata (Leary; Shaughnessy) atau ≤500 kata untuk disertasi (Ary et al.).</li>
+    </ol>
+
+    <div class="flow">Bab I–III pada bagian utama laporan berasal dari realisasi proposal. Dua bab baru yang menjadi jantung laporan penelitian adalah <b>Bab IV Hasil Penelitian</b> dan <b>Bab V Penutup</b>.</div>
+
+    <div class="abc"><span class="ltr">C</span><h4>Bagian Utama Laporan: Bab IV Hasil &amp; Bab V Penutup</h4></div>
+
+    <div class="numh">1. Bab IV — Hasil Penelitian (5 Fasal Berurutan)</div>
+    <div class="rgrid c2" data-revealgroup>
+      <div class="rcell active" data-reveal data-detail="<b>a. Deskripsi Subyek &amp; Obyek</b> — Statistik deskriptif subyek (demografi: frekuensi/%, min-maks, mean, SD) dan obyek (butir, dimensi, variabel; korelasi antarbutir/dimensi untuk Likert). <b>Wajib diulas/dijelaskan</b>, bukan sekadar menampilkan tabel angka. (Untuk eksperimen, diawali fasal pelaksanaan tahap demi tahap)."><span class="stepnum">a</span><span><span class="rt">Deskripsi Subyek &amp; Obyek</span><span class="rp">Statistik deskriptif + ulasan</span></span></div>
+      <div class="rcell" data-reveal data-detail="<b>b. Validitas &amp; Reliabilitas</b> — Hanya untuk variabel tak teramati langsung (rasio keuangan tidak perlu). Laporkan pra-uji-coba, uji-coba, koefisien ringkas (lengkap di lampiran), dan kesimpulan kelayakan. Bila gagal, laporkan tindakan perbaikan + referensi (cek validitas isi dulu bagi pemula)."><span class="stepnum">b</span><span><span class="rt">Validitas &amp; Reliabilitas</span><span class="rp">Uji coba, koefisien &amp; solusi</span></span></div>
+      <div class="rcell" data-reveal data-detail="<b>c. Pengujian Asumsi Analisis</b> — Sajikan hasil uji asumsi alat statistik dan kesimpulannya sesuai kriteria Bab III. Jika asumsi menyimpang jauh, laporkan perlakuan (mis. beralih ke statistik nonparametrik) beserta alasan dan referensinya."><span class="stepnum">c</span><span><span class="rt">Pengujian Asumsi</span><span class="rp">Syarat sebelum uji hipotesis</span></span></div>
+      <div class="rcell" data-reveal data-detail="<b>d. Hasil Analisis Hipotesis</b> — Baru dilakukan setelah validitas/reliabilitas dan asumsi aman. Periksa <b>tanda</b> dulu (positif/negatif/lebih besar) baru <b>signifikansi</b>. Catatan krusial: signifikansi statistik butuh sampel acak &amp; sangat dipengaruhi ukuran sampel besar; tren modern menekankan <b>power</b> dan <b>effect size</b> (mis. $r = 0.15 \Rightarrow r^2 = 2.25\%$, sangat kecil walau signifikan!)."><span class="stepnum">d</span><span><span class="rt">Hasil Analisis</span><span class="rp">Tanda &gt; Signifikansi · Effect Size</span></span></div>
+    </div>
+    <div class="rdetail" data-revealdetail><b>a. Deskripsi Subyek &amp; Obyek</b> — Statistik deskriptif subyek (demografi: frekuensi/%, min-maks, mean, SD) dan obyek (butir, dimensi, variabel; korelasi antarbutir/dimensi untuk Likert). <b>Wajib diulas/dijelaskan</b>, bukan sekadar menampilkan tabel angka. (Untuk eksperimen, diawali fasal pelaksanaan tahap demi tahap).</div>
+
+    <div class="casebox">
+      <span class="ctitle">e. Pembahasan (Discussion) — Aturan Tanda &gt; Signifikansi</span>
+      Pembahasan membandingkan <b>3 komponen</b>—(1) teori/riset relevan, (2) hipotesis, dan (3) hasil analisis statistik—dari segi tanda dan signifikansi. <b>Tanda lebih penting dari signifikansi:</b> jika tanda sesuai walau tak signifikan, masih bisa selaras; jika signifikan tapi tanda terbalik, tetap tidak sesuai. Bila ketiganya tak konsisten, peneliti wajib menjelaskan secara ilmiah (boleh menambah teori/referensi baru) dan <b>dilarang memanipulasi hasil</b>. Susun dalam beberapa ayat sejajar jumlah hipotesis.
+    </div>
+
+    <div class="numh">2. Bab V — Penutup</div>
+    <ul class="let">
+      <li><span class="term">Kesimpulan</span>: bersumber dari <i>pembahasan</i> (bukan otomatis dari angka statistik—bila 3 komponen pembahasan tak sinkron, kesimpulan penelitian bisa berbeda dari kesimpulan statistik). Harus langsung menjawab rumusan masalah/hipotesis dan disusun sejajar jumlah hipotesis.</li>
+      <li><span class="term">Saran</span>: mengacu pada hasil &amp; pembahasan, terbagi atas <b>saran teoritis / implikasi</b> (untuk riset mendatang) dan <b>saran praktis</b> (untuk praktisi terkait). Harus rinci, operasional, realistis, beralasan, dan sifatnya tidak wajib ada di tiap laporan.</li>
+    </ul>
+
+    <div class="abc"><span class="ltr">D</span><h4>Bagian Akhir dan Ringkasan Eksekutif</h4></div>
+    <p>Selain daftar pustaka &amp; instrumen, lampiran memuat surat keterangan riset, <b>data mentah</b>, dan output analisis lengkap. <b>Ringkasan Eksekutif / Sinopsis</b> (≤3 halaman, Sekaran &amp; Bougie, 2010) ditujukan bagi pengambil keputusan: memuat masalah, desain sampel, pengumpulan data, hasil analisis, temuan, dan rekomendasi operasional.</p>
+
+    <div class="abc"><span class="ltr">E</span><h4>Presentasi Lisan (Murphy &amp; Hildebrandt)</h4></div>
+    <p>Kunci utama presentasi adalah <b>penguasaan materi</b>, dengan 9 kaidah: (1–2) kenali audiens &amp; rencanakan, (3) latihan simulasi alat &amp; waktu, (4) mulai dengan gambaran umum, (5) kontak mata ke peserta, (6) hadap peserta alih-alih membaca teks, (7) visual sederhana &amp; mudah dibaca, (8) hindari suara pengisi tak perlu, dan (9) buka tanya-jawab (bukan di ujian tesis). <b>5 etika tanya-jawab:</b> konsentrasi pada pertanyaan, minta ulang jika tak jelas, jangan menghindar, jawab inti pertanyaan, dan dukung dengan data.</p>
+
+    <div class="abc"><span class="ltr">F</span><h4>Pedoman Pemeriksaan dan Penilaian Laporan (Tabel 9.2)</h4></div>
+    <p><b>Tabel 9.2</b> melengkapi Tabel 9.1 (proposal) secara khusus untuk memeriksa dan menilai kualitas Bab IV Hasil Penelitian serta Bab V Penutup.</p>
+  </div>
+
+  <h2 class="section" id="glosarium"><span class="dot"></span>Glosarium Kilat</h2>
+  <div class="card"><dl class="glossary">
+    <dt>Abstrak (Abstract)</dt><dd>Ringkasan hal-hal utama laporan penelitian (masalah/tujuan, metode, hasil, kesimpulan, saran) disertai kata-kata utama (keywords).</dd>
+    <dt>Bagian Awal Proposal vs Laporan</dt><dd>Proposal: Judul, daftar isi, daftar tabel/lampiran. Laporan: ditambah halaman persetujuan, halaman pengesahan, kata pengantar, dan abstrak.</dd>
+    <dt>Bagian Utama Proposal vs Laporan</dt><dd>Proposal: Pendahuluan, Landasan Teori, Metode Penelitian (3 bab). Laporan: ditambah Hasil Penelitian dan Penutup (5 bab).</dd>
+    <dt>Bagian Akhir Proposal</dt><dd>Daftar Pustaka dan Lampiran (instrumen, TOR; pada laporan ditambah data mentah, output lengkap, dan surat keterangan).</dd>
+    <dt>Judul Penelitian</dt><dd>Pernyataan eksplisit mengenai variabel utama, kaitan antarvariabel, subyek penelitian, dan esensi penelitian.</dd>
+    <dt>Landasan Teori</dt><dd>Dasar menghasilkan hipotesis: telaah literatur, definisi variabel, kaitan antarvariabel, riset relevan, kerangka pemikiran, dan hipotesis.</dd>
+    <dt>Laporan Penelitian</dt><dd>Realisasi proposal, termasuk laporan jujur atas hal-hal yang menyimpang dari rencana, cara mengatasi, dan alasannya.</dd>
+    <dt>Metode Penelitian</dt><dd>Desain penelitian, populasi &amp; teknik sampel, operasionalisasi variabel, instrumen, analisis validitas &amp; reliabilitas, serta analisis data.</dd>
+    <dt>Pendahuluan</dt><dd>Bab pertama yang memuat fasal Masalah (latar belakang, identifikasi, pembatasan, rumusan) serta Tujuan dan Manfaat Penelitian.</dd>
+    <dt>Proposal</dt><dd>Usulan atau rencana kegiatan-kegiatan yang akan dilakukan pada suatu penelitian.</dd>
+    <dt>Terms of Reference (TOR)</dt><dd>Hal-hal utama yang harus dilakukan dan dipenuhi oleh konsultan penelitian maupun kliennya dalam kontrak penelitian.</dd>
+  </dl></div>
+</div>
+<footer><b>EKMA5104 — Metode Penelitian Bisnis (Edisi 3)</b> · Modul 9: Proposal dan Laporan Penelitian<br>Bahan belajar ringkas untuk persiapan ujian · Dr. Lerbin Roberto Aritonang R., M.M.</footer>
+<script>
+(function(){
+  var pb=document.getElementById('progress');
+  function onScroll(){var h=document.documentElement;var sc=h.scrollTop||document.body.scrollTop;var max=(h.scrollHeight-h.clientHeight)||1;pb.style.width=(sc/max*100)+'%';}
+  document.addEventListener('scroll',onScroll,{passive:true});onScroll();
+
+  var list=document.getElementById('conceptList');var items=[].slice.call(list.querySelectorAll('li'));var boxes=items.map(function(li){return li.querySelector('input');});
+  document.getElementById('totalCount').textContent=items.length;var doneEl=document.getElementById('doneCount');var KEY='studi_ekma5104_m9_concepts_v1';
+  function load(){try{var a=JSON.parse(localStorage.getItem(KEY)||'[]');boxes.forEach(function(b,i){if(a[i])b.checked=true;});}catch(e){}}
+  function save(){try{localStorage.setItem(KEY,JSON.stringify(boxes.map(function(b){return b.checked?1:0;})));}catch(e){}}
+  function refresh(){var n=0;items.forEach(function(li,i){if(boxes[i].checked){li.classList.add('done');n++;}else li.classList.remove('done');});doneEl.textContent=n;}
+  load();refresh();boxes.forEach(function(b){b.addEventListener('change',function(){refresh();save();});});
+  document.getElementById('resetBtn').addEventListener('click',function(){boxes.forEach(function(b){b.checked=false;});refresh();save();});
+
+  [].slice.call(document.querySelectorAll('[data-revealgroup]')).forEach(function(g){
+    var det=g.querySelector('[data-revealdetail]');if(!det){var sib=g.nextElementSibling;if(sib&&sib.hasAttribute&&sib.hasAttribute('data-revealdetail'))det=sib;}
+    var cells=[].slice.call(g.querySelectorAll('[data-reveal]'));
+    cells.forEach(function(c){c.addEventListener('click',function(){cells.forEach(function(x){x.classList.remove('active');});c.classList.add('active');if(det){det.innerHTML=c.getAttribute('data-detail');if(window.MathJax&&window.MathJax.typesetPromise)window.MathJax.typesetPromise([det]);}});});
+  });
+
+  (function(){
+    var ROWH=46,NODE_H=32,PAD=13,GAP=52;var COL={root:'#0f5e8f',kb1:'#1a86c7',kb2:'#e08a1e',kb3:'#2a9d6f',kb4:'#7a5cc0',kb5:'#c75b7a'};
+    var mc=document.createElement('canvas').getContext('2d');mc.font='700 13px -apple-system,Segoe UI,Roboto,sans-serif';
+    function tw(t){return Math.ceil(mc.measureText(t).width);}function esc(t){return t.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');}
+    function rgba(hex,a){var h=hex.replace('#','');return 'rgba('+parseInt(h.substr(0,2),16)+','+parseInt(h.substr(2,2),16)+','+parseInt(h.substr(4,2),16)+','+a+')';}
+    var DATA={label:'MODUL 9 — Proposal dan Laporan Penelitian',color:COL.root,children:[
+  {label:'KB1 · Arti dan Komponen Proposal',color:COL.kb1,children:[
+    {label:'A. 3 Bagian Proposal (Awal, Utama, Akhir)'},
+    {label:'B. Judul (4 Unsur) & Daftar Isi'},
+    {label:'C. Bab I Pendahuluan',children:[
+      {label:'Masalah: Latar Belakang, Identifikasi, Pembatasan, Rumusan'},
+      {label:'Tujuan & Manfaat (Praktis vs Teoritis)'}
+    ]},
+    {label:'D. Bab II Landasan Teori',children:[
+      {label:'1. Definisi Variabel (mulai dari DV)'},
+      {label:'2. Kaitan Antarvariabel (sertakan hasil tak sinkron)'},
+      {label:'3. Kerangka Pemikiran (tanpa kutipan) & Hipotesis'}
+    ]},
+    {label:'E. Bab III Metode Penelitian (6 Fasal)'},
+    {label:'F. Bagian Akhir: Daftar Pustaka, Lampiran & TOR'},
+    {label:'G. Prinsip Replikabilitas (Dapat Dilaksanakan Orang Lain)'},
+    {label:'H. Kriteria Penilaian Proposal (Tabel 9.1)'}
+  ]},
+  {label:'KB2 · Laporan Penelitian',color:COL.kb2,children:[
+    {label:'A. Pedoman Pembuatan Laporan (Orientasi Penerima)'},
+    {label:'B. Bagian Awal: Persetujuan, Pengesahan, Pengantar, Abstrak'},
+    {label:'C. Bagian Utama (Bab IV & V)',children:[
+      {label:'1. Hasil: Deskriptif, Val/Rel, Asumsi, Analisis, Pembahasan'},
+      {label:'2. Penutup: Kesimpulan (berdasar pembahasan) & Saran'}
+    ]},
+    {label:'D. Bagian Akhir: Lampiran Data & Ringkasan Eksekutif'},
+    {label:'E. Presentasi Lisan (9 Prinsip + 5 Etika Tanya-Jawab)'},
+    {label:'F. Pedoman Penilaian Laporan (Tabel 9.2)'}
+  ]}
+]};
+    var idc=0;(function w(n,c){n.id='n'+(idc++);n.color=n.color||c;(n.children||[]).forEach(function(k){w(k,n.color);});})(DATA,COL.root);
+    (function w(n,d){if(d>=2&&n.children&&n.children.length)n.collapsed=true;(n.children||[]).forEach(function(k){w(k,d+1);});})(DATA,0);
+    var host=document.getElementById('mindmap');
+    function render(){
+      var colW=[];(function w(n,d){var width=tw(n.label)+PAD*2+((n.children&&n.children.length)?20:0);colW[d]=Math.max(colW[d]||0,width);if(!n.collapsed)(n.children||[]).forEach(function(k){w(k,d+1);});})(DATA,0);
+      var colX=[],acc=14;for(var d=0;d<colW.length;d++){colX[d]=acc;acc+=colW[d]+GAP;}var row={v:0};
+      (function lay(n,d){if(!n.children||!n.children.length||n.collapsed){n._y=row.v*ROWH+ROWH/2+8;row.v++;return;}var f,l;n.children.forEach(function(k,i){lay(k,d+1);if(i===0)f=k._y;l=k._y;});n._y=(f+l)/2;})(DATA,0);
+      var totalW=acc,totalH=row.v*ROWH+24;var nodes=[],links=[];
+      (function col(n,d,p){n._x=colX[d];n._w=tw(n.label)+PAD*2+((n.children&&n.children.length)?20:0);nodes.push({n:n,d:d});if(p)links.push([p,n]);if(!n.collapsed)(n.children||[]).forEach(function(k){col(k,d+1,n);});})(DATA,0,null);
+      var s='<svg width="'+totalW+'" height="'+totalH+'" viewBox="0 0 '+totalW+' '+totalH+'" xmlns="http://www.w3.org/2000/svg">';
+      links.forEach(function(pr){var a=pr[0],b=pr[1],x1=a._x+a._w,y1=a._y,x2=b._x,y2=b._y,mx=(x1+x2)/2;s+='<path d="M'+x1+' '+y1+' C'+mx+' '+y1+' '+mx+' '+y2+' '+x2+' '+y2+'" fill="none" stroke="'+rgba(b.color,.5)+'" stroke-width="2"/>';});
+      nodes.forEach(function(o){var n=o.n,x=n._x,y=n._y-NODE_H/2,w=n._w,hk=n.children&&n.children.length;var fill=o.d===0?n.color:(o.d===1?rgba(n.color,.12):'#fff');var tf=o.d===0?'#fff':'#1c2733';
+        s+='<g data-id="'+n.id+'" style="cursor:'+(hk?'pointer':'default')+'"><rect x="'+x+'" y="'+y+'" rx="9" width="'+w+'" height="'+NODE_H+'" fill="'+fill+'" stroke="'+n.color+'" stroke-width="'+(o.d===0?0:1.6)+'"/><text x="'+(x+PAD)+'" y="'+(n._y+4)+'" font-size="13" font-weight="'+(o.d<=1?'700':'500')+'" fill="'+tf+'" font-family="-apple-system,Segoe UI,Roboto,sans-serif">'+esc(n.label)+'</text>';
+        if(hk){var cx=x+w-12,cy=n._y;s+='<circle cx="'+cx+'" cy="'+cy+'" r="8.5" fill="'+n.color+'"/><text x="'+cx+'" y="'+(cy+4.5)+'" font-size="13" font-weight="700" fill="#fff" text-anchor="middle" font-family="sans-serif">'+(n.collapsed?'+':'\u2013')+'</text>';}s+='</g>';});
+      s+='</svg>';host.innerHTML=s;
+    }
+    host.addEventListener('click',function(e){var g=e.target.closest('g[data-id]');if(!g)return;var id=g.getAttribute('data-id');(function f(n){if(n.id===id){if(n.children&&n.children.length)n.collapsed=!n.collapsed;return true;}return (n.children||[]).some(f);})(DATA);render();});
+    document.getElementById('mmExpand').addEventListener('click',function(){(function w(n){if(n.children)n.collapsed=false;(n.children||[]).forEach(w);})(DATA);render();});
+    document.getElementById('mmCollapse').addEventListener('click',function(){(function w(n,d){if(d>=1&&n.children&&n.children.length)n.collapsed=true;(n.children||[]).forEach(function(k){w(k,d+1);});})(DATA,0);render();});
+    render();
+  })();
+
+  window.addEventListener('load',function(){setTimeout(function(){if(window.MathJax&&window.MathJax.typesetPromise)window.MathJax.typesetPromise();},400);});
+})();
+</script></body></html>

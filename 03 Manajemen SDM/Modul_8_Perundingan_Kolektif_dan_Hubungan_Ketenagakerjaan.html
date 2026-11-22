@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html lang="id"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Modul 8 — Perundingan Kolektif dan Hubungan Ketenagakerjaan | EKMA5207</title>
+<script>window.MathJax={tex:{inlineMath:[['$','$']],displayMath:[['\\[','\\]'],['$$','$$']]},svg:{fontCache:'global'},startup:{typeset:true}};</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js" async></script>
+<style>
+:root{--bg:#f4f6f9;--panel:#fff;--ink:#1c2733;--muted:#5c6b7a;--line:#e4e9f0;--brand:#1a86c7;--brand-dark:#0f5e8f;--brand-soft:#e7f3fb;--kb1:#1a86c7;--kb2:#e08a1e;--kb3:#2a9d6f;--kb4:#7a5cc0;--kb5:#c75b7a;--radius:14px;--shadow:0 1px 2px rgba(16,42,67,.06),0 6px 20px rgba(16,42,67,.06);--maxw:900px}
+*{box-sizing:border-box}html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;line-height:1.72}
+#progress{position:fixed;top:0;left:0;height:4px;width:0;background:linear-gradient(90deg,var(--brand),#53c0ec);z-index:200;transition:width .1s}
+header.top{position:sticky;top:0;z-index:100;background:rgba(255,255,255,.92);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+.top-in{max-width:var(--maxw);margin:0 auto;padding:10px 20px;display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+.badge{background:var(--brand);color:#fff;font-weight:700;font-size:.72rem;letter-spacing:.5px;padding:4px 10px;border-radius:999px}
+.homebtn{text-decoration:none;display:inline-flex;align-items:center;gap:7px;background:var(--brand);color:#fff;font-weight:700;font-size:.8rem;padding:7px 15px;border-radius:999px;box-shadow:0 2px 6px rgba(16,42,67,.22);line-height:1}
+.top-title{font-size:.9rem;font-weight:600;color:var(--muted)}
+nav.jump{margin-left:auto;display:flex;gap:4px;flex-wrap:wrap}
+nav.jump a{font-size:.78rem;color:var(--muted);text-decoration:none;padding:5px 10px;border-radius:8px}
+nav.jump a:hover{background:var(--brand-soft);color:var(--brand-dark)}
+.wrap{max-width:var(--maxw);margin:0 auto;padding:0 20px 90px}
+.hero{margin-top:26px;padding:30px 28px;border-radius:var(--radius);color:#fff;background:linear-gradient(135deg,#0f5e8f,#1a86c7 60%,#2fa4df);box-shadow:var(--shadow);position:relative;overflow:hidden}
+.hero .eyebrow{font-size:.78rem;letter-spacing:1.5px;text-transform:uppercase;opacity:.9;font-weight:600}
+.hero h1{margin:.3em 0 .25em;font-size:1.62rem;line-height:1.25;max-width:92%}
+.hero .meta{display:flex;gap:18px;flex-wrap:wrap;font-size:.84rem;opacity:.95;margin-top:10px}
+h2.section{font-size:1.3rem;margin:48px 0 4px;display:flex;align-items:center;gap:10px;scroll-margin-top:70px}
+h2.section .dot{width:10px;height:22px;border-radius:4px;background:var(--brand)}
+.section-sub{color:var(--muted);font-size:.9rem;margin:0 0 18px}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);padding:22px 24px;margin:16px 0;--dot:var(--brand);overflow-x:clip;overflow-wrap:break-word;word-wrap:break-word}
+.concepts{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:minmax(0,1fr);gap:10px}
+.concepts li{display:flex;gap:12px;align-items:flex-start;padding:12px 14px;border:1px solid var(--line);border-radius:10px;background:#fcfdff;min-width:0;max-width:100%}
+.concepts li>span{min-width:0;max-width:100%;overflow-wrap:break-word;word-wrap:break-word}
+.concepts input{margin-top:4px;width:18px;height:18px;accent-color:var(--brand);flex:none;cursor:pointer}
+.concepts .ct{font-weight:600}.concepts .cd{display:block;font-weight:400;color:var(--muted);font-size:.86rem;margin-top:2px}
+.concepts li.done{background:var(--brand-soft);border-color:#bfe0f3}.concepts li.done .ct{text-decoration:line-through;opacity:.65}
+.cl-head{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-bottom:6px}
+.cl-head .count{font-size:.82rem;color:var(--muted);background:var(--brand-soft);padding:3px 10px;border-radius:999px;font-weight:600}
+.btn-reset{font-size:.78rem;border:1px solid var(--line);background:#fff;color:var(--muted);padding:5px 12px;border-radius:8px;cursor:pointer}
+.mm-toolbar{display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin-bottom:10px}
+.mm-btn{font-size:.78rem;border:1px solid var(--line);background:#fff;padding:6px 13px;border-radius:8px;cursor:pointer;color:var(--brand-dark);font-weight:600}
+.mindmap-host{height:580px;overflow:auto;border:1px solid var(--line);border-radius:10px;background:#fcfdff}.mindmap-host svg{display:block}
+.kb-tag{display:inline-flex;align-items:center;gap:8px;font-size:.78rem;font-weight:700;color:#fff;padding:5px 12px;border-radius:999px;margin-bottom:6px}
+.kb1t{background:var(--kb1)}.kb2t{background:var(--kb2)}.kb3t{background:var(--kb3)}.kb4t{background:var(--kb4)}.kb5t{background:var(--kb5)}
+.kb1b{--dot:var(--kb1)}.kb2b{--dot:var(--kb2)}.kb3b{--dot:var(--kb3)}.kb4b{--dot:var(--kb4)}.kb5b{--dot:var(--kb5)}
+.lead{font-size:1.02rem}.term{font-weight:700;color:var(--dot)}.en{font-style:italic;color:var(--muted);font-weight:500}
+.abc{display:flex;align-items:center;gap:10px;margin:28px 0 10px;padding-bottom:6px;border-bottom:2px solid color-mix(in srgb,var(--dot) 18%,#fff)}
+.abc .ltr{background:var(--dot);color:#fff;font-weight:800;min-width:30px;height:30px;padding:0 7px;border-radius:8px;display:grid;place-items:center;flex:none}
+.abc h4{margin:0;font-size:1.06rem;color:var(--dot)}
+.numh{font-weight:700;color:var(--dot);margin:22px 0 6px;font-size:1rem}
+.leth{font-weight:800;color:var(--dot);margin:16px 0 6px;font-size:.95rem;border-left:3px solid var(--dot);padding-left:10px}
+ol.book{margin:12px 0;padding-left:28px}ol.book>li{margin:10px 0;padding-left:6px}ol.book>li::marker{font-weight:700;color:var(--dot)}
+ul.exp{list-style:none;margin:12px 0;padding:0;display:grid;grid-template-columns:minmax(0,1fr);gap:10px}
+ul.exp>li{position:relative;padding-left:20px;min-width:0;max-width:100%;overflow-wrap:break-word;word-wrap:break-word}
+ul.exp>li::before{content:"";position:absolute;left:0;top:11px;width:8px;height:8px;border-radius:2px;background:var(--dot)}
+ul.let{list-style:lower-alpha;margin:10px 0;padding-left:28px}ul.let>li{margin:8px 0;padding-left:4px}ul.let>li::marker{color:var(--dot);font-weight:700}
+.flow{border-left:4px solid var(--dot);background:color-mix(in srgb,var(--dot) 9%,#fff);padding:11px 15px;border-radius:0 10px 10px 0;margin:18px 0;font-size:.9rem;min-width:0;max-width:100%;overflow-wrap:break-word;word-wrap:break-word}
+.flow::before{content:"🔗 Benang merah — ";font-weight:700;color:var(--dot)}.flow b{color:var(--dot)}
+.casebox{background:#f8fafc;border:1px solid var(--line);border-left:4px solid var(--dot);border-radius:0 10px 10px 0;padding:12px 15px;margin:14px 0;font-size:.88rem;min-width:0;max-width:100%;overflow-wrap:break-word;word-wrap:break-word}
+.casebox .ctitle{font-weight:700;color:var(--dot);margin-bottom:4px;display:block}
+.table-wrap{width:100%;overflow-x:auto;-webkit-overflow-scrolling:touch;margin:14px 0;border-radius:10px}
+table.mini{width:100%;border-collapse:collapse;margin:0;font-size:.86rem;table-layout:auto}
+table.mini th,table.mini td{border:1px solid var(--line);padding:10px 12px;text-align:left;vertical-align:top;overflow-wrap:break-word;word-wrap:break-word}
+table.mini th{background:color-mix(in srgb,var(--dot) 12%,#fff);color:var(--dot);font-weight:700}
+.rgrid{display:grid;gap:8px;margin:14px 0}.rgrid.c2{grid-template-columns:repeat(2,minmax(0,1fr))}.rgrid.c3{grid-template-columns:repeat(3,minmax(0,1fr))}.rgrid.c4{grid-template-columns:repeat(4,minmax(0,1fr))}
+.rcell{border:1px solid var(--line);border-radius:10px;padding:11px 13px;cursor:pointer;background:#fff;display:flex;gap:10px;align-items:flex-start;transition:.15s;min-width:0;max-width:100%}
+.rcell>span{min-width:0;max-width:100%;overflow-wrap:break-word;word-wrap:break-word}
+.rcell:hover{border-color:var(--dot);box-shadow:var(--shadow);transform:translateY(-2px)}
+.rcell.active{border-color:var(--dot);background:color-mix(in srgb,var(--dot) 8%,#fff)}
+.rcell .stepnum{background:var(--dot);color:#fff;font-weight:700;min-width:24px;height:24px;border-radius:7px;display:grid;place-items:center;flex:none;font-size:.82rem}
+.rcell .rt{font-weight:700;font-size:.9rem;color:var(--dot);display:block}.rcell .rp{font-size:.78rem;color:var(--muted);display:block;margin-top:2px}
+.rdetail{font-size:.88rem;border-left:4px solid var(--dot);background:color-mix(in srgb,var(--dot) 8%,#fff);border-radius:0 10px 10px 0;padding:12px 15px;margin-top:6px;min-width:0;max-width:100%;overflow-wrap:break-word;word-wrap:break-word}
+.diagram-box{border:1px solid var(--line);border-radius:12px;background:#fcfdff;padding:16px;margin:16px 0;text-align:center;min-width:0;max-width:100%}
+.diagram-cap{font-size:.8rem;color:var(--muted);margin-top:10px;font-weight:600}
+.flowchart{display:flex;align-items:center;gap:6px;flex-wrap:wrap;margin:12px 0;justify-content:center}
+.fc-node{background:color-mix(in srgb,var(--dot) 12%,#fff);border:1.5px solid var(--dot);color:var(--dot);font-weight:700;font-size:.8rem;padding:8px 12px;border-radius:9px;text-align:center;max-width:100%}
+.fc-arrow{color:var(--dot);font-weight:800;font-size:1.05rem}
+.acro-box{background:#f8fafc;border:1px solid var(--line);border-radius:10px;padding:12px 14px;margin:14px 0;font-size:.84rem;min-width:0;max-width:100%;overflow-wrap:break-word;word-wrap:break-word}
+.acro-title{font-weight:700;color:var(--dot);font-size:.86rem;margin-bottom:8px;display:block}
+.acro-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:6px 14px;margin:0;padding:0;list-style:none}
+.acro-grid li{min-width:0;line-height:1.5}.acro-grid b{color:var(--dot)}
+.glossary dt{font-weight:700;color:var(--brand-dark);margin-top:10px}.glossary dd{margin:0 0 2px;color:var(--muted);font-size:.9rem}
+footer{max-width:var(--maxw);margin:0 auto;padding:30px 20px 60px;color:var(--muted);font-size:.82rem;border-top:1px solid var(--line)}
+.offline-note{font-size:.76rem;color:var(--muted);background:#fff8e6;border:1px solid #f0e2b8;border-radius:8px;padding:8px 12px;margin:10px 0}
+@media(max-width:680px){
+  .table-wrap{overflow-x:visible}
+  table.mini,table.mini thead,table.mini tbody,table.mini th,table.mini td,table.mini tr{display:block;width:100%}
+  table.mini thead{display:none}
+  table.mini tr{margin-bottom:12px;border:1.5px solid color-mix(in srgb,var(--dot) 28%,#e4e9f0);border-radius:10px;background:#fff;overflow:hidden;box-shadow:0 1px 4px rgba(16,42,67,.05)}
+  table.mini td{border:none;border-bottom:1px solid var(--line);padding:10px 12px;text-align:left}
+  table.mini td:last-child{border-bottom:none}
+  table.mini td::before{content:attr(data-label);display:block;font-size:.74rem;font-weight:700;text-transform:uppercase;letter-spacing:.4px;color:var(--dot);margin-bottom:4px}
+}
+@media(max-width:640px){.hero h1{font-size:1.3rem;max-width:100%}nav.jump{display:none}.rgrid.c2,.rgrid.c3,.rgrid.c4,.acro-grid{grid-template-columns:minmax(0,1fr)}.mindmap-host{height:440px}}
+</style></head><body>
+<div id="progress"></div>
+<header class="top"><div class="top-in">
+  <span class="badge">MODUL 8</span>
+  <a class="homebtn" href="index.html" title="Kembali ke daftar modul"><span style="font-size:1rem;line-height:1">&#8962;</span> Daftar Modul</a>
+  <span class="top-title">Manajemen Sumber Daya Manusia · EKMA5207</span>
+  <nav class="jump"><a href="#konsep">Konsep</a><a href="#peta">Peta Konsep</a><a href="#kb1">KB1</a><a href="#kb2">KB2</a><a href="#kb3">KB3</a><a href="#glosarium">Glosarium</a></nav>
+</div></header>
+
+<div class="wrap">
+  <section class="hero"><div class="eyebrow">Ringkasan Belajar Lengkap · EKMA5207 Edisi 3</div>
+  <h1>Perundingan Kolektif dan Hubungan Ketenagakerjaan</h1>
+  <div class="meta"><span>📚 3 Kegiatan Belajar (KB 1: A–B · KB 2: A–G · KB 3: A–D)</span><span>📖 Hal. 8.1–8.38</span><span>✍️ Prof. Dr. Mutiara Sibarani Panggabean, S.E., M.E.</span></div></section>
+
+  <p class="section-sub" style="margin-top:22px">Ringkasan komprehensif mengikuti urutan dan struktur outline asli buku tanpa penggabungan sub-bab: <b>KB 1 Serikat Pekerja</b> (Bagian A–B beserta 4 sub-bahasan utuh), <b>KB 2 Perundingan Kolektif</b> (Bagian A–G), dan <b>KB 3 Hubungan Kerja dan Perjanjian Kerja Bersama</b> (Bagian A–D).</p>
+  <p class="offline-note">ℹ️ Peta konsep, kartu penjelasan interaktif, tabel responsif, dan daftar cek konsep berjalan penuh tanpa internet.</p>
+
+  <!-- PENDAHULUAN MODUL -->
+  <div class="card">
+    <div class="abc" style="margin-top:0"><span class="ltr">★</span><h4>Pendahuluan Modul — Harmoni Manajemen–Karyawan sebagai Kunci Daya Saing</h4></div>
+    <p>Daya saing perusahaan saat ini sangat ditentukan oleh adanya <b>hubungan yang harmonis antara pihak manajemen dan karyawan</b> (hal. 8.3). Paradigma lama di mana masing-masing pihak berusaha memenangkan kepentingannya sendiri tidak lagi memadai:</p>
+    <ul class="exp">
+      <li><b>Saling Mengakomodasi untuk Tujuan Jangka Panjang:</b> Manajemen dan karyawan harus belajar mengakomodasi kebutuhan pihak lainnya sehingga tercapai <b>dua tujuan sekaligus</b>—(1) <b>peningkatan produktivitas</b> perusahaan dan (2) <b>perbaikan kualitas kehidupan di tempat kerja</b>.</li>
+      <li><b>Posisi Tawar Karyawan:</b> Dalam memperjuangkan kebutuhan dan keinginannya, posisi tawar karyawan individual sering lemah di hadapan pengusaha (terutama bila tidak memiliki kompetensi unik yang langka, sulit ditiru, dan tak tergantikan), sehingga mereka membentuk serikat pekerja untuk berunding secara kolektif.</li>
+    </ul>
+    <div class="flow"><b>Alur logis Modul 8:</b> <b>KB 1 (Serikat Pekerja)</b> menguraikan hakikat, tujuan, fungsi, strategi, jenis, alasan bergabung, dan pembentukan serikat pekerja → <b>KB 2 (Perundingan Kolektif)</b> membahas mekanisme negosiasi serikat–manajemen, 3 perspektif, kondisi keberhasilan, penyelesaian perselisihan (konsiliasi–mediasi–arbitrase), KKB, dan prosedur keluhan → <b>KB 3 (Hubungan Kerja &amp; PKB)</b> membingkainya dalam sistem hubungan industrial (Model Dunlop, LKS Bipartit/Tripartit, perjanjian kerja, PKB, serta praktik 4 negara Asia termasuk HIP).</div>
+  </div>
+
+  <!-- KONSEP PENTING -->
+  <h2 class="section" id="konsep"><span class="dot"></span>Konsep Penting yang Harus Dikuasai</h2>
+  <div class="card"><div class="cl-head"><span class="count"><span id="doneCount">0</span>/<span id="totalCount">0</span> dikuasai</span><button class="btn-reset" id="resetBtn">Reset centang</button></div>
+  <ul class="concepts" id="conceptList">
+    <li><input type="checkbox"><span><span class="ct">Definisi Serikat Pekerja, Federasi &amp; Konfederasi (UU No. 21/2000 &amp; UU No. 13/2003)</span><span class="cd">Organisasi dari, oleh, dan untuk pekerja (terbuka, mandiri, demokratis, bertanggung jawab); federasi = gabungan SP; konfederasi = gabungan federasi.</span></span></li>
+    <li><input type="checkbox"><span><span class="ct">5 Tipe Keamanan Serikat Buruh (Union Security — Dessler, 2005:562)</span><span class="cd">Closed shop, union shop, agency shop, open shop, dan maintenance of membership arrangement.</span></span></li>
+    <li><input type="checkbox"><span><span class="ct">Tujuan Serikat Pekerja (5 Tujuan Dessler &amp; Tan 2009; 5 Tujuan Umum Mondy 2010)</span><span class="cd">Perundingan kolektif, proteksi kerja, kerja sama pengusaha, politik (British Labor Party 1900; Partai Buruh Indonesia), sosial; standar ekonomi &amp; tolak kebijakan sewenang-wenang.</span></span></li>
+    <li><input type="checkbox"><span><span class="ct">4 Fungsi Serikat Pekerja (UU No. 21/2000) &amp; 9 Strategi Serikat Buruh (Mondy, 2010)</span><span class="cd">PKB, penyelesaian perselisihan, perwakilan lembaga perburuhan, pembelaan anggota; 9 strategi termasuk union salting, pulling the union through, flooding, card check (&gt;50%).</span></span></li>
+    <li><input type="checkbox"><span><span class="ct">5 Jenis Serikat Buruh (Dessler &amp; Tan, 2009:413)</span><span class="cd">Craft/occupation union, general union, staff union (nonmanual), industry union, dan house/company/enterprise union (Jepang &amp; Korea).</span></span></li>
+    <li><input type="checkbox"><span><span class="ct">Alasan Bergabung dalam Serikat Pekerja &amp; Syarat Pembentukan (UU No. 21/2000 Ps. 5–11)</span><span class="cd">6 alasan Dessler &amp; Tan + 5 alasan Mondy; SP min. 10 orang, federasi min. 5 SP, konfederasi min. 3 federasi, 7 isi wajib AD/ART, FSPSI (6.500 SP).</span></span></li>
+    <li><input type="checkbox"><span><span class="ct">Perundingan Kolektif: Definisi, Perwakilan, Tujuan, 2 Kategori Isi &amp; Manfaat</span><span class="cd">Negosiasi beritikad baik antara SP dan tim manajemen menghasilkan labour agreement (gaji/benefits &amp; kondisi kerja); dampak biaya tenaga kerja di pasar global.</span></span></li>
+    <li><input type="checkbox"><span><span class="ct">3 Perspektif Perundingan Kolektif &amp; 5 Kondisi Keberhasilan Perundingan</span><span class="cd">Perspektif behavioral (keseimbangan kekuasaan), ekonomi (supply–demand), dan hukum (UU 13/2003); kebebasan berserikat, pengakuan, itikad baik, saling menghormati, UU pendukung.</span></span></li>
+    <li><input type="checkbox"><span><span class="ct">Negosiasi: Integrative vs Distributive Bargaining, 3 Faktor &amp; 4 Langkah Negosiasi</span><span class="cd">Menang-menang vs menang-kalah (pembagian kue); topik–orang–kondisi; Persiapan → Presentasi → Pertukaran &amp; Kompromi → Mencapai Persetujuan.</span></span></li>
+    <li><input type="checkbox"><span><span class="ct">Penyelesaian Perselisihan (Impas): Konsiliasi, Mediasi, Arbitrase &amp; Hak Mogok</span><span class="cd">Konsiliator netral tanpa rekomendasi/paksaan, mediator memberi rekomendasi tak mengikat, arbitrator menetapkan keputusan akhir; mogok sebagai tekanan manajemen.</span></span></li>
+    <li><input type="checkbox"><span><span class="ct">Kesepakatan Kerja Bersama (KKB): Prosedural vs Substantif &amp; Prosedur Keluhan 4 Langkah</span><span class="cd">Negosiasi tuntas 30 hari, berlaku 2 tahun, registrasi Kemenaker; KKB prosedural (statis) vs substantif (dinamis); keluhan 4 langkah (3 hari → 3 hari → Depnaker 5 hari → wasit).</span></span></li>
+    <li><input type="checkbox"><span><span class="ct">Hubungan Kerja &amp; Model Dunlop (Industrial Relations System, 1958)</span><span class="cd">3 aktor (pekerja/SP, manajemen, pemerintah) diikat ideologi → menghasilkan jejaring peraturan, dipengaruhi tantangan kompetisi lingkungan.</span></span></li>
+    <li><input type="checkbox"><span><span class="ct">Hubungan Industrial: 6 Pihak, Fungsi, 8 Sarana, LKS Bipartit/Tripartit &amp; 6 Prinsip</span><span class="cd">LKS Bipartit wajib bagi perusahaan ≥50 pekerja (forum komunikasi/konsultasi); LKS Tripartit memberi saran kebijakan; 6 prinsip persamaan kepentingan &amp; kesejahteraan bersama.</span></span></li>
+    <li><input type="checkbox"><span><span class="ct">Perjanjian Kerja (UU No. 13/2003 Ps. 50–52) vs Peraturan Perusahaan (PP) &amp; PKB (Ps. 116)</span><span class="cd">3 unsur hubungan kerja (pekerjaan, upah, perintah); PKB (dulu KKB/CLA) disusun musyawarah, berlaku maks. 2 tahun + perpanjangan maks. 1 tahun.</span></span></li>
+    <li><input type="checkbox"><span><span class="ct">Perbandingan Hubungan Ketenagakerjaan 4 Negara Asia &amp; Hubungan Industrial Pancasila (HIP)</span><span class="cd">Brunei (4 UU, Brunei Shell), Kamboja (Labor Law 1997 progresif), China (3 sistem 1980 &amp; tripartit ILO 1990-an), dan Indonesia (5 sila Pancasila → HIP/PIR berbasis musyawarah).</span></span></li>
+  </ul></div>
+
+  <!-- PETA KONSEP -->
+  <h2 class="section" id="peta"><span class="dot"></span>Peta Konsep (Mind Map)</h2>
+  <div class="card"><div class="mm-toolbar"><button class="mm-btn" id="mmExpand">Perluas semua</button><button class="mm-btn" id="mmCollapse">Ciutkan</button><span style="font-size:.76rem;color:var(--muted)">Klik simpul (+) atau (–) untuk membuka/menutup cabang · Gulir untuk menggeser</span></div><div class="mindmap-host" id="mindmap"></div></div>
+
+  <!-- ==================== KB 1 ==================== -->
+  <h2 class="section" id="kb1"><span class="dot" style="background:var(--kb1)"></span>KB 1 — Serikat Pekerja</h2>
+  <div class="card kb1b"><span class="kb-tag kb1t">KB 1 · Hal. 8.4–8.16</span>
+    <p class="lead">Karyawan individual yang tidak memiliki keunggulan kompetensi unik sering berada pada posisi lemah di hadapan pengusaha. Mereka membentuk atau bergabung dalam <span class="term">serikat pekerja / serikat buruh</span> untuk memperjuangkan hak dan memperbaiki kondisi kerja secara kolektif.</p>
+
+    <div class="acro-box"><span class="acro-title">📖 Kamus Konteks Singkatan &amp; Akronim KB 1</span>
+      <ul class="acro-grid">
+        <li><b>SP / SB</b>: Serikat Pekerja / Serikat Buruh — organisasi dari, oleh, dan untuk pekerja/buruh (UU No. 21/2000 &amp; UU No. 13/2003).</li>
+        <li><b>FSPSI</b>: Federasi Serikat Pekerja Seluruh Indonesia (<i>The Federation of All Indonesian Workers Union</i>) — federasi terbesar di Indonesia (~6.500 serikat buruh).</li>
+        <li><b>AD / ART</b>: Anggaran Dasar / Anggaran Rumah Tangga — dokumen wajib setiap SP, federasi, dan konfederasi (UU No. 21/2000 Pasal 11).</li>
+        <li><b>PKB</b>: Perjanjian Kerja Bersama — perjanjian hasil perundingan antara SP tercatat dan pengusaha (UU No. 13/2003 Pasal 116).</li>
+      </ul>
+    </div>
+
+    <!-- KB1 A -->
+    <div class="abc"><span class="ltr">A</span><h4>Arti Pentingnya Serikat Pekerja/Buruh</h4></div>
+    <p>Menurut <b>UU No. 21 Tahun 2000 Pasal 1 ayat 1–5</b> dan <b>UU No. 13 Tahun 2003 Pasal 1 ayat 1</b>, <b>serikat pekerja/serikat buruh</b> adalah organisasi yang dibentuk dari, oleh, dan untuk pekerja/buruh baik di dalam maupun di luar perusahaan—bersifat <i>terbuka, mandiri, demokratis, dan bertanggung jawab</i>—untuk memperjuangkan, membela, dan melindungi hak serta kepentingan pekerja/buruh dan meningkatkan kesejahteraan pekerja beserta keluarganya. <b>Federasi</b> adalah gabungan serikat pekerja (ayat 4), sedangkan <b>konfederasi</b> adalah gabungan federasi serikat pekerja (ayat 5).</p>
+    <p><b>Dessler &amp; Tan Chwee Huat (2009:412)</b> mendefinisikan <i>trade union</i> sebagai kelompok pekerja terorganisir yang secara kolektif ingin memperbaiki syarat dan kondisi tempat kerja serta meningkatkan status mereka di masyarakat (disebut <i>trade union</i> di Inggris, <i>labour union</i> di Kanada, dan <i>labor union</i> di AS; anggotanya disebut <i>rank and file members</i>). Kegagalan manajer memperlakukan karyawan secara hormat atau tidak memandang pekerja sebagai aset memicu lahirnya serikat buruh.</p>
+
+    <div class="numh">1. Lima Tipe Keamanan Serikat Buruh (<span class="en">Union Security</span> — Dessler, 2005:562)</div>
+    <p>Tujuan pertama dan terpenting serikat buruh adalah menjamin keamanan eksistensinya sebagai agen tawar-menawar eksklusif bagi seluruh karyawan melalui <b>lima tipe keamanan</b>:</p>
+    <div class="rgrid c3" data-revealgroup>
+      <div class="rcell active" data-reveal data-detail="<b>1. Toko Tertutup (Closed Shop):</b> Keamanan serikat buruh dijamin dengan cara perusahaan <b>hanya boleh mempekerjakan anggota serikat buruh saja</b>."><span class="stepnum">1</span><span><span class="rt">Closed Shop</span><span class="rp">Wajib anggota sejak awal</span></span></div>
+      <div class="rcell" data-reveal data-detail="<b>2. Toko Serikat Pekerja (Union Shop):</b> Perusahaan boleh mempekerjakan nonanggota, namun setelah jangka waktu tertentu mereka <b>wajib bergabung dengan serikat buruh dan membayar iuran</b> (jika menolak, dipecat)."><span class="stepnum">2</span><span><span class="rt">Union Shop</span><span class="rp">Wajib gabung setelah masa tertentu</span></span></div>
+      <div class="rcell" data-reveal data-detail="<b>3. Toko Perwakilan (Agency Shop):</b> Karyawan bukan anggota serikat <b>tetap wajib membayar iuran</b> kepada serikat pekerja karena hasil perjuangan serikat dianggap bermanfaat bagi semua karyawan."><span class="stepnum">3</span><span><span class="rt">Agency Shop</span><span class="rp">Nonanggota tetap bayar iuran</span></span></div>
+      <div class="rcell" data-reveal data-detail="<b>4. Toko Terbuka (Open Shop):</b> Bebas sepenuhnya bagi pekerja apakah mau bergabung atau tidak; yang tidak bergabung <b>tidak perlu membayar iuran</b> serikat buruh."><span class="stepnum">4</span><span><span class="rt">Open Shop</span><span class="rp">Bebas gabung &amp; tanpa iuran</span></span></div>
+      <div class="rcell" data-reveal data-detail="<b>5. Maintenance of Membership Arrangement:</b> Karyawan tidak wajib bergabung, tetapi <b>anggota serikat yang dipekerjakan wajib mempertahankan keanggotaannya</b> selama masa kontrak berlaku."><span class="stepnum">5</span><span><span class="rt">Maintenance of Membership</span><span class="rp">Wajib bertahan selama kontrak</span></span></div>
+    </div>
+    <div class="rdetail" data-revealdetail><b>1. Toko Tertutup (Closed Shop):</b> Keamanan serikat buruh dijamin dengan cara perusahaan <b>hanya boleh mempekerjakan anggota serikat buruh saja</b>.</div>
+
+    <div class="numh">2. Tujuan Utama Serikat Pekerja (Dessler &amp; Tan, 2009 vs Mondy, 2010)</div>
+    <ul class="exp">
+      <li><b>5 Tujuan Utama (Dessler &amp; Tan Chwee Huat, 2009:412):</b> (1) <b>Perundingan kolektif</b> (negosiasi upah &amp; syarat kerja), (2) <b>Melindungi pekerjaan</b> (mencegah PHK semena-mena; di era otomatisasi/komputer memastikan pelatihan ulang atau kompensasi layak bila penciutan tak terelakkan), (3) <b>Bekerja sama dengan pengusaha</b> (menyelesaikan perselisihan secara mufakat agar perusahaan sukses dan mampu memberi syarat kerja lebih baik), (4) <b>Aktivitas politik</b> (berperan langsung seperti <i>The British Labor Party</i> 1900 &amp; <i>Partai Buruh Indonesia</i> pimpinan Muchtar Pakpahan, atau tak langsung menekan reformasi UU), dan (5) <b>Aktivitas sosial</b> (dulu dana sakit/pensiun/kematian, kini banyak beralih ke fasilitas rekreasi karena jaminan sosial diambil alih pemerintah).</li>
+      <li><b>5 Tujuan Umum (Mondy, 2010:372):</b> (1) menjamin &amp; meningkatkan standar hidup/status ekonomi anggota, (2) melindungi keamanan individu dari fluktuasi pasar, perubahan teknologi, atau keputusan manajemen, (3) memengaruhi hubungan kekuasaan sosial secara konstruktif, (4) meningkatkan kesejahteraan semua pekerja (anggota maupun bukan), dan (5) menciptakan mekanisme penolakan terhadap kebijakan/praktik yang subjektif dan sewenang-wenang.</li>
+    </ul>
+
+    <div class="flow">Setelah memahami definisi, tipe keamanan, dan tujuan serikat pekerja pada Bagian A, <b>Bagian B</b> menguraikan fungsi resmi menurut UU No. 21/2000 beserta strategi, jenis, alasan bergabung, dan syarat pembentukannya.</div>
+
+    <!-- KB1 B -->
+    <div class="abc"><span class="ltr">B</span><h4>Fungsi Serikat Buruh/Pekerja</h4></div>
+    <p>Menurut <b>UU No. 21 Tahun 2000</b>, serikat pekerja memiliki <b>empat fungsi pokok</b>: (1) pembuatan Perjanjian Kerja Bersama (PKB), (2) penyelesaian perselisihan industrial, (3) mewakili pekerja di dewan atau lembaga terkait urusan perburuhan, dan (4) membela hak serta kepentingan anggota serikat.</p>
+
+    <div class="numh">1. Strategi Serikat Buruh (Mondy, 2010:373–375 — 9 Strategi)</div>
+    <ul class="let">
+      <li><b>Penempatan anggota secara strategis:</b> Menempatkan anggota pada posisi kritis (mis. mekanis pabrik) atau industri vital nasional (pengemudi truk, pekerja galangan kapal) sehingga ancaman mogok memberi daya tekan besar.</li>
+      <li><b>Mengorganisir beberapa perusahaan besar secara serentak:</b> Merundingkan kontrak berskala industri yang jauh lebih besar dibanding kontrak satu perusahaan.</li>
+      <li><b><i>Pulling the union through</i>:</b> Memberikan tekanan kepada pemakai akhir (konsumen/klien) produk perusahaan agar perusahaan terdorong mengakui serikat.</li>
+      <li><b><i>Political involvement</i>:</b> Merekomendasikan dan menggalang suara (termasuk kerabat anggota) bagi pejabat pemerintah yang pro-pekerja agar memiliki sekutu saat berunding.</li>
+      <li><b><i>Union salting</i>:</b> Melatih <i>organizer</i> serikat untuk melamar dan bekerja di perusahaan target guna menggalang karyawan mendirikan serikat (awal mula di industri konstruksi, kini merambah perhotelan &amp; restoran).</li>
+      <li><b><i>Flooding the community</i>:</b> Membanjiri masyarakat sekitar bisnis target dengan para <i>organizer</i>, khususnya bila karyawan nonserikat meminta bantuan mengorganisir.</li>
+      <li><b><i>Public awareness campaigns</i>:</b> Kampanye publik terorganisir di luar pemogokan untuk menekan pengusaha memperbaiki upah/tunjangan—kian populer sebagai alternatif mogok agar pekerja tak diganti pengusaha.</li>
+      <li><b><i>Building organizing funds</i>:</b> Menghimpun dana afiliasi/federasi untuk melatih <i>organizer</i> dan mendanai kampanye iklan dukungan masyarakat.</li>
+      <li><b><i>Organizing through the card check</i>:</b> Karyawan menandatangani kartu dukungan; jika ditandatangani <b>lebih dari 50% angkatan kerja</b>, serikat buruh dinyatakan menang.</li>
+    </ul>
+
+    <div class="numh">2. Jenis-Jenis Serikat Buruh (Dessler &amp; Tan Chwee Huat, 2009:413 — 5 Jenis)</div>
+    <div class="table-wrap">
+      <table class="mini">
+        <thead><tr><th style="width:26%">Jenis Serikat Buruh</th><th>Karakteristik, Keanggotaan, &amp; Catatan (Hal. 8.9–8.10)</th></tr></thead>
+        <tbody>
+          <tr><td data-label="Jenis Serikat Buruh"><b>a. <i>Craft / Occupation Union</i></b></td><td data-label="Karakteristik">Anggota berkeahlian/pekerjaan sama lintas perusahaan/industri (mis. tukang kayu), sering mensyaratkan pemagangan. Ukurannya kecil, namun posisi tawar gaji tinggi demi menjaga standar keahlian.</td></tr>
+          <tr><td data-label="Jenis Serikat Buruh"><b>b. <i>General Union</i></b></td><td data-label="Karakteristik">Secara historis dibentuk bagi pekerja tak terampil yang tak bisa masuk <i>craft union</i>; kekuatannya bertumpu pada jumlah anggota yang sangat besar.</td></tr>
+          <tr><td data-label="Jenis Serikat Buruh"><b>c. <i>Staff Union</i></b></td><td data-label="Karakteristik">Merekrut pekerja nonmanual (bukan pekerja kasar), seperti pegawai toko, pramuniaga, juru tulis, panitera, pengawas, dan teknisi.</td></tr>
+          <tr><td data-label="Jenis Serikat Buruh"><b>d. <i>Industry Union</i></b></td><td data-label="Karakteristik">Beranggotakan karyawan dari industri yang sama tanpa membedakan keterampilan/jabatan; lebih besar daripada <i>craft union</i> dan sangat efektif dalam perundingan kolektif.</td></tr>
+          <tr><td data-label="Jenis Serikat Buruh"><b>e. <i>House Union</i></b> <span class="en">(Company / Enterprise Union)</span></td><td data-label="Karakteristik">Anggota berasal dari satu perusahaan sama tanpa syarat keahlian; umum di <b>Jepang dan Korea</b>. Mendorong loyalitas &amp; komunikasi langsung, efektif bila saling percaya—tetapi dikritik lemah karena tanpa dukungan serikat luar dan rentan tekanan internal pengusaha.</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="numh">3. Alasan Pekerja Bergabung dengan Serikat Buruh</div>
+    <p>Sejarah eksploitasi Revolusi Industri (jam kerja 60 jam/minggu hingga 12 jam × 7 hari, pekerja anak, kondisi tak aman, PHK sewaktu-waktu) mengajarkan bahwa <i>kesatuan adalah kekuatan</i>. Buku merangkum alasan bergabung dari dua sumber:</p>
+    <ul class="exp">
+      <li><b>6 Alasan Menurut Dessler &amp; Tan Chwee Huat (2009):</b> (a) upah lebih tinggi &amp; kondisi kerja lebih baik, (b) keamanan pekerjaan dari PHK sepihak, (c) kebutuhan sosial (pertemuan lintas departemen/perusahaan), (d) peningkatan keterampilan via pelatihan serikat, (e) tekanan kelompok rekan kerja agar tak tertinggal, dan (f) pemenuhan diri sendiri melalui pelayanan bagi sesama pekerja.</li>
+      <li><b>5 Alasan Menurut Mondy (2010:375–377):</b> (a) ketidakpuasan terhadap manajemen (kompensasi, senioritas, keberpihakan, keluhan prosedur), (b) kebutuhan <i>outlet</i> sosial (rekreasi, penitipan anak, solidaritas), (c) kebutuhan kesempatan memimpin di hierarki serikat, (d) tekanan untuk berserikat (meski UU melarang syarat keanggotaan paksa), dan (e) tekanan sosial terus-menerus dari rekan kerja.</li>
+    </ul>
+
+    <div class="numh">4. Pembentukan Serikat Buruh/Serikat Pekerja (UU No. 21 Tahun 2000)</div>
+    <ul class="exp">
+      <li><b>Syarat Kuantitatif Berjenjang:</b> <b>Pasal 5</b> (SP dibentuk sekurang-kurangnya <b>10 orang</b> pekerja/buruh), <b>Pasal 6</b> (Federasi dibentuk min. <b>5 SP</b>), dan <b>Pasal 7</b> (Konfederasi dibentuk min. <b>3 federasi</b>).</li>
+      <li><b>Asas &amp; Ruang Lingkup:</b> <b>Pasal 9</b> (dibentuk atas kehendak bebas tanpa tekanan pengusaha, pemerintah, parpol, atau pihak mana pun) dan <b>Pasal 10</b> (dapat dibentuk berdasarkan sektor usaha, jenis pekerjaan, atau bentuk lain).</li>
+      <li><b>Pasal 11 (AD/ART — 7 Unsur Wajib, a–g):</b> Nama &amp; lambang; dasar negara, asas, &amp; tujuan; tanggal pendirian; tempat kedudukan; keanggotaan &amp; kepengurusan; sumber &amp; pertanggungjawaban keuangan; serta ketentuan perubahan AD/ART.</li>
+      <li><b>Praktik di Indonesia &amp; Catatan Sejarah:</b> <b>UU No. 13/2003 Pasal 116 ayat 1</b> menegaskan PKB dibuat SP yang tercatat di instansi ketenagakerjaan. Selama 1998–2000 tercatat 30 federasi &amp; 55 SP di Kemenaker; <b>FSPSI</b> menjadi federasi terbesar dengan <b>6.500 serikat buruh</b> hampir di seluruh provinsi. (Buku juga memuat foto historis pemogokan buruh tekstil Lawrence, Massachusetts tahun 1912).</li>
+    </ul>
+
+    <div class="casebox"><span class="ctitle">Kasus Buku KB 1 (Hal. 8.15–8.16) · Mengatasi Hambatan (Nunung di Hotel Ciputra)</span>
+      <b>Nunung</b>, lulusan SMA Bandung yang baru bekerja sebagai <i>waitress</i> di <b>Hotel Ciputra Jakarta Barat</b> (diwawancarai atasan langsung <b>Herman</b> dan dilatih <b>Bambang</b>), ragu bergabung dengan serikat pekerja karena sistem hotelnya adalah <b><i>open shop</i></b> dan guru SMA-nya pernah menyebut keanggotaan di <i>open shop</i> tidak bermanfaat. Namun tekanan sosial halus rekan kerja terasa memisahkannya, hingga <i>steward</i> serikat buruh, <b>Aida</b>, menegur bahwa tidak adil menikmati manfaat perjuangan serikat tanpa ikut menjadi anggota. Kasus ini menguji pemahaman tentang <i>open shop</i>, hak bebas memilih, serta reaksi/tekanan sosial rekan kerja.
+    </div>
+
+    <div class="flow">Wadah serikat pekerja yang dibentuk di KB 1 memperjuangkan kesejahteraan anggotanya melalui mekanisme negosiasi formal—dibahas lengkap pada <b>KB 2: Perundingan Kolektif</b> (Bagian A–G).</div>
+  </div>
+
+  <!-- ==================== KB 2 ==================== -->
+  <h2 class="section" id="kb2"><span class="dot" style="background:var(--kb2)"></span>KB 2 — Perundingan Kolektif</h2>
+  <div class="card kb2b"><span class="kb-tag kb2t">KB 2 · Hal. 8.17–8.28</span>
+    <p class="lead">Perundingan kolektif (<span class="en">collective bargaining</span>) merupakan sarana utama serikat pekerja dan manajemen menyelesaikan perbedaan kepentingan secara terlembaga demi melahirkan kesepakatan kerja yang adil dan mengikat.</p>
+
+    <div class="acro-box"><span class="acro-title">📖 Kamus Konteks Singkatan &amp; Istilah Kunci KB 2</span>
+      <ul class="acro-grid">
+        <li><b>KKB</b>: Kesepakatan Kerja Bersama (<i>Collective Agreement</i>) — kontrak tertulis hasil perundingan kolektif yang ditandatangani kedua pihak.</li>
+        <li><b>HIP</b>: Hubungan Industrial Pancasila — konsep hubungan ketenagakerjaan Indonesia yang memandang mogok kurang selaras dengan budaya musyawarah.</li>
+        <li><b>Integrative Bargaining</b>: Perundingan kolaboratif yang menghasilkan solusi menang-menang (<i>win-win</i>).</li>
+        <li><b>Distributive Bargaining</b>: Perundingan kompetitif (pembagian kue) yang cenderung menghasilkan solusi menang-kalah (<i>win-lose</i>).</li>
+      </ul>
+    </div>
+
+    <!-- KB2 A -->
+    <div class="abc"><span class="ltr">A</span><h4>Perundingan Kolektif</h4></div>
+    <p>Sebelum berunding, serikat buruh harus berstatus resmi/tersertifikasi. <b>Dessler &amp; Tan Chwee Huat (2009:415)</b> mendefinisikan perundingan kolektif sebagai negosiasi antara pengusaha dan karyawan mengenai kondisi kerja dan syarat ketenagakerjaan untuk mencapai kesepakatan (<b>Cascio, 2006:520</b>: transaksi dua pihak menyelesaikan konflik; <b>Mondy, 2009:79</b>: kewajiban timbal balik berunding dengan itikad baik mengenai upah, jam, dan persyaratan kerja—tanpa paksaan menyetujui proposal sepihak).</p>
+    <ol class="book">
+      <li><b>Perwakilan:</b> Pengusaha diwakili tim manajemen (melibatkan manajer SDM), sedangkan karyawan diwakili serikat buruh.</li>
+      <li><b>Tujuan Perundingan Kolektif:</b> Menyusun perjanjian kerja (<i>labour agreement</i>) yang menguraikan hak, kewajiban, dan tanggung jawab manajemen, karyawan individual, dan serikat pekerja agar dapat diterima semua pihak.</li>
+      <li><b>Isi Perjanjian (2 Kategori):</b> (a) <i>Masalah gaji</i> (jumlah, waktu bayar, bonus, tunjangan/<i>benefits</i> uang maupun nonuang), dan (b) <i>Masalah kondisi kerja/pelayanan</i> (cuti tahunan, cuti harian, dsb.). Di negara yang sudah mengatur ketat gaji/<i>benefits</i> lewat UU, perundingan lebih terfokus pada <i>benefits</i> tambahan dan kondisi kerja.</li>
+      <li><b>Manfaat Perundingan Kolektif:</b> Menyediakan forum diskusi langsung, menjamin perlakuan setara dalam kategori pekerjaan sama, mencegah ketidakadilan sistemik (kesepakatan tetap berlaku meski pengusaha berganti), serta membangun saling pengertian antara aspirasi pekerja dan realitas ekonomi/keuangan perusahaan. <i>Catatan global:</i> biaya tenaga kerja terlalu tinggi menurunkan daya saing produk di pasar dunia sehingga mendorong manufaktur negara maju merelokasi pabrik ke negara berkembang.</li>
+    </ol>
+
+    <!-- KB2 B -->
+    <div class="abc"><span class="ltr">B</span><h4>Perspektif Perundingan Kolektif</h4></div>
+    <ol class="book">
+      <li><b>Perspektif <i>Behavioral</i>:</b> Memandang perundingan kolektif sebagai upaya menciptakan <b>keseimbangan kekuasaan</b>. Karyawan individual lemah dan minim informasi pasar kerja, namun secara kolektif lewat serikat mereka berdaya tawar kuat; demikian pula pengusaha kecil bergabung dalam himpunan pengusaha untuk akses informasi &amp; dukungan kolektif.</li>
+      <li><b>Perspektif Ekonomi:</b> Hasil perundingan kolektif mencerminkan hukum pasar tenaga kerja—penawaran dan permintaan menentukan upah serta syarat kerja.</li>
+      <li><b>Perspektif Hukum:</b> Merupakan kewajiban dan prosedur resmi menurut peraturan ketenagakerjaan negara, termasuk di Indonesia melalui <b>UU Ketenagakerjaan No. 13 Tahun 2003</b>.</li>
+    </ol>
+
+    <!-- KB2 C -->
+    <div class="abc"><span class="ltr">C</span><h4>Kondisi-Kondisi yang Berpengaruh terhadap Keberhasilan Perundingan</h4></div>
+    <p>Keberhasilan perundingan kolektif bertumpu pada stabilitas serikat buruh serta <b>lima kondisi utama</b>:</p>
+    <ol class="book">
+      <li><b>Kebebasan berserikat:</b> Pekerja dan pengusaha bebas membentuk organisasi perwakilan; campur tangan pengusaha melanggar undang-undang.</li>
+      <li><b>Pengakuan pengusaha terhadap serikat buruh:</b> Perundingan hanya dapat dimulai setelah pengusaha mengakui serikat yang sah mewakili karyawan (bila ada beberapa serikat bersaing, pekerja harus menentukan wakilnya dulu).</li>
+      <li><b>Itikad baik:</b> Kedua pihak sungguh-sungguh ingin menjembatani perbedaan, bukan bersikeras kaku pada tuntutan awal.</li>
+      <li><b>Saling menghormati:</b> Menghindari penipuan/kebohongan agar suasana tetap ramah dan kondusif bagi usulan terbaik.</li>
+      <li><b>Sistem perundang-undangan yang mendukung:</b> Aturan ketenagakerjaan yang menjamin tata cara perundingan benar serta mekanisme penyelesaian perselisihan.</li>
+    </ol>
+
+    <div class="flow">Setelah kondisi dasar perundingan terpenuhi (Bagian C), <b>Bagian D</b> membedah dinamika, faktor penentu, dan empat langkah praktis proses negosiasi.</div>
+
+    <!-- KB2 D -->
+    <div class="abc"><span class="ltr">D</span><h4>Negosiasi</h4></div>
+    <ol class="book">
+      <li><b>Pengertian &amp; 2 Pola Hasil:</b> Negosiasi adalah pembahasan masalah untuk mencapai kesepakatan atau menyelesaikan konflik. Menghasilkan dua pola: (a) <b><i>Integrative bargaining</i></b>—solusi <b>menang-menang</b> karena pemenuhan tuntutan satu pihak tidak menunda tuntutan pihak lain; dan (b) <b><i>Distributive bargaining</i></b>—solusi <b>menang-kalah</b> karena kedua pihak memperebutkan porsi lebih dari separuh "kue" yang sama.</li>
+      <li><b>Faktor-Faktor yang Memengaruhi Proses Bernegosiasi (3 Faktor):</b> (1) topik permasalahan yang dibahas, (2) orang-orang yang terlibat, dan (3) kondisi tempat/situasi pembahasan. Diawali posisi ekstrem (serikat menuntut upah tinggi, pengusaha menawar rendah) lalu bergerak saling menyesuaikan.</li>
+      <li><b>Langkah-Langkah dalam Bernegosiasi (4 Langkah):</b>
+        <div class="diagram-box" style="margin:10px 0">
+          <div class="flowchart">
+            <span class="fc-node">1. Persiapan<br><small style="font-weight:400">Tujuan, prioritas, fakta</small></span>
+            <span class="fc-arrow">→</span>
+            <span class="fc-node">2. Presentasi<br><small style="font-weight:400">Dengar, catat, klarifikasi</small></span>
+            <span class="fc-arrow">→</span>
+            <span class="fc-node">3. Pertukaran &amp; Kompromi<br><small style="font-weight:400">Tukar syarat ke titik tengah</small></span>
+            <span class="fc-arrow">→</span>
+            <span class="fc-node" style="background:var(--dot);color:#fff">4. Mencapai Persetujuan<br><small style="font-weight:400;opacity:.92">Simpulkan / tawarkan konsesi</small></span>
+          </div>
+          <div class="diagram-cap">Empat Tahap Sistematis Negosiasi dalam Perundingan Kolektif</div>
+        </div>
+      </li>
+    </ol>
+
+    <!-- KB2 E -->
+    <div class="abc"><span class="ltr">E</span><h4>Cara-Cara untuk Menyelesaikan Perselisihan</h4></div>
+    <p>Ketika negosiasi menemui jalan buntu atau <b>"impas" (<span class="en">impasse</span>)</b>, sistem perundang-undangan menyediakan <b>tiga jalur penyelesaian pihak ketiga</b> (bila tetap gagal, serikat buruh dapat menyerukan <b>mogok kerja</b> untuk menekan manajemen):</p>
+    <div class="rgrid c3" data-revealgroup>
+      <div class="rcell active" data-reveal data-detail="<b>1. Konsiliasi:</b> Pihak ketiga (<i>konsiliator</i>) yang <b>tidak memihak secara total</b> bertemu para pihak secara terpisah maupun bersama untuk mempertukarkan informasi, memperjelas isu, dan meredakan kesalahpahaman—<b>tanpa memaksakan penyelesaian</b>."><span class="stepnum">1</span><span><span class="rt">Konsiliasi</span><span class="rp">Netral · fasilitasi dialog</span></span></div>
+      <div class="rcell" data-reveal data-detail="<b>2. Mediasi:</b> Melibatkan pihak ketiga (<i>mediator</i>) yang melangkah lebih jauh dengan <b>memberikan rekomendasi</b> bagi kedua pihak untuk dipertimbangkan; namun persetujuan akhir tetap berada di tangan para pihak sendiri."><span class="stepnum">2</span><span><span class="rt">Mediasi</span><span class="rp">Beri rekomendasi · tak mengikat</span></span></div>
+      <div class="rcell" data-reveal data-detail="<b>3. Arbitrase:</b> Pihak ketiga yang netral (<i>arbitrator</i>) menyelesaikan perselisihan dengan <b>membuat keputusan final</b> bagi para pihak—disukai karena mengalihkan tanggung jawab keputusan sehingga terhindar dari rasa malu dan proses pengadilan."><span class="stepnum">3</span><span><span class="rt">Arbitrase</span><span class="rp">Keputusan final pihak ketiga</span></span></div>
+    </div>
+    <div class="rdetail" data-revealdetail><b>1. Konsiliasi:</b> Pihak ketiga (<i>konsiliator</i>) yang <b>tidak memihak secara total</b> bertemu para pihak secara terpisah maupun bersama untuk mempertukarkan informasi, memperjelas isu, dan meredakan kesalahpahaman—<b>tanpa memaksakan penyelesaian</b>.</div>
+
+    <!-- KB2 F -->
+    <div class="abc"><span class="ltr">F</span><h4>Kesepakatan Kerja Bersama (<span class="en">Collective Agreement</span>)</h4></div>
+    <ol class="book">
+      <li><b>Hakikat Kesepakatan:</b> Hasil perundingan kolektif tertulis (KKB) yang ditandatangani kedua pihak. Di Indonesia, hanya <b>serikat buruh terdaftar</b> yang berhak berunding; negosiasi harus tuntas dalam <b>30 hari</b> (jika gagal, diserahkan ke Departemen Tenaga Kerja sebagai mediator). KKB berlaku selama <b>2 tahun</b> (dapat diperpanjang), mencakup upah, <i>benefits</i>, kondisi kerja, keamanan sosial, dan kesejahteraan, wajib dicatat di <b>Kementerian Tenaga Kerja</b>, dan serikat wajib menyosialisasikan isinya kepada anggota. Berdasarkan <b>Hubungan Industrial Pancasila (HIP)</b>, meski hak mogok diakui UU, mogok dipandang tidak selaras dengan budaya Indonesia karena memicu konflik.</li>
+      <li><b>Tipe-Tipe Kesepakatan (2 Kategori):</b>
+        <div class="table-wrap" style="margin-top:8px">
+          <table class="mini">
+            <thead><tr><th style="width:28%">Tipe Kesepakatan</th><th>Isi, Sifat, &amp; Peran (Hal. 8.24)</th></tr></thead>
+            <tbody>
+              <tr><td data-label="Tipe Kesepakatan"><b>a. Kesepakatan Prosedural</b></td><td data-label="Isi &amp; Sifat">Menetapkan aturan main kedua pihak: prosedur penyelesaian perselisihan, keluhan, disiplin, tata cara negosiasi, perwakilan, pimpinan rapat, batas waktu, serta pencatatan arsip agar perselisihan serupa ditangani konsisten dan wajar. Cenderung <b>statis</b>.</td></tr>
+              <tr><td data-label="Tipe Kesepakatan"><b>b. Kesepakatan Substantif</b></td><td data-label="Isi &amp; Sifat">Memuat persyaratan dan kondisi ketenagakerjaan (upah, tunjangan, cuti, jam kerja). Bersifat <b>dinamis / sering diubah</b> saat serikat menegosiasikan perbaikan sesuai perubahan pasar tenaga kerja.</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </li>
+    </ol>
+
+    <!-- KB2 G -->
+    <div class="abc"><span class="ltr">G</span><h4>Prosedur untuk Menangani Keluhan Karyawan</h4></div>
+    <p>Serikat buruh dan perusahaan sepakat bahwa keluhan karyawan harus ditangani <b>pada tingkat serendah mungkin</b> melalui <b>empat langkah berbatas waktu ketat</b>:</p>
+    <div class="rgrid c4" data-revealgroup>
+      <div class="rcell active" data-reveal data-detail="<b>Langkah Pertama:</b> Karyawan menyampaikan keluhan dalam <b>3 hari kerja</b> kepada atasan langsung (atau atasan lebih tinggi bila keluhan menyangkut atasannya), yang wajib memberi keputusan dalam <b>3 hari kerja</b>."><span class="stepnum">1</span><span><span class="rt">Atasan Langsung</span><span class="rp">3 hari → putusan 3 hari</span></span></div>
+      <div class="rcell" data-reveal data-detail="<b>Langkah Kedua:</b> Jika tidak puas, dalam <b>3 hari kerja</b> karyawan membawa masalah ke pimpinan departemen (dapat didampingi anggota komite cabang serikat buruh); pimpinan departemen memutuskan dalam <b>3 hari kerja</b>."><span class="stepnum">2</span><span><span class="rt">Pimpinan Dept.</span><span class="rp">+ Komite SP · 3 hari</span></span></div>
+      <div class="rcell" data-reveal data-detail="<b>Langkah Ketiga:</b> Jika tetap buntu, anggota serikat yang diberi kewenangan oleh sekretaris umum komite cabang membawa kasus ke <b>Departemen Tenaga Kerja</b> yang memberi keputusan dalam <b>5 hari kerja</b>."><span class="stepnum">3</span><span><span class="rt">Depnaker</span><span class="rp">Putusan 5 hari kerja</span></span></div>
+      <div class="rcell" data-reveal data-detail="<b>Langkah Keempat:</b> Apabila tetap belum terselesaikan, pihak ketiga dapat meminta persetujuan ketentuan <b>wasit (arbitrase)</b>. Keluhan yang melewati batas waktu Langkah 1 dianggap tidak ada dan diabaikan."><span class="stepnum">4</span><span><span class="rt">Wasit / Arbitrase</span><span class="rp">Penyelesaian akhir</span></span></div>
+    </div>
+    <div class="rdetail" data-revealdetail><b>Langkah Pertama:</b> Karyawan menyampaikan keluhan dalam <b>3 hari kerja</b> kepada atasan langsung (atau atasan lebih tinggi bila keluhan menyangkut atasannya), yang wajib memberi keputusan dalam <b>3 hari kerja</b>.</div>
+
+    <div class="casebox"><span class="ctitle">Kasus Buku KB 2 (Hal. 8.27–8.28) · Keluhan di Usaha Dry Cleaning &amp; Laundry</span>
+      Saat mengunjungi usaha <i>dry cleaning &amp; laundry</i> milik ayahnya (<b>Arif</b>), konsultan manajer <b>Fitria</b> dicegat barisan karyawan di tempat parkir. Seorang karyawan mengeluh dijatuhi sanksi sewenang-wenang oleh manajer toko <b>Agung</b> (dimata-matai/diskors 2 hari tanpa gaji karena terlambat pada hari Kamis) dan merasa kata-kata manajer toko adalah hukum tanpa saluran keluhan resmi selain mencegat pemilik di parkir. Kasus ini menguji perlunya <b>prosedur penyampaian keluhan formal</b> yang terstruktur, adil, dan bebas rasa takut.
+    </div>
+
+    <div class="flow">Perundingan kolektif (KB 2) adalah bagian dari ekosistem hubungan kerja yang lebih luas. <b>KB 3</b> membahas <b>Hubungan Kerja, Hubungan Industrial, Perjanjian Kerja, PKB, dan perbandingan 4 negara Asia</b> (Bagian A–D).</div>
+  </div>
+
+  <!-- ==================== KB 3 ==================== -->
+  <h2 class="section" id="kb3"><span class="dot" style="background:var(--kb3)"></span>KB 3 — Hubungan Kerja dan Perjanjian Kerja Bersama</h2>
+  <div class="card kb3b"><span class="kb-tag kb3t">KB 3 · Hal. 8.29–8.37</span>
+    <p class="lead">Hubungan kerja dan Perjanjian Kerja Bersama (PKB) sebagaimana diatur dalam <b>UU Ketenagakerjaan No. 13 Tahun 2003</b> berfungsi menampung aspirasi karyawan sekaligus membangun kemitraan jangka panjang demi ketenangan kerja dan kelangsungan usaha.</p>
+
+    <div class="acro-box"><span class="acro-title">📖 Kamus Konteks Singkatan &amp; Akronim KB 3</span>
+      <ul class="acro-grid">
+        <li><b>LKS Bipartit / Tripartit</b>: Lembaga Kerja Sama Bipartit (pengusaha–pekerja di perusahaan ≥50 orang) &amp; Tripartit (pemerintah–pengusaha–SP).</li>
+        <li><b>PP &amp; PKB / CLA</b>: Peraturan Perusahaan &amp; Perjanjian Kerja Bersama (<i>Collective Labour Agreement</i> / dulu KKB).</li>
+        <li><b>ILO</b>: <i>International Labour Organization</i> — badan perburuhan internasional yang membantu sistem tripartit di China (1990-an).</li>
+        <li><b>HIP / PIR</b>: Hubungan Industrial Pancasila (<i>Pancasila Industrial Relations</i>) — model hubungan industrial Indonesia berbasis musyawarah &amp; konsensus.</li>
+      </ul>
+    </div>
+
+    <!-- KB3 A -->
+    <div class="abc"><span class="ltr">A</span><h4>Hubungan Kerja (Model Dunlop)</h4></div>
+    <p>Menurut <b>Dessler &amp; Tan Chwee Huat (2010:421)</b>, <span class="term">hubungan kerja</span> adalah hubungan di antara orang-orang di tempat kerja (baik berserikat maupun tidak, berorientasi laba maupun jasa masyarakat)—merupakan persekutuan jangka panjang antara manajer, profesional, teknisi, supervisor, mandor, karyawan, dan pengurus serikat buruh. Secara sistematis dipelajari lewat <b>Model Dunlop</b> (<i>Industrial Relations System</i>, 1958 — Noe et al., 2006):</p>
+    <div class="diagram-box">
+      <div class="flowchart">
+        <span class="fc-node">3 Aktor Utama:<br><small style="font-weight:400">1. Pekerja &amp; Serikat Buruh<br>2. Manajemen &amp; Perwakilannya<br>3. Pemerintah &amp; Lembaganya</small></span>
+        <span class="fc-arrow">──[ Diikat Ideologi Bersama ]──▶</span>
+        <span class="fc-node" style="background:var(--dot);color:#fff">Jejaring Peraturan<br><small style="font-weight:400;opacity:.92">UU Ketenagakerjaan &amp; Syarat Kerja</small></span>
+      </div>
+      <div class="diagram-cap">Reproduksi Kerangka Hubungan Kerja — Model John Dunlop (1958) dalam Konteks Tantangan Kompetisi Lingkungan</div>
+    </div>
+
+    <!-- KB3 B -->
+    <div class="abc"><span class="ltr">B</span><h4>Hubungan Industrial</h4></div>
+
+    <div class="numh">1. Pengertian &amp; Fungsi Masing-Masing Pihak</div>
+    <p><span class="term">Hubungan industrial</span> adalah sistem hubungan yang terbentuk di antara para pelaku proses produksi barang/jasa—melibatkan <b>6 pihak berkepentingan langsung</b>: (1) pengusaha/manajemen, (2) karyawan &amp; serikat pekerja, (3) masyarakat pemasok faktor produksi, (4) masyarakat konsumen, (5) masyarakat sekitar, dan (6) pemerintah (termasuk sumber penerimaan pajak).</p>
+    <ul class="exp">
+      <li><b>Fungsi Pemerintah:</b> Menetapkan kebijakan, memberikan pelayanan, melaksanakan pengawasan, dan menindak pelanggaran peraturan ketenagakerjaan.</li>
+      <li><b>Fungsi Pekerja &amp; Serikat Pekerja:</b> Menjalankan kewajiban kerja, menjaga ketertiban demi kelangsungan produksi, menyalurkan aspirasi secara demokratis, mengembangkan keterampilan, memajukan perusahaan, dan memperjuangkan kesejahteraan anggota beserta keluarganya.</li>
+      <li><b>Fungsi Pengusaha &amp; Organisasi Pengusaha:</b> Menciptakan kemitraan, mengembangkan usaha, memperluas lapangan kerja, dan memberikan kesejahteraan secara terbuka, demokratis, dan berkeadilan.</li>
+    </ul>
+
+    <div class="numh">2. Sarana Melaksanakan Hubungan Industrial (8 Sarana, a–h)</div>
+    <p>Hubungan industrial dilaksanakan melalui <b>8 sarana</b>: (a) serikat pekerja/serikat buruh, (b) organisasi pengusaha, (c) <b>Lembaga Kerja Sama (LKS) Bipartit</b>, (d) <b>Lembaga Kerja Sama (LKS) Tripartit</b>, (e) peraturan perusahaan, (f) perjanjian kerja bersama, (g) peraturan perundang-undangan ketenagakerjaan, dan (h) lembaga penyelesaian perselisihan hubungan industrial.</p>
+    <ul class="exp">
+      <li><b>a. Lembaga Kerja Sama Bipartit:</b> <b>Wajib</b> dibentuk setiap perusahaan yang mempekerjakan <b>50 orang pekerja/buruh atau lebih</b>; berfungsi sebagai forum komunikasi dan konsultasi ketenagakerjaan internal, beranggotakan unsur pengusaha dan wakil pekerja yang ditunjuk secara demokratis.</li>
+      <li><b>b. Lembaga Kerja Sama Tripartit:</b> Berfungsi memberi pertimbangan, saran, dan pendapat kepada pemerintah dan pihak terkait dalam penyusunan kebijakan serta pemecahan masalah ketenagakerjaan; beranggotakan unsur <b>pemerintah, organisasi pengusaha, dan serikat pekerja/serikat buruh</b>.</li>
+    </ul>
+
+    <div class="numh">3. Enam Prinsip Hubungan Industrial (a–f)</div>
+    <ul class="let">
+      <li>Pengusaha, pekerja, pemerintah, dan masyarakat sama-sama berkepentingan atas keberhasilan dan kelangsungan perusahaan.</li>
+      <li>Perusahaan merupakan sumber penghasilan bagi banyak orang.</li>
+      <li>Pengusaha dan pekerja memiliki hubungan fungsional dengan pembagian kerja/tugas yang berbeda.</li>
+      <li>Pengusaha dan pekerja merupakan anggota keluarga perusahaan.</li>
+      <li>Tujuan pembinaan hubungan industrial adalah menciptakan <b>ketenangan berusaha dan ketenteraman bekerja</b> demi peningkatan produktivitas.</li>
+      <li>Peningkatan produktivitas perusahaan harus meningkatkan <b>kesejahteraan bersama</b> (pengusaha dan pekerja).</li>
+    </ul>
+
+    <!-- KB3 C -->
+    <div class="abc"><span class="ltr">C</span><h4>Perjanjian Kerja</h4></div>
+    <p>Menurut <b>UU Ketenagakerjaan No. 13 Tahun 2003</b>, hubungan kerja terjadi karena adanya <b>perjanjian kerja</b> antara pengusaha dan pekerja (<b>Pasal 50</b>), dibuat secara tertulis atau lisan (<b>Pasal 51 ayat 1</b>) atas dasar kesepakatan kedua belah pihak (<b>Pasal 52 ayat 1a</b>). Dalam pengertian sempit (<i>Management–Employees Relationship</i>), hubungan kerja wajib memuat <b>tiga unsur</b>: <b>pekerjaan, upah, dan perintah</b>. Perjanjian kerja mengatur syarat kerja secara <b>individual</b>, sedangkan pengaturan secara <b>kolektif</b> dituangkan dalam <b>Peraturan Perusahaan (PP)</b> atau <b>Perjanjian Kerja Bersama (PKB)</b>.</p>
+
+    <!-- KB3 D -->
+    <div class="abc"><span class="ltr">D</span><h4>Perjanjian Kerja Bersama (PKB) &amp; Praktik di Negara-Negara Asia</h4></div>
+
+    <div class="numh">1. Pengertian Perjanjian Kerja Bersama (UU No. 13 Tahun 2003 Pasal 1 Poin 21 &amp; Pasal 116)</div>
+    <p><b>PKB</b> (sebelumnya disebut <b>KKB</b> atau <i>Collective Labour Agreement / CLA</i>) adalah perjanjian berisi syarat-syarat kerja, hak, dan kewajiban para pihak hasil perundingan secara <b>musyawarah</b> antara satu atau beberapa serikat pekerja yang telah tercatat di instansi ketenagakerjaan dengan satu atau beberapa pengusaha (bila musyawarah buntu, diselesaikan lewat prosedur penyelesaian perselisihan hubungan industrial). Masa berlaku PKB adalah <b>paling lama 2 tahun</b> dan dapat diperpanjang <b>paling lama 1 tahun</b>.</p>
+
+    <div class="numh">2. Praktik PKB &amp; Hubungan Ketenagakerjaan di Empat Negara Asia</div>
+    <div class="table-wrap">
+      <table class="mini">
+        <thead><tr><th style="width:18%">Negara</th><th>Karakteristik &amp; Kerangka Hukum Ketenagakerjaan (Hal. 8.34–8.35)</th></tr></thead>
+        <tbody>
+          <tr><td data-label="Negara"><b>1. Brunei Darussalam</b></td><td data-label="Karakteristik &amp; Hukum">Penduduk ~300.000, angkatan kerja ~100.000 (separuhnya tenaga kerja asing). Pemerintah adalah pemberi kerja terbesar; di sektor swasta terbesar adalah <b>Brunei Petroleum / Brunei Shell Company</b>. Hubungan tripartit harmonis di bawah 4 UU utama: <i>Labor Act</i>, <i>Workmen's Compensation Act</i>, <i>Trade Union Act</i> (hak membentuk SP), dan <i>Trade Disputes Act</i> (penyelesaian perselisihan).</td></tr>
+          <tr><td data-label="Negara"><b>2. Kamboja</b></td><td data-label="Karakteristik &amp; Hukum">Ekonomi berkembang menarik investor asing (<i>joint ventures</i> maupun 100% kepemilikan asing). Diatur <b><i>Labor Law</i> 1997</b> yang progresif: mengatur jam kerja, upah minimum, kontrak/PHK, serta menjamin kebebasan berserikat, perundingan kolektif, dan <b>kebebasan mogok</b> (penolakan bekerja oleh karyawan).</td></tr>
+          <tr><td data-label="Negara"><b>3. China</b></td><td data-label="Karakteristik &amp; Hukum">Pasca-reformasi ekonomi akhir 1970-an, tahun <b>1980</b> diperkenalkan <b>3 sistem baru</b>: (1) sistem kontrak kerja, (2) sistem upah mengambang, dan (3) sistem keterikatan manajemen. Awal <b>1990-an</b> diperkenalkan <b>sistem tripartit</b> bersama <b>ILO</b> untuk memperluas standar perburuhan internasional.</td></tr>
+          <tr><td data-label="Negara"><b>4. Indonesia</b></td><td data-label="Karakteristik &amp; Hukum">Berlandaskan 5 sila filosofi Pancasila yang melahirkan <b>Hubungan Industrial Pancasila (HIP) / <i>Pancasila Industrial Relations</i> (PIR)</b>—menekankan kesepakatan bersama, <b>musyawarah/konsensus</b>, saling menolong, semangat kerja sama, dan diskusi bersahabat.</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="casebox"><span class="ctitle">Kasus Buku KB 3 (Hal. 8.36–8.37) · Tindakan Pendisiplinan (Maria &amp; Johanes)</span>
+      <b>Maria</b>, perwakilan serikat pekerja (yang pernah bolos 1 hari), dipanggil atasannya <b>Johanes</b> bersama tiga rekannya untuk menghadiri pertemuan program perbaikan kerja/pelatihan perusahaan. Serikat pekerja menolak program tersebut karena tidak dikonsultasikan sebelumnya dan hanya memperbolehkan anggota ikut bila pekerjaan mereka terancam. Serikat berargumen perusahaan tidak berwenang mendisiplinkan Maria atas kegagalan memerintahkan tiga rekannya—seharusnya Johanes sendiri yang memerintahkan dan mendisiplinkan bawahan langsungnya. Kasus ini menguji batas wewenang manajemen vs peran perwakilan serikat pekerja dalam perspektif PKB dan prinsip hubungan industrial.
+    </div>
+  </div>
+
+  <!-- GLOSARIUM -->
+  <h2 class="section" id="glosarium"><span class="dot"></span>Glosarium Istilah Kunci Modul 8</h2>
+  <div class="card"><dl class="glossary">
+    <dt>Closed / Union / Agency / Open Shop &amp; Maintenance of Membership</dt><dd>Lima tipe keamanan serikat buruh (<i>union security</i>) menurut Dessler (2005) yang mengatur kewajiban keanggotaan dan iuran serikat pekerja.</dd>
+    <dt>Distributive vs Integrative Bargaining</dt><dd>Perundingan kompetitif menang-kalah (<i>distributive</i>) vs perundingan kolaboratif menang-menang (<i>integrative</i>).</dd>
+    <dt>HIP (Hubungan Industrial Pancasila / PIR)</dt><dd>Sistem hubungan industrial Indonesia berlandaskan 5 sila Pancasila yang mengutamakan musyawarah/konsensus, kerja sama, dan saling menolong.</dd>
+    <dt>House Union (Company / Enterprise Union)</dt><dd>Serikat buruh beranggotakan karyawan satu perusahaan yang sama tanpa membedakan keahlian (umum di Jepang dan Korea).</dd>
+    <dt>Konsiliasi, Mediasi, &amp; Arbitrase</dt><dd>Tiga jalur pihak ketiga saat negosiasi impas: konsiliator memfasilitasi dialog, mediator memberi rekomendasi tak mengikat, arbitrator menetapkan keputusan akhir.</dd>
+    <dt>LKS Bipartit &amp; LKS Tripartit</dt><dd>Forum komunikasi internal pengusaha–pekerja (wajib bagi perusahaan ≥50 pekerja) dan forum saran kebijakan antara pemerintah, pengusaha, dan serikat pekerja.</dd>
+    <dt>Model Dunlop (1958)</dt><dd>Kerangka sistem hubungan industrial yang menghubungkan 3 aktor (pekerja/SP, manajemen, pemerintah) lewat ideologi bersama untuk menghasilkan jejaring peraturan.</dd>
+    <dt>PKB (Perjanjian Kerja Bersama / KKB / CLA)</dt><dd>Perjanjian kolektif tertulis hasil musyawarah SP tercatat dan pengusaha (UU No. 13/2003 Pasal 116), berlaku maks. 2 tahun dan dapat diperpanjang maks. 1 tahun.</dd>
+    <dt>Union Salting &amp; Card Check</dt><dd>Strategi melatih <i>organizer</i> melamar kerja di perusahaan target (<i>salting</i>) dan pengakuan serikat bila &gt;50% pekerja menandatangani kartu dukungan (<i>card check</i>).</dd>
+  </dl></div>
+</div>
+
+<footer><b>EKMA5207 — Manajemen Sumber Daya Manusia (Edisi 3)</b> · Modul 8: Perundingan Kolektif dan Hubungan Ketenagakerjaan (Prof. Dr. Mutiara Sibarani Panggabean, S.E., M.E.)<br>Bahan belajar lengkap mengikuti outline asli modul untuk persiapan ujian.</footer>
+
+<script>
+(function(){
+  var pb=document.getElementById('progress');
+  function onScroll(){var h=document.documentElement;var sc=h.scrollTop||document.body.scrollTop;var max=(h.scrollHeight-h.clientHeight)||1;pb.style.width=(sc/max*100)+'%';}
+  document.addEventListener('scroll',onScroll,{passive:true});onScroll();
+
+  var list=document.getElementById('conceptList');var items=[].slice.call(list.querySelectorAll('li'));var boxes=items.map(function(li){return li.querySelector('input');});
+  document.getElementById('totalCount').textContent=items.length;var doneEl=document.getElementById('doneCount');var KEY='studi_ekma5207_m8_concepts_v3';
+  function load(){try{var a=JSON.parse(localStorage.getItem(KEY)||'[]');boxes.forEach(function(b,i){if(a[i])b.checked=true;});}catch(e){}}
+  function save(){try{localStorage.setItem(KEY,JSON.stringify(boxes.map(function(b){return b.checked?1:0;})));}catch(e){}}
+  function refresh(){var n=0;items.forEach(function(li,i){if(boxes[i].checked){li.classList.add('done');n++;}else li.classList.remove('done');});doneEl.textContent=n;}
+  load();refresh();boxes.forEach(function(b){b.addEventListener('change',function(){refresh();save();});});
+  document.getElementById('resetBtn').addEventListener('click',function(){boxes.forEach(function(b){b.checked=false;});refresh();save();});
+
+  [].slice.call(document.querySelectorAll('[data-revealgroup]')).forEach(function(g){
+    var det=g.querySelector('[data-revealdetail]');if(!det){var sib=g.nextElementSibling;if(sib&&sib.hasAttribute&&sib.hasAttribute('data-revealdetail'))det=sib;}
+    var cells=[].slice.call(g.querySelectorAll('[data-reveal]'));
+    cells.forEach(function(c){c.addEventListener('click',function(){cells.forEach(function(x){x.classList.remove('active');});c.classList.add('active');if(det){det.innerHTML=c.getAttribute('data-detail');if(window.MathJax&&window.MathJax.typesetPromise)window.MathJax.typesetPromise([det]);}});});
+  });
+
+  (function(){
+    var ROWH=46,NODE_H=32,PAD=13,GAP=52;var COL={root:'#0f5e8f',kb1:'#1a86c7',kb2:'#e08a1e',kb3:'#2a9d6f',kb4:'#7a5cc0',kb5:'#c75b7a'};
+    var mc=document.createElement('canvas').getContext('2d');mc.font='700 13px -apple-system,Segoe UI,Roboto,sans-serif';
+    function tw(t){return Math.ceil(mc.measureText(t).width);}function esc(t){return t.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');}
+    function rgba(hex,a){var h=hex.replace('#','');return 'rgba('+parseInt(h.substr(0,2),16)+','+parseInt(h.substr(2,2),16)+','+parseInt(h.substr(4,2),16)+','+a+')';}
+    var DATA={label:'MODUL 8 — Perundingan Kolektif & HI',color:COL.root,children:[
+      {label:'KB1 · Serikat Pekerja (A–B)',color:COL.kb1,children:[
+        {label:'A. Arti Penting & Tujuan SP',children:[{label:'UU 21/2000 & UU 13/2003'},{label:'5 Tipe Union Security (Dessler)'},{label:'Tujuan (Dessler & Tan 5; Mondy 5)'}]},
+        {label:'B. Fungsi, Strategi, Jenis & Pembentukan',children:[{label:'4 Fungsi UU 21/2000 & 9 Strategi (Mondy)'},{label:'5 Jenis SP (Craft, General, Staff, Industry, House)'},{label:'Alasan Bergabung (6+5), Ps. 5–11 & Kasus Nunung'}]}
+      ]},
+      {label:'KB2 · Perundingan Kolektif (A–G)',color:COL.kb2,children:[
+        {label:'A. Pengertian, Perwakilan, Tujuan, Isi & Manfaat'},
+        {label:'B. 3 Perspektif (Behavioral, Ekonomi, Hukum)'},
+        {label:'C. 5 Kondisi Keberhasilan Perundingan'},
+        {label:'D. Negosiasi (Integrative vs Distributive · 4 Langkah)'},
+        {label:'E. Penyelesaian Perselisihan (Konsiliasi, Mediasi, Arbitrase)'},
+        {label:'F. KKB (30 Hari, 2 Thn; Prosedural vs Substantif)'},
+        {label:'G. Prosedur Keluhan 4 Langkah & Kasus Laundry'}
+      ]},
+      {label:'KB3 · Hubungan Kerja & PKB (A–D)',color:COL.kb3,children:[
+        {label:'A. Hubungan Kerja & Model Dunlop (3 Aktor)'},
+        {label:'B. Hubungan Industrial',children:[{label:'6 Pihak, 8 Sarana & 6 Prinsip'},{label:'LKS Bipartit (≥50) & Tripartit'}]},
+        {label:'C. Perjanjian Kerja (UU 13/2003 Ps. 50–52)'},
+        {label:'D. PKB (Ps. 116) & 4 Negara Asia',children:[{label:'Brunei, Kamboja, China & Indonesia (HIP)'},{label:'Kasus Pendisiplinan: Maria & Johanes'}]}
+      ]}
+    ]};
+    var idc=0;(function w(n,c){n.id='n'+(idc++);n.color=n.color||c;(n.children||[]).forEach(function(k){w(k,n.color);});})(DATA,COL.root);
+    (function w(n,d){if(d>=2&&n.children&&n.children.length)n.collapsed=true;(n.children||[]).forEach(function(k){w(k,d+1);});})(DATA,0);
+    var host=document.getElementById('mindmap');
+    function render(){
+      var colW=[];(function w(n,d){var width=tw(n.label)+PAD*2+((n.children&&n.children.length)?20:0);colW[d]=Math.max(colW[d]||0,width);if(!n.collapsed)(n.children||[]).forEach(function(k){w(k,d+1);});})(DATA,0);
+      var colX=[],acc=14;for(var d=0;d<colW.length;d++){colX[d]=acc;acc+=colW[d]+GAP;}var row={v:0};
+      (function lay(n,d){if(!n.children||!n.children.length||n.collapsed){n._y=row.v*ROWH+ROWH/2+8;row.v++;return;}var f,l;n.children.forEach(function(k,i){lay(k,d+1);if(i===0)f=k._y;l=k._y;});n._y=(f+l)/2;})(DATA,0);
+      var totalW=acc,totalH=row.v*ROWH+24;var nodes=[],links=[];
+      (function col(n,d,p){n._x=colX[d];n._w=tw(n.label)+PAD*2+((n.children&&n.children.length)?20:0);nodes.push({n:n,d:d});if(p)links.push([p,n]);if(!n.collapsed)(n.children||[]).forEach(function(k){col(k,d+1,n);});})(DATA,0,null);
+      var s='<svg width="'+totalW+'" height="'+totalH+'" viewBox="0 0 '+totalW+' '+totalH+'" xmlns="http://www.w3.org/2000/svg">';
+      links.forEach(function(pr){var a=pr[0],b=pr[1],x1=a._x+a._w,y1=a._y,x2=b._x,y2=b._y,mx=(x1+x2)/2;s+='<path d="M'+x1+' '+y1+' C'+mx+' '+y1+' '+mx+' '+y2+' '+x2+' '+y2+'" fill="none" stroke="'+rgba(b.color,.5)+'" stroke-width="2"/>';});
+      nodes.forEach(function(o){var n=o.n,x=n._x,y=n._y-NODE_H/2,w=n._w,hk=n.children&&n.children.length;var fill=o.d===0?n.color:(o.d===1?rgba(n.color,.12):'#fff');var tf=o.d===0?'#fff':'#1c2733';
+        s+='<g data-id="'+n.id+'" style="cursor:'+(hk?'pointer':'default')+'"><rect x="'+x+'" y="'+y+'" rx="9" width="'+w+'" height="'+NODE_H+'" fill="'+fill+'" stroke="'+n.color+'" stroke-width="'+(o.d===0?0:1.6)+'"/><text x="'+(x+PAD)+'" y="'+(n._y+4)+'" font-size="13" font-weight="'+(o.d<=1?'700':'500')+'" fill="'+tf+'" font-family="-apple-system,Segoe UI,Roboto,sans-serif">'+esc(n.label)+'</text>';
+        if(hk){var cx=x+w-12,cy=n._y;s+='<circle cx="'+cx+'" cy="'+cy+'" r="8.5" fill="'+n.color+'"/><text x="'+cx+'" y="'+(cy+4.5)+'" font-size="13" font-weight="700" fill="#fff" text-anchor="middle" font-family="sans-serif">'+(n.collapsed?'+':'\u2013')+'</text>';}s+='</g>';});
+      s+='</svg>';host.innerHTML=s;
+    }
+    host.addEventListener('click',function(e){var g=e.target.closest('g[data-id]');if(!g)return;var id=g.getAttribute('data-id');(function f(n){if(n.id===id){if(n.children&&n.children.length)n.collapsed=!n.collapsed;return true;}return (n.children||[]).some(f);})(DATA);render();});
+    document.getElementById('mmExpand').addEventListener('click',function(){(function w(n){if(n.children)n.collapsed=false;(n.children||[]).forEach(w);})(DATA);render();});
+    document.getElementById('mmCollapse').addEventListener('click',function(){(function w(n,d){if(d>=1&&n.children&&n.children.length)n.collapsed=true;(n.children||[]).forEach(function(k){w(k,d+1);});})(DATA,0);render();});
+    render();
+  })();
+
+  window.addEventListener('load',function(){setTimeout(function(){if(window.MathJax&&window.MathJax.typesetPromise)window.MathJax.typesetPromise();},400);});
+})();
+</script></body></html>

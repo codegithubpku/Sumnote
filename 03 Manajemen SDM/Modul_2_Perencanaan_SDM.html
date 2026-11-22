@@ -1,0 +1,702 @@
+<!DOCTYPE html>
+<html lang="id"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Modul 2 — Perencanaan Sumber Daya Manusia | EKMA5207</title>
+<script>window.MathJax={tex:{inlineMath:[['$','$']],displayMath:[['\\[','\\]'],['$$','$$']]},svg:{fontCache:'global'},startup:{typeset:true}};</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js" async></script>
+<style>
+:root{--bg:#f4f6f9;--panel:#fff;--ink:#1c2733;--muted:#5c6b7a;--line:#e4e9f0;--brand:#1a86c7;--brand-dark:#0f5e8f;--brand-soft:#e7f3fb;--kb1:#1a86c7;--kb2:#e08a1e;--kb3:#2a9d6f;--kb4:#7a5cc0;--kb5:#c75b7a;--radius:14px;--shadow:0 1px 2px rgba(16,42,67,.06),0 6px 20px rgba(16,42,67,.06);--maxw:900px}
+*{box-sizing:border-box}html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;line-height:1.72}
+#progress{position:fixed;top:0;left:0;height:4px;width:0;background:linear-gradient(90deg,var(--brand),#53c0ec);z-index:200;transition:width .1s}
+header.top{position:sticky;top:0;z-index:100;background:rgba(255,255,255,.92);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+.top-in{max-width:var(--maxw);margin:0 auto;padding:10px 20px;display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+.badge{background:var(--brand);color:#fff;font-weight:700;font-size:.72rem;letter-spacing:.5px;padding:4px 10px;border-radius:999px}
+.homebtn{text-decoration:none;display:inline-flex;align-items:center;gap:7px;background:var(--brand);color:#fff;font-weight:700;font-size:.8rem;padding:7px 15px;border-radius:999px;box-shadow:0 2px 6px rgba(16,42,67,.22);line-height:1}
+.top-title{font-size:.9rem;font-weight:600;color:var(--muted)}
+nav.jump{margin-left:auto;display:flex;gap:4px;flex-wrap:wrap}
+nav.jump a{font-size:.78rem;color:var(--muted);text-decoration:none;padding:5px 10px;border-radius:8px}
+nav.jump a:hover{background:var(--brand-soft);color:var(--brand-dark)}
+.wrap{max-width:var(--maxw);margin:0 auto;padding:0 20px 90px}
+.hero{margin-top:26px;padding:30px 28px;border-radius:var(--radius);color:#fff;background:linear-gradient(135deg,#0f5e8f,#1a86c7 60%,#2fa4df);box-shadow:var(--shadow);position:relative;overflow:hidden}
+.hero .eyebrow{font-size:.78rem;letter-spacing:1.5px;text-transform:uppercase;opacity:.9;font-weight:600}
+.hero h1{margin:.3em 0 .25em;font-size:1.62rem;line-height:1.25;max-width:92%}
+.hero .meta{display:flex;gap:18px;flex-wrap:wrap;font-size:.84rem;opacity:.95;margin-top:10px}
+h2.section{font-size:1.3rem;margin:48px 0 4px;display:flex;align-items:center;gap:10px;scroll-margin-top:70px}
+h2.section .dot{width:10px;height:22px;border-radius:4px;background:var(--brand)}
+.section-sub{color:var(--muted);font-size:.9rem;margin:0 0 18px}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);padding:22px 24px;margin:16px 0;--dot:var(--brand);overflow-x:clip;overflow-wrap:break-word;word-wrap:break-word}
+.concepts{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:minmax(0,1fr);gap:10px}
+.concepts li{display:flex;gap:12px;align-items:flex-start;padding:12px 14px;border:1px solid var(--line);border-radius:10px;background:#fcfdff;min-width:0;max-width:100%}
+.concepts li>span{min-width:0;max-width:100%;overflow-wrap:break-word;word-wrap:break-word}
+.concepts input{margin-top:4px;width:18px;height:18px;accent-color:var(--brand);flex:none;cursor:pointer}
+.concepts .ct{font-weight:600}.concepts .cd{display:block;font-weight:400;color:var(--muted);font-size:.86rem;margin-top:2px}
+.concepts li.done{background:var(--brand-soft);border-color:#bfe0f3}.concepts li.done .ct{text-decoration:line-through;opacity:.65}
+.cl-head{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-bottom:6px}
+.cl-head .count{font-size:.82rem;color:var(--muted);background:var(--brand-soft);padding:3px 10px;border-radius:999px;font-weight:600}
+.btn-reset{font-size:.78rem;border:1px solid var(--line);background:#fff;color:var(--muted);padding:5px 12px;border-radius:8px;cursor:pointer}
+.mm-toolbar{display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin-bottom:10px}
+.mm-btn{font-size:.78rem;border:1px solid var(--line);background:#fff;padding:6px 13px;border-radius:8px;cursor:pointer;color:var(--brand-dark);font-weight:600}
+.mindmap-host{height:580px;overflow:auto;border:1px solid var(--line);border-radius:10px;background:#fcfdff}.mindmap-host svg{display:block}
+.kb-tag{display:inline-flex;align-items:center;gap:8px;font-size:.78rem;font-weight:700;color:#fff;padding:5px 12px;border-radius:999px;margin-bottom:6px}
+.kb1t{background:var(--kb1)}.kb2t{background:var(--kb2)}.kb3t{background:var(--kb3)}
+.kb1b{--dot:var(--kb1)}.kb2b{--dot:var(--kb2)}.kb3b{--dot:var(--kb3)}
+.lead{font-size:1.02rem}.term{font-weight:700;color:var(--dot)}.en{font-style:italic;color:var(--muted);font-weight:500}
+.abc{display:flex;align-items:center;gap:10px;margin:28px 0 10px;padding-bottom:6px;border-bottom:2px solid color-mix(in srgb,var(--dot) 18%,#fff)}
+.abc .ltr{background:var(--dot);color:#fff;font-weight:800;min-width:30px;height:30px;padding:0 7px;border-radius:8px;display:grid;place-items:center;flex:none}
+.abc h4{margin:0;font-size:1.06rem;color:var(--dot)}
+.numh{font-weight:700;color:var(--dot);margin:22px 0 6px;font-size:1rem}
+.leth{font-weight:800;color:var(--dot);margin:16px 0 6px;font-size:.95rem;border-left:3px solid var(--dot);padding-left:10px}
+ol.book{margin:12px 0;padding-left:28px}ol.book>li{margin:10px 0;padding-left:6px}ol.book>li::marker{font-weight:700;color:var(--dot)}
+ul.exp{list-style:none;margin:12px 0;padding:0;display:grid;grid-template-columns:minmax(0,1fr);gap:10px}
+ul.exp>li{position:relative;padding-left:20px;min-width:0;max-width:100%;overflow-wrap:break-word;word-wrap:break-word}
+ul.exp>li::before{content:"";position:absolute;left:0;top:11px;width:8px;height:8px;border-radius:2px;background:var(--dot)}
+ul.let{list-style:lower-alpha;margin:10px 0;padding-left:28px}ul.let>li{margin:8px 0;padding-left:4px}ul.let>li::marker{color:var(--dot);font-weight:700}
+.flow{border-left:4px solid var(--dot);background:color-mix(in srgb,var(--dot) 9%,#fff);padding:11px 15px;border-radius:0 10px 10px 0;margin:18px 0;font-size:.9rem;min-width:0;max-width:100%;overflow-wrap:break-word;word-wrap:break-word}
+.flow::before{content:"🔗 Benang merah — ";font-weight:700;color:var(--dot)}.flow b{color:var(--dot)}
+.casebox{background:#f8fafc;border:1px solid var(--line);border-left:4px solid var(--dot);border-radius:0 10px 10px 0;padding:12px 15px;margin:14px 0;font-size:.88rem;min-width:0;max-width:100%;overflow-wrap:break-word;word-wrap:break-word}
+.casebox .ctitle{font-weight:700;color:var(--dot);margin-bottom:4px;display:block}
+.table-wrap{width:100%;overflow-x:auto;-webkit-overflow-scrolling:touch;margin:14px 0;border-radius:10px}
+table.mini{width:100%;border-collapse:collapse;margin:0;font-size:.86rem;table-layout:auto}
+table.mini th,table.mini td{border:1px solid var(--line);padding:10px 12px;text-align:left;vertical-align:top;overflow-wrap:break-word;word-wrap:break-word}
+table.mini th{background:color-mix(in srgb,var(--dot) 12%,#fff);color:var(--dot);font-weight:700}
+.rgrid{display:grid;gap:8px;margin:14px 0}.rgrid.c2{grid-template-columns:repeat(2,minmax(0,1fr))}.rgrid.c3{grid-template-columns:repeat(3,minmax(0,1fr))}.rgrid.c4{grid-template-columns:repeat(4,minmax(0,1fr))}
+.rcell{border:1px solid var(--line);border-radius:10px;padding:11px 13px;cursor:pointer;background:#fff;display:flex;gap:10px;align-items:flex-start;transition:.15s;min-width:0;max-width:100%}
+.rcell>span{min-width:0;max-width:100%;overflow-wrap:break-word;word-wrap:break-word}
+.rcell:hover{border-color:var(--dot);box-shadow:var(--shadow);transform:translateY(-2px)}
+.rcell.active{border-color:var(--dot);background:color-mix(in srgb,var(--dot) 8%,#fff)}
+.rcell .stepnum{background:var(--dot);color:#fff;font-weight:700;min-width:24px;height:24px;border-radius:7px;display:grid;place-items:center;flex:none;font-size:.82rem}
+.rcell .rt{font-weight:700;font-size:.9rem;color:var(--dot);display:block}.rcell .rp{font-size:.78rem;color:var(--muted);display:block;margin-top:2px}
+.rdetail{font-size:.88rem;border-left:4px solid var(--dot);background:color-mix(in srgb,var(--dot) 8%,#fff);border-radius:0 10px 10px 0;padding:12px 15px;margin-top:6px;min-width:0;max-width:100%;overflow-wrap:break-word;word-wrap:break-word}
+.diagram-box{border:1px solid var(--line);border-radius:12px;background:#fcfdff;padding:16px;margin:16px 0;text-align:center;min-width:0;max-width:100%}
+.diagram-box svg{max-width:100%;height:auto;display:block;margin:0 auto}
+.diagram-cap{font-size:.8rem;color:var(--muted);margin-top:10px;font-weight:600}
+.org-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;margin:14px 0}
+.org-grid .diagram-box{margin:0;padding:12px}
+.flowchart{display:flex;align-items:center;gap:6px;flex-wrap:wrap;margin:12px 0;justify-content:center}
+.fc-node{background:color-mix(in srgb,var(--dot) 12%,#fff);border:1.5px solid var(--dot);color:var(--dot);font-weight:700;font-size:.8rem;padding:8px 12px;border-radius:9px;text-align:center;max-width:100%}
+.fc-arrow{color:var(--dot);font-weight:800;font-size:1.05rem}
+.cols3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;text-align:left}
+.col-box{border:1.5px solid color-mix(in srgb,var(--dot) 35%,#fff);border-radius:10px;padding:12px 14px;background:#fff;min-width:0}
+.col-box h5{margin:0 0 6px;color:var(--dot);font-size:.86rem;text-transform:uppercase}
+.col-box ul{margin:0;padding-left:16px;font-size:.82rem;line-height:1.55}
+.eqbox{background:#fcfdff;border:1px solid var(--line);border-radius:10px;padding:10px 14px;margin:14px 0;overflow-x:auto}
+mjx-container{max-width:100%;overflow-x:auto;overflow-y:hidden}
+mjx-container:not([display="true"]){display:inline-block;vertical-align:middle}
+.acro-box{background:#f8fafc;border:1px solid var(--line);border-radius:10px;padding:12px 14px;margin:14px 0;font-size:.84rem;min-width:0;max-width:100%;overflow-wrap:break-word;word-wrap:break-word}
+.acro-title{font-weight:700;color:var(--dot);font-size:.86rem;margin-bottom:8px;display:block}
+.acro-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:6px 14px;margin:0;padding:0;list-style:none}
+.acro-grid li{min-width:0;line-height:1.5}.acro-grid b{color:var(--dot)}
+.fguide{background:color-mix(in srgb,var(--dot) 5%,#fff);border:1px solid color-mix(in srgb,var(--dot) 22%,#e4e9f0);border-radius:10px;padding:12px 15px;margin:-6px 0 16px;font-size:.86rem;min-width:0;max-width:100%;overflow-wrap:break-word;word-wrap:break-word}
+.fguide .fg-head{font-weight:700;color:var(--dot);font-size:.84rem;text-transform:uppercase;letter-spacing:.35px;margin:0 0 6px}
+.fguide ul{margin:4px 0 8px;padding-left:18px}.fguide ul li{margin:3px 0}
+.fguide .fg-core{border-top:1px dashed color-mix(in srgb,var(--dot) 30%,#cbd5e1);padding-top:8px;margin-top:8px;display:grid;grid-template-columns:minmax(0,1fr);gap:4px}
+.fguide .fg-core div{min-width:0}
+.glossary dt{font-weight:700;color:var(--brand-dark);margin-top:10px}.glossary dd{margin:0 0 2px;color:var(--muted);font-size:.9rem}
+footer{max-width:var(--maxw);margin:0 auto;padding:30px 20px 60px;color:var(--muted);font-size:.82rem;border-top:1px solid var(--line)}
+.offline-note{font-size:.76rem;color:var(--muted);background:#fff8e6;border:1px solid #f0e2b8;border-radius:8px;padding:8px 12px;margin:10px 0}
+@media(max-width:680px){
+  .table-wrap{overflow-x:visible}
+  table.mini,table.mini thead,table.mini tbody,table.mini th,table.mini td,table.mini tr{display:block;width:100%}
+  table.mini thead{display:none}
+  table.mini tr{margin-bottom:12px;border:1.5px solid color-mix(in srgb,var(--dot) 28%,#e4e9f0);border-radius:10px;background:#fff;overflow:hidden;box-shadow:0 1px 4px rgba(16,42,67,.05)}
+  table.mini td{border:none;border-bottom:1px solid var(--line);padding:10px 12px;text-align:left}
+  table.mini td:last-child{border-bottom:none}
+  table.mini td::before{content:attr(data-label);display:block;font-size:.74rem;font-weight:700;text-transform:uppercase;letter-spacing:.4px;color:var(--dot);margin-bottom:4px}
+}
+@media(max-width:640px){.hero h1{font-size:1.3rem;max-width:100%}nav.jump{display:none}.rgrid.c2,.rgrid.c3,.rgrid.c4,.cols3,.org-grid,.acro-grid{grid-template-columns:minmax(0,1fr)}.mindmap-host{height:440px}}
+</style></head><body>
+<div id="progress"></div>
+<header class="top"><div class="top-in">
+  <span class="badge">MODUL 2</span>
+  <a class="homebtn" href="index.html" title="Kembali ke daftar modul"><span style="font-size:1rem;line-height:1">&#8962;</span> Daftar Modul</a>
+  <span class="top-title">Manajemen Sumber Daya Manusia · EKMA5207</span>
+  <nav class="jump"><a href="#konsep">Konsep</a><a href="#peta">Peta Konsep</a><a href="#kb1">KB1</a><a href="#kb2">KB2</a><a href="#glosarium">Glosarium</a></nav>
+</div></header>
+
+<div class="wrap">
+  <section class="hero"><div class="eyebrow">Ringkasan Belajar Lengkap · EKMA5207 Edisi 3</div>
+  <h1>Perencanaan Sumber Daya Manusia</h1>
+  <div class="meta"><span>📚 2 Kegiatan Belajar (KB 1: A–D · KB 2: A–B Full Outline)</span><span>📖 Hal. 2.1–2.52</span><span>✍️ Prof. Dr. Mutiara Sibarani Panggabean, S.E., M.E.</span></div></section>
+
+  <p class="section-sub" style="margin-top:22px">Modul ini membedah dua fondasi teknis sebelum perusahaan merekrut karyawan: <b>KB 1</b> menganalisis aliran kerja, struktur organisasi (lengkap dengan bagan Gambar 2.2–2.5), analisis pekerjaan, dan perancangan pekerjaan; sedangkan <b>KB 2</b> mengupas tuntas perencanaan SDM mengikuti outline penuh buku—dari 5 unsur &amp; 3 rumus analisis SDM, peramalan permintaan–penawaran (Matriks Transisi), strategi mengatasi kelebihan/kekurangan SDM (termasuk <i>downsizing</i>, pensiun dini, pekerja sementara, <i>outsourcing</i> UU 13/2003 &amp; Kepmenakertrans 220/2004, <i>offshoring</i>, dan jam kerja), evaluasi hasil, hingga <i>Affirmative Action Planning</i>.</p>
+  <p class="offline-note">ℹ️ Seluruh bagan struktur organisasi SVG, peta konsep, kartu penjelasan interaktif, tabel responsif, dan daftar cek konsep berjalan penuh tanpa internet. Koneksi internet hanya diperlukan untuk merender persamaan matematika (MathJax).</p>
+
+  <!-- PENDAHULUAN MODUL -->
+  <div class="card">
+    <div class="abc" style="margin-top:0"><span class="ltr">★</span><h4>Pendahuluan Modul — Dari Desain Pekerjaan Menuju Keseimbangan Permintaan &amp; Penawaran SDM</h4></div>
+    <p>Keberhasilan perusahaan tidak semata-mata bergantung pada rekrutmen, melainkan dimulai dari kejelasan desain kerja dan proyeksi kebutuhan tenaga kerja. Awal 2007 <b>Toyota</b> mengungguli General Motors melalui prosedur kerja tertulis yang terukur, sementara <b>BMW</b> memberdayakan timnya dengan tanggung jawab keputusan lebih luas. Di sisi pasar tenaga kerja, pergeseran global, tekanan politik, budaya, dan perkembangan produk terus mengubah jenis pekerjaan yang tersedia.</p>
+    <div class="flow"><b>Alur logis Modul 2:</b> <b>KB 1 (Analisis &amp; Perancangan Pekerjaan)</b> memetakan aliran kerja, struktur organisasi, uraian/spesifikasi jabatan, dan 4 pendekatan desain kerja → <b>KB 2 (Perencanaan SDM)</b> menghitung dan meramalkan kebutuhan vs ketersediaan SDM, mengeksekusi strategi penyeimbangan kesenjangan secara legal &amp; strategis, mengevaluasi hasil, serta memastikan kesetaraan melalui <i>Affirmative Action Planning</i>.</div>
+  </div>
+
+  <!-- KONSEP PENTING -->
+  <h2 class="section" id="konsep"><span class="dot"></span>Konsep Penting yang Harus Dikuasai</h2>
+  <div class="card"><div class="cl-head"><span class="count"><span id="doneCount">0</span>/<span id="totalCount">0</span> dikuasai</span><button class="btn-reset" id="resetBtn">Reset centang</button></div>
+  <ul class="concepts" id="conceptList">
+    <li><input type="checkbox"><span><span class="ct">Analisis Aliran Pekerjaan (Work-Flow Analysis — Gambar 2.1)</span><span class="cd">Menganalisis secara berurutan keluaran (outputs + standar kualitas/kuantitas), proses kerja (work process), dan masukan (bahan baku, peralatan, SDM).</span></span></li>
+    <li><input type="checkbox"><span><span class="ct">Dimensi &amp; 5 Bagan Struktur Organisasi (Gambar 2.2–2.5 &amp; Tabel 2.1)</span><span class="cd">Sentralisasi, kompleksitas, formalisasi (Robbins &amp; Judge); Struktur Fungsional, Divisional (Produk, Geografis, Pelanggan), dan Matriks (contoh FE Trisakti).</span></span></li>
+    <li><input type="checkbox"><span><span class="ct">Analisis Pekerjaan (Job Analysis): Uraian vs Spesifikasi &amp; 7+3 Kegunaan</span><span class="cd">Job description (tugas &amp; tanggung jawab) vs job specification (kualifikasi minimum); 7 manfaat bagi Manajer SDM (Gambar 2.6) &amp; 3 bagi Manajer Lini.</span></span></li>
+    <li><input type="checkbox"><span><span class="ct">3 Metode Analisis Pekerjaan (PAQ, FJAS Fleishman, O*NET / KJI)</span><span class="cd">PAQ (194 item, 6 bagian, 6 skala), Fleishman (52 kemampuan dalam 4 ranah), dan O*NET (Indonesia: KJI 1987 berdasar ISCO 1968).</span></span></li>
+    <li><input type="checkbox"><span><span class="ct">4 Pendekatan Perancangan Pekerjaan &amp; Model Karakteristik Pekerjaan (Gambar 2.7)</span><span class="cd">Mekanistis, Motivasional (5 dimensi inti → 3 keadaan psikologis → outcomes), Biologikal (Ergonomi — Toyota), dan Penggerak Persepsi.</span></span></li>
+    <li><input type="checkbox"><span><span class="ct">5 Unsur Perencanaan SDM &amp; 2 Metode Penentuan Kebutuhan SDM</span><span class="cd">Tujuan organisasi, peramalan SDM, informasi karyawan, proyeksi ketersediaan, analisis kesenjangan; Analisis Beban Kerja (man hours) vs Analisis SDM.</span></span></li>
+    <li><input type="checkbox"><span><span class="ct">3 Rumus Analisis SDM: Persediaan SDM, Tingkat Absensi &amp; Labor Turnover</span><span class="cd">Formula operasional menghitung persediaan akhir periode, persentase hari kerja hilang, dan rasio perputaran tenaga kerja.</span></span></li>
+    <li><input type="checkbox"><span><span class="ct">Proses Perencanaan SDM 3 Tahap (Gambar 2.8) &amp; Matriks Transisi (Tabel 2.4)</span><span class="cd">Peramalan (leading indicators + Matriks Transisi baca baris &amp; kolom + kasus GM) → Penetapan Sasaran &amp; Strategi → Evaluasi Hasil.</span></span></li>
+    <li><input type="checkbox"><span><span class="ct">Strategi Kelebihan SDM: Downsizing (4 Alasan, Riset Fortune) &amp; Pensiun Dini</span><span class="cd">Universal Studio (LA vs Orlando), Jabil Circuit (Meksiko vs China); risiko survivor syndrome &amp; hilangnya aset kunci; insentif pensiun dini bagi senior.</span></span></li>
+    <li><input type="checkbox"><span><span class="ct">Pekerja Sementara (4 Keuntungan &amp; 4 Pengelolaan Konflik)</span><span class="cd">Fleksibilitas, bebas tunjangan, teruji/terlatih agen, sudut pandang objektif; pencegahan status "warga kelas 2" &amp; strategi "Coba sebelum Anda membeli".</span></span></li>
+    <li><input type="checkbox"><span><span class="ct">Dasar Hukum Outsourcing RI (UU 13/2003 Ps. 64–66 &amp; Kepmenakertrans 220/2004)</span><span class="cd">Pemborongan pekerjaan vs penyediaan jasa pekerja; 4 kriteria pekerjaan non-core; wajib alur proses ke Disnaker; sanksi demi hukum beralih jadi karyawan pemberi kerja.</span></span></li>
+    <li><input type="checkbox"><span><span class="ct">Outsourcing: 6 Keuntungan, 5 Penyebab Gagal, Survei Ernst &amp; Young (Tabel 2.5–2.6) &amp; Offshoring</span><span class="cd">Ubah fixed cost (60–70%) ke variable cost; 5 resistensi karyawan &amp; 7 faktor gagal tanpa visi; Eropa 70% (maintenance 76%, SDM 59%); 4 kunci sukses offshoring.</span></span></li>
+    <li><input type="checkbox"><span><span class="ct">Mengubah Gaji &amp; Jam Kerja (Contoh Hotel Hilton) &amp; 3 Pengecekan Evaluasi Hasil</span><span class="cd">Lembur saat kurang vs potong gaji / kurangi hari kerja (Hilton: 2 hari/minggu) saat berlebih sementara; evaluasi hasil, kesesuaian rencana, dan proses.</span></span></li>
+    <li><input type="checkbox"><span><span class="ct">Affirmative Action Planning &amp; Workforce Utilization Review (UUD 1945 Ps. 28D Ayat 2)</span><span class="cd">Mendeteksi underutilization (contoh 35% pasar vs 5% organisasi), alasan sukarela vs hukum, dan 5 langkah pelaksanaan penyetaraan kesempatan kerja.</span></span></li>
+  </ul></div>
+
+  <!-- PETA KONSEP -->
+  <h2 class="section" id="peta"><span class="dot"></span>Peta Konsep (Mind Map)</h2>
+  <div class="card"><div class="mm-toolbar"><button class="mm-btn" id="mmExpand">Perluas semua</button><button class="mm-btn" id="mmCollapse">Ciutkan</button><span style="font-size:.76rem;color:var(--muted)">Klik simpul (+) atau (–) untuk membuka/menutup cabang · Gulir untuk menggeser</span></div><div class="mindmap-host" id="mindmap"></div></div>
+
+  <!-- ==================== KB 1 ==================== -->
+  <h2 class="section" id="kb1"><span class="dot" style="background:var(--kb1)"></span>KB 1 — Analisis dan Perancangan Pekerjaan</h2>
+  <div class="card kb1b"><span class="kb-tag kb1t">KB 1 · Hal. 2.4–2.27</span>
+    <p class="lead">Keberhasilan perusahaan sangat dipengaruhi rancangan organisasi dan rancangan pekerjaannya—misalnya awal 2007 <b>Toyota</b> mengalahkan General Motors dengan prosedur kerja tertulis yang ketat, sementara <b>BMW</b> memberi timnya tanggung jawab keputusan yang lebih luas.</p>
+
+    <div class="acro-box"><span class="acro-title">📖 Kamus Konteks Singkatan &amp; Akronim KB 1</span>
+      <ul class="acro-grid">
+        <li><b>PAQ</b>: <i>Position Analysis Questionnaire</i> — kuesioner analisis pekerjaan 194 item dalam 6 bagian &amp; 6 skala penilaian.</li>
+        <li><b>FJAS</b>: <i>Fleishman Job Analysis System</i> — metode analisis pekerjaan berbasis 52 kemampuan individu (kognitif, psikomotorik, fisik, pancaindra).</li>
+        <li><b>O*NET / KJI</b>: <i>Occupational Information Network</i> / Klasifikasi Jabatan Indonesia (1987, berdasar ISCO 1968) — basis data klasifikasi jabatan standar.</li>
+        <li><b>WADEK</b>: Wakil Dekan — contoh struktur fungsional (WADEK 1–4) di Fakultas Ekonomi Universitas Trisakti.</li>
+      </ul>
+    </div>
+
+    <div class="abc"><span class="ltr">A</span><h4>Analisis Aliran Pekerjaan dan Struktur Organisasi</h4></div>
+    <p><span class="term">Analisis aliran pekerjaan <span class="en">(work-flow analysis)</span></span> menelaah hubungan dinamis bagaimana masukan diubah menjadi keluaran, sedangkan <span class="term">struktur organisasi</span> meninjau hubungan relatif statis pembagian, pengelompokan, dan koordinasi tugas antarunit.</p>
+
+    <div class="numh">1. Analisis Aliran Pekerjaan</div>
+    <div class="diagram-box"><div class="flowchart">
+      <span class="fc-node">INPUTS (Masukan)<br><small style="font-weight:400">Bahan Baku · Peralatan · SDM</small></span><span class="fc-arrow">→</span>
+      <span class="fc-node">AKTIVITAS / PROSES KERJA<br><small style="font-weight:400">Tugas &amp; prosedur operasi</small></span><span class="fc-arrow">→</span>
+      <span class="fc-node" style="background:var(--dot);color:#fff">OUTPUTS (Keluaran)<br><small style="font-weight:400;opacity:.92">Produk/Jasa + Standar Kualitas &amp; Kuantitas</small></span>
+    </div><div class="diagram-cap">Reproduksi Gambar 2.1 — Mengembangkan Analisis Aktivitas Unit Kerja</div></div>
+    <ul class="let">
+      <li><b>Analisis hasil kerja <span class="en">(work outputs)</span>:</b> Mengidentifikasi produk/jasa beserta standar <i>kualitas</i> dan <i>kuantitas</i>-nya (mis. layanan penerbangan, pesanan makanan, atau karya tulis/<i>paper</i>).</li>
+      <li><b>Analisis proses kerja <span class="en">(work process)</span>:</b> Menelaah rangkaian aktivitas dan prosedur operasi tiap tahap produksi.</li>
+      <li><b>Analisis masukan kerja <span class="en">(work inputs)</span>:</b> Mengidentifikasi tiga masukan utama—<b>bahan baku</b> (mis. artikel/buku), <b>peralatan</b> (komputer/sistem pencarian perpustakaan), dan <b>SDM</b> (keterampilan menulis, mengetik, dan analisis).</li>
+    </ul>
+
+    <div class="numh">2. Struktur Organisasi (Dimensi, Bagan Gambar 2.2–2.5, &amp; Sifat Pekerjaan)</div>
+    <ul class="let">
+      <li><b>Dimensi-dimensi struktur organisasi:</b> <b>Robbins &amp; Judge (2009)</b> merinci tiga dimensi: (1) <b>sentralisasi</b> (wewenang keputusan terpusat di puncak vs <i>desentralisasi</i> ke level bawah), (2) <b>kompleksitas</b> (banyaknya unit secara vertikal, horizontal, dan spasial/geografis), dan (3) <b>formalisasi</b> (kelengkapan peraturan—<i>birokrasi profesional</i> bila aturan ditetapkan pelaksana ahli vs <i>birokrasi mesin</i> bila ditetapkan atasan). <b>Noe (2006)</b> menekankan dua dimensi kritis: <b>sentralisasi/desentralisasi</b> dan <b>departementalisasi</b> (berdasarkan fungsi serupa vs aliran kerja serupa/divisional).</li>
+      <li><b>Bentuk-bentuk struktur organisasi (Reproduksi Gambar 2.2–2.5):</b> Pengelompokan unit bisnis dan nonbisnis umumnya mengambil bentuk <b>Struktur Fungsional</b>, <b>Struktur Divisional</b> (Produk, Geografis, Pelanggan), atau gabungannya yaitu <b>Struktur Matriks</b>.</li>
+    </ul>
+
+    <!-- REPRODUKSI BAGAN STRUKTUR ORGANISASI (GAMBAR 2.2 - 2.5) -->
+    <div class="org-grid">
+      <!-- Gambar 2.2 Struktur Fungsional -->
+      <div class="diagram-box">
+        <svg viewBox="0 0 420 175" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Gambar 2.2 Struktur Fungsional">
+          <rect x="165" y="10" width="90" height="32" rx="7" fill="#0f5e8f"/>
+          <text x="210" y="30" text-anchor="middle" fill="#fff" font-size="12" font-weight="700" font-family="-apple-system,Segoe UI,sans-serif">CEO</text>
+          <line x1="210" y1="42" x2="210" y2="66" stroke="#1a86c7" stroke-width="2"/>
+          <line x1="42" y1="66" x2="378" y2="66" stroke="#1a86c7" stroke-width="2"/>
+          <line x1="42" y1="66" x2="42" y2="86" stroke="#1a86c7" stroke-width="2"/>
+          <line x1="126" y1="66" x2="126" y2="86" stroke="#1a86c7" stroke-width="2"/>
+          <line x1="210" y1="66" x2="210" y2="86" stroke="#1a86c7" stroke-width="2"/>
+          <line x1="294" y1="66" x2="294" y2="86" stroke="#1a86c7" stroke-width="2"/>
+          <line x1="378" y1="66" x2="378" y2="86" stroke="#1a86c7" stroke-width="2"/>
+          <rect x="6" y="86" width="72" height="46" rx="6" fill="#e7f3fb" stroke="#1a86c7" stroke-width="1.5"/>
+          <text x="42" y="106" text-anchor="middle" fill="#0f5e8f" font-size="9.5" font-weight="700" font-family="-apple-system,Segoe UI,sans-serif">Litbang</text>
+          <text x="42" y="120" text-anchor="middle" fill="#5c6b7a" font-size="8.5" font-family="-apple-system,Segoe UI,sans-serif">(R&amp;D)</text>
+          <rect x="90" y="86" width="72" height="46" rx="6" fill="#e7f3fb" stroke="#1a86c7" stroke-width="1.5"/>
+          <text x="126" y="106" text-anchor="middle" fill="#0f5e8f" font-size="9.5" font-weight="700" font-family="-apple-system,Segoe UI,sans-serif">Penjualan &amp;</text>
+          <text x="126" y="120" text-anchor="middle" fill="#0f5e8f" font-size="9.5" font-weight="700" font-family="-apple-system,Segoe UI,sans-serif">Pemasaran</text>
+          <rect x="174" y="86" width="72" height="46" rx="6" fill="#e7f3fb" stroke="#1a86c7" stroke-width="1.5"/>
+          <text x="210" y="113" text-anchor="middle" fill="#0f5e8f" font-size="9.5" font-weight="700" font-family="-apple-system,Segoe UI,sans-serif">Manufaktur</text>
+          <rect x="258" y="86" width="72" height="46" rx="6" fill="#e7f3fb" stroke="#1a86c7" stroke-width="1.5"/>
+          <text x="294" y="106" text-anchor="middle" fill="#0f5e8f" font-size="9.5" font-weight="700" font-family="-apple-system,Segoe UI,sans-serif">Manajemen</text>
+          <text x="294" y="120" text-anchor="middle" fill="#0f5e8f" font-size="9.5" font-weight="700" font-family="-apple-system,Segoe UI,sans-serif">Material</text>
+          <rect x="342" y="86" width="72" height="46" rx="6" fill="#e7f3fb" stroke="#1a86c7" stroke-width="1.5"/>
+          <text x="378" y="113" text-anchor="middle" fill="#0f5e8f" font-size="9.5" font-weight="700" font-family="-apple-system,Segoe UI,sans-serif">Keuangan</text>
+          <text x="210" y="158" text-anchor="middle" fill="#5c6b7a" font-size="9" font-style="italic" font-family="-apple-system,Segoe UI,sans-serif">Pengelompokan unit berdasarkan kesamaan fungsi</text>
+        </svg>
+        <div class="diagram-cap">Gambar 2.2 — Struktur Fungsional (Hal. 2.9)</div>
+      </div>
+
+      <!-- Gambar 2.3 Struktur Divisi: Produk -->
+      <div class="diagram-box">
+        <svg viewBox="0 0 420 175" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Gambar 2.3 Struktur Divisi Produk">
+          <rect x="165" y="10" width="90" height="32" rx="7" fill="#0f5e8f"/>
+          <text x="210" y="30" text-anchor="middle" fill="#fff" font-size="12" font-weight="700" font-family="-apple-system,Segoe UI,sans-serif">CEO</text>
+          <line x1="210" y1="42" x2="210" y2="66" stroke="#1a86c7" stroke-width="2"/>
+          <line x1="54" y1="66" x2="366" y2="66" stroke="#1a86c7" stroke-width="2"/>
+          <line x1="54" y1="66" x2="54" y2="86" stroke="#1a86c7" stroke-width="2"/>
+          <line x1="158" y1="66" x2="158" y2="86" stroke="#1a86c7" stroke-width="2"/>
+          <line x1="262" y1="66" x2="262" y2="86" stroke="#1a86c7" stroke-width="2"/>
+          <line x1="366" y1="66" x2="366" y2="86" stroke="#1a86c7" stroke-width="2"/>
+          <rect x="8" y="86" width="92" height="50" rx="6" fill="#e7f3fb" stroke="#1a86c7" stroke-width="1.5"/>
+          <text x="54" y="104" text-anchor="middle" fill="#5c6b7a" font-size="8" font-family="-apple-system,Segoe UI,sans-serif">Wadir Divisi</text>
+          <text x="54" y="117" text-anchor="middle" fill="#0f5e8f" font-size="9.5" font-weight="700" font-family="-apple-system,Segoe UI,sans-serif">Sup dalam</text>
+          <text x="54" y="129" text-anchor="middle" fill="#0f5e8f" font-size="9.5" font-weight="700" font-family="-apple-system,Segoe UI,sans-serif">Kaleng</text>
+          <rect x="112" y="86" width="92" height="50" rx="6" fill="#e7f3fb" stroke="#1a86c7" stroke-width="1.5"/>
+          <text x="158" y="104" text-anchor="middle" fill="#5c6b7a" font-size="8" font-family="-apple-system,Segoe UI,sans-serif">Wadir Divisi</text>
+          <text x="158" y="117" text-anchor="middle" fill="#0f5e8f" font-size="9.5" font-weight="700" font-family="-apple-system,Segoe UI,sans-serif">Sayur yang</text>
+          <text x="158" y="129" text-anchor="middle" fill="#0f5e8f" font-size="9.5" font-weight="700" font-family="-apple-system,Segoe UI,sans-serif">Dibekukan</text>
+          <rect x="216" y="86" width="92" height="50" rx="6" fill="#e7f3fb" stroke="#1a86c7" stroke-width="1.5"/>
+          <text x="262" y="104" text-anchor="middle" fill="#5c6b7a" font-size="8" font-family="-apple-system,Segoe UI,sans-serif">Wadir Divisi</text>
+          <text x="262" y="117" text-anchor="middle" fill="#0f5e8f" font-size="9.5" font-weight="700" font-family="-apple-system,Segoe UI,sans-serif">Makanan Pembuka</text>
+          <text x="262" y="129" text-anchor="middle" fill="#0f5e8f" font-size="9.5" font-weight="700" font-family="-apple-system,Segoe UI,sans-serif">Dibekukan</text>
+          <rect x="320" y="86" width="92" height="50" rx="6" fill="#e7f3fb" stroke="#1a86c7" stroke-width="1.5"/>
+          <text x="366" y="104" text-anchor="middle" fill="#5c6b7a" font-size="8" font-family="-apple-system,Segoe UI,sans-serif">Wadir Divisi</text>
+          <text x="366" y="117" text-anchor="middle" fill="#0f5e8f" font-size="9.5" font-weight="700" font-family="-apple-system,Segoe UI,sans-serif">Makanan yang</text>
+          <text x="366" y="129" text-anchor="middle" fill="#0f5e8f" font-size="9.5" font-weight="700" font-family="-apple-system,Segoe UI,sans-serif">Dipanggang</text>
+          <text x="210" y="160" text-anchor="middle" fill="#5c6b7a" font-size="9" font-style="italic" font-family="-apple-system,Segoe UI,sans-serif">Tiap divisi produk memiliki fungsi operasional sendiri</text>
+        </svg>
+        <div class="diagram-cap">Gambar 2.3 — Struktur Divisi: Struktur Produk (Hal. 2.9)</div>
+      </div>
+
+      <!-- Gambar 2.4a Struktur Divisi: Geografis -->
+      <div class="diagram-box">
+        <svg viewBox="0 0 420 175" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Gambar 2.4a Struktur Divisi Geografis">
+          <rect x="165" y="10" width="90" height="32" rx="7" fill="#0f5e8f"/>
+          <text x="210" y="30" text-anchor="middle" fill="#fff" font-size="12" font-weight="700" font-family="-apple-system,Segoe UI,sans-serif">CEO</text>
+          <line x1="210" y1="42" x2="210" y2="66" stroke="#1a86c7" stroke-width="2"/>
+          <line x1="42" y1="66" x2="378" y2="66" stroke="#1a86c7" stroke-width="2"/>
+          <line x1="42" y1="66" x2="42" y2="86" stroke="#1a86c7" stroke-width="2"/>
+          <line x1="126" y1="66" x2="126" y2="86" stroke="#1a86c7" stroke-width="2"/>
+          <line x1="210" y1="66" x2="210" y2="86" stroke="#1a86c7" stroke-width="2"/>
+          <line x1="294" y1="66" x2="294" y2="86" stroke="#1a86c7" stroke-width="2"/>
+          <line x1="378" y1="66" x2="378" y2="86" stroke="#1a86c7" stroke-width="2"/>
+          <rect x="6" y="86" width="72" height="46" rx="6" fill="#e7f3fb" stroke="#1a86c7" stroke-width="1.5"/>
+          <text x="42" y="106" text-anchor="middle" fill="#0f5e8f" font-size="9.5" font-weight="700" font-family="-apple-system,Segoe UI,sans-serif">Amerika</text>
+          <text x="42" y="119" text-anchor="middle" fill="#0f5e8f" font-size="9.5" font-weight="700" font-family="-apple-system,Segoe UI,sans-serif">Utara</text>
+          <rect x="90" y="86" width="72" height="46" rx="6" fill="#e7f3fb" stroke="#1a86c7" stroke-width="1.5"/>
+          <text x="126" y="113" text-anchor="middle" fill="#0f5e8f" font-size="9.5" font-weight="700" font-family="-apple-system,Segoe UI,sans-serif">Eropa</text>
+          <rect x="174" y="86" width="72" height="46" rx="6" fill="#e7f3fb" stroke="#1a86c7" stroke-width="1.5"/>
+          <text x="210" y="113" text-anchor="middle" fill="#0f5e8f" font-size="9.5" font-weight="700" font-family="-apple-system,Segoe UI,sans-serif">Asia</text>
+          <rect x="258" y="86" width="72" height="46" rx="6" fill="#e7f3fb" stroke="#1a86c7" stroke-width="1.5"/>
+          <text x="294" y="106" text-anchor="middle" fill="#0f5e8f" font-size="9.5" font-weight="700" font-family="-apple-system,Segoe UI,sans-serif">Amerika</text>
+          <text x="294" y="119" text-anchor="middle" fill="#0f5e8f" font-size="9.5" font-weight="700" font-family="-apple-system,Segoe UI,sans-serif">Selatan</text>
+          <rect x="342" y="86" width="72" height="46" rx="6" fill="#e7f3fb" stroke="#1a86c7" stroke-width="1.5"/>
+          <text x="378" y="113" text-anchor="middle" fill="#0f5e8f" font-size="9.5" font-weight="700" font-family="-apple-system,Segoe UI,sans-serif">Australia</text>
+          <text x="210" y="158" text-anchor="middle" fill="#5c6b7a" font-size="9" font-style="italic" font-family="-apple-system,Segoe UI,sans-serif">Wakil direktur bertanggung jawab per wilayah geografis</text>
+        </svg>
+        <div class="diagram-cap">Gambar 2.4a — Struktur Divisi: Struktur Geografis (Hal. 2.10)</div>
+      </div>
+
+      <!-- Gambar 2.4b Struktur Divisi: Pelanggan -->
+      <div class="diagram-box">
+        <svg viewBox="0 0 420 175" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Gambar 2.4b Struktur Divisi Pelanggan">
+          <rect x="165" y="6" width="90" height="28" rx="7" fill="#0f5e8f"/>
+          <text x="210" y="24" text-anchor="middle" fill="#fff" font-size="11.5" font-weight="700" font-family="-apple-system,Segoe UI,sans-serif">CEO</text>
+          <line x1="210" y1="34" x2="210" y2="78" stroke="#1a86c7" stroke-width="2"/>
+          <line x1="210" y1="52" x2="270" y2="52" stroke="#1a86c7" stroke-width="1.6" stroke-dasharray="4 3"/>
+          <rect x="270" y="39" width="138" height="25" rx="5" fill="#fff" stroke="#1a86c7" stroke-width="1.4"/>
+          <text x="339" y="55" text-anchor="middle" fill="#0f5e8f" font-size="8.5" font-weight="700" font-family="-apple-system,Segoe UI,sans-serif">Central Support Functions</text>
+          <line x1="54" y1="78" x2="366" y2="78" stroke="#1a86c7" stroke-width="2"/>
+          <line x1="54" y1="78" x2="54" y2="94" stroke="#1a86c7" stroke-width="2"/>
+          <line x1="158" y1="78" x2="158" y2="94" stroke="#1a86c7" stroke-width="2"/>
+          <line x1="262" y1="78" x2="262" y2="94" stroke="#1a86c7" stroke-width="2"/>
+          <line x1="366" y1="78" x2="366" y2="94" stroke="#1a86c7" stroke-width="2"/>
+          <rect x="8" y="94" width="92" height="46" rx="6" fill="#e7f3fb" stroke="#1a86c7" stroke-width="1.5"/>
+          <text x="54" y="114" text-anchor="middle" fill="#0f5e8f" font-size="9.5" font-weight="700" font-family="-apple-system,Segoe UI,sans-serif">Kontrak</text>
+          <text x="54" y="127" text-anchor="middle" fill="#0f5e8f" font-size="9.5" font-weight="700" font-family="-apple-system,Segoe UI,sans-serif">Militer</text>
+          <rect x="112" y="94" width="92" height="46" rx="6" fill="#e7f3fb" stroke="#1a86c7" stroke-width="1.5"/>
+          <text x="158" y="114" text-anchor="middle" fill="#0f5e8f" font-size="9.5" font-weight="700" font-family="-apple-system,Segoe UI,sans-serif">Produk</text>
+          <text x="158" y="127" text-anchor="middle" fill="#0f5e8f" font-size="9.5" font-weight="700" font-family="-apple-system,Segoe UI,sans-serif">Konsumen</text>
+          <rect x="216" y="94" width="92" height="46" rx="6" fill="#e7f3fb" stroke="#1a86c7" stroke-width="1.5"/>
+          <text x="262" y="114" text-anchor="middle" fill="#0f5e8f" font-size="9.5" font-weight="700" font-family="-apple-system,Segoe UI,sans-serif">Kontrak</text>
+          <text x="262" y="127" text-anchor="middle" fill="#0f5e8f" font-size="9.5" font-weight="700" font-family="-apple-system,Segoe UI,sans-serif">Pemerintah</text>
+          <rect x="320" y="94" width="92" height="46" rx="6" fill="#e7f3fb" stroke="#1a86c7" stroke-width="1.5"/>
+          <text x="366" y="114" text-anchor="middle" fill="#0f5e8f" font-size="9.5" font-weight="700" font-family="-apple-system,Segoe UI,sans-serif">Kontrak</text>
+          <text x="366" y="127" text-anchor="middle" fill="#0f5e8f" font-size="9.5" font-weight="700" font-family="-apple-system,Segoe UI,sans-serif">Perusahaan</text>
+          <text x="210" y="162" text-anchor="middle" fill="#5c6b7a" font-size="9" font-style="italic" font-family="-apple-system,Segoe UI,sans-serif">Divisi dikelompokkan berdasarkan segmen pelanggan</text>
+        </svg>
+        <div class="diagram-cap">Gambar 2.4b — Struktur Divisi: Struktur Pelanggan (Hal. 2.10)</div>
+      </div>
+    </div>
+
+    <!-- Gambar 2.5 Struktur Matriks -->
+    <div class="diagram-box">
+      <svg viewBox="0 0 680 235" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Gambar 2.5 Struktur Matriks">
+        <rect x="275" y="8" width="130" height="30" rx="7" fill="#0f5e8f"/>
+        <text x="340" y="27" text-anchor="middle" fill="#fff" font-size="11.5" font-weight="700" font-family="-apple-system,Segoe UI,sans-serif">CEO / Pimpinan Puncak</text>
+        <line x1="340" y1="38" x2="340" y2="54" stroke="#1a86c7" stroke-width="2"/>
+        <line x1="210" y1="54" x2="590" y2="54" stroke="#1a86c7" stroke-width="2"/>
+        <!-- Functional headers -->
+        <line x1="210" y1="54" x2="210" y2="68" stroke="#1a86c7" stroke-width="2"/>
+        <line x1="336" y1="54" x2="336" y2="68" stroke="#1a86c7" stroke-width="2"/>
+        <line x1="463" y1="54" x2="463" y2="68" stroke="#1a86c7" stroke-width="2"/>
+        <line x1="590" y1="54" x2="590" y2="68" stroke="#1a86c7" stroke-width="2"/>
+        <rect x="155" y="68" width="110" height="30" rx="6" fill="#e7f3fb" stroke="#1a86c7" stroke-width="1.5"/>
+        <text x="210" y="87" text-anchor="middle" fill="#0f5e8f" font-size="10" font-weight="700" font-family="-apple-system,Segoe UI,sans-serif">Fungsi Litbang</text>
+        <rect x="281" y="68" width="110" height="30" rx="6" fill="#e7f3fb" stroke="#1a86c7" stroke-width="1.5"/>
+        <text x="336" y="87" text-anchor="middle" fill="#0f5e8f" font-size="10" font-weight="700" font-family="-apple-system,Segoe UI,sans-serif">Fungsi Pemasaran</text>
+        <rect x="408" y="68" width="110" height="30" rx="6" fill="#e7f3fb" stroke="#1a86c7" stroke-width="1.5"/>
+        <text x="463" y="87" text-anchor="middle" fill="#0f5e8f" font-size="10" font-weight="700" font-family="-apple-system,Segoe UI,sans-serif">Fungsi Manufaktur</text>
+        <rect x="535" y="68" width="110" height="30" rx="6" fill="#e7f3fb" stroke="#1a86c7" stroke-width="1.5"/>
+        <text x="590" y="87" text-anchor="middle" fill="#0f5e8f" font-size="10" font-weight="700" font-family="-apple-system,Segoe UI,sans-serif">Fungsi Keuangan</text>
+        <!-- Vertical functional lines -->
+        <line x1="210" y1="98" x2="210" y2="210" stroke="#1a86c7" stroke-width="1.8"/>
+        <line x1="336" y1="98" x2="336" y2="210" stroke="#1a86c7" stroke-width="1.8"/>
+        <line x1="463" y1="98" x2="463" y2="210" stroke="#1a86c7" stroke-width="1.8"/>
+        <line x1="590" y1="98" x2="590" y2="210" stroke="#1a86c7" stroke-width="1.8"/>
+        <!-- Divisional rows -->
+        <rect x="14" y="114" width="116" height="28" rx="6" fill="#fff4e5" stroke="#e08a1e" stroke-width="1.5"/>
+        <text x="72" y="132" text-anchor="middle" fill="#b4690e" font-size="10" font-weight="700" font-family="-apple-system,Segoe UI,sans-serif">Manajer Produk A</text>
+        <line x1="130" y1="128" x2="615" y2="128" stroke="#e08a1e" stroke-width="1.8" stroke-dasharray="5 3"/>
+        <rect x="14" y="156" width="116" height="28" rx="6" fill="#fff4e5" stroke="#e08a1e" stroke-width="1.5"/>
+        <text x="72" y="174" text-anchor="middle" fill="#b4690e" font-size="10" font-weight="700" font-family="-apple-system,Segoe UI,sans-serif">Manajer Produk B</text>
+        <line x1="130" y1="170" x2="615" y2="170" stroke="#e08a1e" stroke-width="1.8" stroke-dasharray="5 3"/>
+        <rect x="14" y="196" width="116" height="28" rx="6" fill="#fff4e5" stroke="#e08a1e" stroke-width="1.5"/>
+        <text x="72" y="214" text-anchor="middle" fill="#b4690e" font-size="10" font-weight="700" font-family="-apple-system,Segoe UI,sans-serif">Manajer Produk C</text>
+        <line x1="130" y1="210" x2="615" y2="210" stroke="#e08a1e" stroke-width="1.8" stroke-dasharray="5 3"/>
+        <!-- Intersection nodes (dual reporting) -->
+        <circle cx="210" cy="128" r="6" fill="#1a86c7" stroke="#fff" stroke-width="2"/>
+        <circle cx="336" cy="128" r="6" fill="#1a86c7" stroke="#fff" stroke-width="2"/>
+        <circle cx="463" cy="128" r="6" fill="#1a86c7" stroke="#fff" stroke-width="2"/>
+        <circle cx="590" cy="128" r="6" fill="#1a86c7" stroke="#fff" stroke-width="2"/>
+        <circle cx="210" cy="170" r="6" fill="#1a86c7" stroke="#fff" stroke-width="2"/>
+        <circle cx="336" cy="170" r="6" fill="#1a86c7" stroke="#fff" stroke-width="2"/>
+        <circle cx="463" cy="170" r="6" fill="#1a86c7" stroke="#fff" stroke-width="2"/>
+        <circle cx="590" cy="170" r="6" fill="#1a86c7" stroke="#fff" stroke-width="2"/>
+        <circle cx="210" cy="210" r="6" fill="#1a86c7" stroke="#fff" stroke-width="2"/>
+        <circle cx="336" cy="210" r="6" fill="#1a86c7" stroke="#fff" stroke-width="2"/>
+        <circle cx="463" cy="210" r="6" fill="#1a86c7" stroke="#fff" stroke-width="2"/>
+        <circle cx="590" cy="210" r="6" fill="#1a86c7" stroke="#fff" stroke-width="2"/>
+      </svg>
+      <div class="diagram-cap">Reproduksi Gambar 2.5 — Struktur Matriks (Gabungan Fungsional &amp; Divisional; titik biru = tim lintas fungsi dengan dua garis pelaporan · Hal. 2.11)</div>
+    </div>
+
+    <p><b>Contoh Organisasi Nonbisnis di Buku (Hal. 2.11):</b> Di <b>Fakultas Ekonomi Universitas Trisakti</b>, pengelompokan memadukan ketiganya—berdasarkan <b>fungsi</b> (WADEK 1 Pendidikan/Pengajaran, WADEK 2 Keuangan/Kepegawaian, WADEK 3 Kemahasiswaan/Alumni, WADEK 4 Kerja Sama), berdasarkan <b>divisi produk</b> (Kaprodi Ilmu Ekonomi, Manajemen, Akuntansi), serta berdasarkan <b>alur kerja serupa</b> (D3, S1, S2, S3, Lembaga Administrasi Perusahaan, dan PPAk).</p>
+
+    <ul class="let" style="margin-top:8px">
+      <li><b>Struktur dan sifat pekerjaan:</b> Pada <b>struktur fungsional</b>, spesialisasi sempit, tugas rutin, wewenang terbatas, dan pekerja menilai kewajaran dari <i>aturan dan prosedur</i>. Pada <b>struktur divisional</b> (terdesentralisasi), manajer dituntut lebih berpengalaman dan berkemampuan kognitif lebih tinggi, serta menilai keadilan dari <i>penghasilan dan perlakuan antarpersonal</i>.</li>
+    </ul>
+
+    <div class="table-wrap">
+      <table class="mini">
+        <thead><tr><th style="width:8%">No.</th><th style="width:46%">Struktur Fungsional (Tabel 2.1)</th><th>Struktur Divisional</th></tr></thead>
+        <tbody>
+          <tr><td data-label="No.">1</td><td data-label="Struktur Fungsional">Pengelompokan berdasarkan fungsi (Pemasaran, Keuangan, SDM, Produksi).</td><td data-label="Struktur Divisional">Pengelompokan berdasarkan alur kerja (produk, geografis, pelanggan).</td></tr>
+          <tr><td data-label="No.">2</td><td data-label="Struktur Fungsional">Lebih efisien (tidak ada duplikasi fungsi).</td><td data-label="Struktur Divisional">Kurang efisien karena tiap divisi menjalankan fungsi operasional yang sama.</td></tr>
+          <tr><td data-label="No.">3</td><td data-label="Struktur Fungsional">Tidak fleksibel.</td><td data-label="Struktur Divisional">Fleksibel dan inovatif.</td></tr>
+          <tr><td data-label="No.">4</td><td data-label="Struktur Fungsional">Tidak sensitif terhadap keragaman produk, daerah, dan pelanggan.</td><td data-label="Struktur Divisional">Sensitif terhadap keragaman produk, daerah, dan klien.</td></tr>
+          <tr><td data-label="No.">5</td><td data-label="Struktur Fungsional">Sentralisasi bersifat terpusat.</td><td data-label="Struktur Divisional">Ada desentralisasi, semi-otonom.</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="flow">Setelah memetakan aliran kerja dan struktur organisasi pada Bagian A, <b>Bagian B</b> dan <b>Bagian C</b> membedah analisis pekerjaan beserta metode pengumpulan datanya.</div>
+
+    <div class="abc"><span class="ltr">B</span><h4>Analisis Pekerjaan <span class="en">(Job Analysis)</span></h4></div>
+    <p>Menurut Mondy (2010), <span class="term">analisis pekerjaan</span> adalah proses sistematis menentukan tugas, keterampilan, dan pengetahuan suatu pekerjaan—menghasilkan <b>uraian pekerjaan</b> dan <b>spesifikasi pekerjaan</b>. Bedakan <b>pekerjaan</b> (kelompok tugas) dengan <b>posisi</b> (kumpulan tugas yang dijalankan <i>satu orang</i>).</p>
+    <div class="numh">1. Pentingnya Analisis Pekerjaan bagi Manajer SDM (7 Manfaat — Gambar 2.6)</div>
+    <p>Menjawab 6 pertanyaan dasar (apa, kapan, di mana, bagaimana, mengapa, syarat), dan menjadi dasar bagi <b>7 aktivitas SDM</b>: (1) perancangan ulang pekerjaan, (2) perencanaan SDM, (3) seleksi, (4) pelatihan, (5) penilaian kinerja, (6) perencanaan karier, dan (7) evaluasi pekerjaan.</p>
+    <div class="numh">2. Pentingnya Analisis Kerja bagi Manajer Lini</div>
+    <p>Tiga alasan: (1) memahami seluruh pekerjaan dan alur kerja unit secara rinci, (2) memahami persyaratan pekerjaan untuk keputusan penerimaan karyawan, dan (3) mengevaluasi kinerja bawahan serta memberi umpan balik perbaikan.</p>
+
+    <div class="abc"><span class="ltr">C</span><h4>Teknik Analisis Pekerjaan</h4></div>
+    <div class="numh">1. Jenis Informasi: Uraian Pekerjaan vs Spesifikasi Pekerjaan</div>
+    <ul class="exp">
+      <li><b>Uraian Pekerjaan <span class="en">(Job Description)</span>:</b> Pernyataan tertulis tugas, kegiatan, dan tanggung jawab (6 item: tugas penting, % waktu, standar kinerja, kondisi kerja/K3, atasan/jumlah staf, mesin/alat).</li>
+      <li><b>Spesifikasi Pekerjaan <span class="en">(Job Specification)</span>:</b> Daftar minimum kualifikasi pengetahuan, keterampilan, kemampuan, dan kepribadian (Mondy: <i>pendidikan, pengalaman, keterampilan</i>).</li>
+    </ul>
+
+    <div class="numh">2. Langkah-Langkah Menganalisis Pekerjaan</div>
+    <ol class="book">
+      <li><b>Identifikasi pekerjaan yang akan dianalisis:</b> Inventarisasi pekerjaan (daftar gaji, bagan organisasi, diskusi pekerja, catatan lama).</li>
+      <li><b>Menyusun kuesioner:</b> Mencakup tugas, tanggung jawab, kemampuan, dan standar kinerja.</li>
+      <li><b>Mengumpulkan informasi analisis pekerjaan:</b> Lewat <b>observasi</b>, <b>wawancara</b> (individu/kelompok), <b>kuesioner</b>, dan <b>catatan harian</b> pemegang jabatan.</li>
+    </ol>
+
+    <div class="numh">3. Sumber Informasi Analisis Pekerjaan</div>
+    <p>Sumber informasi terbaik dalam analisis pekerjaan adalah pihak yang paling akrab dengan pelaksanaan tugas sehari-hari, yakni <b>pemegang jabatan</b> dan <b>penyelia/atasan langsung</b>.</p>
+
+    <div class="numh">4. Metode Analisis Pekerjaan (Noe, 2006)</div>
+    <div class="rgrid c3" data-revealgroup>
+      <div class="rcell active" data-reveal data-detail="<b>a. Kuesioner Analisis Posisi (PAQ):</b> <b>194 item</b> dalam <b>6 bagian</b> (informasi input, proses mental, output, hubungan orang lain, konteks, karakteristik lain) dinilai pada <b>6 skala</b>."><span class="stepnum">a</span><span><span class="rt">PAQ</span><span class="rp">194 item · 6 bagian · 6 skala</span></span></div>
+      <div class="rcell" data-reveal data-detail="<b>b. Sistem Analisis Pekerjaan Fleishman (FJAS — Tabel 2.2):</b> Mengukur <b>52 kemampuan individu</b> dalam 4 ranah: kognitif, psikomotorik, fisik, dan pancaindra."><span class="stepnum">b</span><span><span class="rt">Fleishman (FJAS)</span><span class="rp">52 kemampuan individu</span></span></div>
+      <div class="rcell" data-reveal data-detail="<b>c. Jaringan Informasi Jabatan (O*NET / KJI):</b> Basis data jabatan terstandar; di Indonesia memakai <b>Klasifikasi Jabatan Indonesia (KJI)</b> 1987 berdasar ISCO 1968."><span class="stepnum">c</span><span><span class="rt">O*NET / KJI</span><span class="rp">Klasifikasi jabatan standar</span></span></div>
+    </div>
+    <div class="rdetail" data-revealdetail><b>a. Kuesioner Analisis Posisi (PAQ):</b> <b>194 item</b> dalam <b>6 bagian</b> (informasi input, proses mental, output, hubungan orang lain, konteks, karakteristik lain) dinilai pada <b>6 skala</b>.</div>
+
+    <div class="abc"><span class="ltr">D</span><h4>Perancangan Pekerjaan <span class="en">(Job Design)</span></h4></div>
+    <p><span class="term">Perancangan pekerjaan</span> mendefinisikan cara pelaksanaan dan tugas pekerjaan melalui <b>empat pendekatan</b> (Tabel 2.3):</p>
+    <div class="rgrid c2" data-revealgroup>
+      <div class="rcell active" data-reveal data-detail="<b>1. Pendekatan Mekanistis:</b> Berasal dari <i>classical industrial engineering</i>; fokus efisiensi lewat spesialisasi, penyederhanaan keterampilan, dan pengulangan tugas."><span class="stepnum">1</span><span><span class="rt">Pendekatan Mekanistis</span><span class="rp">Efisiensi, spesialisasi &amp; repetisi</span></span></div>
+      <div class="rcell" data-reveal data-detail="<b>2. Pendekatan Motivasional:</b> Fokus kepuasan &amp; motivasi intrinsik lewat <b>perluasan pekerjaan</b> (<i>job enlargement</i>), <b>pengayaan pekerjaan</b> (<i>job enrichment</i>), rotasi, dan Model Karakteristik Pekerjaan (Gambar 2.7)."><span class="stepnum">2</span><span><span class="rt">Pendekatan Motivasional</span><span class="rp">Model Karakteristik Pekerjaan</span></span></div>
+      <div class="rcell" data-reveal data-detail="<b>3. Pendekatan Biologikal (Ergonomi):</b> Menata lingkungan fisik &amp; alat sesuai biomekanis tubuh untuk menekan kelelahan dan cedera (contoh: <b>Toyota</b>)."><span class="stepnum">3</span><span><span class="rt">Pendekatan Biologikal</span><span class="rp">Biomekanis &amp; ergonomi fisik</span></span></div>
+      <div class="rcell" data-reveal data-detail="<b>4. Pendekatan Penggerak Persepsi:</b> Menyesuaikan pekerjaan dengan batas kemampuan <i>mental</i> dan pemrosesan informasi manusia demi keandalan &amp; keselamatan."><span class="stepnum">4</span><span><span class="rt">Penggerak Persepsi</span><span class="rp">Batas mental &amp; pemrosesan info</span></span></div>
+    </div>
+    <div class="rdetail" data-revealdetail><b>1. Pendekatan Mekanistis:</b> Berasal dari <i>classical industrial engineering</i>; fokus efisiensi lewat spesialisasi, penyederhanaan keterampilan, dan pengulangan tugas.</div>
+
+    <div class="diagram-box"><div class="cols3">
+      <div class="col-box"><h5>5 Dimensi Inti Pekerjaan</h5><ul><li>Keanekaragaman keterampilan</li><li>Identitas tugas (awal–akhir)</li><li>Keberartian tugas</li><li>Otonomi</li><li>Umpan balik</li></ul></div>
+      <div class="col-box"><h5>3 Keadaan Psikologis</h5><ul><li><b>Kebermaknaan pekerjaan</b></li><li><b>Tanggung jawab atas hasil</b></li><li><b>Pemahaman akan hasil</b></li></ul></div>
+      <div class="col-box"><h5><i>Outcomes</i> Pekerjaan</h5><ul><li>Motivasi kerja internal tinggi</li><li>Kualitas &amp; kepuasan tinggi</li><li>Absensi &amp; <i>turnover</i> rendah</li></ul></div>
+    </div><div class="diagram-cap">Reproduksi Gambar 2.7 — Model Karakteristik Pekerjaan (Noe dkk., 2006)</div></div>
+
+    <div class="casebox"><span class="ctitle">Kasus Buku KB 1 (Hal. 2.27) · Rancangan Pekerjaan &amp; Ergonomi (Patricia)</span>
+      <b>Patricia</b>, staf klerikal di kantor akuntan, terjatuh di kantor (3 Februari 2011) sehingga nyeri punggung dan leher saat duduk lama. Ia meminta kursi ergonomis, penggantian <i>overhead shelves</i> ke <i>waist-level shelves</i>, dan modifikasi tugas agar tak lama berdiri—didukung rekomendasi dokter dan biro rehabilitasi. Karena kantor akuntan berkali-kali menolak dengan alasan dana, Patricia mengadu ke serikat buruh (Juli 2012) hingga menggugat diskriminasi disabilitas ke pengadilan (April 2013), barulah kantor menyediakan kursi ergonomis dan biaya bedah tulang.
+    </div>
+
+    <div class="flow">Setelah memahami rancangan pekerjaan dan struktur organisasi pada KB 1, <b>KB 2: Perencanaan SDM</b> membahas secara menyeluruh cara meramalkan, menyeimbangkan, dan mengevaluasi jumlah serta komposisi tenaga kerja organisasi.</div>
+  </div>
+
+  <!-- ==================== KB 2 (FULL OUTLINE) ==================== -->
+  <h2 class="section" id="kb2"><span class="dot" style="background:var(--kb2)"></span>KB 2 — Perencanaan Sumber Daya Manusia</h2>
+  <div class="card kb2b"><span class="kb-tag kb2t">KB 2 · Hal. 2.28–2.52 · Full Outline</span>
+    <p class="lead">Pasar tenaga kerja tidak berada dalam ruang hampa—jenis pekerjaan terus berubah akibat gerakan global, tekanan politik, pilihan budaya, dan perkembangan produk. Untuk meraih keunggulan bersaing, organisasi wajib memiliki <b>empat kejelasan</b>: (1) kekuatan dan kelemahan SDM saat ini, (2) arah tujuan masa depan, (3) keterkaitan konfigurasi SDM kini dengan kebutuhan mendatang, dan (4) program untuk menutup kesenjangan di antara keduanya.</p>
+
+    <div class="acro-box"><span class="acro-title">📖 Kamus Konteks Singkatan &amp; Istilah Kunci KB 2</span>
+      <ul class="acro-grid">
+        <li><b>NAFTA</b>: <i>North American Free Trade Agreement</i> — kawasan dagang Amerika Utara (konteks kasus Jabil Circuit di Meksiko vs China).</li>
+        <li><b>PKWT / PKWTT</b>: Perjanjian Kerja Waktu Tertentu (kontrak) &amp; Waktu Tidak Tertentu (tetap) — syarat hubungan kerja vendor <i>outsourcing</i> (UU 13/2003 Ps. 65–66).</li>
+        <li><b>AAP</b>: <i>Affirmative Action Plan</i> (Rencana Tindakan Penyetaraan) — alat manajemen menjamin kesempatan kerja setara dan mencegah <i>underutilization</i>.</li>
+        <li><b>Core vs Non-Core</b>: Kegiatan utama/kompetensi inti perusahaan vs kegiatan penunjang yang terpisah dan tidak menghambat proses produksi langsung.</li>
+      </ul>
+    </div>
+
+    <!-- KB2 A -->
+    <div class="abc"><span class="ltr">A</span><h4>Perencanaan Sumber Daya Manusia</h4></div>
+
+    <div class="numh">Lima Unsur Proses Perencanaan SDM</div>
+    <ol class="book">
+      <li><b>Penentuan Tujuan Organisasi:</b> Rencana SDM wajib dikaitkan dengan target organisasi—misalnya target pertumbuhan penjualan, pangsa pasar, atau laba menuntut penambahan kuantitas dan kualitas SDM secara terencana.</li>
+      <li><b>Peramalan Sumber Daya Manusia:</b> Memanfaatkan data masa lampau untuk memperoleh gambaran lengkap mengenai jumlah, biaya, keterampilan, kategori pekerjaan, serta jumlah dan tingkatan manajer yang dibutuhkan.</li>
+      <li><b>Informasi Karyawan:</b> Meliputi klasifikasi pekerjaan, usia, jenis kelamin, status perkawinan, posisi/tingkatan, tingkat gaji, fungsi, serta riwayat hidup (pendidikan, pelatihan yang diikuti, dan minat karier).</li>
+      <li><b>Proyeksi Ketersediaan SDM:</b> Menafsirkan karyawan saat ini yang akan tersedia di masa mendatang serta perkembangannya dengan memperhitungkan perputaran SDM, pensiun, dan potensi promosi.</li>
+      <li><b>Analisis dan Evaluasi Kesenjangan SDM:</b> Membandingkan kebutuhan masa depan dengan ketersediaan saat ini dari sisi jumlah, campuran keterampilan, dan teknologi.</li>
+    </ol>
+
+    <div class="numh">Dua Metode Penentuan Jumlah Kebutuhan SDM &amp; Rumus Operasional</div>
+    <ul class="exp">
+      <li><b>1. Analisis Beban Kerja:</b> Menentukan jumlah jam kerja orang (<i>man hours</i>) yang diperlukan untuk menyelesaikan beban kerja tertentu dalam periode tertentu; dibagi jam kerja per karyawan menghasilkan jumlah karyawan yang dibutuhkan.</li>
+      <li><b>2. Analisis Sumber Daya Manusia:</b> Menentukan kebutuhan SDM demi menjaga kontinuitas operasi normal dengan turut memperhitungkan <b>persediaan SDM</b>, <b>tingkat absensi</b>, dan <b>perputaran SDM (<i>labor turnover</i>)</b>:</li>
+    </ul>
+
+    <div class="eqbox">
+      <div>\[\text{Persediaan SDM Akhir} = \text{Persediaan SDM Awal} - \text{SDM Keluar} + \text{SDM Masuk}\]</div>
+      <div>\[\text{Tingkat Absensi} = \frac{\text{Hari Kerja yang Hilang per Periode}}{\text{Jumlah Hari Kerja per Periode}} \qquad\qquad \text{Labor Turnover} = \frac{\text{Jumlah SDM Keluar per Periode}}{\text{Jumlah SDM Seluruhnya}}\]</div>
+    </div>
+    <div class="fguide">
+      <div class="fg-head">Bedah Variabel &amp; Intisari Formula Analisis SDM</div>
+      <ul>
+        <li><b>Persediaan Awal, Keluar, &amp; Masuk:</b> Jumlah tenaga kerja pada awal periode dikurangi karyawan yang keluar (pensiun/<i>resign</i>/PHK) ditambah karyawan baru yang masuk.</li>
+        <li><b>Hari Kerja Hilang / Total Hari Kerja:</b> Proporsi ketidakhadiran karyawan yang mengurangi kapasitas kerja efektif.</li>
+        <li><b>SDM Keluar / Total SDM:</b> Rasio perputaran tenaga kerja yang menunjukkan seberapa cepat organisasi kehilangan karyawannya.</li>
+        <li><b>Makna formula:</b> Ketiga ukuran ini melengkapi analisis beban kerja agar departemen SDM dapat menaksir kebutuhan riil rekrutmen, seleksi, pelatihan, dan perencanaan karier secara akurat.</li>
+      </ul>
+      <div class="fg-core">
+        <div>🧭 <b>Filosofis:</b> Kebutuhan tenaga kerja nyata selalu lebih besar daripada hitungan beban kerja murni karena faktor dinamis manusia (absensi dan perpindahan kerja) tak terelakkan.</div>
+        <div>📏 <b>Mengukur:</b> Saldo ketersediaan SDM aktual serta persentase kebocoran kapasitas kerja akibat ketidakhadiran dan keluarnya karyawan.</div>
+        <div>🎯 <b>Manfaat:</b> Mencegah kekurangan tenaga kerja mendadak sekaligus memberi dasar kuantitatif untuk menyusun jadwal rekrutmen dan program retensi.</div>
+      </div>
+    </div>
+
+    <p>Selanjutnya, <b>Noe dkk. (2006)</b> merangkum proses perencanaan SDM ke dalam <b>tiga tahapan terpadu (Gambar 2.8)</b>:</p>
+    <div class="diagram-box">
+      <div class="flowchart">
+        <span class="fc-node">Tahap 1: Peramalan (Forecasting)<br><small style="font-weight:400">Permintaan vs Penawaran → Kelebihan/Kekurangan</small></span>
+        <span class="fc-arrow">→</span>
+        <span class="fc-node">Tahap 2: Penetapan Sasaran &amp; Perencanaan Strategis<br><small style="font-weight:400">Target kuantitatif &amp; pilihan strategi</small></span>
+        <span class="fc-arrow">→</span>
+        <span class="fc-node" style="background:var(--dot);color:#fff">Tahap 3: Pelaksanaan &amp; Evaluasi Hasil<br><small style="font-weight:400;opacity:.92">Eksekusi program &amp; cek hasil/proses</small></span>
+      </div>
+      <div class="diagram-cap">Reproduksi Gambar 2.8 — Proses Perencanaan SDM (Noe dkk., 2006)</div>
+    </div>
+
+    <!-- TAHAP 1 -->
+    <div class="numh">1. Peramalan (<span class="en">Forecasting</span> — Tahap 1)</div>
+    <p>Manajer SDM memproyeksikan permintaan dan penawaran untuk berbagai kategori pekerjaan guna memperkirakan di posisi mana akan terjadi kelebihan atau kekurangan tenaga kerja.</p>
+
+    <div class="leth">a. Menentukan Permintaan Tenaga Kerja</div>
+    <p>Dilakukan menggunakan teknik statistik seperti <b>indikator yang memimpin (<span class="en">leading indicators</span>)</b>—ukuran objektif untuk memprediksi kebutuhan SDM masa depan secara akurat (contoh: angka penjualan berkaitan langsung dengan kebutuhan tenaga penjual, meski tidak untuk posisi pendukung penjualan). Model statistik efektif bila organisasi memiliki sejarah panjang dan stabil, namun hampir selalu harus <b>dilengkapi penilaian subjektif</b> para manajer berpengalaman.</p>
+
+    <div class="leth">b. Menentukan Penawaran Tenaga Kerja &amp; Matriks Transisi (Tabel 2.4)</div>
+    <p>Penawaran tenaga kerja internal dihitung dari jumlah karyawan saat ini per kategori pekerjaan, lalu dimodifikasi dengan proyeksi pensiun, promosi, transfer, pengunduran diri, dan PHK menggunakan prosedur statistik <b>Matriks Transisi (<span class="en">Transition Matrix</span>)</b> yang dikombinasikan dengan intuisi/penyesuaian manajerial:</p>
+    <div class="table-wrap">
+      <table class="mini">
+        <thead>
+          <tr><th>Kategori Pekerjaan (2007 → 2010 · Tabel 2.4)</th><th>1</th><th>2</th><th>3</th><th>5 (Man. Prod)</th><th>6 (Perakit)</th><th>7 (Klerikal)</th><th>8 (Keluar)</th></tr>
+        </thead>
+        <tbody>
+          <tr><td data-label="Kategori 2007"><b>1. Perwakilan Penjualan</b></td><td data-label="Ke 1">0,95</td><td data-label="Ke 2">—</td><td data-label="Ke 3">—</td><td data-label="Ke 5">—</td><td data-label="Ke 6">—</td><td data-label="Ke 7">—</td><td data-label="Ke 8">0,05</td></tr>
+          <tr><td data-label="Kategori 2007"><b>2. Penjualan (Lainnya)</b></td><td data-label="Ke 1">0,05</td><td data-label="Ke 2">0,60</td><td data-label="Ke 3">—</td><td data-label="Ke 5">—</td><td data-label="Ke 6">—</td><td data-label="Ke 7">—</td><td data-label="Ke 8">0,35</td></tr>
+          <tr><td data-label="Kategori 2007"><b>3. Karyawan Magang Penjualan</b></td><td data-label="Ke 1">—</td><td data-label="Ke 2">0,50</td><td data-label="Ke 3">0,20</td><td data-label="Ke 5">—</td><td data-label="Ke 6">—</td><td data-label="Ke 7">—</td><td data-label="Ke 8">0,30</td></tr>
+          <tr><td data-label="Kategori 2007"><b>5. Manajer Produksi</b></td><td data-label="Ke 1">—</td><td data-label="Ke 2">—</td><td data-label="Ke 3">—</td><td data-label="Ke 5">0,75</td><td data-label="Ke 6">—</td><td data-label="Ke 7">—</td><td data-label="Ke 8">0,15 (+0,10 ke Asisten Man. Pabrik)</td></tr>
+          <tr><td data-label="Kategori 2007"><b>6. Perakit Produksi</b></td><td data-label="Ke 1">—</td><td data-label="Ke 2">—</td><td data-label="Ke 3">—</td><td data-label="Ke 5">0,10</td><td data-label="Ke 6">0,80</td><td data-label="Ke 7">—</td><td data-label="Ke 8">0,10</td></tr>
+          <tr><td data-label="Kategori 2007"><b>7. Klerikal</b></td><td data-label="Ke 1">—</td><td data-label="Ke 2">—</td><td data-label="Ke 3">—</td><td data-label="Ke 5">—</td><td data-label="Ke 6">—</td><td data-label="Ke 7">0,70</td><td data-label="Ke 8">0,30</td></tr>
+          <tr><td data-label="Kategori 2007"><b>8. Tidak Berada di Organisasi (Eksternal)</b></td><td data-label="Ke 1">0,00</td><td data-label="Ke 2">0,00</td><td data-label="Ke 3">0,80</td><td data-label="Ke 5">0,10</td><td data-label="Ke 6">0,20</td><td data-label="Ke 7">0,30</td><td data-label="Ke 8">—</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <ul class="exp">
+      <li><b>Membaca per Baris (2007 → ke mana pergi pada 2010?):</b> Pada kategori <b>klerikal (baris 7)</b>, 70% bertahan dan 30% keluar. Pada <b>perakit produksi (baris 6)</b>, 80% bertahan, 10% dipromosikan ke manajer produksi, dan 10% keluar. Pada <b>manajer produksi (baris 5)</b>, 75% bertahan, 10% naik menjadi asisten manajer pabrik, dan 15% keluar.</li>
+      <li><b>Membaca per Kolom (2010 ← dari mana berasal pada 2007?):</b> Pada <b>klerikal (kolom 7)</b>, 70% berasal dari staf klerikal 2007 dan 30% rekrutan eksternal baru.</li>
+    </ul>
+
+    <div class="leth">c. Menetapkan Kelebihan dan Kekurangan Tenaga Kerja</div>
+    <p>Membandingkan hasil ramalan permintaan dan penawaran per kategori pekerjaan. <i>Contoh buku (hal. 2.33):</i> <b>General Motors (GM)</b> tidak merekrut karyawan baru selama beberapa tahun; pada 2005 usia rata-rata pekerjanya <b>48 tahun</b> dan <b>50% akan pensiun dalam 3 tahun</b>, sementara GM perlu memangkas <b>~20% tenaga kerja</b>. GM memilih pemberhentian alamiah/penciutan alih-alih PHK, namun konsekuensinya GM harus menanggung beban besar biaya pensiun dan pemeliharaan kesehatan para pensiunan baru tersebut.</p>
+
+    <div class="flow">Begitu kelebihan atau kekurangan tenaga kerja terpetakan pada Tahap 1, <b>Tahap 2</b> merumuskan sasaran kuantitatif dan memilih strategi penyeimbangan yang tepat.</div>
+
+    <!-- TAHAP 2 -->
+    <div class="numh">2. Penetapan Sasaran dan Perencanaan Strategis (Tahap 2)</div>
+    <p>Sasaran kuantitatif yang jelas (angka spesifik, kategori pekerjaan/keterampilan, dan jadwal) menjadi tolok ukur keberhasilan program sekaligus mencegah penderitaan karyawan akibat PHK atau pemotongan gaji tanpa arah. Pilihan strategi penyeimbangan meliputi:</p>
+    <div class="table-wrap">
+      <table class="mini">
+        <thead><tr><th style="width:50%">9 Pilihan Mengurangi Kelebihan SDM</th><th>7 Pilihan Menghindari Kekurangan SDM</th></tr></thead>
+        <tbody>
+          <tr><td data-label="9 Pilihan Kelebihan SDM">(1) Perampingan (<i>downsizing</i>), (2) Pengurangan gaji, (3) Demosi (penurunan pangkat), (4) Pemindahan, (5) Pembagian pekerjaan, (6) Pembekuan penerimaan, (7) Pengurangan SDM secara alamiah, (8) Pensiun dini, (9) Pelatihan kembali.</td><td data-label="7 Pilihan Kekurangan SDM">(1) Kerja lembur, (2) Menerima karyawan tidak tetap/sementara, (3) Alih daya (<i>outsourcing</i>), (4) Pelatihan kembali karyawan yang dipindahkan, (5) Mengurangi perputaran tenaga kerja (<i>turnover</i>), (6) Menerima karyawan baru, (7) Inovasi teknologi.</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="casebox"><span class="ctitle">Boks Buku (Hal. 2.34) · Bersaing Melalui Globalisasi: Jabil Circuit (Meksiko vs China)</span>
+      Pada 1998 biaya tenaga kerja Meksiko dan perjanjian <b>NAFTA</b> membuat manufaktur <b>Jabil Circuit</b> sangat sukses. Namun menjelang 2002 permintaan anjlok karena <b>China</b> memproduksi barang sama dengan biaya tenaga kerja jauh lebih murah—mengakibatkan Meksiko kehilangan sekitar <b>400.000 pekerjaan</b> dalam 3 tahun. Untuk bertahan, perusahaan-perusahaan Meksiko beralih bersaing melalui <b>produk lebih rumit, kecepatan, dan fleksibilitas</b>.
+    </div>
+
+    <div class="leth">a. Perampingan (<span class="en">Downsizing</span>)</div>
+    <p><b>Empat alasan organisasi melakukan perampingan:</b> (1) menekan biaya tenaga kerja yang merupakan porsi besar total biaya, (2) menutup pabrik usang atau adopsi teknologi baru, (3) merger dan akuisisi yang mengurangi kebutuhan staf/pimpinan, dan (4) relokasi bisnis demi ekonomi (<i>contoh:</i> <b>Universal Studio</b> merampingkan produksi TV di Los Angeles yang biayanya <b>40% lebih tinggi</b> lalu memindahkannya ke Orlando).</p>
+    <p>Namun, riset <b>Majalah Fortune</b> terhadap <b>100 perusahaan</b> yang melakukan perampingan mengungkap kinerja keuangan sebagian besar justru <b>memburuk</b> pada tahun-tahun berikutnya karena <b>3 penyebab</b>: (1) penghematan hanya jangka pendek, jangka panjang berdampak negatif bila salah kelola; (2) secara tak sadar melepaskan karyawan yang merupakan <b>aset tak tergantikan</b>; dan (3) karyawan yang bertahan mengalami gejala <b><i>survivor syndrome</i></b> (berpikiran sempit, egois, menghindari risiko, motivasi merosot karena peluang promosi hilang, dan mulai mencari kerja lain), ditambah rusaknya citra di pasar tenaga kerja. <b>Kunci pencegahan:</b> jelaskan alasan perampingan secara transparan dan jalankan prosedur PHK secara adil, etis, dan nondiskriminatif.</p>
+
+    <div class="leth">b. Program-Program Pensiun Dini</div>
+    <p>Seiring membaiknya kesehatan dan berkurangnya tuntutan kerja fisik, usia rata-rata karyawan makin tua dan mereka bekerja lebih lama. Meski berpengalaman, senioritas menaikkan beban gaji, biaya kesehatan, dan iuran pensiun—sehingga manajemen menawarkan <b>insentif pensiun dini</b> untuk mengurangi kelebihan SDM tanpa PHK paksa.</p>
+
+    <div class="leth">c. Mempekerjakan Pekerja Sementara (<span class="en">Temporary Workers</span>)</div>
+    <p>Memberikan fleksibilitas tinggi menghadapi fluktuasi permintaan serta <b>empat keuntungan tambahan</b>: (1) bebas kewajiban administrasi &amp; beban keuangan (asuransi kesehatan, pensiun, jiwa), (2) perusahaan kecil memperoleh tenaga yang telah diuji oleh agen pekerja sementara, (3) banyak agen melatih pekerja sebelum penempatan (menghemat biaya pelatihan), dan (4) membawa sudut pandang objektif serta pengalaman pemecahan masalah dari perusahaan lain.</p>
+    <p>Karena berisiko memicu konflik dengan karyawan tetap (dianggap ancaman keamanan kerja), terdapat <b>empat cara mengelola konflik pekerja sementara</b>: (1) pastikan proses perampingan sudah tuntas dan diberi jeda waktu layak sebelum merekrut pekerja sementara; (2) rekrut pekerja sementara yang memang menginginkan status sementara agar tidak mengancam pekerja tetap (tanpa memperlakukan mereka sebagai "warga kelas 2"); (3) pastikan agen menyediakan fasilitas/tunjangan yang minimal sebanding dengan karyawan tetap; dan (4) terapkan strategi <b>"Coba sebelum Anda membeli"</b> (mengevaluasi kinerja pekerja sementara sebelum mengangkatnya menjadi karyawan tetap—menekan <i>turnover</i>, biaya iklan, wawancara, dan pelatihan).</p>
+
+    <div class="leth">d. Alih Daya (<span class="en">Outsourcing</span>) dan <span class="en">Offshoring</span></div>
+    <p><span class="term"><i>Outsourcing</i> (alih daya)</span> adalah penyerahan sebagian pelaksanaan pekerjaan yang bersifat <b><i>non-core</i></b> (penunjang) kepada perusahaan lain melalui perjanjian pemborongan pekerjaan atau penyediaan jasa pekerja/buruh—karena vendor dapat mengerjakannya lebih murah, lebih cepat, dan lebih baik sehingga perusahaan fokus pada pekerjaan <i>core</i>.</p>
+    <ol class="book">
+      <li><b>Dasar Hukum Outsourcing (UU No. 13 Tahun 2003 Pasal 64):</b> Membagi <i>outsourcing</i> menjadi <b>2 jenis</b>: (a) <b>Pemborongan pekerjaan</b> (vendor bertanggung jawab penuh teknis operasional &amp; nonteknis/administrasi; pekerjaan terukur volumenya dengan <i>fee</i> per satuan kerja Rp/m² atau Rp/kg—mis. <i>cleaning service</i>, pembasmian hama, katering); dan (b) <b>Penyediaan jasa pekerja/buruh</b> (vendor menempatkan karyawan dan mengelola nonteknis/SDM, sedangkan operasional teknis dikelola perusahaan pengguna).</li>
+      <li><b>Pekerjaan yang Dapat Dialihkan (Pasal 65 &amp; Pasal 66 UU No. 13/2003):</b>
+        <ul class="exp" style="margin-top:6px">
+          <li><b>Pasal 65 (Ayat 1–9):</b> Perjanjian pemborongan wajib tertulis; memenuhi <b>4 syarat pekerjaan</b>—(a) terpisah dari kegiatan utama, (b) dilakukan dengan perintah langsung/tak langsung pemberi kerja, (c) kegiatan penunjang keseluruhan, dan (d) tidak menghambat proses produksi langsung. Vendor wajib berbadan hukum, menjamin perlindungan kerja minimal setara, dan mengikat pekerja via PKWT/PKWTT tertulis. <b>Sanksi (Ayat 8–9):</b> bila ketentuan tak terpenuhi, <b>demi hukum status hubungan kerja beralih menjadi karyawan perusahaan pemberi pekerjaan</b>.</li>
+          <li><b>Pasal 66 (Ayat 1–4):</b> Penyedia jasa pekerja dilarang dipakai untuk kegiatan pokok/produksi langsung; wajib ada hubungan kerja tertulis (PKWT/PKWTT) dengan vendor, perlindungan upah/kesejahteraan/perselisihan jadi tanggung jawab vendor, vendor berbadan hukum &amp; berizin instansi ketenagakerjaan. Bila dilanggar, <b>demi hukum status pekerja beralih ke perusahaan pemberi kerja</b>.</li>
+        </ul>
+      </li>
+      <li><b>Cara Menentukan <i>Core</i> atau <i>Non-Core</i> (Kepmenakertrans No. KEP.220/MEN/X/2004 Pasal 6):</b> Penetapan <i>core/non-core</i> dilakukan sepenuhnya oleh perusahaan berdasarkan 4 syarat di atas; perusahaan wajib membuat <b>alur kegiatan proses pelaksanaan pekerjaan</b>, menetapkan jenis pekerjaan utama vs penunjang, dan <b>melaporkannya kepada Dinas Tenaga Kerja setempat</b> sebagai landasan hukum.</li>
+      <li><b>Posisi yang Tidak Seharusnya Dialihkan:</b> Posisi <b>supervisor, manajer ke atas</b>, serta fungsi strategis kompetensi inti tidak boleh dialihkan karena menuntut komitmen penuh dan penguasaan mendalam atas produk, mesin, serta bahan baku; kegagalan pada fungsi inti menghancurkan daya saing.</li>
+      <li><b>Enam Keuntungan Melakukan Outsourcing (a–f):</b> (a) <i>Fokus pada kompetensi utama</i> (sumber daya diarahkan penuh pada kepuasan pelanggan &amp; pendapatan); (b) <i>Penghematan &amp; pengendalian biaya operasional</i> (memanfaatkan <i>economics of scale</i> vendor dan mengubah <i>fixed cost</i> SDM—yang umumnya <b>60–70%</b> biaya rutin—menjadi <i>variable cost</i> sehingga menghindari PHK massal saat krisis); (c) <i>Memanfaatkan kompetensi vendor</i> (krusial bagi perusahaan kecil/baru ber-HRD terbatas); (d) <i>Perusahaan lebih ramping &amp; gesit merespons pasar</i>; (e) <i>Mengurangi risiko bisnis &amp; risiko sengketa PHK</i> (tanggung jawab hukum di vendor); dan (f) <i>Efisiensi &amp; perbaikan pekerjaan non-core</i> (rekrutmen, penggajian, lembur, administrasi).</li>
+      <li><b>Lima Penyebab Gagalnya Proyek Outsourcing (a–e):</b> (a) kurangnya komitmen &amp; keterlibatan manajemen; (b) kurangnya pengetahuan siklus <i>outsourcing</i> sehingga salah pilih vendor; (c) komunikasi buruk yang memicu <b>5 resistensi karyawan</b> (takut PHK, penentangan SP, rusak budaya, hilang kendali, ragu mutu vendor); (d) terburu-buru mengambil keputusan tanpa evaluasi kontrak matang; dan (e) dimulai tanpa visi jelas &amp; fondasi kuat (<b>7 faktor kegagalan:</b> harapan tak jelas, tak siap perubahan proses, tanpa patokan kinerja, minim dukungan internal, lemah komunikasi, peran klien–vendor kabur, dan lemah manajemen proyek).</li>
+      <li><b>Survei Outsourcing (Ernst &amp; Young, 2008 — 600 Pembuat Keputusan di Eropa):</b> Menunjukkan <b>7 dari 10 (70%)</b> perusahaan Eropa mengalihkan minimal satu fungsi bisnisnya, dengan alasan utama penghematan biaya &amp; produktivitas (<b>49%</b>).
+        <div class="table-wrap" style="margin-top:8px">
+          <table class="mini">
+            <thead><tr><th style="width:50%">Tabel 2.5 — Outsourcing Berdasarkan Negara (Eropa)</th><th>Tabel 2.6 — Outsourcing Berdasarkan Fungsi</th></tr></thead>
+            <tbody>
+              <tr><td data-label="Tabel 2.5 (Negara)">Rata-rata Eropa: <b>70%</b> · Belgia: <b>81%</b> · Spanyol: <b>77%</b> · Inggris (UK): <b>71%</b> (negara lain di kisaran 63–76%).</td><td data-label="Tabel 2.6 (Fungsi)">Posisi 1: <b>Perawatan (<i>Maintenance</i>) 76%</b> · Posisi 4: <b>Sumber Daya Manusia 59%</b> · Administrasi Keuangan <b>56%</b> · Posisi terakhir (jarang dialihkan): Pengembangan Produk/Manufaktur (45%) &amp; Penjualan/Pemasaran/Komunikasi (20%).</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </li>
+      <li><b><i>Offshoring</i> (Kasus Khusus Alih Daya Lintas Negara):</b> Memindahkan pekerjaan dari satu negara ke negara lain. <b>4 langkah menjamin keberhasilan:</b> (1) batasi pada pekerjaan repetitif, dapat diprediksi, dan mudah dilatih; (2) pilih vendor yang lebih besar dan lebih mapan/berpengalaman; (3) jangan mengalihdayakan pekerjaan yang sangat memerlukan keamanan tinggi; dan (4) awali dari jumlah kecil lalu monitor terus-menerus.</li>
+    </ol>
+
+    <div class="leth">e. Mengubah Gaji dan Jam Kerja</div>
+    <p>Saat <b>kekurangan tenaga kerja</b>, perusahaan dapat menambah jam kerja (lembur) karyawan yang ada—lebih disukai daripada merekrut baru bila kenaikan permintaan diragukan permanen, namun dalam jangka panjang memicu stres dan frustrasi. Saat <b>kelebihan tenaga kerja</b>, PHK dapat dihindari lewat pemotongan gaji atau mempertahankan tarif gaji sambil <b>mengurangi jumlah hari/jam kerja</b> semua karyawan (<i>contoh buku:</i> <b>Hotel Hilton</b> menerapkan kerja <b>2 hari/minggu</b> saat tingkat hunian turun sementara—efektif bila karyawan meyakini penurunan hanya bersifat sementara).</p>
+
+    <!-- TAHAP 3 -->
+    <div class="numh">3. Evaluasi Hasil (Tahap 3)</div>
+    <p>Pada tahap pelaksanaan, aspek kritisnya adalah kejelasan penanggung jawab yang memiliki kewenangan dan sumber daya memadai serta laporan kemajuan berkala. Evaluasi akhir mencakup <b>tiga pengecekan wajib (a–c)</b>: (a) apakah perusahaan berhasil menghindari kekurangan dan kelebihan tenaga kerja, (b) apakah pelaksanaan program sesuai rencana dan membuahkan hasil yang diinginkan, serta (c) <b>pengecekan proses</b> (selain pengecekan hasil) untuk perbaikan berkelanjutan.</p>
+
+    <div class="flow">Selain menyeimbangkan jumlah tenaga kerja secara agregat pada Bagian A, perencanaan SDM juga mencakup dimensi kesetaraan komposisi angkatan kerja pada <b>Bagian B: Affirmative Action Planning</b>.</div>
+
+    <!-- KB2 B -->
+    <div class="abc"><span class="ltr">B</span><h4>Kasus Khusus tentang <i>Affirmative Action Planning</i></h4></div>
+    <p><span class="term"><i>Affirmative action</i></span> adalah langkah positif untuk meningkatkan representasi perempuan dan kaum minoritas di bidang pekerjaan, pendidikan, dan bisnis yang secara historis kurang terwakili (kerap memicu kontroversi bila menyangkut seleksi khusus berbasis suku, gender, atau etnis). <span class="term"><i>Affirmative Action Plan</i> (Rencana Tindakan Penyetaraan)</span> adalah alat manajemen yang mencakup kebijakan, praktik, dan prosedur guna menjamin <b>kesempatan yang sama</b> dalam rekrutmen, seleksi, dan pengembangan bagi seluruh pelamar/karyawan berkualitas.</p>
+    <ul class="exp">
+      <li><b>Peninjauan Ulang Pemanfaatan Angkatan Kerja (<span class="en">Workforce Utilization Review</span>):</b> Perbandingan proporsi subkelompok pekerja di dalam perusahaan terhadap proporsi subkelompok tersebut di pasar tenaga kerja relevan untuk mendeteksi <b>kurang dimanfaatkan (<span class="en">underutilization</span>)</b>. <i>Contoh buku (hal. 2.48):</i> kelompok Afrika-Amerika mencakup <b>35%</b> pasar kerja relevan, tetapi hanya <b>5%</b> pada suatu kategori pekerjaan di organisasi—membuktikan adanya <i>underutilization</i> (dipicu masalah seleksi atau hambatan pergerakan internal yang dapat dilacak melalui Matriks Transisi).</li>
+      <li><b>Dua Alasan Pelaksanaan:</b> (1) <b>Sukarela</b>—mencegah <i>underutilization</i> dan meningkatkan keragaman angkatan kerja; dan (2) <b>Kewajiban Hukum</b>—di Indonesia berlandaskan <b>UUD 1945 Pasal 28D ayat 2</b>: <i>"Setiap orang berhak untuk bekerja serta mendapat imbalan dan perlakuan yang adil dan layak dalam hubungan kerja."</i></li>
+      <li><b>Lima Langkah Pelaksanaan:</b> Berjalan sistematis mengikuti 5 unsur perencanaan SDM: (1) Penentuan Tujuan Organisasi, (2) Peramalan SDM, (3) Informasi Karyawan, (4) Proyeksi Ketersediaan SDM, dan (5) Analisis &amp; Evaluasi Kesenjangan SDM.</li>
+    </ul>
+
+    <div class="casebox"><span class="ctitle">Kasus Buku KB 2 (Hal. 2.51–2.52) · Perencanaan SDM di Hotel City</span>
+      <b>Hotel City</b> (di pusat kota menengah) melayani tamu bisnis pada hari kerja dan permintaan besar katering/makan siang di akhir pekan (sementara kebutuhan <i>housekeeping</i> akhir pekan lebih rendah), serta berencana membuka <b>20 kamar baru</b> tahun depan. Dua masalah utamanya: (1) sulit merekrut staf dapur &amp; restoran karena persaingan hotel lain dan minimnya transportasi lokal pagi/malam (diatasi dengan rencana transportasi karyawan), serta (2) kelangkaan koki &amp; resepsionis terampil dari perguruan tinggi lokal. Manajemen menimbang <b>3 opsi</b>: skema pelatihan mandiri/kolaborasi antarhotel, kenaikan upah untuk menarik staf terlatih dari hotel lain, atau rekrutmen dari daerah lain.
+    </div>
+  </div>
+
+  <!-- GLOSARIUM -->
+  <h2 class="section" id="glosarium"><span class="dot"></span>Glosarium Istilah Kunci Modul 2</h2>
+  <div class="card"><dl class="glossary">
+    <dt>Affirmative Action Plan &amp; Workforce Utilization Review</dt><dd>Rencana tindakan penyetaraan kesempatan kerja; peninjauan pemanfaatan membandingkan proporsi subkelompok di perusahaan vs pasar kerja untuk mendeteksi <i>underutilization</i>.</dd>
+    <dt>Analisis Beban Kerja vs Analisis SDM</dt><dd>Penentuan kebutuhan SDM dari total <i>man hours</i> beban kerja vs perhitungan menyeluruh yang memasukkan persediaan SDM, tingkat absensi, dan <i>labor turnover</i>.</dd>
+    <dt>Downsizing &amp; Survivor Syndrome</dt><dd>Perampingan tenaga kerja; <i>survivor syndrome</i> adalah gejala menurunnya motivasi, sikap egois, dan ketakutan pada karyawan yang bertahan pasca-perampingan.</dd>
+    <dt>Job Description vs Job Specification</dt><dd>Uraian pekerjaan merinci tugas, wewenang, dan tanggung jawab; spesifikasi pekerjaan merinci kualifikasi minimum (pendidikan, pengalaman, keterampilan).</dd>
+    <dt>Leading Indicators &amp; Matriks Transisi</dt><dd>Indikator objektif peramalan permintaan SDM (mis. penjualan); Matriks Transisi memproyeksikan penawaran SDM internal melalui pergerakan antarjabatan (baris &amp; kolom).</dd>
+    <dt>Outsourcing (Pemborongan vs Penyediaan Jasa) &amp; Offshoring</dt><dd>Pengalihan pekerjaan <i>non-core</i> ke vendor lokal berdasar UU No. 13/2003 Ps. 64–66 &amp; Kepmenakertrans 220/2004; <i>offshoring</i> memindahkan pekerjaan lintas negara.</dd>
+    <dt>PAQ, FJAS, &amp; O*NET (KJI)</dt><dd>Tiga metode analisis pekerjaan: kuesioner 194 item (PAQ), 52 kemampuan Fleishman (FJAS), dan basis data klasifikasi jabatan (O*NET / KJI).</dd>
+    <dt>Struktur Fungsional, Divisional, &amp; Matriks</dt><dd>Bentuk struktur organisasi berdasarkan kesamaan fungsi, alur kerja (produk/geografis/pelanggan), serta gabungannya dengan dua garis pelaporan (matriks).</dd>
+  </dl></div>
+</div>
+
+<footer><b>EKMA5207 — Manajemen Sumber Daya Manusia (Edisi 3)</b> · Modul 2: Perencanaan Sumber Daya Manusia (Prof. Dr. Mutiara Sibarani Panggabean, S.E., M.E.)<br>Bahan belajar lengkap mengikuti outline asli modul untuk persiapan ujian.</footer>
+
+<script>
+(function(){
+  var pb=document.getElementById('progress');
+  function onScroll(){var h=document.documentElement;var sc=h.scrollTop||document.body.scrollTop;var max=(h.scrollHeight-h.clientHeight)||1;pb.style.width=(sc/max*100)+'%';}
+  document.addEventListener('scroll',onScroll,{passive:true});onScroll();
+
+  var list=document.getElementById('conceptList');var items=[].slice.call(list.querySelectorAll('li'));var boxes=items.map(function(li){return li.querySelector('input');});
+  document.getElementById('totalCount').textContent=items.length;var doneEl=document.getElementById('doneCount');var KEY='studi_ekma5207_m2_concepts_v3';
+  function load(){try{var a=JSON.parse(localStorage.getItem(KEY)||'[]');boxes.forEach(function(b,i){if(a[i])b.checked=true;});}catch(e){}}
+  function save(){try{localStorage.setItem(KEY,JSON.stringify(boxes.map(function(b){return b.checked?1:0;})));}catch(e){}}
+  function refresh(){var n=0;items.forEach(function(li,i){if(boxes[i].checked){li.classList.add('done');n++;}else li.classList.remove('done');});doneEl.textContent=n;}
+  load();refresh();boxes.forEach(function(b){b.addEventListener('change',function(){refresh();save();});});
+  document.getElementById('resetBtn').addEventListener('click',function(){boxes.forEach(function(b){b.checked=false;});refresh();save();});
+
+  [].slice.call(document.querySelectorAll('[data-revealgroup]')).forEach(function(g){
+    var det=g.querySelector('[data-revealdetail]');if(!det){var sib=g.nextElementSibling;if(sib&&sib.hasAttribute&&sib.hasAttribute('data-revealdetail'))det=sib;}
+    var cells=[].slice.call(g.querySelectorAll('[data-reveal]'));
+    cells.forEach(function(c){c.addEventListener('click',function(){cells.forEach(function(x){x.classList.remove('active');});c.classList.add('active');if(det){det.innerHTML=c.getAttribute('data-detail');if(window.MathJax&&window.MathJax.typesetPromise)window.MathJax.typesetPromise([det]);}});});
+  });
+
+  (function(){
+    var ROWH=46,NODE_H=32,PAD=13,GAP=52;var COL={root:'#0f5e8f',kb1:'#1a86c7',kb2:'#e08a1e',kb3:'#2a9d6f',kb4:'#7a5cc0',kb5:'#c75b7a'};
+    var mc=document.createElement('canvas').getContext('2d');mc.font='700 13px -apple-system,Segoe UI,Roboto,sans-serif';
+    function tw(t){return Math.ceil(mc.measureText(t).width);}function esc(t){return t.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');}
+    function rgba(hex,a){var h=hex.replace('#','');return 'rgba('+parseInt(h.substr(0,2),16)+','+parseInt(h.substr(2,2),16)+','+parseInt(h.substr(4,2),16)+','+a+')';}
+    var DATA={label:'MODUL 2 — Perencanaan SDM',color:COL.root,children:[
+      {label:'KB1 · Analisis & Perancangan Pekerjaan (A–D)',color:COL.kb1,children:[
+        {label:'A. Aliran Kerja & Struktur Organisasi',children:[{label:'1. Work-Flow Analysis (Gambar 2.1)'},{label:'2. Dimensi & Bagan Struktur (Gambar 2.2–2.5 & Tabel 2.1)'}]},
+        {label:'B. Analisis Pekerjaan (7 Manfaat SDM · 3 Lini)'},
+        {label:'C. Teknik Analisis Pekerjaan',children:[{label:'Uraian vs Spesifikasi & 3 Langkah'},{label:'Sumber Info & 3 Metode (PAQ, FJAS, O*NET/KJI)'}]},
+        {label:'D. Perancangan Pekerjaan',children:[{label:'4 Pendekatan & Model Karakteristik (Gbr 2.7)'},{label:'Kasus Ergonomi: Patricia'}]}
+      ]},
+      {label:'KB2 · Perencanaan SDM (A–B · Full Outline)',color:COL.kb2,children:[
+        {label:'A. Perencanaan SDM',children:[
+          {label:'5 Unsur & 2 Metode (Rumus Persediaan, Absensi, Turnover)'},
+          {label:'1. Peramalan (Leading Indicators, Matriks Transisi, GM)'},
+          {label:'2. Strategi: Downsizing, Pensiun Dini, Pekerja Sementara'},
+          {label:'2d. Outsourcing (UU 13/2003 Ps. 64–66, Kepmen 220/2004, E&Y) & Offshoring'},
+          {label:'2e–3. Gaji/Jam Kerja (Hilton) & 3 Evaluasi Hasil'}
+        ]},
+        {label:'B. Affirmative Action Planning',children:[{label:'Workforce Utilization Review & Underutilization'},{label:'UUD 1945 Ps. 28D Ayat 2, 5 Langkah & Kasus Hotel City'}]}
+      ]}
+    ]};
+    var idc=0;(function w(n,c){n.id='n'+(idc++);n.color=n.color||c;(n.children||[]).forEach(function(k){w(k,n.color);});})(DATA,COL.root);
+    (function w(n,d){if(d>=2&&n.children&&n.children.length)n.collapsed=true;(n.children||[]).forEach(function(k){w(k,d+1);});})(DATA,0);
+    var host=document.getElementById('mindmap');
+    function render(){
+      var colW=[];(function w(n,d){var width=tw(n.label)+PAD*2+((n.children&&n.children.length)?20:0);colW[d]=Math.max(colW[d]||0,width);if(!n.collapsed)(n.children||[]).forEach(function(k){w(k,d+1);});})(DATA,0);
+      var colX=[],acc=14;for(var d=0;d<colW.length;d++){colX[d]=acc;acc+=colW[d]+GAP;}var row={v:0};
+      (function lay(n,d){if(!n.children||!n.children.length||n.collapsed){n._y=row.v*ROWH+ROWH/2+8;row.v++;return;}var f,l;n.children.forEach(function(k,i){lay(k,d+1);if(i===0)f=k._y;l=k._y;});n._y=(f+l)/2;})(DATA,0);
+      var totalW=acc,totalH=row.v*ROWH+24;var nodes=[],links=[];
+      (function col(n,d,p){n._x=colX[d];n._w=tw(n.label)+PAD*2+((n.children&&n.children.length)?20:0);nodes.push({n:n,d:d});if(p)links.push([p,n]);if(!n.collapsed)(n.children||[]).forEach(function(k){col(k,d+1,n);});})(DATA,0,null);
+      var s='<svg width="'+totalW+'" height="'+totalH+'" viewBox="0 0 '+totalW+' '+totalH+'" xmlns="http://www.w3.org/2000/svg">';
+      links.forEach(function(pr){var a=pr[0],b=pr[1],x1=a._x+a._w,y1=a._y,x2=b._x,y2=b._y,mx=(x1+x2)/2;s+='<path d="M'+x1+' '+y1+' C'+mx+' '+y1+' '+mx+' '+y2+' '+x2+' '+y2+'" fill="none" stroke="'+rgba(b.color,.5)+'" stroke-width="2"/>';});
+      nodes.forEach(function(o){var n=o.n,x=n._x,y=n._y-NODE_H/2,w=n._w,hk=n.children&&n.children.length;var fill=o.d===0?n.color:(o.d===1?rgba(n.color,.12):'#fff');var tf=o.d===0?'#fff':'#1c2733';
+        s+='<g data-id="'+n.id+'" style="cursor:'+(hk?'pointer':'default')+'"><rect x="'+x+'" y="'+y+'" rx="9" width="'+w+'" height="'+NODE_H+'" fill="'+fill+'" stroke="'+n.color+'" stroke-width="'+(o.d===0?0:1.6)+'"/><text x="'+(x+PAD)+'" y="'+(n._y+4)+'" font-size="13" font-weight="'+(o.d<=1?'700':'500')+'" fill="'+tf+'" font-family="-apple-system,Segoe UI,Roboto,sans-serif">'+esc(n.label)+'</text>';
+        if(hk){var cx=x+w-12,cy=n._y;s+='<circle cx="'+cx+'" cy="'+cy+'" r="8.5" fill="'+n.color+'"/><text x="'+cx+'" y="'+(cy+4.5)+'" font-size="13" font-weight="700" fill="#fff" text-anchor="middle" font-family="sans-serif">'+(n.collapsed?'+':'\u2013')+'</text>';}s+='</g>';});
+      s+='</svg>';host.innerHTML=s;
+    }
+    host.addEventListener('click',function(e){var g=e.target.closest('g[data-id]');if(!g)return;var id=g.getAttribute('data-id');(function f(n){if(n.id===id){if(n.children&&n.children.length)n.collapsed=!n.collapsed;return true;}return (n.children||[]).some(f);})(DATA);render();});
+    document.getElementById('mmExpand').addEventListener('click',function(){(function w(n){if(n.children)n.collapsed=false;(n.children||[]).forEach(w);})(DATA);render();});
+    document.getElementById('mmCollapse').addEventListener('click',function(){(function w(n,d){if(d>=1&&n.children&&n.children.length)n.collapsed=true;(n.children||[]).forEach(function(k){w(k,d+1);});})(DATA,0);render();});
+    render();
+  })();
+
+  window.addEventListener('load',function(){setTimeout(function(){if(window.MathJax&&window.MathJax.typesetPromise)window.MathJax.typesetPromise();},400);});
+})();
+</script></body></html>

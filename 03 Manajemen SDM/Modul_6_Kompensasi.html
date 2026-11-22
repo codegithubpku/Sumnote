@@ -1,0 +1,687 @@
+<!DOCTYPE html>
+<html lang="id"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Modul 6 — Kompensasi | EKMA5207</title>
+<script>window.MathJax={tex:{inlineMath:[['$','$']],displayMath:[['\\[','\\]'],['$$','$$']]},svg:{fontCache:'global'},startup:{typeset:true}};</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js" async></script>
+<style>
+:root{--bg:#f4f6f9;--panel:#fff;--ink:#1c2733;--muted:#5c6b7a;--line:#e4e9f0;--brand:#1a86c7;--brand-dark:#0f5e8f;--brand-soft:#e7f3fb;--kb1:#1a86c7;--kb2:#e08a1e;--kb3:#2a9d6f;--kb4:#7a5cc0;--kb5:#c75b7a;--radius:14px;--shadow:0 1px 2px rgba(16,42,67,.06),0 6px 20px rgba(16,42,67,.06);--maxw:900px}
+*{box-sizing:border-box}html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;line-height:1.72}
+#progress{position:fixed;top:0;left:0;height:4px;width:0;background:linear-gradient(90deg,var(--brand),#53c0ec);z-index:200;transition:width .1s}
+header.top{position:sticky;top:0;z-index:100;background:rgba(255,255,255,.92);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+.top-in{max-width:var(--maxw);margin:0 auto;padding:10px 20px;display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+.badge{background:var(--brand);color:#fff;font-weight:700;font-size:.72rem;letter-spacing:.5px;padding:4px 10px;border-radius:999px}
+.homebtn{text-decoration:none;display:inline-flex;align-items:center;gap:7px;background:var(--brand);color:#fff;font-weight:700;font-size:.8rem;padding:7px 15px;border-radius:999px;box-shadow:0 2px 6px rgba(16,42,67,.22);line-height:1}
+.top-title{font-size:.9rem;font-weight:600;color:var(--muted)}
+nav.jump{margin-left:auto;display:flex;gap:4px;flex-wrap:wrap}
+nav.jump a{font-size:.78rem;color:var(--muted);text-decoration:none;padding:5px 10px;border-radius:8px}
+nav.jump a:hover{background:var(--brand-soft);color:var(--brand-dark)}
+.wrap{max-width:var(--maxw);margin:0 auto;padding:0 20px 90px}
+.hero{margin-top:26px;padding:30px 28px;border-radius:var(--radius);color:#fff;background:linear-gradient(135deg,#0f5e8f,#1a86c7 60%,#2fa4df);box-shadow:var(--shadow);position:relative;overflow:hidden}
+.hero .eyebrow{font-size:.78rem;letter-spacing:1.5px;text-transform:uppercase;opacity:.9;font-weight:600}
+.hero h1{margin:.3em 0 .25em;font-size:1.62rem;line-height:1.25;max-width:92%}
+.hero .meta{display:flex;gap:18px;flex-wrap:wrap;font-size:.84rem;opacity:.95;margin-top:10px}
+h2.section{font-size:1.3rem;margin:48px 0 4px;display:flex;align-items:center;gap:10px;scroll-margin-top:70px}
+h2.section .dot{width:10px;height:22px;border-radius:4px;background:var(--brand)}
+.section-sub{color:var(--muted);font-size:.9rem;margin:0 0 18px}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);padding:22px 24px;margin:16px 0;--dot:var(--brand);overflow-x:clip;overflow-wrap:break-word;word-wrap:break-word}
+.concepts{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:minmax(0,1fr);gap:10px}
+.concepts li{display:flex;gap:12px;align-items:flex-start;padding:12px 14px;border:1px solid var(--line);border-radius:10px;background:#fcfdff;min-width:0;max-width:100%}
+.concepts li>span{min-width:0;max-width:100%;overflow-wrap:break-word;word-wrap:break-word}
+.concepts input{margin-top:4px;width:18px;height:18px;accent-color:var(--brand);flex:none;cursor:pointer}
+.concepts .ct{font-weight:600}.concepts .cd{display:block;font-weight:400;color:var(--muted);font-size:.86rem;margin-top:2px}
+.concepts li.done{background:var(--brand-soft);border-color:#bfe0f3}.concepts li.done .ct{text-decoration:line-through;opacity:.65}
+.cl-head{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-bottom:6px}
+.cl-head .count{font-size:.82rem;color:var(--muted);background:var(--brand-soft);padding:3px 10px;border-radius:999px;font-weight:600}
+.btn-reset{font-size:.78rem;border:1px solid var(--line);background:#fff;color:var(--muted);padding:5px 12px;border-radius:8px;cursor:pointer}
+.mm-toolbar{display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin-bottom:10px}
+.mm-btn{font-size:.78rem;border:1px solid var(--line);background:#fff;padding:6px 13px;border-radius:8px;cursor:pointer;color:var(--brand-dark);font-weight:600}
+.mindmap-host{height:580px;overflow:auto;border:1px solid var(--line);border-radius:10px;background:#fcfdff}.mindmap-host svg{display:block}
+.kb-tag{display:inline-flex;align-items:center;gap:8px;font-size:.78rem;font-weight:700;color:#fff;padding:5px 12px;border-radius:999px;margin-bottom:6px}
+.kb1t{background:var(--kb1)}.kb2t{background:var(--kb2)}.kb3t{background:var(--kb3)}.kb4t{background:var(--kb4)}.kb5t{background:var(--kb5)}
+.kb1b{--dot:var(--kb1)}.kb2b{--dot:var(--kb2)}.kb3b{--dot:var(--kb3)}.kb4b{--dot:var(--kb4)}.kb5b{--dot:var(--kb5)}
+.lead{font-size:1.02rem}.term{font-weight:700;color:var(--dot)}.en{font-style:italic;color:var(--muted);font-weight:500}
+.abc{display:flex;align-items:center;gap:10px;margin:28px 0 10px;padding-bottom:6px;border-bottom:2px solid color-mix(in srgb,var(--dot) 18%,#fff)}
+.abc .ltr{background:var(--dot);color:#fff;font-weight:800;min-width:30px;height:30px;padding:0 7px;border-radius:8px;display:grid;place-items:center;flex:none}
+.abc h4{margin:0;font-size:1.06rem;color:var(--dot)}
+.numh{font-weight:700;color:var(--dot);margin:22px 0 6px;font-size:1rem}
+.leth{font-weight:800;color:var(--dot);margin:16px 0 6px;font-size:.95rem;border-left:3px solid var(--dot);padding-left:10px}
+ol.book{margin:12px 0;padding-left:28px}ol.book>li{margin:10px 0;padding-left:6px}ol.book>li::marker{font-weight:700;color:var(--dot)}
+ul.exp{list-style:none;margin:12px 0;padding:0;display:grid;grid-template-columns:minmax(0,1fr);gap:10px}
+ul.exp>li{position:relative;padding-left:20px;min-width:0;max-width:100%;overflow-wrap:break-word;word-wrap:break-word}
+ul.exp>li::before{content:"";position:absolute;left:0;top:11px;width:8px;height:8px;border-radius:2px;background:var(--dot)}
+ul.let{list-style:lower-alpha;margin:10px 0;padding-left:28px}ul.let>li{margin:8px 0;padding-left:4px}ul.let>li::marker{color:var(--dot);font-weight:700}
+.flow{border-left:4px solid var(--dot);background:color-mix(in srgb,var(--dot) 9%,#fff);padding:11px 15px;border-radius:0 10px 10px 0;margin:18px 0;font-size:.9rem;min-width:0;max-width:100%;overflow-wrap:break-word;word-wrap:break-word}
+.flow::before{content:"🔗 Benang merah — ";font-weight:700;color:var(--dot)}.flow b{color:var(--dot)}
+.casebox{background:#f8fafc;border:1px solid var(--line);border-left:4px solid var(--dot);border-radius:0 10px 10px 0;padding:12px 15px;margin:14px 0;font-size:.88rem;min-width:0;max-width:100%;overflow-wrap:break-word;word-wrap:break-word}
+.casebox .ctitle{font-weight:700;color:var(--dot);margin-bottom:4px;display:block}
+.table-wrap{width:100%;overflow-x:auto;-webkit-overflow-scrolling:touch;margin:14px 0;border-radius:10px}
+table.mini{width:100%;border-collapse:collapse;margin:0;font-size:.86rem;table-layout:auto}
+table.mini th,table.mini td{border:1px solid var(--line);padding:10px 12px;text-align:left;vertical-align:top;overflow-wrap:break-word;word-wrap:break-word}
+table.mini th{background:color-mix(in srgb,var(--dot) 12%,#fff);color:var(--dot);font-weight:700}
+.rgrid{display:grid;gap:8px;margin:14px 0}.rgrid.c2{grid-template-columns:repeat(2,minmax(0,1fr))}.rgrid.c3{grid-template-columns:repeat(3,minmax(0,1fr))}.rgrid.c4{grid-template-columns:repeat(4,minmax(0,1fr))}
+.rcell{border:1px solid var(--line);border-radius:10px;padding:11px 13px;cursor:pointer;background:#fff;display:flex;gap:10px;align-items:flex-start;transition:.15s;min-width:0;max-width:100%}
+.rcell>span{min-width:0;max-width:100%;overflow-wrap:break-word;word-wrap:break-word}
+.rcell:hover{border-color:var(--dot);box-shadow:var(--shadow);transform:translateY(-2px)}
+.rcell.active{border-color:var(--dot);background:color-mix(in srgb,var(--dot) 8%,#fff)}
+.rcell .stepnum{background:var(--dot);color:#fff;font-weight:700;min-width:24px;height:24px;border-radius:7px;display:grid;place-items:center;flex:none;font-size:.82rem}
+.rcell .rt{font-weight:700;font-size:.9rem;color:var(--dot);display:block}.rcell .rp{font-size:.78rem;color:var(--muted);display:block;margin-top:2px}
+.rdetail{font-size:.88rem;border-left:4px solid var(--dot);background:color-mix(in srgb,var(--dot) 8%,#fff);border-radius:0 10px 10px 0;padding:12px 15px;margin-top:6px;min-width:0;max-width:100%;overflow-wrap:break-word;word-wrap:break-word}
+.pill-row{display:flex;gap:8px;flex-wrap:wrap;margin:10px 0}.pill{font-size:.8rem;background:#eef3f8;color:#36506a;border:1px solid #e0e8f0;padding:4px 11px;border-radius:999px;font-weight:600}
+.diagram-box{border:1px solid var(--line);border-radius:12px;background:#fcfdff;padding:16px;margin:16px 0;text-align:center;min-width:0;max-width:100%}
+.diagram-cap{font-size:.8rem;color:var(--muted);margin-top:10px;font-weight:600}
+.flowchart{display:flex;align-items:center;gap:6px;flex-wrap:wrap;margin:12px 0;justify-content:center}
+.fc-node{background:color-mix(in srgb,var(--dot) 12%,#fff);border:1.5px solid var(--dot);color:var(--dot);font-weight:700;font-size:.8rem;padding:8px 12px;border-radius:9px;text-align:center;max-width:100%}
+.fc-arrow{color:var(--dot);font-weight:800;font-size:1.05rem}
+.eqbox{background:#fcfdff;border:1px solid var(--line);border-radius:10px;padding:10px 14px;margin:14px 0;overflow-x:auto}
+mjx-container{max-width:100%;overflow-x:auto;overflow-y:hidden}
+mjx-container:not([display="true"]){display:inline-block;vertical-align:middle}
+.acro-box{background:#f8fafc;border:1px solid var(--line);border-radius:10px;padding:12px 14px;margin:14px 0;font-size:.84rem;min-width:0;max-width:100%;overflow-wrap:break-word;word-wrap:break-word}
+.acro-title{font-weight:700;color:var(--dot);font-size:.86rem;margin-bottom:8px;display:block}
+.acro-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:6px 14px;margin:0;padding:0;list-style:none}
+.acro-grid li{min-width:0;line-height:1.5}.acro-grid b{color:var(--dot)}
+.fguide{background:color-mix(in srgb,var(--dot) 5%,#fff);border:1px solid color-mix(in srgb,var(--dot) 22%,#e4e9f0);border-radius:10px;padding:12px 15px;margin:-6px 0 16px;font-size:.86rem;min-width:0;max-width:100%;overflow-wrap:break-word;word-wrap:break-word}
+.fguide .fg-head{font-weight:700;color:var(--dot);font-size:.84rem;text-transform:uppercase;letter-spacing:.35px;margin:0 0 6px}
+.fguide ul{margin:4px 0 8px;padding-left:18px}.fguide ul li{margin:3px 0}
+.fguide .fg-core{border-top:1px dashed color-mix(in srgb,var(--dot) 30%,#cbd5e1);padding-top:8px;margin-top:8px;display:grid;grid-template-columns:minmax(0,1fr);gap:4px}
+.fguide .fg-core div{min-width:0}
+.glossary dt{font-weight:700;color:var(--brand-dark);margin-top:10px}.glossary dd{margin:0 0 2px;color:var(--muted);font-size:.9rem}
+footer{max-width:var(--maxw);margin:0 auto;padding:30px 20px 60px;color:var(--muted);font-size:.82rem;border-top:1px solid var(--line)}
+.offline-note{font-size:.76rem;color:var(--muted);background:#fff8e6;border:1px solid #f0e2b8;border-radius:8px;padding:8px 12px;margin:10px 0}
+@media(max-width:680px){
+  .table-wrap{overflow-x:visible}
+  table.mini,table.mini thead,table.mini tbody,table.mini th,table.mini td,table.mini tr{display:block;width:100%}
+  table.mini thead{display:none}
+  table.mini tr{margin-bottom:12px;border:1.5px solid color-mix(in srgb,var(--dot) 28%,#e4e9f0);border-radius:10px;background:#fff;overflow:hidden;box-shadow:0 1px 4px rgba(16,42,67,.05)}
+  table.mini td{border:none;border-bottom:1px solid var(--line);padding:10px 12px;text-align:left}
+  table.mini td:last-child{border-bottom:none}
+  table.mini td::before{content:attr(data-label);display:block;font-size:.74rem;font-weight:700;text-transform:uppercase;letter-spacing:.4px;color:var(--dot);margin-bottom:4px}
+}
+@media(max-width:640px){.hero h1{font-size:1.3rem;max-width:100%}nav.jump{display:none}.rgrid.c2,.rgrid.c3,.rgrid.c4,.acro-grid{grid-template-columns:minmax(0,1fr)}.mindmap-host{height:440px}}
+</style></head><body>
+<div id="progress"></div>
+<header class="top"><div class="top-in">
+  <span class="badge">MODUL 6</span>
+  <a class="homebtn" href="index.html" title="Kembali ke daftar modul"><span style="font-size:1rem;line-height:1">&#8962;</span> Daftar Modul</a>
+  <span class="top-title">Manajemen Sumber Daya Manusia · EKMA5207</span>
+  <nav class="jump"><a href="#konsep">Konsep</a><a href="#peta">Peta Konsep</a><a href="#kb1">KB1</a><a href="#kb2">KB2</a><a href="#kb3">KB3</a><a href="#glosarium">Glosarium</a></nav>
+</div></header>
+
+<div class="wrap">
+  <section class="hero"><div class="eyebrow">Ringkasan Belajar Lengkap · EKMA5207 Edisi 3</div>
+  <h1>Kompensasi</h1>
+  <div class="meta"><span>📚 3 Kegiatan Belajar (KB 1: A–G · KB 2: A–F · KB 3: A–N)</span><span>📖 Hal. 6.1–6.51</span><span>✍️ Prof. Dr. Mutiara Sibarani Panggabean, S.E., M.E.</span></div></section>
+
+  <p class="section-sub" style="margin-top:22px">Ringkasan komprehensif mengikuti urutan dan struktur outline asli buku tanpa penggabungan sub-bab: <b>KB 1 Keputusan Struktur Gaji</b> (Bagian A–G), <b>KB 2 Gaji untuk Kontribusi Karyawan</b> (Bagian A–F), dan <b>KB 3 Fasilitas dan Tunjangan Karyawan</b> (Bagian A–N).</p>
+  <p class="offline-note">ℹ️ Peta konsep, kartu penjelasan interaktif, tabel responsif, dan daftar cek konsep berjalan penuh tanpa internet. Koneksi internet hanya diperlukan untuk merender persamaan matematika (MathJax).</p>
+
+  <!-- PENDAHULUAN MODUL -->
+  <div class="card">
+    <div class="abc" style="margin-top:0"><span class="ltr">★</span><h4>Pendahuluan Modul — Mengapa Kompensasi Menentukan Kemauan Kerja &amp; Daya Saing?</h4></div>
+    <p>Prestasi karyawan ditentukan oleh <b>kesempatan, kemampuan, dan kemauan</b>. Bila pelatihan (Modul 5) bertujuan membuat karyawan <i>mampu</i> mengerjakan tugasnya, maka <b>kompensasi</b> diberikan agar mereka <i>mau</i> mengerjakan apa yang mampu mereka kerjakan (hal. 6.3). Namun, kompensasi tidak otomatis memotivasi jika tidak dikelola dengan tepat:</p>
+    <ul class="exp">
+      <li><b>Teori Dua Faktor Frederick Herzberg <span class="en">(Motivation-Hygiene Theory)</span>:</b> Yang sungguh-sungguh memotivasi kerja adalah <b>faktor intrinsik</b> (pertumbuhan, kemajuan, tanggung jawab, pekerjaan itu sendiri, pengakuan, prestasi), bukan <b>faktor ekstrinsik</b> (keamanan, status, kehidupan pribadi, hubungan rekan/supervisor, gaji, kondisi kerja, pengawasan, administrasi/kebijakan perusahaan). Meski demikian, jika faktor ekstrinsik (termasuk gaji) kurang atau tidak adil, motivasi kerja akan merosot tajam.</li>
+      <li><b>Definisi &amp; 4 Pengaruh Penghargaan:</b> Kompensasi (penghargaan) adalah segala bentuk balas jasa atas kontribusi karyawan kepada organisasi. Penelitian membuktikan penghargaan memengaruhi: (1) siapa yang tertarik bergabung (<b>Mobley, 1982</b>), (2) tingkat motivasi karyawan (<b>Lawler, 1973; Vroom, 1964</b>), (3) budaya/iklim organisasi menyeluruh (<b>Kerr &amp; Slocum, 1988; Lawler, 1984</b>), serta (4) struktur dan biaya operasional organisasi (<b>Lawler, 1984</b>).</li>
+      <li><b>Pembedaan Penghargaan Berdasarkan 3 Tujuan Utama:</b> (1) <b>Gaji</b> diberikan untuk <i>menarik</i> karyawan cakap masuk ke organisasi; (2) <b>Insentif</b> diberikan untuk <i>mendorong</i> mereka berprestasi melebihi standar; dan (3) <b>Tunjangan karyawan</b> diberikan untuk <i>mempertahankan</i> karyawan produktif dan berkualitas agar tetap setia.</li>
+    </ul>
+    <div class="flow"><b>Alur logis Modul 6:</b> Ketiga jenis kompensasi di atas dibahas berurutan—<b>KB 1</b> merancang struktur gaji yang adil secara internal &amp; eksternal → <b>KB 2</b> merancang program insentif/kontribusi untuk memacu kinerja individu, tim, &amp; organisasi → <b>KB 3</b> mengelola fasilitas dan tunjangan karyawan secara strategis sekaligus mengendalikan biayanya.</div>
+  </div>
+
+  <!-- KONSEP PENTING -->
+  <h2 class="section" id="konsep"><span class="dot"></span>Konsep Penting yang Harus Dikuasai</h2>
+  <div class="card"><div class="cl-head"><span class="count"><span id="doneCount">0</span>/<span id="totalCount">0</span> dikuasai</span><button class="btn-reset" id="resetBtn">Reset centang</button></div>
+  <ul class="concepts" id="conceptList">
+    <li><input type="checkbox"><span><span class="ct">Teori Dua Faktor Herzberg, Klasifikasi Kompensasi &amp; 3 Tujuan Utama</span><span class="cd">Intrinsik vs ekstrinsik; kompensasi finansial langsung (gaji, upah, insentif) &amp; tidak langsung (fasilitas/tunjangan) vs nonfinansial.</span></span></li>
+    <li><input type="checkbox"><span><span class="ct">Teori Keadilan Adams (1963), 3 Keadilan Distributif, Lawler (1971) &amp; Equity Sensitivity</span><span class="cd">4 terminologi (person, others, inputs, outcomes); internal/eksternal/individual; reaksi overpayment/underpayment; benevolent, equity sensitive, entitled (Huseman 1987).</span></span></li>
+    <li><input type="checkbox"><span><span class="ct">4 Metode Evaluasi Pekerjaan (Job Evaluation) &amp; 5 Proses Penentuan Kompensasi</span><span class="cd">Metode peringkat, penggolongan (juru ketik), perbandingan faktor (5 faktor), dan sistem poin (responsibility, skill, effort, working condition).</span></span></li>
+    <li><input type="checkbox"><span><span class="ct">6 Tantangan Kompensasi, Comparable Worth, Level Gaji vs Struktur Kerja</span><span class="cd">Standar pasar, serikat buruh, produktivitas, kebijakan, pemerintah (UMR, 15–63 th, 40 jam/mgg), comparable worth; beda level gaji vs struktur kerja.</span></span></li>
+    <li><input type="checkbox"><span><span class="ct">Kompetisi Pasar Produk vs Pasar Tenaga Kerja &amp; Efficiency Wage Theory</span><span class="cd">Pasar produk menetapkan batas atas biaya tenaga kerja; pasar tenaga kerja menetapkan batas bawah level gaji; kapan gaji di atas pasar menutupi biaya.</span></span></li>
+    <li><input type="checkbox"><span><span class="ct">Survei Gaji Pasar, Key/Nonkey Jobs, 3 Pendekatan Struktur Gaji &amp; Compa-Ratio</span><span class="cd">Survei pasar, garis kebijakan gaji, golongan gaji (range spread); rumus compa-ratio; komunikasi &amp; partisipasi (studi pemotongan gaji &amp; pencurian).</span></span></li>
+    <li><input type="checkbox"><span><span class="ct">Tantangan Modern: Delayering/Broad Banding, Pay for Skills/Competency &amp; Gaji Eksekutif</span><span class="cd">5 masalah struktur berbasis pekerjaan; tanggapan broad bands &amp; gaji berbasis keterampilan/kompetensi; 3 kritik gaji eksekutif (CEO Disney &gt;$600jt).</span></span></li>
+    <li><input type="checkbox"><span><span class="ct">3 Teori Motivasi Kompensasi &amp; 6 Faktor Pemilihan Skema Kontrak</span><span class="cd">Reinforcement (Thorndike), Expectancy (V×I×E), dan Agency Theory (3 biaya keagenan: perquisites, sikap risiko, horison pendek) + 6 faktor penentu kontrak.</span></span></li>
+    <li><input type="checkbox"><span><span class="ct">Gaji Merit, Kritik Deming &amp; Insentif Individu (Gambar 6.23)</span><span class="cd">Peringkat kenaikan merit, compa-ratio, 5 fitur dasar, kritik Deming (kasus dokter RS); insentif individu (2 perbedaan vs merit &amp; 6 alasan jarang dipakai).</span></span></li>
+    <li><input type="checkbox"><span><span class="ct">Bagi Keuntungan (Profit Sharing), Kepemilikan (Opsi Saham &amp; ESOPs) &amp; Bagi Hasil (Gainsharing)</span><span class="cd">Kasus DuPont; opsi saham (contoh Rp100rb→Rp300rb, Pepsi/HP); ESOPs (min. 51% saham); gainsharing (8 kondisi sukses) &amp; penghargaan tim.</span></span></li>
+    <li><input type="checkbox"><span><span class="ct">Balanced Scorecard (Kaplan &amp; Norton), Proses Komunikasi &amp; Kesesuaian Strategi</span><span class="cd">Menyeimbangkan insentif individu–kelompok–organisasi; partisipasi &amp; komunikasi (video CEO); Strategi Prospektor vs Strategi Bertahan (Defensif).</span></span></li>
+    <li><input type="checkbox"><span><span class="ct">4 Keunikan Tunjangan, 6 Alasan Kenaikan &amp; Program Jaminan Sosial (UU 3/1992)</span><span class="cd">Marginal tax rate, pembelian kelompok; JKK, JHT, JKM, JPK; JHT (premi back service &amp; coming service hingga 55 th, BNI Life, klaim ≤90 hari); asuransi pengangguran.</span></span></li>
+    <li><input type="checkbox"><span><span class="ct">Kompensasi Pekerja (No-Fault), Asuransi Kelompok &amp; Pensiun (Defined Benefit vs Contribution)</span><span class="cd">Prinsip no-fault (2/3 pendapatan cacat); UU No. 11/1992; Tunjangan Pasti (PBGC/ERISA 1974) vs Kontribusi Pasti (money purchase plan, Trisakti 10%).</span></span></li>
+    <li><input type="checkbox"><span><span class="ct">Gaji Waktu Tidak Bekerja &amp; Family-Friendly Policies (FMLA &amp; Penitipan Anak)</span><span class="cd">Cuti bersama Trisakti (2 mgg Idul Fitri, 2 mgg Natal/TB, 3 bln tiap 6 th); cuti sakit ≤26 mgg; FMLA 12 mgg tanpa dibayar; penitipan anak IKEA.</span></span></li>
+    <li><input type="checkbox"><span><span class="ct">Managed Care (HMO vs PPOs), Employee Wellness Programs (EWP) &amp; Kelompok Pareto</span><span class="cd">Pengendalian biaya kesehatan AS (5,3%→14% GNP); HMO (bayar di muka/preventif) vs PPOs; EWP pasif vs aktif; fenomena piecemeal &amp; kelompok Pareto.</span></span></li>
+    <li><input type="checkbox"><span><span class="ct">Pengendalian Staffing, Gaya Kafetaria, FSA &amp; Regulasi Nondiskriminasi</span><span class="cd">Exempts &amp; kontraktor bebas; tunjangan fleksibel/kafetaria (adverse selection); FSA (pretax, hangus setahun); nondiskriminasi gender, umur, &amp; penderita cacat.</span></span></li>
+  </ul></div>
+
+  <!-- PETA KONSEP -->
+  <h2 class="section" id="peta"><span class="dot"></span>Peta Konsep (Mind Map)</h2>
+  <div class="card"><div class="mm-toolbar"><button class="mm-btn" id="mmExpand">Perluas semua</button><button class="mm-btn" id="mmCollapse">Ciutkan</button><span style="font-size:.76rem;color:var(--muted)">Klik simpul (+) atau (–) untuk membuka/menutup cabang · Gulir untuk menggeser</span></div><div class="mindmap-host" id="mindmap"></div></div>
+
+  <!-- ==================== KB 1 ==================== -->
+  <h2 class="section" id="kb1"><span class="dot" style="background:var(--kb1)"></span>KB 1 — Keputusan Struktur Gaji</h2>
+  <div class="card kb1b"><span class="kb-tag kb1t">KB 1 · Hal. 6.5–6.24</span>
+    <p class="lead">Dari sudut pandang perusahaan, gaji merupakan instrumen strategis yang memengaruhi sikap dan perilaku karyawan sekaligus pos biaya signifikan. Dari sudut pandang karyawan, kebijakan upah dan gaji menentukan seluruh pendapatan dan standar hidup mereka.</p>
+
+    <div class="acro-box"><span class="acro-title">📖 Kamus Konteks Singkatan &amp; Istilah Kunci KB 1</span>
+      <ul class="acro-grid">
+        <li><b>UMR</b>: Upah Minimum Regional — batas bawah upah yang ditetapkan pemerintah sesuai biaya hidup daerah.</li>
+        <li><b>Compa-Ratio</b>: Rasio perbandingan antara rata-rata gaji aktual golongan dan titik tengah (<i>midpoint</i>) golongan gaji untuk memantau kesesuaian praktik terhadap kebijakan.</li>
+        <li><b>Broad Bands</b>: Pengelompokan level pekerjaan yang lebih lebar hasil <i>delayering</i> (pengurangan jumlah tingkatan jabatan) agar penugasan lebih luwes.</li>
+        <li><b>Comparable Worth</b>: Prinsip nilai yang sebanding—setiap jabatan bernilai sama bagi organisasi harus dibayar sama.</li>
+      </ul>
+    </div>
+
+    <!-- KB1 A -->
+    <div class="abc"><span class="ltr">A</span><h4>Pendahuluan</h4></div>
+    <ol class="book">
+      <li><b>Arti Pentingnya Kompensasi:</b> Setiap bentuk penghargaan yang diberikan kepada karyawan sebagai balas jasa atas kontribusinya, bertujuan (1) menarik karyawan cakap, (2) mendorong prestasi tinggi, dan (3) mempertahankan karyawan produktif agar tetap setia.</li>
+      <li><b>Jenis-Jenis Kompensasi:</b> Terbagi atas <b>kompensasi finansial</b>—terdiri dari <i>finansial langsung</i> (gaji, upah, insentif berupa komisi &amp; bonus) dan <i>finansial tidak langsung</i> (fasilitas &amp; tunjangan)—serta <b>kompensasi bukan keuangan (nonfinansial)</b>.</li>
+      <li><b>Gaji:</b> Imbalan finansial yang dibayarkan secara teratur (tahunan, caturwulan, bulanan, mingguan) dengan jumlah relatif tetap. <b>Harder (1992)</b> menemukan gaji merupakan jenis penghargaan terpenting dalam organisasi.</li>
+      <li><b>Upah:</b> Imbalan finansial langsung berdasarkan jam kerja, jumlah barang dihasilkan, atau banyaknya pelayanan sehingga besarnya dapat berubah-ubah. Gaji/upah pada dasarnya bertujuan menarik calon pegawai masuk.</li>
+      <li><b>Insentif:</b> Imbalan langsung karena kinerja melampaui standar. Penetapan standar harus seimbang—terlalu mudah merugikan perusahaan, terlalu sulit membuat karyawan frustrasi.</li>
+      <li><b>Kompensasi Tidak Langsung:</b> Tambahan kesejahteraan bagi semua karyawan berdasarkan kebijakan perusahaan (asuransi kesehatan, asuransi jiwa, bantuan perumahan).</li>
+      <li><b>Asas Kompensasi:</b> Menurut <b>Cascio (1995:330)</b>, kompensasi efektif harus (1) memenuhi kebutuhan dasar, (2) berkeadilan eksternal, (3) berkeadilan internal, dan (4) sesuai kebutuhan individu. <b>Robbins &amp; Judge (2009)</b> menambahkan syarat keadilan, kaitan dengan kinerja, dan kesesuaian kebutuhan individu. Menurut Cascio, prinsip terpenting adalah <b>keadilan</b> (distributif &amp; prosedural):
+        <ul class="exp" style="margin-top:8px">
+          <li><b>Teori Keadilan (Adams, 1963):</b> Memuat 4 terminologi: <i>person</i> (individu penilai), <i>others</i> (pembanding), <i>inputs</i> (kontribusi/investasi menurut Homans 1996: pendidikan, inteligensi, pengalaman, keterampilan, senioritas, usia, usaha), dan <i>outcomes</i> (gaji, insentif, fasilitas). Ketidakadilan muncul sebagai <b><i>overpayment</i></b> (lebih besar) atau <b><i>underpayment</i></b> (lebih kecil).</li>
+          <li><b>3 Macam Keadilan Distributif:</b> (a) <b>Keadilan internal</b> (sebanding dengan bagian lain, dijamin lewat <i>evaluasi pekerjaan</i>), (b) <b>Keadilan eksternal</b> (sebanding dengan pasar/posisi lebih tinggi, dijamin lewat <i>survei gaji</i>), dan (c) <b>Keadilan sesama karyawan / individual</b> (sesuai faktor unik pada pekerjaan sama, dijamin lewat <i>penilaian prestasi</i>).</li>
+          <li><b>Tanggapan Ketidakadilan (Lawler, 1971):</b> (a) Dibayar per <i>hasil produksi</i>: jika <i>overpayment</i> → kurangi kuantitas &amp; naikkan mutu; jika <i>underpayment</i> → naikkan kuantitas &amp; kurangi mutu. (b) Dibayar per <i>jam kerja</i>: jika <i>overpayment</i> → naikkan hasil &amp; mutu; jika <i>underpayment</i> → kurangi hasil maupun mutu.</li>
+          <li><b>Kepekaan terhadap Keadilan <span class="en">(Equity Sensitivity — Huseman et al., 1987)</span>:</b> (1) <b><i>Benevolent</i></b> (murah hati—lebih suka memberi daripada menerima; nyaman menerima lebih kecil untuk input sama), (2) <b><i>Equity sensitive</i></b> (penganut Teori Adams—puas hanya bila rasio seimbang; tak puas jika <i>underpayment</i> maupun <i>overpayment</i>), dan (3) <b><i>Entitled</i></b> (penuntut—lebih suka menerima daripada memberi; hanya puas bila menerima lebih banyak dari orang lain).</li>
+        </ul>
+      </li>
+      <li><b>Faktor-Faktor yang Memengaruhi Kompensasi (6 faktor):</b> (a) penawaran dan permintaan tenaga kerja (tenaga langka → gaji tinggi), (b) kekuatan serikat pekerja, (c) kemampuan membayar perusahaan (bergantung skala usaha dan nama baik/merek agar kenaikan harga pokok terserap pasar), (d) produktivitas karyawan, (e) biaya hidup yang terus naik, dan (f) regulasi pemerintah (upah minimum daerah).</li>
+      <li><b>Proses Penentuan Kompensasi (5 tahap, a–e):</b> (a) menyelenggarakan survei gaji (keadilan eksternal), (b) menentukan nilai tiap pekerjaan via evaluasi pekerjaan (keadilan internal), (c) mengelompokkan pekerjaan sejenis ke tingkat upah sama (<i>employee equity</i>), (d) menetapkan harga tiap tingkatan dengan garis upah, dan (e) menyesuaikan dengan peraturan perundang-undangan.</li>
+    </ol>
+
+    <div class="flow">Untuk menjamin keadilan internal dan eksternal yang dirumuskan pada Bagian A.9, <b>Bagian B</b> menguraikan instrumen teknis utama: evaluasi pekerjaan, survei gaji, dan penetapan harga pekerjaan.</div>
+
+    <!-- KB1 B -->
+    <div class="abc"><span class="ltr">B</span><h4>Evaluasi Pekerjaan (<span class="en">Job Evaluation</span>)</h4></div>
+    <p><span class="term">Evaluasi pekerjaan</span> menggunakan informasi analisis pekerjaan (uraian &amp; spesifikasi) untuk menentukan nilai relatif suatu pekerjaan dibandingkan pekerjaan lain demi menjamin <b>keadilan internal</b>. Berbeda dari penilaian kinerja yang menilai <i>pekerja (job holder)</i>, evaluasi pekerjaan menilai <i>pekerjaan (job)</i>-nya. Karena mengandung unsur subjektivitas, sebaiknya dilakukan oleh ahli atau panitia evaluasi pekerjaan.</p>
+
+    <div class="numh">1. Metode Evaluasi Pekerjaan (4 Metode)</div>
+    <div class="rgrid c2" data-revealgroup>
+      <div class="rcell active" data-reveal data-detail="<b>a. Metode Peringkat (Ranking Method):</b> Penilai menguji uraian masing-masing pekerjaan lalu mengurutkannya dari nilai/kepentingan tertinggi hingga terendah bagi pencapaian tujuan organisasi."><span class="stepnum">1</span><span><span class="rt">Metode Peringkat</span><span class="rp">Ranking Method</span></span></div>
+      <div class="rcell" data-reveal data-detail="<b>b. Metode Penggolongan (Classification Method):</b> Diawali penentuan kelas/<i>grade</i> untuk kelompok pekerjaan, lalu mencocokkan uraian pekerjaan ke uraian kelas. <i>Contoh buku:</i> juru ketik dengan 3 tugas (mengetik surat dari draf, mengetik alamat di amplop, menyampaikan ke penyelia)—jika tugas lain bersifat rutin maka dinilai di kelas lebih rendah."><span class="stepnum">2</span><span><span class="rt">Penggolongan Pekerjaan</span><span class="rp">Classification Method</span></span></div>
+      <div class="rcell" data-reveal data-detail="<b>c. Metode Faktor Perbandingan (Factor Comparison Method):</b> Penilai membandingkan pekerjaan berdasarkan <b>5 faktor umum</b>: (1) persyaratan mental, (2) keterampilan, (3) persyaratan fisik, (4) tanggung jawab, dan (5) kondisi kerja (semakin buruk kondisi kerjanya, semakin tinggi peringkatnya)."><span class="stepnum">3</span><span><span class="rt">Faktor Perbandingan</span><span class="rp">5 faktor umum</span></span></div>
+      <div class="rcell" data-reveal data-detail="<b>d. Sistem Poin (Point Method):</b> Paling sering digunakan. Penilai memberi skor angka pada tiap unsur pekerjaan (pendidikan, pengetahuan, pengalaman, usaha mental/fisik, tanggung jawab, kondisi kerja—4 pilar utama: <i>responsibility, skill, effort, working condition</i>), lalu menjumlahkannya menjadi harga relatif untuk dikonversi ke tarif gaji."><span class="stepnum">4</span><span><span class="rt">Sistem Poin</span><span class="rp">Paling populer · berbasis skor</span></span></div>
+    </div>
+    <div class="rdetail" data-revealdetail><b>a. Metode Peringkat (Ranking Method):</b> Penilai menguji uraian masing-masing pekerjaan lalu mengurutkannya dari nilai/kepentingan tertinggi hingga terendah bagi pencapaian tujuan organisasi.</div>
+
+    <div class="numh">2. Survei Gaji dan Upah &amp; 3. Penetapan Harga Pekerjaan</div>
+    <ul class="exp">
+      <li><b>Survei Gaji dan Upah:</b> Menjamin keadilan eksternal dengan mengetahui bayaran pengusaha lain di pasar tenaga kerja sama (via surat, telepon, wawancara; mandiri atau memakai konsultan).</li>
+      <li><b>Penetapan Harga Pekerjaan (2 kegiatan):</b> (a) menentukan tingkat pembayaran sesuai peringkat evaluasi pekerjaan dan tarif pasar, serta (b) mengelompokkan pekerjaan setara ke kelas-kelas gaji agar administrasi efektif.</li>
+    </ul>
+
+    <div class="flow">Sekalipun evaluasi pekerjaan dan survei gaji telah disusun rapi, pelaksanaannya di lapangan menghadapi berbagai hambatan eksternal maupun kebijakan internal—dibahas pada <b>Bagian C</b>.</div>
+
+    <!-- KB1 C -->
+    <div class="abc"><span class="ltr">C</span><h4>Tantangan yang Dihadapi dalam Menetapkan Kompensasi</h4></div>
+    <ol class="book">
+      <li><b>Standar Gaji yang Berlaku Umum:</b> Jabatan yang sulit diisi terpaksa dibayar lebih tinggi karena desakan pasar.</li>
+      <li><b>Kekuatan Serikat Buruh:</b> Serikat dapat menggunakan daya tawarnya untuk menuntut tarif gaji tertentu.</li>
+      <li><b>Produktivitas:</b> Perusahaan wajib menjaga laba agar bertahan; pegawai tidak akan dibayar melampaui kontribusi produktivitasnya.</li>
+      <li><b>Kebijaksanaan Gaji dan Upah:</b> Misalnya menyamakan kenaikan gaji karyawan berserikat dan nonserikat, atau membayar di atas pasar untuk menekan <i>turnover</i> dan merekrut talenta terbaik.</li>
+      <li><b>Pembatasan Pemerintah:</b> Mencakup penetapan upah minimum regional (UMR), upah lembur, batas usia kerja (<b>15–63 tahun</b>), dan batas jam kerja (<b>maksimum 40 jam/minggu</b>).</li>
+      <li><b>Nilai yang Sebanding dengan Pembayaran yang Sama (<span class="en">Comparable Worth</span>):</b> Jabatan bernilai sama bagi organisasi harus dibayar sama (kecuali perbedaan akibat sistem senioritas dan <i>merit system</i>).</li>
+    </ol>
+    <p>Penyusunan rencana kompensasi memadukan <b>kebijaksanaan kompensasi finansial</b> (uang sebagai alasan utama bekerja) dan <b>nonfinansial</b> (fasilitas pelengkap untuk retensi). Menurut <b>Noe dkk. (2006)</b>, keputusan gaji terbagi atas <i>struktur gaji</i> dan <i>gaji individual</i>. Dalam struktur gaji dibedakan dua konsep organisasi:</p>
+    <ul class="exp">
+      <li><b>Level Gaji <span class="en">(Pay Level)</span> vs Struktur Kerja <span class="en">(Job Structure)</span>:</b> Level gaji adalah <i>rerata gaji</i> (gaji, upah, bonus) organisasi, sedangkan struktur kerja adalah <i>gaji relatif antarpekerjaan</i>. <i>Contoh buku (hal. 6.14):</i> Organisasi 1 membayar Pekerjaan A = Rp400 juta dan B = Rp600 juta; Organisasi 2 membayar A = Rp450 juta dan B = Rp550 juta. Keduanya memiliki <b>level gaji sama (Rp500 juta)</b>, tetapi <b>struktur kerjanya berbeda</b>.</li>
+    </ul>
+
+    <div class="flow">Untuk memahami mengapa perbedaan level gaji dan struktur kerja memicu rasa puas atau kecewa pada karyawan, <b>Bagian D</b> membedah mekanisme <b>Teori Keadilan dan Teori Kepatutan</b>.</div>
+
+    <!-- KB1 D -->
+    <div class="abc"><span class="ltr">D</span><h4>Teori Keadilan dan Teori Kepatutan</h4></div>
+    <p>Karyawan mengevaluasi kepatutan gajinya dengan membandingkan rasio <i>outcomes</i> (gaji, <i>benefits</i>) terhadap <i>inputs</i> (pendidikan, usaha, pengalaman) dirinya dengan orang lain:</p>
+    <div class="eqbox">
+      \[\frac{\text{Outcomes}_{\text{Person}}}{\text{Inputs}_{\text{Person}}} \quad \text{dibandingkan dengan} \quad \frac{\text{Outcomes}_{\text{Others}}}{\text{Inputs}_{\text{Others}}}\]
+    </div>
+    <div class="fguide">
+      <div class="fg-head">Bedah Variabel &amp; Intisari Formula Rasio Keadilan (Teori Ekuitas)</div>
+      <ul>
+        <li><b>$\text{Outcomes}$:</b> Segala penghargaan yang dirasakan diterima karyawan (gaji pokok, insentif, bonus, fasilitas, tunjangan).</li>
+        <li><b>$\text{Inputs}$:</b> Seluruh kontribusi yang dibawa karyawan ke organisasi (pendidikan, pengalaman, keterampilan, usaha, senioritas).</li>
+        <li><b>Makna formula:</b> Jika rasio sendiri lebih tinggi (<i>overpayment</i>), karyawan merasionalisasi dengan meningkatkan kualitas kerja; jika rasio orang lain lebih tinggi (<i>underpayment</i>), karyawan cenderung mengurangi usaha, menuntut kenaikan gaji, atau pindah kerja.</li>
+      </ul>
+      <div class="fg-core">
+        <div>🧭 <b>Filosofis:</b> Kepuasan kompensasi tidak ditentukan semata oleh nominal absolut rupiah, melainkan oleh persepsi keadilan relatif dibanding kelompok acuan.</div>
+        <div>📏 <b>Mengukur:</b> Keseimbangan psikologis antara imbalan yang diterima dan kontribusi yang dikorbankan karyawan relatif terhadap pembanding internal maupun eksternal.</div>
+        <div>🎯 <b>Manfaat:</b> Menjelaskan akar gejolak motivasi, absensi, dan <i>turnover</i> sehingga perusahaan merancang struktur gaji yang adil secara eksternal maupun internal.</div>
+      </div>
+    </div>
+    <ol class="book">
+      <li><b>Keadilan Eksternal:</b> Membandingkan bayaran organisasi lain untuk pekerjaan hampir sama (diukur lewat survei gaji pasar); sangat memengaruhi keputusan bergabung dan bertahan.</li>
+      <li><b>Keadilan Internal:</b> Membandingkan bayaran antarpekerjaan berbeda (maupun pekerjaan sama) di dalam organisasi yang sama.</li>
+    </ol>
+
+    <div class="flow">Setelah memahami keadilan eksternal dan internal, <b>Bagian E</b> membahas dua kekuatan pasar ekonomi yang membatasi ruang gerak perusahaan saat menyusun level gaji.</div>
+
+    <!-- KB1 E -->
+    <div class="abc"><span class="ltr">E</span><h4>Menyusun Level Gaji</h4></div>
+    <div class="diagram-box">
+      <div class="flowchart">
+        <span class="fc-node">Kompetisi Pasar Tenaga Kerja<br><small style="font-weight:400">Menetapkan BATAS BAWAH Level Gaji</small></span>
+        <span class="fc-arrow">≤</span>
+        <span class="fc-node" style="background:var(--dot);color:#fff">Ruang Keleluasaan Level Gaji<br><small style="font-weight:400;opacity:.92">(Di bawah · Sama · Di atas Pasar)</small></span>
+        <span class="fc-arrow">≤</span>
+        <span class="fc-node">Kompetisi Pasar Produk<br><small style="font-weight:400">Menetapkan BATAS ATAS Biaya Tenaga Kerja</small></span>
+      </div>
+      <div class="diagram-cap">Koridor Penetapan Level Gaji antara Dua Kekuatan Pasar Kompetitif</div>
+    </div>
+    <ol class="book">
+      <li><b>Kompetisi Pasar Produk (Batas Atas):</b> Biaya tenaga kerja (rerata gaji + tunjangan × jumlah karyawan) yang terlalu tinggi memaksa harga jual naik sehingga kalah bersaing. Bila krisis keuangan terjadi, perusahaan menekan rerata gaji, jumlah karyawan, atau keduanya.</li>
+      <li><b>Kompetisi Pasar Tenaga Kerja (Batas Bawah):</b> Jika bayaran tidak kompetitif dibanding pesaing yang merekrut tenaga serupa, perusahaan gagal menarik dan mempertahankan SDM berkualitas.</li>
+      <li><b>Karyawan sebagai Sumber Daya:</b> Karyawan harus diperlakukan bukan sekadar biaya, melainkan modal/investasi penghasil pendapatan; menekan gaji secara tak kompetitif justru menurunkan kualitas dan produktivitas.</li>
+      <li><b>Menentukan Apa yang Patut Mendapat Pembayaran &amp; <i>Efficiency Wage Theory</i>:</b> Dalam koridor pasar, perusahaan memilih membayar di bawah, sama dengan, atau di atas rerata pasar. Menurut <b>Teori Upah Efisiensi <span class="en">(efficiency wage theory)</span></b>, gaji di atas pasar mampu menutupi biayanya apabila teknologi/struktur sangat bergantung pada karyawan berketerampilan tinggi atau ketika kinerja sulit diawasi langsung.</li>
+    </ol>
+
+    <div class="flow">Untuk menempatkan posisi gaji secara akurat di dalam koridor pasar tersebut, <b>Bagian F</b> menguraikan teknis <b>Survei Gaji Pasar</b> hingga penyusunan struktur, pemantauan <i>compa-ratio</i>, dan komunikasi gaji.</div>
+
+    <!-- KB1 F -->
+    <div class="abc"><span class="ltr">F</span><h4>Survei Gaji Pasar</h4></div>
+    <p>Melalui <i>benchmarking</i> survei gaji, perusahaan menetapkan <b>3 isu awal</b>: (1) pengusaha mana yang dilibatkan (pesaing pasar produk &amp; tenaga kerja), (2) sampel pekerjaan yang mewakili level/fungsi, dan (3) cara menggabungkan survei ganda. <b>Perbandingan pasar produk</b> lebih penting bila: (a) biaya tenaga kerja porsi besar dari total biaya, (b) permintaan produk elastis, (c) penawaran tenaga kerja tidak elastis, dan (d) keterampilan spesifik pada pasar produk. <b>Perbandingan pasar tenaga kerja</b> lebih penting bila rekrutmen/pelatihan ulang sulit dan mahal. Rasio pengembalian investasi SDM (mis. pendapatan per karyawan atau pendapatan per biaya tenaga kerja) turut dipantau.</p>
+    <ol class="book">
+      <li><b>Kisaran Tarif <span class="en">(Rate Ranges)</span>:</b> Memungkinkan tarif gaji berbeda bagi karyawan dalam pekerjaan yang sama sesuai perbedaan kinerja.</li>
+      <li><b>Pekerjaan Kunci (<span class="en">Key Jobs</span>) dan Bukan Kunci (<span class="en">Nonkey Jobs</span>):</b> <i>Key jobs</i> adalah pekerjaan tolok ukur bermuatan stabil dan umum lintas perusahaan sehingga data survei pasarnya tersedia (mis. pembantu administrasi, manajer departemen, pengawas mesin). <i>Nonkey jobs</i> bersifat unik bagi organisasi sehingga tidak bisa langsung dibandingkan lewat survei pasar.</li>
+      <li><b>Menyusun Struktur Pekerjaan:</b> Menentukan nilai relatif antarpekerjaan di dalam organisasi (mis. wakil direktur pemasaran berharap dibayar setara wakil direktur keuangan karena level dan dampaknya sama).</li>
+      <li><b>Evaluasi Pekerjaan &amp; <i>Compensable Factors</i>:</b> Mengukur karakteristik pekerjaan yang dibayar perusahaan (<i>compensable factors</i>) dengan <b>2 cara pembobotan</b>: (1) <i>bobot prioritas</i> (penilaian para ahli), dan (2) <i>bobot empiris</i> (metode statistik seperti regresi berganda berbasis data pasar).</li>
+      <li><b>Menyusun Struktur Gaji (3 Pendekatan):</b> (a) <b>Pendekatan Survei Pasar</b> (penekanan terbesar pada eksternal; menyusun <i>garis kebijakan gaji</i> matematis antara poin evaluasi dan gaji pasar untuk <i>key jobs</i>), (b) <b>Garis Kebijakan Gaji</b> (memakai garis kebijakan untuk seluruh pekerjaan—baik <i>key</i> maupun <i>nonkey jobs</i>), dan (c) <b>Golongan Gaji <span class="en">(Pay Grades)</span></b> (mengelompokkan pekerjaan ke kelas gaji dengan jarak minimum–maksimum disebut <b><i>range spread</i></b>; kelemahannya beberapa pekerjaan bisa <i>underpaid</i> atau <i>overpaid</i>).</li>
+      <li><b>Konflik antara Survei Gaji Pasar dan Evaluasi Pekerjaan:</b> Menekankan data internal berisiko <i>overpaid</i> di pasar produk; menekankan data eksternal berisiko ketidakpuasan internal. Solusinya disesuaikan dengan strategi dan fungsi penentu keberhasilan organisasi.</li>
+      <li><b>Memantau Biaya Kompensasi (<span class="en">Compa-Ratio</span>):</b> Menguji kesesuaian praktik gaji aktual terhadap kebijakan struktur gaji:
+        <div class="eqbox" style="margin-top:8px">
+          \[\text{Compa-Ratio} = \frac{\text{Rata-Rata Gaji Aktual Golongan}}{\text{Titik Tengah (Midpoint) Gaji Golongan}}\]
+        </div>
+        <div class="fguide">
+          <div class="fg-head">Bedah Variabel &amp; Intisari Formula Compa-Ratio</div>
+          <ul>
+            <li><b>Rata-Rata Gaji Aktual Golongan:</b> Rerata gaji sesungguhnya yang dibayarkan kepada karyawan pada suatu golongan gaji.</li>
+            <li><b>Titik Tengah (Midpoint) Gaji Golongan:</b> Nilai tengah kebijakan struktur gaji yang mencerminkan tarif pasar kompetitif golongan tersebut.</li>
+            <li><b>Makna formula:</b> $\text{Compa-Ratio} = 1{,}00$ berarti praktik gaji tepat sesuai kebijakan; $> 1{,}00$ menandakan pembayaran di atas kebijakan (potensi pembengkakan biaya); $< 1{,}00$ menandakan di bawah kebijakan (risiko ketidakpuasan/<i>turnover</i>).</li>
+          </ul>
+          <div class="fg-core">
+            <div>🧭 <b>Filosofis:</b> Kebijakan gaji di atas kertas sering melenceng dalam praktik sehari-hari; organisasi butuh indikator kontrol objektif untuk menjaga disiplin anggaran sekaligus keadilan.</div>
+            <div>📏 <b>Mengukur:</b> Tingkat penyimpangan (deviasi) antara realisasi pembayaran gaji aktual dan titik tengah struktur gaji yang ditetapkan.</div>
+            <div>🎯 <b>Manfaat:</b> Membantu manajer SDM mengendalikan biaya kompensasi, menjaga integritas struktur gaji, dan menentukan besarnya kenaikan gaji <i>merit</i>.</div>
+          </div>
+        </div>
+      </li>
+      <li><b>Globalisasi, Wilayah Geografis, dan Struktur Gaji:</b> Struktur gaji berbeda antarnegara; gaji &amp; tunjangan ekspatriat yang dulu sangat terikat negara asal kini perlahan lebih bergantung pada sifat dan masa penugasan.</li>
+      <li><b>Pentingnya Proses — Komunikasi dan Partisipasi:</b> Karena keputusan gaji sering dipersepsi berbeda tanpa satu jawaban mutlak, cara merumuskan dan mengomunikasikannya menjadi krusial.</li>
+      <li><b>Partisipasi:</b> Karyawan dapat berpartisipasi dalam merekomendasikan, merancang, dan mengomunikasikan program gaji (panitia perancangan), meski penetapan level gaji tetap jarang melibatkan karyawan (wewenang manajemen puncak). Perlu dibedakan antara pihak yang <i>terdampak kebijakan</i> dan pihak yang <i>mengimplementasikan kebijakan</i> (manajer berada di keduanya).</li>
+      <li><b>Komunikasi:</b> <i>Studi kasus buku (hal. 6.20):</i> Akibat penurunan penjualan, dua unit mengalami pemotongan gaji dan satu unit tidak. Hanya satu unit terpotong yang diberi penjelasan jujur mengenai alasan pemotongan, sedangkan unit lain tidak. Hasilnya, <b>komunikasi yang jelas secara nyata menurunkan tingkat pencurian karyawan dan meningkatkan persepsi keadilan</b>. Manajer lini memegang peran komunikasi paling krusial.</li>
+    </ol>
+
+    <div class="flow">Struktur gaji tradisional berbasis pekerjaan yang diulas pada Bagian B–F kini menuai banyak kritik di era bisnis lincah. <b>Bagian G</b> membedah masalah tersebut beserta solusi modern dan kontroversi gaji eksekutif.</div>
+
+    <!-- KB1 G -->
+    <div class="abc"><span class="ltr">G</span><h4>Berbagai Tantangan Saat Ini</h4></div>
+    <ol class="book">
+      <li><b>Masalah-Masalah Struktur Gaji Berbasis Pekerjaan (5 kelemahan, a–e):</b> (a) memperumit birokrasi dan mematikan inisiatif ("itu tidak ada dalam uraian tugas saya"), (b) struktur hierarkis mendorong keputusan <i>top-down</i> dan jurang status, (c) biaya &amp; waktu pembaruan uraian pekerjaan menghambat perubahan, (d) tidak menghargai perilaku dan kompetensi baru yang dibutuhkan hari ini/esok, serta (e) memicu obsesi promosi vertikal dan menghalangi perpindahan menyamping (lateral).</li>
+      <li><b>Tanggapan terhadap Masalah Struktur Berbasis Pekerjaan (2 Solusi Modern):</b>
+        <ul class="exp" style="margin-top:6px">
+          <li><b><i>Delayering</i> &amp; <i>Broad Banding</i>:</b> Mengurangi jumlah tingkatan jabatan menjadi kelompok lebar (<i>broad bands</i>) untuk meluweskan penugasan dan kenaikan <i>merit</i>—kerugiannya adalah berkurangnya peluang promosi vertikal.</li>
+          <li><b>Gaji Berbasis Keterampilan (<span class="en">Skill-Based Pay</span>) &amp; Kompetensi (<span class="en">Competency-Based Pay</span>):</b> Menautkan gaji pada karakteristik individu (keterampilan yang digunakan, atau kompetensi bagi profesional/<i>exempt employee</i> seperti manajer). Keuntungannya: fleksibilitas tinggi, mendorong desentralisasi keputusan, iklim pembelajaran, adaptabilitas, dan wawasan luas perusahaan.</li>
+        </ul>
+      </li>
+      <li><b>Kerugian yang Mungkin Terjadi (4 risiko):</b> Kesulitan memanfaatkan keterampilan baru jika desain kerja tak diubah, lonjakan biaya karena karyawan cepat mencapai kompensasi puncak, birokrasi baru (definisi, pengukuran, pelatihan, sertifikasi), serta minimnya data survei pasar untuk menghargai keterampilan.</li>
+      <li><b>Gaji Eksekutif (3 kritik utama, a–c):</b> Meski eksekutif berjumlah kecil dan berpengaruh besar pada budaya serta kinerja, gaji eksekutif menuai kritik karena: (a) nilainya sangat fantastis (mis. <b>CEO Walt Disney &gt;$600 juta</b> termasuk opsi saham), (b) gaji eksekutif AS jauh tertinggi di dunia, dan (c) rasio gaji eksekutif dibanding rata-rata karyawan menciptakan <b>kesenjangan kepercayaan</b>—terutama ketika perusahaan melakukan PHK tetapi tidak memotong gaji eksekutif.</li>
+    </ol>
+
+    <div class="casebox"><span class="ctitle">Kasus Buku KB 1 (Hal. 6.23–6.24) · Strategi dan Hasil — Hotel Internasional Kencana</span>
+      <b>Hotel Internasional Kencana</b> bersaing lewat pelayanan tamu prima untuk meningkatkan lama menginap dan kunjungan ulang. Namun, sistem kompensasinya memiliki rentang gaji sempit, tidak dikaitkan dengan strategi maupun kinerja, dan hasil kajian menunjukkan hampir semua karyawan justru dibayar di bawah rata-rata pesaing. Akibatnya karyawan bersikap tidak peduli karena berprestasi atau tidak menerima gaji sama. Direktur SDM <b>Linda</b> bertugas merancang ulang kompensasi (termasuk mempertimbangkan pembayaran berbasis kompetensi dan sistem <i>ranking</i> untuk staf nonmanajerial: <i>housekeepers, valets, front-desk clerks, phone operators, wait staff, ground keepers, security guard</i>) agar mendongkrak semangat, komitmen, retensi, dan layanan prima.
+    </div>
+
+    <div class="flow">Setelah membangun fondasi struktur gaji pokok pada KB 1, <b>KB 2: Gaji untuk Kontribusi Karyawan</b> mengupas bagaimana skema insentif dirancang untuk memotivasi kinerja melampaui standar.</div>
+  </div>
+
+  <!-- ==================== KB 2 ==================== -->
+  <h2 class="section" id="kb2"><span class="dot" style="background:var(--kb2)"></span>KB 2 — Gaji untuk Kontribusi Karyawan</h2>
+  <div class="card kb2b"><span class="kb-tag kb2t">KB 2 · Hal. 6.25–6.36</span>
+    <p class="lead">Penghargaan atas kontribusi karyawan yang melampaui standar disebut <span class="term">insentif</span>. Rancangan yang efektif kerap memadukan insentif individu, kelompok, dan organisasi serta mengomunikasikannya secara adil secara distributif maupun prosedural.</p>
+
+    <div class="acro-box"><span class="acro-title">📖 Kamus Konteks Singkatan &amp; Istilah Kunci KB 2</span>
+      <ul class="acro-grid">
+        <li><b>ROI</b>: <i>Return on Investment</i> — pengembalian investasi yang sangat dipengaruhi rancangan program penggajian.</li>
+        <li><b>ESOPs</b>: <i>Employee Stock Ownership Plans</i> — program kepemilikan saham karyawan dengan keuntungan pajak, namun secara hukum min. 51% aset ditanam di saham perusahaan.</li>
+        <li><b>BSC</b>: <i>Balanced Scorecard</i> (Kaplan &amp; Norton) — kerangka penyeimbang tujuan finansial dan pengembangan kapabilitas/aset tak berwujud.</li>
+        <li><b>Intrapreneurship</b>: Penghargaan berbasis saham/paten bagi karyawan penemu inovasi di dalam unit bisnis baru (Kasus KB 2).</li>
+      </ul>
+    </div>
+
+    <!-- KB2 A -->
+    <div class="abc"><span class="ltr">A</span><h4>Pendahuluan</h4></div>
+    <p>Organisasi memiliki keleluasaan menentukan dasar pembayaran gaji—berdasarkan perbedaan kinerja (individu, kelompok, atau organisasi), senioritas, atau keterampilan. Terlepas dari perbedaan biayanya, pemilihan program penggajian berpengaruh kuat terhadap <b>produktivitas</b> dan <b><i>return on investment</i> (ROI)</b> perusahaan.</p>
+
+    <!-- KB2 B -->
+    <div class="abc"><span class="ltr">B</span><h4>Bagaimana Gaji Memengaruhi Karyawan secara Individu?</h4></div>
+    <p>Rencana gaji dipakai untuk menggiatkan, mengarahkan, dan mengendalikan perilaku. Selain Teori Keadilan, ada <b>tiga teori motivasi kompensasi utama</b>:</p>
+    <ol class="book">
+      <li><b>Teori Penguatan <span class="en">(Reinforcement Theory)</span>:</b> Mengacu pada <b>Hukum Akibat Thorndike</b>—tanggapan yang diikuti penghargaan lebih berkemungkinan terulang di masa mendatang. Pengalaman nyata menerima penghargaan atas kinerja tinggi akan memperkuat pengulangan kinerja tinggi tersebut (dan bila ditiadakan, kinerja merosot).</li>
+      <li><b>Teori Pengharapan <span class="en">(Expectancy Theory)</span>:</b> Menyatakan motivasi merupakan fungsi dari tiga unsur: <i>expectancy</i> (keyakinan usaha menghasilkan kinerja), <i>instrumentality</i> (keyakinan kinerja menghasilkan imbalan), dan <i>valence</i> (nilai pentingnya imbalan bagi individu). Catatan latihan (hal. 6.35): penghargaan uang menaikkan motivasi ekstrinsik, namun berisiko menurunkan motivasi intrinsik.
+        <div class="eqbox" style="margin-top:8px">
+          \[\text{Motivasi} = f\bigl(\text{Expectancy} \times \text{Instrumentality} \times \text{Valence}\bigr)\]
+        </div>
+        <div class="fguide">
+          <div class="fg-head">Bedah Variabel &amp; Intisari Formula Teori Pengharapan</div>
+          <ul>
+            <li><b>Expectancy (Pengharapan):</b> Persepsi probabilitas bahwa upaya kerja keras akan berujung pada capaian kinerja target.</li>
+            <li><b>Instrumentality:</b> Persepsi probabilitas bahwa capaian kinerja tersebut benar-benar akan diganjar penghargaan (insentif/bonus).</li>
+            <li><b>Valence:</b> Daya tarik atau bobot nilai penghargaan tersebut di mata karyawan yang bersangkutan.</li>
+            <li><b>Makna formula:</b> Hubungan bersifat multiplikatif—jika salah satu dari ketiga unsur bernilai nol, maka motivasi kerja akan runtuh.</li>
+          </ul>
+          <div class="fg-core">
+            <div>🧭 <b>Filosofis:</b> Manusia bertindak rasional berdasarkan kalkulasi peluang keberhasilan, kejelasan janji imbalan, dan seberapa berharganya imbalan itu bagi dirinya.</div>
+            <div>📏 <b>Mengukur:</b> Kekuatan dorongan motivasi individu untuk mengerahkan upaya guna meraih penghargaan kompensasi.</div>
+            <div>🎯 <b>Manfaat:</b> Menuntun manajer agar memastikan target realistis (<i>expectancy</i>), sistem penilaian–bonus transparan (<i>instrumentality</i>), dan bentuk imbalan diminati (<i>valence</i>).</div>
+          </div>
+        </div>
+      </li>
+      <li><b>Teori Agensi <span class="en">(Agency Theory)</span>:</b> Berfokus pada perbedaan kepentingan antara pemilik (<i>principals</i>) dan manajer (<i>agents</i>) akibat pemisahan kepemilikan dan operasional. Pemisahan ini memunculkan <b>tiga biaya keagenan</b>: (a) pengeluaran <i>perquisites</i>/fasilitas mewah (parkir eksekutif, gedung mewah) tanpa nilai tambah bisnis, (b) perbedaan sikap risiko—manajer cenderung menghindari risiko karena tak bisa mendiversifikasi kekayaannya seperti pemegang saham, dan (c) perbedaan horison waktu—manajer mengejar laba jangka pendek demi promosi/visibilitas dengan mengorbankan keberhasilan jangka panjang. Solusinya adalah skema kontrak berorientasi <b>perilaku</b> (mis. gaji <i>merit</i>) atau berorientasi <b>pendapatan/<i>outcomes</i></b> (kepemilikan saham, bagi keuntungan).</li>
+    </ol>
+
+    <div class="flow">Setelah memahami mengapa kontrak berbasis perilaku vs <i>outcomes</i> menyelaraskan kepentingan, <b>Bagian C</b> merinci enam faktor penentu pilihan jenis kontrak tersebut.</div>
+
+    <!-- KB2 C -->
+    <div class="abc"><span class="ltr">C</span><h4>Faktor-Faktor yang Dipertimbangkan di dalam Memutuskan Apa yang Akan Digunakan</h4></div>
+    <ol class="book">
+      <li><b>Penghindaran terhadap risiko agen:</b> Makin tinggi penghindaran risiko agen, makin kurang disukai kontrak berbasis <i>outcomes</i>.</li>
+      <li><b>Ketidakpastian <i>outcomes</i>:</b> Bila hasil (mis. laba) berisiko tinggi dan tak menentu, kontrak berbasis <i>outcomes</i> kurang disukai.</li>
+      <li><b>Kemampuan memprogram pekerjaan:</b> Pekerjaan yang kurang rutin/sulit diprogram lebih cocok memakai kontrak berbasis <i>outcomes</i>.</li>
+      <li><b>Keterukuran <i>outcomes</i> pekerjaan:</b> Makin mudah hasil diukur secara objektif, makin disukai kontrak berbasis <i>outcomes</i>.</li>
+      <li><b>Kemampuan membayar:</b> Kontrak berbasis <i>outcomes</i> menuntut kompensasi rata-rata lebih tinggi sebagai premi atas risiko yang dipikul agen.</li>
+      <li><b>Tradisi:</b> Kebiasaan historis organisasi/industri dalam memakai atau tidak memakai tipe kontrak tertentu cenderung berlanjut.</li>
+    </ol>
+
+    <!-- KB2 D -->
+    <div class="abc"><span class="ltr">D</span><h4>Bagaimana Gaji Memengaruhi Komposisi Angkatan Kerja?</h4></div>
+    <p>Selain memotivasi karyawan yang ada, sistem gaji juga membentuk <b>sifat dan komposisi angkatan kerja</b> (efek seleksi): organisasi yang mengaitkan gaji dengan <b>kinerja individu</b> cenderung menarik karyawan berkepribadian individualistis, sedangkan organisasi yang mengandalkan <b>penghargaan kelompok</b> lebih banyak menarik karyawan yang berorientasi kerja sama tim.</p>
+
+    <div class="flow">Berbekal landasan teori motivasi (Bagian B–C) dan efek komposisi tenaga kerja (Bagian D), <b>Bagian E</b> dan <b>Bagian F</b> membedah enam program utama penghargaan kontribusi karyawan (Gambar 6.23).</div>
+
+    <!-- KB2 E -->
+    <div class="abc"><span class="ltr">E</span><h4>Program untuk Menghargai Kontribusi Karyawan (Gambar 6.23)</h4></div>
+    <p>Organisasi sering menggabungkan beberapa program sesuai gaya manajemen dan jenis pekerjaan. <b>Gambar 6.23</b> memetakan <b>6 program penghargaan kontribusi</b>: Gaji Merit, Pembayaran Insentif, Bagi Hasil, Kepemilikan, Bagi Untung, dan Berbasis Keterampilan (<i>skills</i>).</p>
+    <div class="diagram-box">
+      <div class="flowchart">
+        <span class="fc-node">1. Gaji Merit</span>
+        <span class="fc-node">2. Insentif Individu</span>
+        <span class="fc-node">3. Bagi Untung (Profit Sharing)</span>
+        <span class="fc-node">4. Kepemilikan (Opsi/ESOPs)</span>
+        <span class="fc-node">5. Bagi Hasil (Gainsharing) &amp; Tim</span>
+        <span class="fc-node">6. Berbasis Keterampilan</span>
+      </div>
+      <div class="diagram-cap">Reproduksi Gambar 6.23 — Program-Program untuk Menghargai Kontribusi Karyawan</div>
+    </div>
+
+    <div class="numh">1. Gaji Merit &amp; 2. Fitur Dasar</div>
+    <p><b>Gaji merit</b> mengaitkan kenaikan gaji tahunan dengan peningkatan kinerja. Besar dan frekuensinya ditentukan oleh <b>peringkat kenaikan merit</b> berdasarkan dua faktor: (1) peringkat kinerja individu, dan (2) posisi dalam kisaran gaji (<b><i>compa-ratio</i> individu</b>) ditambah kendali distribusi persentase kategori kinerja. <b>Lima karakteristik umum gaji merit:</b> (1) mengasumsikan perbedaan kinerja berasal dari individu bukan sistem, (2) data kinerja dominan dari supervisor langsung, (3) kebijakan menaikkan gaji permanen sesuai peningkatan kinerja, (4) umpan balik jarang (biasanya setahun sekali), dan (5) umpan balik bersifat searah (<i>unidirectional</i>) dari supervisor ke bawahan.</p>
+
+    <div class="numh">3. Kritik terhadap Program Gaji Merit</div>
+    <p><b>W. Edwards Deming</b> mengkritik tajam <i>merit pay</i> karena: (1) tidak adil menghukum/menghargai individu atas variasi kinerja yang sesungguhnya disebabkan <i>sistem</i> (rekan kerja, bahan baku, pelanggan, manajemen), dan (2) menghambat kerja sama tim (<i>contoh buku:</i> rumah sakit yang mengaitkan gaji dokter dengan kepuasan pasien justru membuat dokter bersaing individual dan enggan berkolaborasi). Meski Deming mengusulkan memutus kaitan gaji–kinerja individual, risikonya karyawan berkinerja tinggi akan pindah—sehingga perlu keseimbangan insentif individu dan kelompok. Kritik lainnya menyangkut keadilan distributif &amp; prosedural pengukuran kinerja, bahkan anggapan bahwa sistem <i>merit</i> murni tak pernah benar-benar terwujud.</p>
+
+    <div class="numh">4. Insentif Individu</div>
+    <p>Berbeda dari gaji <i>merit</i> dalam <b>dua hal</b>: (1) pembayaran <i>tidak</i> masuk ke gaji pokok permanen, dan (2) kinerja diukur dari <b><i>output</i> fisik</b> (mis. jumlah kran air diproduksi) bukan peringkat subjektif. Meski potensial mendongkrak kinerja, insentif individu jarang dipakai karena <b>6 alasan (a–f)</b>: (a) sebagian besar pekerjaan (manajer/profesional) tak punya ukuran <i>output</i> fisik, (b) masalah administrasi menetapkan &amp; menjaga standar, (c) karyawan hanya mengerjakan yang dibayar dan abai di luar itu, (d) bertentangan dengan pendekatan tim, (e) tidak sejalan dengan pemerolehan multiketerampilan &amp; pemecahan masalah proaktif, serta (f) berisiko mengorbankan kualitas dan layanan pelanggan demi mengejar kuantitas.</p>
+
+    <!-- KB2 F -->
+    <div class="abc"><span class="ltr">F</span><h4>Bagi Keuntungan, Kepemilikan, Bagi Hasil, Balanced Scorecard, &amp; Kesesuaian Strategi</h4></div>
+    <ol class="book">
+      <li><b>Bagi Keuntungan (<span class="en">Profit Sharing</span>):</b> Pembayaran berbasis laba perusahaan dan tidak masuk gaji pokok. <b>2 keunggulan:</b> (a) mendorong karyawan berpikir luas sebagai pemilik, dan (b) biaya tenaga kerja otomatis turun saat krisis sehingga mengurangi keharusan PHK. <b>Kelemahan:</b> karyawan merasa usahanya tak langsung memengaruhi laba (dikuasai keputusan puncak), kecewa saat laba nihil, serta pembayaran sering ditangguhkan ke masa depan. <i>Kasus buku:</i> <b>DuPont</b> menghapus rencana bagi untung karena ketimpangan bayaran antardivisi lalu kembali ke gaji tetap. Solusi "kenaikan tanpa risiko penurunan" (gaji pokok tak dipotong saat rugi) memang meredam resistensi, tetapi menghilangkan keunggulan fleksibilitas biaya saat resesi.</li>
+      <li><b>Kepemilikan (<span class="en">Ownership</span> — Opsi Saham &amp; ESOPs):</b>
+        <ul class="exp" style="margin-top:6px">
+          <li><b>Opsi Saham <span class="en">(Stock Options)</span>:</b> Hak membeli saham perusahaan pada harga tetap. <i>Contoh buku (hal. 6.31):</i> saham ditawarkan seharga <b>Rp100.000/lembar (2005)</b>; saat harga pasar naik ke <b>Rp300.000/lembar (2011)</b>, karyawan dapat membeli di Rp100.000 atau menjual di Rp300.000 (bila harga turun, tak ada keuntungan). Meski <b>Pepsi Cola</b> dan <b>Hewlett-Packard</b> menawarkannya ke semua karyawan, umumnya opsi saham khusus eksekutif (selaras Teori Agensi).</li>
+          <li><b>ESOPs <span class="en">(Employee Stock Ownership Plans)</span>:</b> Memberi keuntungan pajak &amp; finansial serta dapat menjadi pertahanan terhadap pengambilalihan perusahaan, ditambah kepemilikan psikologis bila partisipasi tinggi. <b>Risiko serius:</b> secara hukum minimal <b>51% aset</b> diinvestasikan di saham perusahaan sendiri (minim diversifikasi), sehingga bila perusahaan bangkrut, dana pensiun karyawan ikut hancur.</li>
+        </ul>
+      </li>
+      <li><b>Bagi Hasil (<span class="en">Gainsharing</span>):</b> Membagikan perolehan produktivitas berbasis kinerja <b>kelompok atau pabrik</b> (bukan laba korporasi) dan tidak masuk gaji pokok. Lebih memotivasi daripada bagi untung karena lebih terkendali oleh karyawan dan dibayar lebih sering. <b>8 kondisi agar berhasil (a–h):</b> komitmen manajemen, dukungan kuat perbaikan berkelanjutan, penerimaan <i>input</i> karyawan, kerja sama &amp; interaksi tinggi (plus jaminan pekerjaan), transparansi informasi biaya &amp; produktivitas, penetapan tujuan jelas, komitmen semua pihak pada perubahan, serta kesepakatan standar &amp; rumus yang mudah dipahami, adil, dan selaras sasaran manajemen.</li>
+      <li><b>Insentif Kelompok dan Penghargaan Tim:</b> Insentif kelompok berbasis <i>output</i> fisik, sedangkan <b>penghargaan tim</b> memakai ukuran lebih luas (penghematan biaya, penyelesaian desain produk, ketepatan tenggat). Kelemahannya: persaingan individu dapat bergeser menjadi persaingan antarkelompok.</li>
+      <li><b><i>Balanced Scorecard</i> (Kaplan &amp; Norton):</b> Mengombinasikan gaji <i>merit</i>, bagi hasil, dan bagi untung untuk menyeimbangkan motivasi individu, kerja sama tim, dan tujuan organisasi—mengarahkan hasil finansial sembari memantau pengembangan kapabilitas dan aset tak berwujud untuk pertumbuhan masa depan.</li>
+      <li><b>Masalah Proses dan Konteks:</b> Partisipasi dan komunikasi merupakan ruang keleluasaan strategis yang sangat menentukan keunggulan bersaing.</li>
+      <li><b>Partisipasi Karyawan dalam Pengambilan Keputusan:</b> Keterlibatan dalam desain &amp; implementasi kebijakan gaji meningkatkan kepuasan gaji/kerja sekaligus menekan biaya <i>monitoring</i> (Teori Agensi) karena karyawan paling paham tempat kerjanya.</li>
+      <li><b>Komunikasi:</b> Setiap perubahan kompensasi memicu kecemasan dan rumor; perusahaan modern memakai pesan <i>videotape</i> CEO, brosur, dan sesi kelompok fokus untuk menjelaskan alasan perubahan secara transparan.</li>
+      <li><b>Gaji dan Proses Saling Berpengaruh:</b> Cara karyawan diperlakukan dalam proses perancangan gaji terbukti berdampak lebih besar terhadap produktivitas dan profitabilitas daripada sekadar mekanisme bayarannya.</li>
+      <li><b>Strategi Organisasi dan Strategi Kompensasi (Masalah Kesesuaian):</b> Organisasi berstrategi <b>prospektor</b> (inovasi, ambil risiko, pertumbuhan) memakai gaji pokok rendah namun bonus &amp; opsi saham besar untuk membagi risiko dan imbal hasil masa depan; sebaliknya organisasi berstrategi <b>bertahan (defensif)</b> menerapkan skema gaji yang jauh berbeda dan lebih konservatif.</li>
+    </ol>
+
+    <div class="casebox"><span class="ctitle">Kasus Buku KB 2 (Hal. 6.36) · Program Kompensasi Dua Unit Bisnis Berbeda Risiko</span>
+      Sebuah organisasi memiliki dua unit kontras: (1) <b>Unit lama</b>—pabrik produk mapan yang bersaing harga tanpa inovasi teknologi (strategi defensif/efisiensi biaya), dan (2) <b>Unit baru</b>—belum memiliki produk, sedang mengembangkan simulasi obat pengganti uji klinis (strategi prospektor/risiko tinggi). Unit baru menawarkan gaji/tunjangan awal rendah namun memberi insentif opsi saham serta penghargaan berbasis saham/paten bagi peneliti inovatif (<b><i>"intrapreneurship"</i></b>). Kasus ini menegaskan bahwa kedua unit <b>tidak boleh</b> memakai program kompensasi yang sama karena strategi bisnis dan profil risikonya bertolak belakang.
+    </div>
+
+    <div class="flow">Setelah menata struktur gaji (KB 1) dan insentif kontribusi (KB 2), <b>KB 3: Fasilitas dan Tunjangan Karyawan</b> membahas pilar ketiga kompensasi yang berfungsi menjaga kesejahteraan, keamanan ekonomi, dan kesetiaan jangka panjang karyawan.</div>
+  </div>
+
+  <!-- ==================== KB 3 ==================== -->
+  <h2 class="section" id="kb3"><span class="dot" style="background:var(--kb3)"></span>KB 3 — Fasilitas dan Tunjangan Karyawan (<span class="en">Employee Benefits</span>)</h2>
+  <div class="card kb3b"><span class="kb-tag kb3t">KB 3 · Hal. 6.37–6.50</span>
+    <p class="lead">Tunjangan karyawan merupakan porsi biaya tenaga kerja yang sangat substansial sekaligus sumber keamanan ekonomi utama bagi karyawan. Pengelolaannya yang cermat—mulai dari jaminan sosial wajib, pensiun, perawatan kesehatan, hingga gaya kafetaria—sangat menentukan retensi dan daya saing biaya perusahaan.</p>
+
+    <div class="acro-box"><span class="acro-title">📖 Kamus Konteks Singkatan &amp; Akronim KB 3</span>
+      <ul class="acro-grid">
+        <li><b>JKK / JHT / JKM / JPK</b>: Jaminan Kecelakaan Kerja, Jaminan Hari Tua, Jaminan Kematian, &amp; Jaminan Pemeliharaan Kesehatan (UU No. 3 Tahun 1992).</li>
+        <li><b>PBGC &amp; ERISA</b>: <i>Pension Benefit Guaranty Corporation</i> &amp; <i>Employee Retirement Income Security Act</i> (1974) — pelindung tunjangan dasar pensiun manfaat pasti di AS.</li>
+        <li><b>FMLA</b>: <i>Family and Medical Leave Act</i> — UU cuti keluarga &amp; sakit (12 minggu tanpa dibayar bagi perusahaan &gt;50 karyawan).</li>
+        <li><b>HMO &amp; PPOs</b>: <i>Health Maintenance Organizations</i> (bayar di muka, preventif, wajib jaringan) vs <i>Preferred Provider Organizations</i> (kontrak tarif diskon, lebih fleksibel).</li>
+        <li><b>EWP</b>: <i>Employee Wellness Programs</i> — program kesehatan preventif (pasif vs aktif) untuk menekan biaya perawatan kesehatan.</li>
+        <li><b>FSA</b>: <i>Flexible Spending Accounts</i> (Rekening Pengeluaran Fleksibel) — rekening kontribusi <i>pretax</i> yang hangus bila tak dipakai dalam setahun.</li>
+      </ul>
+    </div>
+
+    <!-- KB3 A -->
+    <div class="abc"><span class="ltr">A</span><h4>Tunjangan</h4></div>
+    <p>Sebagai bagian dari kompensasi, tunjangan memiliki <b>empat keunikan</b> dibandingkan gaji langsung:</p>
+    <ol class="book">
+      <li>Belum ada bukti luar biasa mengenai dampak langsung tunjangan terhadap penarikan, keputusan berhenti, atau tingkat kinerja harian karyawan.</li>
+      <li>Regulasi hukum yang mengatur tunjangan jauh lebih banyak daripada gaji langsung (sebagian diwajibkan undang-undang seperti jaminan sosial dan aturan pensiun).</li>
+      <li>Tunjangan nyaris menjadi kewajiban standar yang harus disediakan pengusaha agar kompetitif.</li>
+      <li>Tunjangan sering rumit dipahami karyawan sehingga banyak yang tidak menyadari besarnya biaya maupun cara memanfaatkannya—membuat perusahaan kehilangan imbal hasil atas uang yang telah dibelanjakan.</li>
+    </ol>
+
+    <!-- KB3 B -->
+    <div class="abc"><span class="ltr">B</span><h4>Alasan Kenaikan Tunjangan</h4></div>
+    <p>Enam faktor historis dan ekonomis yang mendorong pertumbuhan pesat biaya tunjangan:</p>
+    <ol class="book">
+      <li><b>Mandat peraturan pasca-Depresi Ekonomi:</b> Banyak undang-undang mewajibkan jaminan sosial dan asuransi pensiun.</li>
+      <li><b>Kontrol upah Perang Dunia II:</b> Pembatasan kenaikan gaji saat pasar tenaga kerja langka memaksa perusahaan bersaing menambah tunjangan.</li>
+      <li><b>Keuntungan pajak (<span class="en">Marginal Tax Rate</span>):</b> Tarif pajak marjinal adalah persentase pajak atas tambahan pendapatan; hampir semua tunjangan bebas pajak dan hasil investasi dana pensiun bebas pajak hingga masa pensiun, sehingga terasa lebih bernilai daripada gaji kena pajak.</li>
+      <li><b>Keunggulan biaya pembelian kelompok:</b> Premi asuransi jauh lebih murah bila dibeli secara kolektif daripada individual.</li>
+      <li><b>Pertumbuhan serikat buruh:</b> Serikat pekerja sering memprioritaskan negosiasi tunjangan dibanding kenaikan gaji tipis.</li>
+      <li><b>Diferensiasi budaya perusahaan:</b> Tunjangan unik dipakai pengusaha untuk membedakan citra dan nilai organisasinya di mata pelamar.</li>
+    </ol>
+
+    <!-- KB3 C -->
+    <div class="abc"><span class="ltr">C</span><h4>Program Tunjangan</h4></div>
+    <p>Berdasarkan <b>UU No. 3 Tahun 1992</b> (Jamsostek), program tunjangan mencakup 4 kategori: <b>JKK</b> (Jaminan Kecelakaan Kerja), <b>JHT</b> (Jaminan Hari Tua), <b>JKM</b> (Jaminan Kematian), dan <b>JPK</b> (Jaminan Pemeliharaan Kesehatan). Menurut <b>Noe dkk. (2006)</b>, Jaminan Sosial wajib secara hukum mencakup asuransi hari tua, pengangguran, ketahanan hidup, kecacatan, kesehatan, dan medis lansia.</p>
+    <p><b>Jaminan / Tunjangan Hari Tua (JHT):</b> Melindungi risiko meninggal dunia sekaligus tabungan pensiun:</p>
+    <ul class="exp">
+      <li><b>5 Keuntungan Program:</b> Ketenangan berkarya, perlindungan jiwa peserta, bersifat manfaat pasti, fasilitas pajak atas manfaat, serta memenuhi ketentuan <b>UU No. 13 Tahun 2003</b>.</li>
+      <li><b>Masa Asuransi &amp; 3 Manfaat Program:</b> Berlaku selama masa dinas hingga usia pensiun normal; memberi (a) 100% Uang Asuransi sekaligus di akhir masa asuransi, (b) 100% Uang Asuransi bila meninggal dalam masa asuransi, dan (c) Nilai Tunai sekaligus bila berhenti (disesuaikan UU No. 13/2003).</li>
+      <li><b>2 Bagian Premi:</b> (a) <b>Premi <i>back service</i></b> (dibayar sekaligus oleh perusahaan di awal asuransi untuk menghargai masa kerja sebelum ikut asuransi), dan (b) <b>Premi <i>coming service</i></b> (dibayar tahunan oleh perusahaan, karyawan, atau bersama untuk masa kerja sejak masuk asuransi hingga usia pensiun <b>55 tahun</b>).</li>
+    </ul>
+
+    <!-- KB3 D -->
+    <div class="abc"><span class="ltr">D</span><h4>Prosedur Kepesertaan, Jaminan Sosial Pensiun, &amp; Asuransi Pengangguran</h4></div>
+    <ul class="exp">
+      <li><b>Prosedur Kepesertaan (4 langkah) &amp; Klaim (contoh BNI Life):</b> (1) Ajukan Surat Permohonan Asuransi Jiwa, (2) serahkan data lengkap peserta, (3) lengkapi ketentuan <i>underwriting</i>, (4) BNI Life menerbitkan Polis &amp; Sertifikat. <b>Klaim</b> diajukan maks. <b>90 hari</b> setelah kejadian disertai: (a) surat pengajuan klaim asli Pemegang Polis, (b) fotokopi KTP &amp; KK, serta (c) berita acara kecelakaan dari instansi berwenang bila akibat kecelakaan. Produk meliputi <i>Employee Benefit</i>, Dana Pendidikan, Tunjangan Hari Tua, dan Investasi.</li>
+      <li><b>Jaminan Sosial Pensiun:</b> Bebas pajak; manfaat penuh pada usia <b>65 tahun</b> atau manfaat berkurang mulai usia <b>62 tahun</b> (serta tren pensiun dini untuk perampingan karyawan).</li>
+      <li><b>Asuransi Pengangguran:</b> Meski hampir tak berlaku di Indonesia, memiliki <b>4 manfaat</b>: (1) menutup hilangnya pendapatan akibat pengangguran terpaksa, (2) membantu pekerja mencari kerja baru, (3) memberi insentif perusahaan menjaga kestabilan kerja, dan (4) memelihara investasi keterampilan saat dirumahkan sementara. Didanai pajak negara yang tarifnya bergantung sejarah PHK perusahaan. <b>4 syarat penerima:</b> pernah bekerja, bersedia bekerja, aktif mencari kerja, dan bukan berhenti karena kesalahan sengaja, sukarela, atau sengketa buruh.</li>
+    </ul>
+
+    <!-- KB3 E -->
+    <div class="abc"><span class="ltr">E</span><h4>Kompensasi Pekerja (<span class="en">Workers' Compensation</span>)</h4></div>
+    <p>Melindungi karyawan yang mengalami kecelakaan kerja dan keluarga karyawan yang meninggal di tempat kerja berdasarkan prinsip <b><i>no-fault</i></b> (karyawan berhak atas kompensasi tanpa perlu membuktikan kesalahan/kecerobohan perusahaan). Mencakup <b>4 jenis tunjangan</b>: pendapatan penderita cacat (umumnya <b>2/3 pendapatan sebelum cacat</b> dan <b>bebas pajak</b>), perawatan kesehatan, tunjangan kematian, dan layanan rehabilitasi. Biaya perusahaan bergantung pada sifat/risiko pekerjaan, wilayah kerja, dan tingkat pengalaman klaim organisasi—ditekan dengan menciptakan tempat kerja lebih aman, melibatkan tanggung jawab manajer, dan memantau pemulihan agar segera kembali bekerja.</p>
+
+    <!-- KB3 F -->
+    <div class="abc"><span class="ltr">F</span><h4>Asuransi Kelompok Pribadi &amp; Program Pensiun</h4></div>
+    <p>Ditawarkan secara sukarela oleh pengusaha; harganya lebih murah berkat skala ekonomi, pengumpulan risiko, dan daya tawar kolektif:</p>
+    <ol class="book">
+      <li><b>Asuransi Kesehatan &amp; Asuransi Penderita Cacat:</b> Asuransi kesehatan adalah tunjangan terpenting bagi karyawan (menanggung rumah sakit, operasi, kunjungan dokter; opsional gigi, mata, persalinan, resep obat). Asuransi penderita cacat jangka pendek melindungi selama <b>6 bulan atau kurang</b>.</li>
+      <li><b>Pensiun:</b> Tidak diwajibkan, namun bila disediakan wajib mematuhi <b>UU RI No. 11 Tahun 1992</b>.</li>
+      <li><b>Tunjangan Pasti (<span class="en">Defined Benefit</span>) vs Kontribusi Pasti (<span class="en">Defined Contribution</span>):</b>
+        <div class="table-wrap" style="margin-top:8px">
+          <table class="mini">
+            <thead><tr><th style="width:28%">Aspek</th><th style="width:36%">Tunjangan Pasti (<span class="en">Defined Benefit</span>)</th><th>Kontribusi Pasti (<span class="en">Defined Contribution</span>)</th></tr></thead>
+            <tbody>
+              <tr><td data-label="Aspek"><b>Mekanisme Manfaat</b></td><td data-label="Tunjangan Pasti">Menjamin nilai pensiun tertentu berbasis masa kerja, usia, dan pendapatan (biasanya 5 tahun terakhir).</td><td data-label="Kontribusi Pasti">Tidak menjanjikan nominal akhir; menjamin besaran iuran ke akun individu (contoh: <i>money purchase plan</i> — <b>Universitas Trisakti</b> menyumbang <b>10% gaji tahunan</b> staf pengajar).</td></tr>
+              <tr><td data-label="Aspek"><b>Penanggung Risiko Investasi</b></td><td data-label="Tunjangan Pasti"><b>Perusahaan</b> (karyawan terisolasi dari risiko); di AS dilindungi <b>PBGC</b> (dibentuk <b>ERISA 1974</b>) bila perusahaan bangkrut.</td><td data-label="Kontribusi Pasti"><b>Karyawan</b> (menerima kontribusi + hasil investasinya); perusahaan tak perlu membayar premi PBGC dan disukai perusahaan kecil.</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </li>
+    </ol>
+
+    <!-- KB3 G -->
+    <div class="abc"><span class="ltr">G</span><h4>Gaji untuk Waktu Tidak Bekerja</h4></div>
+    <p>Meliputi pembayaran saat liburan, hari besar, dan cuti sakit. <i>Contoh buku:</i> <b>Universitas Trisakti</b> memberi cuti bersama bergaji penuh (termasuk uang transpor) masing-masing 2 minggu saat Idul Fitri dan 2 minggu saat Natal/Tahun Baru, serta libur dosen 3 bulan setiap 6 tahun sekali. <b>Cuti sakit</b> umumnya mengganti gaji penuh maks. <b>26 minggu</b> dan terakumulasi sesuai masa kerja; untuk mencegah mentalitas "pakai atau hangus" di akhir tahun, perusahaan mengizinkan akumulasi atau membayar sebagian cuti sakit yang tak terpakai.</p>
+    <p>Untuk meredakan konflik pekerjaan–keluarga, organisasi menerapkan <b>Kebijakan Ramah Keluarga <span class="en">(Family-Friendly Policies)</span></b>:</p>
+    <ul class="exp">
+      <li><b>2. Cuti Keluarga (<span class="en">FMLA</span>):</b> Undang-Undang Cuti Keluarga dan Cuti Sakit (<i>Family and Medical Leave Act</i>) mewajibkan organisasi beranggotakan <b>&gt;50 karyawan</b> menyediakan <b>12 minggu cuti tanpa dibayar</b> (melahirkan, adopsi, merawat anak/pasangan/orang tua sakit serius) dengan jaminan kembali ke pekerjaan sama/sebanding dan kelanjutan tunjangan kesehatan (tidak berlaku bagi masa kerja &lt;1 tahun atau jam kerja &lt;25 jam/minggu).</li>
+      <li><b>3. Penitipan Anak:</b> Berupa penyediaan informasi biaya/kualitas penitipan, <i>voucher</i>/diskon, hingga penyediaan fasilitas penitipan anak di dalam/dekat tempat kerja (<i>contoh buku:</i> <b>IKEA</b> terpilih sebagai tempat kerja terbaik bagi para ibu).</li>
+    </ul>
+
+    <div class="flow">Besarnya ragam tunjangan pada Bagian C–G menuntut strategi pengelolaan dan pengendalian biaya yang disiplin, khususnya di sektor perawatan kesehatan—dibahas pada <b>Bagian H–J</b>.</div>
+
+    <!-- KB3 H -->
+    <div class="abc"><span class="ltr">H</span><h4>Mengelola Tunjangan: Strategi dan Tujuan Perusahaan</h4></div>
+    <p>Perusahaan harus menetapkan tujuan tertulis program tunjangan agar selaras misi dan tidak melanggar kontrak implisit dengan karyawan (<i>contoh buku:</i> perusahaan mobil berfokus pelanggan yang menyelaraskan kompensasi total dengan kepuasan pelanggan sekaligus karyawan).</p>
+    <ol class="book">
+      <li><b>Survei dan <i>Benchmarking</i>:</b> Memantau praktik pesaing melalui survei konsultan swasta, <b>Biro Pusat Statistik (BPS)</b>, dan kamar dagang.</li>
+      <li><b>Pengendalian Biaya:</b> Memprioritaskan penghematan pada pos tunjangan berbiaya terbesar dan memantau laju pertumbuhannya.</li>
+      <li><b>Perawatan Kesehatan — Pengendalian Biaya &amp; Peningkatan Kualitas:</b> Di AS, biaya perawatan kesehatan melonjak dari <b>5,3% GNP ($27 miliar, 1960)</b> menjadi <b>14% GNP (~$1 triliun)</b> dengan &gt;40 juta warga tak berasuransi (1999). Perusahaan mengendalikannya lewat <b>keperawatan yang dikelola <span class="en">(managed care)</span></b> (rancang ulang tunjangan, <i>provider</i> alternatif, pendanaan alternatif, kajian klaim, edukasi/pencegahan, pengendalian eksternal), pengalihan biaya ke karyawan (potongan gaji, koasuransi, eksklusi, batas maksimum), tes preadmisi, dan opini kedua praoperasi. Dua <i>provider</i> utama:
+        <div class="table-wrap" style="margin-top:8px">
+          <table class="mini">
+            <thead><tr><th style="width:24%">Provider</th><th style="width:38%">Cara Kerja</th><th>Implikasi Biaya &amp; Fleksibilitas</th></tr></thead>
+            <tbody>
+              <tr><td data-label="Provider"><b>HMO</b> <span class="en">(Health Maintenance Organizations)</span></td><td data-label="Cara Kerja">Fokus perawatan preventif &amp; rawat jalan; tunjangan berbasis pembayaran di muka; dokter dibayar gaji tetap agar tak menambah kunjungan tak perlu.</td><td data-label="Biaya &amp; Fleksibilitas"><b>Lebih murah</b>, tetapi karyawan <b>wajib</b> hanya menggunakan layanan dalam jaringan HMO.</td></tr>
+              <tr><td data-label="Provider"><b>PPOs</b> <span class="en">(Preferred Provider Organizations)</span></td><td data-label="Cara Kerja">Kelompok penyedia layanan yang berkontrak tarif diskon dengan pengusaha/asuransi; <i>tidak</i> berbasis bayar di muka.</td><td data-label="Biaya &amp; Fleksibilitas"><b>Lebih fleksibel</b> (tidak wajib hanya memakai PPO, cukup diberi insentif), namun <b>lebih mahal daripada HMO</b>.</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </li>
+    </ol>
+
+    <!-- KB3 I -->
+    <div class="abc"><span class="ltr">I</span><h4>Program Kesehatan Karyawan / <span class="en">Employee Wellness Programs</span> (EWP)</h4></div>
+    <p>EWP bersifat <b>preventif</b>—mengubah perilaku di dalam dan luar jam kerja untuk menekan risiko tekanan darah tinggi, kolesterol, merokok, dan obesitas, sekaligus mendorong olahraga dan nutrisi baik. Terbagi menjadi <b>EWP Pasif</b> (tanpa <i>outreach</i>/dukungan motivasi berkelanjutan, mis. edukasi kesehatan &amp; fasilitas <i>fitness</i>) dan <b>EWP Aktif</b> (dilengkapi pelatih <i>one-on-one</i>, program terpesan, dan penguatan perilaku). Upaya pengendalian biaya kesehatan terbukti menurunkan pengeluaran perusahaan sebesar <b>17% (1994–1999)</b>. Namun ada <b>dua fenomena kritis</b> yang wajib diwaspadai: (1) pendekatan sepotong-sepotong (<b><i>piecemeal</i></b>) sering gagal karena karyawan beralih ke program gratis lain (seperti <i>workers' comp</i>), dan (2) adanya <b>Kelompok Pareto <span class="en">(Pareto Group)</span></b>—persentase kecil karyawan yang menghasilkan mayoritas total biaya perawatan kesehatan.</p>
+
+    <!-- KB3 J -->
+    <div class="abc"><span class="ltr">J</span><h4>Pengendalian Pertumbuhan Biaya Tunjangan melalui <span class="en">Staffing</span></h4></div>
+    <p>Karena banyak tunjangan bersifat biaya tetap per orang, biaya tunjangan per jam dapat ditekan melalui strategi penyusunan staf: (1) menambah jam kerja karyawan yang ada, (2) mengklasifikasikan karyawan sebagai <b><i>exempts</i></b> agar jam kerja bertambah tanpa kewajiban upah lembur, dan (3) menggunakan <b>kontraktor bebas</b> alih-alih karyawan tetap guna mengurangi kewajiban tunjangan menurut undang-undang.</p>
+
+    <!-- KB3 K -->
+    <div class="abc"><span class="ltr">K</span><h4>Sifat Angkatan Kerja</h4></div>
+    <p>Demografi memengaruhi preferensi tunjangan, tetapi mengandalkan demografi semata bisa keliru—perusahaan perlu menggali kebutuhan langsung lewat wawancara individu/kelompok, <i>focus group</i>, dan kuesioner. <b>Komunikasi efektif</b> mutlak diperlukan agar ROI tunjangan terwujud: banyak karyawan (termasuk lulusan S-1/S-2) kurang memahami nilai tunjangan, padahal perusahaan bertunjangan buruk menjadi sangat tidak kompetitif. Media komunikasi yang terbukti efektif meliputi memoranda, pertemuan tanya-jawab, brosur rinci, video, pameran tunjangan, dan layanan telepon.</p>
+
+    <!-- KB3 L -->
+    <div class="abc"><span class="ltr">L</span><h4>Rencana Tunjangan yang Fleksibel atau Gaya Kafetaria</h4></div>
+    <p>Memungkinkan karyawan memilih sendiri jenis dan jumlah tunjangan sesuai kebutuhan (di atas paket inti minimum seperti asuransi kesehatan), dengan opsi menerima sisa uang tunai atau membayar tambahan. <b>3 Keuntungan:</b> meningkatkan pemahaman &amp; penghargaan karyawan, kecocokan paket lebih tinggi (mendongkrak kepuasan &amp; retensi), serta potensi penghematan biaya. <b>2 Kelemahan:</b> (1) biaya administrasi desain &amp; awal tinggi (kini dibantu perangkat lunak standar konsultan), dan (2) <b>pemilihan terbalik <span class="en">(adverse selection)</span></b>—karyawan hanya memilih tunjangan mahal yang pasti mereka pakai (mis. perawatan gigi) sehingga menyulitkan prediksi biaya di bisnis kecil; dikendalikan lewat penetapan harga lebih tinggi atau pembatasan paket pilihan.</p>
+
+    <!-- KB3 M -->
+    <div class="abc"><span class="ltr">M</span><h4>Rekening Pengeluaran yang Fleksibel (<span class="en">Flexible Spending Accounts / FSA</span>)</h4></div>
+    <p>Memungkinkan kontribusi <b><i>pretax</i></b> (sebelum pajak) ke rekening karyawan untuk membayar biaya perawatan kesehatan yang tak ditanggung asuransi maupun rekening perawatan tertentu di atas $5.000. Keuntungan utamanya adalah <b>peningkatan gaji bersih</b>. Namun berlaku aturan ketat: <b>dana harus dibelanjakan dalam setahun atau hangus dikembalikan ke pengusaha</b>, sehingga karyawan wajib memprediksi pengeluarannya secara cermat.</p>
+    <p><b>Masalah Regulasi Umum — Peraturan Nondiskriminasi &amp; Rencana Tunjangan Berkualitas:</b> Agar memperoleh fasilitas pemotongan pajak pengusaha dan bebas pajak akumulasi dana pensiun karyawan, paket tunjangan harus memenuhi <b>peraturan nondiskriminasi</b>—mencegah manajemen puncak merancang rencana tunjangan eksklusif hanya untuk kalangan mereka sendiri.</p>
+
+    <!-- KB3 N -->
+    <div class="abc"><span class="ltr">N</span><h4>Gender, Umur, dan Penderita Cacat</h4></div>
+    <p>Hukum menjamin kesetaraan perlakuan: (1) tidak sah mewajibkan karyawan perempuan membayar iuran pensiun lebih besar daripada pria meskipun rata-rata harapan hidup perempuan lebih panjang, dan (2) karyawan penderita cacat berhak atas akses yang sama terhadap asuransi kesehatan sebagaimana karyawan lainnya.</p>
+
+    <div class="casebox"><span class="ctitle">Kasus Buku KB 3 (Hal. 6.50) · Tunjangan: Tuntutan atau Penghargaan?</span>
+      Karena besarnya biaya tunjangan sementara bukti ROI-nya masih terbatas, muncul usulan untuk mengaitkan tunjangan langsung dengan kinerja individu, kelompok, atau organisasi. Buku menegaskan pandangan dominan masyarakat dan hukum: tunjangan sebaiknya dipandang sebagai <b>tuntutan hak/investasi SDM dan tanggung jawab sosial</b>—bukan penghargaan berbasis kinerja—mengingat aturan nondiskriminasi (mis. akses perawatan kesehatan tidak boleh dibedakan berdasarkan kinerja semata).
+    </div>
+  </div>
+
+  <!-- GLOSARIUM -->
+  <h2 class="section" id="glosarium"><span class="dot"></span>Glosarium Istilah Kunci Modul 6</h2>
+  <div class="card"><dl class="glossary">
+    <dt>Adverse Selection (Pemilihan Terbalik)</dt><dd>Risiko pada tunjangan kafetaria ketika karyawan dominan memilih manfaat mahal yang pasti segera mereka gunakan (mis. perawatan gigi), sehingga mendistorsi proyeksi biaya.</dd>
+    <dt>Broad Banding &amp; Delayering</dt><dd>Pengurangan jumlah tingkatan jabatan (<i>delayering</i>) menjadi kelompok golongan gaji yang lebar (<i>broad bands</i>) demi fleksibilitas penugasan.</dd>
+    <dt>Compa-Ratio</dt><dd>Rasio rata-rata gaji aktual suatu golongan terhadap titik tengah (<i>midpoint</i>) golongan gaji untuk memantau kesesuaian praktik dengan kebijakan.</dd>
+    <dt>Comparable Worth</dt><dd>Prinsip kesetaraan bayaran bagi setiap jabatan yang memiliki nilai relatif sebanding bagi organisasi.</dd>
+    <dt>Defined Benefit vs Defined Contribution</dt><dd>Pensiun tunjangan pasti (menjamin nominal akhir; risiko di perusahaan/PBGC) vs kontribusi pasti (menjamin besaran iuran; risiko investasi di karyawan).</dd>
+    <dt>Efficiency Wage Theory</dt><dd>Teori bahwa membayar gaji di atas rerata pasar dapat menaikkan produktivitas melampaui biayanya, khususnya saat SDM berketerampilan tinggi atau sulit dipantau.</dd>
+    <dt>Equity Sensitivity (Benevolent, Equity Sensitive, Entitled)</dt><dd>Tiga tingkat kepekaan individu terhadap keadilan kompensasi menurut Huseman et al. (1987).</dd>
+    <dt>ESOPs &amp; Gainsharing</dt><dd>Program kepemilikan saham karyawan (ESOPs, min. 51% saham perusahaan); <i>gainsharing</i> adalah bagi hasil produktivitas tingkat kelompok/pabrik.</dd>
+    <dt>EWP &amp; Kelompok Pareto</dt><dd>Program kesehatan preventif karyawan (pasif/aktif); Kelompok Pareto adalah minoritas karyawan yang memicu mayoritas biaya perawatan kesehatan.</dd>
+    <dt>HMO vs PPOs</dt><dd>Dua model <i>managed care</i>: HMO (bayar di muka, preventif, wajib jaringan) dan PPOs (tarif diskon kontrak, lebih fleksibel, lebih mahal dari HMO).</dd>
+    <dt>Key Jobs &amp; Range Spread</dt><dd>Pekerjaan tolok ukur umum untuk survei gaji pasar; <i>range spread</i> adalah jarak antara batas minimum dan maksimum dalam satu golongan gaji.</dd>
+    <dt>Marginal Tax Rate &amp; FSA</dt><dd>Persentase pajak atas tambahan pendapatan; FSA adalah rekening pengeluaran fleksibel <i>pretax</i> yang hangus bila tak terpakai dalam satu tahun.</dd>
+    <dt>No-Fault Liability</dt><dd>Prinsip kompensasi pekerja bahwa karyawan cedera kerja berhak atas santunan tanpa perlu membuktikan kesalahan perusahaan.</dd>
+  </dl></div>
+</div>
+
+<footer><b>EKMA5207 — Manajemen Sumber Daya Manusia (Edisi 3)</b> · Modul 6: Kompensasi (Prof. Dr. Mutiara Sibarani Panggabean, S.E., M.E.)<br>Bahan belajar lengkap mengikuti outline asli modul untuk persiapan ujian.</footer>
+
+<script>
+(function(){
+  var pb=document.getElementById('progress');
+  function onScroll(){var h=document.documentElement;var sc=h.scrollTop||document.body.scrollTop;var max=(h.scrollHeight-h.clientHeight)||1;pb.style.width=(sc/max*100)+'%';}
+  document.addEventListener('scroll',onScroll,{passive:true});onScroll();
+
+  var list=document.getElementById('conceptList');var items=[].slice.call(list.querySelectorAll('li'));var boxes=items.map(function(li){return li.querySelector('input');});
+  document.getElementById('totalCount').textContent=items.length;var doneEl=document.getElementById('doneCount');var KEY='studi_ekma5207_m6_concepts_v3';
+  function load(){try{var a=JSON.parse(localStorage.getItem(KEY)||'[]');boxes.forEach(function(b,i){if(a[i])b.checked=true;});}catch(e){}}
+  function save(){try{localStorage.setItem(KEY,JSON.stringify(boxes.map(function(b){return b.checked?1:0;})));}catch(e){}}
+  function refresh(){var n=0;items.forEach(function(li,i){if(boxes[i].checked){li.classList.add('done');n++;}else li.classList.remove('done');});doneEl.textContent=n;}
+  load();refresh();boxes.forEach(function(b){b.addEventListener('change',function(){refresh();save();});});
+  document.getElementById('resetBtn').addEventListener('click',function(){boxes.forEach(function(b){b.checked=false;});refresh();save();});
+
+  [].slice.call(document.querySelectorAll('[data-revealgroup]')).forEach(function(g){
+    var det=g.querySelector('[data-revealdetail]');if(!det){var sib=g.nextElementSibling;if(sib&&sib.hasAttribute&&sib.hasAttribute('data-revealdetail'))det=sib;}
+    var cells=[].slice.call(g.querySelectorAll('[data-reveal]'));
+    cells.forEach(function(c){c.addEventListener('click',function(){cells.forEach(function(x){x.classList.remove('active');});c.classList.add('active');if(det){det.innerHTML=c.getAttribute('data-detail');if(window.MathJax&&window.MathJax.typesetPromise)window.MathJax.typesetPromise([det]);}});});
+  });
+
+  (function(){
+    var ROWH=46,NODE_H=32,PAD=13,GAP=52;var COL={root:'#0f5e8f',kb1:'#1a86c7',kb2:'#e08a1e',kb3:'#2a9d6f',kb4:'#7a5cc0',kb5:'#c75b7a'};
+    var mc=document.createElement('canvas').getContext('2d');mc.font='700 13px -apple-system,Segoe UI,Roboto,sans-serif';
+    function tw(t){return Math.ceil(mc.measureText(t).width);}function esc(t){return t.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');}
+    function rgba(hex,a){var h=hex.replace('#','');return 'rgba('+parseInt(h.substr(0,2),16)+','+parseInt(h.substr(2,2),16)+','+parseInt(h.substr(4,2),16)+','+a+')';}
+    var DATA={label:'MODUL 6 — Kompensasi',color:COL.root,children:[
+      {label:'KB1 · Keputusan Struktur Gaji (A–G)',color:COL.kb1,children:[
+        {label:'A. Pendahuluan & Asas Kompensasi',children:[{label:'Jenis, Adams (1963), Lawler & Huseman'},{label:'6 Faktor & 5 Proses Penentuan'}]},
+        {label:'B. Evaluasi Pekerjaan (4 Metode)',children:[{label:'Peringkat, Penggolongan, Faktor, Poin'},{label:'Survei Gaji & Penetapan Harga'}]},
+        {label:'C. 6 Tantangan & Comparable Worth',children:[{label:'Level Gaji vs Struktur Kerja'}]},
+        {label:'D. Teori Keadilan & Kepatutan',children:[{label:'Rasio Outcomes/Inputs · Internal/Eksternal'}]},
+        {label:'E. Menyusun Level Gaji',children:[{label:'Pasar Produk vs Tenaga Kerja & Efficiency Wage'}]},
+        {label:'F. Survei Gaji Pasar (1–11)',children:[{label:'Key/Nonkey Jobs & 3 Pendekatan Struktur'},{label:'Compa-Ratio, Partisipasi & Komunikasi'}]},
+        {label:'G. Tantangan Saat Ini',children:[{label:'Broad Banding, Pay for Skills & Gaji Eksekutif'},{label:'Kasus: Hotel Internasional Kencana'}]}
+      ]},
+      {label:'KB2 · Gaji untuk Kontribusi (A–F)',color:COL.kb2,children:[
+        {label:'A. Pendahuluan (Produktivitas & ROI)'},
+        {label:'B. 3 Teori Motivasi Individu',children:[{label:'Reinforcement, Expectancy & Agency (3 Biaya)'}]},
+        {label:'C. 6 Faktor Penentu Skema Kontrak'},
+        {label:'D. Pengaruh pada Komposisi Angkatan Kerja'},
+        {label:'E. Program Penghargaan (Gbr 6.23)',children:[{label:'Gaji Merit, Kritik Deming & Insentif Individu'}]},
+        {label:'F. Bagi Untung, Kepemilikan, Gainsharing & BSC',children:[{label:'Profit Sharing (DuPont), Opsi Saham & ESOPs'},{label:'Gainsharing (8 Kondisi), Tim & Balanced Scorecard'},{label:'Proses, Strategi Prospektor vs Defensif & Kasus'}]}
+      ]},
+      {label:'KB3 · Fasilitas & Tunjangan (A–N)',color:COL.kb3,children:[
+        {label:'A–B. 4 Keunikan & 6 Alasan Kenaikan'},
+        {label:'C–D. Jamsostek (UU 3/1992), JHT & Pengangguran'},
+        {label:'E–F. Kompensasi Pekerja, Asuransi & Pensiun',children:[{label:'No-Fault, Defined Benefit (PBGC) vs Contribution'}]},
+        {label:'G. Waktu Tidak Bekerja & Ramah Keluarga',children:[{label:'Cuti Trisakti, FMLA & Penitipan Anak IKEA'}]},
+        {label:'H–J. Pengendalian Biaya Kesehatan & Staffing',children:[{label:'Managed Care (HMO vs PPOs)'},{label:'EWP Pasif/Aktif, Kelompok Pareto & Exempts'}]},
+        {label:'K–N. Komunikasi, Kafetaria, FSA & Regulasi',children:[{label:'Kafetaria (Adverse Selection) & FSA (Pretax)'},{label:'Nondiskriminasi Gender/Umur/Cacat & Kasus'}]}
+      ]}
+    ]};
+    var idc=0;(function w(n,c){n.id='n'+(idc++);n.color=n.color||c;(n.children||[]).forEach(function(k){w(k,n.color);});})(DATA,COL.root);
+    (function w(n,d){if(d>=2&&n.children&&n.children.length)n.collapsed=true;(n.children||[]).forEach(function(k){w(k,d+1);});})(DATA,0);
+    var host=document.getElementById('mindmap');
+    function render(){
+      var colW=[];(function w(n,d){var width=tw(n.label)+PAD*2+((n.children&&n.children.length)?20:0);colW[d]=Math.max(colW[d]||0,width);if(!n.collapsed)(n.children||[]).forEach(function(k){w(k,d+1);});})(DATA,0);
+      var colX=[],acc=14;for(var d=0;d<colW.length;d++){colX[d]=acc;acc+=colW[d]+GAP;}var row={v:0};
+      (function lay(n,d){if(!n.children||!n.children.length||n.collapsed){n._y=row.v*ROWH+ROWH/2+8;row.v++;return;}var f,l;n.children.forEach(function(k,i){lay(k,d+1);if(i===0)f=k._y;l=k._y;});n._y=(f+l)/2;})(DATA,0);
+      var totalW=acc,totalH=row.v*ROWH+24;var nodes=[],links=[];
+      (function col(n,d,p){n._x=colX[d];n._w=tw(n.label)+PAD*2+((n.children&&n.children.length)?20:0);nodes.push({n:n,d:d});if(p)links.push([p,n]);if(!n.collapsed)(n.children||[]).forEach(function(k){col(k,d+1,n);});})(DATA,0,null);
+      var s='<svg width="'+totalW+'" height="'+totalH+'" viewBox="0 0 '+totalW+' '+totalH+'" xmlns="http://www.w3.org/2000/svg">';
+      links.forEach(function(pr){var a=pr[0],b=pr[1],x1=a._x+a._w,y1=a._y,x2=b._x,y2=b._y,mx=(x1+x2)/2;s+='<path d="M'+x1+' '+y1+' C'+mx+' '+y1+' '+mx+' '+y2+' '+x2+' '+y2+'" fill="none" stroke="'+rgba(b.color,.5)+'" stroke-width="2"/>';});
+      nodes.forEach(function(o){var n=o.n,x=n._x,y=n._y-NODE_H/2,w=n._w,hk=n.children&&n.children.length;var fill=o.d===0?n.color:(o.d===1?rgba(n.color,.12):'#fff');var tf=o.d===0?'#fff':'#1c2733';
+        s+='<g data-id="'+n.id+'" style="cursor:'+(hk?'pointer':'default')+'"><rect x="'+x+'" y="'+y+'" rx="9" width="'+w+'" height="'+NODE_H+'" fill="'+fill+'" stroke="'+n.color+'" stroke-width="'+(o.d===0?0:1.6)+'"/><text x="'+(x+PAD)+'" y="'+(n._y+4)+'" font-size="13" font-weight="'+(o.d<=1?'700':'500')+'" fill="'+tf+'" font-family="-apple-system,Segoe UI,Roboto,sans-serif">'+esc(n.label)+'</text>';
+        if(hk){var cx=x+w-12,cy=n._y;s+='<circle cx="'+cx+'" cy="'+cy+'" r="8.5" fill="'+n.color+'"/><text x="'+cx+'" y="'+(cy+4.5)+'" font-size="13" font-weight="700" fill="#fff" text-anchor="middle" font-family="sans-serif">'+(n.collapsed?'+':'\u2013')+'</text>';}s+='</g>';});
+      s+='</svg>';host.innerHTML=s;
+    }
+    host.addEventListener('click',function(e){var g=e.target.closest('g[data-id]');if(!g)return;var id=g.getAttribute('data-id');(function f(n){if(n.id===id){if(n.children&&n.children.length)n.collapsed=!n.collapsed;return true;}return (n.children||[]).some(f);})(DATA);render();});
+    document.getElementById('mmExpand').addEventListener('click',function(){(function w(n){if(n.children)n.collapsed=false;(n.children||[]).forEach(w);})(DATA);render();});
+    document.getElementById('mmCollapse').addEventListener('click',function(){(function w(n,d){if(d>=1&&n.children&&n.children.length)n.collapsed=true;(n.children||[]).forEach(function(k){w(k,d+1);});})(DATA,0);render();});
+    render();
+  })();
+
+  window.addEventListener('load',function(){setTimeout(function(){if(window.MathJax&&window.MathJax.typesetPromise)window.MathJax.typesetPromise();},400);});
+})();
+</script></body></html>

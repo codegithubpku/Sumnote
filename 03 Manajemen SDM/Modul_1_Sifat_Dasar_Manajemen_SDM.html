@@ -1,0 +1,680 @@
+<!DOCTYPE html>
+<html lang="id"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Modul 1 — Sifat Dasar Manajemen Sumber Daya Manusia | EKMA5207</title>
+<script>window.MathJax={tex:{inlineMath:[['$','$']],displayMath:[['\\[','\\]']]},svg:{fontCache:'global'},startup:{typeset:true}};</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js" async></script>
+<style>
+:root{--bg:#f4f6f9;--panel:#fff;--ink:#1c2733;--muted:#5c6b7a;--line:#e4e9f0;--brand:#1a86c7;--brand-dark:#0f5e8f;--brand-soft:#e7f3fb;--kb1:#1a86c7;--kb2:#e08a1e;--kb3:#2a9d6f;--kb4:#7a5cc0;--kb5:#c75b7a;--radius:14px;--shadow:0 1px 2px rgba(16,42,67,.06),0 6px 20px rgba(16,42,67,.06);--maxw:900px}
+*{box-sizing:border-box}html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;line-height:1.72}
+#progress{position:fixed;top:0;left:0;height:4px;width:0;background:linear-gradient(90deg,var(--brand),#53c0ec);z-index:200;transition:width .1s}
+header.top{position:sticky;top:0;z-index:100;background:rgba(255,255,255,.92);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+.top-in{max-width:var(--maxw);margin:0 auto;padding:10px 20px;display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+.badge{background:var(--brand);color:#fff;font-weight:700;font-size:.72rem;letter-spacing:.5px;padding:4px 10px;border-radius:999px}
+.homebtn{text-decoration:none;display:inline-flex;align-items:center;gap:7px;background:var(--brand);color:#fff;font-weight:700;font-size:.8rem;padding:7px 15px;border-radius:999px;box-shadow:0 2px 6px rgba(16,42,67,.22);line-height:1}
+.top-title{font-size:.9rem;font-weight:600;color:var(--muted)}
+nav.jump{margin-left:auto;display:flex;gap:4px;flex-wrap:wrap}
+nav.jump a{font-size:.78rem;color:var(--muted);text-decoration:none;padding:5px 10px;border-radius:8px}
+nav.jump a:hover{background:var(--brand-soft);color:var(--brand-dark)}
+.wrap{max-width:var(--maxw);margin:0 auto;padding:0 20px 90px}
+.hero{margin-top:26px;padding:30px 28px;border-radius:var(--radius);color:#fff;background:linear-gradient(135deg,#0f5e8f,#1a86c7 60%,#2fa4df);box-shadow:var(--shadow);position:relative;overflow:hidden}
+.hero .eyebrow{font-size:.78rem;letter-spacing:1.5px;text-transform:uppercase;opacity:.9;font-weight:600}
+.hero h1{margin:.3em 0 .25em;font-size:1.62rem;line-height:1.25;max-width:92%}
+.hero .meta{display:flex;gap:18px;flex-wrap:wrap;font-size:.84rem;opacity:.95;margin-top:10px}
+h2.section{font-size:1.3rem;margin:48px 0 4px;display:flex;align-items:center;gap:10px;scroll-margin-top:70px}
+h2.section .dot{width:10px;height:22px;border-radius:4px;background:var(--brand)}
+.section-sub{color:var(--muted);font-size:.9rem;margin:0 0 18px}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);padding:22px 24px;margin:16px 0;--dot:var(--brand)}
+.concepts{list-style:none;margin:0;padding:0;display:grid;gap:10px}
+.concepts li{display:flex;gap:12px;align-items:flex-start;padding:12px 14px;border:1px solid var(--line);border-radius:10px;background:#fcfdff}
+.concepts input{margin-top:4px;width:18px;height:18px;accent-color:var(--brand);flex:none;cursor:pointer}
+.concepts .ct{font-weight:600}.concepts .cd{display:block;font-weight:400;color:var(--muted);font-size:.86rem;margin-top:2px}
+.concepts li.done{background:var(--brand-soft);border-color:#bfe0f3}.concepts li.done .ct{text-decoration:line-through;opacity:.65}
+.cl-head{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-bottom:6px}
+.cl-head .count{font-size:.82rem;color:var(--muted);background:var(--brand-soft);padding:3px 10px;border-radius:999px;font-weight:600}
+.btn-reset{font-size:.78rem;border:1px solid var(--line);background:#fff;color:var(--muted);padding:5px 12px;border-radius:8px;cursor:pointer}
+.mm-toolbar{display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin-bottom:10px}
+.mm-btn{font-size:.78rem;border:1px solid var(--line);background:#fff;padding:6px 13px;border-radius:8px;cursor:pointer;color:var(--brand-dark);font-weight:600}
+.mindmap-host{height:580px;overflow:auto;border:1px solid var(--line);border-radius:10px;background:#fcfdff}.mindmap-host svg{display:block}
+.kb-tag{display:inline-flex;align-items:center;gap:8px;font-size:.78rem;font-weight:700;color:#fff;padding:5px 12px;border-radius:999px;margin-bottom:6px}
+.kb1t{background:var(--kb1)}.kb2t{background:var(--kb2)}.kb3t{background:var(--kb3)}.kb4t{background:var(--kb4)}.kb5t{background:var(--kb5)}
+.kb1b{--dot:var(--kb1)}.kb2b{--dot:var(--kb2)}.kb3b{--dot:var(--kb3)}.kb4b{--dot:var(--kb4)}.kb5b{--dot:var(--kb5)}
+.lead{font-size:1.02rem}.term{font-weight:700;color:var(--dot)}.en{font-style:italic;color:var(--muted);font-weight:500}
+.abc{display:flex;align-items:center;gap:10px;margin:28px 0 10px;padding-bottom:6px;border-bottom:2px solid color-mix(in srgb,var(--dot) 18%,#fff)}
+.abc .ltr{background:var(--dot);color:#fff;font-weight:800;min-width:30px;height:30px;padding:0 7px;border-radius:8px;display:grid;place-items:center;flex:none}
+.abc h4{margin:0;font-size:1.06rem;color:var(--dot)}
+.numh{font-weight:700;color:var(--dot);margin:22px 0 4px;font-size:1rem}
+.leth{font-weight:800;color:var(--dot);margin:20px 0 6px;font-size:.98rem;border-left:3px solid var(--dot);padding-left:10px}
+ol.book{margin:12px 0;padding-left:28px}ol.book>li{margin:10px 0;padding-left:6px}ol.book>li::marker{font-weight:700;color:var(--dot)}
+ul.exp{list-style:none;margin:12px 0;padding:0;display:grid;gap:10px}ul.exp>li{position:relative;padding-left:20px}
+ul.exp>li::before{content:"";position:absolute;left:0;top:11px;width:8px;height:8px;border-radius:2px;background:var(--dot)}
+ul.let{list-style:lower-alpha;margin:10px 0;padding-left:28px}ul.let>li{margin:8px 0;padding-left:4px}ul.let>li::marker{color:var(--dot);font-weight:700}
+.flow{border-left:4px solid var(--dot);background:color-mix(in srgb,var(--dot) 9%,#fff);padding:11px 15px;border-radius:0 10px 10px 0;margin:18px 0;font-size:.9rem}
+.flow::before{content:"🔗 Benang merah — ";font-weight:700;color:var(--dot)}.flow b{color:var(--dot)}
+table.mini{width:100%;border-collapse:collapse;margin:14px 0;font-size:.86rem}
+table.mini th,table.mini td{border:1px solid var(--line);padding:9px 11px;text-align:left;vertical-align:top}
+table.mini th{background:color-mix(in srgb,var(--dot) 12%,#fff);color:var(--dot);font-weight:700}
+.rgrid{display:grid;gap:8px;margin:14px 0}.rgrid.c2{grid-template-columns:repeat(2,1fr)}.rgrid.c3{grid-template-columns:repeat(3,1fr)}.rgrid.c4{grid-template-columns:repeat(4,1fr)}
+.rcell{border:1px solid var(--line);border-radius:10px;padding:11px 13px;cursor:pointer;background:#fff;display:flex;gap:10px;align-items:flex-start;transition:.15s}
+.rcell:hover{border-color:var(--dot);box-shadow:var(--shadow);transform:translateY(-2px)}
+.rcell.active{border-color:var(--dot);background:color-mix(in srgb,var(--dot) 8%,#fff)}
+.rcell .stepnum{background:var(--dot);color:#fff;font-weight:700;min-width:24px;height:24px;border-radius:7px;display:grid;place-items:center;flex:none;font-size:.82rem}
+.rcell .rt{font-weight:700;font-size:.9rem;color:var(--dot);display:block}.rcell .rp{font-size:.78rem;color:var(--muted);display:block;margin-top:2px}
+.rdetail{font-size:.88rem;border-left:4px solid var(--dot);background:color-mix(in srgb,var(--dot) 8%,#fff);border-radius:0 10px 10px 0;padding:12px 15px;margin-top:6px}
+.pill-row{display:flex;gap:8px;flex-wrap:wrap;margin:10px 0}.pill{font-size:.8rem;background:#eef3f8;color:#36506a;border:1px solid #e0e8f0;padding:4px 11px;border-radius:999px;font-weight:600}
+.flowchart{display:flex;align-items:center;gap:6px;flex-wrap:wrap;margin:16px 0;justify-content:center}
+.fc-node{background:color-mix(in srgb,var(--dot) 12%,#fff);border:1.5px solid var(--dot);color:var(--dot);font-weight:700;font-size:.8rem;padding:8px 12px;border-radius:9px;text-align:center}
+.fc-arrow{color:var(--dot);font-weight:800;font-size:1.05rem}
+.pyramid{display:flex;flex-direction:column;align-items:center;gap:4px;margin:16px 0}.pyr-row{color:#fff;font-weight:700;text-align:center;padding:9px 12px;border-radius:7px;font-size:.84rem}
+.eqbox{background:#fcfdff;border:1px solid var(--line);border-radius:10px;padding:8px 14px;margin:14px 0;overflow-x:auto}
+.glossary dt{font-weight:700;color:var(--brand-dark);margin-top:10px}.glossary dd{margin:0 0 2px;color:var(--muted);font-size:.9rem}
+.diagram-box{border:1px solid var(--line);border-radius:12px;background:#fcfdff;padding:16px;margin:16px 0;text-align:center}
+.diagram-cap{font-size:.8rem;color:var(--muted);margin-top:10px;font-weight:600}
+.quad-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;text-align:left}
+.quad-cell{border:1.5px solid color-mix(in srgb,var(--dot) 35%,#fff);border-radius:10px;padding:12px 14px;background:#fff}
+.quad-cell .qt{font-weight:700;color:var(--dot);font-size:.88rem;margin-bottom:4px}
+.quad-cell .qd{font-size:.82rem;color:var(--muted);line-height:1.5}
+.strat-box{display:grid;grid-template-columns:1fr auto 1fr;gap:12px;align-items:center;text-align:left}
+.strat-col{border:1.5px solid color-mix(in srgb,var(--dot) 35%,#fff);border-radius:10px;padding:12px 14px;background:#fff}
+.strat-col h5{margin:0 0 6px;color:var(--dot);font-size:.88rem;text-transform:uppercase;letter-spacing:.4px}
+.strat-col p,.strat-col ul{margin:0;font-size:.82rem;color:var(--ink);line-height:1.5}
+.strat-col ul{padding-left:16px;margin-top:4px}
+footer{max-width:var(--maxw);margin:0 auto;padding:30px 20px 60px;color:var(--muted);font-size:.82rem;border-top:1px solid var(--line)}
+.offline-note{font-size:.76rem;color:var(--muted);background:#fff8e6;border:1px solid #f0e2b8;border-radius:8px;padding:8px 12px;margin:10px 0}
+@media(max-width:640px){.hero h1{font-size:1.3rem;max-width:100%}nav.jump{display:none}.rgrid.c2,.rgrid.c3,.rgrid.c4,.quad-grid,.strat-box{grid-template-columns:1fr}.mindmap-host{height:440px}}
+</style></head><body>
+<div id="progress"></div>
+<header class="top"><div class="top-in">
+ <span class="badge">MODUL 1</span>
+ <a class="homebtn" href="index.html" title="Kembali ke daftar modul"><span style="font-size:1rem;line-height:1">&#8962;</span> Daftar Modul</a>
+ <span class="top-title">Manajemen Sumber Daya Manusia · EKMA5207</span>
+ <nav class="jump"><a href="#konsep">Konsep</a><a href="#peta">Peta Konsep</a><a href="#kb1">KB1</a><a href="#kb2">KB2</a><a href="#kb3">KB3</a><a href="#glosarium">Glosarium</a></nav>
+</div></header>
+
+<div class="wrap">
+ <section class="hero"><div class="eyebrow">Ringkasan Belajar · EKMA5207 Edisi 3</div>
+ <h1>Sifat Dasar Manajemen Sumber Daya Manusia</h1>
+ <div class="meta"><span>⏱️ ±35 menit</span><span>📚 3 bagian (KB)</span><span>✍️ Prof. Dr. Mutiara Sibarani Panggabean, S.E., M.E.</span></div></section>
+
+ <p class="section-sub" style="margin-top:22px">Modul ini meletakkan fondasi seluruh mata kuliah Manajemen Sumber Daya Manusia (MSDM): mengapa sikap dan perilaku karyawan menentukan keunggulan bersaing berkelanjutan (<span class="en">sustainable competitive advantage</span>), bagaimana hakikat dan peran strategis MSDM menyatu dengan manajemen strategis perusahaan, serta mengapa etika bisnis dan tanggung jawab sosial perusahaan (CSR) menjadi penopang kepercayaan para pemangku kepentingan.</p>
+ <p class="offline-note">ℹ️ Peta konsep, kartu penjelasan interaktif, dan daftar cek konsep berjalan tanpa internet. Hanya persamaan matematika yang memuat MathJax saat daring.</p>
+
+ <!-- PENDAHULUAN RINGKAS -->
+ <div class="card">
+  <div class="abc" style="margin-top:0"><span class="ltr">★</span><h4>Pendahuluan Modul — Mengapa SDM Menentukan Keunggulan Bersaing?</h4></div>
+  <p>Akademisi dan praktisi sepakat bahwa keberhasilan perusahaan sangat ditentukan oleh sikap dan perilaku karyawannya. Dua organisasi yang berada di lingkungan sama, memakai teknologi sama, dan memiliki karyawan berkemampuan serupa tetap bisa berbeda keberhasilannya karena perbedaan perilaku karyawan (Melcher, 1976). Perilaku tersebut tampak dalam kualitas layanan prima dan produktivitas (Wirtz dkk., 2008), atau sebaliknya dalam ketidakhadiran, keterlambatan, kecurangan, dan keinginan pindah kerja.</p>
+  <ul class="exp">
+   <li><b>Pandangan Berbasis Sumber Daya <span class="en">(Resource-Based View / RBV)</span>:</b> Kochan &amp; Dyer (1993) serta Pfeffer (1994) menegaskan SDM berpotensi menjadi satu-satunya sumber keunggulan bersaing berkelanjutan karena bila bernilai, SDM bersifat langka, sulit ditiru, dan tidak tergantikan.</li>
+   <li><b>Daya Saing &amp; Pangsa Pasar <span class="en">(Market Share)</span>:</b> Daya saing adalah kemampuan perusahaan mempertahankan dan memperoleh pangsa pasar dalam industrinya. Pangsa pasar adalah persentase penjualan perusahaan terhadap total penjualan industri (misalnya 5% dari total 1.000 unit = 50 unit).</li>
+   <li><b>Bukti Praktik Perusahaan Terbaik:</b> <b>Starbucks</b> (peringkat ke-16 dari 100 tempat kerja terbaik versi <i>Fortune</i> 2007) memperlakukan karyawan sebagai mitra usaha dengan pelatihan intensif, penghargaan di atas minimal, tunjangan kesehatan, biaya kuliah, opsi saham, dan pensiun. <b>IKEA</b> mendukung ibu bekerja lewat jadwal fleksibel, cuti orang tua baru, dan penitipan anak. <b>Nu Skin Enterprises</b> memajukan karyawan lewat program sosial, <b>HSBC</b> menjaga lingkungan kerja fisik dan non-fisik, serta <b>FedEx</b> memegang 6 filosofi (tidak memberhentikan pegawai, perlakuan adil, survei kritik, promosi dari dalam, keuntungan bersama, dan kebijakan pintu terbuka).</li>
+   <li><b>Pemangku Kepentingan <span class="en">(Stakeholders)</span>:</b> Menurut Noe (2008), daya saing berkelanjutan bergantung pada kemampuan memenuhi kebutuhan pemangku kepentingan—pemegang saham (imbal hasil investasi), pelanggan (produk/jasa berkualitas), karyawan (pekerjaan menarik &amp; kompensasi layak), dan masyarakat (kontribusi sosial &amp; minim pencemaran).</li>
+  </ul>
+  <div class="flow"><b>Alur logis Modul 1:</b> Praktik MSDM yang tepat memenuhi kepentingan karyawan → membentuk sikap dan perilaku positif → menciptakan keunggulan bersaing. Karena itu, <b>KB 1</b> membedah hakikat dan ruang lingkup MSDM, <b>KB 2</b> mengintegrasikannya ke strategi bisnis, dan <b>KB 3</b> memastikannya berjalan secara etis dan bertanggung jawab sosial.</div>
+ </div>
+
+ <!-- KONSEP PENTING -->
+ <h2 class="section" id="konsep"><span class="dot"></span>Konsep Penting yang Harus Dikuasai</h2>
+ <div class="card"><div class="cl-head"><span class="count"><span id="doneCount">0</span>/<span id="totalCount">0</span> dikuasai</span><button class="btn-reset" id="resetBtn">Reset centang</button></div>
+ <ul class="concepts" id="conceptList">
+  <li><input type="checkbox"><span><span class="ct">Keunggulan Bersaing Berkelanjutan (Sustainable Competitive Advantage) &amp; RBV</span><span class="cd">SDM menjadi sumber keunggulan jangka panjang karena bersifat bernilai, langka, sulit ditiru, dan tidak tergantikan.</span></span></li>
+  <li><input type="checkbox"><span><span class="ct">5 Fungsi Dasar Manajemen &amp; Setiap Manajer adalah Manajer SDM</span><span class="cd">Perencanaan, pengorganisasian, pemotivasian, penyusunan staf (MSDM), dan pengendalian saling berkaitan tak terpisahkan.</span></span></li>
+  <li><input type="checkbox"><span><span class="ct">4 Lini Produk / Peran Departemen SDM (Noe, 2008)</span><span class="cd">Mitra Strategis (Strategic Partner), Ahli Administrasi (Administrative Expert), Advokat Karyawan (Employee Advocate), dan Agen Pengubah (Change Agent).</span></span></li>
+  <li><input type="checkbox"><span><span class="ct">6 Kompetensi Profesional SDM (Noe, 2008)</span><span class="cd">Aktivis tepercaya, pengelola budaya organisasi, manajer bakat/perancang organisasi, arsitek strategis, mitra bisnis, dan pelaksana operasional.</span></span></li>
+  <li><input type="checkbox"><span><span class="ct">3 Tantangan Kompetitif MSDM &amp; 4 Aset Tak Berwujud</span><span class="cd">Tantangan kesinambungan usaha, global (modal manusia, pelanggan, sosial, intelektual), dan teknologi.</span></span></li>
+  <li><input type="checkbox"><span><span class="ct">5 Fungsi Operasional Ruang Lingkup MSDM (Mondy, 2008)</span><span class="cd">Pengadaan SDM, Pengembangan SDM, Kompensasi, Keselamatan &amp; Kesehatan Kerja (K3), serta Hubungan Kerja &amp; Karyawan.</span></span></li>
+  <li><input type="checkbox"><span><span class="ct">Manajemen Strategis &amp; MSDM Strategis (MSDMS)</span><span class="cd">Pola penyebaran SDM dan aktivitas terencana agar organisasi mencapai tujuan strategisnya melalui perumusan dan pelaksanaan strategi.</span></span></li>
+  <li><input type="checkbox"><span><span class="ct">4 Tingkat Integrasi MSDM dengan Manajemen Strategis</span><span class="cd">Hubungan administratif (terendah), satu arah, dua arah, dan integratif/terpadu (tertinggi).</span></span></li>
+  <li><input type="checkbox"><span><span class="ct">6 Komponen Perumusan Strategi</span><span class="cd">Misi, sasaran jangka panjang, analisis eksternal (peluang/ancaman), analisis internal (kekuatan/kelemahan), alternatif strategi, dan pemilihan strategi.</span></span></li>
+  <li><input type="checkbox"><span><span class="ct">13 Alternatif Strategi (David, 2009) &amp; 2 Strategi Dasar Porter</span><span class="cd">Integrasi, intensif, diversifikasi, defensif (David) serta Kepemimpinan Biaya (Cost Leadership) dan Diferensiasi (Porter).</span></span></li>
+  <li><input type="checkbox"><span><span class="ct">5 Variabel Pelaksanaan Strategi &amp; 6 Menu Praktik MSDM</span><span class="cd">Struktur, desain tugas, seleksi/pelatihan, sistem imbalan, dan tipe informasi; diselaraskan lewat 6 praktik MSDM.</span></span></li>
+  <li><input type="checkbox"><span><span class="ct">Kebutuhan MSDM: Cost Leadership vs Diferensiasi</span><span class="cd">Biaya rendah menuntut efisiensi, kestabilan, dan kuantitas; diferensiasi menuntut kreativitas, kerja sama, dan keberanian ambil risiko.</span></span></li>
+  <li><input type="checkbox"><span><span class="ct">Model Etika (Mondy, 2010): Etika Tipe I vs Etika Tipe II</span><span class="cd">Tipe I: hubungan sumber panduan etika dengan keyakinan; Tipe II: hubungan keyakinan dengan tindakan nyata.</span></span></li>
+  <li><input type="checkbox"><span><span class="ct">Kode Etik, Etika SDM, &amp; Profesionalisasi (SHRM)</span><span class="cd">Dua fokus utama etika SDM: tata kelola perusahaan (corporate governance) dan kompensasi eksekutif; standar profesi dijaga SHRM.</span></span></li>
+  <li><input type="checkbox"><span><span class="ct">Tanggung Jawab Sosial (CSR), Analisis Stakeholder &amp; Kontrak Sosial</span><span class="cd">Tiga pilar CSR (masyarakat, lingkungan, ekonomi), 3 jenis pemeriksaan sosial, serta 9 langkah implementasi program CSR.</span></span></li>
+ </ul></div>
+
+ <!-- PETA KONSEP -->
+ <h2 class="section" id="peta"><span class="dot"></span>Peta Konsep (Mind Map)</h2>
+ <div class="card"><div class="mm-toolbar"><button class="mm-btn" id="mmExpand">Perluas semua</button><button class="mm-btn" id="mmCollapse">Ciutkan</button><span style="font-size:.76rem;color:var(--muted)">Klik simpul (+) atau (–) untuk membuka/menutup cabang · Gulir untuk menggeser</span></div><div class="mindmap-host" id="mindmap"></div></div>
+
+ <!-- ==================== KB 1 ==================== -->
+ <h2 class="section" id="kb1"><span class="dot" style="background:var(--kb1)"></span>KB 1 — Hakikat Manajemen Sumber Daya Manusia</h2>
+ <div class="card kb1b"><span class="kb-tag kb1t">KB 1 · Hal. 1.7–1.26</span>
+  <p class="lead">Setiap perusahaan dipimpin oleh <span class="term">manajer</span>—orang yang membuat segala sesuatunya terselesaikan melalui atau dengan upaya-upaya orang lain. Manajer dibedakan menurut <b>tingkatannya</b> (manajer puncak di bawah pemilik, manajer menengah yang atasan dan bawahannya manajer, serta manajer bawah/penyelia yang bawahannya karyawan) dan menurut <b>unit yang dipimpin</b>: berdasarkan <b>fungsi</b> (SDM, pemasaran, keuangan/akuntansi, produksi/operasi) atau berdasarkan <b>divisi</b> (geografi, produk, pelanggan, atau proses—misalnya penerbit buku yang membagi divisi perguruan tinggi, SMA, SMP, dan SD).</p>
+
+  <!-- KB1 A -->
+  <div class="abc"><span class="ltr">A</span><h4>Manajemen dan Manajemen Sumber Daya Manusia</h4></div>
+  <p>Manajer adalah pelaksana fungsi-fungsi manajemen. Meski tiap penulis memiliki variasi (Daft 2003 menyebut 4 fungsi: perencanaan, pengorganisasian, pemimpinan, pengendalian), Fred David (2009) dan Dessler (2010) sepakat bahwa terdapat <b>lima fungsi dasar manajemen</b> yang dijalankan setiap manajer. Klik tiap kartu untuk rinciannya:</p>
+  <div class="rgrid c3" data-revealgroup>
+   <div class="rcell active" data-reveal data-detail="<b>1. Perencanaan (Planning)</b> — Proses mendefinisikan tujuan, merumuskan strategi, dan mengembangkan rencana untuk mengoordinasikan kegiatan menghadapi masa depan (jangka panjang maupun jangka pendek). Terdiri atas <b>rencana sekali pakai</b> (program, proyek, anggaran) dan <b>rencana berulang kali</b> (aturan, peraturan, prosedur, kebijakan)."><span class="stepnum">1</span><span><span class="rt">Perencanaan</span><span class="rp">Tujuan, strategi &amp; rencana</span></span></div>
+   <div class="rcell" data-reveal data-detail="<b>2. Pengorganisasian (Organizing)</b> — Mencakup 6 langkah: (1) pembagian kerja/spesialisasi, (2) departementalisasi (berdasarkan produk, fungsi, proses, pelanggan, atau geografis), (3) penentuan rantai komando (siapa melapor kepada siapa), (4) penentuan rentang kendali (jumlah bawahan efektif), (5) desentralisasi vs sentralisasi keputusan, dan (6) formalisasi (aturan/peraturan pengarah)."><span class="stepnum">2</span><span><span class="rt">Pengorganisasian</span><span class="rp">6 langkah struktur tugas</span></span></div>
+   <div class="rcell" data-reveal data-detail="<b>3. Pemotivasian (Motivating / Leading)</b> — Upaya pimpinan memengaruhi, mendorong, dan mengarahkan bawahan agar <b>mau</b> (memenuhi kebutuhan yang belum terpenuhi sesuai Teori Hierarki Kebutuhan Abraham Maslow) dan <b>mampu</b> (melalui pelatihan yang tepat), serta memilih saluran komunikasi efektif dan mengatasi konflik kelompok."><span class="stepnum">3</span><span><span class="rt">Pemotivasian</span><span class="rp">Dorong mau &amp; mampu</span></span></div>
+   <div class="rcell" data-reveal data-detail="<b>4. Penyusunan Staf (Staffing / MSDM)</b> — Menentukan tipe orang yang tepat, menemukan, mempekerjakan, dan mempertahankannya. Diawali pengadaan (analisis pekerjaan, perencanaan SDM, rekrutmen, seleksi, penempatan), lalu orientasi/pelatihan, kompensasi, penilaian prestasi, karier, disiplin, promosi/demosi/mutasi/rotasi, PHK, K3, dan hubungan serikat pekerja—wajib menaati <b>UU Ketenagakerjaan No. 13 Tahun 2003</b> (anti-diskriminasi, batas usia, jam kerja, upah, K3)."><span class="stepnum">4</span><span><span class="rt">Penyusunan Staf</span><span class="rp">Fungsi inti MSDM</span></span></div>
+   <div class="rcell" data-reveal data-detail="<b>5. Pengendalian (Controlling)</b> — Menjamin hasil sesuai rencana melalui 4 unsur: (1) standar prestasi yang ingin dicapai, (2) alat ukur/evaluasi (aturan, kebijakan, anggaran, program), (3) pengukuran kesesuaian rencana vs pelaksanaan, dan (4) tindakan perbaikan atas penyimpangan (<i>gap</i>)—baik memperbaiki pelaksanaan maupun rencananya jika tak lagi sesuai kondisi internal/eksternal."><span class="stepnum">5</span><span><span class="rt">Pengendalian</span><span class="rp">4 unsur evaluasi &amp; koreksi</span></span></div>
+  </div>
+  <div class="rdetail" data-revealdetail><b>1. Perencanaan (Planning)</b> — Proses mendefinisikan tujuan, merumuskan strategi, dan mengembangkan rencana untuk mengoordinasikan kegiatan menghadapi masa depan (jangka panjang maupun jangka pendek). Terdiri atas <b>rencana sekali pakai</b> (program, proyek, anggaran) dan <b>rencana berulang kali</b> (aturan, peraturan, prosedur, kebijakan).</div>
+  <p>Sebagai sebuah <b>proses sistematis</b>, kelima fungsi di atas berurutan, saling berkaitan, tidak dapat dipisahkan, dan berkelanjutan. Saat merencanakan, manajer sudah memikirkan pembagian kerja, siapa pelaksananya, bagaimana memotivasinya, dan cara mengendalikannya. Karena fungsi penyusunan staf identik dengan fungsi MSDM (David, 2009), disimpulkan bahwa <b>setiap manajer adalah manajer sumber daya manusia</b>.</p>
+
+  <div class="flow">Setelah memahami bahwa fungsi penyusunan staf adalah bagian tak terpisahkan dari pekerjaan setiap manajer, <b>Bagian B</b> membedah apa sebenarnya sumber daya manusia dan hakikat MSDM itu sendiri.</div>
+
+  <!-- KB1 B -->
+  <div class="abc"><span class="ltr">B</span><h4>Manajemen Sumber Daya Manusia</h4></div>
+  <p>Setiap organisasi minimal membutuhkan tiga tipe sumber daya terbatas: <b>sumber daya manusia (SDM)</b>, <b>sumber daya finansial</b>, dan <b>sumber daya fisik</b>. Menurut <b>UU Ketenagakerjaan No. 13 Tahun 2003 Pasal 1 ayat 2</b>, tenaga kerja adalah setiap orang yang mampu melakukan pekerjaan guna menghasilkan barang dan/atau jasa, baik untuk memenuhi kebutuhan sendiri maupun masyarakat. Jackson, Schuler, &amp; Werner (2010) menambahkan bahwa SDM mencakup (1) semua orang yang berkontribusi saat ini, (2) yang dapat berkontribusi di masa mendatang, dan (3) yang telah berkontribusi di masa lalu.</p>
+
+  <div class="numh">Apa itu Manajemen Sumber Daya Manusia?</div>
+  <ul class="exp">
+   <li><b>Mondy (2008) &amp; Nickson (2007):</b> Pemanfaatan dan upaya mengelola sejumlah individu/SDM untuk mencapai tujuan-tujuan organisasi.</li>
+   <li><b>Daft (2003):</b> Rancangan dan aplikasi sistem formal dalam organisasi untuk menjamin penggunaan talenta SDM secara efisien dan efektif (menarik, mengembangkan, dan mempertahankan angkatan kerja efektif).</li>
+   <li><b>Dessler (2003):</b> Proses memperoleh, melatih, menilai, dan memberikan kompensasi kepada karyawan, serta memperhatikan hubungan kerja, kesehatan, keamanan, dan keadilan.</li>
+   <li><b>Noe dkk. (2006):</b> Kebijakan-kebijakan, praktik-praktik, dan sistem-sistem yang memengaruhi perilaku, sikap, dan kinerja karyawan.</li>
+  </ul>
+
+  <div class="diagram-box">
+   <div class="flowchart" style="flex-direction:column;gap:6px">
+    <div style="display:flex;flex-wrap:wrap;gap:6px;justify-content:center">
+     <span class="fc-node">1. Analisis &amp; Desain Pekerjaan</span>
+     <span class="fc-node">2. Perencanaan SDM</span>
+     <span class="fc-node">3. Perekrutan</span>
+     <span class="fc-node">4. Seleksi</span>
+     <span class="fc-node">5. Training &amp; Pengembangan</span>
+     <span class="fc-node">6. Kompensasi</span>
+     <span class="fc-node">7. Manajemen Performa</span>
+     <span class="fc-node">8. Hubungan antar Pekerja</span>
+    </div>
+    <span class="fc-arrow">↓ &nbsp; dipadukan dalam <i>Strategic HRM</i> &nbsp; ↓</span>
+    <span class="fc-node" style="background:var(--dot);color:#fff;padding:10px 22px">KINERJA PERUSAHAAN &amp; DAYA SAING BERKELANJUTAN</span>
+   </div>
+   <div class="diagram-cap">Reproduksi Gambar 1.1 — Praktik-Praktik MSDM (Noe, 2006)</div>
+  </div>
+
+  <p><b>Mengapa peran manajer mengelola SDM bersifat strategis?</b> Menurut Dessler (2009), perencanaan, pengorganisasian, dan pengendalian secanggih apa pun tetap bisa gagal jika manajer mempekerjakan orang yang salah atau gagal memotivasi bawahan. Daft (2003) menegaskan <b>tiga alasan strategis</b>:</p>
+  <ol class="book">
+   <li><b>Semua manajer adalah manajer SDM:</b> Setiap manajer lini terlibat dalam fungsi penyusunan staf (contoh di <b>IBM</b>: manajer lini memakai survei sikap, perencanaan karier, penilaian kinerja, dan kompensasi untuk membangun komitmen bawahan).</li>
+   <li><b>Keunggulan bersaing ditentukan perilaku karyawan:</b> Bukan oleh gedung atau mesinnya (seperti keberhasilan Starbucks menjaga daya saing lewat pengelolaan karyawan).</li>
+   <li><b>MSDM adalah proses penyesuaian <span class="en">(alignment)</span>:</b> Mengintegrasikan dan menyelaraskan strategi serta tujuan perusahaan dengan pendekatan pengelolaan SDM yang tepat—termasuk menghadapi isu strategik modern seperti persaingan global, kualitas, produktivitas, layanan pelanggan, merger, akuisisi, dan teknologi bisnis elektronik.</li>
+  </ol>
+
+  <div class="numh">9 Kesalahan yang Mungkin Terjadi Saat Mengelola SDM (Dessler, 2003)</div>
+  <ol class="book">
+   <li>Mempekerjakan orang yang salah untuk suatu pekerjaan.</li>
+   <li>Mengalami tingkat perputaran/pergantian karyawan (<span class="en">turnover</span>) yang tinggi.</li>
+   <li>Karyawan terbaik tidak berkinerja tinggi karena tidak terkelola dengan baik.</li>
+   <li>Menghabiskan waktu melakukan wawancara yang tidak berguna.</li>
+   <li>Orang yang diandalkan tidak memberikan kinerja terbaiknya.</li>
+   <li>Perusahaan berurusan dengan pengadilan akibat praktik diskriminasi.</li>
+   <li>Perusahaan diawasi pihak berwenang karena abai terhadap keselamatan dan kesehatan kerja (K3).</li>
+   <li>Sebagian besar karyawan merasa gaji tidak wajar dan tidak berkeadilan—baik secara <b>distributif</b> (internal, eksternal, sesama karyawan), <b>prosedural</b>, maupun <b>interaksional</b>.</li>
+   <li>Membiarkan pelatihan lemah sehingga menurunkan efektivitas unit kerja.</li>
+  </ol>
+
+  <div class="flow">Untuk mencegah 9 kesalahan tersebut dan mewujudkan praktik MSDM yang efektif, organisasi membentuk departemen SDM. <b>Bagian C</b> menguraikan peran dan tanggung jawab konkret departemen SDM.</div>
+
+  <!-- KB1 C -->
+  <div class="abc"><span class="ltr">C</span><h4>Peran dan Tanggung Jawab Departemen SDM</h4></div>
+  <p>Luasnya peran departemen SDM bergantung pada skala usaha, karakteristik karyawan, industri, dan sistem nilai perusahaan—ada yang ditangani penuh departemen SDM, ada yang dibagi bersama manajer lini. Noe (2008) mengelompokkan peran dan kompetensi SDM ke dalam <b>empat lini produk</b>:</p>
+
+  <div class="diagram-box">
+   <div class="quad-grid">
+    <div class="quad-cell">
+     <div class="qt">4. Agen Pengubah <span class="en">(Change Agent)</span></div>
+     <div class="qd"><i>Negosiasi, komunikasi, mengatasi resistensi terhadap perubahan.</i> Membantu organisasi beradaptasi dengan persaingan baru (contoh: <b>Home Depot</b> di AS mengubah sistem penilaian prestasi dan membagi laba kepada staf non-penjualan).</div>
+    </div>
+    <div class="quad-cell">
+     <div class="qt">1. Mitra Strategis <span class="en">(Strategic Partner)</span></div>
+     <div class="qd"><i>Pengambilan keputusan berbasis data (data-based decision-making).</i> Menggabungkan strategi SDM dengan strategi bisnis berdasarkan modal manusia, kemampuan bisnis, dan kesiapan praktik SDM strategis.</div>
+    </div>
+    <div class="quad-cell">
+     <div class="qt">2. Ahli Administrasi <span class="en">(Administrative Expert)</span></div>
+     <div class="qd"><i>Kepatuhan hukum, administrasi kontrak, e-HRM &amp; sistem informasi SDM.</i> Merancang sistem seleksi, pelatihan, penilaian, dan kompensasi secara efektif dan efisien dengan fokus efisiensi sumber daya serta kualitas jasa.</div>
+    </div>
+    <div class="quad-cell">
+     <div class="qt">3. Advokat Karyawan <span class="en">(Employee Advocate)</span></div>
+     <div class="qd"><i>Konseling &amp; pengembangan tim (counselling, developing teams).</i> Menjaga agar karyawan tidak merasa terasing atau marah sehingga tetap berkontribusi dan tidak meninggalkan perusahaan.</div>
+    </div>
+   </div>
+   <div class="diagram-cap">Reproduksi Gambar 1.2 — Peran dan Kompetensi SDM (Noe, 2008)</div>
+  </div>
+
+  <table class="mini">
+   <thead><tr><th style="width:32%">Fungsi / Bidang (Tabel 1.1)</th><th>Peran dan Tanggung Jawab Manajer SDM (Noe dkk., 2008)</th></tr></thead>
+   <tbody>
+    <tr><td><b>Ketenagakerjaan &amp; rekrutmen</b></td><td>Mewawancarai, merekrut, menguji, dan mengoordinasikan tenaga kerja sementara waktu.</td></tr>
+    <tr><td><b>Pelatihan &amp; pengembangan</b></td><td>Orientasi, pelatihan keterampilan, manajemen kinerja, dan peningkatan produktivitas.</td></tr>
+    <tr><td><b>Kompensasi</b></td><td>Administrasi upah dan gaji, uraian pekerjaan, kompensasi eksekutif, pembayaran insentif, dan evaluasi pekerjaan.</td></tr>
+    <tr><td><b>Tunjangan</b></td><td>Asuransi, administrasi cuti liburan, rencana pensiun, pembagian keuntungan, dan rencana kepemilikan saham.</td></tr>
+    <tr><td><b>Jasa bagi karyawan</b></td><td>Program bantuan karyawan, jasa penampungan karyawan, dan jasa bagi karyawan yang habis masa kontrak.</td></tr>
+    <tr><td><b>Hubungan antarkaryawan &amp; masyarakat</b></td><td>Survei sikap, hubungan tenaga kerja, publikasi, kepatuhan terhadap UU ketenagakerjaan, dan kedisiplinan.</td></tr>
+    <tr><td><b>Pencatatan data karyawan</b></td><td>Sistem informasi dan pencatatan data kepegawaian.</td></tr>
+    <tr><td><b>Kesehatan &amp; keselamatan kerja</b></td><td>Pemeriksaan kesehatan, tes pemakaian obat-obatan/narkoba, keselamatan, dan kesejahteraan.</td></tr>
+    <tr><td><b>Perencanaan strategis</b></td><td>SDM internasional, peramalan, perencanaan, serta merger dan akuisisi.</td></tr>
+   </tbody>
+  </table>
+
+  <div class="flow">Agar keempat peran lini produk dan sembilan bidang tanggung jawab di atas dapat dijalankan secara prima, profesional SDM memerlukan bekal kapabilitas khusus yang dibahas di <b>Bagian D</b>.</div>
+
+  <!-- KB1 D -->
+  <div class="abc"><span class="ltr">D</span><h4>Kompetensi-Kompetensi Profesional SDM</h4></div>
+  <p>Noe (2008) merumuskan <b>enam kompetensi</b> yang wajib dimiliki profesional SDM agar efektif menciptakan nilai bisnis dan budaya organisasi:</p>
+  <div class="rgrid c3" data-revealgroup>
+   <div class="rcell active" data-reveal data-detail="<b>1. Aktivis SDM yang Dapat Dipercaya (Credible Activist)</b> — Menyampaikan hasil kerja dengan integritas, berbagi informasi, membangun hubungan tepercaya, memengaruhi orang lain, memberi observasi terus terang, dan mengambil risiko tepat untuk membuktikan nilai fungsi SDM."><span class="stepnum">1</span><span><span class="rt">Aktivis Tepercaya</span><span class="rp">Integritas &amp; pengaruh</span></span></div>
+   <div class="rcell" data-reveal data-detail="<b>2. Pengelola Budaya Organisasi (Culture &amp; Change Steward)</b> — Memfasilitasi perubahan, mengembangkan dan menghargai budaya organisasi, serta membantu karyawan menemukan makna pekerjaan, keseimbangan kerja-hidup, dan inovasi."><span class="stepnum">2</span><span><span class="rt">Pengelola Budaya</span><span class="rp">Budaya &amp; inovasi</span></span></div>
+   <div class="rcell" data-reveal data-detail="<b>3. Manajer Bakat / Perancang Organisasi (Talent Manager / Org. Designer)</b> — Mampu mengembangkan bakat (talenta), merancang sistem penghargaan yang tepat, dan menyusun desain organisasi yang efektif."><span class="stepnum">3</span><span><span class="rt">Manajer Bakat</span><span class="rp">Talenta &amp; desain org.</span></span></div>
+   <div class="rcell" data-reveal data-detail="<b>4. Arsitek Strategis (Strategy Architect)</b> — Mengenali tren bisnis dan dampaknya bagi perusahaan, mengelola SDM berbasis bukti (<i>evidence-based</i>), serta mengembangkan strategi karyawan yang mendukung strategi bisnis."><span class="stepnum">4</span><span><span class="rt">Arsitek Strategis</span><span class="rp">Tren &amp; SDM berbasis bukti</span></span></div>
+   <div class="rcell" data-reveal data-detail="<b>5. Mitra Bisnis (Business Ally)</b> — Memahami cara berbisnis agar menghasilkan uang, mengerti bahasa bisnis, dan menghubungkan praktik SDM langsung dengan profitabilitas perusahaan."><span class="stepnum">5</span><span><span class="rt">Mitra Bisnis</span><span class="rp">Paham bahasa bisnis</span></span></div>
+   <div class="rcell" data-reveal data-detail="<b>6. Pelaksana Operasional (Operational Executor)</b> — Menerapkan kebijakan tempat kerja, memajukan teknologi SDM, dan mengadministrasikan pengelolaan karyawan sehari-hari secara rapi dan akurat."><span class="stepnum">6</span><span><span class="rt">Pelaksana Operasional</span><span class="rp">Eksekusi &amp; teknologi SDM</span></span></div>
+  </div>
+  <div class="rdetail" data-revealdetail><b>1. Aktivis SDM yang Dapat Dipercaya (Credible Activist)</b> — Menyampaikan hasil kerja dengan integritas, berbagi informasi, membangun hubungan tepercaya, memengaruhi orang lain, memberi observasi terus terang, dan mengambil risiko tepat untuk membuktikan nilai fungsi SDM.</div>
+
+  <div class="flow">Kompetensi profesional SDM tersebut diuji di lapangan oleh perubahan lingkungan bisnis. <b>Bagian E</b> memetakan tiga tantangan kompetitif utama yang dihadapi MSDM.</div>
+
+  <!-- KB1 E -->
+  <div class="abc"><span class="ltr">E</span><h4>Tantangan-Tantangan Kompetitif yang Mempengaruhi MSDM</h4></div>
+  <p>Menurut Noe (2006), tantangan kompetitif yang menentukan keberhasilan pengelolaan SDM terbagi ke dalam <b>tiga kelompok besar</b>:</p>
+
+  <div class="numh">1. Tantangan Kesinambungan Usaha <span class="en">(Sustainability)</span></div>
+  <p><span class="term">Kesinambungan usaha <span class="en">(sustainability)</span></span> adalah kemampuan perusahaan bertahan hidup, bertumbuh, dan mendatangkan keuntungan dalam lingkungan persaingan yang dinamis (David, 2009). Keberhasilannya diukur dari seberapa baik perusahaan memenuhi kebutuhan <span class="term">pemangku kepentingan <span class="en">(stakeholders)</span></span> (karyawan, pemegang saham, pelanggan, pemerintah, masyarakat), beradaptasi dengan perubahan ekonomi-sosial, beretika, dan menghasilkan produk/jasa berkualitas tinggi. Profesional SDM perlu memantau data statistik penting:</p>
+  <ul class="let">
+   <li><b>Perubahan dalam perekonomian:</b> Untuk memperkirakan pertumbuhan atau pergeseran lapangan pekerjaan pada bidang-bidang tertentu.</li>
+   <li><b>Perubahan komposisi tenaga kerja:</b> Meliputi usia rata-rata dan proyeksi tenaga kerja usia pensiun 5 tahun mendatang, pertumbuhan pekerjaan profesional dan jasa, serta perkembangan tenaga kerja asing (<span class="en">ekspatriat</span>) guna menyiapkan pelatihan agar SDM lokal mampu bersaing.</li>
+  </ul>
+
+  <div class="numh">2. Tantangan Global</div>
+  <p>Perusahaan harus mampu berekspansi ke pasar internasional sekaligus menyiapkan karyawan bekerja di luar negeri (seperti <b>Procter &amp; Gamble</b> yang melatih manajernya sukses di negara lain), serta mengubah ancaman masuknya pesaing asing menjadi peluang pengembangan pasar/produk. Keberhasilan global sangat ditentukan pemahaman lintas budaya dan kepemilikan <b>empat aset tak berwujud <span class="en">(intangible assets)</span></b> yang terbukti lebih menentukan dibanding aset keuangan atau aset fisik:</p>
+  <ol class="book">
+   <li><b>Modal Manusia <span class="en">(Human Capital)</span>:</b> Ilmu yang diperoleh di luar maupun dalam jenjang pendidikan, keterampilan, dan kompetensi yang berkaitan dengan pekerjaan.</li>
+   <li><b>Modal Pelanggan <span class="en">(Customer Capital)</span>:</b> Hubungan baik dengan pelanggan, kekuatan merek, dikenal luas, loyalitas pelanggan, dan saluran distribusi yang lengkap.</li>
+   <li><b>Modal Sosial <span class="en">(Social Capital)</span>:</b> Budaya perusahaan, filosofi manajemen, praktik manajemen, jaringan informal, dan hubungan pembinaan/penasihatan.</li>
+   <li><b>Modal Intelektual <span class="en">(Intellectual Capital)</span>:</b> Hak paten, hak cipta, rahasia dagang, dan hak kekayaan intelektual.</li>
+  </ol>
+
+  <div class="numh">3. Tantangan Teknologi</div>
+  <p>Bersaing melalui teknologi—cara mengubah <span class="en">input</span> menjadi <span class="en">output</span>—berubah sangat pesat berkat kehadiran <b>internet</b> (jaringan komputer global untuk bertukar data dan informasi), yang merombak cara perusahaan berproduksi, berkomunikasi, dan menentukan lokasi kerja karyawan.</p>
+
+  <div class="flow">Untuk menjawab ketiga tantangan kompetitif tersebut secara terstruktur, MSDM dijalankan melalui lima fungsi operasional yang menjadi <b>Ruang Lingkup MSDM</b> di bawah ini.</div>
+
+  <!-- KB1 F (di buku tercetak E. kedua pada hal. 1.18) -->
+  <div class="abc"><span class="ltr">E2</span><h4>Ruang Lingkup MSDM <span class="en" style="font-size:.82rem;font-weight:500">(tercetak E. di buku hal. 1.18)</span></h4></div>
+  <p>Mondy (2008) mengelompokkan kegiatan operasional MSDM ke dalam <b>lima fungsi utama</b> yang selanjutnya akan dibahas mendalam pada modul-modul berikutnya:</p>
+
+  <div class="numh">1. Pengadaan SDM <span class="en">(Staffing)</span></div>
+  <p>Menjamin organisasi memiliki jumlah karyawan yang tepat dengan keahlian memadai pada pekerjaan dan waktu yang tepat, meliputi:</p>
+  <ul class="let">
+   <li><b>Analisis pekerjaan <span class="en">(job analysis)</span>:</b> Proses sistematis menentukan keahlian, kewajiban, dan pengetahuan suatu pekerjaan untuk menghasilkan uraian pekerjaan (<span class="en">job description</span>) dan spesifikasi pekerjaan (<span class="en">job specification</span>).</li>
+   <li><b>Perencanaan SDM <span class="en">(HR planning)</span>:</b> Menjamin kebutuhan karyawan terpenuhi secara tetap melalui analisis <i>faktor internal</i> (keterampilan saat ini &amp; diharapkan, lowongan, ekspansi/pengurangan unit) dan <i>faktor eksternal</i> (pasar tenaga kerja), disertai teknik <b>peramalan SDM</b>.</li>
+   <li><b>Rekrutmen <span class="en">(recruitment)</span>:</b> Menarik individu berkualifikasi memadai dalam jumlah cukup dan tepat waktu untuk melamar pekerjaan.</li>
+   <li><b>Seleksi <span class="en">(selection)</span>:</b> Memilih pelamar yang paling sesuai untuk posisi dan organisasi guna memutuskan tawaran kerja.</li>
+  </ul>
+
+  <div class="numh">2. Pengembangan Sumber Daya Manusia <span class="en">(HR Development)</span></div>
+  <ul class="let">
+   <li><b>Orientasi atau Sosialisasi:</b> Program membantu karyawan baru beradaptasi dengan mulus menjadi bagian organisasi.</li>
+   <li><b>Pelatihan <span class="en">(training)</span>:</b> Memberi pengetahuan dan keahlian untuk mempertahankan serta memperbaiki prestasi kerja pada <i>pekerjaan saat ini</i>.</li>
+   <li><b>Pengembangan <span class="en">(development)</span>:</b> Pembelajaran jangka panjang untuk mempersiapkan keterampilan <i>pekerjaan masa mendatang</i> (karier/promosi).</li>
+   <li><b>Perencanaan karier:</b> Proses berkelanjutan individu menetapkan tujuan karier dan cara mencapainya.</li>
+   <li><b>Pengembangan karier:</b> Pendekatan formal organisasi memastikan orang berkualifikasi dan berpengalaman tersedia saat dibutuhkan.</li>
+   <li><b>Pengembangan organisasi:</b> Proses perbaikan terencana atas struktur, sistem, dan proses organisasi demi efektivitas.</li>
+   <li><b>Manajemen kinerja:</b> Proses berorientasi tujuan untuk memastikan proses keorganisasian memaksimalkan produktivitas individu, tim, dan organisasi.</li>
+   <li><b>Penilaian kinerja:</b> Sistem formal menilai kinerja individu/tim untuk dasar kenaikan gaji, disiplin, dan tiga keputusan kunci: <b>(1) Promosi/kenaikan pangkat</b> (penghargaan bagi kinerja luar biasa), <b>(2) Dipindahkan/Transfer</b> (perluasan pengalaman &amp; pengisian lowongan), serta <b>(3) Separasi/PHK</b> (lebih baik daripada mempertahankan kinerja buruk).</li>
+  </ul>
+
+  <div class="numh">3. Kompensasi <span class="en">(Compensation)</span></div>
+  <p>Segala bentuk penghargaan atas kontribusi karyawan. Menurut alasannya: <b>gaji/upah</b> menarik orang masuk, <b>insentif</b> mendorong kerja lebih giat, dan <b>fasilitas/tunjangan <span class="en">(fringe benefits)</span></b> mempertahankan karyawan. Menurut bentuknya:</p>
+  <ul class="let">
+   <li><b>Kompensasi finansial langsung:</b> Bayaran berbentuk uang seperti upah, gaji, bonus, dan komisi.</li>
+   <li><b>Upah:</b> Hak pekerja dalam bentuk uang sebagai imbalan dari pengusaha sesuai perjanjian kerja/peraturan, termasuk tunjangan pekerja dan keluarga.</li>
+   <li><b>Kompensasi finansial tidak langsung (tunjangan):</b> Imbalan finansial di luar bayaran langsung, seperti asuransi kesehatan, cuti sakit/liburan, bantuan menikah, naik haji/umroh, dan wisata rohani.</li>
+   <li><b>Kompensasi non-finansial:</b> Kepuasan intrinsik terhadap pekerjaan, rekan kerja, penyelia, kondisi kerja, promosi, dan kebijakan SDM.</li>
+   <li><b>Kesejahteraan pekerja/buruh:</b> Pemenuhan kebutuhan jasmaniah dan rohaniah di dalam maupun luar hubungan kerja untuk meningkatkan produktivitas di lingkungan aman dan sehat.</li>
+  </ul>
+
+  <div class="numh">4. Keselamatan dan Kesehatan Kerja <span class="en">(Safety &amp; Health / K3)</span></div>
+  <p><b>Keselamatan</b> melindungi karyawan dari luka akibat kecelakaan kerja; <b>kesehatan</b> adalah bebasnya karyawan dari sakit fisik maupun emosi. Di Indonesia diatur wajib dalam <b>UU Ketenagakerjaan No. 13 Tahun 2003</b>:</p>
+  <ul class="exp">
+   <li><b>Pasal 86:</b> Setiap pekerja berhak atas perlindungan (a) keselamatan dan kesehatan kerja, (b) moral dan kesusilaan, serta (c) perlakuan sesuai harkat, martabat manusia, dan nilai agama demi produktivitas optimal.</li>
+   <li><b>Pasal 87:</b> Setiap perusahaan wajib menerapkan <b>Sistem Manajemen K3</b> yang terintegrasi dengan sistem manajemen perusahaan (diatur lebih lanjut lewat Peraturan Pemerintah).</li>
+  </ul>
+
+  <div class="numh">5. Hubungan Kerja dan Hubungan antar Karyawan</div>
+  <p>Mengacu pada <b>UU Ketenagakerjaan No. 13 Tahun 2003 Bab 1 Pasal 1</b>:</p>
+  <ul class="exp">
+   <li><b>Hubungan kerja (ayat 15):</b> Hubungan antara pengusaha dan pekerja berdasarkan perjanjian kerja yang memiliki tiga unsur—<i>pekerjaan, upah, dan perintah</i>.</li>
+   <li><b>Hubungan industrial (ayat 16):</b> Sistem hubungan antarpelaku produksi barang/jasa (pengusaha, pekerja, pemerintah) berdasarkan nilai Pancasila dan UUD 1945 untuk mengatasi perselisihan perburuhan.</li>
+   <li><b>Serikat pekerja/buruh (ayat 17):</b> Organisasi yang dibentuk dari, oleh, dan untuk pekerja—bersifat bebas, terbuka, mandiri, demokratis, dan bertanggung jawab—untuk memperjuangkan, membela, dan melindungi hak serta kesejahteraan pekerja dan keluarganya.</li>
+  </ul>
+ </div>
+
+ <!-- ==================== KB 2 ==================== -->
+ <h2 class="section" id="kb2"><span class="dot" style="background:var(--kb2)"></span>KB 2 — Peran Strategis Sumber Daya Manusia</h2>
+ <div class="card kb2b"><span class="kb-tag kb2t">KB 2 · Hal. 1.27–1.43</span>
+  <p class="lead">Agar benar-benar meningkatkan keunggulan bersaing, fungsi MSDM tidak boleh berdiri sendiri melainkan harus menyatu dengan proses <span class="term">manajemen strategis</span> perusahaan: (1) memberi masukan isu dan kemampuan SDM saat merencanakan strategi, (2) memahami tujuan strategis perusahaan, (3) mengenali keterampilan, sikap, dan perilaku karyawan yang dibutuhkan strategi, serta (4) membangun program agar karyawan memilikinya.</p>
+
+  <!-- KB2 A -->
+  <div class="abc"><span class="ltr">A</span><h4>Pengertian Manajemen Strategis</h4></div>
+  <p>Kata strategi berasal dari bahasa Yunani <i>strategos</i> (komandan militer/jenderal) yang awalnya berarti cara memenangkan peperangan, lalu berkembang ke bisnis. <b>Michael Porter (1996)</b> mendefinisikan strategi sebagai cara menciptakan posisi yang unik dan berharga. <b>Noe (2006, 2008)</b> menyebut <span class="term">manajemen strategis <span class="en">(strategic management)</span></span> sebagai proses menganalisis situasi kompetisi, mengembangkan sasaran strategis, menyusun rencana tindakan, dan mengalokasikan sumber daya secara terpadu. <b>Fred David (2009)</b> mendefinisikannya sebagai seni dan ilmu merumuskan, melaksanakan, dan mengevaluasi keputusan lintas fungsional untuk mencapai sasaran.</p>
+  <ul class="exp">
+   <li><b>Strategi Generik Porter:</b> Diferensiasi (contoh: <b>IBM</b> menekankan kualitas barang dan layanan superior), biaya rendah (contoh: <b>Dell</b> menawarkan harga lebih murah), dan fokus.</li>
+   <li><b>Manajemen Sumber Daya Manusia Strategis <span class="en">(MSDMS / Strategic HRM)</span>:</b> Menurut Noe (2008), MSDMS adalah pola penyebaran SDM yang direncanakan dan kegiatan-kegiatan yang dimaksudkan agar organisasi dapat mencapai tujuan-tujuannya. Contohnya, saat perusahaan menerapkan sistem pabrikasi maju, pengendalian persediaan <i>Just in Time</i>, dan pengendalian kualitas terpadu, MSDM berperan menilai keterampilan yang diperlukan serta menyeleksi dan melatih orang yang menjalankannya. Manajer SDM bukan sekadar pelaksana strategi, melainkan juga <b>penentu strategi</b>.</li>
+  </ul>
+
+  <div class="flow">Setelah memahami konsep manajemen strategis dan MSDMS, <b>Bagian B</b> memetakan dua komponen besar proses manajemen strategis dan bagaimana keduanya terhubung dengan kinerja perusahaan.</div>
+
+  <!-- KB2 B -->
+  <div class="abc"><span class="ltr">B</span><h4>Komponen-Komponen dari Manajemen Strategis</h4></div>
+  <p>Proses manajemen strategis terdiri atas <b>dua komponen berbeda namun saling terkait</b>: <b>Perumusan Strategi <span class="en">(Strategy Formulation)</span></b>—menetapkan misi, sasaran, peluang/ancaman eksternal, kekuatan/kelemahan internal, lalu memilih alternatif strategi—dan <b>Pelaksanaan Strategi <span class="en">(Strategy Implementation)</span></b>—menata struktur organisasi, alokasi sumber daya, penempatan karyawan terampil, dan sistem penghargaan yang menyelaraskan perilaku karyawan.</p>
+
+  <div class="diagram-box">
+   <div class="strat-box">
+    <div class="strat-col">
+     <h5>1. Formulasi Strategi</h5>
+     <ul>
+      <li><b>Misi</b> &amp; <b>Goal</b> (Sasaran)</li>
+      <li><b>Analisis Eksternal:</b> Kesempatan &amp; Risiko</li>
+      <li><b>Analisis Internal:</b> Kekuatan &amp; Kelemahan</li>
+      <li><b>→ Pilihan Strategi</b></li>
+     </ul>
+    </div>
+    <div class="fc-arrow" style="font-size:1.4rem;text-align:center">➔</div>
+    <div class="strat-col">
+     <h5>2. Implementasi Strategi</h5>
+     <ul>
+      <li><b>Kebutuhan SDM:</b> Kemampuan, Perilaku, Budaya</li>
+      <li><b>Praktik SDM:</b> Rekrutmen, seleksi, pelatihan, desain kerja, manajemen kinerja, struktur bayaran, insentif, tunjangan, hubungan buruh</li>
+      <li><b>Kemampuan &amp; Aksi SDM:</b> <i>Skill, Abilities</i>, produktivitas, absensi, <i>turnover</i></li>
+      <li><b>→ Performa Perusahaan:</b> Produktivitas, Kualitas, Keuntungan</li>
+     </ul>
+    </div>
+   </div>
+   <div class="diagram-cap">Reproduksi Gambar 1.3 — Permodelan dari Proses Manajemen Strategis</div>
+  </div>
+
+  <!-- KB2 C -->
+  <div class="abc"><span class="ltr">C</span><h4>Hubungan MSDM dengan Proses Manajemen Strategis</h4></div>
+  <p>Pilihan strategi harus menjawab <b>tiga pertanyaan fundamental</b> mengenai kompetisi:</p>
+  <ol class="book">
+   <li><b>Di mana tempat bersaing?</b> Pasar, industri, atau produk mana yang akan dimasuki perusahaan.</li>
+   <li><b>Bagaimana cara bersaing?</b> Kriteria pembeda dari pesaing—biaya, kualitas, keandalan, atau proses penyampaian.</li>
+   <li><b>Dengan apa kita bersaing?</b> Sumber daya apa yang memungkinkan perusahaan mengalahkan pesaing, serta bagaimana mendapatkan, mengembangkan, dan mengerahkan sumber daya tersebut.</li>
+  </ol>
+  <p><b>Pelajaran dari Kasus PepsiCo:</b> Pada 1980-an, PepsiCo membeli jaringan restoran cepat saji (KFC, Taco Bell, Pizza Hut)—menjawab pertanyaan <i>di mana bersaing</i>, tetapi mengabaikan <i>dengan apa bersaing</i>. Mayoritas karyawan PepsiCo adalah profesional, sedangkan restoran cepat saji mempekerjakan tenaga kerja berketerampilan rendah/lulusan SMA yang tidak mampu dikelola PepsiCo. Akibatnya, pada 1998 PepsiCo keluar dari bisnis restoran cepat saji.</p>
+
+  <div class="flow">Kasus PepsiCo membuktikan bahwa mengabaikan SDM saat merumuskan strategi berakibat fatal. <b>Bagian D &amp; E</b> memetakan empat tingkat keterkaitan antara MSDM dan manajemen strategis.</div>
+
+  <!-- KB2 D & E -->
+  <div class="abc"><span class="ltr">D</span><h4>Peran MSDM dalam Perumusan Strategi</h4></div>
+  <p>Keterlibatan MSDM sejak tahap perumusan strategi menjawab pertanyaan <i>"dengan apa kita bersaing?"</i>—menilai apakah SDM tersedia dan berapa biaya pengadaan atau pengembangannya. Tingkat integrasi fungsi MSDM dengan manajemen strategis terbagi dalam <b>empat level</b> (dari terendah hingga tertinggi).</p>
+
+  <div class="abc"><span class="ltr">E</span><h4>Hubungan Administratif hingga Hubungan Integratif (4 Level Integrasi)</h4></div>
+  <p>Mengikuti urutan buku (hal. 1.31–1.32), klik tiap level integrasi untuk melihat perbedaan perannya:</p>
+  <div class="rgrid c4" data-revealgroup>
+   <div class="rcell active" data-reveal data-detail="<b>Level 1 — Hubungan Administratif (Integrasi Terendah):</b> Perhatian fungsi MSDM hanya pada aktivitas rutin sehari-hari. Eksekutif MSDM tidak memiliki waktu/kesempatan memberi wawasan strategis; rencana strategis bisnis dibuat sepenuhnya tanpa masukan departemen SDM."><span class="stepnum">1</span><span><span class="rt">Administratif</span><span class="rp">Terpisah dari strategi</span></span></div>
+   <div class="rcell" data-reveal data-detail="<b>Level 2 — Hubungan Satu Arah (One-Way Linkage):</b> Tim perencana strategis menyusun rencana terlebih dahulu lalu menginformasikannya ke fungsi MSDM agar merancang program pelaksanaan. Meski mengakui pentingnya SDM dalam eksekusi, hubungan ini menghalangi pertimbangan isu SDM saat perumusan strategi."><span class="stepnum">2</span><span><span class="rt">Satu Arah</span><span class="rp">MSDM hanya pelaksana</span></span></div>
+   <div class="rcell" data-reveal data-detail="<b>Level 3 — Hubungan Dua Arah (Two-Way Linkage):</b> Integrasi berurutan 3 tahap: (1) perencana strategi memberi tahu alternatif strategi ke MSDM, (2) eksekutif MSDM menganalisis implikasi SDM dan melapor balik, (3) setelah strategi diputuskan, MSDM merancang program pelaksanaannya."><span class="stepnum">3</span><span><span class="rt">Dua Arah</span><span class="rp">Masukan 3 tahap berurutan</span></span></div>
+   <div class="rcell" data-reveal data-detail="<b>Level 4 — Hubungan Integratif / Terpadu (Integrative Linkage):</b> Dinamis, bersisi banyak, dan berkelanjutan—bukan sekadar berurutan. Eksekutif MSDM duduk langsung sebagai anggota tim manajemen senior yang ikut merencanakan, merumuskan, dan melaksanakan strategi sejak awal."><span class="stepnum">4</span><span><span class="rt">Integratif</span><span class="rp">Mitra penuh tim senior</span></span></div>
+  </div>
+  <div class="rdetail" data-revealdetail><b>Level 1 — Hubungan Administratif (Integrasi Terendah):</b> Perhatian fungsi MSDM hanya pada aktivitas rutin sehari-hari. Eksekutif MSDM tidak memiliki waktu/kesempatan memberi wawasan strategis; rencana strategis bisnis dibuat sepenuhnya tanpa masukan departemen SDM.</div>
+
+  <div class="flow">Setelah memahami posisi MSDM dalam perumusan strategi, <b>Bagian F</b> menguraikan secara rinci komponen-komponen manajemen strategi dari misi hingga pelaksanaan.</div>
+
+  <!-- KB2 F -->
+  <div class="abc"><span class="ltr">F</span><h4>Manajemen Strategi</h4></div>
+  <p>Proses manajemen strategi mencakup <b>tiga tahapan</b>: perumusan, pelaksanaan, dan evaluasi. Tahap <b>perumusan strategi</b> (Gambar 1.4) memiliki enam komponen: (1) misi perusahaan, (2) sasaran jangka panjang, (3) analisis eksternal (peluang &amp; ancaman), (4) analisis internal (kekuatan &amp; kelemahan), (5) pencarian alternatif strategi memakai alat analisis seperti <b>SWOT</b> (<span class="en">Strengths, Weaknesses, Opportunities, Threats</span>), <b>SPACE</b> (<span class="en">Strategic Position and Action Evaluation</span>), <b>BCG</b> (<span class="en">Boston Consulting Group</span>), <b>IE</b> (<span class="en">Internal-External Evaluation</span>), dan <i>Grand Strategy</i>, serta (6) pemilihan strategi terbaik memakai <b>QSPM</b> (<span class="en">Quantitative Strategic Planning Matrix</span>).</p>
+
+  <div class="diagram-box">
+   <div class="flowchart">
+    <span class="fc-node">MISI</span><span class="fc-arrow">→</span>
+    <span class="fc-node">GOAL (SASARAN)</span><span class="fc-arrow">→</span>
+    <span class="fc-node">Analisis Eksternal (Peluang &amp; Risiko) + Analisis Internal (Kekuatan &amp; Kelemahan)</span><span class="fc-arrow">→</span>
+    <span class="fc-node" style="background:var(--dot);color:#fff">PILIHAN STRATEGI</span>
+   </div>
+   <div class="diagram-cap">Reproduksi Gambar 1.4 — Formulasi Strategi (saling terhubung dengan umpan balik penuh)</div>
+  </div>
+
+  <div class="numh">1. Misi Perusahaan</div>
+  <p>Diawali dengan <b>Visi</b> (David, 2009)—menjawab <i>"kita ingin menjadi seperti apa?"</i> (contoh Visi Bank Indonesia: menjadi lembaga bank sentral kredibel nasional &amp; internasional dengan inflasi rendah dan stabil). <b>Misi</b> menurut Peter Drucker menjawab <i>"apa bisnis kita?"</i> dan memuat minimal 5 unsur: (1) produk/jasa yang ditawarkan, (2) pasar yang dimasuki, (3) pelanggan yang dilayani, (4) teknologi yang digunakan, dan (5) harga yang ditawarkan agar tetap untung dan bertumbuh (contoh Misi BI: mencapai dan memelihara kestabilan nilai rupiah melalui kestabilan moneter dan sistem keuangan).</p>
+
+  <div class="numh">2. Sasaran Jangka Panjang</div>
+  <p>Hasil yang diharapkan dari keberhasilan strategi dalam rentang konsisten <b>2 hingga 5 tahun</b>, dinyatakan dalam pertumbuhan aset, penjualan, profitabilitas, atau pangsa pasar (contoh: 9 sasaran Bank Indonesia, mulai dari kestabilan moneter, stabilitas sistem keuangan, akuntabilitas, efisiensi pembayaran, kapabilitas SDM &amp; SI, hingga <i>good governance</i>).</p>
+
+  <div class="numh">3. Analisis Faktor Eksternal</div>
+  <p>Menganalisis seluruh kekuatan <b>di luar kendali perusahaan</b> yang terbagi dalam <b>5 kategori</b>: (1) ekonomi, (2) sosial, budaya, demografi, dan lingkungan alam, (3) politik, pemerintah, dan hukum, (4) teknologi, serta (5) pesaing. Tujuannya mengidentifikasi <b>peluang</b> (misal pasar belum terlayani, teknologi baru) dan <b>ancaman</b> (misal kekurangan tenaga kerja potensial, pesaing baru).</p>
+
+  <div class="numh">4. Analisis Faktor Internal</div>
+  <p>Mengevaluasi seluruh faktor <b>yang dapat dikendalikan perusahaan</b> pada tiap unit (manajemen, pemasaran, SDM, keuangan/akuntansi, produksi/operasi, litbang, SIM) dengan fokus pada kualitas dan kuantitas sumber daya finansial, fisik, dan SDM untuk mengenali <b>kekuatan</b> dan <b>kelemahan</b>.</p>
+
+  <div class="numh">5. Alternatif Strategi (13 Tipe Strategi David, 2009 &amp; 2 Strategi Dasar Porter)</div>
+  <table class="mini">
+   <thead><tr><th style="width:24%">Strategi (Tabel 1.2)</th><th style="width:42%">Definisi (David, 2009)</th><th>Contoh di Buku</th></tr></thead>
+   <tbody>
+    <tr><td><b>Integrasi ke Depan</b></td><td>Memperoleh kepemilikan atau meningkatkan kendali atas distributor/pengecer.</td><td>Toyota Astra memasarkan produk lewat anak usaha Auto 2000.</td></tr>
+    <tr><td><b>Integrasi ke Belakang</b></td><td>Mencari kepemilikan atau meningkatkan kendali atas perusahaan pemasok.</td><td>Adhi Karya memiliki anak usaha Adhi Mix (pemasok <i>ready mix concrete</i>).</td></tr>
+    <tr><td><b>Integrasi Horizontal</b></td><td>Mencari kepemilikan atau meningkatkan kendali atas pesaing.</td><td>Trans TV mengakuisisi TV7 (kini Trans7).</td></tr>
+    <tr><td><b>Penetrasi Pasar</b></td><td>Mencari pangsa pasar lebih besar untuk produk/jasa yang sudah ada lewat pemasaran gencar.</td><td>Perusahaan seluler di Indonesia gencar berpromosi.</td></tr>
+    <tr><td><b>Pengembangan Pasar</b></td><td>Memperkenalkan produk/jasa yang sudah ada ke wilayah geografi baru.</td><td>Pabrik otomotif kelas dunia masuk ke pasar Cina.</td></tr>
+    <tr><td><b>Pengembangan Produk</b></td><td>Menaikkan penjualan dengan memperbaiki produk/jasa lama atau mengembangkan yang baru.</td><td>General Motors memasarkan mobil sedan listrik pertama (EVI) awal 1990-an.</td></tr>
+    <tr><td><b>Diversifikasi Konsentrik</b></td><td>Menambah barang atau jasa baru yang masih <i>berkaitan</i>.</td><td>Grup Bakrie, Salim, Sampoerna.</td></tr>
+    <tr><td><b>Diversifikasi Konglomerat</b></td><td>Menambah produk atau jasa baru yang <i>tidak berkaitan</i>.</td><td>Grup Sampoerna, Bakrie, Salim.</td></tr>
+    <tr><td><b>Diversifikasi Horizontal</b></td><td>Menambah produk/jasa baru yang tidak berkaitan bagi <i>pelanggan yang sudah ada</i>.</td><td>Grup Sampoerna, Bakrie.</td></tr>
+    <tr><td><b>Usaha Patungan <span class="en">(Joint Venture)</span></b></td><td>Dua atau lebih perusahaan sponsor membentuk organisasi terpisah untuk kerja sama.</td><td>Nokia Siemens Networks (NSN) gabungan divisi Siemens AG &amp; Nokia (2006).</td></tr>
+    <tr><td><b>Penghematan <span class="en">(Retrenchment)</span></b></td><td>Penghematan tanpa menjual aset—menggabungkan divisi/bagian dan memotong pemborosan.</td><td>Lion Air meniadakan tiket fisik dan makan di pesawat.</td></tr>
+    <tr><td><b>Divestasi</b></td><td>Menjual suatu divisi atau bagian dari organisasi.</td><td>Maskapai menutup rute-rute penerbangan tertentu.</td></tr>
+    <tr><td><b>Likuidasi</b></td><td>Menjual semua aset perusahaan secara bertahap atas nilai aset berwujud.</td><td>Kesulitan Harley-Davidson di era 1980-an akibat serbuan motor Jepang.</td></tr>
+   </tbody>
+  </table>
+  <p>Sementara itu, <b>Michael Porter</b> menekankan dua strategi dasar penciptaan nilai:</p>
+  <ul class="exp">
+   <li><b>Kepemimpinan Biaya Keseluruhan <span class="en">(Overall Cost Leadership)</span>:</b> Menjadi produsen berbiaya terendah lewat (1) fasilitas berskala besar dan efisien, (2) pengurangan biaya dari kurva pengalaman, dan (3) pengendalian ketat biaya <i>overhead</i>, litbang, penjualan, serta iklan. Contoh: <b>Dell</b> dan <b>Compaq</b> menjual PC lebih murah dari IBM.</li>
+   <li><b>Diferensiasi <span class="en">(Differentiation)</span>:</b> Menciptakan produk/jasa unik di industri melalui citra merek, teknologi, fitur, atau layanan superior sehingga bisa menetapkan harga premium bagi konsumen yang tidak sensitif harga. Contoh: <b>IBM</b> unggul dalam citra merek dan reputasi layanan.</li>
+  </ul>
+
+  <div class="numh">6. Pelaksanaan Strategi <span class="en">(Strategy Implementation)</span></div>
+  <p>Meliputi 4 kegiatan: (1) penetapan sasaran tahunan, (2) penetapan kebijakan, (3) pemotivasian karyawan, dan (4) pengalokasian sumber daya. Keberhasilannya ditentukan <b>lima variabel utama</b> yang saling terkait (Gambar 1.5):</p>
+  <div class="diagram-box">
+   <div class="flowchart">
+    <span class="fc-node">Strategi Penjualan Produk</span><span class="fc-arrow">→</span>
+    <span class="fc-node">5 Variabel: (1) Struktur Organisasi · (2) Desain Tugas · (3) Seleksi, Training &amp; Development · (4) Sistem Reward · (5) Tipe Informasi</span><span class="fc-arrow">→</span>
+    <span class="fc-node" style="background:var(--dot);color:#fff">KINERJA</span>
+   </div>
+   <div class="diagram-cap">Reproduksi Gambar 1.5 — Variabel yang Perlu Diperhatikan dalam Implementasi Strategi</div>
+  </div>
+  <p>MSDM memikul <b>tiga tanggung jawab utama</b> (desain tugas, pengelolaan orang lewat rekrutmen–karier, dan sistem penghargaan) serta memengaruhi dua variabel lain (struktur organisasi dan sistem informasi). Intinya, MSDM memastikan (1) jumlah dan keterampilan karyawan sesuai rencana strategis dan (2) sistem pengendalian mengarahkan perilaku menuju sasaran.</p>
+
+  <div class="flow">Untuk mengeksekusi tiga tanggung jawab implementasi strategi tersebut, manajer memilih kombinasi yang tepat dari <b>enam menu praktik MSDM</b> di Bagian G.</div>
+
+  <!-- KB2 G -->
+  <div class="abc"><span class="ltr">G</span><h4>Praktik-Praktik MSDM</h4></div>
+  <ol class="book">
+   <li><b>Rancangan dan Analisis Pekerjaan:</b> <i>Uraian/analisis pekerjaan</i> mengumpulkan informasi rinci tentang pekerjaan, sedangkan <i>rancangan pekerjaan</i> menentukan pengelompokan tugas-tugas ke dalam suatu pekerjaan.</li>
+   <li><b>Rekrutmen dan Seleksi:</b> Rekrutmen mencari pelamar potensial; seleksi menilai kecocokan pengetahuan, keterampilan, kemampuan, dan karakteristik pelamar dengan kebutuhan strategi saat ini maupun mendatang.</li>
+   <li><b>Pelatihan dan Pengembangan:</b> <i>Pelatihan</i> mempermudah pembelajaran untuk pekerjaan saat ini; <i>pengembangan</i> menyiapkan kemampuan menghadapi tantangan baru (contoh: pelatihan <b>Manajemen Kualitas Terpadu / TQM</b> untuk mendukung strategi diferensiasi).</li>
+   <li><b>Manajemen Kinerja:</b> Memastikan aktivitas dan hasil karyawan sejalan tujuan organisasi lewat kejelasan (1) tujuan/hasil yang dicapai, (2) aktivitas yang diperlukan, dan (3) cara pelaksanaannya (contoh: perusahaan layanan kesehatan menyelaraskan target tiap individu dengan 5 mandat perusahaan—kinerja unggul, layanan efektif, produk/jasa baik, ramah lingkungan, dan keunggulan biaya).</li>
+   <li><b>Kompensasi (Struktur Gaji, Insentif, dan <span class="en">Benefits</span>):</b> Berperan ganda—(1) tingkat penghargaan tinggi menarik, memotivasi, dan mempertahankan karyawan berkualitas (meski menaikkan biaya tenaga kerja), dan (2) bayaran berbasis kinerja memicu aktivitas dan capaian strategis tertentu.</li>
+   <li><b>Hubungan Tenaga Kerja dan Hubungan Antar Karyawan:</b> Sangat memengaruhi daya saing (contoh: akhir 1970-an, <b>Lee Iacocca</b> di <b>Chrysler Corporation</b> meminta konsesi upah/aturan kerja dari serikat buruh dengan imbalan pembagian keuntungan dan kursi direksi—hasilnya Chrysler bangkit dari kebangkrutan).</li>
+  </ol>
+
+  <div class="flow">Karena setiap strategi bisnis menuntut perilaku karyawan yang berbeda, <b>Bagian H</b> membandingkan langsung konfigurasi praktik MSDM pada strategi biaya rendah vs diferensiasi.</div>
+
+  <!-- KB2 H -->
+  <div class="abc"><span class="ltr">H</span><h4>Kebutuhan MSDM dalam Tipe-Tipe Strategi</h4></div>
+  <p>Setiap strategi membutuhkan <b>perilaku peran <span class="en">(role behaviors)</span></b> yang berbeda—perilaku yang diharapkan dilakukan karyawan agar strategi berhasil:</p>
+  <table class="mini">
+   <thead><tr><th style="width:24%">Dimensi MSDM</th><th style="width:38%">Strategi Kepemimpinan Biaya <span class="en">(Cost Leadership)</span></th><th>Strategi Diferensiasi <span class="en">(Differentiation)</span></th></tr></thead>
+   <tbody>
+    <tr><td><b>Perilaku Peran Karyawan</b></td><td>Peduli tinggi pada kuantitas, fokus jangka pendek, nyaman dengan kestabilan, menghindari risiko, menyukai tugas berulang dan mandiri.</td><td>Kreatif &amp; kooperatif, perhatian biasa pada kuantitas, fokus jangka panjang, toleran terhadap ketaksaan/kemenduaan, berani ambil risiko, seimbang antara hasil dan proses.</td></tr>
+    <tr><td><b>Desain Pekerjaan &amp; Pelatihan</b></td><td>Keterampilan didefinisikan sangat spesifik; investasi pelatihan terfokus pada keterampilan khusus efisiensi.</td><td>Pekerjaan didefinisikan secara luas (deskripsi umum) demi kreativitas; pelatihan &amp; pengembangan berfokus pada kerja sama tim.</td></tr>
+    <tr><td><b>Rekrutmen &amp; Karier</b></td><td>Promosi karyawan dari dalam organisasi; partisipasi karyawan diminta untuk ide efisiensi produksi.</td><td>Lebih banyak merekrut dari luar, sosialisasi terbatas, serta menyediakan jalur karier yang lebih luas.</td></tr>
+    <tr><td><b>Kinerja &amp; Kompensasi</b></td><td>Manajemen kinerja <i>behavioral</i> (perilaku/prestasi individual); struktur gaji konsisten dengan selisih besar antara supervisor dan bawahan.</td><td>Manajemen kinerja berbasis <i>hasil</i> (divisi) untuk mendorong keberanian ambil risiko; kompensasi berorientasi keadilan eksternal (survei gaji).</td></tr>
+   </tbody>
+  </table>
+ </div>
+
+ <!-- ==================== KB 3 ==================== -->
+ <h2 class="section" id="kb3"><span class="dot" style="background:var(--kb3)"></span>KB 3 — Etika Bisnis dan Tanggung Jawab Sosial Perusahaan</h2>
+ <div class="card kb3b"><span class="kb-tag kb3t">KB 3 · Hal. 1.44–1.53</span>
+  <p class="lead">Keunggulan strategis saja tidak cukup jika organisasi kehilangan kepercayaan. Riset Ming-Tie &amp; Chun-Chen Huang (2007) atas krisis kekurangan dan tingginya <i>turnover</i> perawat di AS menunjukkan bahwa ketidakpuasan dan rendahnya komitmen karyawan antara lain dipicu oleh <b>iklim perusahaan yang tidak beretika</b>. KB 3 mengulas etika bisnis, etika SDM, profesionalisasi SDM, dan tanggung jawab sosial perusahaan (CSR).</p>
+
+  <!-- KB3 A -->
+  <div class="abc"><span class="ltr">A</span><h4>Etika</h4></div>
+  <p><span class="term">Etika <span class="en">(ethics)</span></span> adalah disiplin filosofis yang berkenaan dengan apa yang baik dan buruk, benar dan salah, serta kewajiban dan tanggung jawab moral. Krisis etika melanda berbagai bidang—olahraga, pendidikan, hingga bisnis. Kasus <b>Enron</b> membuktikan bahwa meski perusahaan memiliki kode etik tertulis (respek, integritas, komunikasi, keunggulan), ketidaketisan pimpinan (berbohong dalam audit, menghancurkan dokumen, manipulasi saham) menghancurkan reputasi dan membubarkan perusahaan. Etika bisnis juga menentukan daya tarik pelamar dalam memilih tempat kerja.</p>
+
+  <div class="numh">1. Model Etika (Mondy, 2010)</div>
+  <p><b>Etika bukan hukum:</b> pelanggaran hukum pasti tidak etis dan berujung sanksi hukum, tetapi pelanggaran etika belum tentu melanggar hukum. Menurut Mondy (2010), model etika terdiri atas <b>dua hubungan horizontal</b>—seseorang/organisasi hanya dianggap etis jika <i>kedua</i> hubungannya kuat dan positif:</p>
+  <div class="diagram-box">
+   <div class="flowchart">
+    <span class="fc-node">Sumber-Sumber Panduan Etika<br><small style="font-weight:400">(Kitab suci, kata hati, orang tua, panutan, nasihat)</small></span>
+    <span class="fc-arrow">──[ Etika Tipe I ]──▶</span>
+    <span class="fc-node">Keyakinan akan Apa yang Benar atau Salah</span>
+    <span class="fc-arrow">──[ Etika Tipe II ]──▶</span>
+    <span class="fc-node" style="background:var(--dot);color:#fff">Tindakan / Perilaku Nyata</span>
+   </div>
+   <div class="diagram-cap">Reproduksi Gambar 1.6 — Model Etika (Mondy, 2010:32)</div>
+  </div>
+  <ul class="exp">
+   <li><b>Etika Tipe I:</b> Kekuatan hubungan antara apa yang diyakini individu/organisasi sebagai bermoral dengan apa yang dinyatakan benar oleh sumber panduan etika (kitab suci, kata hati, panutan). <i>Contoh pelanggaran Tipe I:</i> Manajer bersikeras tidak mempekerjakan kaum minoritas meski hampir semua sumber etika mengecam diskriminasi.</li>
+   <li><b>Etika Tipe II:</b> Kekuatan hubungan antara apa yang diyakini seseorang sebagai benar dengan bagaimana ia bertindak nyata. <i>Contoh pelanggaran Tipe II:</i> Manajer tahu membayar gaji CEO secara berlebihan adalah salah, tetapi tetap melakukannya.</li>
+  </ul>
+
+  <div class="numh">2. Melegalisasi Etika</div>
+  <p>Orang tidak pernah lepas dari aturan; jika gagal mengatur diri sendiri karena kebodohan atau keegoisan, akhirnya mereka diatur orang lain lewat hukum. Meski hukum tidak sepenuhnya dapat mengatur moralitas batin, hukum mengidentifikasi batas minimum perilaku etis. Semakin banyak hal harus dilegalisasi menunjukkan kian rapuhnya kesadaran etika masyarakat.</p>
+
+  <div class="numh">3. Kode Etik <span class="en">(Code of Ethics)</span></div>
+  <p><span class="term">Kode etik</span> adalah pernyataan nilai-nilai yang diadopsi karyawan dan direktur sekaligus sikap resmi manajemen puncak atas perilaku yang diharapkan. Budaya etis yang kuat membangun kepercayaan <i>stakeholder</i> serta menekan risiko finansial, legal, dan reputasi. Kerangka budaya etis mencakup: komunikasi harapan perilaku, pelatihan etika &amp; kepatuhan, masukan <i>stakeholder</i>, resolusi laporan pelanggaran, dan evaluasi berkelanjutan. Contoh rujukan utama adalah kode etik <b>SHRM <span class="en">(Society for Human Resource Management)</span></b> yang mengatur tanggung jawab profesional, pengembangan profesional, kepemimpinan etis, keadilan &amp; kebenaran, penggunaan informasi, dan <b>konflik kepentingan</b> (melindungi kepentingan <i>stakeholder</i> &amp; integritas profesi, menghindari konflik aktual, terselubung, maupun potensial).</p>
+
+  <div class="numh">4. Etika Sumber Daya Manusia</div>
+  <p>Penerapan prinsip etika pada seluruh hubungan dan aktivitas SDM. Profesional SDM berperan membangun budaya etis terutama pada <b>dua bidang krusial</b>:</p>
+  <ol class="book">
+   <li><b>Tata Kelola Perusahaan <span class="en">(Corporate Governance)</span>:</b> Memastikan setiap karyawan memahami standar etis spesifik di bidang operasinya (misalnya dilema etis tenaga penjual berbeda dengan staf litbang).</li>
+   <li><b>Kompensasi Eksekutif:</b> Profesional SDM level puncak yang memahami kondisi strategis perusahaan berperan penting menetapkan dan menyesuaikan kompensasi CEO serta manajer puncak agar wajar, tidak berlebihan, dan mempromosikan praktik kompensasi yang etis.</li>
+  </ol>
+
+  <div class="flow">Penerapan etika SDM yang konsisten tidak cukup mengandalkan niat individu, melainkan membutuhkan standar profesi dan organisasi perwakilan—dibahas di <b>Bagian B</b>.</div>
+
+  <!-- KB3 B -->
+  <div class="abc"><span class="ltr">B</span><h4>Profesionalisasi Manajemen Sumber Daya Manusia</h4></div>
+  <p>Sebuah <b>profesi</b> dicirikan oleh: (1) seperangkat pengetahuan bersama, (2) prosedur sertifikasi anggota, (3) standar kinerja yang ditetapkan oleh anggota profesi sendiri (bukan pihak luar), dan (4) organisasi perwakilan untuk bertukar gagasan. Di bidang MSDM, organisasi profesi paling terkemuka adalah <b>SHRM <span class="en">(Society for Human Resource Management)</span></b>, yang bertujuan mendefinisikan, memelihara, dan memperbaiki standar prestasi dalam praktik MSDM.</p>
+
+  <!-- KB3 C -->
+  <div class="abc"><span class="ltr">C</span><h4>Tanggung Jawab Sosial Perusahaan <span class="en">(Corporate Social Responsibility / CSR)</span></h4></div>
+  <p><span class="term">CSR</span> adalah kewajiban yang diimplikasikan, didorong, atau dirasakan para manajer—dalam kapasitas resminya—untuk melayani dan melindungi kepentingan kelompok di luar diri mereka sendiri. Perusahaan bertindak layaknya makhluk yang memiliki kesadaran benar-salah; CSR kini bergeser dari sekadar <i>"menyenangkan untuk dilakukan"</i> menjadi <i>"harus dilakukan"</i>. Perusahaan besar seperti Bank of America, General Electric, Coca-Cola, Johnson &amp; Johnson, dan Nike mengelola <b>tiga pilar utama CSR</b>:</p>
+  <div class="pill-row">
+   <span class="pill">1. Pilar Masyarakat (Sosial)</span>
+   <span class="pill">2. Pilar Lingkungan</span>
+   <span class="pill">3. Pilar Ekonomi</span>
+  </div>
+
+  <!-- KB3 D -->
+  <div class="abc"><span class="ltr">D</span><h4>Analisis <i>Stakeholder</i> dan Kontrak Sosial</h4></div>
+  <p>Masyarakat menuntut dewan direksi dan manajemen menempatkan kepentingan beragam <i>stakeholder</i> di urutan utama. <b>Analisis <i>stakeholder</i></b> menjawab pertanyaan tentang bagaimana perusahaan memperlakukan berbagai pemangku kepentingan tersebut. Salah satu pendekatannya adalah mempertimbangkan <span class="term">kontrak sosial <span class="en">(social contract)</span></span>—sekumpulan aturan tertulis/tidak tertulis serta asumsi mengenai pola hubungan timbal balik yang dapat diterima antara individu, pemerintah, organisasi, dan unsur masyarakat (banyak melekat pada adat kebiasaan). Bagi SDM, perhatian pemegang saham pada isu tempat kerja justru membantu apabila manajemen eksekutif kurang menaruh perhatian.</p>
+
+  <div class="flow">Agar komitmen CSR dan kontrak sosial tidak berhenti di slogan, perusahaan memerlukan audit dampak sosial dan tahapan implementasi terukur di <b>Bagian E</b>.</div>
+
+  <!-- KB3 E -->
+  <div class="abc"><span class="ltr">E</span><h4>Implementasi Program Tanggung Jawab Sosial</h4></div>
+  <p>Untuk memulihkan kepercayaan dan menilai kinerja sosial secara sistematis, perusahaan melakukan <span class="term">pemeriksaan sosial <span class="en">(social audit)</span></span>—penilaian sistematis atas aktivitas perusahaan yang berdampak sosial—melalui <b>tiga pendekatan</b>: (1) <b>daftar kegiatan sementara</b> (misalnya pekerjaan &amp; pelatihan kaum minoritas, bantuan bagi usaha minoritas, pengendalian polusi, sumbangan perusahaan, keterlibatan eksekutif menyaring proyek masyarakat, dan penanggulangan pengangguran terdidik), (2) <b>kumpulan pembelanjaan yang relevan secara sosial</b>, dan (3) <b>penentuan dampak sosial</b>.</p>
+
+  <div class="numh">9 Langkah Menyusun dan Mengimplementasikan Program CSR</div>
+  <p>Program CSR bukanlah kegiatan satu kali, melainkan upaya berkelanjutan melalui sembilan langkah berikut (klik tiap langkah untuk detailnya):</p>
+  <div class="rgrid c3" data-revealgroup>
+   <div class="rcell active" data-reveal data-detail="<b>Langkah 1 — Penanggung Jawab &amp; Struktur:</b> Menunjuk penanggung jawab program CSR dan membangun strukturnya; individu ini sekurang-kurangnya melapor langsung kepada manajer senior atau anggota dewan."><span class="stepnum">1</span><span><span class="rt">Penanggung Jawab</span><span class="rp">Struktur &amp; pelaporan</span></span></div>
+   <div class="rcell" data-reveal data-detail="<b>Langkah 2 — Analisis Kesenjangan (Gap Analysis):</b> Menilai kondisi CSR perusahaan saat ini dan membandingkannya dengan posisi CSR yang ingin dicapai di masa depan."><span class="stepnum">2</span><span><span class="rt">Analisis Kesenjangan</span><span class="rp">Posisi kini vs target</span></span></div>
+   <div class="rcell" data-reveal data-detail="<b>Langkah 3 — Harapan Pemegang Saham:</b> Mengidentifikasi dan menyatakan secara jelas harapan serta persepsi para pemegang saham terkait CSR."><span class="stepnum">3</span><span><span class="rt">Harapan Pemegang Saham</span><span class="rp">Persepsi &amp; ekspektasi</span></span></div>
+   <div class="rcell" data-reveal data-detail="<b>Langkah 4 — Pernyataan Kebijakan CSR:</b> Menuliskan kebijakan resmi yang mencakup bidang lingkungan, sosial, dan masyarakat."><span class="stepnum">4</span><span><span class="rt">Kebijakan CSR</span><span class="rp">Lingkungan, sosial, masy.</span></span></div>
+   <div class="rcell" data-reveal data-detail="<b>Langkah 5 — Tujuan &amp; Rencana Tindakan:</b> Menyusun sekumpulan tujuan perusahaan beserta rencana aksi konkret untuk mengimplementasikan kebijakan CSR."><span class="stepnum">5</span><span><span class="rt">Tujuan &amp; Aksi</span><span class="rp">Rencana implementasi</span></span></div>
+   <div class="rcell" data-reveal data-detail="<b>Langkah 6 — Sasaran &amp; KPI (2–5 Tahun):</b> Menciptakan sasaran dan indikator kinerja kunci (KPI) kuantitatif dan kualitatif mencakup seluruh organisasi selama 2–5 tahun, fokus pada bisnis inti, lengkap dengan mekanisme pemantauan."><span class="stepnum">6</span><span><span class="rt">Sasaran &amp; KPI</span><span class="rp">Periode 2–5 tahun</span></span></div>
+   <div class="rcell" data-reveal data-detail="<b>Langkah 7 — Komunikasi Arah CSR:</b> Mengomunikasikan arah dan strategi CSR perusahaan secara transparan kepada para <i>stakeholder</i> dan manajer dana."><span class="stepnum">7</span><span><span class="rt">Komunikasi Arah</span><span class="rp">Ke stakeholder &amp; investor</span></span></div>
+   <div class="rcell" data-reveal data-detail="<b>Langkah 8 — Menetapkan Kemajuan:</b> Memantau dan menetapkan capaian kemajuan pelaksanaan program CSR secara berkala."><span class="stepnum">8</span><span><span class="rt">Tetapkan Kemajuan</span><span class="rp">Monitoring berkala</span></span></div>
+   <div class="rcell" data-reveal data-detail="<b>Langkah 9 — Melaporkan Kemajuan:</b> Melaporkan capaian kemajuan program CSR secara berkelanjutan kepada pemangku kepentingan."><span class="stepnum">9</span><span><span class="rt">Laporkan Kemajuan</span><span class="rp">Pelaporan berkelanjutan</span></span></div>
+  </div>
+  <div class="rdetail" data-revealdetail><b>Langkah 1 — Penanggung Jawab &amp; Struktur:</b> Menunjuk penanggung jawab program CSR dan membangun strukturnya; individu ini sekurang-kurangnya melapor langsung kepada manajer senior atau anggota dewan.</div>
+ </div>
+
+ <!-- GLOSARIUM -->
+ <h2 class="section" id="glosarium"><span class="dot"></span>Glosarium Kilat (Hal. 1.54 &amp; Istilah Inti Modul 1)</h2>
+ <div class="card"><dl class="glossary">
+  <dt>Sustainability (Kesinambungan Usaha)</dt><dd>Kemampuan perusahaan bertahan hidup, bertumbuh, dan mendatangkan keuntungan dalam lingkungan persaingan yang dinamis dengan memenuhi kebutuhan pemangku kepentingan.</dd>
+  <dt>Stakeholder (Pemangku Kepentingan)</dt><dd>Pihak-pihak yang memiliki kepentingan atas kehadiran dan keberhasilan perusahaan: pemegang saham, pelanggan, karyawan, pemerintah, dan masyarakat.</dd>
+  <dt>Manajemen &amp; 5 Fungsi Dasar</dt><dd>Proses pencapaian tujuan melalui orang lain yang terdiri dari <b>perencanaan</b>, <b>pengorganisasian</b>, <b>pemotivasian/pemimpinan</b>, <b>penyusunan staf</b>, dan <b>pengendalian</b>.</dd>
+  <dt>Sumber Daya Manusia (SDM) &amp; MSDM</dt><dd>Tenaga kerja yang mampu menghasilkan barang/jasa (UU No. 13/2003); MSDM adalah kebijakan, praktik, dan sistem formal untuk mengelola talenta, sikap, perilaku, dan kinerja karyawan guna mencapai tujuan organisasi.</dd>
+  <dt>Manajemen Strategis &amp; Strategi</dt><dd>Strategi adalah cara menciptakan posisi unik dan berharga (Porter); manajemen strategis adalah seni dan ilmu merumuskan, melaksanakan, dan mengevaluasi keputusan lintas fungsional (David).</dd>
+  <dt>Pelaksanaan Strategi &amp; Evaluasi Kinerja</dt><dd>Implementasi strategi melalui struktur, desain tugas, seleksi/pelatihan, imbalan, dan sistem informasi; evaluasi/penilaian kinerja mengukur kesesuaian hasil individu/tim dengan sasaran organisasi.</dd>
+  <dt>Pengadaan Tenaga Kerja, Pelatihan &amp; Pengembangan, Kompensasi, K3, Hubungan Kerja</dt><dd>Lima fungsi operasional ruang lingkup MSDM (Mondy, 2008) yang mencakup penarikan hingga pemeliharaan serta hubungan industrial karyawan.</dd>
+  <dt>Integrasi, Intensifikasi, Diversifikasi, &amp; Strategi Bertahan</dt><dd>Kelompok alternatif strategi (David, 2009): integrasi (ke depan, belakang, horizontal), intensif (penetrasi pasar, pengembangan pasar, pengembangan produk), diversifikasi (konsentrik, konglomerat, horizontal), serta defensif/bertahan (usaha patungan, penghematan/<i>retrenchment</i>, divestasi, likuidasi).</dd>
+  <dt>Etika Tipe I &amp; Etika Tipe II</dt><dd>Tipe I: kesesuaian keyakinan individu/organisasi dengan sumber panduan etika; Tipe II: konsistensi antara keyakinan etis dengan tindakan nyata (Mondy, 2010).</dd>
+  <dt>Etika Sumber Daya Manusia &amp; CSR</dt><dd>Penerapan prinsip etika dalam hubungan/aktivitas SDM (khususnya tata kelola perusahaan dan kompensasi eksekutif); CSR adalah kewajiban perusahaan melayani kepentingan masyarakat, lingkungan, dan ekonomi di luar dirinya sendiri.</dd>
+ </dl></div>
+</div>
+
+<footer><b>EKMA5207 — Manajemen Sumber Daya Manusia (Edisi 3)</b> · Modul 1: Sifat Dasar Manajemen Sumber Daya Manusia (Prof. Dr. Mutiara Sibarani Panggabean, S.E., M.E.)<br>Bahan belajar ringkas untuk persiapan ujian.</footer>
+
+<script>
+(function(){
+ var pb=document.getElementById('progress');
+ function onScroll(){var h=document.documentElement;var sc=h.scrollTop||document.body.scrollTop;var max=(h.scrollHeight-h.clientHeight)||1;pb.style.width=(sc/max*100)+'%';}
+ document.addEventListener('scroll',onScroll,{passive:true});onScroll();
+ var list=document.getElementById('conceptList');var items=[].slice.call(list.querySelectorAll('li'));var boxes=items.map(function(li){return li.querySelector('input');});
+ document.getElementById('totalCount').textContent=items.length;var doneEl=document.getElementById('doneCount');var KEY='studi_ekma5207_m1_concepts_v1';
+ function load(){try{var a=JSON.parse(localStorage.getItem(KEY)||'[]');boxes.forEach(function(b,i){if(a[i])b.checked=true;});}catch(e){}}
+ function save(){try{localStorage.setItem(KEY,JSON.stringify(boxes.map(function(b){return b.checked?1:0;})));}catch(e){}}
+ function refresh(){var n=0;items.forEach(function(li,i){if(boxes[i].checked){li.classList.add('done');n++;}else li.classList.remove('done');});doneEl.textContent=n;}
+ load();refresh();boxes.forEach(function(b){b.addEventListener('change',function(){refresh();save();});});
+ document.getElementById('resetBtn').addEventListener('click',function(){boxes.forEach(function(b){b.checked=false;});refresh();save();});
+ // REVEAL HELPER (dengan perbaikan sibling)
+ [].slice.call(document.querySelectorAll('[data-revealgroup]')).forEach(function(g){
+  var det=g.querySelector('[data-revealdetail]');if(!det){var sib=g.nextElementSibling;if(sib&&sib.hasAttribute&&sib.hasAttribute('data-revealdetail'))det=sib;}
+  var cells=[].slice.call(g.querySelectorAll('[data-reveal]'));
+  cells.forEach(function(c){c.addEventListener('click',function(){cells.forEach(function(x){x.classList.remove('active');});c.classList.add('active');if(det)det.innerHTML=c.getAttribute('data-detail');});});
+ });
+ // MIND MAP ENGINE (SVG collapsible)
+ (function(){
+  var ROWH=46,NODE_H=32,PAD=13,GAP=52;var COL={root:'#0f5e8f',kb1:'#1a86c7',kb2:'#e08a1e',kb3:'#2a9d6f',kb4:'#7a5cc0',kb5:'#c75b7a'};
+  var mc=document.createElement('canvas').getContext('2d');mc.font='700 13px -apple-system,Segoe UI,Roboto,sans-serif';
+  function tw(t){return Math.ceil(mc.measureText(t).width);}function esc(t){return t.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');}
+  function rgba(hex,a){var h=hex.replace('#','');return 'rgba('+parseInt(h.substr(0,2),16)+','+parseInt(h.substr(2,2),16)+','+parseInt(h.substr(4,2),16)+','+a+')';}
+  var DATA={label:'MODUL 1 — Sifat Dasar MSDM',color:COL.root,children:[
+   {label:'KB1 · Hakikat MSDM',color:COL.kb1,children:[
+    {label:'A. 5 Fungsi Manajemen',children:[{label:'Perencanaan & Pengorganisasian'},{label:'Pemotivasian & Pengendalian'},{label:'Penyusunan Staf = MSDM'}]},
+    {label:'B. Definisi & Peran Strategis',children:[{label:'8 Praktik MSDM (Gambar 1.1)'},{label:'3 Alasan Strategis (Daft)'},{label:'9 Kesalahan MSDM (Dessler)'}]},
+    {label:'C. 4 Lini Produk & Tabel 1.1',children:[{label:'Mitra Strategis & Ahli Admin'},{label:'Advokat Karyawan & Agen Pengubah'}]},
+    {label:'D. 6 Kompetensi Profesional SDM'},
+    {label:'E. 3 Tantangan Kompetitif',children:[{label:'Kesinambungan Usaha'},{label:'Global & 4 Aset Tak Berwujud'},{label:'Teknologi & Internet'}]},
+    {label:'E2. Ruang Lingkup (5 Fungsi)',children:[{label:'Pengadaan & Pengembangan SDM'},{label:'Kompensasi, K3 & Hub. Kerja'}]}
+   ]},
+   {label:'KB2 · Peran Strategis SDM',color:COL.kb2,children:[
+    {label:'A–B. Manajemen Strategis & MSDMS',children:[{label:'Formulasi Strategi'},{label:'Implementasi Strategi'}]},
+    {label:'C–E. Keterkaitan & 4 Level Integrasi',children:[{label:'3 Pertanyaan Kompetisi (PepsiCo)'},{label:'Administratif → Integratif'}]},
+    {label:'F. Manajemen Strategi',children:[{label:'Misi, Sasaran, Eksternal, Internal'},{label:'13 Strategi David & 2 Porter'},{label:'5 Variabel Implementasi'}]},
+    {label:'G. 6 Menu Praktik MSDM'},
+    {label:'H. MSDM: Biaya vs Diferensiasi'}
+   ]},
+   {label:'KB3 · Etika Bisnis & CSR',color:COL.kb3,children:[
+    {label:'A. Etika & Model Etika',children:[{label:'Etika Tipe I & Tipe II (Mondy)'},{label:'Legalisasi & Kode Etik (SHRM)'},{label:'Etika SDM (Governance & Kompensasi)'}]},
+    {label:'B. Profesionalisasi MSDM (SHRM)'},
+    {label:'C. CSR & 3 Pilar Utama'},
+    {label:'D. Analisis Stakeholder & Kontrak Sosial'},
+    {label:'E. Audit Sosial & 9 Langkah CSR'}
+   ]}
+  ]};
+  var idc=0;(function w(n,c){n.id='n'+(idc++);n.color=n.color||c;(n.children||[]).forEach(function(k){w(k,n.color);});})(DATA,COL.root);
+  (function w(n,d){if(d>=2&&n.children&&n.children.length)n.collapsed=true;(n.children||[]).forEach(function(k){w(k,d+1);});})(DATA,0);
+  var host=document.getElementById('mindmap');
+  function render(){
+   var colW=[];(function w(n,d){var width=tw(n.label)+PAD*2+((n.children&&n.children.length)?20:0);colW[d]=Math.max(colW[d]||0,width);if(!n.collapsed)(n.children||[]).forEach(function(k){w(k,d+1);});})(DATA,0);
+   var colX=[],acc=14;for(var d=0;d<colW.length;d++){colX[d]=acc;acc+=colW[d]+GAP;}var row={v:0};
+   (function lay(n,d){if(!n.children||!n.children.length||n.collapsed){n._y=row.v*ROWH+ROWH/2+8;row.v++;return;}var f,l;n.children.forEach(function(k,i){lay(k,d+1);if(i===0)f=k._y;l=k._y;});n._y=(f+l)/2;})(DATA,0);
+   var totalW=acc,totalH=row.v*ROWH+24;var nodes=[],links=[];
+   (function col(n,d,p){n._x=colX[d];n._w=tw(n.label)+PAD*2+((n.children&&n.children.length)?20:0);nodes.push({n:n,d:d});if(p)links.push([p,n]);if(!n.collapsed)(n.children||[]).forEach(function(k){col(k,d+1,n);});})(DATA,0,null);
+   var s='<svg width="'+totalW+'" height="'+totalH+'" viewBox="0 0 '+totalW+' '+totalH+'" xmlns="http://www.w3.org/2000/svg">';
+   links.forEach(function(pr){var a=pr[0],b=pr[1],x1=a._x+a._w,y1=a._y,x2=b._x,y2=b._y,mx=(x1+x2)/2;s+='<path d="M'+x1+' '+y1+' C'+mx+' '+y1+' '+mx+' '+y2+' '+x2+' '+y2+'" fill="none" stroke="'+rgba(b.color,.5)+'" stroke-width="2"/>';});
+   nodes.forEach(function(o){var n=o.n,x=n._x,y=n._y-NODE_H/2,w=n._w,hk=n.children&&n.children.length;var fill=o.d===0?n.color:(o.d===1?rgba(n.color,.12):'#fff');var tf=o.d===0?'#fff':'#1c2733';
+    s+='<g data-id="'+n.id+'" style="cursor:'+(hk?'pointer':'default')+'"><rect x="'+x+'" y="'+y+'" rx="9" width="'+w+'" height="'+NODE_H+'" fill="'+fill+'" stroke="'+n.color+'" stroke-width="'+(o.d===0?0:1.6)+'"/><text x="'+(x+PAD)+'" y="'+(n._y+4)+'" font-size="13" font-weight="'+(o.d<=1?'700':'500')+'" fill="'+tf+'" font-family="-apple-system,Segoe UI,Roboto,sans-serif">'+esc(n.label)+'</text>';
+    if(hk){var cx=x+w-12,cy=n._y;s+='<circle cx="'+cx+'" cy="'+cy+'" r="8.5" fill="'+n.color+'"/><text x="'+cx+'" y="'+(cy+4.5)+'" font-size="13" font-weight="700" fill="#fff" text-anchor="middle" font-family="sans-serif">'+(n.collapsed?'+':'\u2013')+'</text>';}s+='</g>';});
+   s+='</svg>';host.innerHTML=s;
+  }
+  host.addEventListener('click',function(e){var g=e.target.closest('g[data-id]');if(!g)return;var id=g.getAttribute('data-id');(function f(n){if(n.id===id){if(n.children&&n.children.length)n.collapsed=!n.collapsed;return true;}return (n.children||[]).some(f);})(DATA);render();});
+  document.getElementById('mmExpand').addEventListener('click',function(){(function w(n){if(n.children)n.collapsed=false;(n.children||[]).forEach(w);})(DATA);render();});
+  document.getElementById('mmCollapse').addEventListener('click',function(){(function w(n,d){if(d>=1&&n.children&&n.children.length)n.collapsed=true;(n.children||[]).forEach(function(k){w(k,d+1);});})(DATA,0);render();});
+  render();
+ })();
+ window.addEventListener('load',function(){setTimeout(function(){if(window.MathJax&&window.MathJax.typesetPromise)window.MathJax.typesetPromise();},400);});
+})();
+</script></body></html>

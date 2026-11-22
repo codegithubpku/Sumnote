@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="id"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Modul 5 — Subyek Penelitian | EKMA5104</title>
+<script>window.MathJax={tex:{inlineMath:[['$','$']],displayMath:[['\\[','\\]'],['$$','$$']]},svg:{fontCache:'global'},startup:{typeset:true}};</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js" async></script>
+<style>
+:root{--bg:#f4f6f9;--panel:#fff;--ink:#1c2733;--muted:#5c6b7a;--line:#e4e9f0;--brand:#1a86c7;--brand-dark:#0f5e8f;--brand-soft:#e7f3fb;--kb1:#1a86c7;--kb2:#e08a1e;--kb3:#2a9d6f;--kb4:#7a5cc0;--kb5:#c75b7a;--radius:14px;--shadow:0 1px 2px rgba(16,42,67,.06),0 6px 20px rgba(16,42,67,.06);--maxw:900px}
+*{box-sizing:border-box}html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;line-height:1.72}
+#progress{position:fixed;top:0;left:0;height:4px;width:0;background:linear-gradient(90deg,var(--brand),#53c0ec);z-index:200;transition:width .1s}
+header.top{position:sticky;top:0;z-index:100;background:rgba(255,255,255,.92);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+.top-in{max-width:var(--maxw);margin:0 auto;padding:10px 20px;display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+.badge{background:var(--brand);color:#fff;font-weight:700;font-size:.72rem;letter-spacing:.5px;padding:4px 10px;border-radius:999px}
+.homebtn{text-decoration:none;display:inline-flex;align-items:center;gap:7px;background:var(--brand);color:#fff;font-weight:700;font-size:.8rem;padding:7px 15px;border-radius:999px;box-shadow:0 2px 6px rgba(16,42,67,.22);line-height:1}
+.top-title{font-size:.9rem;font-weight:600;color:var(--muted)}
+nav.jump{margin-left:auto;display:flex;gap:4px;flex-wrap:wrap}
+nav.jump a{font-size:.78rem;color:var(--muted);text-decoration:none;padding:5px 10px;border-radius:8px}
+nav.jump a:hover{background:var(--brand-soft);color:var(--brand-dark)}
+.wrap{max-width:var(--maxw);margin:0 auto;padding:0 20px 90px}
+.hero{margin-top:26px;padding:30px 28px;border-radius:var(--radius);color:#fff;background:linear-gradient(135deg,#0f5e8f,#1a86c7 60%,#2fa4df);box-shadow:var(--shadow);position:relative;overflow:hidden}
+.hero .eyebrow{font-size:.78rem;letter-spacing:1.5px;text-transform:uppercase;opacity:.9;font-weight:600}
+.hero h1{margin:.3em 0 .25em;font-size:1.62rem;line-height:1.25;max-width:90%}
+.hero .meta{display:flex;gap:18px;flex-wrap:wrap;font-size:.84rem;opacity:.95;margin-top:10px}
+h2.section{font-size:1.3rem;margin:48px 0 4px;display:flex;align-items:center;gap:10px;scroll-margin-top:70px}
+h2.section .dot{width:10px;height:22px;border-radius:4px;background:var(--brand)}
+.section-sub{color:var(--muted);font-size:.9rem;margin:0 0 18px}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);padding:22px 24px;margin:16px 0;--dot:var(--brand);overflow-x:clip;overflow-wrap:break-word;word-wrap:break-word}
+.concepts{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:minmax(0,1fr);gap:10px}
+.concepts li{display:flex;gap:12px;align-items:flex-start;padding:12px 14px;border:1px solid var(--line);border-radius:10px;background:#fcfdff;min-width:0;max-width:100%}
+.concepts li>span{min-width:0;max-width:100%;overflow-wrap:break-word;word-wrap:break-word}
+.concepts input{margin-top:4px;width:18px;height:18px;accent-color:var(--brand);flex:none;cursor:pointer}
+.concepts .ct{font-weight:600}.concepts .cd{display:block;font-weight:400;color:var(--muted);font-size:.86rem;margin-top:2px}
+.concepts li.done{background:var(--brand-soft);border-color:#bfe0f3}.concepts li.done .ct{text-decoration:line-through;opacity:.65}
+.cl-head{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-bottom:6px}
+.cl-head .count{font-size:.82rem;color:var(--muted);background:var(--brand-soft);padding:3px 10px;border-radius:999px;font-weight:600}
+.btn-reset{font-size:.78rem;border:1px solid var(--line);background:#fff;color:var(--muted);padding:5px 12px;border-radius:8px;cursor:pointer}
+.mm-toolbar{display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin-bottom:10px}
+.mm-btn{font-size:.78rem;border:1px solid var(--line);background:#fff;padding:6px 13px;border-radius:8px;cursor:pointer;color:var(--brand-dark);font-weight:600}
+.mindmap-host{height:580px;overflow:auto;border:1px solid var(--line);border-radius:10px;background:#fcfdff}.mindmap-host svg{display:block}
+.kb-tag{display:inline-flex;align-items:center;gap:8px;font-size:.78rem;font-weight:700;color:#fff;padding:5px 12px;border-radius:999px;margin-bottom:6px}
+.kb1t{background:var(--kb1)}.kb2t{background:var(--kb2)}.kb3t{background:var(--kb3)}.kb4t{background:var(--kb4)}.kb5t{background:var(--kb5)}
+.kb1b{--dot:var(--kb1)}.kb2b{--dot:var(--kb2)}.kb3b{--dot:var(--kb3)}.kb4b{--dot:var(--kb4)}.kb5b{--dot:var(--kb5)}
+.lead{font-size:1.02rem}.term{font-weight:700;color:var(--dot)}.en{font-style:italic;color:var(--muted);font-weight:500}
+.abc{display:flex;align-items:center;gap:10px;margin:28px 0 10px;padding-bottom:6px;border-bottom:2px solid color-mix(in srgb,var(--dot) 18%,#fff)}
+.abc .ltr{background:var(--dot);color:#fff;font-weight:800;min-width:30px;height:30px;padding:0 7px;border-radius:8px;display:grid;place-items:center;flex:none}
+.abc h4{margin:0;font-size:1.06rem;color:var(--dot)}
+.numh{font-weight:700;color:var(--dot);margin:22px 0 4px;font-size:1rem}
+.leth{font-weight:800;color:var(--dot);margin:20px 0 6px;font-size:.98rem;border-left:3px solid var(--dot);padding-left:10px}
+ol.book{margin:12px 0;padding-left:28px}ol.book>li{margin:10px 0;padding-left:6px}ol.book>li::marker{font-weight:700;color:var(--dot)}
+ul.exp{list-style:none;margin:12px 0;padding:0;display:grid;grid-template-columns:minmax(0,1fr);gap:10px}
+ul.exp>li{position:relative;padding-left:20px;min-width:0;max-width:100%;overflow-wrap:break-word;word-wrap:break-word}
+ul.exp>li::before{content:"";position:absolute;left:0;top:11px;width:8px;height:8px;border-radius:2px;background:var(--dot)}
+ul.let{list-style:lower-alpha;margin:10px 0;padding-left:28px}ul.let>li{margin:8px 0;padding-left:4px}ul.let>li::marker{color:var(--dot);font-weight:700}
+.flow{border-left:4px solid var(--dot);background:color-mix(in srgb,var(--dot) 9%,#fff);padding:11px 15px;border-radius:0 10px 10px 0;margin:18px 0;font-size:.9rem;min-width:0;max-width:100%;overflow-wrap:break-word;word-wrap:break-word}
+.flow::before{content:"🔗 Benang merah — ";font-weight:700;color:var(--dot)}.flow b{color:var(--dot)}
+.casebox{background:#f8fafc;border:1px solid var(--line);border-left:4px solid var(--dot);border-radius:0 10px 10px 0;padding:12px 15px;margin:14px 0;font-size:.88rem;min-width:0;max-width:100%;overflow-wrap:break-word;word-wrap:break-word}
+.casebox .ctitle{font-weight:700;color:var(--dot);margin-bottom:4px;display:block}
+.table-wrap{width:100%;overflow-x:auto;-webkit-overflow-scrolling:touch;margin:14px 0;border-radius:10px}
+table.mini{width:100%;border-collapse:collapse;margin:0;font-size:.86rem;table-layout:auto}
+table.mini th,table.mini td{border:1px solid var(--line);padding:10px 12px;text-align:left;vertical-align:top;overflow-wrap:break-word;word-wrap:break-word}
+table.mini th{background:color-mix(in srgb,var(--dot) 12%,#fff);color:var(--dot);font-weight:700}
+.rgrid{display:grid;gap:8px;margin:14px 0}.rgrid.c2{grid-template-columns:repeat(2,1fr)}.rgrid.c3{grid-template-columns:repeat(3,1fr)}.rgrid.c4{grid-template-columns:repeat(4,1fr)}
+.rcell{border:1px solid var(--line);border-radius:10px;padding:11px 13px;cursor:pointer;background:#fff;display:flex;gap:10px;align-items:flex-start;transition:.15s;min-width:0;max-width:100%}
+.rcell>span{min-width:0;max-width:100%;overflow-wrap:break-word;word-wrap:break-word}
+.rcell:hover{border-color:var(--dot);box-shadow:var(--shadow);transform:translateY(-2px)}
+.rcell.active{border-color:var(--dot);background:color-mix(in srgb,var(--dot) 8%,#fff)}
+.rcell .stepnum{background:var(--dot);color:#fff;font-weight:700;min-width:24px;height:24px;border-radius:7px;display:grid;place-items:center;flex:none;font-size:.82rem}
+.rcell .rt{font-weight:700;font-size:.9rem;color:var(--dot);display:block}.rcell .rp{font-size:.78rem;color:var(--muted);display:block;margin-top:2px}
+.rdetail{font-size:.88rem;border-left:4px solid var(--dot);background:color-mix(in srgb,var(--dot) 8%,#fff);border-radius:0 10px 10px 0;padding:12px 15px;margin-top:6px;min-width:0;max-width:100%;overflow-wrap:break-word;word-wrap:break-word}
+.pill-row{display:flex;gap:8px;flex-wrap:wrap;margin:10px 0}.pill{font-size:.8rem;background:#eef3f8;color:#36506a;border:1px solid #e0e8f0;padding:4px 11px;border-radius:999px;font-weight:600}
+.flowchart{display:flex;align-items:center;gap:6px;flex-wrap:wrap;margin:16px 0;justify-content:center}
+.fc-node{background:color-mix(in srgb,var(--dot) 12%,#fff);border:1.5px solid var(--dot);color:var(--dot);font-weight:700;font-size:.8rem;padding:8px 12px;border-radius:9px;text-align:center}
+.fc-arrow{color:var(--dot);font-weight:800;font-size:1.05rem}
+.pyramid{display:flex;flex-direction:column;align-items:center;gap:4px;margin:16px 0}.pyr-row{color:#fff;font-weight:700;text-align:center;padding:9px 12px;border-radius:7px;font-size:.84rem}
+.bs-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:14px 0}
+.bs-col{border:1.5px solid var(--dot);border-radius:10px;overflow:hidden;min-width:0;max-width:100%}
+.bs-head{background:var(--dot);color:#fff;font-weight:700;font-size:.84rem;padding:7px 12px;text-align:center}
+.bs-box{padding:10px 12px;border-bottom:1px dashed var(--line);font-size:.84rem}.bs-box:last-child{border-bottom:none}
+.eqbox{background:#fcfdff;border:1px solid var(--line);border-radius:10px;padding:8px 14px;margin:14px 0;overflow-x:auto}
+mjx-container{max-width:100%;overflow-x:auto;overflow-y:hidden}
+mjx-container:not([display="true"]){display:inline-block;vertical-align:middle}
+.chart-wrap{background:#fcfdff;border:1px solid var(--line);border-radius:12px;padding:14px 16px;margin:16px 0}
+.chart-title{font-weight:700;font-size:.9rem;color:var(--dot);margin:0 0 4px}
+.chart-sub{font-size:.78rem;color:var(--muted);margin:0 0 10px}
+.chart-host{width:100%;overflow-x:auto;position:relative}.chart-host svg{display:block;max-width:100%;height:auto;margin:0 auto}
+.chart-legend{display:flex;gap:14px;flex-wrap:wrap;justify-content:center;margin-top:8px;font-size:.78rem;color:var(--muted)}
+.chart-legend span{display:inline-flex;align-items:center;gap:6px}.chart-legend i{display:inline-block;width:14px;height:3px;border-radius:2px}
+.glossary dt{font-weight:700;color:var(--brand-dark);margin-top:10px}.glossary dd{margin:0 0 2px;color:var(--muted);font-size:.9rem}
+footer{max-width:var(--maxw);margin:0 auto;padding:30px 20px 60px;color:var(--muted);font-size:.82rem;border-top:1px solid var(--line)}
+.offline-note{font-size:.76rem;color:var(--muted);background:#fff8e6;border:1px solid #f0e2b8;border-radius:8px;padding:8px 12px;margin:10px 0}
+@media(max-width:680px){
+  .table-wrap{overflow-x:visible}
+  table.mini,table.mini thead,table.mini tbody,table.mini th,table.mini td,table.mini tr{display:block;width:100%}
+  table.mini thead{display:none}
+  table.mini tr{margin-bottom:12px;border:1.5px solid color-mix(in srgb,var(--dot) 28%,#e4e9f0);border-radius:10px;background:#fff;overflow:hidden;box-shadow:0 1px 4px rgba(16,42,67,.05)}
+  table.mini td{border:none;border-bottom:1px solid var(--line);padding:10px 12px;text-align:left}
+  table.mini td:last-child{border-bottom:none}
+  table.mini td::before{content:attr(data-label);display:block;font-size:.74rem;font-weight:700;text-transform:uppercase;letter-spacing:.4px;color:var(--dot);margin-bottom:4px}
+}
+.acro-box{background:#f8fafc;border:1px solid var(--line);border-radius:10px;padding:12px 14px;margin:14px 0;font-size:.84rem;min-width:0;max-width:100%;overflow-wrap:break-word;word-wrap:break-word}
+.acro-title{font-weight:700;color:var(--dot);font-size:.86rem;margin-bottom:8px;display:block}
+.acro-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:6px 14px;margin:0;padding:0;list-style:none}
+.acro-grid li{min-width:0;line-height:1.5}.acro-grid b{color:var(--dot)}
+.fguide{background:color-mix(in srgb,var(--dot) 5%,#fff);border:1px solid color-mix(in srgb,var(--dot) 22%,#e4e9f0);border-radius:10px;padding:12px 15px;margin:-6px 0 16px;font-size:.86rem;min-width:0;max-width:100%;overflow-wrap:break-word;word-wrap:break-word}
+.fguide .fg-head{font-weight:700;color:var(--dot);font-size:.84rem;text-transform:uppercase;letter-spacing:.35px;margin:0 0 6px}
+.fguide ul{margin:4px 0 8px;padding-left:18px}.fguide ul li{margin:3px 0}
+.fguide .fg-core{border-top:1px dashed color-mix(in srgb,var(--dot) 30%,#cbd5e1);padding-top:8px;margin-top:8px;display:grid;grid-template-columns:minmax(0,1fr);gap:4px}
+.fguide .fg-core div{min-width:0}
+@media(max-width:640px){.hero h1{font-size:1.3rem;max-width:100%}nav.jump{display:none}.rgrid.c2,.rgrid.c3,.rgrid.c4,.bs-grid,.acro-grid{grid-template-columns:minmax(0,1fr)}.mindmap-host{height:440px}}
+</style></head><body>
+<div id="progress"></div>
+<header class="top"><div class="top-in">
+  <span class="badge">MODUL 5</span>
+  <a class="homebtn" href="index.html" title="Kembali ke daftar modul"><span style="font-size:1rem;line-height:1">&#8962;</span> Daftar Modul</a>
+  <span class="top-title">Metode Penelitian Bisnis · EKMA5104</span>
+  <nav class="jump"><a href="#konsep">Konsep</a><a href="#peta">Peta Konsep</a><a href="#kb1">KB1</a><a href="#kb2">KB2</a><a href="#glosarium">Glosarium</a></nav>
+</div></header>
+<div class="wrap">
+  <section class="hero"><div class="eyebrow">Ringkasan Belajar · EKMA5104 (Edisi 3)</div>
+    <h1>Subyek Penelitian</h1>
+    <div class="meta"><span>⏱️ ±35 menit</span><span>📚 2 bagian (KB)</span><span>✍️ Dr. Lerbin Roberto Aritonang R., M.M.</span></div></section>
+  <p class="section-sub" style="margin-top:22px">Modul 5 membahas strategi penentuan subyek penelitian: alasan memilih sampel vs sensus, 6 teknik penyampelan acak (termasuk panduan SPSS &amp; Excel), 4 teknik tak acak, 6 tahap prosedur penyampelan (KB 1), serta penentuan ukuran sampel dengan rumus maupun pedoman non-rumus untuk berbagai teknik analisis (KB 2).</p>
+  <p class="offline-note">ℹ️ Peta konsep, grafik SVG, kartu penjelasan, dan checklist konsep berjalan tanpa internet. Koneksi internet hanya diperlukan untuk merender persamaan matematika (MathJax).</p>
+
+  <h2 class="section" id="konsep"><span class="dot"></span>Konsep Penting yang Harus Dikuasai</h2>
+  <div class="card"><div class="cl-head"><span class="count"><span id="doneCount">0</span>/<span id="totalCount">0</span> dikuasai</span><button class="btn-reset" id="resetBtn">Reset centang</button></div>
+    <ul class="concepts" id="conceptList">
+      <li><input type="checkbox"><span><span class="ct">Subyek vs Obyek, Populasi (Sensus) vs Sampel</span><span class="cd">Subyek = tempat variabel (obyek) melekat (bisa orang, perusahaan, produk, atau waktu). Meneliti seluruh populasi = sensus; meneliti sebagian untuk digeneralisasikan = penelitian sampel.</span></span></li>
+      <li><input type="checkbox"><span><span class="ct">8 Pertimbangan Sampel vs Sensus (Malhotra, 2007)</span><span class="cd">Anggaran, waktu, ukuran populasi, variansi karakteristik, biaya eror penyampelan, biaya eror nonpenyampelan, sifat destruktif pengukuran, dan fokus kasus individual.</span></span></li>
+      <li><input type="checkbox"><span><span class="ct">Populasi Penyampelan vs Sasaran &amp; Kerangka Penyampelan</span><span class="cd">Kerangka penyampelan (daftar seluruh unsur penyampelan) harus memenuhi 5 sifat Palte: mencakup semua unsur, tak dihitung ganda, up to date, batas jelas, dan dapat dilacak di lapangan.</span></span></li>
+      <li><input type="checkbox"><span><span class="ct">6 Teknik Pemilihan Sampel Acak (Probabilistik)</span><span class="cd">Acak sederhana (kertas, SPSS, Excel), sistematis, berlapis/strata (homogen dalam strata, heterogen antarstrata), bergugus/klaster (1 &amp; 2 tahap), wilayah, dan berangkai/sekuensial.</span></span></li>
+      <li><input type="checkbox"><span><span class="ct">4 Teknik Pemilihan Sampel Tak Acak (Non-Probabilistik)</span><span class="cd">Convenient (kemudahan akses), purposive/judgmental (berdasar tujuan/ahli), kuota (penjatahan kategori diskrit), dan bola salju/snowball (untuk subyek langka).</span></span></li>
+      <li><input type="checkbox"><span><span class="ct">Mengapa Metode Acak Ideal &amp; 6 Tahap Prosedur Penyampelan</span><span class="cd">Uji signifikansi statistik bertumpu pada teori probabilitas ($SE$), sehingga metode acak wajib diutamakan. 6 tahap: definisi populasi (4 aspek), kerangka, metode/teknik, ukuran, rencana, dan pelaksanaan.</span></span></li>
+      <li><input type="checkbox"><span><span class="ct">Sampel Awal (Initial Sample) vs Holdout Sample</span><span class="cd">Sering dipakai pada riset runtut waktu/keuangan: sampel awal untuk mengembangkan model struktural, holdout sample untuk menguji daya prediksi model tersebut.</span></span></li>
+      <li><input type="checkbox"><span><span class="ct">Penentuan Ukuran Sampel dengan Rumus &amp; Kelemahannya</span><span class="cd">Rumus (satu rata-rata &amp; satu proporsi; $\pi=0.5$ untuk batas konservatif; pembulatan selalu ke atas) hanya sah untuk sampel acak, berbeda tiap teknik acak, dan jarang dipakai karena butuh parameter populasi ($\sigma$ atau $\pi$).</span></span></li>
+      <li><input type="checkbox"><span><span class="ct">8 Aspek Kualitatif &amp; Pedoman Desain Penentuan Ukuran Sampel</span><span class="cd">Eksploratif ($\ge 35$), deskriptif ($100$ atau $\ge 10\%$ populasi), kausal ($\ge 30$/kelompok; min. 15 bila kontrol ketat), sel analisis ($>30$/sel untuk parametrik), serta pendekatan biaya–manfaat Bayes.</span></span></li>
+      <li><input type="checkbox"><span><span class="ct">Pedoman Ukuran Sampel Berdasarkan Teknik Analisis Statistik</span><span class="cd">Regresi (min. 5× IV, saran 15–20× IV; stepwise 50× IV), $\chi^2$ ($f_e \ge 5$/sel), Anava (15–30/sel), Anadis (20× IV &amp; min. 20/kelompok), Analisis Faktor (Comrey: 200 wajar, 300 baik; Hair: $\ge 100$), dan SEM (Boomsma: $\ge 200$, hindari $<100$).</span></span></li>
+      <li><input type="checkbox"><span><span class="ct">Bahaya Sampel Terlalu Besar vs Terlalu Kecil</span><span class="cd">Terlalu besar ($\ge 1000$) membuat uji signifikansi terlalu peka (kaitan sangat kecil jadi signifikan → cek signifikansi praktis); terlalu kecil membuat power uji lemah &amp; estimasi SEM palsu.</span></span></li>
+    </ul></div>
+
+  <h2 class="section" id="peta"><span class="dot"></span>Peta Konsep (Mind Map)</h2>
+  <div class="card"><div class="mm-toolbar"><button class="mm-btn" id="mmExpand">Perluas semua</button><button class="mm-btn" id="mmCollapse">Ciutkan</button><span style="font-size:.76rem;color:var(--muted)">Klik simpul bertanda + / – untuk buka-tutup · Gulir untuk menggeser</span></div><div class="mindmap-host" id="mindmap"></div></div>
+
+  <!-- KB 1 -->
+  <h2 class="section" id="kb1"><span class="dot" style="background:var(--kb1)"></span>KB 1 — Populasi, Metode, dan Teknik Pemilihan Sampel</h2>
+  <div class="card kb1b"><span class="kb-tag kb1t">KEGIATAN BELAJAR 1 · HAL. 5.4–5.24</span>
+    <div class="acro-box">
+      <span class="acro-title">📖 Kamus Konteks Singkatan &amp; Akronim KB 1</span>
+      <ul class="acro-grid">
+        <li><b>SE</b>: <i>Standard Error</i> (Eror Standar) — ukuran ketepatan/variabilitas distribusi penyampelan statistik.</li>
+        <li><b>SPSS / Excel</b>: Perangkat lunak bantu untuk pemilihan sampel acak sederhana (<i>Select Cases</i> / <code>RAND()</code>).</li>
+        <li><b>N / n</b>: Ukuran populasi ($N$) dan ukuran sampel ($n$).</li>
+      </ul>
+    </div>
+
+    <p class="lead">Penentuan subyek penelitian merupakan langkah krusial untuk memastikan data yang dikumpulkan benar-benar mewakili obyek studi dan dapat digeneralisasikan secara ilmiah.</p>
+
+    <div class="abc"><span class="ltr">A</span><h4>Subyek, Populasi, dan Sampel</h4></div>
+    <p><span class="term">Subyek penelitian</span> adalah tempat variabel (obyek) melekat—bisa berupa orang, perusahaan, produk, iklan, bahkan waktu (satu riset dapat memiliki lebih dari satu jenis subyek). Meneliti seluruh unsur populasi disebut <b>sensus</b>, sedangkan meneliti sebagian populasi untuk mengestimasi parameter dan menggeneralisasikan hasilnya ke populasi disebut <b>penelitian sampel</b>.</p>
+
+    <div class="abc"><span class="ltr">B</span><h4>Alasan Pemilihan Sampel vs Sensus</h4></div>
+    <p>Keputusan memilih sampel atau sensus ditentukan oleh delapan faktor pertimbangan menurut <b>Malhotra (2007 — Tabel 5.1)</b>:</p>
+    <div class="table-wrap">
+      <table class="mini">
+        <thead><tr><th>Faktor Pertimbangan</th><th>Pilih Sampel</th><th>Pilih Sensus</th></tr></thead>
+        <tbody>
+          <tr><td data-label="Faktor Pertimbangan">1. Anggaran · 2. Waktu · 3. Ukuran Populasi</td><td data-label="Pilih Sampel">Kecil · Singkat · Besar</td><td data-label="Pilih Sensus">Besar · Lama · Kecil</td></tr>
+          <tr><td data-label="Faktor Pertimbangan">4. Variansi Karakteristik Populasi</td><td data-label="Pilih Sampel">Kecil (homogen)</td><td data-label="Pilih Sensus">Besar (heterogen)</td></tr>
+          <tr><td data-label="Faktor Pertimbangan">5. Biaya Eror Penyampelan (akibat cara pilih sampel)</td><td data-label="Pilih Sampel">Rendah</td><td data-label="Pilih Sensus">Tinggi</td></tr>
+          <tr><td data-label="Faktor Pertimbangan">6. Biaya Eror Nonpenyampelan (ukur/tabulasi/desain)</td><td data-label="Pilih Sampel">Tinggi</td><td data-label="Pilih Sensus">Rendah</td></tr>
+          <tr><td data-label="Faktor Pertimbangan">7. Sifat Pengukuran · 8. Fokus Kasus Individual</td><td data-label="Pilih Sampel">Destruktif (merusak) · Ya</td><td data-label="Pilih Sensus">Nondestruktif · Tidak</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="abc"><span class="ltr">C</span><h4>Konsep-Konsep Dasar Penyampelan</h4></div>
+    <ul class="exp">
+      <li><span class="term">Populasi Penyampelan vs Populasi Sasaran</span>: <b>populasi penyampelan</b> adalah populasi dasar pemilihan sampel (mis. seluruh rumah tangga di daerah X), sedangkan <b>populasi sasaran</b> adalah unsur spesifik yang sebenarnya diteliti (mis. anggota rumah tangga pengguna produk X).</li>
+      <li><span class="term">Unsur Penyampelan vs Satuan Analisis</span>: <b>unsur penyampelan</b> adalah unit yang dipilih dalam proses penyampelan (mis. blok perumahan), sedangkan <b>satuan analisis</b> adalah unit individual yang datanya dianalisis (mis. konsumen individual).</li>
+      <li><span class="term">Kerangka Penyampelan <span class="en">(sampling frame)</span></span>: daftar seluruh unsur penyampelan yang wajib memenuhi <b>5 sifat Palte</b>: (1) mencakup semua unsur, (2) tak ada hitungan ganda, (3) <i>up to date</i>, (4) batas tegas, dan (5) dapat dilacak di lapangan.</li>
+    </ul>
+
+    <div class="flow">Setelah kerangka penyampelan jelas, peneliti memilih antara <b>metode acak</b> (tiap unsur punya peluang sama, probabilistik) atau <b>metode tidak acak</b> beserta teknik operasionalnya.</div>
+
+    <div class="abc"><span class="ltr">D</span><h4>Teknik Pemilihan Sampel Acak (Probabilistik)</h4></div>
+    <p>Klik tiap kartu untuk mempelajari cara kerja, syarat, serta keunggulan dan kelemahan keenam teknik penyampelan acak:</p>
+    <div class="rgrid c3" data-revealgroup>
+      <div class="rcell active" data-reveal data-detail="<b>1. Acak Sederhana (Simple Random)</b> — Tiap unsur dipilih acak dari daftar lengkap populasi lewat <i>undian kertas</i>, <i>SPSS</i> (<code>Data → Select Cases → Random sample → Exactly</code>), atau <i>Excel</i> (<code>=INT(RAND()*(N-1)+1)</code> lalu tekan <code>F9</code>). Syarat: daftar lengkap, populasi relatif homogen, tak terlalu tersebar geografis."><span class="stepnum">1</span><span><span class="rt">Acak Sederhana</span><span class="rp">Undian, SPSS, Excel</span></span></div>
+      <div class="rcell" data-reveal data-detail="<b>2. Acak Sistematis (Systematic)</b> — Hanya unsur pertama yang dipilih acak, lalu unsur berikutnya mengikuti interval/sistem tetap (mis. +2). Cocok untuk populasi homogen berpola teratur (blok kota/rumah) yang memiliki kerangka penyampelan."><span class="stepnum">2</span><span><span class="rt">Acak Sistematis</span><span class="rp">Unsur pertama acak + interval</span></span></div>
+      <div class="rcell" data-reveal data-detail="<b>3. Acak Berlapis / Strata (Stratified — Gambar 5.1)</b> — Membagi populasi heterogen menjadi strata pilah &amp; tuntas, lalu acak sederhana dari <b>tiap strata</b>. Tujuan: <b>homogen di dalam strata, heterogen antarstrata</b> → memperkecil eror standar ($SE$). Variabel stratifikasi harus relevan dengan variabel riset."><span class="stepnum">3</span><span><span class="rt">Acak Berlapis (Strata)</span><span class="rp">Ambil dari SEMUA strata</span></span></div>
+      <div class="rcell" data-reveal data-detail="<b>4. Acak Bergugus / Klaster (Cluster — Gambar 5.2)</b> — Membagi populasi menjadi klaster, lalu pilih acak <b>sebagian klaster</b> saja. <i>Satu tahap</i>: ambil semua unsur di klaster terpilih; <i>Dua tahap</i>: acak lagi sebagian unsur di klaster terpilih. Hemat karena daftar lengkap hanya perlu dibuat pada klaster terpilih."><span class="stepnum">4</span><span><span class="rt">Acak Bergugus (Klaster)</span><span class="rp">Ambil dari SEBAGIAN klaster</span></span></div>
+      <div class="rcell" data-reveal data-detail="<b>5. Acak Wilayah (Area Sampling)</b> — Mengelompokkan populasi berdasarkan area atau peta geografis (bisa dilakukan bertahap). Keunggulan: tidak membutuhkan daftar awal unsur yang lengkap; kelemahan: eror standar ($SE$) sulit diukur secara presisi."><span class="stepnum">5</span><span><span class="rt">Acak Wilayah (Area)</span><span class="rp">Berbasis peta · tanpa daftar awal</span></span></div>
+      <div class="rcell" data-reveal data-detail="<b>6. Acak Berangkai / Sekuensial (Sequential Sampling)</b> — Memilih sampel secara bertahap lalu langsung menganalisisnya; bila informasi dinilai sudah memadai maka pengambilan sampel dihentikan, namun bila belum cukup peneliti menambah sampel tahap berikutnya."><span class="stepnum">6</span><span><span class="rt">Acak Berangkai</span><span class="rp">Bertahap hingga info cukup</span></span></div>
+    </div>
+    <div class="rdetail" data-revealdetail><b>1. Acak Sederhana (Simple Random)</b> — Tiap unsur dipilih acak dari daftar lengkap populasi lewat <i>undian kertas</i>, <i>SPSS</i> (<code>Data → Select Cases → Random sample → Exactly</code>), atau <i>Excel</i> (<code>=INT(RAND()*(N-1)+1)</code> lalu tekan <code>F9</code>). Syarat: daftar lengkap, populasi relatif homogen, tak terlalu tersebar geografis.</div>
+
+    <div class="abc"><span class="ltr">E</span><h4>Teknik Pemilihan Sampel Tak Acak (Non-Probabilistik)</h4></div>
+    <p>Bila kerangka penyampelan atau syarat pengacakan tidak memungkinkan, terdapat empat teknik pemilihan sampel tak acak:</p>
+    <div class="rgrid c2" data-revealgroup>
+      <div class="rcell active" data-reveal data-detail="<b>1. Sampel Convenient (Convenience Sampling)</b> — Memilih subyek berdasarkan kemudahan akses dan ketersediaan (mis. pengunjung mall, peserta arisan, siswa sekolah). Sangat praktis dan murah, namun tidak menjamin kerepresentatifan populasi."><span class="stepnum">1</span><span><span class="rt">Convenient</span><span class="rp">Berdasar kemudahan akses</span></span></div>
+      <div class="rcell" data-reveal data-detail="<b>2. Sampel Bertujuan (Purposive / Judgmental Sampling)</b> — Memilih subyek berdasarkan pertimbangan tujuan penelitian atau penilaian ahli. Syarat penting: peneliti harus sudah mengetahui karakteristik populasi terlebih dahulu."><span class="stepnum">2</span><span><span class="rt">Bertujuan (Purposive)</span><span class="rp">Berdasar tujuan &amp; penilaian ahli</span></span></div>
+      <div class="rcell" data-reveal data-detail="<b>3. Sampel Kuota (Quota Sampling)</b> — Menetapkan jatah proporsi atau jumlah tertentu untuk tiap kategori variabel diskrit (mis. gender atau jenis industri); pengumpul data bebas memilih siapa pun di lapangan selama jatah kuota terpenuhi."><span class="stepnum">3</span><span><span class="rt">Kuota</span><span class="rp">Jatah proporsi per kategori</span></span></div>
+      <div class="rcell" data-reveal data-detail="<b>4. Sampel Bola Salju (Snowball Sampling)</b> — Subyek awal yang ditemui diminta menunjuk atau merekomendasikan subyek berikutnya yang memenuhi kriteria. Ideal untuk subyek langka/sulit ditemukan, biaya murah, dan $SE$ relatif kecil karena homogen."><span class="stepnum">4</span><span><span class="rt">Bola Salju (Snowball)</span><span class="rp">Rekomendasi berantai · subyek langka</span></span></div>
+    </div>
+    <div class="rdetail" data-revealdetail><b>1. Sampel Convenient (Convenience Sampling)</b> — Memilih subyek berdasarkan kemudahan akses dan ketersediaan (mis. pengunjung mall, peserta arisan, siswa sekolah). Sangat praktis dan murah, namun tidak menjamin kerepresentatifan populasi.</div>
+
+    <div class="abc"><span class="ltr">F</span><h4>Kombinasi Teknik Pemilihan Sampel</h4></div>
+    <p>Dalam praktik, peneliti dapat menggabungkan beberapa teknik penyampelan secara bertahap sesuai struktur populasi—misalnya memilih industri secara acak sederhana, lalu memilih perusahaan secara acak sederhana, dan akhirnya memilih pekerja dengan teknik kuota.</p>
+
+    <div class="abc"><span class="ltr">G</span><h4>Metode Pemilihan Sampel yang Ideal</h4></div>
+    <p><b>Metode acak wajib diutamakan</b> karena seluruh rumus uji signifikansi statistik ($SE$) dibangun di atas teori probabilitas. Sampel yang ideal memenuhi empat kriteria: (1) memberi gambaran terpercaya atas populasi, (2) memungkinkan penghitungan ketepatan ($SE$), (3) sederhana dilaksanakan, dan (4) memberikan informasi maksimal dengan biaya minimal.</p>
+
+    <div class="abc"><span class="ltr">H</span><h4>Enam Tahap Prosedur Penyampelan</h4></div>
+    <ol class="book">
+      <li><span class="term">Definisi populasi</span>: nyatakan secara tegas 4 aspek menurut Tull &amp; Hawkins (<i>unsur, satuan penyampelan, luas/wilayah, dan waktu</i>).</li>
+      <li><span class="term">Penentuan kerangka penyampelan</span>: susun daftar lengkap unsur penyampelan yang memenuhi 5 sifat Palte.</li>
+      <li><span class="term">Penentuan metode &amp; teknik penyampelan</span>: pilih acak atau tak acak beserta teknik spesifiknya.</li>
+      <li><span class="term">Penentuan ukuran sampel</span>: tetapkan jumlah subyek sesuai variabilitas, desain, dan alat analisis.</li>
+      <li><span class="term">Penyusunan rencana operasional lapangan</span>: siapkan prosedur teknis sekaligus skenario solusi bila terjadi penyimpangan di lapangan.</li>
+      <li><span class="term">Pelaksanaan &amp; pemantauan</span>: jalankan pengumpulan data dan lakukan cek ulang acak atas hasil kerja pengumpul data.</li>
+    </ol>
+
+    <div class="abc"><span class="ltr">I</span><h4>Sampel Awal (Initial Sample) dan Sampel Holdout (Holdout Sample)</h4></div>
+    <p>Pada riset runtut waktu atau keuangan, populasi kerap dibagi menjadi dua bagian: <b>sampel awal (<i>initial sample</i>)</b> digunakan untuk mengembangkan dan menguji model struktural, sedangkan <b>sampel holdout (<i>holdout sample</i>)</b> digunakan untuk menguji daya prediksi model tersebut.</p>
+  </div>
+
+  <!-- KB 2 -->
+  <h2 class="section" id="kb2"><span class="dot" style="background:var(--kb2)"></span>KB 2 — Penentuan Ukuran Sampel</h2>
+  <div class="card kb2b"><span class="kb-tag kb2t">KEGIATAN BELAJAR 2 · HAL. 5.25–5.37</span>
+    <div class="acro-box">
+      <span class="acro-title">📖 Kamus Konteks Singkatan &amp; Akronim KB 2</span>
+      <ul class="acro-grid">
+        <li><b>PCA</b>: <i>Principal Component Analysis</i> — metode ekstraksi utama dalam analisis faktor.</li>
+        <li><b>Anava / Anavam</b>: Analisis Variansi (1 DV) dan Analisis Variansi Multivariat (&gt;1 DV).</li>
+        <li><b>Anadis</b>: Analisis Diskriminan — teknik klasifikasi kelompok berbasis beberapa IV.</li>
+        <li><b>SEM (ML)</b>: <i>Structural Equation Modeling</i> dengan metode estimasi <i>Maximum Likelihood</i>.</li>
+      </ul>
+    </div>
+
+    <p class="lead">Setelah teknik penyampelan ditetapkan, peneliti harus menentukan berapa banyak subyek yang dibutuhkan agar estimasi tepat dan uji statistik memiliki daya uji (<i>power</i>) yang memadai.</p>
+
+    <div class="abc"><span class="ltr">A</span><h4>Variabilitas Populasi</h4></div>
+    <p>Prinsip paling mendasar dalam penentuan ukuran sampel adalah <b>variabilitas (heterogenitas) populasi</b>: makin heterogen populasi maka makin besar ukuran sampel yang dibutuhkan, sedangkan makin homogen populasi maka makin kecil ukuran sampel yang diperlukan.</p>
+
+    <div class="abc"><span class="ltr">B</span><h4>Penentuan Ukuran Sampel dengan Rumus (dan Kelemahannya)</h4></div>
+    <p>Rumus statistik <b>hanya sah untuk metode acak</b> (berbasis probabilitas), berbeda untuk tiap teknik penyampelan acak, dan hasil desimalnya <b>selalu dibulatkan ke atas</b>:</p>
+    <div class="eqbox">\[ \text{1 Rata-rata: } Z_{\alpha/2}\frac{\sigma}{\sqrt{n}} = e \;\Rightarrow\; n = \left(\frac{Z_{\alpha/2}\,\sigma}{e}\right)^2 \qquad \text{1 Proporsi: } n = \frac{Z_{\alpha/2}^2\,\pi(1-\pi)}{e^2} \]</div>
+    <div class="fguide">
+      <div class="fg-head">Bedah Variabel &amp; Intisari Formula Ukuran Sampel Acak</div>
+      <ul>
+        <li><b>$n$</b> = ukuran sampel minimum (bulatkan ke atas); <b>$Z_{\alpha/2}$</b> = skor kritis kurva normal sesuai taraf keyakinan (mis. $1.96$ untuk 95%); <b>$\sigma$</b> = deviasi standar populasi; <b>$\pi$</b> = proporsi populasi (pakai $0.5$ jika tak diketahui); <b>$e$</b> = batas toleransi kesalahan (<i>margin of error</i>) yang dikehendaki peneliti.</li>
+        <li><b>Makna formula:</b> Menentukan jumlah subyek acak minimum agar estimasi rata-rata atau proporsi sampel meleset tidak lebih dari batas toleransi $e$ pada taraf keyakinan $1-\alpha$.</li>
+      </ul>
+      <div class="fg-core">
+        <div>🧭 <b>Filosofis:</b> Menyeimbangkan ketepatan estimasi (semakin kecil $e$, semakin besar $n$ secara kuadratik) dengan variabilitas alami populasi.</div>
+        <div>📏 <b>Mengukur:</b> Jumlah unit sampel probabilistik minimum yang dibutuhkan untuk estimasi satu parameter populasi.</div>
+        <div>🎯 <b>Manfaat:</b> Mencegah sampel terlalu kecil (eror lebar) atau terlalu besar (boros biaya), meski dalam praktik jarang dipakai karena menuntut pengetahuan awal $\sigma$ atau $\pi$.</div>
+      </div>
+    </div>
+
+    <ul class="exp">
+      <li><b>Strategi konservatif proporsi:</b> jika proporsi populasi ($\pi$) tak diketahui, gunakan $\pi = 0.5$ agar pembilang $\pi(1-\pi) = 0.25$ maksimum sehingga menghasilkan $n$ yang aman.</li>
+      <li><b>Mengapa rumus jarang dipakai?</b> Tidak praktis/efisien karena mensyaratkan peneliti sudah mengetahui parameter populasi ($\sigma$ atau $\pi$) sebelumnya (atau harus melakukan survei pendahuluan dulu).</li>
+    </ul>
+
+    <div class="flow">Karena keterbatasan rumus di atas, mayoritas peneliti bisnis menentukan ukuran sampel menggunakan <b>pendekatan non-rumus</b> berbasis aspek kualitatif, desain penelitian, dan teknik analisis statistik.</div>
+
+    <div class="abc"><span class="ltr">C</span><h4>Cara Lain Penentuan Ukuran Sampel (Non-Rumus)</h4></div>
+    <div class="numh">1. Aspek Kualitatif (Malhotra) dan Model Bayes</div>
+    <p>Delapan aspek kualitatif menurut <b>Malhotra (2007)</b>: keberartian keputusan, sifat riset (konklusif &gt; eksploratif), jumlah variabel, kerumitan teknik analisis, rata-rata ukuran sampel riset sejenis, tingkat antisipasi subyek gagal/tak lengkap, tingkat kelengkapan data, dan keterbatasan sumber daya. Peneliti juga dapat menggunakan <b>Model Bayes</b> yang membandingkan manfaat informasi terhadap biaya untuk tiap alternatif ukuran sampel $n$.</p>
+
+    <div class="numh">2. Pedoman Berdasarkan Desain Penelitian &amp; Teknik Analisis Statistik</div>
+    <div class="table-wrap">
+      <table class="mini">
+        <thead><tr><th>Dasar / Teknik Analisis</th><th>Ukuran Sampel Minimum / Disarankan</th><th>Sumber &amp; Catatan Penting</th></tr></thead>
+        <tbody>
+          <tr><td data-label="Dasar / Teknik Analisis"><b>Desain Eksploratif</b></td><td data-label="Ukuran Sampel Minimum / Disarankan">Minimal <b>35 subyek</b></td><td data-label="Sumber &amp; Catatan Penting">Cowles (1974).</td></tr>
+          <tr><td data-label="Dasar / Teknik Analisis"><b>Desain Deskriptif</b></td><td data-label="Ukuran Sampel Minimum / Disarankan"><b>100 subyek</b> (atau min. <b>10%</b> populasi; <b>20%</b> jika populasi kecil)</td><td data-label="Sumber &amp; Catatan Penting">Fraenkel &amp; Wallen (1993); Gay &amp; Diehl (1992).</td></tr>
+          <tr><td data-label="Dasar / Teknik Analisis"><b>Desain Kausal (Eksperimen)</b></td><td data-label="Ukuran Sampel Minimum / Disarankan">Min. <b>30 subyek/kelompok</b> (boleh <b>15</b> bila kontrol ketat &amp; direplikasi)</td><td data-label="Sumber &amp; Catatan Penting">Fraenkel &amp; Wallen; Roscoe.</td></tr>
+          <tr><td data-label="Dasar / Teknik Analisis"><b>Jumlah Sel Analisis / Anava</b></td><td data-label="Ukuran Sampel Minimum / Disarankan"><b>15</b> s.d. <b>&gt;30 subyek/sel</b> (100/subkelompok jika dianalisis terpisah)</td><td data-label="Sumber &amp; Catatan Penting">Cowles; Sudman. Anavam (DV &gt; 1) butuh lebih besar.</td></tr>
+          <tr><td data-label="Dasar / Teknik Analisis"><b>Rasio Umum &amp; Regresi</b></td><td data-label="Ukuran Sampel Minimum / Disarankan">Min. <b>5×</b> variabel; saran <b>10–20×</b> IV; <i>Stepwise</i>: <b>50×</b> IV</td><td data-label="Sumber &amp; Catatan Penting">Hair et al. (2010); Tabachnick &amp; Fidell (2007).</td></tr>
+          <tr><td data-label="Dasar / Teknik Analisis"><b>Uji Kai-Kuadrat ($\chi^2$)</b></td><td data-label="Ukuran Sampel Minimum / Disarankan">Frekuensi harapan ($f_e$) min. <b>5/sel</b></td><td data-label="Sumber &amp; Catatan Penting">Nilai $\chi^2$ cenderung naik seiring membesarnya $n$.</td></tr>
+          <tr><td data-label="Dasar / Teknik Analisis"><b>Analisis Diskriminan</b></td><td data-label="Ukuran Sampel Minimum / Disarankan"><b>20×</b> jumlah IV &amp; min. <b>20/kelompok</b> (ukuran kelompok seimbang)</td><td data-label="Sumber &amp; Catatan Penting">Hair et al. (2010).</td></tr>
+          <tr><td data-label="Dasar / Teknik Analisis"><b>Analisis Faktor / PCA</b></td><td data-label="Ukuran Sampel Minimum / Disarankan">Comrey: 50 sangat jelek, 100 jelek, <b>200 wajar, 300 baik</b>, 500 sangat baik, 1000 <i>excellent</i></td><td data-label="Sumber &amp; Catatan Penting">Hair et al.: hindari $&lt;50$, lebih disukai $\ge 100$.</td></tr>
+          <tr><td data-label="Dasar / Teknik Analisis"><b>SEM (Maximum Likelihood)</b></td><td data-label="Ukuran Sampel Minimum / Disarankan">Minimal <b>200 subyek</b> (hindari $&lt;100$ → estimasi palsu/tak konvergen)</td><td data-label="Sumber &amp; Catatan Penting">Boomsma (1987 dalam Arbuckle, 1997).</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="casebox">
+      <span class="ctitle">Peringatan Penting (Hair et al., 2010; Aritonang R., 1996)</span>
+      Sampel <b>terlalu besar</b> ($\ge 1.000$) membuat uji signifikansi terlalu peka sehingga efek sangat kecil pun jadi signifikan (wajib cek signifikansi praktis); sebaliknya sampel <b>terlalu kecil</b> membuat <i>power</i> uji statistik terlalu lemah.
+    </div>
+  </div>
+
+  <h2 class="section" id="glosarium"><span class="dot"></span>Glosarium Kilat</h2>
+  <div class="card"><dl class="glossary">
+    <dt>Kerangka Penyampelan (Sampling Frame)</dt><dd>Daftar lengkap seluruh unsur penyampelan yang terdapat pada suatu populasi penyampelan (harus memenuhi 5 sifat Palte).</dd>
+    <dt>Metode Acak (Probability Sampling)</dt><dd>Pemilihan sampel sedemikian rupa sehingga semua unsur populasi memiliki peluang yang sama untuk terpilih (bersifat probabilistik).</dd>
+    <dt>Populasi Penyampelan vs Populasi Sasaran</dt><dd>Populasi penyampelan = unsur dasar pemilihan sampel; populasi sasaran = unsur populasi yang sebenarnya diteliti.</dd>
+    <dt>Sampel Acak (Sederhana, Sistematis, Berlapis, Bergugus, Wilayah, Berangkai)</dt><dd>Enam teknik pemilihan sampel probabilistik sesuai ketersediaan daftar, homogenitas, dan penyebaran geografis populasi.</dd>
+    <dt>Sampel Tak Acak (Convenient, Purposive, Kuota, Bola Salju)</dt><dd>Empat teknik pemilihan sampel non-probabilistik berdasarkan kemudahan akses, tujuan/ahli, jatah kategori, atau rekomendasi berantai.</dd>
+    <dt>Sampel Awal (Initial Sample) vs Sampel Holdout</dt><dd>Sampel awal dipakai mengembangkan model struktural; sampel holdout dipakai menguji daya prediksi model tersebut.</dd>
+    <dt>Satuan Analisis vs Unsur Penyampelan</dt><dd>Satuan analisis = unsur subyek yang dijadikan dasar analisis; unsur penyampelan = unsur yang dipilih menjadi sampel (bisa memuat $\ge 1$ satuan analisis).</dd>
+    <dt>Sensus (Census)</dt><dd>Penelitian yang dilakukan terhadap keseluruhan unsur populasi.</dd>
+  </dl></div>
+</div>
+<footer><b>EKMA5104 — Metode Penelitian Bisnis (Edisi 3)</b> · Modul 5: Subyek Penelitian<br>Bahan belajar ringkas untuk persiapan ujian · Dr. Lerbin Roberto Aritonang R., M.M.</footer>
+<script>
+(function(){
+  var pb=document.getElementById('progress');
+  function onScroll(){var h=document.documentElement;var sc=h.scrollTop||document.body.scrollTop;var max=(h.scrollHeight-h.clientHeight)||1;pb.style.width=(sc/max*100)+'%';}
+  document.addEventListener('scroll',onScroll,{passive:true});onScroll();
+
+  var list=document.getElementById('conceptList');var items=[].slice.call(list.querySelectorAll('li'));var boxes=items.map(function(li){return li.querySelector('input');});
+  document.getElementById('totalCount').textContent=items.length;var doneEl=document.getElementById('doneCount');var KEY='studi_ekma5104_m5_concepts_v1';
+  function load(){try{var a=JSON.parse(localStorage.getItem(KEY)||'[]');boxes.forEach(function(b,i){if(a[i])b.checked=true;});}catch(e){}}
+  function save(){try{localStorage.setItem(KEY,JSON.stringify(boxes.map(function(b){return b.checked?1:0;})));}catch(e){}}
+  function refresh(){var n=0;items.forEach(function(li,i){if(boxes[i].checked){li.classList.add('done');n++;}else li.classList.remove('done');});doneEl.textContent=n;}
+  load();refresh();boxes.forEach(function(b){b.addEventListener('change',function(){refresh();save();});});
+  document.getElementById('resetBtn').addEventListener('click',function(){boxes.forEach(function(b){b.checked=false;});refresh();save();});
+
+  [].slice.call(document.querySelectorAll('[data-revealgroup]')).forEach(function(g){
+    var det=g.querySelector('[data-revealdetail]');if(!det){var sib=g.nextElementSibling;if(sib&&sib.hasAttribute&&sib.hasAttribute('data-revealdetail'))det=sib;}
+    var cells=[].slice.call(g.querySelectorAll('[data-reveal]'));
+    cells.forEach(function(c){c.addEventListener('click',function(){cells.forEach(function(x){x.classList.remove('active');});c.classList.add('active');if(det){det.innerHTML=c.getAttribute('data-detail');if(window.MathJax&&window.MathJax.typesetPromise)window.MathJax.typesetPromise([det]);}});});
+  });
+
+  (function(){
+    var ROWH=46,NODE_H=32,PAD=13,GAP=52;var COL={root:'#0f5e8f',kb1:'#1a86c7',kb2:'#e08a1e',kb3:'#2a9d6f',kb4:'#7a5cc0',kb5:'#c75b7a'};
+    var mc=document.createElement('canvas').getContext('2d');mc.font='700 13px -apple-system,Segoe UI,Roboto,sans-serif';
+    function tw(t){return Math.ceil(mc.measureText(t).width);}function esc(t){return t.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');}
+    function rgba(hex,a){var h=hex.replace('#','');return 'rgba('+parseInt(h.substr(0,2),16)+','+parseInt(h.substr(2,2),16)+','+parseInt(h.substr(4,2),16)+','+a+')';}
+    var DATA={label:'MODUL 5 — Subyek Penelitian',color:COL.root,children:[
+  {label:'KB1 · Populasi, Metode & Teknik Pemilihan Sampel',color:COL.kb1,children:[
+    {label:'A. Subyek, Populasi (Sensus) vs Sampel'},
+    {label:'B. Alasan Sampel vs Sensus (8 Pertimbangan, Tabel 5.1)'},
+    {label:'C. Konsep Dasar (Populasi, Unsur, Kerangka 5 Sifat)'},
+    {label:'D. 6 Teknik Acak (Sederhana, Sistematis, Strata, Klaster, Wilayah, Berangkai)'},
+    {label:'E. 4 Teknik Tak Acak (Convenient, Purposive, Kuota, Bola Salju)'},
+    {label:'F. Kombinasi Teknik Pemilihan Sampel'},
+    {label:'G. Metode Pemilihan Sampel Ideal'},
+    {label:'H. 6 Tahap Prosedur Penyampelan'},
+    {label:'I. Sampel Awal (Initial) & Sampel Holdout'}
+  ]},
+  {label:'KB2 · Penentuan Ukuran Sampel',color:COL.kb2,children:[
+    {label:'A. Variabilitas Populasi (Heterogen → n Besar)'},
+    {label:'B. Pendekatan Rumus (1 Rata-Rata & 1 Proporsi + Kelemahan)'},
+    {label:'C. Pendekatan Non-Rumus',children:[
+      {label:'1. Aspek Kualitatif Malhotra & Model Bayes'},
+      {label:'2. Pedoman Desain & Alat Analisis (Regresi, Anava, Anadis, Faktor, SEM)'}
+    ]}
+  ]}
+]};
+    var idc=0;(function w(n,c){n.id='n'+(idc++);n.color=n.color||c;(n.children||[]).forEach(function(k){w(k,n.color);});})(DATA,COL.root);
+    (function w(n,d){if(d>=2&&n.children&&n.children.length)n.collapsed=true;(n.children||[]).forEach(function(k){w(k,d+1);});})(DATA,0);
+    var host=document.getElementById('mindmap');
+    function render(){
+      var colW=[];(function w(n,d){var width=tw(n.label)+PAD*2+((n.children&&n.children.length)?20:0);colW[d]=Math.max(colW[d]||0,width);if(!n.collapsed)(n.children||[]).forEach(function(k){w(k,d+1);});})(DATA,0);
+      var colX=[],acc=14;for(var d=0;d<colW.length;d++){colX[d]=acc;acc+=colW[d]+GAP;}var row={v:0};
+      (function lay(n,d){if(!n.children||!n.children.length||n.collapsed){n._y=row.v*ROWH+ROWH/2+8;row.v++;return;}var f,l;n.children.forEach(function(k,i){lay(k,d+1);if(i===0)f=k._y;l=k._y;});n._y=(f+l)/2;})(DATA,0);
+      var totalW=acc,totalH=row.v*ROWH+24;var nodes=[],links=[];
+      (function col(n,d,p){n._x=colX[d];n._w=tw(n.label)+PAD*2+((n.children&&n.children.length)?20:0);nodes.push({n:n,d:d});if(p)links.push([p,n]);if(!n.collapsed)(n.children||[]).forEach(function(k){col(k,d+1,n);});})(DATA,0,null);
+      var s='<svg width="'+totalW+'" height="'+totalH+'" viewBox="0 0 '+totalW+' '+totalH+'" xmlns="http://www.w3.org/2000/svg">';
+      links.forEach(function(pr){var a=pr[0],b=pr[1],x1=a._x+a._w,y1=a._y,x2=b._x,y2=b._y,mx=(x1+x2)/2;s+='<path d="M'+x1+' '+y1+' C'+mx+' '+y1+' '+mx+' '+y2+' '+x2+' '+y2+'" fill="none" stroke="'+rgba(b.color,.5)+'" stroke-width="2"/>';});
+      nodes.forEach(function(o){var n=o.n,x=n._x,y=n._y-NODE_H/2,w=n._w,hk=n.children&&n.children.length;var fill=o.d===0?n.color:(o.d===1?rgba(n.color,.12):'#fff');var tf=o.d===0?'#fff':'#1c2733';
+        s+='<g data-id="'+n.id+'" style="cursor:'+(hk?'pointer':'default')+'"><rect x="'+x+'" y="'+y+'" rx="9" width="'+w+'" height="'+NODE_H+'" fill="'+fill+'" stroke="'+n.color+'" stroke-width="'+(o.d===0?0:1.6)+'"/><text x="'+(x+PAD)+'" y="'+(n._y+4)+'" font-size="13" font-weight="'+(o.d<=1?'700':'500')+'" fill="'+tf+'" font-family="-apple-system,Segoe UI,Roboto,sans-serif">'+esc(n.label)+'</text>';
+        if(hk){var cx=x+w-12,cy=n._y;s+='<circle cx="'+cx+'" cy="'+cy+'" r="8.5" fill="'+n.color+'"/><text x="'+cx+'" y="'+(cy+4.5)+'" font-size="13" font-weight="700" fill="#fff" text-anchor="middle" font-family="sans-serif">'+(n.collapsed?'+':'\u2013')+'</text>';}s+='</g>';});
+      s+='</svg>';host.innerHTML=s;
+    }
+    host.addEventListener('click',function(e){var g=e.target.closest('g[data-id]');if(!g)return;var id=g.getAttribute('data-id');(function f(n){if(n.id===id){if(n.children&&n.children.length)n.collapsed=!n.collapsed;return true;}return (n.children||[]).some(f);})(DATA);render();});
+    document.getElementById('mmExpand').addEventListener('click',function(){(function w(n){if(n.children)n.collapsed=false;(n.children||[]).forEach(w);})(DATA);render();});
+    document.getElementById('mmCollapse').addEventListener('click',function(){(function w(n,d){if(d>=1&&n.children&&n.children.length)n.collapsed=true;(n.children||[]).forEach(function(k){w(k,d+1);});})(DATA,0);render();});
+    render();
+  })();
+
+  window.addEventListener('load',function(){setTimeout(function(){if(window.MathJax&&window.MathJax.typesetPromise)window.MathJax.typesetPromise();},400);});
+})();
+</script></body></html>

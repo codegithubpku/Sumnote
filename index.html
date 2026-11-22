@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="theme-color" content="#0f5e8f">
+  <meta name="description" content="Aplikasi belajar offline ringkasan BMP S2 Manajemen (MM) Universitas Terbuka">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <link rel="manifest" href="manifest.json">
+  <link rel="icon" type="image/png" href="icons/icon-192.png">
+  <link rel="apple-touch-icon" href="icons/icon-192.png">
+  <title>Modul S2 MM — UT</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <!-- Main Dashboard & Course View -->
+  <div class="app-root" id="homeView">
+    <header class="topbar">
+      <button class="icon-btn hidden" id="backCourseBtn" aria-label="Kembali ke beranda">←</button>
+      <div class="brand-block">
+        <h1 class="brand-title" id="topTitle">Modul S2 MM — UT</h1>
+        <p class="brand-sub" id="topSub">4 Mata Kuliah · 36 Modul Ringkasan</p>
+      </div>
+      <div class="topbar-actions">
+        <button class="icon-btn hidden" id="installPwaBtn" title="Install Aplikasi">⬇️</button>
+        <button class="icon-btn" id="themeToggleBtn" aria-label="Ubah Tema">🌙</button>
+      </div>
+    </header>
+
+    <main class="main-wrap">
+      <!-- Hero -->
+      <section class="hero-card" id="heroCard">
+        <div class="hero-top">
+          <div>
+            <div class="hero-eyebrow">Program Pascasarjana · S2 MM UT</div>
+            <h2>Pusat Ringkasan BMP</h2>
+          </div>
+          <div style="font-size:1.8rem">🎓</div>
+        </div>
+        <div class="hero-stats">
+          <span>📚 <b id="statCourses">4</b> Mata Kuliah</span>
+          <span>📄 <b id="statTotal">36</b> Modul</span>
+          <span>✅ <b id="statDone">0</b> Selesai</span>
+        </div>
+        <div class="progress-track">
+          <div class="progress-fill" id="overallProgress" style="width:0%"></div>
+        </div>
+      </section>
+
+      <!-- Last Read Resume Banner -->
+      <div class="resume-banner hidden" id="resumeBanner" role="button" tabindex="0">
+        <div>
+          <small>Lanjutkan Belajar</small>
+          <strong id="resumeTitle">-</strong>
+        </div>
+        <span class="resume-pill">Buka →</span>
+      </div>
+
+      <!-- Search -->
+      <div class="search-wrap">
+        <span class="search-icon">🔍</span>
+        <input type="search" class="search-input" id="searchInput" placeholder="Cari modul, topik, rumus, atau kode MK...">
+      </div>
+
+      <!-- Dynamic Content Container -->
+      <div id="contentArea"></div>
+    </main>
+  </div>
+
+  <!-- Full-Screen Module Reader View -->
+  <div class="reader-shell" id="readerView">
+    <header class="topbar">
+      <button class="icon-btn" id="readerBackBtn" aria-label="Kembali">←</button>
+      <div class="brand-block">
+        <h1 class="brand-title" id="readerTitle">Memuat modul...</h1>
+        <p class="brand-sub" id="readerSub">-</p>
+      </div>
+      <div class="topbar-actions">
+        <div class="font-controls">
+          <button class="font-btn" id="fontDecBtn" title="Perkecil font">A-</button>
+          <button class="font-btn" id="fontIncBtn" title="Perbesar font">A+</button>
+        </div>
+        <button class="icon-btn" id="readerThemeBtn" aria-label="Ubah Tema">🌙</button>
+      </div>
+    </header>
+
+    <div class="reader-frame-wrap">
+      <iframe id="readerFrame" class="reader-frame" title="Konten Modul"></iframe>
+    </div>
+
+    <footer class="reader-bottom">
+      <button class="nav-btn" id="prevModBtn">← Prev</button>
+      <button class="nav-btn done-btn" id="toggleDoneBtn">✓ Tandai Selesai</button>
+      <button class="nav-btn" id="nextModBtn">Next →</button>
+    </footer>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>

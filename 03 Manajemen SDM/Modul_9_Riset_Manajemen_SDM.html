@@ -1,0 +1,541 @@
+<!DOCTYPE html>
+<html lang="id"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Modul 9 — Riset Manajemen Sumber Daya Manusia | EKMA5207</title>
+<script>window.MathJax={tex:{inlineMath:[['$','$']],displayMath:[['\\[','\\]'],['$$','$$']]},svg:{fontCache:'global'},startup:{typeset:true}};</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js" async></script>
+<style>
+:root{--bg:#f4f6f9;--panel:#fff;--ink:#1c2733;--muted:#5c6b7a;--line:#e4e9f0;--brand:#1a86c7;--brand-dark:#0f5e8f;--brand-soft:#e7f3fb;--kb1:#1a86c7;--kb2:#e08a1e;--kb3:#2a9d6f;--kb4:#7a5cc0;--kb5:#c75b7a;--radius:14px;--shadow:0 1px 2px rgba(16,42,67,.06),0 6px 20px rgba(16,42,67,.06);--maxw:900px}
+*{box-sizing:border-box}html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;line-height:1.72}
+#progress{position:fixed;top:0;left:0;height:4px;width:0;background:linear-gradient(90deg,var(--brand),#53c0ec);z-index:200;transition:width .1s}
+header.top{position:sticky;top:0;z-index:100;background:rgba(255,255,255,.92);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+.top-in{max-width:var(--maxw);margin:0 auto;padding:10px 20px;display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+.badge{background:var(--brand);color:#fff;font-weight:700;font-size:.72rem;letter-spacing:.5px;padding:4px 10px;border-radius:999px}
+.homebtn{text-decoration:none;display:inline-flex;align-items:center;gap:7px;background:var(--brand);color:#fff;font-weight:700;font-size:.8rem;padding:7px 15px;border-radius:999px;box-shadow:0 2px 6px rgba(16,42,67,.22);line-height:1}
+.top-title{font-size:.9rem;font-weight:600;color:var(--muted)}
+nav.jump{margin-left:auto;display:flex;gap:4px;flex-wrap:wrap}
+nav.jump a{font-size:.78rem;color:var(--muted);text-decoration:none;padding:5px 10px;border-radius:8px}
+nav.jump a:hover{background:var(--brand-soft);color:var(--brand-dark)}
+.wrap{max-width:var(--maxw);margin:0 auto;padding:0 20px 90px}
+.hero{margin-top:26px;padding:30px 28px;border-radius:var(--radius);color:#fff;background:linear-gradient(135deg,#0f5e8f,#1a86c7 60%,#2fa4df);box-shadow:var(--shadow);position:relative;overflow:hidden}
+.hero .eyebrow{font-size:.78rem;letter-spacing:1.5px;text-transform:uppercase;opacity:.9;font-weight:600}
+.hero h1{margin:.3em 0 .25em;font-size:1.62rem;line-height:1.25;max-width:92%}
+.hero .meta{display:flex;gap:18px;flex-wrap:wrap;font-size:.84rem;opacity:.95;margin-top:10px}
+h2.section{font-size:1.3rem;margin:48px 0 4px;display:flex;align-items:center;gap:10px;scroll-margin-top:70px}
+h2.section .dot{width:10px;height:22px;border-radius:4px;background:var(--brand)}
+.section-sub{color:var(--muted);font-size:.9rem;margin:0 0 18px}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);padding:22px 24px;margin:16px 0;--dot:var(--brand);overflow-x:clip;overflow-wrap:break-word;word-wrap:break-word}
+.concepts{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:minmax(0,1fr);gap:10px}
+.concepts li{display:flex;gap:12px;align-items:flex-start;padding:12px 14px;border:1px solid var(--line);border-radius:10px;background:#fcfdff;min-width:0;max-width:100%}
+.concepts li>span{min-width:0;max-width:100%;overflow-wrap:break-word;word-wrap:break-word}
+.concepts input{margin-top:4px;width:18px;height:18px;accent-color:var(--brand);flex:none;cursor:pointer}
+.concepts .ct{font-weight:600}.concepts .cd{display:block;font-weight:400;color:var(--muted);font-size:.86rem;margin-top:2px}
+.concepts li.done{background:var(--brand-soft);border-color:#bfe0f3}.concepts li.done .ct{text-decoration:line-through;opacity:.65}
+.cl-head{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-bottom:6px}
+.cl-head .count{font-size:.82rem;color:var(--muted);background:var(--brand-soft);padding:3px 10px;border-radius:999px;font-weight:600}
+.btn-reset{font-size:.78rem;border:1px solid var(--line);background:#fff;color:var(--muted);padding:5px 12px;border-radius:8px;cursor:pointer}
+.mm-toolbar{display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin-bottom:10px}
+.mm-btn{font-size:.78rem;border:1px solid var(--line);background:#fff;padding:6px 13px;border-radius:8px;cursor:pointer;color:var(--brand-dark);font-weight:600}
+.mindmap-host{height:580px;overflow:auto;border:1px solid var(--line);border-radius:10px;background:#fcfdff}.mindmap-host svg{display:block}
+.kb-tag{display:inline-flex;align-items:center;gap:8px;font-size:.78rem;font-weight:700;color:#fff;padding:5px 12px;border-radius:999px;margin-bottom:6px}
+.kb1t{background:var(--kb1)}.kb2t{background:var(--kb2)}.kb3t{background:var(--kb3)}.kb4t{background:var(--kb4)}.kb5t{background:var(--kb5)}
+.kb1b{--dot:var(--kb1)}.kb2b{--dot:var(--kb2)}.kb3b{--dot:var(--kb3)}.kb4b{--dot:var(--kb4)}.kb5b{--dot:var(--kb5)}
+.lead{font-size:1.02rem}.term{font-weight:700;color:var(--dot)}.en{font-style:italic;color:var(--muted);font-weight:500}
+.abc{display:flex;align-items:center;gap:10px;margin:28px 0 10px;padding-bottom:6px;border-bottom:2px solid color-mix(in srgb,var(--dot) 18%,#fff)}
+.abc .ltr{background:var(--dot);color:#fff;font-weight:800;min-width:30px;height:30px;padding:0 7px;border-radius:8px;display:grid;place-items:center;flex:none}
+.abc h4{margin:0;font-size:1.06rem;color:var(--dot)}
+.numh{font-weight:700;color:var(--dot);margin:22px 0 6px;font-size:1rem}
+.leth{font-weight:800;color:var(--dot);margin:16px 0 6px;font-size:.95rem;border-left:3px solid var(--dot);padding-left:10px}
+ol.book{margin:12px 0;padding-left:28px}ol.book>li{margin:10px 0;padding-left:6px}ol.book>li::marker{font-weight:700;color:var(--dot)}
+ul.exp{list-style:none;margin:12px 0;padding:0;display:grid;grid-template-columns:minmax(0,1fr);gap:10px}
+ul.exp>li{position:relative;padding-left:20px;min-width:0;max-width:100%;overflow-wrap:break-word;word-wrap:break-word}
+ul.exp>li::before{content:"";position:absolute;left:0;top:11px;width:8px;height:8px;border-radius:2px;background:var(--dot)}
+ul.let{list-style:lower-alpha;margin:10px 0;padding-left:28px}ul.let>li{margin:8px 0;padding-left:4px}ul.let>li::marker{color:var(--dot);font-weight:700}
+.flow{border-left:4px solid var(--dot);background:color-mix(in srgb,var(--dot) 9%,#fff);padding:11px 15px;border-radius:0 10px 10px 0;margin:18px 0;font-size:.9rem;min-width:0;max-width:100%;overflow-wrap:break-word;word-wrap:break-word}
+.flow::before{content:"🔗 Benang merah — ";font-weight:700;color:var(--dot)}.flow b{color:var(--dot)}
+.casebox{background:#f8fafc;border:1px solid var(--line);border-left:4px solid var(--dot);border-radius:0 10px 10px 0;padding:12px 15px;margin:14px 0;font-size:.88rem;min-width:0;max-width:100%;overflow-wrap:break-word;word-wrap:break-word}
+.casebox .ctitle{font-weight:700;color:var(--dot);margin-bottom:4px;display:block}
+.table-wrap{width:100%;overflow-x:auto;-webkit-overflow-scrolling:touch;margin:14px 0;border-radius:10px}
+table.mini{width:100%;border-collapse:collapse;margin:0;font-size:.86rem;table-layout:auto}
+table.mini th,table.mini td{border:1px solid var(--line);padding:10px 12px;text-align:left;vertical-align:top;overflow-wrap:break-word;word-wrap:break-word}
+table.mini th{background:color-mix(in srgb,var(--dot) 12%,#fff);color:var(--dot);font-weight:700}
+.rgrid{display:grid;gap:8px;margin:14px 0}.rgrid.c2{grid-template-columns:repeat(2,minmax(0,1fr))}.rgrid.c3{grid-template-columns:repeat(3,minmax(0,1fr))}.rgrid.c4{grid-template-columns:repeat(4,minmax(0,1fr))}
+.rcell{border:1px solid var(--line);border-radius:10px;padding:11px 13px;cursor:pointer;background:#fff;display:flex;gap:10px;align-items:flex-start;transition:.15s;min-width:0;max-width:100%}
+.rcell>span{min-width:0;max-width:100%;overflow-wrap:break-word;word-wrap:break-word}
+.rcell:hover{border-color:var(--dot);box-shadow:var(--shadow);transform:translateY(-2px)}
+.rcell.active{border-color:var(--dot);background:color-mix(in srgb,var(--dot) 8%,#fff)}
+.rcell .stepnum{background:var(--dot);color:#fff;font-weight:700;min-width:24px;height:24px;border-radius:7px;display:grid;place-items:center;flex:none;font-size:.82rem}
+.rcell .rt{font-weight:700;font-size:.9rem;color:var(--dot);display:block}.rcell .rp{font-size:.78rem;color:var(--muted);display:block;margin-top:2px}
+.rdetail{font-size:.88rem;border-left:4px solid var(--dot);background:color-mix(in srgb,var(--dot) 8%,#fff);border-radius:0 10px 10px 0;padding:12px 15px;margin-top:6px;min-width:0;max-width:100%;overflow-wrap:break-word;word-wrap:break-word}
+.diagram-box{border:1px solid var(--line);border-radius:12px;background:#fcfdff;padding:16px;margin:16px 0;text-align:center;min-width:0;max-width:100%}
+.diagram-cap{font-size:.8rem;color:var(--muted);margin-top:10px;font-weight:600}
+.flowchart{display:flex;align-items:center;gap:6px;flex-wrap:wrap;margin:12px 0;justify-content:center}
+.fc-node{background:color-mix(in srgb,var(--dot) 12%,#fff);border:1.5px solid var(--dot);color:var(--dot);font-weight:700;font-size:.8rem;padding:8px 12px;border-radius:9px;text-align:center;max-width:100%}
+.fc-arrow{color:var(--dot);font-weight:800;font-size:1.05rem}
+.eqbox{background:#fcfdff;border:1px solid var(--line);border-radius:10px;padding:10px 14px;margin:14px 0;overflow-x:auto}
+mjx-container{max-width:100%;overflow-x:auto;overflow-y:hidden}
+mjx-container:not([display="true"]){display:inline-block;vertical-align:middle}
+.acro-box{background:#f8fafc;border:1px solid var(--line);border-radius:10px;padding:12px 14px;margin:14px 0;font-size:.84rem;min-width:0;max-width:100%;overflow-wrap:break-word;word-wrap:break-word}
+.acro-title{font-weight:700;color:var(--dot);font-size:.86rem;margin-bottom:8px;display:block}
+.acro-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:6px 14px;margin:0;padding:0;list-style:none}
+.acro-grid li{min-width:0;line-height:1.5}.acro-grid b{color:var(--dot)}
+.fguide{background:color-mix(in srgb,var(--dot) 5%,#fff);border:1px solid color-mix(in srgb,var(--dot) 22%,#e4e9f0);border-radius:10px;padding:12px 15px;margin:-6px 0 16px;font-size:.86rem;min-width:0;max-width:100%;overflow-wrap:break-word;word-wrap:break-word}
+.fguide .fg-head{font-weight:700;color:var(--dot);font-size:.84rem;text-transform:uppercase;letter-spacing:.35px;margin:0 0 6px}
+.fguide ul{margin:4px 0 8px;padding-left:18px}.fguide ul li{margin:3px 0}
+.fguide .fg-core{border-top:1px dashed color-mix(in srgb,var(--dot) 30%,#cbd5e1);padding-top:8px;margin-top:8px;display:grid;grid-template-columns:minmax(0,1fr);gap:4px}
+.fguide .fg-core div{min-width:0}
+.glossary dt{font-weight:700;color:var(--brand-dark);margin-top:10px}.glossary dd{margin:0 0 2px;color:var(--muted);font-size:.9rem}
+footer{max-width:var(--maxw);margin:0 auto;padding:30px 20px 60px;color:var(--muted);font-size:.82rem;border-top:1px solid var(--line)}
+.offline-note{font-size:.76rem;color:var(--muted);background:#fff8e6;border:1px solid #f0e2b8;border-radius:8px;padding:8px 12px;margin:10px 0}
+@media(max-width:680px){
+  .table-wrap{overflow-x:visible}
+  table.mini,table.mini thead,table.mini tbody,table.mini th,table.mini td,table.mini tr{display:block;width:100%}
+  table.mini thead{display:none}
+  table.mini tr{margin-bottom:12px;border:1.5px solid color-mix(in srgb,var(--dot) 28%,#e4e9f0);border-radius:10px;background:#fff;overflow:hidden;box-shadow:0 1px 4px rgba(16,42,67,.05)}
+  table.mini td{border:none;border-bottom:1px solid var(--line);padding:10px 12px;text-align:left}
+  table.mini td:last-child{border-bottom:none}
+  table.mini td::before{content:attr(data-label);display:block;font-size:.74rem;font-weight:700;text-transform:uppercase;letter-spacing:.4px;color:var(--dot);margin-bottom:4px}
+}
+@media(max-width:640px){.hero h1{font-size:1.3rem;max-width:100%}nav.jump{display:none}.rgrid.c2,.rgrid.c3,.rgrid.c4,.acro-grid{grid-template-columns:minmax(0,1fr)}.mindmap-host{height:440px}}
+</style></head><body>
+<div id="progress"></div>
+<header class="top"><div class="top-in">
+  <span class="badge">MODUL 9</span>
+  <a class="homebtn" href="index.html" title="Kembali ke daftar modul"><span style="font-size:1rem;line-height:1">&#8962;</span> Daftar Modul</a>
+  <span class="top-title">Manajemen Sumber Daya Manusia · EKMA5207</span>
+  <nav class="jump"><a href="#konsep">Konsep</a><a href="#peta">Peta Konsep</a><a href="#kb1">KB1</a><a href="#kb2">KB2</a><a href="#kb3">KB3</a><a href="#glosarium">Glosarium</a></nav>
+</div></header>
+
+<div class="wrap">
+  <section class="hero"><div class="eyebrow">Ringkasan Belajar Lengkap · EKMA5207 Edisi 3</div>
+  <h1>Riset Manajemen Sumber Daya Manusia</h1>
+  <div class="meta"><span>📚 3 Kegiatan Belajar (KB 1: A–G · KB 2: A–B · KB 3: A–C)</span><span>📖 Hal. 9.1–9.37</span><span>✍️ Prof. Dr. Mutiara Sibarani Panggabean, S.E., M.E.</span></div></section>
+
+  <p class="section-sub" style="margin-top:22px">Ringkasan komprehensif mengikuti urutan dan struktur outline asli buku tanpa penggabungan sub-bab: <b>KB 1 Proses Penelitian</b> (Bagian A–G), <b>KB 2 Teknik Pengumpulan Data</b> (Bagian A–B beserta 7 sub-bahasan utuh), dan <b>KB 3 Teknik Analisis Data</b> (Bagian A–C).</p>
+  <p class="offline-note">ℹ️ Peta konsep, kartu penjelasan interaktif, tabel responsif, dan daftar cek konsep berjalan penuh tanpa internet. Koneksi internet hanya diperlukan untuk merender persamaan matematika (MathJax).</p>
+
+  <!-- PENDAHULUAN MODUL -->
+  <div class="card">
+    <div class="abc" style="margin-top:0"><span class="ltr">★</span><h4>Pendahuluan Modul — Mengapa Riset MSDM &amp; Perilaku Organisasi Saling Melengkapi?</h4></div>
+    <p>Riset di bidang Manajemen Sumber Daya Manusia (MSDM) pada dasarnya ditujukan untuk <b>menganalisis dampak perlakuan manajemen (dari rekrutmen, seleksi, penempatan, pelatihan/pengembangan, penilaian prestasi, kompensasi, hingga PHK) terhadap sikap dan perilaku karyawan di tempat kerja</b> (hal. 9.3–9.4):</p>
+    <ul class="exp">
+      <li><b>Sinergi MSDM dan Perilaku Organisasi:</b> Selain praktik MSDM, peneliti turut menelaah <i>karakteristik individual, karakteristik pekerjaan, dan karakteristik organisasi</i> (<b>Panggabean, 2004</b>) serta faktor individual, kelompok, dan organisasional (<b>Robbins &amp; Judge, 2009; George &amp; Jones, 2008</b>). Keduanya saling melengkapi—terlihat dari topik irisan seperti komunikasi, kepemimpinan, motivasi, konflik, stres, pengambilan keputusan, pengembangan organisasi (<b>Go et al., 1996</b>), dan budaya organisasi (<b>Nickson, 2007</b>).</li>
+      <li><b>Bukti Pentingnya Meneliti Perilaku Karyawan (Melcher, 1976):</b> Dua organisasi yang berada di lingkungan sama, memakai teknologi sama, dan memiliki karyawan berketerampilan serupa tetap bisa berbeda keberhasilannya semata karena perbedaan perilaku karyawannya—yang sangat dipengaruhi cara manajemen memperlakukan mereka (contoh: riset rekrutmen menemukan sarana rekrutmen terbaik, riset K3 melacak penyebab kecelakaan, riset kompensasi merancang sistem gaji berkeadilan).</li>
+    </ul>
+    <div class="flow"><b>Alur logis Modul 9:</b> <b>KB 1 (Proses Penelitian)</b> memetakan siklus ilmiah, metode, jenis penelitian, 4 variabel, hipotesis, uji validitas/reliabilitas, dan 4 skala pengukuran → <b>KB 2 (Teknik Pengumpulan Data)</b> membahas data primer/sekunder, penentuan jumlah sampel (Rumus Slovin, Tabel Sekaran, aturan Roscoe), dan teknik sampling → <b>KB 3 (Teknik Analisis Data)</b> menguraikan tahapan analisis, prosedur statistik (univariate/bivariate/multivariate), dan format laporan akhir 6 bab.</div>
+  </div>
+
+  <!-- KONSEP PENTING -->
+  <h2 class="section" id="konsep"><span class="dot"></span>Konsep Penting yang Harus Dikuasai</h2>
+  <div class="card"><div class="cl-head"><span class="count"><span id="doneCount">0</span>/<span id="totalCount">0</span> dikuasai</span><button class="btn-reset" id="resetBtn">Reset centang</button></div>
+  <ul class="concepts" id="conceptList">
+    <li><input type="checkbox"><span><span class="ct">Siklus Penelitian Ilmiah (4 Langkah) &amp; 7 Langkah Rinci Penelitian</span><span class="cd">Observasi → Induksi → Deduksi → Verifikasi (siklus berulang bila hipotesis tak terbukti; contoh 150 perawat RS) serta 7 langkah rinci penelitian.</span></span></li>
+    <li><input type="checkbox"><span><span class="ct">5 Manfaat Memahami Metode Penelitian &amp; 4 Cakupan Metode MSDM</span><span class="cd">Mempelajari perilaku kerja, memecahkan masalah, memanfaatkan riset lain, mengevaluasi konsultan, dan menguji teori MSDM.</span></span></li>
+    <li><input type="checkbox"><span><span class="ct">Klasifikasi Jenis Penelitian (Tujuan, Proses, Dasar vs Terapan, &amp; Survei vs Sensus)</span><span class="cd">Eksploratif, deskriptif, analitik, prediktif; kuantitatif vs kualitatif; basic vs applied research (Sekaran, 2000); penelitian survei (7 maksud) vs sensus.</span></span></li>
+    <li><input type="checkbox"><span><span class="ct">4 Jenis Variabel Penelitian Menurut Fungsinya (DV, IV, MV, InV)</span><span class="cd">Dependent, Independent, Moderating (memodifikasi pengaruh IV→DV, mis. usia), dan Intervening (perantara tak langsung, mis. niat pindah kerja — Castle et al., 2007).</span></span></li>
+    <li><input type="checkbox"><span><span class="ct">Perumusan Hipotesis (3 Bentuk) &amp; Makna Hipotesis Tidak Terbukti</span><span class="cd">Bentuk jika–maka, directional (semakin besar–semakin tinggi), dan non-directional; hipotesis tak terbukti mendorong lahirnya teori/metodologi baru.</span></span></li>
+    <li><input type="checkbox"><span><span class="ct">Definisi Operasional &amp; Uji Kualitas Data (Validitas &amp; Reliabilitas)</span><span class="cd">Kuesioner kepuasan kerja (Boles et al. 2007; Comer 1989); validitas via korelasi product moment (Sig. &lt; 0,05); reliabilitas via Cronbach's Alpha ≥ 0,7 (Sekaran, 2000).</span></span></li>
+    <li><input type="checkbox"><span><span class="ct">4 Tingkat / Skala Pengukuran Variabel</span><span class="cd">Nominal (label/frekuensi), Ordinal (kategori &amp; ranking), Interval (kategori, preferensi, jarak — skala 1–7 atau genap), dan Rasio (mempunyai nol mutlak).</span></span></li>
+    <li><input type="checkbox"><span><span class="ct">Pengertian Data, 3 Teknik Pengumpulan, Setting Data, &amp; Data Primer vs Sekunder</span><span class="cd">Wawancara, kuesioner, observasi; setting lapangan hingga jaringan komputer; kelebihan &amp; kelemahan data primer vs data sekunder.</span></span></li>
+    <li><input type="checkbox"><span><span class="ct">3 Alasan Memakai Sampel &amp; Penentuan Jumlah Sampel dengan Rumus Slovin</span><span class="cd">Hemat waktu/biaya, kesalahan lebih kecil, pengujian merusak; Rumus Slovin n = N / (1 + N e²) beserta contoh N = 3.057, e = 5% → n = 354.</span></span></li>
+    <li><input type="checkbox"><span><span class="ct">Tabel Uma Sekaran (2000:295), Singarimbun &amp; Effendi, serta 4 Aturan Roscoe (1975)</span><span class="cd">Tabel N→n (10→10 s.d. ≥100.000→384); korelasi/perbandingan min. 30 per sel; Roscoe: 30 &lt; n &lt; 500, min. 30/subkategori, multivariat, eksperimen ketat 10–20.</span></span></li>
+    <li><input type="checkbox"><span><span class="ct">Teknik Pengambilan Sampel: Probability (5 Metode) vs Nonprobability (3 Metode)</span><span class="cd">Simple random, systematic, stratified, single/multistage cluster, area sampling vs convenience, judgement, dan quota sampling (probabilistik untuk generalisasi).</span></span></li>
+    <li><input type="checkbox"><span><span class="ct">3 Tahapan Analisis Data &amp; Klasifikasi Univariate / Bivariate / Multivariate</span><span class="cd">Penyiapan data (deskriptif), uji kualitas data (validitas/reliabilitas), dan uji hipotesis kerja (Ha); pemilihan alat berdasarkan tujuan dan jumlah variabel.</span></span></li>
+    <li><input type="checkbox"><span><span class="ct">Prosedur Univariate (Kontinyu Parametrik/Nonparametrik vs Diskrit) &amp; Tabel Frekuensi</span><span class="cd">Uji normalitas → One-Sample t, Independent Samples t, Paired Sample t vs Nonparametrik; Diskrit → One/Two Proportion &amp; Chi-Square; tabel frekuensi.</span></span></li>
+    <li><input type="checkbox"><span><span class="ct">Contoh Pengujian Hipotesis: One-Sample t-Test &amp; Independent Samples t-Test</span><span class="cd">Uji rata-rata NEM SMU "X" &gt; 50 (t = 5,600; Sig. = 0,000 &lt; 0,05 → unggul) serta uji beda IPK siswa laki-laki vs perempuan.</span></span></li>
+    <li><input type="checkbox"><span><span class="ct">Format Laporan Akhir Penelitian (6 Bagian Utama)</span><span class="cd">Abstrak (+ keywords), Pendahuluan, Kerangka Teoritis (+ hipotesis), Metodologi, Hasil Analisis &amp; Pembahasan (3 unsur), serta Simpulan &amp; Saran (+ keterbatasan).</span></span></li>
+  </ul></div>
+
+  <!-- PETA KONSEP -->
+  <h2 class="section" id="peta"><span class="dot"></span>Peta Konsep (Mind Map)</h2>
+  <div class="card"><div class="mm-toolbar"><button class="mm-btn" id="mmExpand">Perluas semua</button><button class="mm-btn" id="mmCollapse">Ciutkan</button><span style="font-size:.76rem;color:var(--muted)">Klik simpul (+) atau (–) untuk membuka/menutup cabang · Gulir untuk menggeser</span></div><div class="mindmap-host" id="mindmap"></div></div>
+
+  <!-- ==================== KB 1 ==================== -->
+  <h2 class="section" id="kb1"><span class="dot" style="background:var(--kb1)"></span>KB 1 — Proses Penelitian</h2>
+  <div class="card kb1b"><span class="kb-tag kb1t">KB 1 · Hal. 9.6–9.22</span>
+    <p class="lead">Penelitian merupakan sarana sistematis memperoleh informasi guna memecahkan masalah aktual di unit, lembaga, atau industri tertentu. Karena masalah berbeda lintas waktu dan organisasi, penelitian yang sama dapat diulang di tempat/waktu berbeda, dan penelitian berbeda terus dilakukan di organisasi yang sama.</p>
+
+    <div class="acro-box"><span class="acro-title">📖 Kamus Konteks Singkatan &amp; Akronim KB 1</span>
+      <ul class="acro-grid">
+        <li><b>DV</b>: <i>Dependent Variable</i> (variabel terikat) — variabel utama yang dipengaruhi oleh variabel lain dan menjadi fokus masalah penelitian.</li>
+        <li><b>IV</b>: <i>Independent Variable</i> (variabel bebas) — variabel yang memengaruhi DV secara positif atau negatif.</li>
+        <li><b>MV</b>: <i>Moderating Variable</i> (variabel moderator/pengganggu) — variabel penjelas yang memodifikasi/membatasi pengaruh IV terhadap DV.</li>
+        <li><b>InV</b>: <i>Intervening Variable</i> (variabel perantara) — variabel di antara IV dan DV yang menjadikan pengaruh IV→DV bersifat tidak langsung.</li>
+      </ul>
+    </div>
+
+    <!-- KB1 A -->
+    <div class="abc"><span class="ltr">A</span><h4>Arti Pentingnya Penelitian</h4></div>
+    <p><span class="term">Penelitian ilmiah</span> adalah proses yang ditujukan untuk memperoleh informasi guna memecahkan masalah. Sebagai sebuah <i>proses</i>, penelitian terdiri atas serangkaian kegiatan yang dilaksanakan secara <b>sistematis</b> dan <b>berurutan</b> sesuai kaidah ilmiah.</p>
+
+    <!-- KB1 B -->
+    <div class="abc"><span class="ltr">B</span><h4>Proses Penelitian</h4></div>
+    <p>Secara ilmiah, penelitian berjalan dalam siklus <b>empat langkah pokok</b> yang dapat berulang bila prediksi belum terbukti akurat:</p>
+    <div class="diagram-box">
+      <div class="flowchart">
+        <span class="fc-node">1. Observasi<br><small style="font-weight:400">Amati fenomena/masalah (Latar Belakang)</small></span>
+        <span class="fc-arrow">→</span>
+        <span class="fc-node">2. Induksi<br><small style="font-weight:400">Kenali penyebab dari riset terdahulu</small></span>
+        <span class="fc-arrow">→</span>
+        <span class="fc-node">3. Deduksi<br><small style="font-weight:400">Buat prediksi khusus (Hipotesis)</small></span>
+        <span class="fc-arrow">→</span>
+        <span class="fc-node" style="background:var(--dot);color:#fff">4. Verifikasi<br><small style="font-weight:400;opacity:.92">Uji empiris (siklus ulang jika tak terbukti)</small></span>
+      </div>
+      <div class="diagram-cap">Reproduksi Diagram Proses Penelitian (Hal. 9.8)</div>
+    </div>
+    <ul class="exp">
+      <li><b>Ilustrasi Siklus di Buku (Hal. 9.7–9.8):</b> Peneliti mengobservasi tingginya tingkat absensi di satu bagian perusahaan (<i>observasi</i>) → menelaah riset terdahulu hingga menemukan penjelasan umum bahwa absensi dipicu ketidakpuasan kerja dan beban tanggung jawab pribadi, lalu membatasi masalah &amp; tujuan (<i>induksi</i>) → merumuskan prediksi bahwa perawat tidak puas yang memiliki anak lebih sering absen dibanding perawat puas tanpa anak (<i>deduksi</i>) → menyebarkan kuesioner kepada <b>150 perawat</b> di rumah sakit besar dan mencocokkan catatan kehadiran setahun terakhir (<i>verifikasi</i>).</li>
+    </ul>
+
+    <div class="numh">Tujuh Langkah Rinci Penelitian (Hal. 9.9)</div>
+    <ol class="book">
+      <li>Perumusan masalah penelitian dan penentuan tujuan penelitian.</li>
+      <li>Penentuan konsep.</li>
+      <li>Peninjauan kepustakaan untuk memahami konsep dan hasil penelitian terdahulu sebagai dasar perumusan hipotesis.</li>
+      <li>Metode penelitian — mencakup (1) jenis-jenis penelitian, (2) pengukuran dan skala pengukuran variabel, (3) teknik penentuan jumlah &amp; pengambilan sampel, dan (4) teknik analisis.</li>
+      <li>Pekerjaan lapangan (termasuk memilih dan melatih pewawancara).</li>
+      <li>Pengolahan data.</li>
+      <li>Analisis data dan pelaporan.</li>
+    </ol>
+
+    <!-- KB1 C -->
+    <div class="abc"><span class="ltr">C</span><h4>Metode Penelitian</h4></div>
+    <p><span class="term">Metode penelitian</span> adalah seperangkat teknik untuk memperoleh pengetahuan tentang fenomena yang diminati—dalam MSDM, teknik untuk menganalisis dampak perlakuan terhadap sikap dan perilaku karyawan berdasarkan karakteristik individu, pekerjaan, dan organisasi. Memahami metode penelitian memberi <b>lima manfaat</b>: (1) mempelajari faktor penentu sikap &amp; perilaku kerja, (2) memecahkan masalah organisasi &amp; meningkatkan kinerja, (3) memanfaatkan temuan riset pihak lain, (4) mengevaluasi nasihat/rekomendasi konsultan secara tepat, dan (5) mengevaluasi berbagai teori MSDM. Uraian metode mencakup <b>4 hal</b>: jenis penelitian, jenis variabel, pengukuran/skala, serta teknik pengumpulan &amp; analisis data.</p>
+
+    <div class="flow">Setelah memahami siklus dan peran metode penelitian pada Bagian B–C, <b>Bagian D</b> memetakan berbagai jenis penelitian bisnis dan MSDM.</div>
+
+    <!-- KB1 D -->
+    <div class="abc"><span class="ltr">D</span><h4>Jenis-Jenis Penelitian</h4></div>
+    <div class="numh">1. Jenis Penelitian Berdasarkan Tujuan (4 Jenis)</div>
+    <div class="rgrid c2" data-revealgroup>
+      <div class="rcell active" data-reveal data-detail="<b>a. Penelitian Eksploratif:</b> Bertujuan memahami masalah/keadaan lebih baik karena riset serupa belum banyak dilakukan dan peneliti belum punya informasi pemecahan masa lalu. <b>Tanpa hipotesis.</b>"><span class="stepnum">1</span><span><span class="rt">Eksploratif</span><span class="rp">Pahami masalah baru · tanpa hipotesis</span></span></div>
+      <div class="rcell" data-reveal data-detail="<b>b. Penelitian Deskriptif:</b> Menjelaskan secara sistematik dan akurat fakta/karakteristik fenomena (individu, organisasi, industri). <b>3 ciri:</b> menjelaskan situasi/kejadian, akumulasi data dasar, dan <i>tidak</i> menjelaskan hubungan, uji hipotesis, prediksi, maupun implikasi."><span class="stepnum">2</span><span><span class="rt">Deskriptif</span><span class="rp">Pemaparan fakta sistematis</span></span></div>
+      <div class="rcell" data-reveal data-detail="<b>c. Penelitian Analitik:</b> Kelanjutan penelitian deskriptif yang tidak sekadar memaparkan karakteristik, melainkan juga menganalisis dan menjelaskan <b>mengapa</b> dan <b>bagaimana</b> fenomena terjadi."><span class="stepnum">3</span><span><span class="rt">Analitik</span><span class="rp">Jelaskan mengapa &amp; bagaimana</span></span></div>
+      <div class="rcell" data-reveal data-detail="<b>d. Penelitian Prediktif:</b> Bertujuan memprediksi/meramalkan fenomena tertentu berdasarkan hubungan umum yang telah diduga sebelumnya."><span class="stepnum">4</span><span><span class="rt">Prediktif</span><span class="rp">Ramalkan fenomena</span></span></div>
+    </div>
+    <div class="rdetail" data-revealdetail><b>a. Penelitian Eksploratif:</b> Bertujuan memahami masalah/keadaan lebih baik karena riset serupa belum banyak dilakukan dan peneliti belum punya informasi pemecahan masa lalu. <b>Tanpa hipotesis.</b></div>
+
+    <div class="numh">2. Berdasarkan Proses, Penelitian Dasar vs Terapan (Sekaran, 2000), &amp; Penelitian Survei</div>
+    <ul class="exp">
+      <li><b>Kuantitatif vs Kualitatif (Berdasarkan Proses):</b> <i>Kuantitatif</i> bersifat objektif dengan pengumpulan/analisis data angka dan pengujian statistik; <i>kualitatif</i> bersifat subjektif dengan penelaahan persepsi untuk memahami kondisi sosial dan kemanusiaan.</li>
+      <li><b>Penelitian Terapan vs Penelitian Dasar (Sekaran, 2000):</b> <b>Penelitian terapan (<span class="en">applied research</span>)</b> memecahkan masalah aktual perusahaan yang menuntut solusi tepat waktu (<i>contoh:</i> manajer mencari penyebab prestasi produksi lebih rendah dari pemasaran untuk perbaikan segera). <b>Penelitian dasar (<span class="en">basic/fundamental/pure research</span>)</b> menghasilkan ilmu pengetahuan umum (<i>contoh:</i> dosen meneliti penyebab absensi lintas universitas—jam tak fleksibel, pelatihan tak sesuai, semangat rendah—yang kelak dapat dipakai manajer).</li>
+      <li><b>Penelitian Survei vs Sensus (Singarimbun &amp; Effendi, 1989):</b> Dari 5 jenis riset (survei, eksperimen, <i>grounded research</i>, kombinasi kuantitatif–kualitatif, analisis data sekunder), MSDM paling sering memakai <b>penelitian survei</b> (menggunakan kuesioner terhadap <i>sampel</i> populasi; bila seluruh anggota populasi diteliti disebut <b>sensus</b>). Survei melayani <b>7 maksud</b>: (1) penjajakan/eksploratif, (2) deskriptif, (3) penjelasan (<i>explanatory/confirmatory</i> — uji kausal &amp; hipotesis), (4) evaluasi, (5) prediksi, (6) penelitian operasional, dan (7) pengembangan indikator sosial.</li>
+    </ul>
+
+    <!-- KB1 E -->
+    <div class="abc"><span class="ltr">E</span><h4>Jenis-Jenis Variabel Penelitian</h4></div>
+    <p><span class="term">Variabel</span> adalah konstruk atau konsep yang memiliki variasi nilai. Menurut fungsinya terbagi menjadi <b>empat jenis</b> (dengan contoh riset <b>Castle et al., 2007</b> pada hal. 9.13):</p>
+    <div class="table-wrap">
+      <table class="mini">
+        <thead><tr><th style="width:24%">Jenis Variabel</th><th style="width:38%">Fungsi &amp; Pengertian</th><th>Contoh Hipotesis &amp; Alur Diagram di Buku</th></tr></thead>
+        <tbody>
+          <tr><td data-label="Jenis Variabel"><b>1. Dependent Variable (DV)</b></td><td data-label="Fungsi &amp; Pengertian">Variabel terikat yang dipengaruhi oleh variabel lain (menjadi fokus masalah utama).</td><td data-label="Contoh &amp; Diagram">Niat pindah kerja atau pindah kerja aktual.</td></tr>
+          <tr><td data-label="Jenis Variabel"><b>2. Independent Variable (IV)</b></td><td data-label="Fungsi &amp; Pengertian">Variabel bebas yang memengaruhi DV secara positif atau negatif.</td><td data-label="Contoh &amp; Diagram"><b>H1:</b> Kepuasan kerja (IV) berpengaruh signifikan negatif terhadap niat pindah kerja (DV).<br><code>Kepuasan Kerja (IV) → Niat Pindah Kerja (DV)</code></td></tr>
+          <tr><td data-label="Jenis Variabel"><b>3. Moderating Variable (MV)</b></td><td data-label="Fungsi &amp; Pengertian">Variabel pengganggu/penjelas yang memodifikasi atau membatasi kuat-lemahnya pengaruh IV terhadap DV (tidak dipengaruhi variabel lain).</td><td data-label="Contoh &amp; Diagram"><b>H2:</b> Pengaruh ketidakpuasan terhadap niat pindah kerja lebih besar pada usia muda dibanding usia tua.<br><code>Kepuasan Kerja (IV) —[Usia (MV)]→ Niat Pindah Kerja (DV)</code></td></tr>
+          <tr><td data-label="Jenis Variabel"><b>4. Intervening Variable (InV)</b></td><td data-label="Fungsi &amp; Pengertian">Variabel perantara di antara IV dan DV yang menjadikan pengaruh IV terhadap DV bersifat tidak langsung.</td><td data-label="Contoh &amp; Diagram"><b>Hipotesis:</b> Kepuasan kerja (IV) berpengaruh negatif signifikan terhadap pindah kerja (DV) melalui niat pindah kerja (InV).<br><code>Kepuasan Kerja (IV) → Niat Pindah Kerja (InV) → Pindah Kerja (DV)</code></td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- KB1 F -->
+    <div class="abc"><span class="ltr">F</span><h4>Perumusan Hipotesis</h4></div>
+    <p><span class="term">Hipotesis</span> adalah jawaban sementara terhadap masalah penelitian yang menghubungkan dua variabel atau lebih (dirumuskan dari riset terdahulu) dan wajib diuji secara empiris. Dinyatakan dalam <b>tiga bentuk</b>:</p>
+    <ol class="book">
+      <li><b>Bentuk Jika–Maka:</b> <i>"Jika karyawan lebih puas, maka prestasi kerjanya akan lebih baik."</i></li>
+      <li><b>Bentuk <i>Directional</i> (Berarah):</b> <i>"Semakin besar kepuasan kerja karyawan, semakin tinggi prestasi kerjanya."</i></li>
+      <li><b>Bentuk <i>Non-Directional</i> (Tak Berarah):</b> <i>"Kepuasan kerja karyawan berpengaruh terhadap prestasi kerja."</i></li>
+    </ol>
+    <p>Jika hipotesis <b>tidak terbukti</b> secara empiris, hal itu bukan kegagalan sia-sia melainkan pemicu lahirnya pemikiran, teori, atau metodologi baru yang memajukan ilmu pengetahuan.</p>
+
+    <!-- KB1 G -->
+    <div class="abc"><span class="ltr">G</span><h4>Pengukuran, Uji Instrumen, dan Tingkat Pengukuran Variabel</h4></div>
+    <ol class="book">
+      <li><b>Pengukuran &amp; Definisi Operasional:</b> <b>Definisi operasional</b> adalah petunjuk pelaksanaan cara mengukur variabel (Singarimbun &amp; Effendi, 1989). <i>Contoh buku:</i> riset <b>Boles et al. (2007)</b> tentang kepuasan kerja terhadap komitmen afektif memakai kuesioner <b>Comer et al. (1989) &amp; Lagace et al. (1993)</b> dengan 7 dimensi kepuasan tenaga penjual (pelanggan, promosi, penggajian, kebijakan, pekerjaan, pengawas, rekan)—di mana dimensi kepuasan terhadap pekerjaan diukur dengan 4 pernyataan (a–d).</li>
+      <li><b>Uji Kualitas Data (Uji Instrumen Kuesioner):</b> Wajib dilakukan untuk variabel kualitatif berdimensi/berindikator:
+        <ul class="exp" style="margin-top:6px">
+          <li><b>a) Pengujian Validitas:</b> Menguji apakah instrumen benar-benar mengukur apa yang hendak diukur (Singarimbun &amp; Effendi, 1995:122) memakai korelasi <b><i>product moment</i></b> tiap indikator terhadap skor total. <b>Kriteria:</b> $\text{Sig.} < 0{,}05$ = <b>valid</b>; $\text{Sig.} > 0{,}05$ = <b>tidak valid</b> (contoh buku hal. 9.16–9.17: kepuasan mahasiswa dengan $X_1$ kualitas dosen, $X_2$ administrasi, $X_3$ fasilitas, $N=20$; indikator tak valid dibuang pada perbaikan uji validitas).</li>
+          <li><b>b) Pengujian Reliabilitas:</b> Menguji konsistensi/keterpercayaan alat ukur bila diulang dua kali atau lebih (Singarimbun &amp; Effendi, 1995:122,140) dengan melihat <b>koefisien <i>Cronbach's Alpha</i></b>. Menurut <b>Sekaran (2000:312)</b>, instrumen dinilai <i>acceptable</i> bila $\text{Cronbach's Alpha} \ge 0{,}7$.</li>
+        </ul>
+      </li>
+      <li><b>Tingkat Pengukuran (4 Skala Pengukuran):</b>
+        <div class="table-wrap" style="margin-top:8px">
+          <table class="mini">
+            <thead><tr><th style="width:18%">Skala</th><th style="width:42%">Sifat &amp; Informasi yang Dihasilkan</th><th>Contoh di Buku (Hal. 9.18–9.19)</th></tr></thead>
+            <tbody>
+              <tr><td data-label="Skala"><b>1. Nominal</b></td><td data-label="Sifat &amp; Informasi">Sekadar label/kode kategori (angka tak bisa dibandingkan besar-kecilnya); menghasilkan frekuensi dan persentase.</td><td data-label="Contoh di Buku">Gender (1 = pria, 2 = wanita; survei 200 orang: 98 pria 49%, 103 wanita 51%); suku bangsa (1 = Batak s.d. 5 = Padang).</td></tr>
+              <tr><td data-label="Skala"><b>2. Ordinal</b></td><td data-label="Sifat &amp; Informasi">Menyatakan kategori sekaligus <b>urutan/ranking preferensi</b>, tanpa nilai jarak absolut.</td><td data-label="Contoh di Buku">Meranking 1–5 karakteristik pekerjaan terpenting (interaksi, variasi keterampilan, identitas tugas, keberartian, otonomi — Sekaran, 2000).</td></tr>
+              <tr><td data-label="Skala"><b>3. Interval</b></td><td data-label="Sifat &amp; Informasi">Menyatakan kategori, preferensi, dan <b>jarak</b> yang sama. Pilihan angka genap sering dipakai agar responden tidak memilih titik tengah ("ragu-ragu").</td><td data-label="Contoh di Buku">Skala 1 (sangat kecil) s.d. 7 (sangat besar) dengan 4 = ragu-ragu; atau skala genap 1, 2, 4, 5.</td></tr>
+              <tr><td data-label="Skala"><b>4. Rasio</b></td><td data-label="Sifat &amp; Informasi">Menyatakan kategori, preferensi, jarak, proporsi, serta memiliki <b>nol mutlak</b>.</td><td data-label="Contoh di Buku">Nilai mata uang, jumlah tenaga kerja.</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </li>
+    </ol>
+
+    <div class="casebox"><span class="ctitle">Kasus Buku KB 1 (Hal. 9.21–9.22) · Sebuah Proposal Penelitian (Kepemimpinan Paternalistik &amp; Komitmen)</span>
+      Disajikan tinjauan pustaka mengenai <b>gaya kepemimpinan paternalistik</b> (Majluf &amp; Rodriguez, 2004) yang berpengaruh positif terhadap <b>iklim etika</b> (Trevino et al., 1998), iklim etika memengaruhi positif <b>komitmen organisasi</b> (Rodriguez, 2007) yang terdiri dari 3 dimensi—<i>komitmen afektif, berlanjut, dan normatif</i> (Allen &amp; Meyer, 1997)—serta kepemimpinan paternalistik memengaruhi komitmen organisasi (Avolio, 2010; Jung Kyu, 2010). Mahasiswa diminta menyusun rumusan masalah (1 kalimat tanya), tujuan &amp; manfaat, identifikasi variabel (IV, InV, DV), hipotesis beserta diagram, dan alat ukurnya.
+    </div>
+
+    <div class="flow">Setelah rancangan penelitian, variabel, hipotesis, dan skala pengukuran siap di KB 1, <b>KB 2: Teknik Pengumpulan Data</b> menguraikan sumber data, penentuan jumlah sampel, dan metode sampling.</div>
+  </div>
+
+  <!-- ==================== KB 2 ==================== -->
+  <h2 class="section" id="kb2"><span class="dot" style="background:var(--kb2)"></span>KB 2 — Teknik Pengumpulan Data</h2>
+  <div class="card kb2b"><span class="kb-tag kb2t">KB 2 · Hal. 9.23–9.29</span>
+    <p class="lead">Tidak semua data yang dibutuhkan riset MSDM tersedia siap pakai dalam laporan perusahaan, sehingga peneliti wajib memahami cara mengumpulkan data, menentukan jumlah sampel yang representatif, dan memilih teknik pengambilan sampel yang tepat.</p>
+
+    <div class="acro-box"><span class="acro-title">📖 Kamus Konteks Simbol &amp; Istilah Kunci KB 2</span>
+      <ul class="acro-grid">
+        <li><b>$N$ dan $n$</b>: $N$ = jumlah keseluruhan populasi; $n$ = jumlah sampel yang diambil untuk mewakili populasi.</li>
+        <li><b>$e$</b>: Persentase kelonggaran/tingkat kesalahan pengambilan sampel yang masih dapat ditoleransi dalam Rumus Slovin (mis. 5% = 0,05).</li>
+        <li><b>Probability Sampling</b>: Pengambilan sampel acak di mana setiap anggota populasi punya peluang terpilih; hasilnya dapat digeneralisasi.</li>
+        <li><b>Nonprobability Sampling</b>: Pengambilan sampel tidak acak berdasarkan pertimbangan tertentu (<i>convenience, judgement, quota</i>).</li>
+      </ul>
+    </div>
+
+    <!-- KB2 A -->
+    <div class="abc"><span class="ltr">A</span><h4>Arti Pentingnya Data</h4></div>
+    <p><span class="term">Data</span> berasal dari kata <i>datum</i> yang berarti materi atau kumpulan fakta yang dipakai untuk analisis, diskusi, atau presentasi; setelah diolah, data menjadi <b>informasi</b> untuk memecahkan masalah. Penelitian tidak dapat berjalan tanpa data yang dikumpulkan melalui wawancara, kuesioner, maupun pengamatan.</p>
+
+    <!-- KB2 B -->
+    <div class="abc"><span class="ltr">B</span><h4>Teknik Pengumpulan, Setting, Sumber Data, &amp; Sampling (1–7)</h4></div>
+
+    <div class="numh">1. Teknik Pengumpulan Data &amp; 2. Setting Data</div>
+    <ul class="exp">
+      <li><b>3 Teknik Pengumpulan Data:</b> (1) <b>Wawancara</b> (tatap muka, telepon, media elektronik), (2) <b>Kuesioner</b> (diadministrasikan pribadi, dikirim via pos, atau elektronik), dan (3) <b>Pengamatan/Observasi</b> (mengamati individu/kejadian dengan atau tanpa alat perekam).</li>
+      <li><b>Setting Data:</b> Dapat dilakukan di lingkungan sebenarnya (lapangan), laboratorium, rumah responden, tengah jalan, pusat pertokoan, atau melalui jaringan lokal komputer.</li>
+    </ul>
+
+    <div class="numh">3. Sumber Data (Primer vs Sekunder)</div>
+    <div class="table-wrap">
+      <table class="mini">
+        <thead><tr><th style="width:20%">Sumber Data</th><th style="width:28%">Asal</th><th style="width:26%">Kelebihan</th><th>Kelemahan</th></tr></thead>
+        <tbody>
+          <tr><td data-label="Sumber Data"><b>Data Primer</b></td><td data-label="Asal">Sumber asli, dikumpulkan khusus untuk riset.</td><td data-label="Kelebihan">Data persis sesuai keinginan &amp; kebutuhan peneliti.</td><td data-label="Kelemahan">Lebih mahal, lama, dan kurang praktis dibanding data sekunder.</td></tr>
+          <tr><td data-label="Sumber Data"><b>Data Sekunder</b></td><td data-label="Asal">Dikumpulkan pihak lain (internal/eksternal organisasi).</td><td data-label="Kelebihan">Lebih cepat dan lebih murah.</td><td data-label="Kelemahan">Bergantung ketersediaan; mungkin tak sesuai kebutuhan atau sudah tak relevan lagi.</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="numh">4. Teknik Penentuan Jumlah Sampel (3 Alasan Menggunakan Sampel)</div>
+    <p><b>Sampel</b> adalah bagian dari populasi yang dijadikan responden. Survei menggunakan sampel karena <b>tiga alasan (a–c)</b>: (a) meneliti seluruh populasi menuntut tenaga, waktu, dan biaya terlalu besar; (b) sampel menghasilkan tingkat kesalahan pengumpulan data lebih kecil sehingga lebih dapat dipercaya; dan (c) pengujian populasi mustahil dilakukan bila bersifat merusak.</p>
+
+    <div class="numh">5. Penentuan Sampel dengan Menggunakan Rumus (Rumus Slovin)</div>
+    <div class="eqbox">
+      \[n = \frac{N}{1 + N(e)^2}\]
+    </div>
+    <div class="fguide">
+      <div class="fg-head">Bedah Variabel &amp; Intisari Formula Slovin</div>
+      <ul>
+        <li><b>$n$</b> = jumlah sampel minimum yang dibutuhkan.</li>
+        <li><b>$N$</b> = jumlah total populasi yang diketahui.</li>
+        <li><b>$e$</b> = tingkat kesalahan (persentase kelonggaran ketidaktelitian) yang masih ditoleransi (mis. $5\% = 0{,}05$).</li>
+        <li><b>Contoh buku (hal. 9.25):</b> Jika $N = 3.057$ dan $e = 5\%$, maka $n = \dfrac{3.057}{1 + 3.057(0{,}05)^2} = \dfrac{3.057}{8{,}6425} \approx \mathbf{354}$ responden.</li>
+      </ul>
+      <div class="fg-core">
+        <div>🧭 <b>Filosofis:</b> Menyeimbangkan ketepatan representasi statistik terhadap keterbatasan biaya, waktu, dan tenaga saat ukuran populasi diketahui pasti.</div>
+        <div>📏 <b>Mengukur:</b> Ukuran sampel minimum ($n$) yang diperlukan agar estimasi populasi tetap berada di dalam batas toleransi galat ($e$).</div>
+        <div>🎯 <b>Manfaat:</b> Memberikan angka target responden yang objektif dan cepat dihitung sebelum peneliti turun ke lapangan menyebarkan kuesioner.</div>
+      </div>
+    </div>
+
+    <div class="numh">6. Penentuan Sampel dengan Tabel Sekaran (2000:295) &amp; Aturan Roscoe (1975)</div>
+    <div class="table-wrap">
+      <table class="mini">
+        <thead><tr><th>Populasi ($N$)</th><th>Sampel ($n$)</th><th>Populasi ($N$)</th><th>Sampel ($n$)</th><th>Populasi ($N$)</th><th>Sampel ($n$)</th></tr></thead>
+        <tbody>
+          <tr><td data-label="Populasi (N)">10</td><td data-label="Sampel (n)">10</td><td data-label="Populasi (N)">250</td><td data-label="Sampel (n)">152</td><td data-label="Populasi (N)">3.000</td><td data-label="Sampel (n)">341</td></tr>
+          <tr><td data-label="Populasi (N)">50</td><td data-label="Sampel (n)">44</td><td data-label="Populasi (N)">500</td><td data-label="Sampel (n)">217</td><td data-label="Populasi (N)">5.000</td><td data-label="Sampel (n)">357</td></tr>
+          <tr><td data-label="Populasi (N)">100</td><td data-label="Sampel (n)">80</td><td data-label="Populasi (N)">1.000</td><td data-label="Sampel (n)">278</td><td data-label="Populasi (N)">10.000</td><td data-label="Sampel (n)">370</td></tr>
+          <tr><td data-label="Populasi (N)">200</td><td data-label="Sampel (n)">132</td><td data-label="Populasi (N)">2.000</td><td data-label="Sampel (n)">322</td><td data-label="Populasi (N)">75.000 / ≥100.000</td><td data-label="Sampel (n)">382 / 384</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <ul class="exp">
+      <li><b>Populasi Tidak Diketahui (Singarimbun &amp; Effendi, 1989):</b> Bergantung teknik analisis—untuk analisis <b>korelasi</b> minimal <b>30 kasus</b>; untuk <b>perbandingan antarkelompok</b> minimal <b>30 kasus per sel</b> (mis. 30 wanita &amp; 30 pria).</li>
+      <li><b>4 Aturan Roscoe (1975) dalam Sekaran (2000:296):</b> (a) ukuran sampel <b>$&gt; 30$ dan $&lt; 500$</b> cocok bagi hampir semua riset; (b) bila dipecah ke subkategori (pria/wanita, yunior/senior), minimal <b>30 per kategori</b>; (c) dalam riset <b>multivariat</b> (seperti regresi berganda), ukuran sampel harus beberapa kali lipat jumlah variabel; dan (d) untuk eksperimen sederhana terkendali ketat, cukup <b>10–20 sampel</b>.</li>
+    </ul>
+
+    <div class="numh">7. Teknik Pengambilan Sampel (<span class="en">Metoda Sampling</span> — Sekaran, 2000)</div>
+    <div class="rgrid c2" data-revealgroup>
+      <div class="rcell active" data-reveal data-detail="<b>1. Probability Sampling (Acak — Dapat Digeneralisasi):</b><br>• <b><i>Simple Random Sampling</i>:</b> Setiap elemen populasi punya peluang sama terpilih secara acak murni.<br>• <b><i>Systematic Sampling</i>:</b> Memilih tiap elemen ke-$k$ dari daftar populasi terurut.<br>• <b><i>Stratified Random Sampling</i>:</b> Membagi populasi ke strata homogen (mis. divisi/level) lalu mengambil acak tiap strata.<br>• <b><i>Single / Multistage Cluster Sampling</i>:</b> Mengambil sampel secara acak berdasarkan gugus/kelompok bertahap.<br>• <b><i>Area Sampling</i>:</b> Pengambilan sampel gugus berbasis wilayah geografis."><span class="stepnum">1</span><span><span class="rt">Probability Sampling</span><span class="rp">5 metode acak · generalisasi</span></span></div>
+      <div class="rcell" data-reveal data-detail="<b>2. Nonprobability Sampling (Tidak Acak — Berdasar Pertimbangan):</b><br>• <b><i>Convenience Sampling</i>:</b> Memilih responden yang paling mudah dan murah dijangkau (mudah/cepat namun tak bisa digeneralisasi).<br>• <b><i>Purposive — Judgement Sampling</i>:</b> Memilih responden secara sengaja karena dianggap paling mengetahui informasi yang dibutuhkan.<br>• <b><i>Purposive — Quota Sampling</i>:</b> Memilih responden hingga memenuhi kuota tertentu per kategori yang ditetapkan peneliti."><span class="stepnum">2</span><span><span class="rt">Nonprobability Sampling</span><span class="rp">Convenience, judgement, quota</span></span></div>
+    </div>
+    <div class="rdetail" data-revealdetail><b>1. Probability Sampling (Acak — Dapat Digeneralisasi):</b><br>• <b><i>Simple Random Sampling</i>:</b> Setiap elemen populasi punya peluang sama terpilih secara acak murni.<br>• <b><i>Systematic Sampling</i>:</b> Memilih tiap elemen ke-$k$ dari daftar populasi terurut.<br>• <b><i>Stratified Random Sampling</i>:</b> Membagi populasi ke strata homogen (mis. divisi/level) lalu mengambil acak tiap strata.<br>• <b><i>Single / Multistage Cluster Sampling</i>:</b> Mengambil sampel secara acak berdasarkan gugus/kelompok bertahap.<br>• <b><i>Area Sampling</i>:</b> Pengambilan sampel gugus berbasis wilayah geografis.</div>
+
+    <div class="casebox"><span class="ctitle">Kasus Buku KB 2 (Hal. 9.28–9.29) · Keadilan Penilaian Prestasi Dosen PTS Kopertis Wilayah 3</span>
+      Sebagai peneliti MSDM, Anda ingin menganalisis <b>pengaruh keadilan dalam penilaian prestasi kerja terhadap sikap dan perilaku dosen perguruan tinggi swasta di Kopertis Wilayah 3</b>. Kasus ini menguji kemampuan menentukan variabel (IV &amp; DV), jenis data yang dicari, penentuan jumlah sampel (Rumus Slovin/Tabel Sekaran), serta pemilihan teknik sampling probabilistik (mis. <i>stratified/cluster</i>) untuk menentukan dosen responden yang representatif.
+    </div>
+
+    <div class="flow">Setelah data dari sampel terkumpul dan instrumen terbukti valid–reliabel, <b>KB 3: Teknik Analisis Data</b> membahas tahapan pengolahan statistik hingga penyusunan format laporan akhir penelitian.</div>
+  </div>
+
+  <!-- ==================== KB 3 ==================== -->
+  <h2 class="section" id="kb3"><span class="dot" style="background:var(--kb3)"></span>KB 3 — Teknik Analisis Data</h2>
+  <div class="card kb3b"><span class="kb-tag kb3t">KB 3 · Hal. 9.30–9.36</span>
+    <p class="lead">Jika kuesioner (baik yang diuji coba pendahuluan maupun yang diadopsi dari peneliti terdahulu) telah terisi lengkap dan lolos uji validitas serta reliabilitas, peneliti memasuki tahap analisis data dan penulisan laporan akhir.</p>
+
+    <div class="acro-box"><span class="acro-title">📖 Kamus Konteks Singkatan &amp; Istilah Kunci KB 3</span>
+      <ul class="acro-grid">
+        <li><b>$H_0$ &amp; $H_a$</b>: Hipotesis nol (tidak ada perbedaan/pengaruh) dan hipotesis alternatif/kerja yang diuji kebenarannya.</li>
+        <li><b>Univariate / Bivariate / Multivariate</b>: Analisis 1 variabel, 2 variabel, dan lebih dari 2 variabel.</li>
+        <li><b>Parametrik vs Nonparametrik</b>: Uji statistik untuk data kontinyu berdistribusi normal vs tidak normal.</li>
+        <li><b>Sig. (2-tailed)</b>: Nilai probabilitas signifikansi (<i>p-value</i>) untuk memutuskan penolakan $H_0$ (umumnya batas $\alpha = 0{,}05$).</li>
+      </ul>
+    </div>
+
+    <!-- KB3 A -->
+    <div class="abc"><span class="ltr">A</span><h4>Tahapan-Tahapan dalam Analisis Data</h4></div>
+    <p>Analisis data dijalankan secara berurutan melalui <b>tiga tahapan utama</b> (Diagram Proses Analisis Data hal. 9.31):</p>
+    <div class="diagram-box">
+      <div class="flowchart">
+        <span class="fc-node">1. Penyiapan Data<br><small style="font-weight:400">Statistik / nonstatistik deskriptif</small></span>
+        <span class="fc-arrow">→</span>
+        <span class="fc-node">2. Uji Kualitas Data<br><small style="font-weight:400">Uji validitas &amp; uji reliabilitas</small></span>
+        <span class="fc-arrow">→</span>
+        <span class="fc-node" style="background:var(--dot);color:#fff">3. Pengujian Hipotesis Kerja<br><small style="font-weight:400;opacity:.92">Uji hipotesis alternatif ($H_a$)</small></span>
+      </div>
+      <div class="diagram-cap">Reproduksi Diagram Proses Analisis Data (Hal. 9.30–9.31)</div>
+    </div>
+
+    <!-- KB3 B -->
+    <div class="abc"><span class="ltr">B</span><h4>Teknik Analisis Data</h4></div>
+    <p>Pemilihan alat analisis ditentukan oleh <b>tujuan penelitian</b> dan <b>jumlah variabel yang dianalisis</b>: 1 variabel (<b><i>Univariate</i></b>), 2 variabel (<b><i>Bivariate</i></b>), atau lebih dari 2 variabel (<b><i>Multivariate</i></b>). Langkah pertama yang selalu disarankan untuk semua variabel secara mandiri adalah menyusun <b>Tabel Frekuensi</b> sebagai bahan dasar analisis lanjutan.</p>
+
+    <div class="numh">Prosedur Analisis <i>Univariate</i> (Hal. 9.32)</div>
+    <div class="diagram-box">
+      <div class="flowchart">
+        <span class="fc-node">UNIVARIATE</span>
+        <span class="fc-arrow">→</span>
+        <span class="fc-node">Data Kontinyu → Uji Normalitas:<br><small style="font-weight:400">Normal (Parametrik): One-Sample t · Independent t · Paired t<br>Tidak Normal: Nonparametrik</small></span>
+        <span class="fc-node">Data Diskrit:<br><small style="font-weight:400">One Proportion · Two Proportion · Chi-Square</small></span>
+      </div>
+      <div class="diagram-cap">Reproduksi Bagan Prosedur Univariate (Hal. 9.32)</div>
+    </div>
+
+    <div class="numh">Contoh Pengujian Hipotesis di Buku (Hal. 9.32–9.33)</div>
+    <div class="eqbox">
+      <div>\[\text{One-Sample } t\text{-Test (SMU "X" Unggulan):} \quad H_0: \mu \le 50 \quad \text{vs.} \quad H_a: \mu > 50 \quad \Longrightarrow \quad t = 5{,}600,\; \text{Sig.} = 0{,}000 < 0{,}05\]</div>
+      <div>\[\text{Independent Samples } t\text{-Test (IPK Pria vs Wanita):} \quad H_0: \mu_1 = \mu_2 \quad \text{vs.} \quad H_a: \mu_1 \ne \mu_2\]</div>
+    </div>
+    <div class="fguide">
+      <div class="fg-head">Bedah Variabel &amp; Intisari Uji Hipotesis t-Test</div>
+      <ul>
+        <li><b>$\mu$ / $\mu_1, \mu_2$</b> = rata-rata populasi (contoh 1: nilai rata-rata NEM SMU "X" dibanding standar unggulan $50$; contoh 2: rata-rata IPK siswa laki-laki vs perempuan).</li>
+        <li><b>$t$ &amp; $\text{Sig. (2-tailed)}$</b> = nilai statistik uji ($t = 5{,}600$) dan probabilitas signifikansi ($0{,}000$).</li>
+        <li><b>Makna keputusan:</b> Karena $\text{Sig.} = 0{,}000 < 0{,}05$, maka $H_0$ ditolak—terbukti secara statistik bahwa rata-rata NEM SMU "X" melampaui $50$ (unggulan).</li>
+      </ul>
+      <div class="fg-core">
+        <div>🧭 <b>Filosofis:</b> Keputusan ilmiah tidak boleh bersandar pada dugaan semata, melainkan pada bukti probabilistik yang menguji apakah perbedaan/keunggulan melampaui kebetulan acak.</div>
+        <div>📏 <b>Mengukur:</b> Seberapa signifikan penyimpangan rata-rata sampel terhadap nilai acuan (<i>One-Sample</i>) atau perbedaan rata-rata antara dua kelompok independen (<i>Independent Samples</i>).</div>
+        <div>🎯 <b>Manfaat:</b> Menjadi dasar objektif bagi manajemen/peneliti untuk menerima atau menolak klaim kinerja, program, maupun perbedaan antar-kelompok karyawan.</div>
+      </div>
+    </div>
+
+    <div class="flow">Seluruh temuan analisis statistik pada Bagian B baru bermanfaat bagi akademisi maupun manajemen apabila disusun secara sistematis mengikuti <b>Bagian C: Format Laporan Akhir</b>.</div>
+
+    <!-- KB3 C -->
+    <div class="abc"><span class="ltr">C</span><h4>Format Laporan Akhir</h4></div>
+    <p>Laporan penelitian disusun secara runtut dalam <b>enam bagian utama</b>:</p>
+    <ol class="book">
+      <li><b>Abstrak:</b> Ringkasan komprehensif (1–2 alinea cetak miring, diikuti <b><i>keywords</i></b>) memuat tujuan penelitian, lokasi, unit analisis/jumlah responden, metode analisis, dan hasil utama.</li>
+      <li><b>Pendahuluan:</b> Memuat latar belakang masalah (fakta hasil observasi &amp; teori/riset terdahulu; masalah utama dijadikan <b>variabel dependen</b> untuk membatasi ruang lingkup), pembatasan masalah (teori, lokasi, subjek), perumusan masalah, tujuan &amp; kegunaan penelitian, serta sistematika penulisan.</li>
+      <li><b>Kerangka Teoritis:</b> Memuat tinjauan pustaka (apa, mengapa, bagaimana tiap variabel menurut riset terdahulu), kerangka pemikiran, bagan kerangka pemikiran, dan <b>pengembangan hipotesis</b> (bila tanpa hipotesis, kerangka pemikiran tetap menjadi landasan menjawab masalah).</li>
+      <li><b>Metodologi:</b> Memuat rancangan penelitian, variabel &amp; skala pengukuran, definisi operasional variabel (konsep &amp; alat ukur), metode pengumpulan data (jenis primer/sekunder, sumber lapangan/pustaka, penentuan jumlah &amp; teknik sampling), serta metode analisis data (diawali uji instrumen &amp; uji model).</li>
+      <li><b>Hasil Analisis dan Pembahasan (3 hal utama, a–c):</b> (a) hasil uji kualitas data (reliabilitas &amp; validitas), (b) penyajian data dalam tabel disertai penjelasan dan temuan hasil uji hipotesis, serta (c) pembahasan mengapa hipotesis didukung atau ditolak.</li>
+      <li><b>Simpulan dan Saran:</b> <b>Simpulan</b> merangkum konklusi penting dan kesesuaiannya dengan riset terdahulu; <b>Saran</b> memuat implikasi teoretis dan manajerial, <b>keterbatasan penelitian</b> (desain sampel, metode pengumpulan data, pengukuran variabel, desain kuesioner, cakupan variabel), serta rekomendasi bagi penelitian selanjutnya.</li>
+    </ol>
+
+    <div class="casebox"><span class="ctitle">Kasus Buku KB 3 (Hal. 9.35–9.36) · Item Tidak Valid &amp; Hipotesis Tidak Terdukung</span>
+      Dari hasil uji validitas ditemukan beberapa item pertanyaan tidak valid sehingga dikeluarkan sebelum uji reliabilitas; setelah dianalisis, sebagian temuan mendukung hipotesis dan sebagian tidak mendukung. Peneliti diminta mengevaluasi mengapa data bisa tidak valid/reliabel (mis. redaksi ambigu, ketidakcocokan konteks responden, atau prosedur salah), mengapa hipotesis tidak terdukung, serta merumuskan saran perbaikan metodologis bagi riset berikutnya.
+    </div>
+  </div>
+
+  <!-- GLOSARIUM -->
+  <h2 class="section" id="glosarium"><span class="dot"></span>Glosarium Istilah Kunci Modul 9</h2>
+  <div class="card"><dl class="glossary">
+    <dt>Basic vs Applied Research</dt><dd>Penelitian dasar (membangun ilmu pengetahuan umum) vs penelitian terapan (memecahkan masalah aktual perusahaan secara tepat waktu — Sekaran, 2000).</dd>
+    <dt>Cronbach's Alpha &amp; Product Moment</dt><dd>Koefisien uji reliabilitas (acceptable ≥ 0,7) dan teknik korelasi uji validitas indikator terhadap skor total (valid bila Sig. &lt; 0,05).</dd>
+    <dt>Definisi Operasional</dt><dd>Petunjuk pelaksanaan konkret tentang bagaimana suatu variabel/konstruk diukur melalui indikator atau daftar pertanyaan.</dd>
+    <dt>DV, IV, MV, &amp; InV</dt><dd>Empat fungsi variabel: terikat (DV), bebas (IV), moderator/pengubah kekuatan pengaruh (MV), dan perantara/tak langsung (InV).</dd>
+    <dt>Induksi, Deduksi, &amp; Verifikasi</dt><dd>Tiga tahapan inti siklus riset pasca-observasi: merumuskan penjelasan umum (induksi), menurunkan prediksi khusus/hipotesis (deduksi), dan menguji secara empiris (verifikasi).</dd>
+    <dt>Nominal, Ordinal, Interval, &amp; Rasio</dt><dd>Empat skala pengukuran berjenjang dari sekadar label (nominal), urutan (ordinal), jarak (interval), hingga memiliki nol mutlak (rasio).</dd>
+    <dt>Probability vs Nonprobability Sampling</dt><dd>Metode sampling acak yang hasilnya dapat digeneralisasi ke populasi vs sampling tak acak berdasar pertimbangan tertentu.</dd>
+    <dt>Rumus Slovin</dt><dd>Formula penentuan ukuran sampel minimum $n = N / [1 + N(e)^2]$ ketika jumlah populasi $N$ diketahui.</dd>
+    <dt>Survei vs Sensus</dt><dd>Pengumpulan data kuesioner terhadap sampel populasi (survei) vs terhadap seluruh anggota populasi (sensus).</dd>
+  </dl></div>
+</div>
+
+<footer><b>EKMA5207 — Manajemen Sumber Daya Manusia (Edisi 3)</b> · Modul 9: Riset Manajemen Sumber Daya Manusia (Prof. Dr. Mutiara Sibarani Panggabean, S.E., M.E.)<br>Bahan belajar lengkap mengikuti outline asli modul untuk persiapan ujian.</footer>
+
+<script>
+(function(){
+  var pb=document.getElementById('progress');
+  function onScroll(){var h=document.documentElement;var sc=h.scrollTop||document.body.scrollTop;var max=(h.scrollHeight-h.clientHeight)||1;pb.style.width=(sc/max*100)+'%';}
+  document.addEventListener('scroll',onScroll,{passive:true});onScroll();
+
+  var list=document.getElementById('conceptList');var items=[].slice.call(list.querySelectorAll('li'));var boxes=items.map(function(li){return li.querySelector('input');});
+  document.getElementById('totalCount').textContent=items.length;var doneEl=document.getElementById('doneCount');var KEY='studi_ekma5207_m9_concepts_v3';
+  function load(){try{var a=JSON.parse(localStorage.getItem(KEY)||'[]');boxes.forEach(function(b,i){if(a[i])b.checked=true;});}catch(e){}}
+  function save(){try{localStorage.setItem(KEY,JSON.stringify(boxes.map(function(b){return b.checked?1:0;})));}catch(e){}}
+  function refresh(){var n=0;items.forEach(function(li,i){if(boxes[i].checked){li.classList.add('done');n++;}else li.classList.remove('done');});doneEl.textContent=n;}
+  load();refresh();boxes.forEach(function(b){b.addEventListener('change',function(){refresh();save();});});
+  document.getElementById('resetBtn').addEventListener('click',function(){boxes.forEach(function(b){b.checked=false;});refresh();save();});
+
+  [].slice.call(document.querySelectorAll('[data-revealgroup]')).forEach(function(g){
+    var det=g.querySelector('[data-revealdetail]');if(!det){var sib=g.nextElementSibling;if(sib&&sib.hasAttribute&&sib.hasAttribute('data-revealdetail'))det=sib;}
+    var cells=[].slice.call(g.querySelectorAll('[data-reveal]'));
+    cells.forEach(function(c){c.addEventListener('click',function(){cells.forEach(function(x){x.classList.remove('active');});c.classList.add('active');if(det){det.innerHTML=c.getAttribute('data-detail');if(window.MathJax&&window.MathJax.typesetPromise)window.MathJax.typesetPromise([det]);}});});
+  });
+
+  (function(){
+    var ROWH=46,NODE_H=32,PAD=13,GAP=52;var COL={root:'#0f5e8f',kb1:'#1a86c7',kb2:'#e08a1e',kb3:'#2a9d6f',kb4:'#7a5cc0',kb5:'#c75b7a'};
+    var mc=document.createElement('canvas').getContext('2d');mc.font='700 13px -apple-system,Segoe UI,Roboto,sans-serif';
+    function tw(t){return Math.ceil(mc.measureText(t).width);}function esc(t){return t.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');}
+    function rgba(hex,a){var h=hex.replace('#','');return 'rgba('+parseInt(h.substr(0,2),16)+','+parseInt(h.substr(2,2),16)+','+parseInt(h.substr(4,2),16)+','+a+')';}
+    var DATA={label:'MODUL 9 — Riset Manajemen SDM',color:COL.root,children:[
+      {label:'KB1 · Proses Penelitian (A–G)',color:COL.kb1,children:[
+        {label:'A. Arti Pentingnya Penelitian'},
+        {label:'B. Proses Penelitian',children:[{label:'Siklus: Observasi → Induksi → Deduksi → Verifikasi'},{label:'7 Langkah Rinci Penelitian'}]},
+        {label:'C. Metode Penelitian (5 Manfaat & 4 Cakupan)'},
+        {label:'D. Jenis Penelitian',children:[{label:'Tujuan (4), Proses (2), Dasar vs Terapan'},{label:'Survei (7 Maksud) vs Sensus'}]},
+        {label:'E. 4 Variabel (DV, IV, MV, InV — Castle 2007)'},
+        {label:'F. Hipotesis (Jika-Maka, Directional, Non-Directional)'},
+        {label:'G. Pengukuran, Uji Instrumen & 4 Skala',children:[{label:'Validitas (Sig < 0,05) & Reliabilitas (Alpha ≥ 0,7)'},{label:'Nominal, Ordinal, Interval, Rasio & Kasus Proposal'}]}
+      ]},
+      {label:'KB2 · Teknik Pengumpulan Data (A–B)',color:COL.kb2,children:[
+        {label:'A. Arti Pentingnya Data (Datum → Informasi)'},
+        {label:'B. Pengumpulan, Sumber & Sampling (1–7)',children:[{label:'1–3. Wawancara/Kuesioner/Observasi, Setting, Primer vs Sekunder'},{label:'4–5. 3 Alasan Sampel & Rumus Slovin (N=3057 → n=354)'},{label:'6. Tabel Sekaran (2000) & 4 Aturan Roscoe (1975)'},{label:'7. Probability (5) vs Nonprobability (3) & Kasus Kopertis 3'}]}
+      ]},
+      {label:'KB3 · Teknik Analisis Data (A–C)',color:COL.kb3,children:[
+        {label:'A. 3 Tahapan Analisis Data (Deskriptif, Kualitas, Ha)'},
+        {label:'B. Teknik Analisis Data',children:[{label:'Univariate, Bivariate & Multivariate'},{label:'Prosedur Univariate (Parametrik/Nonparametrik & Diskrit)'},{label:'One-Sample t (SMU X) & Independent Samples t'}]},
+        {label:'C. Format Laporan Akhir (6 Bagian) & Kasus Validitas'}
+      ]}
+    ]};
+    var idc=0;(function w(n,c){n.id='n'+(idc++);n.color=n.color||c;(n.children||[]).forEach(function(k){w(k,n.color);});})(DATA,COL.root);
+    (function w(n,d){if(d>=2&&n.children&&n.children.length)n.collapsed=true;(n.children||[]).forEach(function(k){w(k,d+1);});})(DATA,0);
+    var host=document.getElementById('mindmap');
+    function render(){
+      var colW=[];(function w(n,d){var width=tw(n.label)+PAD*2+((n.children&&n.children.length)?20:0);colW[d]=Math.max(colW[d]||0,width);if(!n.collapsed)(n.children||[]).forEach(function(k){w(k,d+1);});})(DATA,0);
+      var colX=[],acc=14;for(var d=0;d<colW.length;d++){colX[d]=acc;acc+=colW[d]+GAP;}var row={v:0};
+      (function lay(n,d){if(!n.children||!n.children.length||n.collapsed){n._y=row.v*ROWH+ROWH/2+8;row.v++;return;}var f,l;n.children.forEach(function(k,i){lay(k,d+1);if(i===0)f=k._y;l=k._y;});n._y=(f+l)/2;})(DATA,0);
+      var totalW=acc,totalH=row.v*ROWH+24;var nodes=[],links=[];
+      (function col(n,d,p){n._x=colX[d];n._w=tw(n.label)+PAD*2+((n.children&&n.children.length)?20:0);nodes.push({n:n,d:d});if(p)links.push([p,n]);if(!n.collapsed)(n.children||[]).forEach(function(k){col(k,d+1,n);});})(DATA,0,null);
+      var s='<svg width="'+totalW+'" height="'+totalH+'" viewBox="0 0 '+totalW+' '+totalH+'" xmlns="http://www.w3.org/2000/svg">';
+      links.forEach(function(pr){var a=pr[0],b=pr[1],x1=a._x+a._w,y1=a._y,x2=b._x,y2=b._y,mx=(x1+x2)/2;s+='<path d="M'+x1+' '+y1+' C'+mx+' '+y1+' '+mx+' '+y2+' '+x2+' '+y2+'" fill="none" stroke="'+rgba(b.color,.5)+'" stroke-width="2"/>';});
+      nodes.forEach(function(o){var n=o.n,x=n._x,y=n._y-NODE_H/2,w=n._w,hk=n.children&&n.children.length;var fill=o.d===0?n.color:(o.d===1?rgba(n.color,.12):'#fff');var tf=o.d===0?'#fff':'#1c2733';
+        s+='<g data-id="'+n.id+'" style="cursor:'+(hk?'pointer':'default')+'"><rect x="'+x+'" y="'+y+'" rx="9" width="'+w+'" height="'+NODE_H+'" fill="'+fill+'" stroke="'+n.color+'" stroke-width="'+(o.d===0?0:1.6)+'"/><text x="'+(x+PAD)+'" y="'+(n._y+4)+'" font-size="13" font-weight="'+(o.d<=1?'700':'500')+'" fill="'+tf+'" font-family="-apple-system,Segoe UI,Roboto,sans-serif">'+esc(n.label)+'</text>';
+        if(hk){var cx=x+w-12,cy=n._y;s+='<circle cx="'+cx+'" cy="'+cy+'" r="8.5" fill="'+n.color+'"/><text x="'+cx+'" y="'+(cy+4.5)+'" font-size="13" font-weight="700" fill="#fff" text-anchor="middle" font-family="sans-serif">'+(n.collapsed?'+':'\u2013')+'</text>';}s+='</g>';});
+      s+='</svg>';host.innerHTML=s;
+    }
+    host.addEventListener('click',function(e){var g=e.target.closest('g[data-id]');if(!g)return;var id=g.getAttribute('data-id');(function f(n){if(n.id===id){if(n.children&&n.children.length)n.collapsed=!n.collapsed;return true;}return (n.children||[]).some(f);})(DATA);render();});
+    document.getElementById('mmExpand').addEventListener('click',function(){(function w(n){if(n.children)n.collapsed=false;(n.children||[]).forEach(w);})(DATA);render();});
+    document.getElementById('mmCollapse').addEventListener('click',function(){(function w(n,d){if(d>=1&&n.children&&n.children.length)n.collapsed=true;(n.children||[]).forEach(function(k){w(k,d+1);});})(DATA,0);render();});
+    render();
+  })();
+
+  window.addEventListener('load',function(){setTimeout(function(){if(window.MathJax&&window.MathJax.typesetPromise)window.MathJax.typesetPromise();},400);});
+})();
+</script></body></html>

@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="id"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Modul 4 — Desain Penelitian | EKMA5104</title>
+<script>window.MathJax={tex:{inlineMath:[['$','$']],displayMath:[['\\[','\\]'],['$$','$$']]},svg:{fontCache:'global'},startup:{typeset:true}};</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js" async></script>
+<style>
+:root{--bg:#f4f6f9;--panel:#fff;--ink:#1c2733;--muted:#5c6b7a;--line:#e4e9f0;--brand:#1a86c7;--brand-dark:#0f5e8f;--brand-soft:#e7f3fb;--kb1:#1a86c7;--kb2:#e08a1e;--kb3:#2a9d6f;--kb4:#7a5cc0;--kb5:#c75b7a;--radius:14px;--shadow:0 1px 2px rgba(16,42,67,.06),0 6px 20px rgba(16,42,67,.06);--maxw:900px}
+*{box-sizing:border-box}html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;line-height:1.72}
+#progress{position:fixed;top:0;left:0;height:4px;width:0;background:linear-gradient(90deg,var(--brand),#53c0ec);z-index:200;transition:width .1s}
+header.top{position:sticky;top:0;z-index:100;background:rgba(255,255,255,.92);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+.top-in{max-width:var(--maxw);margin:0 auto;padding:10px 20px;display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+.badge{background:var(--brand);color:#fff;font-weight:700;font-size:.72rem;letter-spacing:.5px;padding:4px 10px;border-radius:999px}
+.homebtn{text-decoration:none;display:inline-flex;align-items:center;gap:7px;background:var(--brand);color:#fff;font-weight:700;font-size:.8rem;padding:7px 15px;border-radius:999px;box-shadow:0 2px 6px rgba(16,42,67,.22);line-height:1}
+.top-title{font-size:.9rem;font-weight:600;color:var(--muted)}
+nav.jump{margin-left:auto;display:flex;gap:4px;flex-wrap:wrap}
+nav.jump a{font-size:.78rem;color:var(--muted);text-decoration:none;padding:5px 10px;border-radius:8px}
+nav.jump a:hover{background:var(--brand-soft);color:var(--brand-dark)}
+.wrap{max-width:var(--maxw);margin:0 auto;padding:0 20px 90px}
+.hero{margin-top:26px;padding:30px 28px;border-radius:var(--radius);color:#fff;background:linear-gradient(135deg,#0f5e8f,#1a86c7 60%,#2fa4df);box-shadow:var(--shadow);position:relative;overflow:hidden}
+.hero .eyebrow{font-size:.78rem;letter-spacing:1.5px;text-transform:uppercase;opacity:.9;font-weight:600}
+.hero h1{margin:.3em 0 .25em;font-size:1.62rem;line-height:1.25;max-width:90%}
+.hero .meta{display:flex;gap:18px;flex-wrap:wrap;font-size:.84rem;opacity:.95;margin-top:10px}
+h2.section{font-size:1.3rem;margin:48px 0 4px;display:flex;align-items:center;gap:10px;scroll-margin-top:70px}
+h2.section .dot{width:10px;height:22px;border-radius:4px;background:var(--brand)}
+.section-sub{color:var(--muted);font-size:.9rem;margin:0 0 18px}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);padding:22px 24px;margin:16px 0;--dot:var(--brand);overflow-x:clip;overflow-wrap:break-word;word-wrap:break-word}
+.concepts{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:minmax(0,1fr);gap:10px}
+.concepts li{display:flex;gap:12px;align-items:flex-start;padding:12px 14px;border:1px solid var(--line);border-radius:10px;background:#fcfdff;min-width:0;max-width:100%}
+.concepts li>span{min-width:0;max-width:100%;overflow-wrap:break-word;word-wrap:break-word}
+.concepts input{margin-top:4px;width:18px;height:18px;accent-color:var(--brand);flex:none;cursor:pointer}
+.concepts .ct{font-weight:600}.concepts .cd{display:block;font-weight:400;color:var(--muted);font-size:.86rem;margin-top:2px}
+.concepts li.done{background:var(--brand-soft);border-color:#bfe0f3}.concepts li.done .ct{text-decoration:line-through;opacity:.65}
+.cl-head{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-bottom:6px}
+.cl-head .count{font-size:.82rem;color:var(--muted);background:var(--brand-soft);padding:3px 10px;border-radius:999px;font-weight:600}
+.btn-reset{font-size:.78rem;border:1px solid var(--line);background:#fff;color:var(--muted);padding:5px 12px;border-radius:8px;cursor:pointer}
+.mm-toolbar{display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin-bottom:10px}
+.mm-btn{font-size:.78rem;border:1px solid var(--line);background:#fff;padding:6px 13px;border-radius:8px;cursor:pointer;color:var(--brand-dark);font-weight:600}
+.mindmap-host{height:580px;overflow:auto;border:1px solid var(--line);border-radius:10px;background:#fcfdff}.mindmap-host svg{display:block}
+.kb-tag{display:inline-flex;align-items:center;gap:8px;font-size:.78rem;font-weight:700;color:#fff;padding:5px 12px;border-radius:999px;margin-bottom:6px}
+.kb1t{background:var(--kb1)}.kb2t{background:var(--kb2)}.kb3t{background:var(--kb3)}.kb4t{background:var(--kb4)}.kb5t{background:var(--kb5)}
+.kb1b{--dot:var(--kb1)}.kb2b{--dot:var(--kb2)}.kb3b{--dot:var(--kb3)}.kb4b{--dot:var(--kb4)}.kb5b{--dot:var(--kb5)}
+.lead{font-size:1.02rem}.term{font-weight:700;color:var(--dot)}.en{font-style:italic;color:var(--muted);font-weight:500}
+.abc{display:flex;align-items:center;gap:10px;margin:28px 0 10px;padding-bottom:6px;border-bottom:2px solid color-mix(in srgb,var(--dot) 18%,#fff)}
+.abc .ltr{background:var(--dot);color:#fff;font-weight:800;min-width:30px;height:30px;padding:0 7px;border-radius:8px;display:grid;place-items:center;flex:none}
+.abc h4{margin:0;font-size:1.06rem;color:var(--dot)}
+.numh{font-weight:700;color:var(--dot);margin:22px 0 4px;font-size:1rem}
+.leth{font-weight:800;color:var(--dot);margin:20px 0 6px;font-size:.98rem;border-left:3px solid var(--dot);padding-left:10px}
+ol.book{margin:12px 0;padding-left:28px}ol.book>li{margin:10px 0;padding-left:6px}ol.book>li::marker{font-weight:700;color:var(--dot)}
+ul.exp{list-style:none;margin:12px 0;padding:0;display:grid;grid-template-columns:minmax(0,1fr);gap:10px}
+ul.exp>li{position:relative;padding-left:20px;min-width:0;max-width:100%;overflow-wrap:break-word;word-wrap:break-word}
+ul.exp>li::before{content:"";position:absolute;left:0;top:11px;width:8px;height:8px;border-radius:2px;background:var(--dot)}
+ul.let{list-style:lower-alpha;margin:10px 0;padding-left:28px}ul.let>li{margin:8px 0;padding-left:4px}ul.let>li::marker{color:var(--dot);font-weight:700}
+.flow{border-left:4px solid var(--dot);background:color-mix(in srgb,var(--dot) 9%,#fff);padding:11px 15px;border-radius:0 10px 10px 0;margin:18px 0;font-size:.9rem;min-width:0;max-width:100%;overflow-wrap:break-word;word-wrap:break-word}
+.flow::before{content:"🔗 Benang merah — ";font-weight:700;color:var(--dot)}.flow b{color:var(--dot)}
+.casebox{background:#f8fafc;border:1px solid var(--line);border-left:4px solid var(--dot);border-radius:0 10px 10px 0;padding:12px 15px;margin:14px 0;font-size:.88rem;min-width:0;max-width:100%;overflow-wrap:break-word;word-wrap:break-word}
+.casebox .ctitle{font-weight:700;color:var(--dot);margin-bottom:4px;display:block}
+.table-wrap{width:100%;overflow-x:auto;-webkit-overflow-scrolling:touch;margin:14px 0;border-radius:10px}
+table.mini{width:100%;border-collapse:collapse;margin:0;font-size:.86rem;table-layout:auto}
+table.mini th,table.mini td{border:1px solid var(--line);padding:10px 12px;text-align:left;vertical-align:top;overflow-wrap:break-word;word-wrap:break-word}
+table.mini th{background:color-mix(in srgb,var(--dot) 12%,#fff);color:var(--dot);font-weight:700}
+.rgrid{display:grid;gap:8px;margin:14px 0}.rgrid.c2{grid-template-columns:repeat(2,1fr)}.rgrid.c3{grid-template-columns:repeat(3,1fr)}.rgrid.c4{grid-template-columns:repeat(4,1fr)}
+.rcell{border:1px solid var(--line);border-radius:10px;padding:11px 13px;cursor:pointer;background:#fff;display:flex;gap:10px;align-items:flex-start;transition:.15s;min-width:0;max-width:100%}
+.rcell>span{min-width:0;max-width:100%;overflow-wrap:break-word;word-wrap:break-word}
+.rcell:hover{border-color:var(--dot);box-shadow:var(--shadow);transform:translateY(-2px)}
+.rcell.active{border-color:var(--dot);background:color-mix(in srgb,var(--dot) 8%,#fff)}
+.rcell .stepnum{background:var(--dot);color:#fff;font-weight:700;min-width:24px;height:24px;border-radius:7px;display:grid;place-items:center;flex:none;font-size:.82rem}
+.rcell .rt{font-weight:700;font-size:.9rem;color:var(--dot);display:block}.rcell .rp{font-size:.78rem;color:var(--muted);display:block;margin-top:2px}
+.rdetail{font-size:.88rem;border-left:4px solid var(--dot);background:color-mix(in srgb,var(--dot) 8%,#fff);border-radius:0 10px 10px 0;padding:12px 15px;margin-top:6px;min-width:0;max-width:100%;overflow-wrap:break-word;word-wrap:break-word}
+.pill-row{display:flex;gap:8px;flex-wrap:wrap;margin:10px 0}.pill{font-size:.8rem;background:#eef3f8;color:#36506a;border:1px solid #e0e8f0;padding:4px 11px;border-radius:999px;font-weight:600}
+.flowchart{display:flex;align-items:center;gap:6px;flex-wrap:wrap;margin:16px 0;justify-content:center}
+.fc-node{background:color-mix(in srgb,var(--dot) 12%,#fff);border:1.5px solid var(--dot);color:var(--dot);font-weight:700;font-size:.8rem;padding:8px 12px;border-radius:9px;text-align:center}
+.fc-arrow{color:var(--dot);font-weight:800;font-size:1.05rem}
+.pyramid{display:flex;flex-direction:column;align-items:center;gap:4px;margin:16px 0}.pyr-row{color:#fff;font-weight:700;text-align:center;padding:9px 12px;border-radius:7px;font-size:.84rem}
+.bs-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:14px 0}
+.bs-col{border:1.5px solid var(--dot);border-radius:10px;overflow:hidden;min-width:0;max-width:100%}
+.bs-head{background:var(--dot);color:#fff;font-weight:700;font-size:.84rem;padding:7px 12px;text-align:center}
+.bs-box{padding:10px 12px;border-bottom:1px dashed var(--line);font-size:.84rem}.bs-box:last-child{border-bottom:none}
+.eqbox{background:#fcfdff;border:1px solid var(--line);border-radius:10px;padding:8px 14px;margin:14px 0;overflow-x:auto}
+mjx-container{max-width:100%;overflow-x:auto;overflow-y:hidden}
+mjx-container:not([display="true"]){display:inline-block;vertical-align:middle}
+.chart-wrap{background:#fcfdff;border:1px solid var(--line);border-radius:12px;padding:14px 16px;margin:16px 0}
+.chart-title{font-weight:700;font-size:.9rem;color:var(--dot);margin:0 0 4px}
+.chart-sub{font-size:.78rem;color:var(--muted);margin:0 0 10px}
+.chart-host{width:100%;overflow-x:auto;position:relative}.chart-host svg{display:block;max-width:100%;height:auto;margin:0 auto}
+.chart-legend{display:flex;gap:14px;flex-wrap:wrap;justify-content:center;margin-top:8px;font-size:.78rem;color:var(--muted)}
+.chart-legend span{display:inline-flex;align-items:center;gap:6px}.chart-legend i{display:inline-block;width:14px;height:3px;border-radius:2px}
+.glossary dt{font-weight:700;color:var(--brand-dark);margin-top:10px}.glossary dd{margin:0 0 2px;color:var(--muted);font-size:.9rem}
+footer{max-width:var(--maxw);margin:0 auto;padding:30px 20px 60px;color:var(--muted);font-size:.82rem;border-top:1px solid var(--line)}
+.offline-note{font-size:.76rem;color:var(--muted);background:#fff8e6;border:1px solid #f0e2b8;border-radius:8px;padding:8px 12px;margin:10px 0}
+@media(max-width:680px){
+  .table-wrap{overflow-x:visible}
+  table.mini,table.mini thead,table.mini tbody,table.mini th,table.mini td,table.mini tr{display:block;width:100%}
+  table.mini thead{display:none}
+  table.mini tr{margin-bottom:12px;border:1.5px solid color-mix(in srgb,var(--dot) 28%,#e4e9f0);border-radius:10px;background:#fff;overflow:hidden;box-shadow:0 1px 4px rgba(16,42,67,.05)}
+  table.mini td{border:none;border-bottom:1px solid var(--line);padding:10px 12px;text-align:left}
+  table.mini td:last-child{border-bottom:none}
+  table.mini td::before{content:attr(data-label);display:block;font-size:.74rem;font-weight:700;text-transform:uppercase;letter-spacing:.4px;color:var(--dot);margin-bottom:4px}
+}
+.acro-box{background:#f8fafc;border:1px solid var(--line);border-radius:10px;padding:12px 14px;margin:14px 0;font-size:.84rem;min-width:0;max-width:100%;overflow-wrap:break-word;word-wrap:break-word}
+.acro-title{font-weight:700;color:var(--dot);font-size:.86rem;margin-bottom:8px;display:block}
+.acro-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:6px 14px;margin:0;padding:0;list-style:none}
+.acro-grid li{min-width:0;line-height:1.5}.acro-grid b{color:var(--dot)}
+.fguide{background:color-mix(in srgb,var(--dot) 5%,#fff);border:1px solid color-mix(in srgb,var(--dot) 22%,#e4e9f0);border-radius:10px;padding:12px 15px;margin:-6px 0 16px;font-size:.86rem;min-width:0;max-width:100%;overflow-wrap:break-word;word-wrap:break-word}
+.fguide .fg-head{font-weight:700;color:var(--dot);font-size:.84rem;text-transform:uppercase;letter-spacing:.35px;margin:0 0 6px}
+.fguide ul{margin:4px 0 8px;padding-left:18px}.fguide ul li{margin:3px 0}
+.fguide .fg-core{border-top:1px dashed color-mix(in srgb,var(--dot) 30%,#cbd5e1);padding-top:8px;margin-top:8px;display:grid;grid-template-columns:minmax(0,1fr);gap:4px}
+.fguide .fg-core div{min-width:0}
+@media(max-width:640px){.hero h1{font-size:1.3rem;max-width:100%}nav.jump{display:none}.rgrid.c2,.rgrid.c3,.rgrid.c4,.bs-grid,.acro-grid{grid-template-columns:minmax(0,1fr)}.mindmap-host{height:440px}}
+</style></head><body>
+<div id="progress"></div>
+<header class="top"><div class="top-in">
+  <span class="badge">MODUL 4</span>
+  <a class="homebtn" href="index.html" title="Kembali ke daftar modul"><span style="font-size:1rem;line-height:1">&#8962;</span> Daftar Modul</a>
+  <span class="top-title">Metode Penelitian Bisnis · EKMA5104</span>
+  <nav class="jump"><a href="#konsep">Konsep</a><a href="#peta">Peta Konsep</a><a href="#kb1">KB1</a><a href="#kb2">KB2</a><a href="#glosarium">Glosarium</a></nav>
+</div></header>
+<div class="wrap">
+  <section class="hero"><div class="eyebrow">Ringkasan Belajar · EKMA5104 (Edisi 3)</div>
+    <h1>Desain Penelitian</h1>
+    <div class="meta"><span>⏱️ ±35 menit</span><span>📚 2 bagian (KB)</span><span>✍️ Dr. Lerbin Roberto Aritonang R., M.M.</span></div></section>
+  <p class="section-sub" style="margin-top:22px">Modul 4 membedah strategi pengendalian variansi dalam penelitian kuantitatif: prinsip MAXMINCON, ancaman validitas internal dan eksternal (KB 1), serta kaidah kausalitas dan ragam desain eksperimen dari praeksperimen hingga Empat Kelompok Solomon (KB 2).</p>
+  <p class="offline-note">ℹ️ Peta konsep, grafik SVG, kartu penjelasan, dan checklist konsep berjalan tanpa internet. Koneksi internet hanya diperlukan untuk merender persamaan matematika (MathJax).</p>
+
+  <h2 class="section" id="konsep"><span class="dot"></span>Konsep Penting yang Harus Dikuasai</h2>
+  <div class="card"><div class="cl-head"><span class="count"><span id="doneCount">0</span>/<span id="totalCount">0</span> dikuasai</span><button class="btn-reset" id="resetBtn">Reset centang</button></div>
+    <ul class="concepts" id="conceptList">
+      <li><input type="checkbox"><span><span class="ct">Desain Penelitian vs Metode Penelitian</span><span class="cd">Desain penelitian adalah rencana &amp; struktur strategis untuk menjawab pertanyaan penelitian dan mengendalikan variansi; metode penelitian adalah implementasi operasional dari desain tersebut.</span></span></li>
+      <li><input type="checkbox"><span><span class="ct">Komponen Variansi Total ($V_t = V_a + V_d$)</span><span class="cd">Variansi total variabel dependen terdiri atas variansi antarkelompok/sistematis ($V_a$) dan variansi dalam kelompok/eror ($V_d$). Makin besar proporsi $V_a$, makin efektif variabel perlakuan.</span></span></li>
+      <li><input type="checkbox"><span><span class="ct">Prinsip MAXMINCON (Kerlinger &amp; Lee)</span><span class="cd">Tiga prinsip teknis pengendalian variansi: Maksimumkan variansi sistematis (eksperimental), Kendalikan variansi extraneous (5 cara), dan Minimumkan variansi eror (standardisasi &amp; reliabilitas instrumen).</span></span></li>
+      <li><input type="checkbox"><span><span class="ct">5 Cara Pengendalian Variansi Extraneous</span><span class="cd">(1) Eliminasi/meniadakan kontribusinya, (2) Pengacakan (randomization) ke KE/KK, (3) Memasukkan ke dalam desain (faktorial), (4) Pemasangan subyek (matching), dan (5) Kontrol statistik (ANCOVA).</span></span></li>
+      <li><input type="checkbox"><span><span class="ct">Validitas Internal &amp; 10 Ancamannya</span><span class="cd">Sejauh mana perbedaan DV benar-benar akibat IV perlakuan. 10 ancaman: sejarah, mortalitas, kematangan, pengukuran, instrumentasi, regresi, seleksi, penyebaran informasi, compensatory rivalry/resentful demoralization, dan interaksi.</span></span></li>
+      <li><input type="checkbox"><span><span class="ct">Validitas Eksternal &amp; 4 Ancamannya</span><span class="cd">Daya generalisasi hasil ke subyek/kondisi lain. 4 ancaman (Campbell &amp; Stanley): efek reaktif pengukuran, interaksi bias seleksi × IV, efek reaktif susunan eksperimen, dan interferensi banyak-perlakuan.</span></span></li>
+      <li><input type="checkbox"><span><span class="ct">Klasifikasi Desain Penelitian (Kualitatif vs Kuantitatif; Eksploratif vs Konklusif)</span><span class="cd">Konklusif terbagi atas Deskriptif (tanpa variabel perlakuan) dan Kausal/Eksperimen (ada variabel perlakuan sehingga istilah "pengaruh" sah dipakai).</span></span></li>
+      <li><input type="checkbox"><span><span class="ct">Definisi Eksperimen &amp; 3 Syarat Kausalitas (Selltiz et al.)</span><span class="cd">Eksperimen memanipulasi $\ge 1$ IV &amp; menugaskan subyek secara acak berdasarkan teori. 3 syarat kausal: (1) sebab mendahului akibat (ada jeda waktu), (2) variasi konkomitan, dan (3) bebas penjelasan IV lain.</span></span></li>
+      <li><input type="checkbox"><span><span class="ct">Desain Praeksperimen (3 Bentuk)</span><span class="cd">Tanpa pengacakan: One-Shot Case Study ($X \; Y$), One-Group Pretest-Posttest ($Y_1 \; X \; Y_2$), dan Kelompok Statis (KE vs KK hanya ukur sesudah). Validitas internal lemah.</span></span></li>
+      <li><input type="checkbox"><span><span class="ct">Desain Eksperimen Murni (3 Bentuk, Termasuk Solomon)</span><span class="cd">Ada pengacakan (A): Kelompok Kontrol &amp; Pengukuran Ulang, Kelompok Kontrol Hanya Setelah Pengukuran, dan Desain Empat Kelompok Solomon (terbaik karena mengontrol bias pengukuran sekaligus kelompok kontrol).</span></span></li>
+      <li><input type="checkbox"><span><span class="ct">Desain Eksperimen Semu (Quasi-Experiment)</span><span class="cd">Runtut waktu tunggal dan runtut waktu ganda (longitudinal, pengukuran berulang sebelum &amp; sesudah $X$) saat pengacakan dan kendali penuh tak memungkinkan; tetap rentan bias sejarah &amp; interaksi pengukuran.</span></span></li>
+      <li><input type="checkbox"><span><span class="ct">Trade-Off Validitas Internal vs Eksternal (Lab vs Lapangan)</span><span class="cd">Eksperimen laboratorium punya validitas internal tinggi (kontrol ketat) tetapi eksternal rendah (kurang alami); eksperimen lapangan berlaku sebaliknya.</span></span></li>
+    </ul></div>
+
+  <h2 class="section" id="peta"><span class="dot"></span>Peta Konsep (Mind Map)</h2>
+  <div class="card"><div class="mm-toolbar"><button class="mm-btn" id="mmExpand">Perluas semua</button><button class="mm-btn" id="mmCollapse">Ciutkan</button><span style="font-size:.76rem;color:var(--muted)">Klik simpul bertanda + / – untuk buka-tutup · Gulir untuk menggeser</span></div><div class="mindmap-host" id="mindmap"></div></div>
+
+  <!-- KB 1 -->
+  <h2 class="section" id="kb1"><span class="dot" style="background:var(--kb1)"></span>KB 1 — Desain Penelitian</h2>
+  <div class="card kb1b"><span class="kb-tag kb1t">KEGIATAN BELAJAR 1 · HAL. 4.4–4.28</span>
+    <div class="acro-box">
+      <span class="acro-title">📖 Kamus Konteks Singkatan &amp; Akronim KB 1</span>
+      <ul class="acro-grid">
+        <li><b>MAXMINCON</b>: <i>Maximize</i> (variansi sistematis), <i>Minimize</i> (variansi eror), <i>Control</i> (variansi extraneous) — prinsip inti desain penelitian.</li>
+        <li><b>KE / KK</b>: Kelompok Eksperimen (diberi perlakuan) dan Kelompok Kontrol (pembanding tanpa perlakuan).</li>
+        <li><b>ANCOVA</b>: <i>Analysis of Covariance</i> — pengendalian variabel extraneous secara statistik.</li>
+        <li><b>IV / DV</b>: <i>Independent Variable</i> (penjelas/perlakuan) dan <i>Dependent Variable</i> (akibat yang variasinya diukur).</li>
+      </ul>
+    </div>
+
+    <p class="lead">Setelah hipotesis dirumuskan, peneliti menyusun <b>desain penelitian</b>—rencana strategis untuk menguji kebenaran empiris hipotesis sekaligus mengendalikan variansi. Dalam praktik, <b>metode penelitian</b> (subyek, operasionalisasi, instrumen, analisis) adalah implementasi nyata dari desain penelitian.</p>
+
+    <div class="abc"><span class="ltr">A</span><h4>Definisi Desain Penelitian</h4></div>
+    <p>Malhotra (2007) menyebut desain penelitian sebagai <i>framework/blueprint</i> proyek riset; Kerlinger &amp; Lee (2010) mendefinisikannya sebagai <b>rencana</b> (skema menyeluruh dari hipotesis hingga analisis) dan <b>struktur</b> (konfigurasi/model hubungan variabel, idealnya dinyatakan dalam persamaan matematika).</p>
+
+    <div class="abc"><span class="ltr">B</span><h4>Tujuan Desain Penelitian</h4></div>
+    <p>Desain penelitian memiliki dua tujuan dasar: (1) <b>menjawab pertanyaan penelitian</b> sevalid, seobyektif, seakurat, dan seekonomis mungkin; serta (2) <b>mengendalikan variansi</b> (eksperimental, extraneous, dan eror) agar hasil riset terpercaya.</p>
+
+    <div class="abc"><span class="ltr">C</span><h4>Variansi Total dan Variansi Sistematis</h4></div>
+    <p>Tanpa variasi, tak ada cara menentukan kaitan antarvariabel. Pada contoh 8 pekerja (4 ikut kursus $A_2$, 4 tidak $A_1$), total variansi output ($V_t = 7.25$) terpecah menjadi:</p>
+    <div class="eqbox">\[ V_{\text{total}} = V_{\text{antarkelompok (sistematis)}} + V_{\text{dalam kelompok (eror)}} \quad \big(7.25 = 6.25 + 1.00 \;\Rightarrow\; 86.21\% + 13.79\%\big) \]</div>
+    <div class="fguide">
+      <div class="fg-head">Bedah Variabel &amp; Intisari Formula Dekomposisi Variansi</div>
+      <ul>
+        <li><b>$V_{\text{total}}$</b> = variansi total skor variabel dependen; <b>$V_{\text{antarkelompok}}$</b> = variansi sistematis akibat perbedaan perlakuan ($A_2$ vs $A_1$); <b>$V_{\text{dalam kelompok}}$</b> = variansi acak/eror antarindividu dalam kelompok yang sama.</li>
+        <li><b>Makna formula:</b> Memisahkan seberapa besar keragaman hasil yang benar-benar berasal dari perlakuan penelitian versus kebetulan/eror pengukuran.</li>
+      </ul>
+      <div class="fg-core">
+        <div>🧭 <b>Filosofis:</b> Sinyal (efek perlakuan) harus jauh lebih kuat daripada derau (eror acak) agar kesimpulan riset meyakinkan.</div>
+        <div>📏 <b>Mengukur:</b> Proporsi kontribusi variabel independen terhadap total variasi variabel dependen.</div>
+        <div>🎯 <b>Manfaat:</b> Menjadi dasar matematis bagi prinsip MAXMINCON dan uji statistik Anava ($F$).</div>
+      </div>
+    </div>
+    <p><span class="term">Variansi Sistematis</span> adalah kecenderungan skor DV ke satu arah akibat faktor yang diketahui, terdiri atas variansi eksperimental (dari IV yang diteliti) dan <b>variansi sistematis extraneous</b> (dari IV pengganggu yang tak diteliti, mis. motivasi/inteligensi/kesehatan).</p>
+
+    <div class="abc"><span class="ltr">D</span><h4>Variansi Eror (Residu / Acak)</h4></div>
+    <p><span class="term">Variansi Eror</span> adalah sisa variansi yang tak dapat diprediksi akibat faktor kebetulan acak (saling mengompensasi sehingga rata-ratanya $= 0$) serta eror pengukuran (kelelahan, tebakan, kondisi ujian tak standar).</p>
+
+    <div class="flow">Pemilahan variansi di atas melahirkan aturan emas desain penelitian yang dikenal dengan singkatan <b>MAXMINCON</b>.</div>
+
+    <div class="abc"><span class="ltr">E</span><h4>Pengendalian Variansi: Prinsip MAXMINCON</h4></div>
+    <div class="rgrid c3" data-revealgroup>
+      <div class="rcell active" data-reveal data-detail="<b>1. MAX — Maksimumkan Variansi Sistematis</b>: Rancang perlakuan/IV agar menciptakan perbedaan DV sekuat mungkin (mis. pelatihan benar-benar intensif), atau sertakan IV lain yang relevan secara teoritis (desain faktorial) guna menangkap efek utama dan efek interaksi."><span class="stepnum">1</span><span><span class="rt">Maksimumkan Sistematis</span><span class="rp">Perkuat efek IV utama</span></span></div>
+      <div class="rcell" data-reveal data-detail="<b>2. CON — Kendalikan Variansi Extraneous (5 Cara)</b>: (1) <i>Eliminasi</i> (samakan/konstankan faktor pengganggu); (2) <i>Pengacakan (Randomization)</i> ke kelompok eksperimen (KE) &amp; kontrol (KK) agar sifat pengganggu menyebar merata; (3) <i>Sertakan ke desain</i> (jadi IV tambahan/faktorial); (4) <i>Pemasangan subyek (Matching)</i> berdasar skor pengganggu lalu acak ke KE/KK (sulit bila banyak variabel); (5) <i>Kontrol statistik</i> lewat <b>Analisis Kovariansi (ANCOVA)</b>."><span class="stepnum">2</span><span><span class="rt">Kendalikan Extraneous</span><span class="rp">5 teknik pengendalian</span></span></div>
+      <div class="rcell" data-reveal data-detail="<b>3. MIN — Minimumkan Variansi Eror</b>: Standarkan kondisi dan instruksi pelaksanaan instrumen (mis. pada Skala Likert, responden diminta menilai <i>dirinya</i> melalui pernyataan, bukan menilai pernyataannya seperti tahap pengembangan skala Thurstone), serta gunakan instrumen berkoefisien <b>reliabilitas tinggi</b> (mendekati $+1.00$)."><span class="stepnum">3</span><span><span class="rt">Minimumkan Eror</span><span class="rp">Standardisasi &amp; reliabilitas</span></span></div>
+    </div>
+    <div class="rdetail" data-revealdetail><b>1. MAX — Maksimumkan Variansi Sistematis</b>: Rancang perlakuan/IV agar menciptakan perbedaan DV sekuat mungkin (mis. pelatihan benar-benar intensif), atau sertakan IV lain yang relevan secara teoritis (desain faktorial) guna menangkap efek utama dan efek interaksi.</div>
+
+    <div class="abc"><span class="ltr">F</span><h4>Kriteria Desain Memadai (Validitas Internal &amp; Eksternal)</h4></div>
+    <p>Menurut <b>Campbell &amp; Stanley</b>, desain memadai mampu menjawab pertanyaan penelitian (mis. tak boleh uji "pengaruh" dengan data tahun yang sama tanpa jeda waktu), mengendalikan variabel extraneous, dan punya cakupan generalisasi luas—diukur lewat <b>Validitas Internal</b> dan <b>Validitas Eksternal</b>:</p>
+    <div class="table-wrap">
+      <table class="mini">
+        <thead><tr><th>Validitas Internal (10 Ancaman)</th><th>Validitas Eksternal (4 Ancaman)</th></tr></thead>
+        <tbody>
+          <tr>
+            <td data-label="Validitas Internal (10 Ancaman)">Efektivitas IV perlakuan menghasilkan variasi DV. Ancamannya:<br>
+            1. <b>Sejarah</b> (kejadian luar selama riset, mis. muncul pesaing baru).<br>
+            2. <b>Mortalitas</b> (subyek mundur/berkurang di tengah jalan).<br>
+            3. <b>Kematangan</b> (subyek makin tua, lelah, lapar, berpengalaman).<br>
+            4. <b>Pengukuran/pengujian</b> (efek latihan/hafal akibat tes berulang).<br>
+            5. <b>Instrumentasi</b> (alat/pengamat berubah seiring waktu).<br>
+            6. <b>Regresi statistik</b> (skor ekstrem cenderung bergeser ke rata-rata).<br>
+            7. <b>Seleksi</b> (KE &amp; KK tak seimbang karena tanpa pengacakan).<br>
+            8. <b>Penyebaran informasi</b> (subyek baca/tahu info perlakuan).<br>
+            9. <b>Compensatory rivalry / resentful demoralization</b> (subyek bersaing atau patah semangat karena merasa dibedakan).<br>
+            10. <b>Interaksi</b> antar-ancaman (mis. seleksi × kematangan).</td>
+            <td data-label="Validitas Eksternal (4 Ancaman)">Kerepresentatifan &amp; daya generalisasi ke subyek/kondisi lain (krusial untuk riset terapan; makin kuat bila sampel besar &amp; homogen). 4 ancamannya:<br>
+            1. <b>Efek reaktif pengukuran</b> (pretest membuat subyek peka pada perlakuan).<br>
+            2. <b>Interaksi bias seleksi × IV</b> (sampel tak mewakili populasi).<br>
+            3. <b>Efek reaktif susunan eksperimen</b> (subyek tak alami karena tahu diamati di lab).<br>
+            4. <b>Interferensi banyak-perlakuan</b> (efek perlakuan sebelumnya terbawa ke perlakuan berikutnya).</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="abc"><span class="ltr">G</span><h4>Jenis Desain Penelitian</h4></div>
+    <p>Menyebut "desain korelasional" kurang tepat karena korelasi adalah alat analisis. Pembagian yang lebih tepat adalah <b>Kualitatif vs Kuantitatif</b> (beda ukuran sampel, instrumen, dan analisis) atau <b>Eksploratif vs Konklusif</b> (Deskriptif tanpa perlakuan vs Kausal/Eksperimen dengan perlakuan). Kerlinger &amp; Lee menekankan bahwa inti desain penelitian adalah implementasi prinsip <b>MAXMINCON</b>.</p>
+  </div>
+
+  <!-- KB 2 -->
+  <h2 class="section" id="kb2"><span class="dot" style="background:var(--kb2)"></span>KB 2 — Desain Eksperimen</h2>
+  <div class="card kb2b"><span class="kb-tag kb2t">KEGIATAN BELAJAR 2 · HAL. 4.29–4.49</span>
+    <div class="acro-box">
+      <span class="acro-title">📖 Kamus Konteks Singkatan &amp; Akronim KB 2</span>
+      <ul class="acro-grid">
+        <li><b>A</b>: Notasi <i>Acak / Randomization</i> — penugasan subyek secara acak ke kelompok eksperimen &amp; kontrol (ciri eksperimen murni).</li>
+        <li><b>X / Y</b>: Notasi variabel perlakuan ($X$) dan pengukuran variabel dependen ($Y_1$ pretest, $Y_2$ posttest).</li>
+        <li><b>KE / KK</b>: Kelompok Eksperimen ($YE$) dan Kelompok Kontrol ($YK$).</li>
+      </ul>
+    </div>
+
+    <p class="lead">Hipotesis mengenai <b>pengaruh</b> (hubungan sebab-akibat / kausalitas yang searah dan tidak simetris) hanya sah diuji secara penuh melalui <b>desain penelitian eksperimen</b>.</p>
+
+    <div class="abc"><span class="ltr">A</span><h4>Pengertian Eksperimen</h4></div>
+    <p>Menurut <b>Pedhazur &amp; Schmelkin (1991)</b>, eksperimen adalah penelitian di mana minimal satu IV <b>dimanipulasi secara sengaja berdasarkan teori</b> dan unit/subyek <b>ditugaskan secara acak</b> ke kelompok eksperimen dan kelompok kontrol.</p>
+    <div class="casebox">
+      <span class="ctitle">Peringatan Kausalitas Buku (Hal. 4.29)</span>
+      Dilarang mengklaim "pengaruh krisis moneter 1998 terhadap harga saham" sebagai eksperimen kausal karena peneliti tak pernah merencanakan/memanipulasi krisis tersebut dan datanya sudah lewat (<i>post hoc</i>).
+    </div>
+
+    <div class="abc"><span class="ltr">B</span><h4>Tiga Syarat Kausalitas (Selltiz et al., 1959)</h4></div>
+    <ol class="book">
+      <li><b>Penyebab mendahului akibat</b>: wajib ada kesenjangan/jeda waktu antara $X$ dan $Y$ (memasangkan data $X$ dan $Y$ di tahun yang sama bukan uji kausal, lebih tepat disebut prediksi).</li>
+      <li><b>Variasi konkomitan</b>: ada kovariansi/korelasi yang konsisten arahnya antara $X$ dan $Y$ (atau perbedaan mean KE vs KK).</li>
+      <li><b>Tidak ada penjelasan IV lain yang masuk akal</b>: semua variabel extraneous dikontrol (mengingat sulitnya kontrol mutlak di ilmu sosial, kesimpulan kausal bersifat <i>probabilistik</i>, bukan deterministik).</li>
+    </ol>
+
+    <div class="abc"><span class="ltr">C</span><h4>Konsep Dasar Kelompok Eksperimen (KE) dan Kelompok Kontrol (KK)</h4></div>
+    <p>Dalam eksperimen, subyek dibagi ke dalam <b>Kelompok Eksperimen (KE)</b> yang diberi variabel perlakuan ($X$) dan <b>Kelompok Kontrol (KK)</b> yang tidak diberi perlakuan untuk berfungsi sebagai pembanding guna mengisolasi efek murni $X$.</p>
+
+    <div class="flow">Berdasarkan tingkat pengacakan, keberadaan kelompok kontrol, dan frekuensi pengukuran, desain eksperimen terbagi menjadi tiga kelompok utama.</div>
+
+    <div class="abc"><span class="ltr">D</span><h4>Jenis Desain Eksperimen (Praeksperimen, Murni, Semu)</h4></div>
+    <p>Klik tiap kategori desain untuk melihat notasi, uji statistik, keunggulan, dan kelemahannya:</p>
+    <div class="rgrid c3" data-revealgroup>
+      <div class="rcell active" data-reveal data-detail="<b>1. Desain Praeksperimen (Tanpa Pengacakan → Lemah)</b><br>• <b>One-Shot Case Study</b> ($X \to Y$): tanpa pretest &amp; tanpa KK; lebih cocok untuk eksploratif.<br>• <b>Pengukuran Ulang Satu Kelompok</b> ($Y_1 \to X \to Y_2$, uji-$t$ dependen): tanpa KK sehingga tak yakin perubahan akibat $X$.<br>• <b>Kelompok Statis</b> (KE: $X \to YE_2$; KK: $YK_2$, uji-$t$ independen): tanpa pengacakan &amp; tanpa pretest; rentan bias seleksi &amp; mortalitas."><span class="stepnum">1</span><span><span class="rt">Praeksperimen</span><span class="rp">3 desain · tanpa pengacakan</span></span></div>
+      <div class="rcell" data-reveal data-detail="<b>2. Desain Eksperimen Murni (Dengan Pengacakan 'A' → Kuat)</b><br>• <b>Kelompok Kontrol &amp; Pengukuran Ulang</b> (KE &amp; KK diacak, keduanya diukur pretest–posttest; efek $= (YE_2-YE_1)-(YK_2-YK_1)$, uji Anava dependen).<br>• <b>Kelompok Kontrol Hanya Setelah Pengukuran</b> (KE &amp; KK diacak, ukur posttest saja; uji-$t$ independen; bebas bias pretest tapi peka seleksi/mortalitas).<br>• <b>Empat Kelompok Solomon (Terbaik!)</b>: 2 KE &amp; 2 KK diacak; 1 KE + 1 KK diukur 2 kali, 1 KE + 1 KK hanya posttest → mengontrol bias pengukuran sekaligus kelompok kontrol (Anava faktorial multivariat)."><span class="stepnum">2</span><span><span class="rt">Eksperimen Murni</span><span class="rp">3 desain · Solomon terbaik</span></span></div>
+      <div class="rcell" data-reveal data-detail="<b>3. Desain Eksperimen Semu / Quasi (Longitudinal)</b><br>Dipakai saat pengacakan dan kendali jadwal perlakuan tak memungkinkan.<br>• <b>Runtut Waktu Tunggal</b> ($Y_1\dots Y_5 \to X \to Y_6\dots Y_{10}$, uji-$t$ dependen).<br>• <b>Runtut Waktu Ganda</b> (KE &amp; KK sama-sama diukur berkali-kali sebelum &amp; sesudah $X$, Anava dependen).<br><i>Kelemahan keduanya:</i> tetap rentan bias sejarah &amp; interaksi pengukuran berulang."><span class="stepnum">3</span><span><span class="rt">Eksperimen Semu</span><span class="rp">Runtut waktu tunggal &amp; ganda</span></span></div>
+    </div>
+    <div class="rdetail" data-revealdetail><b>1. Desain Praeksperimen (Tanpa Pengacakan → Lemah)</b><br>• <b>One-Shot Case Study</b> ($X \to Y$): tanpa pretest &amp; tanpa KK; lebih cocok untuk eksploratif.<br>• <b>Pengukuran Ulang Satu Kelompok</b> ($Y_1 \to X \to Y_2$, uji-$t$ dependen): tanpa KK sehingga tak yakin perubahan akibat $X$.<br>• <b>Kelompok Statis</b> (KE: $X \to YE_2$; KK: $YK_2$, uji-$t$ independen): tanpa pengacakan &amp; tanpa pretest; rentan bias seleksi &amp; mortalitas.</div>
+
+    <div class="abc"><span class="ltr">E</span><h4>Trade-Off Validitas: Eksperimen Laboratorium vs Lapangan</h4></div>
+    <div class="table-wrap">
+      <table class="mini">
+        <thead><tr><th>Jenis Eksperimen</th><th>Validitas Internal</th><th>Validitas Eksternal (Generalisasi)</th><th>Alasan</th></tr></thead>
+        <tbody>
+          <tr><td data-label="Jenis Eksperimen"><b>Eksperimen Laboratorium</b></td><td data-label="Validitas Internal"><b>Tinggi</b></td><td data-label="Validitas Eksternal (Generalisasi)"><b>Rendah</b></td><td data-label="Alasan">Kontrol pengganggu sangat ketat &amp; mudah direplikasi, tetapi situasinya buatan (kurang alami).</td></tr>
+          <tr><td data-label="Jenis Eksperimen"><b>Eksperimen Lapangan</b></td><td data-label="Validitas Internal"><b>Lebih rendah</b></td><td data-label="Validitas Eksternal (Generalisasi)"><b>Tinggi</b></td><td data-label="Alasan">Berlangsung di lingkungan nyata tempat masalah berada sehingga lebih mudah digeneralisasikan ke populasi.</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p>Secara berurutan, riset dapat bergerak dari <b>eksploratif → deskriptif → eksperimen</b> (Kerlinger &amp; Lee, 2000), meski ketiganya tidak terpisah kaku.</p>
+  </div>
+
+  <h2 class="section" id="glosarium"><span class="dot"></span>Glosarium Kilat</h2>
+  <div class="card"><dl class="glossary">
+    <dt>Compensatory Rivalry / Resentful Demoralization</dt><dd>Variabilitas DV dalam eksperimen akibat keinginan subyek bersaing atau turunnya moral karena merasa dibedakan perlakuannya.</dd>
+    <dt>Desain Penelitian (Research Design)</dt><dd>Rencana dan struktur strategis tiap kegiatan untuk menjawab masalah penelitian secara empiris dengan mengendalikan variansi (prinsip MAXMINCON).</dd>
+    <dt>Desain Praeksperimen vs Murni vs Semu</dt><dd>Praeksperimen tanpa pengacakan (one-shot, pretest-posttest 1 kelompok, kelompok statis); Murni memakai pengacakan (termasuk Empat Kelompok Solomon); Semu memakai pengukuran runtut waktu longitudinal.</dd>
+    <dt>Eksperimen Laboratorium vs Lapangan</dt><dd>Laboratorium memiliki kontrol ketat (validitas internal tinggi, eksternal rendah); Lapangan dilakukan di kondisi nyata (validitas eksternal tinggi).</dd>
+    <dt>Kelompok Eksperimen (KE) vs Kelompok Kontrol (KK)</dt><dd>KE adalah kelompok subyek yang dikenai variabel perlakuan ($X$); KK tidak dikenai perlakuan dan berfungsi sebagai pembanding.</dd>
+    <dt>Mortalitas &amp; Regresi Statistik</dt><dd>Mortalitas = berkurangnya subyek selama eksperimen; Regresi = kecenderungan skor ekstrem bergerak mendekati rata-rata.</dd>
+    <dt>Pemasangan Subyek (Matching)</dt><dd>Pengaturan subyek berpasangan berdasarkan kesamaan atribut variabel pengganggu sebelum ditugaskan acak ke KE dan KK.</dd>
+    <dt>Validitas Internal vs Eksternal</dt><dd>Internal = efektivitas variabel perlakuan menciptakan variasi DV; Eksternal = kerepresentatifan dan daya generalisasi hasil penelitian.</dd>
+    <dt>Variansi Sistematis vs Variansi Residu (Acak/Eror)</dt><dd>Sistematis = variansi DV yang condong ke satu arah akibat faktor diketahui; Residu/acak = sisa variansi yang tak diketahui/tak terprediksi.</dd>
+    <dt>Variasi Konkomitan</dt><dd>Kesesuaian arah variasi (kovariansi/korelasi) antara variabel penyebab dan akibat sebagai salah satu syarat kausalitas.</dd>
+  </dl></div>
+</div>
+<footer><b>EKMA5104 — Metode Penelitian Bisnis (Edisi 3)</b> · Modul 4: Desain Penelitian<br>Bahan belajar ringkas untuk persiapan ujian · Dr. Lerbin Roberto Aritonang R., M.M.</footer>
+<script>
+(function(){
+  var pb=document.getElementById('progress');
+  function onScroll(){var h=document.documentElement;var sc=h.scrollTop||document.body.scrollTop;var max=(h.scrollHeight-h.clientHeight)||1;pb.style.width=(sc/max*100)+'%';}
+  document.addEventListener('scroll',onScroll,{passive:true});onScroll();
+
+  var list=document.getElementById('conceptList');var items=[].slice.call(list.querySelectorAll('li'));var boxes=items.map(function(li){return li.querySelector('input');});
+  document.getElementById('totalCount').textContent=items.length;var doneEl=document.getElementById('doneCount');var KEY='studi_ekma5104_m4_concepts_v1';
+  function load(){try{var a=JSON.parse(localStorage.getItem(KEY)||'[]');boxes.forEach(function(b,i){if(a[i])b.checked=true;});}catch(e){}}
+  function save(){try{localStorage.setItem(KEY,JSON.stringify(boxes.map(function(b){return b.checked?1:0;})));}catch(e){}}
+  function refresh(){var n=0;items.forEach(function(li,i){if(boxes[i].checked){li.classList.add('done');n++;}else li.classList.remove('done');});doneEl.textContent=n;}
+  load();refresh();boxes.forEach(function(b){b.addEventListener('change',function(){refresh();save();});});
+  document.getElementById('resetBtn').addEventListener('click',function(){boxes.forEach(function(b){b.checked=false;});refresh();save();});
+
+  [].slice.call(document.querySelectorAll('[data-revealgroup]')).forEach(function(g){
+    var det=g.querySelector('[data-revealdetail]');if(!det){var sib=g.nextElementSibling;if(sib&&sib.hasAttribute&&sib.hasAttribute('data-revealdetail'))det=sib;}
+    var cells=[].slice.call(g.querySelectorAll('[data-reveal]'));
+    cells.forEach(function(c){c.addEventListener('click',function(){cells.forEach(function(x){x.classList.remove('active');});c.classList.add('active');if(det){det.innerHTML=c.getAttribute('data-detail');if(window.MathJax&&window.MathJax.typesetPromise)window.MathJax.typesetPromise([det]);}});});
+  });
+
+  (function(){
+    var ROWH=46,NODE_H=32,PAD=13,GAP=52;var COL={root:'#0f5e8f',kb1:'#1a86c7',kb2:'#e08a1e',kb3:'#2a9d6f',kb4:'#7a5cc0',kb5:'#c75b7a'};
+    var mc=document.createElement('canvas').getContext('2d');mc.font='700 13px -apple-system,Segoe UI,Roboto,sans-serif';
+    function tw(t){return Math.ceil(mc.measureText(t).width);}function esc(t){return t.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');}
+    function rgba(hex,a){var h=hex.replace('#','');return 'rgba('+parseInt(h.substr(0,2),16)+','+parseInt(h.substr(2,2),16)+','+parseInt(h.substr(4,2),16)+','+a+')';}
+    var DATA={label:'MODUL 4 — Desain Penelitian',color:COL.root,children:[
+  {label:'KB1 · Desain Penelitian',color:COL.kb1,children:[
+    {label:'A. Definisi Desain Penelitian (Rencana & Struktur)'},
+    {label:'B. 2 Tujuan Dasar Desain Penelitian'},
+    {label:'C. Variansi Total & Variansi Sistematis (Antarkelompok)'},
+    {label:'D. Variansi Eror (Residu / Dalam Kelompok)'},
+    {label:'E. Prinsip MAXMINCON',children:[
+      {label:'1. Maksimumkan Variansi Sistematis'},
+      {label:'2. Kendalikan Extraneous (5 Cara)'},
+      {label:'3. Minimumkan Variansi Eror (Reliabilitas & Standardisasi)'}
+    ]},
+    {label:'F. Kriteria Memadai: Validitas Internal (10) & Eksternal (4)'},
+    {label:'G. Jenis Desain (Kualitatif vs Kuantitatif; Eksploratif, Deskriptif, Kausal)'}
+  ]},
+  {label:'KB2 · Desain Eksperimen',color:COL.kb2,children:[
+    {label:'A. Pengertian Eksperimen (Manipulasi + Pengacakan + Teori)'},
+    {label:'B. 3 Syarat Kausalitas (Selltiz et al.)'},
+    {label:'C. Konsep Kelompok Eksperimen (KE) & Kelompok Kontrol (KK)'},
+    {label:'D. Jenis Desain Eksperimen',children:[
+      {label:'1. Praeksperimen (3 Desain, Tanpa Acak)'},
+      {label:'2. Eksperimen Murni (3 Desain + Empat Kelompok Solomon)'},
+      {label:'3. Eksperimen Semu (Runtut Waktu Tunggal & Ganda)'}
+    ]},
+    {label:'E. Trade-Off Validitas: Eksperimen Lab vs Lapangan'}
+  ]}
+]};
+    var idc=0;(function w(n,c){n.id='n'+(idc++);n.color=n.color||c;(n.children||[]).forEach(function(k){w(k,n.color);});})(DATA,COL.root);
+    (function w(n,d){if(d>=2&&n.children&&n.children.length)n.collapsed=true;(n.children||[]).forEach(function(k){w(k,d+1);});})(DATA,0);
+    var host=document.getElementById('mindmap');
+    function render(){
+      var colW=[];(function w(n,d){var width=tw(n.label)+PAD*2+((n.children&&n.children.length)?20:0);colW[d]=Math.max(colW[d]||0,width);if(!n.collapsed)(n.children||[]).forEach(function(k){w(k,d+1);});})(DATA,0);
+      var colX=[],acc=14;for(var d=0;d<colW.length;d++){colX[d]=acc;acc+=colW[d]+GAP;}var row={v:0};
+      (function lay(n,d){if(!n.children||!n.children.length||n.collapsed){n._y=row.v*ROWH+ROWH/2+8;row.v++;return;}var f,l;n.children.forEach(function(k,i){lay(k,d+1);if(i===0)f=k._y;l=k._y;});n._y=(f+l)/2;})(DATA,0);
+      var totalW=acc,totalH=row.v*ROWH+24;var nodes=[],links=[];
+      (function col(n,d,p){n._x=colX[d];n._w=tw(n.label)+PAD*2+((n.children&&n.children.length)?20:0);nodes.push({n:n,d:d});if(p)links.push([p,n]);if(!n.collapsed)(n.children||[]).forEach(function(k){col(k,d+1,n);});})(DATA,0,null);
+      var s='<svg width="'+totalW+'" height="'+totalH+'" viewBox="0 0 '+totalW+' '+totalH+'" xmlns="http://www.w3.org/2000/svg">';
+      links.forEach(function(pr){var a=pr[0],b=pr[1],x1=a._x+a._w,y1=a._y,x2=b._x,y2=b._y,mx=(x1+x2)/2;s+='<path d="M'+x1+' '+y1+' C'+mx+' '+y1+' '+mx+' '+y2+' '+x2+' '+y2+'" fill="none" stroke="'+rgba(b.color,.5)+'" stroke-width="2"/>';});
+      nodes.forEach(function(o){var n=o.n,x=n._x,y=n._y-NODE_H/2,w=n._w,hk=n.children&&n.children.length;var fill=o.d===0?n.color:(o.d===1?rgba(n.color,.12):'#fff');var tf=o.d===0?'#fff':'#1c2733';
+        s+='<g data-id="'+n.id+'" style="cursor:'+(hk?'pointer':'default')+'"><rect x="'+x+'" y="'+y+'" rx="9" width="'+w+'" height="'+NODE_H+'" fill="'+fill+'" stroke="'+n.color+'" stroke-width="'+(o.d===0?0:1.6)+'"/><text x="'+(x+PAD)+'" y="'+(n._y+4)+'" font-size="13" font-weight="'+(o.d<=1?'700':'500')+'" fill="'+tf+'" font-family="-apple-system,Segoe UI,Roboto,sans-serif">'+esc(n.label)+'</text>';
+        if(hk){var cx=x+w-12,cy=n._y;s+='<circle cx="'+cx+'" cy="'+cy+'" r="8.5" fill="'+n.color+'"/><text x="'+cx+'" y="'+(cy+4.5)+'" font-size="13" font-weight="700" fill="#fff" text-anchor="middle" font-family="sans-serif">'+(n.collapsed?'+':'\u2013')+'</text>';}s+='</g>';});
+      s+='</svg>';host.innerHTML=s;
+    }
+    host.addEventListener('click',function(e){var g=e.target.closest('g[data-id]');if(!g)return;var id=g.getAttribute('data-id');(function f(n){if(n.id===id){if(n.children&&n.children.length)n.collapsed=!n.collapsed;return true;}return (n.children||[]).some(f);})(DATA);render();});
+    document.getElementById('mmExpand').addEventListener('click',function(){(function w(n){if(n.children)n.collapsed=false;(n.children||[]).forEach(w);})(DATA);render();});
+    document.getElementById('mmCollapse').addEventListener('click',function(){(function w(n,d){if(d>=1&&n.children&&n.children.length)n.collapsed=true;(n.children||[]).forEach(function(k){w(k,d+1);});})(DATA,0);render();});
+    render();
+  })();
+
+  window.addEventListener('load',function(){setTimeout(function(){if(window.MathJax&&window.MathJax.typesetPromise)window.MathJax.typesetPromise();},400);});
+})();
+</script></body></html>

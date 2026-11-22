@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Modul 6 — Menyerahkan Nilai Pelanggan | EKMA5206</title>
+<script>window.MathJax={tex:{inlineMath:[['$','$']],displayMath:[['\\[','\\]']]},svg:{fontCache:'global'},startup:{typeset:true}};</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js" id="MathJax-script" async></script>
+<style>
+  :root{--bg:#f4f6f9;--panel:#fff;--ink:#1c2733;--muted:#5c6b7a;--line:#e4e9f0;--brand:#1a86c7;--brand-dark:#0f5e8f;--brand-soft:#e7f3fb;--kb1:#1a86c7;--kb2:#e08a1e;--radius:14px;--shadow:0 1px 2px rgba(16,42,67,.06),0 6px 20px rgba(16,42,67,.06);--maxw:900px}
+  *{box-sizing:border-box}html{scroll-behavior:smooth}
+  body{margin:0;background:var(--bg);color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;line-height:1.72;-webkit-font-smoothing:antialiased}
+  #progress{position:fixed;top:0;left:0;height:4px;width:0;background:linear-gradient(90deg,var(--brand),#53c0ec);z-index:200;transition:width .1s}
+  header.top{position:sticky;top:0;z-index:100;background:rgba(255,255,255,.92);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+  .top-in{max-width:var(--maxw);margin:0 auto;padding:10px 20px;display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+  .badge{background:var(--brand);color:#fff;font-weight:700;font-size:.72rem;letter-spacing:.5px;padding:4px 10px;border-radius:999px;white-space:nowrap}
+  .top-title{font-size:.9rem;font-weight:600;color:var(--muted)}
+  nav.jump{margin-left:auto;display:flex;gap:4px;flex-wrap:wrap}
+  nav.jump a{font-size:.78rem;color:var(--muted);text-decoration:none;padding:5px 10px;border-radius:8px}
+  nav.jump a:hover{background:var(--brand-soft);color:var(--brand-dark)}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 20px 90px}
+  .hero{margin-top:26px;padding:30px 28px;border-radius:var(--radius);color:#fff;background:linear-gradient(135deg,#0f5e8f 0%,#1a86c7 60%,#2fa4df 100%);box-shadow:var(--shadow);position:relative;overflow:hidden}
+  .hero::after{content:"06";position:absolute;right:18px;bottom:-26px;font-size:150px;font-weight:800;opacity:.12;line-height:1}
+  .hero .eyebrow{font-size:.78rem;letter-spacing:1.5px;text-transform:uppercase;opacity:.9;font-weight:600}
+  .hero h1{margin:.3em 0 .25em;font-size:1.62rem;line-height:1.25;max-width:90%}
+  .hero .meta{display:flex;gap:18px;flex-wrap:wrap;font-size:.84rem;opacity:.95;margin-top:10px}
+  h2.section{font-size:1.3rem;margin:48px 0 4px;display:flex;align-items:center;gap:10px;scroll-margin-top:70px}
+  h2.section .dot{width:10px;height:22px;border-radius:4px;background:var(--brand)}
+  .section-sub{color:var(--muted);font-size:.9rem;margin:0 0 18px}
+  .card{background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);padding:22px 24px;margin:16px 0;--dot:var(--brand)}
+  .concepts{list-style:none;margin:0;padding:0;display:grid;gap:10px}
+  .concepts li{display:flex;gap:12px;align-items:flex-start;padding:12px 14px;border:1px solid var(--line);border-radius:10px;background:#fcfdff;transition:.15s}
+  .concepts li:hover{border-color:#cfe3f2}
+  .concepts input{margin-top:4px;width:18px;height:18px;accent-color:var(--brand);flex:none;cursor:pointer}
+  .concepts .ct{font-weight:600}.concepts .cd{display:block;font-weight:400;color:var(--muted);font-size:.86rem;margin-top:2px}
+  .concepts li.done{background:var(--brand-soft);border-color:#bfe0f3}.concepts li.done .ct{text-decoration:line-through;opacity:.65}
+  .cl-head{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-bottom:6px}
+  .cl-head .count{font-size:.82rem;color:var(--muted);background:var(--brand-soft);padding:3px 10px;border-radius:999px;font-weight:600}
+  .btn-reset{font-size:.78rem;border:1px solid var(--line);background:#fff;color:var(--muted);padding:5px 12px;border-radius:8px;cursor:pointer}.btn-reset:hover{background:#f6f8fb}
+  .mm-toolbar{display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin-bottom:10px}
+  .mm-btn{font-size:.78rem;border:1px solid var(--line);background:#fff;padding:6px 13px;border-radius:8px;cursor:pointer;color:var(--brand-dark);font-weight:600}.mm-btn:hover{background:var(--brand-soft)}
+  .mm-hint{font-size:.76rem;color:var(--muted)}
+  .mindmap-host{height:580px;overflow:auto;border:1px solid var(--line);border-radius:10px;background:#fcfdff}.mindmap-host svg{display:block}
+  .kb-tag{display:inline-flex;align-items:center;gap:8px;font-size:.78rem;font-weight:700;letter-spacing:.3px;color:#fff;padding:5px 12px;border-radius:999px;margin-bottom:6px}
+  .kb1t{background:var(--kb1)}.kb2t{background:var(--kb2)}
+  .kb1b{--dot:var(--kb1)}.kb2b{--dot:var(--kb2)}
+  .lead{font-size:1.02rem}.term{font-weight:700;color:var(--dot)}.en{font-style:italic;color:var(--muted);font-weight:500}
+  .abc{display:flex;align-items:center;gap:10px;margin:28px 0 10px;padding-bottom:6px;border-bottom:2px solid currentColor;border-bottom-color:color-mix(in srgb,var(--dot) 18%,#fff)}
+  .abc .ltr{background:var(--dot);color:#fff;font-weight:800;min-width:30px;height:30px;padding:0 7px;border-radius:8px;display:grid;place-items:center;flex:none}
+  .abc h4{margin:0;font-size:1.06rem;color:var(--dot)}
+  .numh{font-weight:700;color:var(--dot);margin:22px 0 4px;font-size:1rem}
+  .leth{font-weight:800;color:var(--dot);margin:20px 0 6px;font-size:.98rem;border-left:3px solid var(--dot);padding-left:10px}
+  ol.book{margin:12px 0;padding-left:28px}ol.book>li{margin:10px 0;padding-left:6px}ol.book>li::marker{font-weight:700;color:var(--dot)}
+  ul.exp{list-style:none;margin:12px 0;padding:0;display:grid;gap:10px}ul.exp>li{position:relative;padding-left:20px}
+  ul.exp>li::before{content:"";position:absolute;left:0;top:11px;width:8px;height:8px;border-radius:2px;background:var(--dot)}
+  ol.book b,ul.exp b{color:var(--ink)}
+  ul.let{list-style:lower-alpha;margin:10px 0;padding-left:28px}ul.let>li{margin:8px 0;padding-left:4px}ul.let>li::marker{color:var(--dot);font-weight:700}
+  .flow{border-left:4px solid var(--dot);background:color-mix(in srgb,var(--dot) 9%,#fff);padding:11px 15px;border-radius:0 10px 10px 0;margin:18px 0;font-size:.9rem}
+  .flow::before{content:"🔗 Benang merah — ";font-weight:700;color:var(--dot)}.flow b{color:var(--dot)}
+  table.mini{width:100%;border-collapse:collapse;margin:14px 0;font-size:.86rem}
+  table.mini th,table.mini td{border:1px solid var(--line);padding:9px 11px;text-align:left;vertical-align:top}
+  table.mini th{background:color-mix(in srgb,var(--dot) 12%,#fff);color:var(--dot);font-weight:700}
+  table.mini tr:nth-child(even) td{background:#fafcfe}
+  .rgrid{display:grid;gap:8px;margin:14px 0}.rgrid.c3{grid-template-columns:repeat(3,1fr)}.rgrid.c2{grid-template-columns:repeat(2,1fr)}
+  .rcell{border:1px solid var(--line);border-radius:10px;padding:11px 13px;cursor:pointer;background:#fff;transition:.15s;display:flex;gap:10px;align-items:flex-start}
+  .rcell:hover{border-color:var(--dot);box-shadow:var(--shadow);transform:translateY(-2px)}
+  .rcell.active{border-color:var(--dot);background:color-mix(in srgb,var(--dot) 8%,#fff)}
+  .rcell .stepnum{background:var(--dot);color:#fff;font-weight:700;min-width:24px;height:24px;border-radius:7px;display:grid;place-items:center;flex:none;font-size:.82rem}
+  .rcell .rt{font-weight:700;font-size:.9rem;color:var(--dot);display:block}.rcell .rp{font-size:.78rem;color:var(--muted);display:block;margin-top:2px}
+  .rdetail{font-size:.88rem;border-left:4px solid var(--dot);background:color-mix(in srgb,var(--dot) 8%,#fff);border-radius:0 10px 10px 0;padding:12px 15px;margin-top:6px}
+  .pill-row{display:flex;gap:8px;flex-wrap:wrap;margin:10px 0}
+  .pill{font-size:.8rem;background:#eef3f8;color:#36506a;border:1px solid #e0e8f0;padding:4px 11px;border-radius:999px;font-weight:600}
+  .flowchart{display:flex;align-items:center;gap:6px;flex-wrap:wrap;margin:16px 0;justify-content:center}
+  .fc-node{background:color-mix(in srgb,var(--dot) 12%,#fff);border:1.5px solid var(--dot);color:var(--dot);font-weight:700;font-size:.82rem;padding:8px 13px;border-radius:9px;text-align:center}
+  .fc-arrow{color:var(--dot);font-weight:800;font-size:1.1rem}
+  .glossary dt{font-weight:700;color:var(--brand-dark);margin-top:10px}.glossary dd{margin:0 0 2px;color:var(--muted);font-size:.9rem}
+  footer{max-width:var(--maxw);margin:0 auto;padding:30px 20px 60px;color:var(--muted);font-size:.82rem;border-top:1px solid var(--line)}
+  footer .refs{margin-top:10px;font-size:.78rem;line-height:1.6}
+  .offline-note{font-size:.76rem;color:var(--muted);background:#fff8e6;border:1px solid #f0e2b8;border-radius:8px;padding:8px 12px;margin:10px 0}
+  @media(max-width:640px){.hero h1{font-size:1.3rem;max-width:100%}.hero::after{font-size:110px}nav.jump{display:none}.rgrid.c3,.rgrid.c2{grid-template-columns:1fr}.mindmap-host{height:440px}}
+  @media print{#progress,header.top,.btn-reset,.mm-toolbar{display:none}body{background:#fff}.card{box-shadow:none}}
+</style>
+</head>
+<body>
+<div id="progress"></div>
+<header class="top"><div class="top-in"><span class="badge">MODUL 6</span><a href="index.html" title="Kembali ke daftar modul" style="text-decoration:none;display:inline-flex;align-items:center;gap:7px;background:var(--brand);color:#fff;font-weight:700;font-size:.8rem;padding:7px 15px;border-radius:999px;white-space:nowrap;box-shadow:0 2px 6px rgba(16,42,67,.22);line-height:1"><span style="font-size:1rem;line-height:1">&#8962;</span> Daftar Modul</a><span class="top-title">Manajemen Pemasaran · EKMA5206</span>
+  <nav class="jump"><a href="#konsep">Konsep</a><a href="#peta">Peta Konsep</a><a href="#kb1">KB1</a><a href="#kb2">KB2</a><a href="#glosarium">Glosarium</a></nav></div></header>
+<div class="wrap">
+  <section class="hero"><div class="eyebrow">Buku Materi Pokok · EKMA5206 · 3 SKS</div>
+    <h1>Menyerahkan Nilai Pelanggan</h1>
+    <div class="meta"><span>⏱️ Estimasi belajar <b>±35 menit</b></span><span>📚 <b>2</b> Kegiatan Belajar</span><span>✍️ Dr. Ir. FX. Bambang Wiharto, M.M.</span></div></section>
+  <p class="section-sub" style="margin-top:22px">Setelah program pemasaran dirancang (Modul 5), nilai itu harus <b>diserahkan</b> ke pelanggan lewat jalur distribusi. Modul ini menata <b>jalur pemasaran</b> (KB1) lalu pelaksananya: <b>ritel, distributor &amp; logistik</b> (KB2). Ringkasan mengikuti alur heading buku (A/1/a) dengan kotak <b>🔗 Benang merah</b>, penjelasan tiap poin, &amp; istilah asli + terjemahan.</p>
+  <p class="offline-note">ℹ️ Peta konsep &amp; elemen interaktif berjalan tanpa internet. Teks tetap terbaca offline.</p>
+
+  <h2 class="section" id="konsep"><span class="dot"></span>Konsep Penting yang Harus Dikuasai</h2>
+  <p class="section-sub">Istilah inti, urut sesuai buku. Centang sebagai penanda belajar (tersimpan otomatis).</p>
+  <div class="card"><div class="cl-head"><span class="count"><span id="doneCount">0</span>/<span id="totalCount">0</span> dikuasai</span><button class="btn-reset" id="resetBtn">Reset centang</button></div>
+    <ul class="concepts" id="conceptList">
+      <li><input type="checkbox"><span><span class="ct">Jalur pemasaran (marketing channel)</span><span class="cd">Perantara yang membuat produk tersedia bagi konsumen.</span></span></li>
+      <li><input type="checkbox"><span><span class="ct">Push vs pull marketing</span><span class="cd">Mendorong lewat perantara vs menarik permintaan konsumen.</span></span></li>
+      <li><input type="checkbox"><span><span class="ct">Jalur hibrida &amp; jaringan nilai</span><span class="cd">Multichannel; SCM, ERP, CRM.</span></span></li>
+      <li><input type="checkbox"><span><span class="ct">8 fungsi saluran pemasaran</span><span class="cd">Dari pengumpulan informasi sampai pembayaran.</span></span></li>
+      <li><input type="checkbox"><span><span class="ct">4 keputusan rancangan saluran</span><span class="cd">Analisis layanan, objektif, evaluasi alternatif, manajemen.</span></span></li>
+      <li><input type="checkbox"><span><span class="ct">Kriteria ekonomi, kontrol &amp; adaptif</span><span class="cd">Dasar evaluasi alternatif saluran.</span></span></li>
+      <li><input type="checkbox"><span><span class="ct">VMS &amp; HMS</span><span class="cd">Sistem pemasaran vertikal &amp; horizontal.</span></span></li>
+      <li><input type="checkbox"><span><span class="ct">Konflik saluran (vertikal/horizontal/multichannel)</span><span class="cd">Jenis, penyebab &amp; pengelolaan.</span></span></li>
+      <li><input type="checkbox"><span><span class="ct">e-Commerce: pure-click, brick-and-click, m-commerce</span><span class="cd">Praktik pemasaran elektronik.</span></span></li>
+      <li><input type="checkbox"><span><span class="ct">Retailing &amp; 4 tingkat layanan</span><span class="cd">Self service → full service.</span></span></li>
+      <li><input type="checkbox"><span><span class="ct">Nonstore retailing</span><span class="cd">Direct selling, direct marketing, vending, buying service, corporate retailing.</span></span></li>
+      <li><input type="checkbox"><span><span class="ct">6 perubahan lingkungan peritel baru</span><span class="cd">Giant retailers, teknologi, dll.</span></span></li>
+      <li><input type="checkbox"><span><span class="ct">9 keputusan pemasaran ritel</span><span class="cd">Target market sampai lokasi.</span></span></li>
+      <li><input type="checkbox"><span><span class="ct">Private-label brand &amp; produk generik</span><span class="cd">Merek toko vs merek nasional.</span></span></li>
+      <li><input type="checkbox"><span><span class="ct">Wholesaling / distributor</span><span class="cd">Fungsi &amp; kecenderungan pedagang besar.</span></span></li>
+      <li><input type="checkbox"><span><span class="ct">Market logistics &amp; SCM</span><span class="cd">Order, warehousing, inventory, transportasi; reorder point.</span></span></li>
+    </ul>
+  </div>
+
+  <h2 class="section" id="peta"><span class="dot"></span>Peta Konsep (Mind Map)</h2>
+  <p class="section-sub">Struktur lengkap modul mengikuti outline buku. Klik +/− pada simpul untuk buka/tutup cabang.</p>
+  <div class="card"><div class="mm-toolbar"><button class="mm-btn" id="mmExpand">Perluas semua</button><button class="mm-btn" id="mmCollapse">Ciutkan</button><span class="mm-hint">Gulir di dalam kotak untuk menggeser</span></div><div class="mindmap-host" id="mindmap"></div></div>
+
+  <!-- KB1 -->
+  <h2 class="section" id="kb1"><span class="dot"></span>KB 1 — Merancang dan Mengelola Jalur Distribusi</h2>
+  <div class="card kb1b">
+    <span class="kb-tag kb1t">JALUR DISTRIBUSI</span>
+    <p class="lead">Sebagian besar produsen tidak menjual langsung ke pemakai akhir; di antaranya ada <span class="term">perantara <span class="en">(intermediaries)</span></span>. Kumpulan organisasi yang membuat produk tersedia &amp; siap dikonsumsi itulah <span class="term">jalur pemasaran <span class="en">(marketing channel)</span></span> — disebut juga jalur perdagangan atau jalur distribusi.</p>
+
+    <div class="numh">1 · Saluran Pemasaran dan Jaringan Nilai</div>
+    <div class="leth">a. Pentingnya sebuah jalur</div>
+    <p>Jalur pemasaran adalah <span class="term">opportunity cost</span> (biaya peluang): salah satu peran pokoknya adalah mengubah pelanggan potensial menjadi pelanggan yang menguntungkan. Jalur bukan hanya <em>melayani</em> pasar, tetapi juga <em>membuat</em> pasar. Pilihan jalur (massal vs premium) berpengaruh pada penentuan harga, periklanan, &amp; tenaga penjualan.</p>
+    <div class="leth">b. Pembangunan jalur pemasaran — Push vs Pull</div>
+    <div class="rgrid c2" data-revealgroup>
+      <div class="rcell" data-reveal data-detail="<b>Strategi push</b> (mendorong) — menggunakan tenaga penjualan pabrik, uang promosi perdagangan, atau sarana lain untuk mendorong perantara agar melaksanakan, mempromosikan &amp; menjual produk ke pemakai akhir. Cocok untuk produk yang loyalitas konsumennya rendah, pemilihan merek dilakukan di toko, &amp; barang bersifat impulse (dibeli tanpa rencana)."><span><span class="rt">Push</span><span class="rp">Dorong lewat perantara.</span></span></div>
+      <div class="rcell" data-reveal data-detail="<b>Strategi pull</b> (menarik) — pabrikan memakai iklan, promosi &amp; komunikasi untuk mendorong konsumen membangun permintaan produk kepada perantara, sehingga perantara memesan ke pabrik. Cocok bila loyalitas konsumen terhadap produk tinggi &amp; konsumen sudah menentukan merek sebelum membeli. Perusahaan besar (Coca-Cola, Intel, Nike) memadukan keduanya."><span><span class="rt">Pull</span><span class="rp">Tarik lewat permintaan konsumen.</span></span></div>
+    </div>
+    <div class="rdetail" data-revealdetail>Klik push atau pull untuk penjelasannya.</div>
+    <div class="leth">c. Jalur pemasaran hibrida</div>
+    <p>Perusahaan memakai beberapa jalur serempak untuk segmen berbeda (mis. tenaga penjualan untuk pelanggan besar, <em>telemarketing</em> &amp; <em>direct mail</em> untuk yang kecil). Integrasi jalur ditandai: <b>(1)</b> pesan online &amp; ambil di lokasi nyaman, <b>(2)</b> kembalikan barang online ke peritel lokal, <b>(3)</b> diskon dari pembelian online/offline.</p>
+    <div class="leth">d. Memahami kebutuhan pelanggan</div>
+    <p>Konsumen memilih jalur berdasarkan faktor <b>harga, jenis produk, kenyamanan, &amp; tujuan pembelanjaan</b> (ekonomik, sosial, pengalaman). Konsumen yang sama bisa memilih jalur berbeda untuk fungsi berbeda (mis. <em>browsing</em> internet lalu beli di toko; <em>test-drive</em> lalu pesan online).</p>
+    <div class="leth">e. Jaringan nilai</div>
+    <p>Pandangan luas: perusahaan sebagai <span class="term">jaringan nilai</span> — kemitraan &amp; aliansi sebagai sumber, pelengkap, &amp; saluran distribusi. Mengelolanya perlu <span class="term">supply chain management (SCM)</span>, <span class="term">ERP <span class="en">(Enterprise Resource Planning)</span></span>, &amp; <span class="term">CRM <span class="en">(Customer Relationship Management)</span></span> untuk hubungan jangka panjang dengan pelanggan.</p>
+
+    <div class="flow">Setelah tahu apa itu jalur &amp; jaringan nilai, pertanyaannya: mengapa produsen menyerahkan penjualan ke pihak lain? Itu peran saluran pemasaran.</div>
+
+    <div class="numh">2 · Peran Saluran Pemasaran</div>
+    <p>Produsen mendelegasikan penjualan karena perantara lebih <b>efektif &amp; efisien</b> — lewat hubungan, pengalaman, spesialisasi, &amp; skala operasinya, perantara membuat barang tersedia luas dengan biaya lebih rendah daripada distribusi sendiri.</p>
+    <div class="leth">a. Aliran &amp; fungsi saluran pemasaran</div>
+    <p>Saluran mengatasi kesenjangan <b>waktu, tempat, &amp; kepemilikan</b>. Delapan fungsi kunci:</p>
+    <ol class="book">
+      <li><b>Mengumpulkan informasi</b> tentang pelanggan, pesaing, &amp; kekuatan lingkungan pemasaran.</li>
+      <li><b>Menyebarluaskan informasi</b> (komunikasi persuasif) untuk mendorong pembelian.</li>
+      <li><b>Mencapai persetujuan harga</b> &amp; ketentuan agar perpindahan kepemilikan terjadi.</li>
+      <li><b>Membuat pesanan</b> kepada produsen.</li>
+      <li><b>Mencari dana</b> untuk mendukung kegiatan inventori.</li>
+      <li><b>Menanggung risiko</b> yang muncul dalam pelaksanaan saluran.</li>
+      <li><b>Menyediakan tempat</b> penyimpanan &amp; pergerakan fisik produk.</li>
+      <li><b>Mengelola pembayaran</b> tagihan maupun penerimaan pembayaran.</li>
+    </ol>
+    <div class="leth">b. Saluran pemasaran jasa</div>
+    <p>Saluran tak hanya untuk barang; jasa juga butuh saluran penyerahan. Universitas menyusun silabus &amp; kurikulum, rumah sakit menyusun prosedur layanan — sebagai dasar menyerahkan jasa pendidikan/kesehatan.</p>
+
+    <div class="numh">3 · Keputusan Rancangan Saluran Pemasaran</div>
+    <div class="leth">a. Analisis tingkat layanan yang diinginkan</div>
+    <p>Empat–lima atribut layanan yang diharapkan pelanggan — klik:</p>
+    <div class="rgrid c3" data-revealgroup>
+      <div class="rcell" data-reveal data-detail="<b>Lot size</b> (ukuran lot) — banyaknya unit yang dapat disalurkan sekali transaksi. Contoh: pindah rumah cukup menyewa 1 truk, bukan membeli armada."><span><span class="rt">Lot size</span><span class="rp">Ukuran unit per transaksi.</span></span></div>
+      <div class="rcell" data-reveal data-detail="<b>Waiting &amp; delivery time</b> — waktu tunggu sampai barang datang &amp; kecepatan pengiriman pesanan."><span><span class="rt">Waiting/delivery time</span><span class="rp">Kecepatan penyerahan.</span></span></div>
+      <div class="rcell" data-reveal data-detail="<b>Spatial convenience</b> (kenyamanan lokasi) — pelanggan dapat memesan barang dengan mudah karena tersedia di banyak tempat."><span><span class="rt">Spatial convenience</span><span class="rp">Ketersediaan di banyak tempat.</span></span></div>
+      <div class="rcell" data-reveal data-detail="<b>Product variety</b> (keragaman produk) — banyaknya pilihan jenis barang; makin banyak pilihan, makin besar peluang kebutuhan terpenuhi."><span><span class="rt">Product variety</span><span class="rp">Keragaman pilihan.</span></span></div>
+      <div class="rcell" data-reveal data-detail="<b>Service backup</b> (layanan tambahan) — tersedia fasilitas kredit, pengiriman, instalasi, &amp; perbaikan yang membuat pelanggan nyaman."><span><span class="rt">Service backup</span><span class="rp">Kredit, instalasi, perbaikan.</span></span></div>
+    </div>
+    <div class="rdetail" data-revealdetail>Klik salah satu atribut layanan untuk penjelasannya. Makin tinggi layanan → makin besar biaya &amp; harga.</div>
+    <div class="leth">b. Menentukan objektif &amp; batasan saluran pemasaran</div>
+    <p>Objektif dinyatakan dari tingkat layanan; institusi saluran menetapkan fungsi apa yang dijalankan agar biaya total minimal namun layanan terpenuhi. Objektif disesuaikan dengan produk (produk cepat rusak → pemasaran langsung; produk besar → minimalkan jarak pengiriman) &amp; kondisi ekonomi (saat depresi → jalur pendek, hemat biaya).</p>
+    <div class="leth">c. Identifikasi &amp; evaluasi alternatif saluran utama</div>
+    <p>Alternatif dinilai pakai dua kriteria — klik:</p>
+    <div class="rgrid c2" data-revealgroup>
+      <div class="rcell" data-reveal data-detail="<b>Kriteria ekonomi</b> — tiap alternatif menghasilkan tingkat penjualan &amp; biaya berbeda. Tenaga penjualan perusahaan lebih agresif (masa depan bergantung pada penjualan) &amp; menguasai detail produk; agen penjualan bisa lebih fokus &amp; paham pasar tetapi tak menguasai teknis produk. Tahap: estimasi penjualan tiap saluran → estimasi biaya → bandingkan."><span><span class="rt">Kriteria ekonomi</span><span class="rp">Penjualan vs biaya tiap saluran.</span></span></div>
+      <div class="rcell" data-reveal data-detail="<b>Kriteria kontrol &amp; adaptif</b> — agen penjualan adalah perusahaan independen yang memaksimalkan labanya sendiri, sehingga bisa menimbulkan masalah kontrol. Untuk membangun saluran, anggota harus berkomitmen untuk jangka waktu tertentu; namun komitmen ini bisa mengurangi kemampuan merespons perubahan pasar. Di pasar dinamis, perusahaan butuh struktur saluran yang adaptif."><span><span class="rt">Kontrol &amp; adaptif</span><span class="rp">Kendali vs fleksibilitas.</span></span></div>
+    </div>
+    <div class="rdetail" data-revealdetail>Klik salah satu kriteria untuk penjelasannya.</div>
+
+    <div class="numh">4 · Keputusan Manajemen Saluran Pemasaran</div>
+    <p>Setelah memilih sistem, perusahaan <b>memilih, melatih, memotivasi, &amp; mengevaluasi</b> perantara, serta memodifikasi saluran seiring waktu:</p>
+    <ul class="exp">
+      <li><b>a. Memilih anggota saluran</b> — tentukan karakteristik yang harus dimiliki (pengalaman di bisnis sama, produk lain yang dijual, pertumbuhan &amp; keuntungan, kekuatan finansial, reputasi layanan). Bagi pelanggan, perantara <em>adalah</em> perusahaan — gerai McDonald yang kotor merusak citra.</li>
+      <li><b>b. Pelatihan &amp; motivasi anggota</b> — perlakukan perantara sebagai pelaksana saluran; beri <em>positioning</em> &amp; nilai superior, rencanakan program pelatihan &amp; peningkatan kemampuan.</li>
+      <li><b>c. Evaluasi anggota</b> — periodik atas kuota penjualan, tingkat persediaan, waktu penyerahan, perlakuan atas barang rusak, kerja sama promosi &amp; pelatihan. Yang berkinerja buruk dibina, dimotivasi, bila perlu diputus.</li>
+      <li><b>d. Memodifikasi rancangan &amp; susunan saluran</b> — saat saluran tak berfungsi, pola pembelian berubah, atau produk masuk tahap siklus hidup berikutnya; di pasar kompetitif dengan <em>entry barrier</em> rendah, struktur saluran berubah seiring waktu.</li>
+    </ul>
+
+    <div class="numh">5 · Integrasi dan Sistem Saluran Pemasaran</div>
+    <div class="rgrid c3" data-revealgroup>
+      <div class="rcell" data-reveal data-detail="<b>Vertical Marketing System (VMS)</b> — produsen, distributor &amp; pengecer menyatu jadi sistem terpadu. Timbul karena keinginan kuat mengontrol perilaku saluran &amp; meniadakan konflik antar anggota independen; mencapai tujuan ekonomi lewat ukuran, daya tawar, &amp; eliminasi layanan rangkap."><span><span class="rt">VMS (vertikal)</span><span class="rp">Sistem saluran terpadu.</span></span></div>
+      <div class="rcell" data-reveal data-detail="<b>Horizontal Marketing System (HMS)</b> — dua/lebih perusahaan tak berhubungan menyatukan sumber daya/program untuk mengeksploitasi peluang pasar baru, karena sendiri tak punya modal/pengetahuan/produksi yang cukup atau tak berani ambil risiko sendiri."><span><span class="rt">HMS (horizontal)</span><span class="rp">Patungan peluang baru.</span></span></div>
+      <div class="rcell" data-reveal data-detail="<b>Sistem pemasaran banyak saluran (multichannel)</b> — satu perusahaan pakai dua/lebih saluran untuk segmen berbeda. Tiga manfaat: (1) meningkatkan cakupan pasar (market coverage), (2) biaya saluran lebih rendah, (3) penjualan lebih customized sesuai kebutuhan pelanggan."><span><span class="rt">Multichannel</span><span class="rp">Banyak saluran sekaligus.</span></span></div>
+    </div>
+    <div class="rdetail" data-revealdetail>Klik salah satu sistem untuk penjelasannya.</div>
+
+    <div class="flow">Integrasi &amp; banyaknya saluran menambah cakupan pasar — tetapi juga memicu gesekan antar saluran. Itu yang dibahas di bagian konflik.</div>
+
+    <div class="numh">6 · Konflik, Kerja Sama, dan Kompetisi</div>
+    <p>Perbedaan minat, keinginan &amp; objektif antar anggota memicu konflik. Jenis — klik:</p>
+    <div class="rgrid c3" data-revealgroup>
+      <div class="rcell" data-reveal data-detail="<b>Vertical channel conflict</b> — konflik antar tingkat saluran yang berbeda dalam satu saluran yang sama (mis. produsen vs distributornya)."><span><span class="rt">Vertical</span><span class="rp">Antar tingkat berbeda.</span></span></div>
+      <div class="rcell" data-reveal data-detail="<b>Horizontal channel conflict</b> — konflik antar anggota pada tingkat yang sama dalam satu saluran (mis. dua peritel sewilayah)."><span><span class="rt">Horizontal</span><span class="rp">Antar anggota setingkat.</span></span></div>
+      <div class="rcell" data-reveal data-detail="<b>Multichannel conflict</b> — terjadi saat manufaktur membangun dua/lebih saluran yang menjual produk sama di pasar yang sama."><span><span class="rt">Multichannel</span><span class="rp">Antar saluran paralel.</span></span></div>
+    </div>
+    <div class="rdetail" data-revealdetail>Klik salah satu jenis konflik untuk penjelasannya.</div>
+    <p style="margin-top:12px"><b>Penyebab konflik:</b> <span class="pill">goal incompatibility</span> <span class="pill">unclear roles &amp; rights</span> <span class="pill">differences in perception</span> <span class="pill">intermediaries' dependence</span>. <b>Pengelolaan:</b> tujuan super, pertukaran orang antar jalur, keanggotaan bersama asosiasi, diplomasi/mediasi/arbitrase, atau jalur hukum. <b>Isu legal &amp; etis:</b> <em>exclusive dealing</em> (dealer hanya jual produk produsen) dibolehkan selama tak mengarah monopoli &amp; tanpa paksaan.</p>
+
+    <div class="numh">7 · Praktek Pemasaran e-Commerce</div>
+    <table class="mini">
+      <tr><th>Istilah</th><th>Makna</th></tr>
+      <tr><td><b>E-business</b></td><td>Pemakaian sarana elektronik &amp; platform digital dalam kegiatan usaha.</td></tr>
+      <tr><td><b>E-commerce</b></td><td>Menawarkan situs untuk transaksi/memfasilitasi penjualan online.</td></tr>
+      <tr><td><b>E-purchasing</b></td><td>Memutuskan membeli barang/jasa &amp; informasi dari pemasok online.</td></tr>
+      <tr><td><b>E-marketing</b></td><td>Komunikasi, promosi &amp; penjualan produk lewat internet.</td></tr>
+    </table>
+    <div class="rgrid c3" data-revealgroup>
+      <div class="rcell" data-reveal data-detail="<b>Pure-click companies</b> — meluncurkan website tanpa pengalaman sebagai perusahaan sebelumnya. Jenis: search engine, ISP, commerce-sites, transaction-sites, content-site, enabler-site. Layanan pelanggan kritikal (banyak pembeli memilih barang namun gagal transaksi)."><span><span class="rt">Pure-click</span><span class="rp">Online murni.</span></span></div>
+      <div class="rcell" data-reveal data-detail="<b>Brick-and-click companies</b> — perusahaan yang sudah ada membangun website sebagai wahana tambahan. Berpotensi menimbulkan konflik dengan saluran offline yang sudah ada (penolakan dari dealer/retailer)."><span><span class="rt">Brick-and-click</span><span class="rp">Offline + online.</span></span></div>
+      <div class="rcell" data-reveal data-detail="<b>M-commerce (Mobile Commerce)</b> — transaksi &amp; pencarian informasi lewat telepon seluler/PDA: cek harga saham, cuaca, berita, kirim/terima pesan elektronik, pemesanan."><span><span class="rt">M-commerce</span><span class="rp">Lewat seluler.</span></span></div>
+    </div>
+    <div class="rdetail" data-revealdetail>Klik salah satu model e-commerce untuk penjelasannya.</div>
+  </div>
+
+  <!-- KB2 -->
+  <h2 class="section" id="kb2"><span class="dot"></span>KB 2 — Mengelola Ritel, Distributor dan Logistics</h2>
+  <div class="card kb2b">
+    <span class="kb-tag kb2t">RITEL · DISTRIBUTOR · LOGISTIK</span>
+    <p class="lead">KB1 merancang jalur; KB2 mengelola <b>pelaksananya</b> di hilir — peritel yang menjual ke konsumen akhir, distributor/wholesaler di antaranya, &amp; sistem logistik yang menggerakkan barang.</p>
+
+    <div class="abc"><span class="ltr">A</span><h4>Peritel <span class="en">(Retailing)</span></h4></div>
+    <p><span class="term">Retailing</span> = kegiatan menjual barang/jasa langsung ke konsumen akhir untuk pemakaian pribadi (non-business). Peritel adalah badan yang penghasilan utamanya dari penjualan eceran — tak bergantung cara jual (toko, email, telepon, vending, internet) atau tempat.</p>
+    <div class="numh">1 · Jenis Peritel</div>
+    <p>Konsumen berbelanja pada toko ritel atau organisasi ritel lain. Bentuk yang dikenal: <span class="term">department store</span> — dikunjungi karena menyediakan beragam kebutuhan (lukisan, restoran, kursus memasak, pusat kebugaran, tempat bermain anak).</p>
+    <div class="numh">2 · Tingkat Layanan</div>
+    <p>Toko ritel mengikuti siklus hidup (pasang surut). Empat tingkat layanan — klik:</p>
+    <div class="rgrid c2" data-revealgroup>
+      <div class="rcell" data-reveal data-detail="<b>Self service</b> (melayani diri sendiri) — batu penjuru (corner stone) toko diskon; pelanggan menjalankan proses locate-compare-select sendiri untuk menghemat biaya."><span><span class="rt">Self service</span><span class="rp">Layani diri sendiri.</span></span></div>
+      <div class="rcell" data-reveal data-detail="<b>Self selection</b> — pelanggan menemukan sendiri barang, meski bisa dibantu pegawai bila perlu."><span><span class="rt">Self selection</span><span class="rp">Pilih sendiri, dibantu bila perlu.</span></span></div>
+      <div class="rcell" data-reveal data-detail="<b>Limited service</b> — menyediakan barang/jasa lebih terbatas; pelanggan kadang perlu informasi &amp; bantuan tambahan terutama untuk fitur produk."><span><span class="rt">Limited service</span><span class="rp">Layanan terbatas.</span></span></div>
+      <div class="rcell" data-reveal data-detail="<b>Full service</b> — wira penjualan siap membantu di setiap tahap locate-compare-select. Cocok untuk barang spesial &amp; slow moving item; memerlukan banyak pegawai, sehingga biaya &amp; harga tinggi."><span><span class="rt">Full service</span><span class="rp">Layanan penuh.</span></span></div>
+    </div>
+    <div class="rdetail" data-revealdetail>Klik salah satu tingkat layanan untuk penjelasannya.</div>
+    <p style="margin-top:14px"><b>Nonstore retailing</b> (eceran tanpa toko) berkembang cepat — klik tiap bentuk:</p>
+    <div class="rgrid c3" data-revealgroup>
+      <div class="rcell" data-reveal data-detail="<b>Direct selling</b> (penjualan langsung) — juga disebut multilevel/network marketing; wira penjualan mendatangi rumah pelanggan secara one-to-one atau one-to-many (Avon, Electrolux, Tupperware, Mary Kay)."><span><span class="rt">Direct selling</span><span class="rp">Multilevel/network.</span></span></div>
+      <div class="rcell" data-reveal data-detail="<b>Direct marketing</b> — turunan dari direct mail &amp; catalog marketing; termasuk telemarketing (1-800-FLOWERS), television direct network marketing (Home Shopping Network), &amp; electronic shopping (Amazon)."><span><span class="rt">Direct marketing</span><span class="rp">Katalog, telemarketing, e-shopping.</span></span></div>
+      <div class="rcell" data-reveal data-detail="<b>Automatic vending machine</b> — menawarkan impulse goods (rokok, kopi, permen, koran); self service 24 jam; ditempatkan di toko, mall, pompa bensin, perkantoran."><span><span class="rt">Vending machine</span><span class="rp">Mesin penjual otomatis.</span></span></div>
+      <div class="rcell" data-reveal data-detail="<b>Buying service</b> — peritel tanpa toko fisik yang melayani pelanggan khusus (pegawai perusahaan besar) yang berhak membeli dengan harga diskon dari toko ritel terdaftar."><span><span class="rt">Buying service</span><span class="rp">Layanan pembelian anggota.</span></span></div>
+      <div class="rcell" data-reveal data-detail="<b>Corporate retailing</b> — toko dimiliki organisasi, bukan individu; meraih economies of scale, daya beli besar, merek dikenal (Alfamart, Indomaret). Contoh: corporate chain stores (Ramayana, Matahari), koperasi konsumen, franchise (KFC, Burger King, McDonald)."><span><span class="rt">Corporate retailing</span><span class="rp">Chain stores, koperasi, franchise.</span></span></div>
+    </div>
+    <div class="rdetail" data-revealdetail>Klik salah satu bentuk nonstore/corporate retailing untuk penjelasannya.</div>
+
+    <div class="abc"><span class="ltr">B</span><h4>Lingkungan Peritel Baru</h4></div>
+    <p>Enam perubahan dalam lingkungan ritel:</p>
+    <ol class="book">
+      <li><b>New retail forms &amp; combinations</b> — supermarket menyertakan cabang bank, toko buku menjual minuman/kopi, pompa bensin + toko ritel (Circle K), mal besar + fasilitas kebugaran.</li>
+      <li><b>Growth of intertype competition</b> — persaingan antar peritel pada beragam jenis barang; yang menang adalah yang membuat belanja ekonomis, nyaman, &amp; membangun ikatan emosional (mis. website informasi).</li>
+      <li><b>Competition store-based vs non-store-based</b> — konsumen memperoleh informasi lewat katalog, brosur, telepon, internet; peritel non-store bersaing langsung dengan store-based. Saluran online sering hanya berfungsi menyediakan informasi sebelum transaksi offline.</li>
+      <li><b>Growth of giant retailers</b> — lewat sistem informasi, logistik, &amp; daya beli besar (Metro, Giant, Carrefour, Matahari), peritel raksasa menyediakan barang banyak dengan harga menarik; bisa mendikte manufaktur kecil.</li>
+      <li><b>Decline of middle-market retailers</b> — pasar terbelah ke peritel kelas atas (Debenham, Zara) &amp; kelas bawah (Ramayana); peritel menengah tersisih.</li>
+      <li><b>Growing investment in technology</b> — teknologi informasi untuk prakiraan penjualan, kontrol persediaan, pemesanan elektronik ke pemasok, &amp; penjualan via internet.</li>
+    </ol>
+
+    <div class="abc"><span class="ltr">C</span><h4>Keputusan Pemasaran pada Pasar Ritel</h4></div>
+    <p>Sembilan keputusan yang diambil peritel — klik:</p>
+    <div class="rgrid c3" data-revealgroup>
+      <div class="rcell" data-reveal data-detail="<b>1. Pasar sasaran (target market)</b> — tetapkan dulu sebelum keputusan lain; buat irisan segmen makin halus &amp; homogen agar relevansi tinggi &amp; menguasai ceruk."><span class="stepnum">1</span><span><span class="rt">Target market</span><span class="rp">Pasar sasaran dulu.</span></span></div>
+      <div class="rcell" data-reveal data-detail="<b>2. Product assortment</b> — jenis produk harus cocok ekspektasi; rancang lebar &amp; kedalaman lini (sempit-dangkal/lebar-dangkal/lebar-dalam). Tantangan pada industri fashion/teknologi yang cepat usang."><span class="stepnum">2</span><span><span class="rt">Product assortment</span><span class="rp">Lebar &amp; kedalaman lini.</span></span></div>
+      <div class="rcell" data-reveal data-detail="<b>3. Procurement</b> — bangun sumber barang/jasa &amp; kebijakan pembelian; specialist buyer (merchandise manager) membangun pilihan merek."><span class="stepnum">3</span><span><span class="rt">Procurement</span><span class="rp">Sumber &amp; pembelian.</span></span></div>
+      <div class="rcell" data-reveal data-detail="<b>4. Harga</b> — positioning factor penting; peritel mengharap high return &amp; high gross margin (tak selalu bersamaan); memasang harga rendah untuk membangun traffic &amp; memberi sinyal kebijakan harga."><span class="stepnum">4</span><span><span class="rt">Harga</span><span class="rp">Positioning &amp; traffic.</span></span></div>
+      <div class="rcell" data-reveal data-detail="<b>5. Layanan</b> — prepurchase service (penerimaan pesanan telepon/email, iklan, window/interior display, ruang pas), postpurchase service (pengiriman, pembungkusan, instalasi), &amp; ancillary service (informasi umum, parkir, perbaikan, kartu kredit)."><span class="stepnum">5</span><span><span class="rt">Layanan</span><span class="rp">Pre/post/ancillary.</span></span></div>
+      <div class="rcell" data-reveal data-detail="<b>6. Atmosfir toko</b> — lingkungan toko menentukan ketertarikan konsumen; pengunjung harus leluasa bergerak, pengalaman menyenangkan (aroma, tata ruang)."><span class="stepnum">6</span><span><span class="rt">Atmosfir toko</span><span class="rp">Lingkungan fisik.</span></span></div>
+      <div class="rcell" data-reveal data-detail="<b>7. Pengalaman &amp; kegiatan toko</b> — kelebihan toko tradisional vs e-commerce: produk bisa dilihat, diraba, dirasakan; perlu dipertahankan &amp; ditingkatkan agar jadi pengalaman tak terlupakan."><span class="stepnum">7</span><span><span class="rt">Pengalaman toko</span><span class="rp">Keunggulan offline.</span></span></div>
+      <div class="rcell" data-reveal data-detail="<b>8. Komunikasi</b> — iklan, penjualan khusus, kupon, kartu keanggotaan; kerja sama dengan manufaktur membuat kiosk/gerai informasi."><span class="stepnum">8</span><span><span class="rt">Komunikasi</span><span class="rp">Iklan, kupon, keanggotaan.</span></span></div>
+      <div class="rcell" data-reveal data-detail="<b>9. Lokasi</b> — faktor penentu kegiatan ritel; lokasi tepat membantu melayani &amp; memberi pengalaman menyenangkan. Pilihan: central business district, regional shopping center, community shopping center, kompleks pertokoan besar."><span class="stepnum">9</span><span><span class="rt">Lokasi</span><span class="rp">Penentu utama.</span></span></div>
+    </div>
+    <div class="rdetail" data-revealdetail>Klik salah satu keputusan ritel untuk penjelasannya.</div>
+
+    <div class="abc"><span class="ltr">D</span><h4>Merek Toko <span class="en">(Private-Label Brand)</span></h4></div>
+    <p><span class="term">Merek toko</span> dibuat peritel sendiri (The Body Shop, Benetton, Marks &amp; Spencer); di supermarket disebut <em>private-label</em>, dijual bersama <em>national brand</em>. Peritel menjualnya karena <b>keuntungan lebih besar</b> (manufaktur punya kapasitas berlebih → biaya produksi lebih rendah).</p>
+    <div class="numh">1 · Peran Produk Merek Toko &amp; Produk Generik</div>
+    <ul class="exp">
+      <li><b>Merek toko</b> — biaya pengembangan, iklan, promosi, &amp; distribusi lebih rendah → dapat dijual lebih murah namun <em>profit margin</em> lebih besar; membangun merek eksklusif yang membedakan dari pesaing.</li>
+      <li><b>Produk generik</b> — tanpa label/merek di kemasan; lebih murah (tak ada biaya pencetakan label &amp; iklan mahal, kualitas bahan sedikit lebih rendah). Contoh: obat generik. Butuh waktu membangun kepercayaan konsumen.</li>
+    </ul>
+    <div class="numh">2 · Ancaman terhadap Produk Merek Toko</div>
+    <p>Dalam konfrontasi, peritel punya keunggulan: rak penjajian &amp; ruang penyimpanan terbatas → menuntut biaya penggunaan rak dari manufaktur, memilih lokasi strategis untuk mereknya. Melawan ini, <b>merek nasional</b> harus meningkatkan litbang, merek baru, perluas lini, &amp; tingkatkan kualitas.</p>
+
+    <div class="abc"><span class="ltr">E</span><h4>Wholesaling <span class="en">(Pedagang Besar / Distributor)</span></h4></div>
+    <p><span class="term">Wholesaling</span> = penjualan barang/jasa ke pihak yang membeli untuk keperluan bisnis atau dijual kembali. <span class="term">Wholesaler/distributor</span> berbeda dari peritel: transaksinya lebih besar, menangani area pasar lebih luas, &amp; perlakuan regulasi/pajak berbeda. Wholesaler efisien dalam fungsi:</p>
+    <div class="pill-row">
+      <span class="pill">Selling &amp; promoting</span><span class="pill">Buying &amp; assortment building</span><span class="pill">Bulk breaking (pecah kemasan)</span><span class="pill">Inventory management</span>
+      <span class="pill">Transportasi</span><span class="pill">Financing (pembiayaan)</span><span class="pill">Risk bearing</span><span class="pill">Informasi pasar</span><span class="pill">Management services</span>
+    </div>
+    <div class="flow">Pelanggan makin menuntut &amp; pembelian langsung tanpa distributor meningkat — itu <b>kecenderungan wholesaling</b>. Produsen keberatan bila distributor tak aktif promosi (order taker), persediaan kurang, tak beri informasi pasar, atau minta pembayaran terlalu besar. Respons distributor: tingkatkan produktivitas harta (asset) &amp; kualitas keputusan strategis (pasar sasaran, bauran produk, harga, komunikasi, distribusi).</div>
+
+    <div class="abc"><span class="ltr">F</span><h4>Market Logistics</h4></div>
+    <p>Distribusi dimulai dari pabrik berdasar konsep <span class="term">Supply Chain Management (SCM)</span> — dari penentuan masukan (bahan, komponen, peralatan) → konversi jadi barang jadi → diserahkan. <span class="term">Market Logistics</span> merencanakan infrastruktur untuk memenuhi permintaan &amp; mengontrol arus fisik barang jadi ke pelanggan.</p>
+    <div class="numh">Empat Tahap Market-Logistics Planning</div>
+    <div class="flowchart">
+      <span class="fc-node">1. Proposisi nilai pelanggan<br>(kecepatan &amp; ketelitian)</span><span class="fc-arrow">→</span>
+      <span class="fc-node">2. Rancangan jalur &amp;<br>strategi jaringan</span><span class="fc-arrow">→</span>
+      <span class="fc-node">3. Bangun sistem logistik<br>(gudang, transportasi, bahan)</span><span class="fc-arrow">→</span>
+      <span class="fc-node">4. Implementasi solusi tepat<br>(sistem informasi, prosedur)</span>
+    </div>
+    <div class="numh">Market-Logistics Objectives &amp; Trade-off</div>
+    <p>Tujuan: serahkan barang <b>tepat waktu, tepat tempat, biaya terkecil (efisien)</b>. Tak ada sistem yang sekaligus memberi layanan terbaik &amp; biaya minimal — layanan maksimal (inventori besar, banyak gudang, transportasi prima) menaikkan biaya. Maka manajer membuat <span class="term">trade-off</span> dari perspektif sistem keseluruhan.</p>
+    <div class="numh">Empat Keputusan Market-Logistics</div>
+    <div class="rgrid c2" data-revealgroup>
+      <div class="rcell" data-reveal data-detail="<b>Penanganan pesanan (order processing)</b> — persingkat siklus order-to-payment (pesanan tiba sampai pembayaran). Siklus panjang → pelanggan tak puas &amp; laba lebih rendah. Teknologi informasi membantu."><span><span class="rt">Penanganan pesanan</span><span class="rp">Order-to-payment cycle.</span></span></div>
+      <div class="rcell" data-reveal data-detail="<b>Pergudangan (warehousing)</b> — tentukan jumlah &amp; lokasi gudang; dekat pasar (layanan cepat) atau dekat sumber bahan (transportasi murah). Beberapa gudang ambil fungsi manufaktur (pemasangan/pengemasan)."><span><span class="rt">Pergudangan</span><span class="rp">Jumlah &amp; lokasi gudang.</span></span></div>
+      <div class="rcell" data-reveal data-detail="<b>Persediaan (inventory)</b> — persediaan besar = biaya besar tetapi layanan cepat. Saat persediaan turun ke tingkat tertentu (reorder point) perusahaan memesan lagi; reorder point menyeimbangkan risiko kehabisan vs biaya inventori berlebih."><span><span class="rt">Persediaan</span><span class="rp">Reorder point.</span></span></div>
+      <div class="rcell" data-reveal data-detail="<b>Transportasi</b> — pilih moda (truk, pesawat, kereta, kapal/kontainer, pipa) yang menentukan kecepatan, kondisi barang saat tiba, &amp; biaya yang ditanggung pelanggan."><span><span class="rt">Transportasi</span><span class="rp">Pemilihan moda.</span></span></div>
+    </div>
+    <div class="rdetail" data-revealdetail>Klik salah satu keputusan logistik untuk penjelasannya.</div>
+    <p style="margin-top:12px"><b>Integrated Logistics Systems (ILS)</b> memadukan <em>material management + material flow system + physical distribution</em>, didukung teknologi: <span class="pill">point-of-sale terminals</span> <span class="pill">bar-code</span> <span class="pill">satellite tracking</span> <span class="pill">EDI (Electronic Data Interchange)</span> <span class="pill">EFT (Electronic Fund Transfer)</span>. Strategi logistik bersifat <em>information intensive</em> &amp; harus melibatkan semua pihak berkepentingan.</p>
+  </div>
+
+  <h2 class="section" id="glosarium"><span class="dot"></span>Glosarium Kilat</h2>
+  <div class="card"><dl class="glossary">
+    <dt>Marketing channel</dt><dd>Jalur pemasaran/distribusi — perantara dari produsen ke konsumen.</dd>
+    <dt>Push / pull strategy</dt><dd>Dorong lewat perantara / tarik lewat permintaan konsumen.</dd>
+    <dt>SCM / ERP / CRM</dt><dd>Supply Chain Management / Enterprise Resource Planning / Customer Relationship Management.</dd>
+    <dt>VMS / HMS</dt><dd>Vertical / Horizontal Marketing System.</dd>
+    <dt>Channel conflict</dt><dd>Vertical, horizontal, multichannel.</dd>
+    <dt>Retailing / wholesaling</dt><dd>Penjualan ke konsumen akhir / ke pembeli bisnis &amp; reseller.</dd>
+    <dt>Nonstore retailing</dt><dd>Direct selling, direct marketing, vending, buying service, corporate retailing.</dd>
+    <dt>Private-label brand</dt><dd>Merek toko milik peritel, lawan national brand.</dd>
+    <dt>Market logistics</dt><dd>Perencanaan &amp; kontrol arus fisik barang ke pelanggan.</dd>
+    <dt>Order-to-payment cycle</dt><dd>Siklus pesanan tiba sampai pembayaran diterima.</dd>
+    <dt>Reorder point</dt><dd>Tingkat persediaan yang memicu pemesanan ulang.</dd>
+  </dl></div>
+</div>
+
+<footer><b>EKMA5206 — Manajemen Pemasaran</b> · Modul 6: Menyerahkan Nilai Pelanggan (Edisi 3) · Penulis: Dr. Ir. FX. Bambang Wiharto, M.M.<br>
+  Bahan belajar ringkas — disusun ulang mengikuti alur modul (hal. 6.1–6.36) untuk persiapan ujian.
+  <div class="refs"><b>Rujukan utama modul:</b> Kotler &amp; Keller (2009) <i>Marketing Management</i> 13e · Mullins &amp; Walker (2010) · Perreault, Cannon &amp; McCarthy (2009) · Solomon, Marshall &amp; Stuart (2012).</div></footer>
+
+<script>
+(function(){
+  var pb=document.getElementById('progress');
+  function onScroll(){var h=document.documentElement;var sc=h.scrollTop||document.body.scrollTop;var max=(h.scrollHeight-h.clientHeight)||1;pb.style.width=(sc/max*100)+'%';}
+  document.addEventListener('scroll',onScroll,{passive:true});onScroll();
+  var list=document.getElementById('conceptList');var items=[].slice.call(list.querySelectorAll('li'));var boxes=items.map(function(li){return li.querySelector('input');});
+  document.getElementById('totalCount').textContent=items.length;var doneEl=document.getElementById('doneCount');var KEY='ekma5206_m6_concepts_v1';
+  function load(){try{var a=JSON.parse(localStorage.getItem(KEY)||'[]');boxes.forEach(function(b,i){if(a[i])b.checked=true;});}catch(e){}}
+  function save(){try{localStorage.setItem(KEY,JSON.stringify(boxes.map(function(b){return b.checked?1:0;})));}catch(e){}}
+  function refresh(){var n=0;items.forEach(function(li,i){if(boxes[i].checked){li.classList.add('done');n++;}else li.classList.remove('done');});doneEl.textContent=n;}
+  load();refresh();boxes.forEach(function(b){b.addEventListener('change',function(){refresh();save();});});
+  document.getElementById('resetBtn').addEventListener('click',function(){boxes.forEach(function(b){b.checked=false;});refresh();save();});
+  [].slice.call(document.querySelectorAll('[data-revealgroup]')).forEach(function(g){
+    var det=g.querySelector('[data-revealdetail]');if(!det){var sib=g.nextElementSibling;if(sib&&sib.hasAttribute&&sib.hasAttribute('data-revealdetail'))det=sib;}
+    var cells=[].slice.call(g.querySelectorAll('[data-reveal]'));
+    cells.forEach(function(c){c.addEventListener('click',function(){cells.forEach(function(x){x.classList.remove('active');});c.classList.add('active');if(det)det.innerHTML=c.getAttribute('data-detail');});});
+  });
+  (function(){
+    var ROWH=46,NODE_H=32,PAD=13,GAP=52;var COL={root:'#0f5e8f',kb1:'#1a86c7',kb2:'#e08a1e'};
+    var mc=document.createElement('canvas').getContext('2d');mc.font='700 13px -apple-system,Segoe UI,Roboto,sans-serif';
+    function tw(t){return Math.ceil(mc.measureText(t).width);}function esc(t){return t.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');}
+    function rgba(hex,a){var h=hex.replace('#','');return 'rgba('+parseInt(h.substr(0,2),16)+','+parseInt(h.substr(2,2),16)+','+parseInt(h.substr(4,2),16)+','+a+')';}
+    var DATA={label:'MODUL 6 — Menyerahkan Nilai Pelanggan',color:COL.root,children:[
+      {label:'KB1 · Merancang & Mengelola Jalur Distribusi',color:COL.kb1,children:[
+        {label:'Saluran & jaringan nilai (push/pull, hibrida, SCM/CRM)'},
+        {label:'Peran saluran (8 fungsi, saluran jasa)'},
+        {label:'Rancangan saluran (layanan, objektif, kriteria)'},
+        {label:'Manajemen saluran (pilih/latih/evaluasi/modifikasi)'},
+        {label:'Integrasi: VMS, HMS, multichannel'},
+        {label:'Konflik (vertikal/horizontal/multichannel)'},
+        {label:'e-Commerce (pure-click, brick-and-click, m-commerce)'}
+      ]},
+      {label:'KB2 · Mengelola Ritel, Distributor & Logistics',color:COL.kb2,children:[
+        {label:'Peritel: jenis & 4 tingkat layanan'},
+        {label:'Nonstore retailing'},
+        {label:'6 perubahan lingkungan peritel baru'},
+        {label:'9 keputusan pemasaran ritel'},
+        {label:'Merek toko (private-label) & produk generik'},
+        {label:'Wholesaling / distributor'},
+        {label:'Market logistics & SCM'}
+      ]}
+    ]};
+    var idc=0;(function w(n,c){n.id='n'+(idc++);n.color=n.color||c;(n.children||[]).forEach(function(k){w(k,n.color);});})(DATA,COL.root);
+    (function w(n,d){if(d>=2&&n.children&&n.children.length)n.collapsed=true;(n.children||[]).forEach(function(k){w(k,d+1);});})(DATA,0);
+    var host=document.getElementById('mindmap');
+    function render(){
+      var colW=[];(function w(n,d){var width=tw(n.label)+PAD*2+((n.children&&n.children.length)?20:0);colW[d]=Math.max(colW[d]||0,width);if(!n.collapsed)(n.children||[]).forEach(function(k){w(k,d+1);});})(DATA,0);
+      var colX=[],acc=14;for(var d=0;d<colW.length;d++){colX[d]=acc;acc+=colW[d]+GAP;}var row={v:0};
+      (function lay(n,d){if(!n.children||!n.children.length||n.collapsed){n._y=row.v*ROWH+ROWH/2+8;row.v++;return;}var f,l;n.children.forEach(function(k,i){lay(k,d+1);if(i===0)f=k._y;l=k._y;});n._y=(f+l)/2;})(DATA,0);
+      var totalW=acc,totalH=row.v*ROWH+24;var nodes=[],links=[];
+      (function col(n,d,p){n._x=colX[d];n._w=tw(n.label)+PAD*2+((n.children&&n.children.length)?20:0);nodes.push({n:n,d:d});if(p)links.push([p,n]);if(!n.collapsed)(n.children||[]).forEach(function(k){col(k,d+1,n);});})(DATA,0,null);
+      var s='<svg width="'+totalW+'" height="'+totalH+'" viewBox="0 0 '+totalW+' '+totalH+'" xmlns="http://www.w3.org/2000/svg">';
+      links.forEach(function(pr){var a=pr[0],b=pr[1],x1=a._x+a._w,y1=a._y,x2=b._x,y2=b._y,mx=(x1+x2)/2;s+='<path d="M'+x1+' '+y1+' C'+mx+' '+y1+' '+mx+' '+y2+' '+x2+' '+y2+'" fill="none" stroke="'+rgba(b.color,.5)+'" stroke-width="2"/>';});
+      nodes.forEach(function(o){var n=o.n,x=n._x,y=n._y-NODE_H/2,w=n._w,hk=n.children&&n.children.length;var fill=o.d===0?n.color:(o.d===1?rgba(n.color,.12):'#fff');var tf=o.d===0?'#fff':'#1c2733';
+        s+='<g data-id="'+n.id+'" style="cursor:'+(hk?'pointer':'default')+'"><rect x="'+x+'" y="'+y+'" rx="9" width="'+w+'" height="'+NODE_H+'" fill="'+fill+'" stroke="'+n.color+'" stroke-width="'+(o.d===0?0:1.6)+'"/><text x="'+(x+PAD)+'" y="'+(n._y+4)+'" font-size="13" font-weight="'+(o.d<=1?'700':'500')+'" fill="'+tf+'" font-family="-apple-system,Segoe UI,Roboto,sans-serif">'+esc(n.label)+'</text>';
+        if(hk){var cx=x+w-12,cy=n._y;s+='<circle cx="'+cx+'" cy="'+cy+'" r="8.5" fill="'+n.color+'"/><text x="'+cx+'" y="'+(cy+4.5)+'" font-size="13" font-weight="700" fill="#fff" text-anchor="middle" font-family="sans-serif">'+(n.collapsed?'+':'\u2013')+'</text>';}s+='</g>';});
+      s+='</svg>';host.innerHTML=s;
+    }
+    host.addEventListener('click',function(e){var g=e.target.closest('g[data-id]');if(!g)return;var id=g.getAttribute('data-id');(function f(n){if(n.id===id){if(n.children&&n.children.length)n.collapsed=!n.collapsed;return true;}return (n.children||[]).some(f);})(DATA);render();});
+    document.getElementById('mmExpand').addEventListener('click',function(){(function w(n){if(n.children)n.collapsed=false;(n.children||[]).forEach(w);})(DATA);render();});
+    document.getElementById('mmCollapse').addEventListener('click',function(){(function w(n,d){if(d>=1&&n.children&&n.children.length)n.collapsed=true;(n.children||[]).forEach(function(k){w(k,d+1);});})(DATA,0);render();});
+    render();
+  })();
+  window.addEventListener('load',function(){setTimeout(function(){if(window.MathJax&&window.MathJax.typesetPromise)window.MathJax.typesetPromise();},400);});
+})();
+</script>
+</body>
+</html>

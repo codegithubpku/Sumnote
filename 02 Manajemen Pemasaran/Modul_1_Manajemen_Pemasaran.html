@@ -1,0 +1,673 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Modul 1 — Manajemen Pemasaran, Lingkungan & Strategi Pemasaran | EKMA5206</title>
+
+<!-- MathJax (persamaan, output SVG — tanpa CSS eksternal) -->
+<script>window.MathJax={tex:{inlineMath:[['$','$']],displayMath:[['\\[','\\]']]},svg:{fontCache:'global'},startup:{typeset:true}};</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js" id="MathJax-script" async></script>
+<!-- Chart.js (grafik BCG & siklus bisnis) -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+
+<style>
+  :root{
+    --bg:#f4f6f9;--panel:#fff;--ink:#1c2733;--muted:#5c6b7a;--line:#e4e9f0;
+    --brand:#1a86c7;--brand-dark:#0f5e8f;--brand-soft:#e7f3fb;
+    --kb1:#1a86c7;--kb1soft:#e7f3fb;--kb2:#e08a1e;--kb2soft:#fcf1df;--kb3:#2a9d6f;--kb3soft:#e3f5ec;
+    --radius:14px;--shadow:0 1px 2px rgba(16,42,67,.06),0 6px 20px rgba(16,42,67,.06);--maxw:900px;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{margin:0;background:var(--bg);color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;line-height:1.72;-webkit-font-smoothing:antialiased}
+  #progress{position:fixed;top:0;left:0;height:4px;width:0;background:linear-gradient(90deg,var(--brand),#53c0ec);z-index:200;transition:width .1s}
+  header.top{position:sticky;top:0;z-index:100;background:rgba(255,255,255,.92);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+  .top-in{max-width:var(--maxw);margin:0 auto;padding:10px 20px;display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+  .badge{background:var(--brand);color:#fff;font-weight:700;font-size:.72rem;letter-spacing:.5px;padding:4px 10px;border-radius:999px;white-space:nowrap}
+  .top-title{font-size:.9rem;font-weight:600;color:var(--muted)}
+  nav.jump{margin-left:auto;display:flex;gap:4px;flex-wrap:wrap}
+  nav.jump a{font-size:.78rem;color:var(--muted);text-decoration:none;padding:5px 10px;border-radius:8px}
+  nav.jump a:hover{background:var(--brand-soft);color:var(--brand-dark)}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 20px 90px}
+  .hero{margin-top:26px;padding:30px 28px;border-radius:var(--radius);color:#fff;background:linear-gradient(135deg,#0f5e8f 0%,#1a86c7 60%,#2fa4df 100%);box-shadow:var(--shadow);position:relative;overflow:hidden}
+  .hero::after{content:"01";position:absolute;right:18px;bottom:-26px;font-size:150px;font-weight:800;opacity:.12;line-height:1}
+  .hero .eyebrow{font-size:.78rem;letter-spacing:1.5px;text-transform:uppercase;opacity:.9;font-weight:600}
+  .hero h1{margin:.3em 0 .25em;font-size:1.72rem;line-height:1.25;max-width:88%}
+  .hero .meta{display:flex;gap:18px;flex-wrap:wrap;font-size:.84rem;opacity:.95;margin-top:10px}
+  h2.section{font-size:1.3rem;margin:48px 0 4px;display:flex;align-items:center;gap:10px;scroll-margin-top:70px}
+  h2.section .dot{width:10px;height:22px;border-radius:4px;background:var(--brand)}
+  .section-sub{color:var(--muted);font-size:.9rem;margin:0 0 18px}
+  .card{background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);padding:22px 24px;margin:16px 0;--dot:var(--brand)}
+
+  /* checklist */
+  .concepts{list-style:none;margin:0;padding:0;display:grid;gap:10px}
+  .concepts li{display:flex;gap:12px;align-items:flex-start;padding:12px 14px;border:1px solid var(--line);border-radius:10px;background:#fcfdff;transition:.15s}
+  .concepts li:hover{border-color:#cfe3f2}
+  .concepts input{margin-top:4px;width:18px;height:18px;accent-color:var(--brand);flex:none;cursor:pointer}
+  .concepts .ct{font-weight:600}
+  .concepts .cd{display:block;font-weight:400;color:var(--muted);font-size:.86rem;margin-top:2px}
+  .concepts li.done{background:var(--brand-soft);border-color:#bfe0f3}
+  .concepts li.done .ct{text-decoration:line-through;opacity:.65}
+  .cl-head{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-bottom:6px}
+  .cl-head .count{font-size:.82rem;color:var(--muted);background:var(--brand-soft);padding:3px 10px;border-radius:999px;font-weight:600}
+  .btn-reset{font-size:.78rem;border:1px solid var(--line);background:#fff;color:var(--muted);padding:5px 12px;border-radius:8px;cursor:pointer}
+  .btn-reset:hover{background:#f6f8fb}
+
+  /* mindmap */
+  .mm-toolbar{display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin-bottom:10px}
+  .mm-btn{font-size:.78rem;border:1px solid var(--line);background:#fff;padding:6px 13px;border-radius:8px;cursor:pointer;color:var(--brand-dark);font-weight:600}
+  .mm-btn:hover{background:var(--brand-soft)}
+  .mm-hint{font-size:.76rem;color:var(--muted)}
+  .mindmap-host{height:540px;overflow:auto;border:1px solid var(--line);border-radius:10px;background:#fcfdff}
+  .mindmap-host svg{display:block}
+
+  /* KB blocks */
+  .kb-tag{display:inline-flex;align-items:center;gap:8px;font-size:.78rem;font-weight:700;letter-spacing:.3px;color:#fff;padding:5px 12px;border-radius:999px;margin-bottom:6px}
+  .kb1t{background:var(--kb1)}.kb2t{background:var(--kb2)}.kb3t{background:var(--kb3)}
+  .kb1b{--dot:var(--kb1)}.kb2b{--dot:var(--kb2)}.kb3b{--dot:var(--kb3)}
+  .lead{font-size:1.02rem}
+  .term{font-weight:700;color:var(--brand-dark)}
+  .en{font-style:italic;color:var(--muted);font-weight:500}
+  .kb2b .term{color:#a9640f}.kb3b .term{color:#1c7a54}
+
+  /* book-structure headings */
+  .abc{display:flex;align-items:center;gap:10px;margin:28px 0 10px;padding-bottom:6px;border-bottom:2px solid var(--brand-soft)}
+  .abc .ltr{background:var(--brand);color:#fff;font-weight:800;width:30px;height:30px;border-radius:8px;display:grid;place-items:center;flex:none}
+  .abc h4{margin:0;font-size:1.08rem;color:var(--brand-dark)}
+  .kb2b .abc{border-bottom-color:var(--kb2soft)}.kb2b .abc .ltr{background:var(--kb2)}.kb2b .abc h4{color:#a9640f}
+  .kb3b .abc{border-bottom-color:var(--kb3soft)}.kb3b .abc .ltr{background:var(--kb3)}.kb3b .abc h4{color:#1c7a54}
+  .subh{font-weight:700;color:var(--ink);margin:18px 0 4px;font-size:1rem}
+
+  /* consistent lists */
+  ol.book{margin:12px 0;padding-left:28px}
+  ol.book>li{margin:10px 0;padding-left:6px}
+  ol.book>li::marker{font-weight:700;color:var(--dot)}
+  ul.exp{list-style:none;margin:12px 0;padding:0;display:grid;gap:10px}
+  ul.exp>li{position:relative;padding-left:20px}
+  ul.exp>li::before{content:"";position:absolute;left:0;top:11px;width:8px;height:8px;border-radius:2px;background:var(--dot)}
+  ol.book b,ul.exp b{color:var(--ink)}
+
+  .flow{border-left:4px solid var(--dot);background:var(--brand-soft);padding:11px 15px;border-radius:0 10px 10px 0;margin:18px 0;font-size:.9rem}
+  .kb2b .flow{background:var(--kb2soft)}.kb3b .flow{background:var(--kb3soft)}
+  .flow::before{content:"🔗 Benang merah — ";font-weight:700;color:var(--dot)}
+  .flow b{color:var(--dot)}
+
+  table.mini{width:100%;border-collapse:collapse;margin:14px 0;font-size:.86rem}
+  table.mini th,table.mini td{border:1px solid var(--line);padding:9px 11px;text-align:left;vertical-align:top}
+  table.mini th{background:var(--brand-soft);color:var(--brand-dark);font-weight:700}
+  .kb2b table.mini th{background:var(--kb2soft);color:#a9640f}.kb3b table.mini th{background:var(--kb3soft);color:#1c7a54}
+  table.mini tr:nth-child(even) td{background:#fafcfe}
+
+  .eqbox{background:#fbfcfe;border:1px solid var(--line);border-radius:10px;padding:14px 16px;margin:14px 0;text-align:center;overflow-x:auto}
+  .eqbox .cap{font-size:.78rem;color:var(--muted);margin-top:6px}
+
+  .chartbox{background:#fff;border:1px solid var(--line);border-radius:12px;padding:14px;margin:16px 0}
+  .chartbox .cw{position:relative;height:380px}
+  .chartbox .cap{font-size:.8rem;color:var(--muted);text-align:center;margin-top:8px}
+
+  /* ansoff */
+  .ansoff{display:grid;grid-template-columns:110px 1fr 1fr;gap:8px;margin:16px 0}
+  .ansoff .corner{background:transparent}
+  .ansoff .colh,.ansoff .rowh{display:grid;place-items:center;text-align:center;font-weight:700;font-size:.82rem;color:#a9640f;background:var(--kb2soft);border-radius:8px;padding:8px}
+  .ansoff .cell{border:1px solid var(--line);border-radius:10px;padding:12px;cursor:pointer;background:#fff;transition:.15s;min-height:92px}
+  .ansoff .cell:hover{border-color:var(--kb2);box-shadow:var(--shadow);transform:translateY(-2px)}
+  .ansoff .cell.active{border-color:var(--kb2);background:var(--kb2soft)}
+  .ansoff .cell h6{margin:0 0 4px;font-size:.9rem;color:#a9640f}
+  .ansoff .cell p{margin:0;font-size:.78rem;color:var(--muted)}
+  .ansoff .cell .risk{font-size:.68rem;font-weight:700;letter-spacing:.3px;margin-top:6px;display:inline-block}
+  #ansoffDetail{font-size:.88rem;background:var(--kb2soft);border-left:4px solid var(--kb2);border-radius:0 10px 10px 0;padding:12px 15px;margin-top:4px}
+
+  /* tabs */
+  .tabs{display:flex;gap:6px;flex-wrap:wrap;margin:12px 0}
+  .tab{font-size:.82rem;font-weight:600;border:1px solid var(--line);background:#fff;color:var(--muted);padding:7px 13px;border-radius:999px;cursor:pointer}
+  .tab.active{background:var(--kb3);color:#fff;border-color:var(--kb3)}
+  .tabpane{display:none;border:1px solid var(--line);border-radius:12px;padding:16px 18px;background:#fff}
+  .tabpane.active{display:block}
+
+  .glossary dt{font-weight:700;color:var(--brand-dark);margin-top:10px}
+  .glossary dd{margin:0 0 2px;color:var(--muted);font-size:.9rem}
+  footer{max-width:var(--maxw);margin:0 auto;padding:30px 20px 60px;color:var(--muted);font-size:.82rem;border-top:1px solid var(--line)}
+  footer .refs{margin-top:10px;font-size:.78rem;line-height:1.6}
+  .offline-note{font-size:.76rem;color:var(--muted);background:#fff8e6;border:1px solid #f0e2b8;border-radius:8px;padding:8px 12px;margin:10px 0}
+
+  @media(max-width:640px){
+    .hero h1{font-size:1.4rem;max-width:100%}.hero::after{font-size:110px}
+    nav.jump{display:none}
+    .ansoff{grid-template-columns:1fr 1fr}.ansoff .rowh{grid-column:1/3}
+    .chartbox .cw{height:320px}.mindmap-host{height:440px}
+  }
+  @media print{#progress,header.top,.btn-reset,.mm-toolbar{display:none}body{background:#fff}.card{box-shadow:none}}
+</style>
+</head>
+<body>
+<div id="progress"></div>
+
+<header class="top">
+  <div class="top-in">
+    <span class="badge">MODUL 1</span>
+    <a href="index.html" title="Kembali ke daftar modul" style="text-decoration:none;display:inline-flex;align-items:center;gap:7px;background:var(--brand);color:#fff;font-weight:700;font-size:.8rem;padding:7px 15px;border-radius:999px;white-space:nowrap;box-shadow:0 2px 6px rgba(16,42,67,.22);line-height:1"><span style="font-size:1rem;line-height:1">&#8962;</span> Daftar Modul</a><span class="top-title">Manajemen Pemasaran · EKMA5206</span>
+    <nav class="jump">
+      <a href="#konsep">Konsep Penting</a>
+      <a href="#peta">Peta Konsep</a>
+      <a href="#kb1">KB 1</a>
+      <a href="#kb2">KB 2</a>
+      <a href="#kb3">KB 3</a>
+      <a href="#glosarium">Glosarium</a>
+    </nav>
+  </div>
+</header>
+
+<div class="wrap">
+
+  <section class="hero">
+    <div class="eyebrow">Buku Materi Pokok · EKMA5206 · 3 SKS</div>
+    <h1>Manajemen Pemasaran, Lingkungan dan Strategi Pemasaran</h1>
+    <div class="meta">
+      <span>⏱️ Estimasi belajar <b>±25–35 menit</b></span>
+      <span>📚 <b>3</b> Kegiatan Belajar</span>
+      <span>✍️ Dr. Ir. FX. Bambang Wiharto, M.M.</span>
+    </div>
+  </section>
+
+  <p class="section-sub" style="margin-top:22px">
+    Ringkasan disusun <b>mengikuti alur heading buku</b> (urutan A→B→C apa adanya), dengan kotak
+    <b>🔗 Benang merah</b> yang menjelaskan keterkaitan antar-bagian. Setiap poin diberi penjelasan konteks.
+    Istilah pemasaran memakai bentuk aslinya bila lebih lazim (mis. <span class="en">Segmentation, Targeting, Positioning</span> / STP) dengan terjemahan mengikuti.
+  </p>
+  <p class="offline-note">ℹ️ Peta konsep bersifat interaktif tanpa internet. Grafik (BCG, siklus bisnis) dan persamaan memuat pustaka dari internet saat pertama dibuka; seluruh teks materi tetap terbaca penuh secara offline.</p>
+
+  <!-- KONSEP PENTING -->
+  <h2 class="section" id="konsep"><span class="dot"></span>Konsep Penting yang Harus Dikuasai</h2>
+  <p class="section-sub">Istilah &amp; konsep inti, diurutkan sesuai kemunculan di buku. Centang sebagai penanda belajar (tersimpan otomatis di peramban).</p>
+  <div class="card">
+    <div class="cl-head">
+      <span class="count"><span id="doneCount">0</span>/<span id="totalCount">0</span> dikuasai</span>
+      <button class="btn-reset" id="resetBtn">Reset centang</button>
+    </div>
+    <ul class="concepts" id="conceptList">
+      <li><input type="checkbox"><span><span class="ct">Definisi marketing &amp; marketing management</span><span class="cd">“Memenuhi kebutuhan secara menguntungkan”; memilih target market &amp; menyerahkan superior customer value.</span></span></li>
+      <li><input type="checkbox"><span><span class="ct">Needs – Wants – Demands</span><span class="cd">Kebutuhan → keinginan → permintaan, beserta pembedanya.</span></span></li>
+      <li><input type="checkbox"><span><span class="ct">Segmentation, Targeting, Positioning (STP)</span><span class="cd">Membagi pasar → memilih segmen → memposisikan penawaran.</span></span></li>
+      <li><input type="checkbox"><span><span class="ct">Value proposition, offering &amp; brand</span><span class="cd">Janji manfaat → wujud penawaran → merek dari sumber dikenal.</span></span></li>
+      <li><input type="checkbox"><span><span class="ct">Customer value &amp; satisfaction</span><span class="cd">Value = manfaat − biaya; satisfaction = kinerja vs ekspektasi.</span></span></li>
+      <li><input type="checkbox"><span><span class="ct">9 Major Societal Forces</span><span class="cd">Kekuatan sosial pembentuk “realitas pemasaran baru”.</span></span></li>
+      <li><input type="checkbox"><span><span class="ct">5 orientasi perusahaan terhadap pasar</span><span class="cd">Production → product → selling → marketing → holistic.</span></span></li>
+      <li><input type="checkbox"><span><span class="ct">Holistic marketing (4 komponen)</span><span class="cd">Relationship, integrated, internal, performance/socially responsible.</span></span></li>
+      <li><input type="checkbox"><span><span class="ct">3 tingkat perencanaan</span><span class="cd">Strategic, functional, operational planning.</span></span></li>
+      <li><input type="checkbox"><span><span class="ct">SWOT &amp; mission statement</span><span class="cd">Strength/Weakness (internal), Opportunity/Threat (eksternal).</span></span></li>
+      <li><input type="checkbox"><span><span class="ct">BCG Growth-Share Matrix</span><span class="cd">Question Marks, Stars, Dogs, Cash Cows.</span></span></li>
+      <li><input type="checkbox"><span><span class="ct">Ansoff / Product-Market Growth Matrix</span><span class="cd">Penetration, product dev, market dev, diversification.</span></span></li>
+      <li><input type="checkbox"><span><span class="ct">Marketing mix (4P) &amp; 4 langkah planning</span><span class="cd">Product, Price, Place, Promotion; analisis→objektif→strategi→kontrol.</span></span></li>
+      <li><input type="checkbox"><span><span class="ct">Regulasi perdagangan global</span><span class="cd">GATT→WTO, protectionism, quota, tariff, embargo.</span></span></li>
+      <li><input type="checkbox"><span><span class="ct">5 lingkungan eksternal + business cycle</span><span class="cd">Ekonomi, kompetitif, teknologi, politik/legal, sosiokultural.</span></span></li>
+    </ul>
+  </div>
+
+  <!-- PETA KONSEP -->
+  <h2 class="section" id="peta"><span class="dot"></span>Peta Konsep (Mind Map)</h2>
+  <p class="section-sub">Struktur lengkap modul mengikuti outline buku. Klik tanda +/− pada simpul untuk membuka/menutup cabang.</p>
+  <div class="card">
+    <div class="mm-toolbar">
+      <button class="mm-btn" id="mmExpand">Perluas semua</button>
+      <button class="mm-btn" id="mmCollapse">Ciutkan</button>
+      <span class="mm-hint">Gulir di dalam kotak untuk menggeser · simpul bertanda +/− bisa dibuka-tutup</span>
+    </div>
+    <div class="mindmap-host" id="mindmap"></div>
+  </div>
+
+  <!-- ====================== KB1 ====================== -->
+  <h2 class="section" id="kb1"><span class="dot"></span>KB 1 — Definisi dan Konsep Dasar Pemasaran</h2>
+
+  <div class="card kb1b">
+    <span class="kb-tag kb1t">PENDAHULUAN &amp; DEFINISI</span>
+    <p class="lead">KB1 dibuka dengan meluruskan <b>persepsi awam</b>: pemasaran sering disamakan dengan penjualan dan iklan. Padahal pemasaran jauh lebih luas — ia mendorong kreativitas, inovasi, dan penelitian produk baru, yang memicu persaingan sehat sehingga harga lebih kompetitif, kualitas meningkat, dan kesejahteraan masyarakat bertambah.</p>
+    <p>Dari situ ditarik <b>definisi</b>. Menurut <span class="term">Perreault, Cannon &amp; McCarthy (2010)</span>, pemasaran adalah kinerja berbagai kegiatan organisasi untuk mencapai tujuannya dengan mengantisipasi kebutuhan &amp; keinginan pelanggan serta mengarahkan aliran produk/jasa yang memuaskan. Mereka menegaskan <b>6 ciri</b> pemasaran — masing-masing meluruskan satu kesalahpahaman:</p>
+    <ol class="book">
+      <li><b>Berlaku bagi organisasi laba maupun nirlaba.</b> Bukan hanya perusahaan pencari untung; LSM, kampus, dan lembaga sosial pun memasarkan ide &amp; kegiatannya untuk mendapat dukungan masyarakat.</li>
+      <li><b>Bukan sekadar membujuk pelanggan.</b> Jika kebutuhan dikenali &amp; dipenuhi dengan baik, produk seakan “menjual dirinya sendiri” dan pelanggan membeli kembali tanpa harus dipaksa.</li>
+      <li><b>Dimulai dari kebutuhan pelanggan</b>, bukan dari proses produksi. Pemasar mengantisipasi kebutuhan dulu, baru menentukan produk, kemasan, harga, dan cara distribusinya.</li>
+      <li><b>Tidak dikerjakan sendiri.</b> Fungsi pemasaran bekerja sama dengan keuangan, SDM, produksi, dan operasi untuk memuaskan pelanggan.</li>
+      <li><b>Melibatkan pertukaran</b> <span class="en">(exchange)</span>. Pertukaran hanya terjadi bila dua pihak sama-sama bersedia menukar sesuatu yang bernilai; pemasar memfasilitasi agar pertukaran itu terjadi.</li>
+      <li><b>Membangun hubungan</b> <span class="en">(relationship)</span>. Pertukaran idealnya bagian dari hubungan jangka panjang yang berkesinambungan dan menguntungkan kedua belah pihak, bukan transaksi tunggal.</li>
+    </ol>
+    <p><span class="term">Kotler &amp; Keller (2009)</span> meringkasnya menjadi <em>“memenuhi kebutuhan secara menguntungkan”</em>, dan mendefinisikan <span class="term">manajemen pemasaran</span> <span class="en">(marketing management)</span> sebagai <em>seni &amp; ilmu memilih pasar sasaran <span class="en">(target market)</span> serta memperoleh, memelihara, dan menumbuhkan pelanggan</em> melalui penciptaan, penyerahan, dan pengomunikasian <span class="term">nilai pelanggan unggul</span> <span class="en">(superior customer value)</span>.</p>
+
+    <div class="eqbox">
+      <div>\[ \text{Customer Value} \;=\; \underbrace{\text{Total Manfaat}}_{\text{tangible + intangible}} \;-\; \underbrace{\text{Total Biaya}}_{\text{uang, waktu, tenaga}} \]</div>
+      <div class="cap">Pelanggan puas bila nilai yang dirasakan &gt; biaya. Perreault menegaskan: harga murah ≠ selalu bernilai tinggi — produk yang tak memenuhi kebutuhan tetap bernilai rendah meski murah.</div>
+    </div>
+    <p>Secara praktis, ada <b>10 entitas</b> yang dipasarkan (barang, jasa, peristiwa, pengalaman, orang, tempat, properti, informasi, ide, organisasi), dan pemasaran dikerjakan <b>seluruh bagian</b> perusahaan — bukan monopoli divisi pemasaran.</p>
+
+    <div class="flow">Setelah definisi tegak, buku menurunkannya menjadi <b>kosakata kerja</b> — delapan konsep dasar di bagian A — agar pembaca punya “kamus” sebelum masuk ke isu lingkungan &amp; strategi.</div>
+
+    <div class="abc"><span class="ltr">A</span><h4>Berbagai Konsep Dasar Pemasaran</h4></div>
+    <ol class="book">
+      <li><b>Needs – Wants – Demands</b> (kebutuhan–keinginan–permintaan). <span class="en">Needs</span> = kebutuhan dasar manusia (makan, pakaian, tempat tinggal); menjadi <span class="en">wants</span> ketika diarahkan pada objek pemuas tertentu (mis. lapar → ingin nasi padang); menjadi <span class="en">demands</span> bila didukung daya beli. Pemasar tidak menciptakan kebutuhan, ia hanya memengaruhi keinginan.</li>
+      <li><b>Segmentation, Targeting, Positioning (STP)</b>. Pemasar tak bisa memuaskan semua orang, maka pasar dibagi berdasar demografi/psikografi &amp; perilaku <em>(segmentation)</em>, lalu dipilih segmen yang paling bisa dilayani <em>(targeting)</em>, kemudian penawaran diposisikan dalam benak pembeli <em>(positioning)</em> — mis. Kijang Innova diposisikan sebagai kendaraan keluarga.</li>
+      <li><b>Offering &amp; Brand</b> (penawaran &amp; merek). <span class="term">Value proposition</span> (proposisi nilai) = himpunan manfaat yang dijanjikan; diwujudkan sebagai <span class="en">offering</span> (kombinasi produk, jasa, informasi, pengalaman). <span class="en">Brand</span> = penawaran dari sumber yang dikenal, lengkap dengan asosiasi di benak konsumen (mis. McDonald’s dengan golden arch-nya).</li>
+      <li><b>Value &amp; Satisfaction</b> (nilai &amp; kepuasan). <span class="en">Value</span> = kombinasi kualitas, layanan, dan harga yang dirasakan; <span class="en">satisfaction</span> = perbandingan kinerja produk terhadap ekspektasi pembeli.</li>
+      <li><b>Marketing Channels</b> (saluran pemasaran). Ada tiga jenis: saluran <em>komunikasi</em> (menyampaikan &amp; menerima pesan — iklan, media sosial), saluran <em>distribusi</em> (menyalurkan produk — distributor, pengecer), dan saluran <em>jasa</em> (memfasilitasi transaksi — pergudangan, bank, asuransi).</li>
+      <li><b>Supply Chain</b> (rantai pasokan). Saluran terpanjang, dari bahan mentah hingga produk akhir sampai ke pemakai; tiap perusahaan hanya mengambil sebagian dari total nilai yang dihasilkan rantai.</li>
+      <li><b>Competition</b> (persaingan). Mencakup bukan hanya pesaing langsung, tetapi juga produk pengganti potensial yang mungkin dipertimbangkan konsumen.</li>
+      <li><b>Marketing Environment</b> (lingkungan pemasaran). Terdiri dari para aktor (pemasok, distributor, pengecer, pelanggan) ditambah lingkungan yang lebih luas (demografi, ekonomi, fisik, teknologi, politik-hukum, sosial-budaya) — inilah yang dibahas mendalam di KB3.</li>
+    </ol>
+    <div class="eqbox">
+      <div>\[ \text{Satisfaction} = f(\text{Kinerja},\ \text{Ekspektasi})\ \Rightarrow \begin{cases}\text{Kinerja} < \text{Ekspektasi} &\Rightarrow \text{kecewa}\\ \text{Kinerja} = \text{Ekspektasi} &\Rightarrow \text{puas}\\ \text{Kinerja} > \text{Ekspektasi} &\Rightarrow \text{sangat puas}\end{cases} \]</div>
+    </div>
+
+    <div class="flow">Konsep ke-8 (lingkungan) menjadi jembatan: buku memakainya untuk membuka bagian B — <b>bagaimana lingkungan itu sedang berubah</b> dan melahirkan “realitas pemasaran baru”.</div>
+
+    <div class="abc"><span class="ltr">B</span><h4>Realitas Pemasaran Baru</h4></div>
+    <p>Kotler &amp; Keller menegaskan <em>“marketplace isn’t what it used to be.”</em> Bagian ini memetakan perubahan dalam empat lapis: kekuatan yang mendorongnya, kemampuan baru konsumen, kemampuan baru perusahaan, dan orientasi yang dipilih perusahaan.</p>
+
+    <div class="subh">1 · Sembilan Major Societal Forces (kekuatan sosial utama)</div>
+    <ol class="book">
+      <li><b>Jaringan teknologi informasi</b> <span class="en">(information age)</span>. Berbeda dari era industrial yang bertumpu produksi &amp; iklan massal, era digital memungkinkan produksi lebih akurat, komunikasi lebih terarah, dan penetapan harga yang lebih relevan.</li>
+      <li><b>Globalisasi.</b> Kemajuan transportasi &amp; komunikasi membuat perusahaan lebih mudah memasarkan ke negara lain, dan konsumen lebih mudah membeli produk dari luar negeri.</li>
+      <li><b>Deregulasi.</b> Banyak negara melonggarkan aturan atas industri yang tadinya dikuasai, untuk meningkatkan persaingan dan membuka peluang usaha baru.</li>
+      <li><b>Privatisasi.</b> Perusahaan milik publik/negara diubah menjadi swasta dengan harapan lebih efisien dan berkinerja lebih baik.</li>
+      <li><b>Meningkatnya persaingan.</b> Merek lokal berhadapan dengan merek asing → biaya promosi naik, margin menipis; muncul mega-merek yang memperluas kategori produknya.</li>
+      <li><b>Konvergensi industri.</b> Batas antarindustri mengabur — mis. industri komputer dan elektronik konsumen menyatu (komputer kini membuat TV, kamera, pemutar musik).</li>
+      <li><b>Penolakan konsumen terhadap pemasaran.</b> Sebagian konsumen memandang negatif pemasaran/iklan yang berlebihan dan berusaha menghindarinya, karena biayanya akhirnya dibebankan ke mereka.</li>
+      <li><b>Transformasi ritel.</b> Peritel kecil tertekan peritel besar, katalog, dan e-commerce; sebagai respons, toko menambah unsur hiburan (mis. coffee bar, demonstrasi) untuk menarik pengunjung.</li>
+      <li><b>Disintermediasi.</b> Hilangnya perantara dalam jalur distribusi, dipicu perusahaan dot-com (Amazon, eBay); perusahaan tradisional pun membangun toko online untuk bertahan.</li>
+    </ol>
+
+    <div class="subh">2 · Kemampuan baru konsumen</div>
+    <ul class="exp">
+      <li><b>Daya beli meningkat</b> — pembeli bisa membandingkan harga “satu klik” dan memakai <em>reverse auction</em> di mana penjual bersaing menurunkan harga.</li>
+      <li><b>Ragam produk &amp; jasa lebih luas</b> — satu toko online bisa menjual banyak kategori, bahkan dari negara mana pun.</li>
+      <li><b>Akses informasi melimpah</b> — konsumen mudah mencari informasi apa pun dari berbagai sumber di Internet.</li>
+      <li><b>Kemudahan memesan &amp; menerima</b> — pembelian 24/7 dari mana saja, barang diantar ke tempat yang diinginkan.</li>
+      <li><b>Mudah membandingkan</b> informasi produk/jasa termasuk harga lewat jaringan sosial.</li>
+      <li><b>Suara konsumen menguat</b> — Internet memperbesar daya tawar konsumen terhadap produsen.</li>
+    </ul>
+
+    <div class="subh">3 · Kemampuan baru perusahaan</div>
+    <p>Perusahaan juga memperoleh senjata baru: Internet sebagai jalur distribusi &amp; informasi yang mendunia, website untuk menampilkan produk &amp; filosofi bisnis, riset pasar lewat <em>focus group</em>/survei online, intranet untuk komunikasi internal, teknologi lokasi (GPS), serta sistem informasi pemasaran berbasis <b>basis data pelanggan</b> untuk memahami perilaku beli.</p>
+
+    <div class="subh">4 · Orientasi perusahaan terhadap pasar (evolusi lima konsep)</div>
+    <p>Kelimanya muncul berurutan dalam sejarah — dari yang paling tua (fokus internal) ke yang paling matang (fokus menyeluruh):</p>
+    <table class="mini">
+      <tr><th>Konsep</th><th>Keyakinan inti</th><th>Fokus &amp; kapan cocok</th></tr>
+      <tr><td><b>Production</b></td><td>Konsumen menyukai produk yang tersedia luas &amp; murah</td><td>Efisiensi &amp; produksi massal; saat permintaan &gt; pasokan atau biaya perlu ditekan</td></tr>
+      <tr><td><b>Product</b></td><td>Konsumen menyukai produk bermutu &amp; inovatif</td><td>Menjaga &amp; meningkatkan kualitas; risiko “marketing myopia” bila lupa memasarkan</td></tr>
+      <tr><td><b>Selling</b></td><td>Konsumen tak akan membeli cukup tanpa didorong</td><td>Penjualan &amp; promosi agresif; cocok untuk <em>unsought goods</em> (asuransi, ensiklopedia)</td></tr>
+      <tr><td><b>Marketing</b></td><td>Kunci sukses = memenuhi kebutuhan pasar sasaran lebih baik dari pesaing</td><td>Cari produk yang tepat bagi pelanggan, bukan cari pelanggan bagi produk</td></tr>
+      <tr><td><b>Holistic</b></td><td>Semua hal dalam pemasaran saling terkait &amp; penting</td><td>Pendekatan menyeluruh (lihat 4 komponen di bawah)</td></tr>
+    </table>
+    <p><b>Empat komponen holistic marketing:</b></p>
+    <ul class="exp">
+      <li><b>Relationship marketing</b> — membangun hubungan timbal balik jangka panjang dengan semua konstituen (pelanggan, pegawai, mitra, komunitas finansial); mempertahankan pelanggan lama lebih murah daripada mencari yang baru.</li>
+      <li><b>Integrated marketing</b> — mengoordinasikan seluruh kegiatan pemasaran (termasuk 4P) agar saling memperkuat dalam menciptakan &amp; menyampaikan nilai.</li>
+      <li><b>Internal marketing</b> — memastikan setiap orang di organisasi (termasuk eksekutif senior) memahami &amp; menjalankan prinsip pemasaran; merekrut, melatih, dan memotivasi pegawai agar melayani pelanggan dengan baik.</li>
+      <li><b>Performance / socially responsible marketing</b> — mengukur hasil pemasaran (lewat <em>marketing scorecard</em>: pangsa pasar, laju kehilangan pelanggan, kepuasan) serta mempertimbangkan dampak etika, hukum, sosial, dan lingkungan.</li>
+    </ul>
+
+    <div class="flow">Bagian A (apa itu pemasaran) + B (konteks yang berubah) bermuara ke bagian C: <b>apa yang sebenarnya dikerjakan</b> seorang manajer pemasaran.</div>
+
+    <div class="abc"><span class="ltr">C</span><h4>Kegiatan Manajemen Pemasaran</h4></div>
+    <p>Dari filosofi holistic marketing, buku menurunkan <b>delapan kegiatan</b> manajemen pemasaran yang berurutan logis — dari menyusun strategi hingga menjaga pertumbuhan jangka panjang:</p>
+    <ol class="book">
+      <li><b>Membangun rencana &amp; strategi pemasaran</b> — mengidentifikasi peluang jangka panjang berdasarkan pengalaman pasar &amp; kompetensi inti.</li>
+      <li><b>Menangkap informasi pemasaran</b> — membangun sistem informasi &amp; riset untuk memantau lingkungan mikro &amp; makro secara ketat.</li>
+      <li><b>Terhubung dengan pelanggan</b> — menyegmentasi pasar, memilih sasaran, dan membangun hubungan jangka panjang yang saling menguntungkan.</li>
+      <li><b>Membangun merek yang kuat</b> — memahami kekuatan/kelemahan merek di mata pelanggan serta mengantisipasi gerakan pesaing.</li>
+      <li><b>Membentuk penawaran pasar</b> — merancang produk (kualitas, fitur, kemasan) dan menetapkan harga yang sesuai nilai.</li>
+      <li><b>Menyerahkan nilai</b> — menentukan jalur distribusi &amp; mitra bisnis yang mampu menyampaikan produk secara efisien ke pasar sasaran.</li>
+      <li><b>Mengomunikasikan nilai</b> — menyusun <em>integrated marketing communication</em> agar pesan nilai sampai dengan efektif.</li>
+      <li><b>Membangun pertumbuhan jangka panjang</b> — mengembangkan produk baru berbasis positioning, lalu melakukan umpan balik &amp; kontrol atas pelaksanaannya.</li>
+    </ol>
+  </div>
+
+  <!-- ====================== KB2 ====================== -->
+  <h2 class="section" id="kb2"><span class="dot"></span>KB 2 — Membangun Strategi dan Rencana Pemasaran</h2>
+
+  <div class="card kb2b">
+    <span class="kb-tag kb2t">PERENCANAAN</span>
+    <p class="lead">KB2 bertolak dari satu tesis: tanpa perencanaan, perusahaan tak tahu ke mana arah &amp; tujuannya, bagaimana mencapainya, bahkan apakah ia masih di jalur yang benar. Buku bergerak dari yang paling luas ke paling operasional: <b>konsep umum perencanaan</b> (A) → <b>perencanaan tingkat korporat</b> (B) → <b>perencanaan tingkat pemasaran</b> (C).</p>
+
+    <div class="abc"><span class="ltr">A</span><h4>Perencanaan Bisnis</h4></div>
+    <p>Bagian ini membangun fondasi lewat lima gagasan berurutan:</p>
+    <ol class="book">
+      <li><b>Menyusun gambar besar perusahaan.</b> Merencanakan masa depan adalah kunci keberhasilan — baik bagi perusahaan mapan (Coca-Cola) maupun yang baru berdiri.</li>
+      <li><b>Perencanaan bisnis</b> = proses pembuatan keputusan berkelanjutan (jangka pendek &amp; panjang) yang mengidentifikasi sumber daya dan menetapkan <em>objektif</em> sebelum bertindak.</li>
+      <li><b>Rencana bisnis</b> = keputusan yang mengarahkan organisasi secara keseluruhan; di dalamnya termuat <span class="term">Marketing Plan</span> — dokumen yang menjelaskan lingkungan pemasaran, strategi, objektif, dan penanggung jawab tiap bagian strategi.</li>
+      <li><b>Etika dalam perencanaan.</b> Keputusan pemasaran menyangkut banyak <em>stakeholder</em> (pemasok, distributor, pelanggan); etika bisnis = nilai-nilai dasar yang menuntun perilaku perusahaan dan menjadi fondasi hubungan jangka panjang yang kuat.</li>
+      <li><b>Tiga tingkat perencanaan</b> yang harus bekerja selaras (lihat tabel).</li>
+    </ol>
+    <table class="mini">
+      <tr><th>Tingkat</th><th>Fokus</th><th>Pelaku &amp; horizon</th></tr>
+      <tr><td><b>Strategic planning</b></td><td>Mencocokkan sumber daya &amp; kemampuan dengan peluang pertumbuhan jangka panjang</td><td>Manajemen puncak · ±5 tahun</td></tr>
+      <tr><td><b>Functional planning</b></td><td>Rencana rinci per fungsi (mis. Marketing Plan) yang mendukung strategi</td><td>Manajer fungsional · 3–5 th + tahunan</td></tr>
+      <tr><td><b>Operational planning</b></td><td>Pelaksanaan hari-demi-hari (bulanan, kuartal) dari rencana fungsional</td><td>Manajer lini · harian–tahunan</td></tr>
+    </table>
+
+    <div class="flow">Karena <b>strategic planning</b> adalah lapis teratas yang memberi arah bagi semuanya, buku membahasnya lebih dulu &amp; mendetail di bagian B sebelum turun ke tingkat pemasaran.</div>
+
+    <div class="abc"><span class="ltr">B</span><h4>Perencanaan Strategik</h4></div>
+    <p>Perusahaan besar membagi diri menjadi beberapa <span class="term">Strategic Business Unit (SBU)</span> — unit yang beroperasi layaknya bisnis terpisah, dengan misi, objektif, sumber daya, dan pesaing sendiri. Mengikuti <span class="term">Solomon dkk. (2012)</span>, perencanaan pemasaran strategik menempuh <b>lima tahap berurutan</b>:</p>
+    <ol class="book">
+      <li><b>Mendefinisikan misi</b> — <span class="en">mission statement</span>: dokumen yang menjawab “Bisnis apa yang kita jalankan? Pelanggan mana yang kita layani? Bagaimana kita memusatkan kemampuan?” Misi ideal tidak terlalu luas (kehilangan fokus) maupun terlalu sempit/jangka pendek.</li>
+      <li><b>Mengevaluasi lingkungan internal &amp; eksternal</b> lewat <span class="term">Analisis SWOT</span>. Lingkungan <em>internal</em> (yang dapat dikontrol, mis. teknologi, SDM, keuangan) menghasilkan <b>Strength &amp; Weakness</b>; lingkungan <em>eksternal</em> menghasilkan <b>Opportunity &amp; Threat</b>.</li>
+      <li><b>Menentukan objektif</b> — menerjemahkan misi ke sasaran yang <em>spesifik, terukur, dapat diraih, &amp; berkelanjutan</em>, dinyatakan numerik (mis. menaikkan profitabilitas 10%). Objektif yang tak realistis justru menimbulkan frustrasi.</li>
+      <li><b>Membangun portofolio bisnis</b> — mengevaluasi bauran bisnis agar perusahaan tak bergantung pada satu lini; alatnya <span class="term">BCG Growth-Share Matrix</span>.</li>
+      <li><b>Membangun strategi pertumbuhan</b> — menentukan dari mana pertumbuhan datang; alatnya <span class="term">Product-Market Growth Matrix (Ansoff)</span>.</li>
+    </ol>
+
+    <div class="subh">Tahap 4 · BCG Growth-Share Matrix</div>
+    <p>Matriks dari Boston Consulting Group ini memetakan tiap SBU pada dua sumbu: <b>sumbu tegak</b> = laju pertumbuhan pasar (daya tarik pasar), <b>sumbu mendatar</b> = pangsa pasar relatif (kekuatan SBU saat ini), yang membesar ke kanan. Arahkan kursor ke tiap gelembung untuk penjelasan:</p>
+    <div class="chartbox">
+      <div class="cw"><canvas id="bcgChart"></canvas></div>
+      <div class="cap">Gambar 1.1 — Matriks BCG. Sumbu-X: pangsa pasar relatif (kecil → besar ke kanan). Sumbu-Y: laju pertumbuhan pasar (rendah → tinggi ke atas).</div>
+    </div>
+    <ul class="exp">
+      <li><b>Question Marks</b> (pertumbuhan tinggi, pangsa kecil) — “problem children”. Gagal bersaing di pasar yang justru sedang tumbuh cepat; perusahaan harus memutuskan menambah dana pemasaran atau menariknya.</li>
+      <li><b>Stars</b> (pertumbuhan tinggi, pangsa besar) — pemimpin di pasar yang tumbuh. Menghasilkan pendapatan besar tetapi juga menyedot dana besar untuk mempertahankan posisi.</li>
+      <li><b>Dogs</b> (pertumbuhan rendah, pangsa kecil) — pangsa kecil di pasar yang stagnan. Umumnya dijual atau ditarik dari pasar.</li>
+      <li><b>Cash Cows</b> (pertumbuhan rendah, pangsa besar) — sudah mapan, butuh pendanaan minimal, dan menjadi “sapi perah” penghasil kas untuk mendanai SBU lain (terutama Stars &amp; Question Marks).</li>
+    </ul>
+
+    <div class="subh">Tahap 5 · Ansoff / Product-Market Growth Matrix</div>
+    <p>Empat strategi pertumbuhan berdasar kombinasi <b>produk</b> (lama/baru) × <b>pasar</b> (lama/baru). Klik tiap sel untuk penjelasan &amp; contoh:</p>
+    <div class="ansoff" id="ansoff">
+      <div class="corner"></div>
+      <div class="colh">Produk lama</div>
+      <div class="colh">Produk baru</div>
+      <div class="rowh">Pasar<br>lama</div>
+      <div class="cell" data-k="pen"><h6>Market Penetration</h6><p>Jual lebih banyak produk lama ke pemakai saat ini.</p><span class="risk" style="color:#2a9d6f">RISIKO RENDAH</span></div>
+      <div class="cell" data-k="prod"><h6>Product Development</h6><p>Produk baru untuk pasar yang sudah ada.</p><span class="risk" style="color:#e08a1e">RISIKO SEDANG</span></div>
+      <div class="rowh">Pasar<br>baru</div>
+      <div class="cell" data-k="mkt"><h6>Market Development</h6><p>Produk lama ke segmen/wilayah baru.</p><span class="risk" style="color:#e08a1e">RISIKO SEDANG</span></div>
+      <div class="cell" data-k="div"><h6>Diversification</h6><p>Produk baru untuk pasar baru.</p><span class="risk" style="color:#d14a6a">RISIKO TINGGI</span></div>
+    </div>
+    <div id="ansoffDetail">Klik salah satu sel di atas untuk melihat penjelasan &amp; contohnya.</div>
+
+    <div class="flow">Setelah korporat menetapkan misi, objektif, portofolio, &amp; arah pertumbuhan, <b>beban turun ke manajer pemasaran</b> untuk menyusun rencana fungsional — itulah bagian C.</div>
+
+    <div class="abc"><span class="ltr">C</span><h4>Perencanaan Pemasaran</h4></div>
+    <p>Perencanaan strategik memberi “gambar besar”, tetapi tidak merinci cara meraih objektif. Tugas itu dibebankan ke manajer pemasaran, yang bekerja dengan <span class="term">marketing mix (4P)</span> — <b>Product, Price, Place, Promotion</b>. Prosesnya empat langkah (Solomon dkk., Gambar 1.3):</p>
+    <ol class="book">
+      <li><b>Melakukan analisis situasi</b> — langkah awal berbasis Analisis SWOT; mencari informasi lingkungan yang secara khusus memengaruhi rencana pemasaran.</li>
+      <li><b>Menentukan objektif pemasaran</b> — sasaran spesifik (menyangkut merek, ukuran, fitur) yang mendukung objektif bisnis.</li>
+      <li><b>Membangun strategi pemasaran</b> — memilih <span class="en">target market</span> lalu menyusun bauran pemasaran yang tepat (lihat tabel 4P di bawah).</li>
+      <li><b>Mengimplementasikan &amp; mengontrol</b> — menjalankan rencana lalu mengontrol lewat tiga tahap: (a) mengukur kinerja aktual, (b) membandingkannya dengan objektif/strategi, lalu (c) menyesuaikan bila perlu. <em>Marketing Plan</em> adalah <b>peta jalan yang luwes</b>, bukan “batu” yang kaku.</li>
+    </ol>
+    <table class="mini">
+      <tr><th>Elemen (4P)</th><th>Keputusan inti</th></tr>
+      <tr><td><b>Product</b> (produk)</td><td>Rancangan, kemasan, nama merek, fitur, &amp; layanan pendukung (mis. pemeliharaan) yang memberi manfaat unik.</td></tr>
+      <tr><td><b>Price</b> (harga)</td><td>Berdasar biaya, permintaan, atau harga pesaing; mencakup harga untuk konsumen akhir maupun distributor/pengecer.</td></tr>
+      <tr><td><b>Place</b> (distribusi)</td><td>Jual langsung vs lewat perantara; pemilihan <em>retailer</em> harus sesuai citra produk (produk mewah menghindari rak toko diskon).</td></tr>
+      <tr><td><b>Promotion</b> (promosi)</td><td>Mengomunikasikan proposisi nilai: iklan, promosi penjualan, humas, pemasaran langsung, &amp; <em>personal selling</em>.</td></tr>
+    </table>
+  </div>
+
+  <!-- ====================== KB3 ====================== -->
+  <h2 class="section" id="kb3"><span class="dot"></span>KB 3 — Lingkungan Pemasaran Global</h2>
+
+  <div class="card kb3b">
+    <span class="kb-tag kb3t">LINGKUNGAN GLOBAL</span>
+    <p class="lead">KB3 memperluas cakupan ke pasar internasional. Alur buku: bagian A membedah <b>apa yang harus dipahami</b> sebelum “go global”, bagian B menjawab <b>seberapa global</b> strategi yang dipilih.</p>
+
+    <div class="abc"><span class="ltr">A</span><h4>Pemasaran Global</h4></div>
+    <p>Pembuka: <span class="term">world trade</span> (perdagangan dunia) = aliran barang &amp; jasa antarnegara, yaitu nilai total ekspor-impor seluruh negara. Nilainya turun saat krisis ekonomi lalu pulih kembali. Pasar global menjanjikan, tetapi taruhannya besar karena preferensi konsumen, persaingan asing, hukum, dan pajak berbeda-beda. Buku merinci <b>empat hal</b> yang perlu dinilai:</p>
+    <ol class="book">
+      <li><b>Mengamati kondisi pasar lokal &amp; global.</b> Ekspansi global sering dipicu pasar domestik yang jenuh — mis. pasar PC di AS yang jenuh mendorong produsen melirik Asia Tenggara yang penggunanya tumbuh.</li>
+      <li><b>Mengidentifikasi keunggulan kompetitif.</b> Tantangan di pasar global lebih besar dari domestik, maka perusahaan harus mengandalkan keunggulan nyata — ada yang unggul lewat teknologi (Silicon Valley), ada yang lewat biaya produksi rendah (negara berkembang dengan upah murah).</li>
+      <li><b>Memahami regulasi internasional, regional &amp; negara tujuan.</b> Keunggulan kompetitif tak menjamin sukses bila regulasi lokal membatasi; lihat spektrum perdagangan bebas vs proteksi di bawah.</li>
+      <li><b>Menganalisis lingkungan pemasaran</b> — memahami lima lingkungan eksternal (klik tab di bawah).</li>
+    </ol>
+
+    <div class="subh">Spektrum regulasi perdagangan</div>
+    <ul class="exp">
+      <li><b>Free trade</b> (perdagangan bebas) — didorong <em>GATT</em> (General Agreement on Tariff and Trade, badan PBB) yang berkembang menjadi <span class="term">WTO</span> (World Trade Organization); fungsi utamanya menjamin aliran perdagangan dunia yang lancar &amp; sebebas mungkin.</li>
+      <li><b>Protectionism</b> (proteksionisme) — aturan yang memaksa perusahaan asing memberi keunggulan bagi perusahaan lokal, untuk melindungi industri dalam negeri.</li>
+      <li><b>Quota</b> (kuota impor) — membatasi jumlah barang impor; akibatnya barang impor menjadi lebih mahal sehingga produk lokal lebih berdaya saing.</li>
+      <li><b>Tariff</b> (tarif) — pajak atas produk impor agar produk domestik lebih kompetitif secara harga.</li>
+      <li><b>Embargo</b> — bentuk kuota paling ekstrem: melarang sama sekali perdagangan dengan negara tertentu.</li>
+      <li><b>Komunitas ekonomi</b> — sekelompok negara yang mengoordinasikan kebijakan dagang &amp; meniadakan hambatan antar mereka; penting karena menentukan aturan isi produk, label, dan iklan di kawasan itu.</li>
+    </ul>
+
+    <div class="subh">Lima lingkungan eksternal</div>
+    <div class="tabs" id="envTabs">
+      <button class="tab active" data-t="eko">Ekonomi</button>
+      <button class="tab" data-t="komp">Kompetitif</button>
+      <button class="tab" data-t="tek">Teknologi</button>
+      <button class="tab" data-t="pol">Politik &amp; Legal</button>
+      <button class="tab" data-t="sos">Sosiokultural</button>
+    </div>
+    <div class="tabpane active" data-p="eko">
+      <p>Dinilai dari dua perspektif: kesehatan ekonomi menyeluruh &amp; siklus kegiatan bisnis.</p>
+      <ul class="exp">
+        <li><b>Ukuran kesehatan ekonomi</b> — <em>GDP</em> (nilai barang/jasa yang diproduksi dalam batas negara), <em>GNP</em>, dan <em>GDP per kapita</em> (indikator lebih baik karena disesuaikan dengan populasi). Dilengkapi <em>economic infrastructure</em> (kualitas sistem distribusi, finansial, komunikasi) dan <em>standard of living</em>.</li>
+        <li><b>Tingkat pembangunan ekonomi</b> — <em>least developed</em> (berbasis pertanian) → <em>developing</em> (beralih ke industri; pendidikan &amp; teknologi meningkat) → <em>developed</em> (sistem pemasaran kompleks, pasar berlimpah).</li>
+        <li><b>Business cycle</b> (siklus bisnis) — pola fluktuasi ekonomi yang memengaruhi perilaku beli; lihat grafik di bawah. <b>Inflasi</b> terjadi bila harga naik sehingga daya beli uang turun.</li>
+      </ul>
+      <div class="eqbox">
+        <div>\[ \text{GDP per kapita} \;=\; \frac{\text{GDP}}{\text{Jumlah Penduduk}} \]</div>
+        <div class="cap">GDP total bisa menyesatkan bila kekayaan terkonsentrasi; per kapita memberi gambaran lebih adil.</div>
+      </div>
+      <div class="chartbox">
+        <div class="cw"><canvas id="cycleChart"></canvas></div>
+        <div class="cap">Siklus bisnis: prosperity → recession → depression → recovery → prosperity. Pada masa <em>prosperity</em> konsumen banyak membeli; pada <em>recession</em> (mis. 2008) belanja menurun.</div>
+      </div>
+    </div>
+    <div class="tabpane" data-p="komp">
+      <p>Perusahaan mengumpulkan <b>competitive intelligence</b> — informasi pesaing dari sumber publik (Internet, media, data pemerintah). Persaingan dilihat pada dua tingkat:</p>
+      <ul class="exp">
+        <li><b>Lingkungan mikro</b> — tiga tingkat: <em>discretionary income competition</em> (memperebutkan sisa pendapatan setelah kebutuhan pokok), <em>product competition</em> (produk berbeda yang memenuhi kebutuhan sama), dan <em>brand competition</em> (produk sejenis bersaing berdasar reputasi merek).</li>
+        <li><b>Lingkungan makro</b> — struktur industri: <em>monopoly, oligopoly, monopolistic competition, perfect competition</em> — masing-masing dengan tingkat persaingan yang berbeda.</li>
+      </ul>
+    </div>
+    <div class="tabpane" data-p="tek">
+      <ul class="exp">
+        <li><b>Teknologi = investasi wajib</b> &amp; sumber keunggulan kompetitif; perubahan teknologi bisa mengubah seluruh industri (mis. transistor memicu revolusi elektronik konsumen).</li>
+        <li><b>Internet &amp; media sosial</b> memungkinkan pemasaran <em>one-to-one</em> dan komunikasi dua arah dengan pelanggan.</li>
+        <li><b>Basis data &amp; otomasi</b> — sistem persediaan otomatis lewat bar code &amp; RFID; perusahaan harus memantau temuan riset teknologi baru.</li>
+      </ul>
+    </div>
+    <div class="tabpane" data-p="pol">
+      <p>Lingkungan hukum &amp; regulasi lokal, nasional, dan global. Pemain lokal cukup memahami hukum satu negara; pemasar global menghadapi aturan yang jauh lebih rumit.</p>
+      <ul class="exp">
+        <li><b>Batasan politik atas perdagangan</b> — pemerintah bisa mengubah lingkungan bisnis: sanksi ekonomi saat konflik, atau <em>nasionalisasi</em> (pengambilalihan aset perusahaan asing, sering tanpa ganti rugi penuh).</li>
+        <li><b>Batasan regulasi</b> <span class="en">(regulatory constraints)</span> — aturan tentang produk yang boleh dibuat/diperdagangkan, pelabelan kemasan, dan tuntutan atas iklan.</li>
+        <li><b>Isu Hak Asasi Manusia</b> — perusahaan enggan beroperasi di negara yang memperlakukan warganya buruk, atau bermitra dengan pihak yang mempekerjakan anak/narapidana demi menekan biaya.</li>
+      </ul>
+    </div>
+    <div class="tabpane" data-p="sos">
+      <p>Karakteristik masyarakat, orang, dan budaya yang mencerminkan nilai &amp; kepercayaannya.</p>
+      <ul class="exp">
+        <li><b>Demografi</b> — data statistik populasi (ukuran, umur, gender, pendapatan, pendidikan, struktur keluarga); berharga untuk memperkirakan ukuran pasar.</li>
+        <li><b>Nilai</b> — kepercayaan budaya tentang benar/salah (mis. budaya yang menghargai ketepatan waktu).</li>
+        <li><b>Norma sosial</b> — aturan perilaku yang diterima/tidak (cara berpakaian, berbicara, makan).</li>
+        <li><b>Bahasa</b> — hambatan komunikasi &amp; makna merek; nama merek bisa bermasalah bila berarti lain di bahasa setempat.</li>
+        <li><b>Ethnocentrism</b> — anggapan bahwa produk negara sendiri lebih baik; memperlambat penerimaan produk asing.</li>
+      </ul>
+    </div>
+
+    <div class="flow">Setelah empat hal di bagian A dipahami, barulah masuk akal menentukan <b>derajat keterlibatan</b> perusahaan di pasar global — itulah bagian B.</div>
+
+    <div class="abc"><span class="ltr">B</span><h4>Seberapa Global Strategi Pemasaran Global?</h4></div>
+    <p>Masuk pasar global bukan keputusan mudah, dan tidak semua perusahaan harus “go global”. Perusahaan perlu menentukan <b>tingkat komitmen</b> dan memilih <span class="term">entry strategy</span> (strategi masuk pasar):</p>
+    <ol class="book">
+      <li><b>Ekspor</b> — mengekspor produk ke negara lain; komitmen &amp; risiko paling rendah.</li>
+      <li><b>Bermitra</b> — menggandeng mitra bisnis lokal yang memahami pasar setempat; komitmen &amp; risiko menengah.</li>
+      <li><b>Masuk sendiri</b> — mendirikan operasi sendiri di pasar luar negeri; komitmen &amp; risiko paling tinggi.</li>
+    </ol>
+    <p class="section-sub" style="margin:8px 0 0">Selain itu, perusahaan memutuskan <b>marketing mix</b> untuk produk yang dijual di pasar global — apakah distandarkan atau disesuaikan dengan kondisi lokal.</p>
+  </div>
+
+  <!-- GLOSARIUM -->
+  <h2 class="section" id="glosarium"><span class="dot"></span>Glosarium Kilat</h2>
+  <div class="card">
+    <dl class="glossary">
+      <dt>Superior customer value</dt><dd>Nilai pelanggan unggul — manfaat melebihi biaya, lebih baik dari pesaing.</dd>
+      <dt>STP — Segmentation, Targeting, Positioning</dt><dd>Segmentasi pasar, penargetan segmen, pemosisian penawaran dalam benak pembeli.</dd>
+      <dt>Marketing mix (4P)</dt><dd>Product, Price, Place, Promotion — alat taktis pemasaran.</dd>
+      <dt>SBU — Strategic Business Unit</dt><dd>Unit bisnis dengan misi, objektif, sumber daya, &amp; pesaing sendiri.</dd>
+      <dt>SWOT</dt><dd>Strength &amp; Weakness (internal), Opportunity &amp; Threat (eksternal).</dd>
+      <dt>Marketing myopia</dt><dd>Terlalu fokus pada produk hingga lupa kebutuhan pelanggan.</dd>
+      <dt>Unsought goods</dt><dd>Barang yang tak dicari konsumen (asuransi, ensiklopedia) — butuh penjualan agresif.</dd>
+      <dt>Disintermediasi</dt><dd>Hilangnya perantara dalam jalur distribusi (dipicu Internet/dot-com).</dd>
+      <dt>Entry strategy</dt><dd>Cara masuk pasar global: ekspor, bermitra, atau mandiri.</dd>
+      <dt>Competitive intelligence</dt><dd>Pengumpulan &amp; analisis informasi pesaing dari sumber publik.</dd>
+      <dt>Ethnocentrism</dt><dd>Keyakinan bahwa produk negara sendiri lebih baik dari produk negara lain.</dd>
+    </dl>
+  </div>
+
+</div>
+
+<footer>
+  <b>EKMA5206 — Manajemen Pemasaran</b> · Modul 1: Manajemen Pemasaran, Lingkungan dan Strategi Pemasaran (Edisi 3) · Penulis: Dr. Ir. FX. Bambang Wiharto, M.M.<br>
+  Bahan belajar ringkas — disusun ulang mengikuti alur modul (hal. 1.1–1.54) untuk persiapan ujian.
+  <div class="refs">
+    <b>Rujukan utama modul:</b> Kotler &amp; Keller (2009) <i>Marketing Management</i> 13e · Perreault, Cannon &amp; McCarthy (2009) <i>Basic Marketing</i> 17e ·
+    Solomon, Marshall &amp; Stuart (2012) <i>Marketing — Real People Real Choices</i> 7e · Mullins &amp; Walker (2010) · Porter (1985) <i>Competitive Advantage</i>.
+  </div>
+</footer>
+
+<script>
+(function(){
+  /* progress */
+  var pb=document.getElementById('progress');
+  function onScroll(){var h=document.documentElement;var sc=h.scrollTop||document.body.scrollTop;var max=(h.scrollHeight-h.clientHeight)||1;pb.style.width=(sc/max*100)+'%';}
+  document.addEventListener('scroll',onScroll,{passive:true});onScroll();
+
+  /* checklist */
+  var list=document.getElementById('conceptList');
+  var items=[].slice.call(list.querySelectorAll('li'));
+  var boxes=items.map(function(li){return li.querySelector('input');});
+  document.getElementById('totalCount').textContent=items.length;
+  var doneEl=document.getElementById('doneCount');var KEY='ekma5206_m1_concepts_v3';
+  function load(){try{var a=JSON.parse(localStorage.getItem(KEY)||'[]');boxes.forEach(function(b,i){if(a[i])b.checked=true;});}catch(e){}}
+  function save(){try{localStorage.setItem(KEY,JSON.stringify(boxes.map(function(b){return b.checked?1:0;})));}catch(e){}}
+  function refresh(){var n=0;items.forEach(function(li,i){if(boxes[i].checked){li.classList.add('done');n++;}else li.classList.remove('done');});doneEl.textContent=n;}
+  load();refresh();
+  boxes.forEach(function(b){b.addEventListener('change',function(){refresh();save();});});
+  document.getElementById('resetBtn').addEventListener('click',function(){boxes.forEach(function(b){b.checked=false;});refresh();save();});
+
+  /* ===== MIND MAP (SVG custom, tanpa library) ===== */
+  (function(){
+    var ROWH=46,NODE_H=32,PAD=13,GAP=52;
+    var COL={root:'#0f5e8f',kb1:'#1a86c7',kb2:'#e08a1e',kb3:'#2a9d6f'};
+    var mc=document.createElement('canvas').getContext('2d');mc.font='700 13px -apple-system,Segoe UI,Roboto,sans-serif';
+    function tw(t){return Math.ceil(mc.measureText(t).width);}
+    function esc(t){return t.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');}
+    function rgba(hex,a){var h=hex.replace('#','');return 'rgba('+parseInt(h.substr(0,2),16)+','+parseInt(h.substr(2,2),16)+','+parseInt(h.substr(4,2),16)+','+a+')';}
+    var DATA={label:'MODUL 1 — Pemasaran, Lingkungan & Strategi',color:COL.root,children:[
+      {label:'KB1 · Definisi & Konsep Dasar',color:COL.kb1,children:[
+        {label:'Mendefinisikan pemasaran',children:[{label:'6 ciri pemasaran'},{label:'Marketing management & value'},{label:'10 entitas dipasarkan'}]},
+        {label:'A · 8 Konsep dasar',children:[{label:'Needs–Wants–Demands'},{label:'STP'},{label:'Offering & Brand'},{label:'Value & Satisfaction'},{label:'Channels & Supply Chain'},{label:'Competition & Environment'}]},
+        {label:'B · Realitas pemasaran baru',children:[{label:'9 Major Societal Forces'},{label:'Kemampuan baru konsumen'},{label:'Kemampuan baru perusahaan'},{label:'5 orientasi pasar'}]},
+        {label:'C · 8 Kegiatan manajemen pemasaran'}
+      ]},
+      {label:'KB2 · Strategi & Rencana',color:COL.kb2,children:[
+        {label:'A · Perencanaan bisnis',children:[{label:'Rencana bisnis & Marketing Plan'},{label:'Etika'},{label:'3 tingkat perencanaan'}]},
+        {label:'B · Perencanaan strategik',children:[{label:'Mission statement'},{label:'SWOT'},{label:'Objektif'},{label:'Portfolio → BCG'},{label:'Growth → Ansoff'}]},
+        {label:'C · Perencanaan pemasaran',children:[{label:'4 langkah planning'},{label:'Marketing mix (4P)'}]}
+      ]},
+      {label:'KB3 · Lingkungan Global',color:COL.kb3,children:[
+        {label:'A · Pemasaran global',children:[{label:'World trade'},{label:'Keunggulan kompetitif'},{label:'Regulasi: WTO, tarif, embargo'},{label:'5 lingkungan eksternal'}]},
+        {label:'B · Entry strategy'}
+      ]}
+    ]};
+    var idc=0;(function w(n,c){n.id='n'+(idc++);n.color=n.color||c;(n.children||[]).forEach(function(k){w(k,n.color);});})(DATA,COL.root);
+    (function w(n,d){if(d>=2&&n.children&&n.children.length)n.collapsed=true;(n.children||[]).forEach(function(k){w(k,d+1);});})(DATA,0);
+    var host=document.getElementById('mindmap');
+    function render(){
+      var colW=[];(function w(n,d){var width=tw(n.label)+PAD*2+((n.children&&n.children.length)?20:0);colW[d]=Math.max(colW[d]||0,width);if(!n.collapsed)(n.children||[]).forEach(function(k){w(k,d+1);});})(DATA,0);
+      var colX=[],acc=14;for(var d=0;d<colW.length;d++){colX[d]=acc;acc+=colW[d]+GAP;}
+      var row={v:0};
+      (function lay(n,d){if(!n.children||!n.children.length||n.collapsed){n._y=row.v*ROWH+ROWH/2+8;row.v++;return;}var f,l;n.children.forEach(function(k,i){lay(k,d+1);if(i===0)f=k._y;l=k._y;});n._y=(f+l)/2;})(DATA,0);
+      var totalW=acc,totalH=row.v*ROWH+24;
+      var nodes=[],links=[];
+      (function col(n,d,p){n._x=colX[d];n._w=tw(n.label)+PAD*2+((n.children&&n.children.length)?20:0);nodes.push({n:n,d:d});if(p)links.push([p,n]);if(!n.collapsed)(n.children||[]).forEach(function(k){col(k,d+1,n);});})(DATA,0,null);
+      var s='<svg width="'+totalW+'" height="'+totalH+'" viewBox="0 0 '+totalW+' '+totalH+'" xmlns="http://www.w3.org/2000/svg">';
+      links.forEach(function(pr){var a=pr[0],b=pr[1],x1=a._x+a._w,y1=a._y,x2=b._x,y2=b._y,mx=(x1+x2)/2;s+='<path d="M'+x1+' '+y1+' C'+mx+' '+y1+' '+mx+' '+y2+' '+x2+' '+y2+'" fill="none" stroke="'+rgba(b.color,.5)+'" stroke-width="2"/>';});
+      nodes.forEach(function(o){var n=o.n,x=n._x,y=n._y-NODE_H/2,w=n._w,hk=n.children&&n.children.length;var fill=o.d===0?n.color:(o.d===1?rgba(n.color,.12):'#fff');var tf=o.d===0?'#fff':'#1c2733';
+        s+='<g data-id="'+n.id+'" style="cursor:'+(hk?'pointer':'default')+'">';
+        s+='<rect x="'+x+'" y="'+y+'" rx="9" width="'+w+'" height="'+NODE_H+'" fill="'+fill+'" stroke="'+n.color+'" stroke-width="'+(o.d===0?0:1.6)+'"/>';
+        s+='<text x="'+(x+PAD)+'" y="'+(n._y+4)+'" font-size="13" font-weight="'+(o.d<=1?'700':'500')+'" fill="'+tf+'" font-family="-apple-system,Segoe UI,Roboto,sans-serif">'+esc(n.label)+'</text>';
+        if(hk){var cx=x+w-12,cy=n._y;s+='<circle cx="'+cx+'" cy="'+cy+'" r="8.5" fill="'+n.color+'"/><text x="'+cx+'" y="'+(cy+4.5)+'" font-size="13" font-weight="700" fill="#fff" text-anchor="middle" font-family="sans-serif">'+(n.collapsed?'+':'\u2013')+'</text>';}
+        s+='</g>';});
+      s+='</svg>';host.innerHTML=s;
+    }
+    host.addEventListener('click',function(e){var g=e.target.closest('g[data-id]');if(!g)return;var id=g.getAttribute('data-id');(function f(n){if(n.id===id){if(n.children&&n.children.length)n.collapsed=!n.collapsed;return true;}return (n.children||[]).some(f);})(DATA);render();});
+    document.getElementById('mmExpand').addEventListener('click',function(){(function w(n){if(n.children)n.collapsed=false;(n.children||[]).forEach(w);})(DATA);render();});
+    document.getElementById('mmCollapse').addEventListener('click',function(){(function w(n,d){if(d>=1&&n.children&&n.children.length)n.collapsed=true;(n.children||[]).forEach(function(k){w(k,d+1);});})(DATA,0);render();});
+    render();
+  })();
+
+  /* ansoff */
+  var detailTxt={
+    pen:"<b>Market Penetration</b> — strategi paling aman: menjual lebih banyak produk yang sudah ada kepada pemakai saat ini (bukan merek pesaing). Contoh: program loyalitas, promosi untuk menaikkan frekuensi beli.",
+    prod:"<b>Product Development</b> — memperkenalkan produk baru pada pasar yang sudah ada; sering berupa perluasan lini produk atau variasi baru untuk pelanggan yang sama.",
+    mkt:"<b>Market Development</b> — membawa produk yang sudah ada ke pasar baru: segmen pelanggan baru atau wilayah geografis baru.",
+    div:"<b>Diversification</b> — paling berisiko: produk baru untuk pasar baru. Pertumbuhan dicari lewat wilayah yang belum dikenal perusahaan, baik dari sisi produk maupun pasar."
+  };
+  var cells=[].slice.call(document.querySelectorAll('.ansoff .cell'));
+  var aDet=document.getElementById('ansoffDetail');
+  cells.forEach(function(c){c.addEventListener('click',function(){cells.forEach(function(x){x.classList.remove('active');});c.classList.add('active');aDet.innerHTML=detailTxt[c.getAttribute('data-k')];});});
+
+  /* tabs */
+  var tabs=[].slice.call(document.querySelectorAll('#envTabs .tab'));
+  var panes=[].slice.call(document.querySelectorAll('.tabpane'));
+  tabs.forEach(function(t){t.addEventListener('click',function(){tabs.forEach(function(x){x.classList.remove('active');});t.classList.add('active');var k=t.getAttribute('data-t');panes.forEach(function(p){p.classList.toggle('active',p.getAttribute('data-p')===k);});});});
+
+  /* MathJax */
+  window.addEventListener('load',function(){setTimeout(function(){if(window.MathJax&&window.MathJax.typesetPromise)window.MathJax.typesetPromise();},400);});
+
+  /* Charts */
+  var chartsBuilt=false;
+  function buildCharts(){
+    if(chartsBuilt||!window.Chart)return;chartsBuilt=true;
+    var bcgQuad={id:'bcgQuad',beforeDraw:function(ch){
+      var a=ch.chartArea;if(!a)return;var x=ch.scales.x,y=ch.scales.y,ctx=ch.ctx;
+      var xm=x.getPixelForValue(1),ym=y.getPixelForValue(10);
+      ctx.save();
+      ctx.fillStyle='rgba(224,138,30,.08)';ctx.fillRect(a.left,a.top,xm-a.left,ym-a.top);   /* TL Question Marks */
+      ctx.fillStyle='rgba(26,134,199,.08)';ctx.fillRect(xm,a.top,a.right-xm,ym-a.top);       /* TR Stars */
+      ctx.fillStyle='rgba(120,120,120,.08)';ctx.fillRect(a.left,ym,xm-a.left,a.bottom-ym);   /* BL Dogs */
+      ctx.fillStyle='rgba(42,157,111,.08)';ctx.fillRect(xm,ym,a.right-xm,a.bottom-ym);       /* BR Cash Cows */
+      ctx.fillStyle='rgba(20,40,60,.30)';ctx.font='700 13px sans-serif';ctx.textAlign='center';
+      ctx.fillText('QUESTION MARKS',(a.left+xm)/2,a.top+20);
+      ctx.fillText('STARS',(xm+a.right)/2,a.top+20);
+      ctx.fillText('DOGS',(a.left+xm)/2,a.bottom-12);
+      ctx.fillText('CASH COWS',(xm+a.right)/2,a.bottom-12);
+      ctx.strokeStyle='rgba(0,0,0,.15)';ctx.setLineDash([5,4]);
+      ctx.beginPath();ctx.moveTo(xm,a.top);ctx.lineTo(xm,a.bottom);ctx.stroke();
+      ctx.beginPath();ctx.moveTo(a.left,ym);ctx.lineTo(a.right,ym);ctx.stroke();
+      ctx.restore();
+    }};
+    var bc=document.getElementById('bcgChart');
+    if(bc)new Chart(bc,{type:'bubble',
+      data:{datasets:[
+        {label:'Question Marks',data:[{x:0.45,y:15,r:13,d:'Pertumbuhan tinggi, pangsa kecil. Putuskan: tambah dana atau tarik.'}],backgroundColor:'rgba(224,138,30,.75)'},
+        {label:'Stars',data:[{x:1.55,y:16,r:20,d:'Pangsa besar + pertumbuhan tinggi. Pendapatan besar, tapi butuh dana besar.'}],backgroundColor:'rgba(26,134,199,.75)'},
+        {label:'Dogs',data:[{x:0.4,y:3.5,r:10,d:'Pangsa kecil, pertumbuhan rendah. Jual atau tarik dari pasar.'}],backgroundColor:'rgba(120,120,120,.75)'},
+        {label:'Cash Cows',data:[{x:1.65,y:4,r:24,d:'Pangsa besar, pertumbuhan rendah. Penghasil kas untuk mendanai SBU lain.'}],backgroundColor:'rgba(42,157,111,.75)'}
+      ]},
+      options:{maintainAspectRatio:false,
+        scales:{
+          x:{min:0,max:2,title:{display:true,text:'Pangsa Pasar Relatif  (kecil → besar)'},ticks:{callback:function(v){return v;}}},
+          y:{min:0,max:20,title:{display:true,text:'Laju Pertumbuhan Pasar (%)'}}
+        },
+        plugins:{legend:{position:'bottom'},tooltip:{callbacks:{label:function(c){return c.dataset.label+': '+c.raw.d;}}}}
+      },plugins:[bcgQuad]});
+
+    var cc=document.getElementById('cycleChart');
+    if(cc)new Chart(cc,{type:'line',
+      data:{labels:['Prosperity','','Recession','','Depression','','Recovery','','Prosperity'],
+        datasets:[{data:[92,76,58,42,30,46,66,82,92],borderColor:'#2a9d6f',backgroundColor:'rgba(42,157,111,.12)',fill:true,tension:.45,pointRadius:function(c){return c.dataIndex%2===0?5:0;},pointBackgroundColor:'#2a9d6f'}]},
+      options:{maintainAspectRatio:false,
+        scales:{y:{min:0,max:100,title:{display:true,text:'Tingkat Aktivitas Ekonomi'},ticks:{display:false}},x:{title:{display:true,text:'Waktu →'}}},
+        plugins:{legend:{display:false},tooltip:{callbacks:{title:function(t){return t[0].label||'Transisi';},label:function(c){return 'Aktivitas: '+c.raw;}}}}
+      }});
+  }
+  if(document.readyState!=='loading')buildCharts();else document.addEventListener('DOMContentLoaded',buildCharts);
+  window.addEventListener('load',buildCharts);
+})();
+</script>
+</body>
+</html>

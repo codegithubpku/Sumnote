@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Modul 8 — Strategi Pemasaran untuk Situasi Tertentu | EKMA5206</title>
+<script>window.MathJax={tex:{inlineMath:[['$','$']],displayMath:[['\\[','\\]']]},svg:{fontCache:'global'},startup:{typeset:true}};</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js" id="MathJax-script" async></script>
+<style>
+  :root{--bg:#f4f6f9;--panel:#fff;--ink:#1c2733;--muted:#5c6b7a;--line:#e4e9f0;--brand:#1a86c7;--brand-dark:#0f5e8f;--brand-soft:#e7f3fb;--kb1:#1a86c7;--kb2:#e08a1e;--kb3:#2a9d6f;--radius:14px;--shadow:0 1px 2px rgba(16,42,67,.06),0 6px 20px rgba(16,42,67,.06);--maxw:900px}
+  *{box-sizing:border-box}html{scroll-behavior:smooth}
+  body{margin:0;background:var(--bg);color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;line-height:1.72;-webkit-font-smoothing:antialiased}
+  #progress{position:fixed;top:0;left:0;height:4px;width:0;background:linear-gradient(90deg,var(--brand),#53c0ec);z-index:200;transition:width .1s}
+  header.top{position:sticky;top:0;z-index:100;background:rgba(255,255,255,.92);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+  .top-in{max-width:var(--maxw);margin:0 auto;padding:10px 20px;display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+  .badge{background:var(--brand);color:#fff;font-weight:700;font-size:.72rem;letter-spacing:.5px;padding:4px 10px;border-radius:999px;white-space:nowrap}
+  .top-title{font-size:.9rem;font-weight:600;color:var(--muted)}
+  nav.jump{margin-left:auto;display:flex;gap:4px;flex-wrap:wrap}
+  nav.jump a{font-size:.78rem;color:var(--muted);text-decoration:none;padding:5px 10px;border-radius:8px}
+  nav.jump a:hover{background:var(--brand-soft);color:var(--brand-dark)}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 20px 90px}
+  .hero{margin-top:26px;padding:30px 28px;border-radius:var(--radius);color:#fff;background:linear-gradient(135deg,#0f5e8f 0%,#1a86c7 60%,#2fa4df 100%);box-shadow:var(--shadow);position:relative;overflow:hidden}
+  .hero::after{content:"08";position:absolute;right:18px;bottom:-26px;font-size:150px;font-weight:800;opacity:.12;line-height:1}
+  .hero .eyebrow{font-size:.78rem;letter-spacing:1.5px;text-transform:uppercase;opacity:.9;font-weight:600}
+  .hero h1{margin:.3em 0 .25em;font-size:1.62rem;line-height:1.25;max-width:90%}
+  .hero .meta{display:flex;gap:18px;flex-wrap:wrap;font-size:.84rem;opacity:.95;margin-top:10px}
+  h2.section{font-size:1.3rem;margin:48px 0 4px;display:flex;align-items:center;gap:10px;scroll-margin-top:70px}
+  h2.section .dot{width:10px;height:22px;border-radius:4px;background:var(--brand)}
+  .section-sub{color:var(--muted);font-size:.9rem;margin:0 0 18px}
+  .card{background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);padding:22px 24px;margin:16px 0;--dot:var(--brand)}
+  .concepts{list-style:none;margin:0;padding:0;display:grid;gap:10px}
+  .concepts li{display:flex;gap:12px;align-items:flex-start;padding:12px 14px;border:1px solid var(--line);border-radius:10px;background:#fcfdff;transition:.15s}
+  .concepts li:hover{border-color:#cfe3f2}
+  .concepts input{margin-top:4px;width:18px;height:18px;accent-color:var(--brand);flex:none;cursor:pointer}
+  .concepts .ct{font-weight:600}.concepts .cd{display:block;font-weight:400;color:var(--muted);font-size:.86rem;margin-top:2px}
+  .concepts li.done{background:var(--brand-soft);border-color:#bfe0f3}.concepts li.done .ct{text-decoration:line-through;opacity:.65}
+  .cl-head{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-bottom:6px}
+  .cl-head .count{font-size:.82rem;color:var(--muted);background:var(--brand-soft);padding:3px 10px;border-radius:999px;font-weight:600}
+  .btn-reset{font-size:.78rem;border:1px solid var(--line);background:#fff;color:var(--muted);padding:5px 12px;border-radius:8px;cursor:pointer}.btn-reset:hover{background:#f6f8fb}
+  .mm-toolbar{display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin-bottom:10px}
+  .mm-btn{font-size:.78rem;border:1px solid var(--line);background:#fff;padding:6px 13px;border-radius:8px;cursor:pointer;color:var(--brand-dark);font-weight:600}.mm-btn:hover{background:var(--brand-soft)}
+  .mm-hint{font-size:.76rem;color:var(--muted)}
+  .mindmap-host{height:600px;overflow:auto;border:1px solid var(--line);border-radius:10px;background:#fcfdff}.mindmap-host svg{display:block}
+  .kb-tag{display:inline-flex;align-items:center;gap:8px;font-size:.78rem;font-weight:700;letter-spacing:.3px;color:#fff;padding:5px 12px;border-radius:999px;margin-bottom:6px}
+  .kb1t{background:var(--kb1)}.kb2t{background:var(--kb2)}.kb3t{background:var(--kb3)}
+  .kb1b{--dot:var(--kb1)}.kb2b{--dot:var(--kb2)}.kb3b{--dot:var(--kb3)}
+  .lead{font-size:1.02rem}.term{font-weight:700;color:var(--dot)}.en{font-style:italic;color:var(--muted);font-weight:500}
+  .abc{display:flex;align-items:center;gap:10px;margin:28px 0 10px;padding-bottom:6px;border-bottom:2px solid currentColor;border-bottom-color:color-mix(in srgb,var(--dot) 18%,#fff)}
+  .abc .ltr{background:var(--dot);color:#fff;font-weight:800;min-width:30px;height:30px;padding:0 7px;border-radius:8px;display:grid;place-items:center;flex:none}
+  .abc h4{margin:0;font-size:1.06rem;color:var(--dot)}
+  .numh{font-weight:700;color:var(--dot);margin:22px 0 4px;font-size:1rem}
+  .leth{font-weight:800;color:var(--dot);margin:20px 0 6px;font-size:.98rem;border-left:3px solid var(--dot);padding-left:10px}
+  ol.book{margin:12px 0;padding-left:28px}ol.book>li{margin:10px 0;padding-left:6px}ol.book>li::marker{font-weight:700;color:var(--dot)}
+  ul.exp{list-style:none;margin:12px 0;padding:0;display:grid;gap:10px}ul.exp>li{position:relative;padding-left:20px}
+  ul.exp>li::before{content:"";position:absolute;left:0;top:11px;width:8px;height:8px;border-radius:2px;background:var(--dot)}
+  ol.book b,ul.exp b{color:var(--ink)}
+  ul.let{list-style:lower-alpha;margin:10px 0;padding-left:28px}ul.let>li{margin:8px 0;padding-left:4px}ul.let>li::marker{color:var(--dot);font-weight:700}
+  .flow{border-left:4px solid var(--dot);background:color-mix(in srgb,var(--dot) 9%,#fff);padding:11px 15px;border-radius:0 10px 10px 0;margin:18px 0;font-size:.9rem}
+  .flow::before{content:"🔗 Benang merah — ";font-weight:700;color:var(--dot)}.flow b{color:var(--dot)}
+  table.mini{width:100%;border-collapse:collapse;margin:14px 0;font-size:.86rem}
+  table.mini th,table.mini td{border:1px solid var(--line);padding:9px 11px;text-align:left;vertical-align:top}
+  table.mini th{background:color-mix(in srgb,var(--dot) 12%,#fff);color:var(--dot);font-weight:700}
+  table.mini tr:nth-child(even) td{background:#fafcfe}
+  .rgrid{display:grid;gap:8px;margin:14px 0}.rgrid.c3{grid-template-columns:repeat(3,1fr)}.rgrid.c2{grid-template-columns:repeat(2,1fr)}
+  .rcell{border:1px solid var(--line);border-radius:10px;padding:11px 13px;cursor:pointer;background:#fff;transition:.15s;display:flex;gap:10px;align-items:flex-start}
+  .rcell:hover{border-color:var(--dot);box-shadow:var(--shadow);transform:translateY(-2px)}
+  .rcell.active{border-color:var(--dot);background:color-mix(in srgb,var(--dot) 8%,#fff)}
+  .rcell .stepnum{background:var(--dot);color:#fff;font-weight:700;min-width:24px;height:24px;border-radius:7px;display:grid;place-items:center;flex:none;font-size:.82rem}
+  .rcell .rt{font-weight:700;font-size:.9rem;color:var(--dot);display:block}.rcell .rp{font-size:.78rem;color:var(--muted);display:block;margin-top:2px}
+  .rdetail{font-size:.88rem;border-left:4px solid var(--dot);background:color-mix(in srgb,var(--dot) 8%,#fff);border-radius:0 10px 10px 0;padding:12px 15px;margin-top:6px}
+  .pill-row{display:flex;gap:8px;flex-wrap:wrap;margin:10px 0}
+  .pill{font-size:.8rem;background:#eef3f8;color:#36506a;border:1px solid #e0e8f0;padding:4px 11px;border-radius:999px;font-weight:600}
+  .flowchart{display:flex;align-items:center;gap:6px;flex-wrap:wrap;margin:16px 0;justify-content:center}
+  .fc-node{background:color-mix(in srgb,var(--dot) 12%,#fff);border:1.5px solid var(--dot);color:var(--dot);font-weight:700;font-size:.8rem;padding:8px 12px;border-radius:9px;text-align:center}
+  .fc-arrow{color:var(--dot);font-weight:800;font-size:1.05rem}
+  .glossary dt{font-weight:700;color:var(--brand-dark);margin-top:10px}.glossary dd{margin:0 0 2px;color:var(--muted);font-size:.9rem}
+  footer{max-width:var(--maxw);margin:0 auto;padding:30px 20px 60px;color:var(--muted);font-size:.82rem;border-top:1px solid var(--line)}
+  footer .refs{margin-top:10px;font-size:.78rem;line-height:1.6}
+  .offline-note{font-size:.76rem;color:var(--muted);background:#fff8e6;border:1px solid #f0e2b8;border-radius:8px;padding:8px 12px;margin:10px 0}
+  @media(max-width:640px){.hero h1{font-size:1.3rem;max-width:100%}.hero::after{font-size:110px}nav.jump{display:none}.rgrid.c3,.rgrid.c2{grid-template-columns:1fr}.mindmap-host{height:440px}}
+  @media print{#progress,header.top,.btn-reset,.mm-toolbar{display:none}body{background:#fff}.card{box-shadow:none}}
+</style>
+</head>
+<body>
+<div id="progress"></div>
+<header class="top"><div class="top-in"><span class="badge">MODUL 8</span><a href="index.html" title="Kembali ke daftar modul" style="text-decoration:none;display:inline-flex;align-items:center;gap:7px;background:var(--brand);color:#fff;font-weight:700;font-size:.8rem;padding:7px 15px;border-radius:999px;white-space:nowrap;box-shadow:0 2px 6px rgba(16,42,67,.22);line-height:1"><span style="font-size:1rem;line-height:1">&#8962;</span> Daftar Modul</a><span class="top-title">Manajemen Pemasaran · EKMA5206</span>
+  <nav class="jump"><a href="#konsep">Konsep</a><a href="#peta">Peta Konsep</a><a href="#kb1">KB1</a><a href="#kb2">KB2</a><a href="#kb3">KB3</a><a href="#glosarium">Glosarium</a></nav></div></header>
+<div class="wrap">
+  <section class="hero"><div class="eyebrow">Buku Materi Pokok · EKMA5206 · 3 SKS</div>
+    <h1>Strategi Pemasaran untuk Situasi Tertentu</h1>
+    <div class="meta"><span>⏱️ Estimasi belajar <b>±40 menit</b></span><span>📚 <b>3</b> Kegiatan Belajar</span><span>✍️ Dr. Ir. FX. Bambang Wiharto, M.M.</span></div></section>
+  <p class="section-sub" style="margin-top:22px">Strategi pemasaran berubah menurut <b>situasi</b>: teknologi ekonomi baru (KB1), tahap pasar yang <b>baru &amp; bertumbuh</b> (KB2), &amp; pasar yang <b>dewasa &amp; menurun</b> (KB3). Modul ini mengaitkan pilihan strategi dengan posisi dalam siklus hidup pasar-produk. Ringkasan mengikuti alur heading buku (A/1/a) dengan kotak <b>🔗 Benang merah</b>, penjelasan tiap poin, &amp; istilah asli + terjemahan.</p>
+  <p class="offline-note">ℹ️ Peta konsep &amp; elemen interaktif berjalan tanpa internet. Teks tetap terbaca offline.</p>
+
+  <h2 class="section" id="konsep"><span class="dot"></span>Konsep Penting yang Harus Dikuasai</h2>
+  <p class="section-sub">Istilah inti, urut sesuai buku. Centang sebagai penanda belajar (tersimpan otomatis).</p>
+  <div class="card"><div class="cl-head"><span class="count"><span id="doneCount">0</span>/<span id="totalCount">0</span> dikuasai</span><button class="btn-reset" id="resetBtn">Reset centang</button></div>
+    <ul class="concepts" id="conceptList">
+      <li><input type="checkbox"><span><span class="ct">New-economy vs old-economy</span><span class="cd">Perusahaan berbasis web vs cara lama; digital divide.</span></span></li>
+      <li><input type="checkbox"><span><span class="ct">7 elemen teknologi ekonomi baru</span><span class="cd">Sindikasi, network effect, personalisasi, disintermediasi, dll.</span></span></li>
+      <li><input type="checkbox"><span><span class="ct">Sindikasi informasi</span><span class="cd">Originator, syndicator, distributor.</span></span></li>
+      <li><input type="checkbox"><span><span class="ct">Increasing returns to scale (network effect)</span><span class="cd">Nilai naik saat pengguna bertambah.</span></span></li>
+      <li><input type="checkbox"><span><span class="ct">Disintermediasi &amp; first-mover advantage</span><span class="cd">Pangkas perantara; keunggulan pelopor (fakta/fiksi).</span></span></li>
+      <li><input type="checkbox"><span><span class="ct">5 pertanyaan strategi ekonomi baru</span><span class="cd">Digitisasi, proteksi legal, nilai informasi, hubungan, efisiensi.</span></span></li>
+      <li><input type="checkbox"><span><span class="ct">6 kategori produk baru</span><span class="cd">New-to-the-world sampai cost reduction.</span></span></li>
+      <li><input type="checkbox"><span><span class="ct">Pioneer vs follower</span><span class="cd">Strategi masuk perintis vs pengikut pasar.</span></span></li>
+      <li><input type="checkbox"><span><span class="ct">7 keunggulan perintis pasar</span><span class="cd">First choice segment, network effects, scarce resources, dll.</span></span></li>
+      <li><input type="checkbox"><span><span class="ct">3 strategi perintis</span><span class="cd">Mass-market penetration, niche penetration, skimming.</span></span></li>
+      <li><input type="checkbox"><span><span class="ct">Strategi pemimpin pasar (share leader)</span><span class="cd">Bertahan, konfrontasi, ekspansi, kontraksi.</span></span></li>
+      <li><input type="checkbox"><span><span class="ct">Strategi share-growth pengikut</span><span class="cd">Menyerang frontal (cost advantage), niche.</span></span></li>
+      <li><input type="checkbox"><span><span class="ct">Shakeout &amp; maturity phase</span><span class="cd">Transisi pertumbuhan → kedewasaan; steady price.</span></span></li>
+      <li><input type="checkbox"><span><span class="ct">Analyzer vs defender</span><span class="cd">Strategi memelihara keunggulan di pasar mapan.</span></span></li>
+      <li><input type="checkbox"><span><span class="ct">Low-cost position vs differentiation</span><span class="cd">Dua penentu kritikal di pasar dewasa.</span></span></li>
+      <li><input type="checkbox"><span><span class="ct">Declining market: exit barrier &amp; harvesting</span><span class="cd">Konsolidasi, panen pasar menurun.</span></span></li>
+    </ul>
+  </div>
+
+  <h2 class="section" id="peta"><span class="dot"></span>Peta Konsep (Mind Map)</h2>
+  <p class="section-sub">Struktur lengkap modul mengikuti outline buku. Klik +/− pada simpul untuk buka/tutup cabang.</p>
+  <div class="card"><div class="mm-toolbar"><button class="mm-btn" id="mmExpand">Perluas semua</button><button class="mm-btn" id="mmCollapse">Ciutkan</button><span class="mm-hint">Gulir di dalam kotak untuk menggeser</span></div><div class="mindmap-host" id="mindmap"></div></div>
+
+  <!-- KB1 -->
+  <h2 class="section" id="kb1"><span class="dot"></span>KB 1 — Strategi Pemasaran untuk Ekonomi Baru</h2>
+  <div class="card kb1b">
+    <span class="kb-tag kb1t">EKONOMI BARU</span>
+    <p class="lead"><span class="term">Ekonomi-baru <span class="en">(new-economy)</span></span> (Mullins 2010): industri yang berfungsi sebagai bahan bakar &amp; penyulut pembangunan <em>electronic commerce</em>, Internet, pemasaran perangkat keras/lunak, &amp; jasa telekomunikasi. Web membantu transformasi perusahaan <span class="term">old-economy</span> (cara lama) menjadi berbasis web.</p>
+
+    <div class="numh">1 · Apakah Semua Perusahaan Memerlukan Strategi Ekonomi Baru?</div>
+    <p>Setiap perusahaan harus mengakui keberadaan sistem ekonomi baru — bukan hanya karena perusahaan <em>dot.com</em>, tetapi karena teknologi baru bisa dipakai di berbagai kegiatan (jaringan sosial untuk menawarkan katalog online, website transaksi). Perlu disadari <span class="term">digital divide</span> — ada segmen populasi yang belum menguasai teknologi/Internet.</p>
+
+    <div class="numh">2 · Peluang atau Ancaman? — 7 Elemen Teknologi Ekonomi Baru</div>
+    <p>Tujuh elemen potensial &amp; atraktif — klik:</p>
+    <div class="rgrid c2" data-revealgroup>
+      <div class="rcell" data-reveal data-detail="<b>Sindikasi informasi</b> — menjual barang (biasanya informasional) ke banyak pelanggan, lalu menggabungkannya dengan info sumber lain. Tiga peran: <em>originator</em> (pencipta konten), <em>syndicator</em> (pengumpul &amp; pengemas), <em>distributor</em>. Biaya produksi inkremental sangat kecil (barang informasi)."><span><span class="rt">Sindikasi informasi</span><span class="rp">Originator/syndicator/distributor.</span></span></div>
+      <div class="rcell" data-reveal data-detail="<b>Increasing returns to scale dari network products</b> — nilai produk naik saat pengguna bertambah (<em>network effect / positive network externalities</em>). Contoh: Hotmail — email gratis yang menawarkan nilai promosi bagi jaringan yang makin luas."><span><span class="rt">Network effect</span><span class="rp">Nilai naik seiring pengguna.</span></span></div>
+      <div class="rcell" data-reveal data-detail="<b>Personalisasi &amp; kustomisasi</b> — <em>collaborative filtering</em> membuat market offering personal; <em>rule-based personalization</em> membuat penawaran berdasar perilaku beli &amp; konsumsi pelanggan."><span><span class="rt">Personalisasi</span><span class="rp">Collaborative filtering.</span></span></div>
+      <div class="rcell" data-reveal data-detail="<b>Disintermediasi</b> — mengurangi jumlah anggota jalur distribusi (mis. penerbangan menjual tiket langsung via website). Bisa memicu <em>re-intermediasi</em> (consignment seller seperti eBay)."><span><span class="rt">Disintermediasi</span><span class="rp">Pangkas perantara.</span></span></div>
+      <div class="rcell" data-reveal data-detail="<b>Jangkauan global</b> — website menawarkan barang/jasa ke siapa saja, di mana saja, 24 jam, 7 hari, 52 minggu, tanpa biaya besar."><span><span class="rt">Jangkauan global</span><span class="rp">Akses global.</span></span></div>
+      <div class="rcell" data-reveal data-detail="<b>Akses sepanjang hari &amp; instantaneous delivery</b> — akses aplikasi kapan saja &amp; penyerahan segera atas barang/jasa digital (software diunduh setelah pembayaran)."><span><span class="rt">Akses &amp; penyerahan segera</span><span class="rp">24/7 &amp; instant delivery.</span></span></div>
+    </div>
+    <div class="rdetail" data-revealdetail>Klik salah satu elemen untuk penjelasannya.</div>
+    <p style="margin-top:12px"><b>Peluang atau ancaman?</b> Tergantung sudut pandang: pengumpulan data (<em>cookies</em>) bisa melanggar etika; penyalahgunaan <em>copyright</em>; <em>barrier to entry</em> yang rendah memudahkan pesaing meniru. <span class="term">First-mover advantage</span> — fakta atau fiksi? Pelopor (Amazon, eBay) bisa unggul, tetapi banyak <em>first-mover</em> berkinerja lebih buruk dari pengikutnya (MySpace dilampaui Facebook).</p>
+
+    <div class="numh">3 · Aplikasi Pemasaran</div>
+    <p>Enam tahap proses pengalaman: komunikasi kebutuhan → brand awareness → pembelian → penyerahan → dukungan pascabeli → pengembalian. Aplikasi Internet: <span class="pill">mobile advertising</span> <span class="pill">search engine</span> <span class="pill">email/permission marketing</span> <span class="pill">banner advertising</span>. <span class="term">Web 2.0</span> (blogs, RSS, tagging, wikis) = beralih dari "menerbitkan" ke "berperan serta".</p>
+
+    <div class="flow">Setelah tahu elemen &amp; aplikasinya, pemasar perlu kerangka untuk memutuskan apakah &amp; bagaimana membangun strategi — itu bagian 4 &amp; 5.</div>
+
+    <div class="numh">4 · Membangun Strategi Pemasaran Ekonomi Baru — 5 Pertanyaan</div>
+    <div class="rgrid c2" data-revealgroup>
+      <div class="rcell" data-reveal data-detail="<b>a. Dapatkah digitisasi?</b> Dapatkah kita melakukan digitisasi pada semua aliran kegiatan di tiap tahap proses pengalaman konsumen? Teks, audio, citra bisa didigitisasi; barang &amp; jasa fisik tidak."><span class="stepnum">a</span><span><span class="rt">Digitisasi</span><span class="rp">Bisa didigitalkan?</span></span></div>
+      <div class="rcell" data-reveal data-detail="<b>b. Mampukah jadi pertama &amp; pemilik aplikasi dilindungi legal?</b> Barriers to entry Web rendah; pertanyaannya apakah pakai proprietary application &amp; hak cipta, atau mulai lebih awal untuk raih keunggulan."><span class="stepnum">b</span><span><span class="rt">Proteksi legal</span><span class="rp">Proprietary &amp; first.</span></span></div>
+      <div class="rcell" data-reveal data-detail="<b>c. Sejauh mana informasi bernilai &amp; time critical?</b> Makin bernilai &amp; kritikal informasi, makin bermanfaat investasi aplikasi ekonomi baru yang menyediakan akses mudah &amp; tepat waktu."><span class="stepnum">c</span><span><span class="rt">Nilai informasi</span><span class="rp">Bernilai &amp; time-critical?</span></span></div>
+      <div class="rcell" data-reveal data-detail="<b>d. Dapatkah membangun hubungan di pasar sasaran?</b> Aplikasi Internet hanya efektif bila pasar sasaran mampu mengakses web &amp; memahami cara kerjanya."><span class="stepnum">d</span><span><span class="rt">Hubungan pelanggan</span><span class="rp">Pasar bisa akses web?</span></span></div>
+      <div class="rcell" data-reveal data-detail="<b>e. Apakah aplikasi web lebih efektif &amp; efisien?</b> Pemasar harus yakin pemakaian aplikasi ekonomi baru hasilnya memang lebih efektif/efisien dibanding alternatif lain."><span class="stepnum">e</span><span><span class="rt">Efisiensi</span><span class="rp">Lebih efektif/efisien?</span></span></div>
+    </div>
+    <div class="rdetail" data-revealdetail>Klik salah satu pertanyaan untuk penjelasannya.</div>
+    <div class="numh">5 · Mengelola Strategi Ekonomi Baru</div>
+    <p>Butuh <span class="term">conceptual framework</span> untuk menimbang <em>trade-off</em> pakai vs tidak pakai aplikasi. Tantangan tersulit: menemukan orang yang mampu mengelola usaha di arena yang cepat berubah, &amp; <b>mengubah perilaku</b> orang/budaya perusahaan (perubahan membawa konsekuensi).</p>
+  </div>
+
+  <!-- KB2 -->
+  <h2 class="section" id="kb2"><span class="dot"></span>KB 2 — Strategi Pemasaran untuk Pasar Baru dan sedang Bertumbuh</h2>
+  <div class="card kb2b">
+    <span class="kb-tag kb2t">PASAR BARU &amp; BERTUMBUH</span>
+    <p class="lead"><span class="term">New product development</span> membuat perusahaan bertumbuh &amp; tetap beroperasi. Pertumbuhan penjualan maupun pemangkasan biaya bisa menaikkan laba, tetapi produk baru inovatif berdampak lebih besar pada profitabilitas jangka panjang.</p>
+
+    <div class="numh">1 · Seberapa Baru Sebuah Produk Disebut Baru? — 6 Kategori</div>
+    <div class="rgrid c3" data-revealgroup>
+      <div class="rcell" data-reveal data-detail="<b>New-to-the-world products</b> — inovasi sebenarnya yang membangun pasar produk yang benar-benar baru."><span><span class="rt">New-to-the-world</span><span class="rp">Baru bagi dunia.</span></span></div>
+      <div class="rcell" data-reveal data-detail="<b>New-product-line</b> — kategori produk baru bagi perusahaan (tak baru bagi pasar) karena sudah ada pesaing sejenis."><span><span class="rt">New-product-line</span><span class="rp">Lini baru bagi perusahaan.</span></span></div>
+      <div class="rcell" data-reveal data-detail="<b>Additions to existing product line</b> — item baru sebagai suplemen/pelengkap lini mapan; perluasan segmen pasar."><span><span class="rt">Additions</span><span class="rp">Tambahan lini.</span></span></div>
+      <div class="rcell" data-reveal data-detail="<b>Improvements/revisions of existing products</b> — kinerja/nilai lebih baik, menggantikan barang lama."><span><span class="rt">Improvements</span><span class="rp">Perbaikan produk ada.</span></span></div>
+      <div class="rcell" data-reveal data-detail="<b>Repositionings</b> — produk lama ditempatkan sebagai aplikasi baru &amp; segmen pasar baru."><span><span class="rt">Repositionings</span><span class="rp">Posisi/segmen baru.</span></span></div>
+      <div class="rcell" data-reveal data-detail="<b>Cost reduction</b> — modifikasi produk dengan kinerja mirip namun biaya lebih rendah."><span><span class="rt">Cost reduction</span><span class="rp">Biaya lebih rendah.</span></span></div>
+    </div>
+    <div class="rdetail" data-revealdetail>Klik salah satu kategori untuk penjelasannya. Makin baru → makin rumit &amp; tak pasti kegiatan rekayasa/operasi/pemasaran.</div>
+
+    <div class="numh">2 · Strategi Masuk Pasar: Perintis atau Pengikut?</div>
+    <div class="leth">a. Strategi Perintis Pasar <span class="en">(pioneer)</span> — 7 Sumber Keunggulan</div>
+    <div class="rgrid c2" data-revealgroup>
+      <div class="rcell" data-reveal data-detail="<b>First choice of market segments &amp; positions</b> — pelopor memilih atribut &amp; segmen pelanggan terbesar; mereknya jadi referensi evaluasi merek lain."><span><span class="rt">First choice segment</span></span></div>
+      <div class="rcell" data-reveal data-detail="<b>The pioneer defines the rules of the game</b> — tindakan pelopor (kualitas, harga, distribusi, jaminan, promosi) menetapkan standar yang harus dipenuhi pesaing."><span><span class="rt">Defines the rules</span></span></div>
+      <div class="rcell" data-reveal data-detail="<b>Distribution advantages</b> — pelopor punya banyak pilihan jalur distribusi &amp; distributor terbaik; penting untuk barang industrial."><span><span class="rt">Distribution advantages</span></span></div>
+      <div class="rcell" data-reveal data-detail="<b>Economies of scale &amp; experience</b> — jadi pertama = pengalaman &amp; produksi massal → biaya per unit lebih rendah."><span><span class="rt">Economies of scale</span></span></div>
+      <div class="rcell" data-reveal data-detail="<b>High switching costs for early adopters</b> — pengadopsi dini enggan ganti pemasok (biaya ganti tinggi, terutama produk industrial)."><span><span class="rt">High switching costs</span></span></div>
+      <div class="rcell" data-reveal data-detail="<b>Possibility of positive network effects</b> — nilai barang naik saat jumlah pengguna meningkat (network externalities)."><span><span class="rt">Positive network effects</span></span></div>
+      <div class="rcell" data-reveal data-detail="<b>Preempting scarce resources &amp; suppliers</b> — pelopor menegosiasi perjanjian dengan pemasok material/komponen langka lebih dulu."><span><span class="rt">Preempting resources</span></span></div>
+    </div>
+    <div class="rdetail" data-revealdetail>Klik salah satu sumber keunggulan perintis untuk penjelasannya.</div>
+    <div class="leth">b. Strategi Pengikut Pasar <span class="en">(follower)</span> — Keunggulan</div>
+    <ul class="exp">
+      <li><b>Ability to take advantage of pioneer's positioning mistake</b> — jika pelopor salah menilai preferensi/segmen, pengikut menyerang balik dengan positioning lebih tepat.</li>
+      <li><b>...product mistake</b> — jika produk pelopor berkekurangan, pengikut tingkatkan kualitas &amp; mengalahkannya.</li>
+      <li><b>...marketing mistake</b> — jika pemasaran pelopor gagal (distribusi/promosi kurang, brand awareness lemah), pengikut mengatasinya.</li>
+      <li><b>Ability to take advantage of the latest technology</b> — pengikut pakai teknologi mutakhir yang lebih baik dari pelopor.</li>
+      <li><b>Ability to take advantage of pioneer's limited resources</b> — keterbatasan sumber daya pelopor jadi peluang pengikut.</li>
+    </ul>
+
+    <div class="numh">3 · Program Pemasaran Strategik</div>
+    <div class="leth">Bagi Perusahaan Perintis — 3 Strategi</div>
+    <div class="rgrid c3" data-revealgroup>
+      <div class="rcell" data-reveal data-detail="<b>Penetrasi mass-market</b> — maksimalkan pangsa pasar; tekan biaya per unit (unit cost), bangun pelanggan loyal sebelum pesaing masuk, bangun market entry barriers. Fokus: aggressively building product awareness &amp; making it easy to try. Perlu personal selling &amp; promosi ekstensif."><span><span class="rt">Mass-market penetration</span><span class="rp">Maksimalkan pangsa.</span></span></div>
+      <div class="rcell" data-reveal data-detail="<b>Penetrasi ceruk pasar (niche market penetration)</b> — untuk perusahaan kecil bersumber daya terbatas; fokus pada satu segmen pasar tunggal (ceruk), hindari konfrontasi langsung dengan pesaing besar."><span><span class="rt">Niche penetration</span><span class="rp">Fokus ceruk.</span></span></div>
+      <div class="rcell" data-reveal data-detail="<b>Skimming &amp; early withdrawal</b> — harga tinggi untuk segmen tak sensitif harga (early adopters), maksimasi laba, lalu tarik diri saat pesaing masuk &amp; margin jatuh; beralih ke produk/pasar baru."><span><span class="rt">Skimming &amp; withdrawal</span><span class="rp">Panen lalu mundur.</span></span></div>
+    </div>
+    <div class="rdetail" data-revealdetail>Klik salah satu strategi perintis untuk penjelasannya.</div>
+    <div class="leth">Bagi Pemimpin Pasar <span class="en">(share leader)</span> — Pelihara Pangsa</div>
+    <p>Dua objektif: <b>(1)</b> membuat pelanggan tetap loyal (lebih sulit untuk <em>non-durable goods</em> &amp; jasa), <b>(2)</b> memberi stimuli permintaan selektif agar menangkap pertumbuhan. Tindakan: tingkatkan kepuasan &amp; loyalitas (kontrol kualitas), dorong pembelian ulang (<span class="term">captive market</span>). Strategi defensif: <span class="pill">bertahan</span> <span class="pill">konfrontasi</span> <span class="pill">ekspansi pasar</span> <span class="pill">kontraksi</span> — dipilih menurut homogenitas pasar &amp; sumber daya.</p>
+    <div class="leth">Bagi Pengikut Pasar — Strategi Share-Growth</div>
+    <p><b>Menyerang frontal</b> (butuh <span class="term">cost advantage</span> &amp; keunggulan kompetitif berkelanjutan agar bisa menekan harga) atau <b>penetrasi ceruk</b> di sekitar pasar pemimpin. Menyerang hanya dengan harga = jalan menuju bencana kecuali punya keunggulan biaya tahan lama.</p>
+  </div>
+
+  <!-- KB3 -->
+  <h2 class="section" id="kb3"><span class="dot"></span>KB 3 — Strategi Pemasaran untuk Pasar Dewasa dan Mulai Menurun</h2>
+  <div class="card kb3b">
+    <span class="kb-tag kb3t">PASAR DEWASA &amp; MENURUN</span>
+    <p class="lead">Transisi dari pertumbuhan ke kedewasaan ditandai <span class="term">shakeout</span> — periode turbulensi di mana kegiatan usaha lemah akan <b>gagal</b>, <b>menarik diri</b> dari industri, atau <b>diambil alih</b> perusahaan lain (saat pesaing over-estimasi volume → over-capacity → pertarungan menutup <em>fixed cost</em>).</p>
+
+    <div class="numh">1 · Berbagai Tantangan Pasar Mapan (Dewasa)</div>
+    <p>Di pasar mapan, volume total stabil, pelanggan melakukan <b>pembelian pengganti</b> (bukan pembelian pertama). Objektif utama pesaing: <b>mempertahankan pelanggan yang sudah ada</b> &amp; menjaga keunggulan kompetitif. Dua tindakan strategis:</p>
+    <ol class="book">
+      <li><b>Pembangunan strategi pemelihara keunggulan kompetitif</b> + membangun kepuasan &amp; loyalitas pelanggan.</li>
+      <li><b>Program pemasaran fleksibel &amp; kreatif</b> untuk meraih peluang pertumbuhan saat kondisi pasar berubah.</li>
+    </ol>
+    <div class="leth">Strategi Memelihara Keunggulan — Analyzer vs Defender</div>
+    <div class="rgrid c2" data-revealgroup>
+      <div class="rcell" data-reveal data-detail="<b>Analyzer</b> — cocok untuk industri terbentuk namun masih berubah teknologis &amp; mungkin tumbuh lagi (mis. komputer, pesawat terbang komersial). Pelihara posisi inti + perhatian pada produk baru."><span><span class="rt">Analyzer</span><span class="rp">Inti + inovasi.</span></span></div>
+      <div class="rcell" data-reveal data-detail="<b>Defender</b> — cocok untuk industri dengan teknologi dasar tak rumit &amp; perubahan kecil (mis. makanan). Bertahan pada posisi mapan yang kuat."><span><span class="rt">Defender</span><span class="rp">Pelihara posisi mapan.</span></span></div>
+    </div>
+    <div class="rdetail" data-revealdetail>Klik salah satu strategi untuk penjelasannya. Keduanya mempertahankan keunggulan lewat dua cara di bawah.</div>
+    <div class="rgrid c2" data-revealgroup>
+      <div class="rcell" data-reveal data-detail="<b>Differentiation</b> — diferensiasi produk dengan kualitas superior; memberi ruang menutup biaya &amp; memelihara kualitas. Pelanggan tak membayar premium tanpa batas, jadi kualitas harus nyata."><span><span class="rt">Differentiation</span><span class="rp">Kualitas superior.</span></span></div>
+      <div class="rcell" data-reveal data-detail="<b>Low-cost position</b> — biaya terendah. Harga rendah menyisakan ruang kecil untuk investasi; perbaikan kualitas lewat pengurangan cacat (bukan sekadar pangkas biaya) lebih baik. Ketepatan penyerahan tetap dijaga."><span><span class="rt">Low-cost position</span><span class="rp">Biaya terendah.</span></span></div>
+    </div>
+    <div class="rdetail" data-revealdetail>Klik salah satu posisi untuk penjelasannya. Sulit menjalankan low-cost &amp; differentiation serempak.</div>
+
+    <div class="flow">Bila pasar mapan berubah menjadi menurun, tantangannya bergeser dari mempertahankan pangsa ke memutuskan: bertahan, panen, atau keluar.</div>
+
+    <div class="numh">2 · Berbagai Tantangan Pasar Menurun <span class="en">(Declining Market)</span></div>
+    <p>Kemajuan teknologi, perubahan demografi/selera, &amp; produk substitusi menurunkan permintaan. Keputusan manajer:</p>
+    <ul class="exp">
+      <li><b>Exit barrier rendah</b> → pemimpin industri bisa meningkatkan pangsa dengan harga agresif/promosi yang mendorong pesaing lemah keluar.</li>
+      <li><b>Konsolidasi industri</b> — membeli merek lemah, kurangi biaya <em>overhead</em>, eliminasi kapasitas produksi berlebih &amp; program pemasaran rangkap.</li>
+      <li><b>Harvesting (panen)</b> — maksimalkan aliran kas &amp; laba selama sisa hidup produk yang menurun.</li>
+    </ul>
+
+    <div class="numh">3 · Berbagai Pilihan Strategic pada Pasar Dewasa</div>
+    <p>Tahap <span class="term">maturity phase</span> digambarkan kondisi stabil: pangsa pasar berbagai pesaing berubah sedikit, harga cenderung tetap (<span class="term">steady price</span>). Pemimpin industri dengan biaya per unit rendah menikmati laba tinggi &amp; aliran kas positif — yang bisa diinvestasikan pada SBU/produk baru yang mendukung pertumbuhan masa depan.</p>
+    <div class="flow">Objektif pemasaran kritikal di pasar dewasa: memelihara pelanggan loyal yang sudah ada — lewat diferensiasi kualitas superior, pelayanan terbaik, atau penurunan harga — sambil mendorong permintaan selektif dari <em>later adopter</em>.</div>
+  </div>
+
+  <h2 class="section" id="glosarium"><span class="dot"></span>Glosarium Kilat</h2>
+  <div class="card"><dl class="glossary">
+    <dt>New-economy / old-economy</dt><dd>Perusahaan berbasis web / berbasis cara lama.</dd>
+    <dt>Digital divide</dt><dd>Kesenjangan penguasaan teknologi/Internet antar segmen.</dd>
+    <dt>Network effect</dt><dd>Nilai produk naik saat jumlah pengguna bertambah.</dd>
+    <dt>Disintermediasi</dt><dd>Pengurangan jumlah perantara jalur distribusi.</dd>
+    <dt>First-mover advantage</dt><dd>Keunggulan pelopor pasar (belum tentu bertahan).</dd>
+    <dt>Pioneer / follower</dt><dd>Perintis pasar / pengikut pasar.</dd>
+    <dt>Mass-market / niche penetration</dt><dd>Penetrasi pasar massal / ceruk.</dd>
+    <dt>Skimming</dt><dd>Harga tinggi awal untuk segmen tak sensitif harga.</dd>
+    <dt>Share leader</dt><dd>Pemimpin pangsa pasar.</dd>
+    <dt>Shakeout</dt><dd>Periode turbulensi transisi pertumbuhan → kedewasaan.</dd>
+    <dt>Analyzer / defender</dt><dd>Strategi memelihara keunggulan di pasar mapan.</dd>
+    <dt>Exit barrier / harvesting</dt><dd>Penghalang keluar pasar / strategi panen pasar menurun.</dd>
+  </dl></div>
+</div>
+
+<footer><b>EKMA5206 — Manajemen Pemasaran</b> · Modul 8: Strategi Pemasaran untuk Situasi Tertentu (Edisi 3) · Penulis: Dr. Ir. FX. Bambang Wiharto, M.M.<br>
+  Bahan belajar ringkas — disusun ulang mengikuti alur modul (hal. 8.1–8.37) untuk persiapan ujian.
+  <div class="refs"><b>Rujukan utama modul:</b> Mullins &amp; Walker (2010) <i>Marketing Management: A Strategic Decision-Making Approach</i> 7e · Kotler &amp; Keller (2009).</div></footer>
+
+<script>
+(function(){
+  var pb=document.getElementById('progress');
+  function onScroll(){var h=document.documentElement;var sc=h.scrollTop||document.body.scrollTop;var max=(h.scrollHeight-h.clientHeight)||1;pb.style.width=(sc/max*100)+'%';}
+  document.addEventListener('scroll',onScroll,{passive:true});onScroll();
+  var list=document.getElementById('conceptList');var items=[].slice.call(list.querySelectorAll('li'));var boxes=items.map(function(li){return li.querySelector('input');});
+  document.getElementById('totalCount').textContent=items.length;var doneEl=document.getElementById('doneCount');var KEY='ekma5206_m8_concepts_v1';
+  function load(){try{var a=JSON.parse(localStorage.getItem(KEY)||'[]');boxes.forEach(function(b,i){if(a[i])b.checked=true;});}catch(e){}}
+  function save(){try{localStorage.setItem(KEY,JSON.stringify(boxes.map(function(b){return b.checked?1:0;})));}catch(e){}}
+  function refresh(){var n=0;items.forEach(function(li,i){if(boxes[i].checked){li.classList.add('done');n++;}else li.classList.remove('done');});doneEl.textContent=n;}
+  load();refresh();boxes.forEach(function(b){b.addEventListener('change',function(){refresh();save();});});
+  document.getElementById('resetBtn').addEventListener('click',function(){boxes.forEach(function(b){b.checked=false;});refresh();save();});
+  [].slice.call(document.querySelectorAll('[data-revealgroup]')).forEach(function(g){
+    var det=g.querySelector('[data-revealdetail]');if(!det){var sib=g.nextElementSibling;if(sib&&sib.hasAttribute&&sib.hasAttribute('data-revealdetail'))det=sib;}
+    var cells=[].slice.call(g.querySelectorAll('[data-reveal]'));
+    cells.forEach(function(c){c.addEventListener('click',function(){cells.forEach(function(x){x.classList.remove('active');});c.classList.add('active');if(det)det.innerHTML=c.getAttribute('data-detail');});});
+  });
+  (function(){
+    var ROWH=46,NODE_H=32,PAD=13,GAP=52;var COL={root:'#0f5e8f',kb1:'#1a86c7',kb2:'#e08a1e',kb3:'#2a9d6f'};
+    var mc=document.createElement('canvas').getContext('2d');mc.font='700 13px -apple-system,Segoe UI,Roboto,sans-serif';
+    function tw(t){return Math.ceil(mc.measureText(t).width);}function esc(t){return t.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');}
+    function rgba(hex,a){var h=hex.replace('#','');return 'rgba('+parseInt(h.substr(0,2),16)+','+parseInt(h.substr(2,2),16)+','+parseInt(h.substr(4,2),16)+','+a+')';}
+    var DATA={label:'MODUL 8 — Strategi Pemasaran untuk Situasi Tertentu',color:COL.root,children:[
+      {label:'KB1 · Strategi untuk Ekonomi Baru',color:COL.kb1,children:[
+        {label:'Perlukah strategi ekonomi baru? (digital divide)'},
+        {label:'7 elemen teknologi ekonomi baru'},
+        {label:'Aplikasi pemasaran (Web 2.0)'},
+        {label:'Membangun strategi (5 pertanyaan)'},
+        {label:'Mengelola strategi ekonomi baru'}
+      ]},
+      {label:'KB2 · Pasar Baru & sedang Bertumbuh',color:COL.kb2,children:[
+        {label:'6 kategori produk baru'},
+        {label:'Pioneer vs follower'},
+        {label:'7 keunggulan perintis'},
+        {label:'Keunggulan pengikut'},
+        {label:'Program: perintis (3 strategi)'},
+        {label:'Program: pemimpin & pengikut pasar'}
+      ]},
+      {label:'KB3 · Pasar Dewasa & Mulai Menurun',color:COL.kb3,children:[
+        {label:'Shakeout (transisi)'},
+        {label:'Tantangan pasar mapan (analyzer/defender)'},
+        {label:'Low-cost vs differentiation'},
+        {label:'Tantangan pasar menurun (harvesting)'},
+        {label:'Pilihan strategic pasar dewasa'}
+      ]}
+    ]};
+    var idc=0;(function w(n,c){n.id='n'+(idc++);n.color=n.color||c;(n.children||[]).forEach(function(k){w(k,n.color);});})(DATA,COL.root);
+    (function w(n,d){if(d>=2&&n.children&&n.children.length)n.collapsed=true;(n.children||[]).forEach(function(k){w(k,d+1);});})(DATA,0);
+    var host=document.getElementById('mindmap');
+    function render(){
+      var colW=[];(function w(n,d){var width=tw(n.label)+PAD*2+((n.children&&n.children.length)?20:0);colW[d]=Math.max(colW[d]||0,width);if(!n.collapsed)(n.children||[]).forEach(function(k){w(k,d+1);});})(DATA,0);
+      var colX=[],acc=14;for(var d=0;d<colW.length;d++){colX[d]=acc;acc+=colW[d]+GAP;}var row={v:0};
+      (function lay(n,d){if(!n.children||!n.children.length||n.collapsed){n._y=row.v*ROWH+ROWH/2+8;row.v++;return;}var f,l;n.children.forEach(function(k,i){lay(k,d+1);if(i===0)f=k._y;l=k._y;});n._y=(f+l)/2;})(DATA,0);
+      var totalW=acc,totalH=row.v*ROWH+24;var nodes=[],links=[];
+      (function col(n,d,p){n._x=colX[d];n._w=tw(n.label)+PAD*2+((n.children&&n.children.length)?20:0);nodes.push({n:n,d:d});if(p)links.push([p,n]);if(!n.collapsed)(n.children||[]).forEach(function(k){col(k,d+1,n);});})(DATA,0,null);
+      var s='<svg width="'+totalW+'" height="'+totalH+'" viewBox="0 0 '+totalW+' '+totalH+'" xmlns="http://www.w3.org/2000/svg">';
+      links.forEach(function(pr){var a=pr[0],b=pr[1],x1=a._x+a._w,y1=a._y,x2=b._x,y2=b._y,mx=(x1+x2)/2;s+='<path d="M'+x1+' '+y1+' C'+mx+' '+y1+' '+mx+' '+y2+' '+x2+' '+y2+'" fill="none" stroke="'+rgba(b.color,.5)+'" stroke-width="2"/>';});
+      nodes.forEach(function(o){var n=o.n,x=n._x,y=n._y-NODE_H/2,w=n._w,hk=n.children&&n.children.length;var fill=o.d===0?n.color:(o.d===1?rgba(n.color,.12):'#fff');var tf=o.d===0?'#fff':'#1c2733';
+        s+='<g data-id="'+n.id+'" style="cursor:'+(hk?'pointer':'default')+'"><rect x="'+x+'" y="'+y+'" rx="9" width="'+w+'" height="'+NODE_H+'" fill="'+fill+'" stroke="'+n.color+'" stroke-width="'+(o.d===0?0:1.6)+'"/><text x="'+(x+PAD)+'" y="'+(n._y+4)+'" font-size="13" font-weight="'+(o.d<=1?'700':'500')+'" fill="'+tf+'" font-family="-apple-system,Segoe UI,Roboto,sans-serif">'+esc(n.label)+'</text>';
+        if(hk){var cx=x+w-12,cy=n._y;s+='<circle cx="'+cx+'" cy="'+cy+'" r="8.5" fill="'+n.color+'"/><text x="'+cx+'" y="'+(cy+4.5)+'" font-size="13" font-weight="700" fill="#fff" text-anchor="middle" font-family="sans-serif">'+(n.collapsed?'+':'\u2013')+'</text>';}s+='</g>';});
+      s+='</svg>';host.innerHTML=s;
+    }
+    host.addEventListener('click',function(e){var g=e.target.closest('g[data-id]');if(!g)return;var id=g.getAttribute('data-id');(function f(n){if(n.id===id){if(n.children&&n.children.length)n.collapsed=!n.collapsed;return true;}return (n.children||[]).some(f);})(DATA);render();});
+    document.getElementById('mmExpand').addEventListener('click',function(){(function w(n){if(n.children)n.collapsed=false;(n.children||[]).forEach(w);})(DATA);render();});
+    document.getElementById('mmCollapse').addEventListener('click',function(){(function w(n,d){if(d>=1&&n.children&&n.children.length)n.collapsed=true;(n.children||[]).forEach(function(k){w(k,d+1);});})(DATA,0);render();});
+    render();
+  })();
+  window.addEventListener('load',function(){setTimeout(function(){if(window.MathJax&&window.MathJax.typesetPromise)window.MathJax.typesetPromise();},400);});
+})();
+</script>
+</body>
+</html>

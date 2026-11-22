@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="id"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Modul 3 — Masalah, Teori, Penelitian yang Relevan, Kerangka Pemikiran, Hipotesis, dan Literatur | EKMA5104</title>
+<script>window.MathJax={tex:{inlineMath:[['$','$']],displayMath:[['\\[','\\]'],['$$','$$']]},svg:{fontCache:'global'},startup:{typeset:true}};</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js" async></script>
+<style>
+:root{--bg:#f4f6f9;--panel:#fff;--ink:#1c2733;--muted:#5c6b7a;--line:#e4e9f0;--brand:#1a86c7;--brand-dark:#0f5e8f;--brand-soft:#e7f3fb;--kb1:#1a86c7;--kb2:#e08a1e;--kb3:#2a9d6f;--kb4:#7a5cc0;--kb5:#c75b7a;--radius:14px;--shadow:0 1px 2px rgba(16,42,67,.06),0 6px 20px rgba(16,42,67,.06);--maxw:900px}
+*{box-sizing:border-box}html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;line-height:1.72}
+#progress{position:fixed;top:0;left:0;height:4px;width:0;background:linear-gradient(90deg,var(--brand),#53c0ec);z-index:200;transition:width .1s}
+header.top{position:sticky;top:0;z-index:100;background:rgba(255,255,255,.92);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+.top-in{max-width:var(--maxw);margin:0 auto;padding:10px 20px;display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+.badge{background:var(--brand);color:#fff;font-weight:700;font-size:.72rem;letter-spacing:.5px;padding:4px 10px;border-radius:999px}
+.homebtn{text-decoration:none;display:inline-flex;align-items:center;gap:7px;background:var(--brand);color:#fff;font-weight:700;font-size:.8rem;padding:7px 15px;border-radius:999px;box-shadow:0 2px 6px rgba(16,42,67,.22);line-height:1}
+.top-title{font-size:.9rem;font-weight:600;color:var(--muted)}
+nav.jump{margin-left:auto;display:flex;gap:4px;flex-wrap:wrap}
+nav.jump a{font-size:.78rem;color:var(--muted);text-decoration:none;padding:5px 10px;border-radius:8px}
+nav.jump a:hover{background:var(--brand-soft);color:var(--brand-dark)}
+.wrap{max-width:var(--maxw);margin:0 auto;padding:0 20px 90px}
+.hero{margin-top:26px;padding:30px 28px;border-radius:var(--radius);color:#fff;background:linear-gradient(135deg,#0f5e8f,#1a86c7 60%,#2fa4df);box-shadow:var(--shadow);position:relative;overflow:hidden}
+.hero .eyebrow{font-size:.78rem;letter-spacing:1.5px;text-transform:uppercase;opacity:.9;font-weight:600}
+.hero h1{margin:.3em 0 .25em;font-size:1.62rem;line-height:1.25;max-width:90%}
+.hero .meta{display:flex;gap:18px;flex-wrap:wrap;font-size:.84rem;opacity:.95;margin-top:10px}
+h2.section{font-size:1.3rem;margin:48px 0 4px;display:flex;align-items:center;gap:10px;scroll-margin-top:70px}
+h2.section .dot{width:10px;height:22px;border-radius:4px;background:var(--brand)}
+.section-sub{color:var(--muted);font-size:.9rem;margin:0 0 18px}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);padding:22px 24px;margin:16px 0;--dot:var(--brand);overflow-x:clip;overflow-wrap:break-word;word-wrap:break-word}
+.concepts{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:minmax(0,1fr);gap:10px}
+.concepts li{display:flex;gap:12px;align-items:flex-start;padding:12px 14px;border:1px solid var(--line);border-radius:10px;background:#fcfdff;min-width:0;max-width:100%}
+.concepts li>span{min-width:0;max-width:100%;overflow-wrap:break-word;word-wrap:break-word}
+.concepts input{margin-top:4px;width:18px;height:18px;accent-color:var(--brand);flex:none;cursor:pointer}
+.concepts .ct{font-weight:600}.concepts .cd{display:block;font-weight:400;color:var(--muted);font-size:.86rem;margin-top:2px}
+.concepts li.done{background:var(--brand-soft);border-color:#bfe0f3}.concepts li.done .ct{text-decoration:line-through;opacity:.65}
+.cl-head{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-bottom:6px}
+.cl-head .count{font-size:.82rem;color:var(--muted);background:var(--brand-soft);padding:3px 10px;border-radius:999px;font-weight:600}
+.btn-reset{font-size:.78rem;border:1px solid var(--line);background:#fff;color:var(--muted);padding:5px 12px;border-radius:8px;cursor:pointer}
+.mm-toolbar{display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin-bottom:10px}
+.mm-btn{font-size:.78rem;border:1px solid var(--line);background:#fff;padding:6px 13px;border-radius:8px;cursor:pointer;color:var(--brand-dark);font-weight:600}
+.mindmap-host{height:580px;overflow:auto;border:1px solid var(--line);border-radius:10px;background:#fcfdff}.mindmap-host svg{display:block}
+.kb-tag{display:inline-flex;align-items:center;gap:8px;font-size:.78rem;font-weight:700;color:#fff;padding:5px 12px;border-radius:999px;margin-bottom:6px}
+.kb1t{background:var(--kb1)}.kb2t{background:var(--kb2)}.kb3t{background:var(--kb3)}.kb4t{background:var(--kb4)}.kb5t{background:var(--kb5)}
+.kb1b{--dot:var(--kb1)}.kb2b{--dot:var(--kb2)}.kb3b{--dot:var(--kb3)}.kb4b{--dot:var(--kb4)}.kb5b{--dot:var(--kb5)}
+.lead{font-size:1.02rem}.term{font-weight:700;color:var(--dot)}.en{font-style:italic;color:var(--muted);font-weight:500}
+.abc{display:flex;align-items:center;gap:10px;margin:28px 0 10px;padding-bottom:6px;border-bottom:2px solid color-mix(in srgb,var(--dot) 18%,#fff)}
+.abc .ltr{background:var(--dot);color:#fff;font-weight:800;min-width:30px;height:30px;padding:0 7px;border-radius:8px;display:grid;place-items:center;flex:none}
+.abc h4{margin:0;font-size:1.06rem;color:var(--dot)}
+.numh{font-weight:700;color:var(--dot);margin:22px 0 4px;font-size:1rem}
+.leth{font-weight:800;color:var(--dot);margin:20px 0 6px;font-size:.98rem;border-left:3px solid var(--dot);padding-left:10px}
+ol.book{margin:12px 0;padding-left:28px}ol.book>li{margin:10px 0;padding-left:6px}ol.book>li::marker{font-weight:700;color:var(--dot)}
+ul.exp{list-style:none;margin:12px 0;padding:0;display:grid;grid-template-columns:minmax(0,1fr);gap:10px}
+ul.exp>li{position:relative;padding-left:20px;min-width:0;max-width:100%;overflow-wrap:break-word;word-wrap:break-word}
+ul.exp>li::before{content:"";position:absolute;left:0;top:11px;width:8px;height:8px;border-radius:2px;background:var(--dot)}
+ul.let{list-style:lower-alpha;margin:10px 0;padding-left:28px}ul.let>li{margin:8px 0;padding-left:4px}ul.let>li::marker{color:var(--dot);font-weight:700}
+.flow{border-left:4px solid var(--dot);background:color-mix(in srgb,var(--dot) 9%,#fff);padding:11px 15px;border-radius:0 10px 10px 0;margin:18px 0;font-size:.9rem;min-width:0;max-width:100%;overflow-wrap:break-word;word-wrap:break-word}
+.flow::before{content:"🔗 Benang merah — ";font-weight:700;color:var(--dot)}.flow b{color:var(--dot)}
+.casebox{background:#f8fafc;border:1px solid var(--line);border-left:4px solid var(--dot);border-radius:0 10px 10px 0;padding:12px 15px;margin:14px 0;font-size:.88rem;min-width:0;max-width:100%;overflow-wrap:break-word;word-wrap:break-word}
+.casebox .ctitle{font-weight:700;color:var(--dot);margin-bottom:4px;display:block}
+.table-wrap{width:100%;overflow-x:auto;-webkit-overflow-scrolling:touch;margin:14px 0;border-radius:10px}
+table.mini{width:100%;border-collapse:collapse;margin:0;font-size:.86rem;table-layout:auto}
+table.mini th,table.mini td{border:1px solid var(--line);padding:10px 12px;text-align:left;vertical-align:top;overflow-wrap:break-word;word-wrap:break-word}
+table.mini th{background:color-mix(in srgb,var(--dot) 12%,#fff);color:var(--dot);font-weight:700}
+.rgrid{display:grid;gap:8px;margin:14px 0}.rgrid.c2{grid-template-columns:repeat(2,1fr)}.rgrid.c3{grid-template-columns:repeat(3,1fr)}.rgrid.c4{grid-template-columns:repeat(4,1fr)}
+.rcell{border:1px solid var(--line);border-radius:10px;padding:11px 13px;cursor:pointer;background:#fff;display:flex;gap:10px;align-items:flex-start;transition:.15s;min-width:0;max-width:100%}
+.rcell>span{min-width:0;max-width:100%;overflow-wrap:break-word;word-wrap:break-word}
+.rcell:hover{border-color:var(--dot);box-shadow:var(--shadow);transform:translateY(-2px)}
+.rcell.active{border-color:var(--dot);background:color-mix(in srgb,var(--dot) 8%,#fff)}
+.rcell .stepnum{background:var(--dot);color:#fff;font-weight:700;min-width:24px;height:24px;border-radius:7px;display:grid;place-items:center;flex:none;font-size:.82rem}
+.rcell .rt{font-weight:700;font-size:.9rem;color:var(--dot);display:block}.rcell .rp{font-size:.78rem;color:var(--muted);display:block;margin-top:2px}
+.rdetail{font-size:.88rem;border-left:4px solid var(--dot);background:color-mix(in srgb,var(--dot) 8%,#fff);border-radius:0 10px 10px 0;padding:12px 15px;margin-top:6px;min-width:0;max-width:100%;overflow-wrap:break-word;word-wrap:break-word}
+.pill-row{display:flex;gap:8px;flex-wrap:wrap;margin:10px 0}.pill{font-size:.8rem;background:#eef3f8;color:#36506a;border:1px solid #e0e8f0;padding:4px 11px;border-radius:999px;font-weight:600}
+.flowchart{display:flex;align-items:center;gap:6px;flex-wrap:wrap;margin:16px 0;justify-content:center}
+.fc-node{background:color-mix(in srgb,var(--dot) 12%,#fff);border:1.5px solid var(--dot);color:var(--dot);font-weight:700;font-size:.8rem;padding:8px 12px;border-radius:9px;text-align:center}
+.fc-arrow{color:var(--dot);font-weight:800;font-size:1.05rem}
+.pyramid{display:flex;flex-direction:column;align-items:center;gap:4px;margin:16px 0}.pyr-row{color:#fff;font-weight:700;text-align:center;padding:9px 12px;border-radius:7px;font-size:.84rem}
+.bs-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:14px 0}
+.bs-col{border:1.5px solid var(--dot);border-radius:10px;overflow:hidden;min-width:0;max-width:100%}
+.bs-head{background:var(--dot);color:#fff;font-weight:700;font-size:.84rem;padding:7px 12px;text-align:center}
+.bs-box{padding:10px 12px;border-bottom:1px dashed var(--line);font-size:.84rem}.bs-box:last-child{border-bottom:none}
+.eqbox{background:#fcfdff;border:1px solid var(--line);border-radius:10px;padding:8px 14px;margin:14px 0;overflow-x:auto}
+mjx-container{max-width:100%;overflow-x:auto;overflow-y:hidden}
+mjx-container:not([display="true"]){display:inline-block;vertical-align:middle}
+.chart-wrap{background:#fcfdff;border:1px solid var(--line);border-radius:12px;padding:14px 16px;margin:16px 0}
+.chart-title{font-weight:700;font-size:.9rem;color:var(--dot);margin:0 0 4px}
+.chart-sub{font-size:.78rem;color:var(--muted);margin:0 0 10px}
+.chart-host{width:100%;overflow-x:auto;position:relative}.chart-host svg{display:block;max-width:100%;height:auto;margin:0 auto}
+.chart-legend{display:flex;gap:14px;flex-wrap:wrap;justify-content:center;margin-top:8px;font-size:.78rem;color:var(--muted)}
+.chart-legend span{display:inline-flex;align-items:center;gap:6px}.chart-legend i{display:inline-block;width:14px;height:3px;border-radius:2px}
+.glossary dt{font-weight:700;color:var(--brand-dark);margin-top:10px}.glossary dd{margin:0 0 2px;color:var(--muted);font-size:.9rem}
+footer{max-width:var(--maxw);margin:0 auto;padding:30px 20px 60px;color:var(--muted);font-size:.82rem;border-top:1px solid var(--line)}
+.offline-note{font-size:.76rem;color:var(--muted);background:#fff8e6;border:1px solid #f0e2b8;border-radius:8px;padding:8px 12px;margin:10px 0}
+@media(max-width:680px){
+  .table-wrap{overflow-x:visible}
+  table.mini,table.mini thead,table.mini tbody,table.mini th,table.mini td,table.mini tr{display:block;width:100%}
+  table.mini thead{display:none}
+  table.mini tr{margin-bottom:12px;border:1.5px solid color-mix(in srgb,var(--dot) 28%,#e4e9f0);border-radius:10px;background:#fff;overflow:hidden;box-shadow:0 1px 4px rgba(16,42,67,.05)}
+  table.mini td{border:none;border-bottom:1px solid var(--line);padding:10px 12px;text-align:left}
+  table.mini td:last-child{border-bottom:none}
+  table.mini td::before{content:attr(data-label);display:block;font-size:.74rem;font-weight:700;text-transform:uppercase;letter-spacing:.4px;color:var(--dot);margin-bottom:4px}
+}
+.acro-box{background:#f8fafc;border:1px solid var(--line);border-radius:10px;padding:12px 14px;margin:14px 0;font-size:.84rem;min-width:0;max-width:100%;overflow-wrap:break-word;word-wrap:break-word}
+.acro-title{font-weight:700;color:var(--dot);font-size:.86rem;margin-bottom:8px;display:block}
+.acro-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:6px 14px;margin:0;padding:0;list-style:none}
+.acro-grid li{min-width:0;line-height:1.5}.acro-grid b{color:var(--dot)}
+.fguide{background:color-mix(in srgb,var(--dot) 5%,#fff);border:1px solid color-mix(in srgb,var(--dot) 22%,#e4e9f0);border-radius:10px;padding:12px 15px;margin:-6px 0 16px;font-size:.86rem;min-width:0;max-width:100%;overflow-wrap:break-word;word-wrap:break-word}
+.fguide .fg-head{font-weight:700;color:var(--dot);font-size:.84rem;text-transform:uppercase;letter-spacing:.35px;margin:0 0 6px}
+.fguide ul{margin:4px 0 8px;padding-left:18px}.fguide ul li{margin:3px 0}
+.fguide .fg-core{border-top:1px dashed color-mix(in srgb,var(--dot) 30%,#cbd5e1);padding-top:8px;margin-top:8px;display:grid;grid-template-columns:minmax(0,1fr);gap:4px}
+.fguide .fg-core div{min-width:0}
+@media(max-width:640px){.hero h1{font-size:1.3rem;max-width:100%}nav.jump{display:none}.rgrid.c2,.rgrid.c3,.rgrid.c4,.bs-grid,.acro-grid{grid-template-columns:minmax(0,1fr)}.mindmap-host{height:440px}}
+</style></head><body>
+<div id="progress"></div>
+<header class="top"><div class="top-in">
+  <span class="badge">MODUL 3</span>
+  <a class="homebtn" href="index.html" title="Kembali ke daftar modul"><span style="font-size:1rem;line-height:1">&#8962;</span> Daftar Modul</a>
+  <span class="top-title">Metode Penelitian Bisnis · EKMA5104</span>
+  <nav class="jump"><a href="#konsep">Konsep</a><a href="#peta">Peta Konsep</a><a href="#kb1">KB1</a><a href="#kb2">KB2</a><a href="#glosarium">Glosarium</a></nav>
+</div></header>
+<div class="wrap">
+  <section class="hero"><div class="eyebrow">Ringkasan Belajar · EKMA5104 (Edisi 3)</div>
+    <h1>Masalah, Teori, Penelitian yang Relevan, Kerangka Pemikiran, Hipotesis, dan Literatur</h1>
+    <div class="meta"><span>⏱️ ±40 menit</span><span>📚 2 bagian (KB)</span><span>✍️ Dr. Lerbin Roberto Aritonang R., M.M.</span></div></section>
+  <p class="section-sub" style="margin-top:22px">Modul 3 membedah fondasi konseptual penelitian: mulai dari merumuskan masalah yang ilmiah, memahami teori, kerangka pemikiran, hipotesis, dan seluruh status variabel (termasuk moderator, mediator, dan SEM) pada KB 1, hingga strategi pencarian, penilaian, dan penelaahan literatur ilmiah pada KB 2.</p>
+  <p class="offline-note">ℹ️ Peta konsep, grafik SVG, kartu penjelasan, dan checklist konsep berjalan tanpa internet. Koneksi internet hanya diperlukan untuk merender persamaan matematika (MathJax).</p>
+
+  <h2 class="section" id="konsep"><span class="dot"></span>Konsep Penting yang Harus Dikuasai</h2>
+  <div class="card"><div class="cl-head"><span class="count"><span id="doneCount">0</span>/<span id="totalCount">0</span> dikuasai</span><button class="btn-reset" id="resetBtn">Reset centang</button></div>
+    <ul class="concepts" id="conceptList">
+      <li><input type="checkbox"><span><span class="ct">Masalah vs Peluang &amp; Sumber Masalah (Praktis vs Teoritis)</span><span class="cd">Keduanya adalah kesenjangan harapan vs kenyataan; masalah berkonotasi negatif, peluang positif. Masalah praktis untuk riset terapan; masalah teoritis (tambah IV, hasil tak konsisten, validitas eksternal) untuk riset dasar.</span></span></li>
+      <li><input type="checkbox"><span><span class="ct">4 Komponen Masalah &amp; 3 Ciri Masalah Baik (Kerlinger &amp; Lee)</span><span class="cd">Komponen: latar belakang (umum→khusus, fokus DV), identifikasi, pembatasan, rumusan. Ciri baik: kaitkan $\ge 2$ variabel, jelas dalam kalimat tanya, dan dapat diuji empiris (bukan filosofis/nilai).</span></span></li>
+      <li><input type="checkbox"><span><span class="ct">Konsep, Konstrak, Variabel, dan Fenomena</span><span class="cd">Konsep = abstraksi atribut; Konstrak = konsep + makna ilmiah khusus untuk pengukuran; Variabel = siap diukur secara numerik (kuantitatif); Fenomena = berorientasi makna, tak direduksi ke angka (kualitatif).</span></span></li>
+      <li><input type="checkbox"><span><span class="ct">Pengertian, 4 Tujuan, dan Ciri Teori (Kerlinger &amp; Lee)</span><span class="cd">Teori mengaitkan konstrak, definisi, dan proposisi secara sistematis untuk menguraikan, menjelaskan, memprediksi, dan mengendalikan gejala (teruji empiris, bukan sekadar populer seperti Hierarki Kebutuhan).</span></span></li>
+      <li><input type="checkbox"><span><span class="ct">Roda Ilmu Wallace (Siklus Induksi &amp; Deduksi)</span><span class="cd">Observasi → (induksi) → generalisasi empiris → teori → (deduksi/silogisme) → hipotesis → uji observasi. Siklus ilmu tak pernah berhenti.</span></span></li>
+      <li><input type="checkbox"><span><span class="ct">3 Unsur Landasan Teori &amp; Aturan Kerangka Pemikiran</span><span class="cd">Landasan teori memuat definisi konseptual (kutip + ulas + simpulkan), penjelasan logis kaitan antarvariabel, dan riset relevan (sertakan hasil bertentangan!). Kerangka pemikiran milik peneliti sendiri tanpa nama orang/kutipan.</span></span></li>
+      <li><input type="checkbox"><span><span class="ct">Jenis Hipotesis (Mayor/Minor, Terarah/Tak Terarah, $H_a$/$H_0$)</span><span class="cd">Hipotesis terarah lebih baik daripada tak terarah (menghindari kebingungan arah saat $H_0$ ditolak). Hipotesis penelitian ($H_a$) diuji tak langsung melalui penolakan hipotesis statistik/nol ($H_0$).</span></span></li>
+      <li><input type="checkbox"><span><span class="ct">Status Variabel (DV, IV, Extraneous, Perlakuan, Kontrol)</span><span class="cd">DV = dijelaskan; IV = penjelas; Extraneous = IV yang tak disertakan; Perlakuan = IV yang dimanipulasi (eksperimen); Kontrol = dibuat konstan via eksperimen atau ANCOVA.</span></span></li>
+      <li><input type="checkbox"><span><span class="ct">Variabel Moderator vs Mediator &amp; Intervening (Baron &amp; Kenny)</span><span class="cd">Moderator = IV yang menentukan "kapan" efek terjadi (uji Anava 2 jalur / regresi $XM$); Mediator = jalur kausal "bagaimana/kenapa" (3 syarat regresi + uji Sobel). Intervening (Tolman) di tingkat teoritis, mediator di tingkat empiris.</span></span></li>
+      <li><input type="checkbox"><span><span class="ct">Variabel pada SEM (Eksogen, Endogen, Laten, 2 Model)</span><span class="cd">SEM (analisis struktur kovariansi, bukan "LISREL") menggabungkan Model Pengukuran (indikator → variabel laten/hipotetis) dan Model Struktural (kaitan variabel eksogen → mediator → endogen).</span></span></li>
+      <li><input type="checkbox"><span><span class="ct">Sumber Utama vs Sekunder Literatur &amp; Jurnal vs Buku Teks</span><span class="cd">Sumber utama = belum terbit (skripsi/tesis/disertasi/prosiding/manuskrip); sekunder = sudah terbit (jurnal ilmiah peer-reviewed &amp; buku teks). Isi buku selalu lebih usang daripada jurnal ilmiah.</span></span></li>
+      <li><input type="checkbox"><span><span class="ct">5 Kriteria Penilaian Literatur &amp; Database Bisnis</span><span class="cd">Nilai dari relevansi, kekinian (tetap kutip sumber asli/pertama!), sifat ilmiah (<i>scholarly</i>), reputasi (kutipan/penulis), dan originalitas. Database utama: ABI/INFORM, EBSCO, ECONLIT, SOCIOFILE, PsycARTICLES, ProQuest, Emerald, JSTOR.</span></span></li>
+      <li><input type="checkbox"><span><span class="ct">Penelaahan &amp; Pengorganisasian Literatur (Ary et al.)</span><span class="cd">Baca dari riset terbaru lalu mundur ke belakang; 1 sumber per kartu/catatan dengan nomor halaman lengkap, bedakan tegas kalimat sendiri vs kutipan, lalu bangun Kerangka Kerja Teoritis.</span></span></li>
+    </ul></div>
+
+  <h2 class="section" id="peta"><span class="dot"></span>Peta Konsep (Mind Map)</h2>
+  <div class="card"><div class="mm-toolbar"><button class="mm-btn" id="mmExpand">Perluas semua</button><button class="mm-btn" id="mmCollapse">Ciutkan</button><span style="font-size:.76rem;color:var(--muted)">Klik simpul bertanda + / – untuk buka-tutup · Gulir untuk menggeser</span></div><div class="mindmap-host" id="mindmap"></div></div>
+
+  <!-- KB 1 -->
+  <h2 class="section" id="kb1"><span class="dot" style="background:var(--kb1)"></span>KB 1 — Masalah, Teori, Kerangka Pemikiran, dan Hipotesis</h2>
+  <div class="card kb1b"><span class="kb-tag kb1t">KEGIATAN BELAJAR 1 · HAL. 3.4–3.48</span>
+    <div class="acro-box">
+      <span class="acro-title">📖 Kamus Konteks Singkatan &amp; Akronim KB 1</span>
+      <ul class="acro-grid">
+        <li><b>DV / IV</b>: <i>Dependent Variable</i> (variabel terikat/dijelaskan) dan <i>Independent Variable</i> (variabel bebas/penjelas).</li>
+        <li><b>ANCOVA</b>: <i>Analysis of Covariance</i> — kontrol statistik untuk mengonstankan pengaruh variabel pengganggu.</li>
+        <li><b>SEM</b>: <i>Structural Equation Modeling</i> (analisis struktur kovariansi) — teknik pemodelan gabungan pengukuran &amp; struktural.</li>
+        <li><b>LISREL</b>: <i>Linear Structural Relations</i> — nama perangkat lunak untuk menjalankan SEM (bukan nama metode analisisnya).</li>
+      </ul>
+    </div>
+
+    <p class="lead">Kegiatan Belajar 1 mengupas tuntas fase konseptual penelitian (Tahap 1–4 proses penelitian): merumuskan masalah yang ilmiah, membedah struktur teori, membangun kerangka pemikiran, menurunkan hipotesis, hingga menetapkan status setiap variabel dalam model.</p>
+
+    <div class="abc"><span class="ltr">A</span><h4>Masalah Penelitian</h4></div>
+    <ul class="exp">
+      <li><span class="term">1. Pengertian Masalah vs Peluang</span>: <span class="term">masalah</span> adalah kesenjangan antara keadaan yang diharapkan dan kenyataan yang berkonotasi <i>negatif</i> (merugikan bila dibiarkan, mis. pelanggan beralih, gagal bayar kewajiban lancar, penurunan kepuasan kerja); <b>peluang</b> berkonotasi <i>positif</i> (tak merugikan jika diabaikan, menguntungkan bila dimanfaatkan).</li>
+      <li><span class="term">2. Sumber Masalah</span>: <b>masalah praktis</b> (ranah riset terapan, dari praktik manajemen/akuntansi sehari-hari) dan <b>masalah teoritis</b> (ranah riset dasar, dari saran jurnal: penambahan variabel independen baru, penjelasan ketidakkonsistenan hasil riset sebelumnya mis. menyertakan variabel kepercayaan, atau uji validitas eksternal/replikasi di industri/negara berbeda).</li>
+      <li><span class="term">3. Empat Komponen Masalah</span>: (a) <b>Latar belakang</b> (fokus pada topik/DV dari umum → khusus + urgensi/data global + riwayat topik/meta-analisis untuk tesis/disertasi); (b) <b>Identifikasi masalah</b> (celah variabel/model/status variabel berdasarkan jurnal, dirumuskan dalam pertanyaan); (c) <b>Pembatasan masalah</b> (alasan obyektif kapasitas, signifikansi, minat; skripsi ≈ 2 variabel, tesis ≈ 2 masalah; replikasi tesis wajib beralasan obyektif &amp; tak menjiplak); dan (d) <b>Perumusan masalah</b> (kalimat tanya eksplisit variabel, kaitan, dan subyek).</li>
+      <li><span class="term">Tujuan &amp; Manfaat</span>: tujuan menjawab masalah secara teoritis &amp; empiris; manfaat praktis (praktisi) dan teoritis (pengembangan ilmu—wajib ada pada tesis &amp; disertasi; redaksi di proposal berorientasi masa depan).</li>
+      <li><span class="term">4. Tiga Ciri Masalah Baik (Kerlinger &amp; Lee, 2000)</span>: (1) mengaitkan $\ge 2$ variabel; (2) dinyatakan jelas, tak ganda, dalam kalimat pertanyaan; (3) dapat diuji secara empiris (mengesampingkan pertanyaan filosofis, teologis, epistemologis, atau nilai).</li>
+      <li><span class="term">5. Persiapan Penelitian</span>: tesis/disertasi sebaiknya dimulai lebih awal sebelum mata kuliah teori selesai agar momentum diskusi dengan dosen/rekan tetap terjaga.</li>
+    </ul>
+
+    <div class="flow">Setelah masalah dirumuskan dengan tajam, peneliti membutuhkan bangunan penjelasan yang logis untuk menjawabnya—inilah peran <b>Teori</b> dan siklus <b>Roda Ilmu</b>.</div>
+
+    <div class="abc"><span class="ltr">B</span><h4>Teori</h4></div>
+    <p>Mengacu Kerlinger &amp; Lee (2000), teori adalah seperangkat konstrak, definisi, dan proposisi yang saling terkait secara sistematis untuk <b>menguraikan, menjelaskan, memprediksi, dan mengendalikan</b> gejala. Empat istilah yang wajib dibedakan:</p>
+    <div class="table-wrap">
+      <table class="mini">
+        <thead><tr><th>Istilah</th><th>Orientasi &amp; Makna</th><th>Contoh / Konteks</th></tr></thead>
+        <tbody>
+          <tr><td data-label="Istilah"><b>Konsep <span class="en">(concept)</span></b></td><td data-label="Orientasi &amp; Makna">Abstraksi/penyederhanaan atribut umum (teoritis).</td><td data-label="Contoh / Konteks">"Pekerjaan", "pendapatan", "manusia".</td></tr>
+          <tr><td data-label="Istilah"><b>Konstrak <span class="en">(construct)</span></b></td><td data-label="Orientasi &amp; Makna">Konsep dengan tambahan makna khusus untuk tujuan pengukuran ilmiah.</td><td data-label="Contoh / Konteks">Konstrak psikologis/sosial tak teramati langsung.</td></tr>
+          <tr><td data-label="Istilah"><b>Variabel <span class="en">(variable)</span></b></td><td data-label="Orientasi &amp; Makna">Berorientasi empiris; atributnya bervariasi &amp; siap diukur dalam angka.</td><td data-label="Contoh / Konteks">"Besaran pendapatan", "tingkat pendidikan" (kuantitatif).</td></tr>
+          <tr><td data-label="Istilah"><b>Fenomena <span class="en">(phenomenon)</span></b></td><td data-label="Orientasi &amp; Makna">Berorientasi makna utuh; tidak direduksi menjadi angka.</td><td data-label="Contoh / Konteks">Objek penelitian kualitatif.</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="casebox">
+      <span class="ctitle">Catatan Kritis Buku: Populer ≠ Baik Secara Ilmiah</span>
+      Teori populer belum tentu baik secara ilmiah—contohnya <b>Teori Hierarki Kebutuhan Maslow</b> tergolong lemah secara empiris karena faktanya banyak orang tetap mengejar kebutuhan tingkat tinggi meskipun kebutuhan dasar (makan) belum terpenuhi.
+    </div>
+
+    <div class="abc"><span class="ltr">C</span><h4>Siklus Induksi dan Deduksi (Roda Ilmu Wallace)</h4></div>
+    <p>Teori dan riset membentuk siklus tak terputus menurut <b>Wallace (Gambar 3.1)</b>:</p>
+    <div class="flowchart">
+      <span class="fc-node">Observasi</span><span class="fc-arrow">→ <small>Induksi</small> →</span>
+      <span class="fc-node">Generalisasi Empiris</span><span class="fc-arrow">→</span>
+      <span class="fc-node">Teori</span><span class="fc-arrow">→ <small>Deduksi</small> →</span>
+      <span class="fc-node">Hipotesis</span><span class="fc-arrow">→ <small>Uji</small> →</span>
+      <span class="fc-node">Observasi Baru</span>
+    </div>
+
+    <div class="abc"><span class="ltr">D</span><h4>Landasan Teori (Tiga Unsur Utama)</h4></div>
+    <p>Landasan teori memuat tiga unsur: (1) <b>Definisi konseptual variabel</b> ("memagari" sifat spesifik variabel; kutip langsung bahasa asli + ulas + bandingkan + buat definisi kesimpulan sendiri); (2) <b>Penjelasan logis kaitan antarvariabel</b> (rinci &amp; runtut, utamakan juga sumber asli pertama); dan (3) <b>Penelitian yang relevan</b> (wajib kutip hasil yang mendukung <i>maupun</i> yang bertentangan, lalu nyatakan posisi peneliti dengan argumen logis; perhatikan variabel lain dan konteks industri/budaya).</p>
+
+    <div class="abc"><span class="ltr">E</span><h4>Kerangka Pemikiran</h4></div>
+    <p>Kerangka pemikiran adalah rangkuman logis dan runtut dari tiga unsur landasan teori (berfungsi seperti premis mayor &amp; minor silogisme). <b>Aturan mutlak:</b> kerangka pemikiran merupakan hasil penalaran peneliti sendiri sehingga <b>tidak boleh mencantumkan nama orang atau kutipan</b>.</p>
+
+    <div class="abc"><span class="ltr">F</span><h4>Hipotesis</h4></div>
+    <p><span class="term">Hipotesis <span class="en">(hipo = sementara, tesis = kebenaran)</span></span> adalah kesimpulan teoritis berbentuk pernyataan dengan $\ge 2$ variabel dan kaitan yang mengacu pada analisis, dibedakan menjadi:</p>
+    <ul class="let">
+      <li><b>Mayor vs Minor</b>: praktik riset lebih sering memakai beberapa hipotesis minor karena arah kaitan tiap IV bisa berbeda.</li>
+      <li><b>Terarah vs Tak Terarah (Tabel 3.1)</b>: terarah (mis. "hubungan positif", "lebih besar") jauh lebih baik jika teori memadai; pada hipotesis tak terarah ($\rho \ne 0$), bila $H_0$ ditolak peneliti tak punya dasar teoritis menyimpulkan arah positif atau negatif.</li>
+      <li><b>Hipotesis Penelitian ($H_a$) vs Statistik ($H_0$)</b>: $H_0$ ("tidak ada") yang diuji langsung; $H_a$ diuji tak langsung lewat $H_0$.</li>
+    </ul>
+
+    <div class="flow">Agar rumusan masalah, kerangka pemikiran, hipotesis, dan alat analisis statistik benar-benar sinkron, peneliti harus menetapkan <b>status setiap variabel</b> secara presisi.</div>
+
+    <div class="abc"><span class="ltr">G</span><h4>Status Variabel dalam Penelitian</h4></div>
+    <p>Klik tiap kartu untuk membedakan seluruh kelompok status variabel termasuk moderator, mediator, dan SEM:</p>
+    <div class="rgrid c2" data-revealgroup>
+      <div class="rcell active" data-reveal data-detail="<b>1–4. DV, IV, Extraneous, Perlakuan, &amp; Kontrol</b> — <b>Dependen (DV)</b>: variabel utama yang variasinya dijelaskan. <b>Independen (IV)</b>: variabel penjelas. <b>Extraneous</b>: IV yang diyakini berpengaruh tapi tak disertakan dalam riset. <b>Perlakuan</b>: IV yang sengaja dimanipulasi (desain eksperimen/kausal). <b>Kontrol</b>: IV yang dibuat konstan lewat <i>kontrol eksperimen</i> (samakan subyek) atau <i>kontrol statistik</i> (ANCOVA)."><span class="stepnum">1</span><span><span class="rt">DV, IV, Extraneous, Perlakuan, Kontrol</span><span class="rp">Status dasar variabel</span></span></div>
+      <div class="rcell" data-reveal data-detail="<b>5. Variabel Moderator (Baron &amp; Kenny, 1986)</b> — IV kedua ($M$) yang mengubah kekuatan/arah kaitan $X \to Y$ (menjawab <b>'kapan'</b> efek terjadi; berperan sebagai <i>effect</i>, bukan kausal, sejajar waktu dengan $X$). Cara uji bergantung skala: (1) $X, M$ kategorik → Anava 2 jalur (interaksi $XM$); (2) $X, M$ kontinu → regresi $Y$ atas $X, M, XM$; (3–4) campuran → regresi interaksi / hierarki kuadratik ($M^2X$) / SEM."><span class="stepnum">2</span><span><span class="rt">Variabel Moderator</span><span class="rp">Kapan efek terjadi ($XM$)</span></span></div>
+      <div class="rcell" data-reveal data-detail="<b>6. Mediator vs Intervening (Gambar 3.2)</b> — <b>Mediator</b> menjelaskan <b>'bagaimana &amp; kenapa'</b> $X \to M \to Y$ (berperan kausal; $X$ mendahului $M$). <b>3 Syarat Baron &amp; Kenny:</b> (1) $X \to M$ signifikan (jalur $a$); (2) $X \to Y$ signifikan (jalur $c$); (3) saat $Y$ diregresi atas $X$ &amp; $M$, jalur $b$ ($M \to Y$) signifikan &amp; jalur $c'$ melemah/nol (uji via Uji-$t$ Sobel di bawah). <b>Beda Intervening (Tolman):</b> intervening = konstrak teoritis tak teramati; jika dioperasionalkan ke indikator empiris → menjadi mediator."><span class="stepnum">3</span><span><span class="rt">Mediator vs Intervening</span><span class="rp">3 syarat Baron &amp; Kenny</span></span></div>
+      <div class="rcell" data-reveal data-detail="<b>7. Variabel pada SEM (Gambar 3.3)</b> — <b>SEM</b> (<i>Structural Equation Modeling</i> / analisis struktur kovariansi; LISREL hanyalah nama software-nya!) menggabungkan <b>Model Pengukuran</b> (indikator → variabel laten/hipotetis, uji validitas &amp; reliabilitas) dan <b>Model Struktural</b> (kaitan antarvariabel laten). <b>Variabel Eksogen</b> = IV paling kiri yang tak dijelaskan variabel lain; <b>Variabel Endogen</b> = variabel yang variasinya dijelaskan (paling kanan)."><span class="stepnum">4</span><span><span class="rt">Variabel pada SEM</span><span class="rp">Laten · Eksogen · Endogen</span></span></div>
+    </div>
+    <div class="rdetail" data-revealdetail><b>1–4. DV, IV, Extraneous, Perlakuan, &amp; Kontrol</b> — <b>Dependen (DV)</b>: variabel utama yang variasinya dijelaskan. <b>Independen (IV)</b>: variabel penjelas. <b>Extraneous</b>: IV yang diyakini berpengaruh tapi tak disertakan dalam riset. <b>Perlakuan</b>: IV yang sengaja dimanipulasi (desain eksperimen/kausal). <b>Kontrol</b>: IV yang dibuat konstan lewat <i>kontrol eksperimen</i> (samakan subyek) atau <i>kontrol statistik</i> (ANCOVA).</div>
+
+    <div class="eqbox">\[ t_{\text{Sobel}} = \frac{B_a \, B_b}{s_{ab}} \quad \text{(batas kritis } \pm 1.96 \text{ pada } \alpha = 5\%) \]</div>
+    <div class="fguide">
+      <div class="fg-head">Bedah Variabel &amp; Intisari Formula Uji-$t$ Sobel (Mediasi)</div>
+      <ul>
+        <li><b>$B_a$</b> = koefisien regresi tak terstandar jalur $X \to M$; <b>$B_b$</b> = koefisien regresi tak terstandar jalur $M \to Y$ (dengan mengontrol $X$); <b>$s_{ab}$</b> = eror standar dari perkalian efek tak langsung $B_a B_b$.</li>
+        <li><b>Makna formula:</b> Menguji apakah penurunan efek langsung $X \to Y$ ketika variabel mediator $M$ dimasukkan ke dalam model benar-benar signifikan secara statistik.</li>
+      </ul>
+      <div class="fg-core">
+        <div>🧭 <b>Filosofis:</b> Menjawab mekanisme "bagaimana" atau "mengapa" suatu variabel $X$ memengaruhi $Y$ melalui perantara kausal $M$.</div>
+        <div>📏 <b>Mengukur:</b> Signifikansi efek tak langsung (<i>indirect effect</i>) sebesar $B_a B_b$ relatif terhadap eror standarnya.</div>
+        <div>🎯 <b>Manfaat:</b> Memastikan secara formal apakah peran mediasi ($M$) nyata secara empiris atau sekadar kebetulan sampel.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- KB 2 -->
+  <h2 class="section" id="kb2"><span class="dot" style="background:var(--kb2)"></span>KB 2 — Literatur</h2>
+  <div class="card kb2b"><span class="kb-tag kb2t">KEGIATAN BELAJAR 2 · HAL. 3.49–3.67</span>
+    <div class="acro-box">
+      <span class="acro-title">📖 Kamus Konteks Singkatan &amp; Akronim KB 2</span>
+      <ul class="acro-grid">
+        <li><b>APA</b>: <i>American Psychological Association</i> — asosiasi penerbit basis data PsycARTICLES &amp; standar gaya sitasi ilmiah.</li>
+        <li><b>ABI/INFORM, EBSCO, ECONLIT, SOCIOFILE</b>: Basis data indeks jurnal ilmiah utama bidang bisnis, ekonomi, dan sosiologi.</li>
+        <li><b>PDF</b>: <i>Portable Document Format</i> — format berkas yang dianjurkan saat mengunduh artikel jurnal agar tata letak &amp; halaman asli terjaga.</li>
+        <li><b>URL</b>: <i>Uniform Resource Locator</i> — alamat situs web sumber literatur digital yang wajib dicatat saat penelaahan.</li>
+      </ul>
+    </div>
+
+    <p class="lead">Seluruh kegiatan di KB 1—menemukan masalah, mendefinisikan variabel, menyusun landasan teori, hingga memilih metode uji—tidak mungkin dilakukan tanpa penelusuran dan penilaian <b>literatur ilmiah</b> yang sistematis.</p>
+
+    <div class="abc"><span class="ltr">A</span><h4>Peran Literatur</h4></div>
+    <p>Literatur memiliki tiga peran utama: (1) menemukan/memposisikan masalah &amp; mencegah plagiarisme tak disengaja; (2) mengidentifikasi variabel relevan, definisi, dan alasan kaitannya; serta (3) mempelajari metode pengujian empiris. <i>Catatan penting:</i> dalam ilmu empiris (bisnis), kajian literatur semata belum disebut "penelitian" karena penelitian wajib bersifat empiris.</p>
+
+    <div class="abc"><span class="ltr">B</span><h4>Jenis Literatur dan Basis Data Riset Bisnis</h4></div>
+    <ul class="exp">
+      <li><span class="term">Sumber Utama <span class="en">(belum dipublikasikan)</span></span>: skripsi, tesis, disertasi, makalah konferensi (<i>conference proceeding</i> — mutakhir tapi belum lewat <i>peer review</i> ketat), dan manuskrip (naskah belum resmi terbit, surat, komunikasi pribadi).</li>
+      <li><span class="term">Sumber Sekunder <span class="en">(sudah dipublikasikan)</span></span>: <b>Jurnal Ilmiah / Akademik</b> (<i>scholarly</i>, terbit berkala, lolos <i>peer review</i> pakar, makin spesifik bidangnya makin bagus, paling mutakhir), <b>Jurnal Profesional/Dagang</b> (praktis), <b>Buku Teks</b> (standar kuliah, cakupan luas/rinci tapi isinya selalu lebih usang daripada jurnal), laporan lembaga, koran bisnis, serta <i>ensiklopedia, handbook, dan direktori</i>. Internet berguna namun tak teregulasi sehingga reliabilitasnya wajib diverifikasi.</li>
+      <li><span class="term">5 Database Utama Riset Bisnis (Blumberg et al., 2008)</span>: <b>ABI/INFORM</b> (&gt;1.000 publikasi bisnis), <b>EBSCO</b> (~3.800 jurnal bisnis), <b>ECONLIT</b> (&gt;1.000 publikasi ekonomi), <b>SOCIOFILE</b> (~2.000 jurnal sosiologi), dan <b>PsycARTICLES</b> (33.000 artikel APA).</li>
+    </ul>
+
+    <div class="flow">Karena pencarian digital dapat memunculkan puluhan ribu dokumen, peneliti harus menyaringnya menggunakan kriteria mutu yang tegas sebelum menelaahnya.</div>
+
+    <div class="abc"><span class="ltr">C</span><h4>Lima Kriteria Penilaian Literatur</h4></div>
+    <p>Literatur dinilai dari lima kriteria: (1) <b>Relevansi</b> (variabel muncul eksplisit di judul); (2) <b>Kekinian</b> (aturan "maksimal 10 tahun" tidak mutlak—sumber asli/pertama &amp; rujukan klasik seperti Cohen 1980 tetap wajib dipakai bila belum tergantikan); (3) <b>Ilmiah (<i>scholarly</i>)</b> (lolos <i>peer review</i>); (4) <b>Reputasi</b> (penerbit, penulis, frekuensi sitasi / <i>impact</i>); dan (5) <b>Originalitas</b> (baca sumber asli, bukan terjemahan atau kutipan dari kutipan). Didukung kriteria <b>Tabel 3.6</b> (Blumberg et al.: penonjolan sitasi, kekinian, kualitas metodologi, komparabilitas argumen, keunikan) dan daftar pertanyaan evaluatif Sekaran &amp; Bougie.</p>
+
+    <div class="abc"><span class="ltr">D</span><h4>Pencarian Literatur</h4></div>
+    <p>Pencarian dilakukan lewat perpustakaan/toko buku maupun mesin pencari ilmiah (<b>Google Scholar, ProQuest, Emerald, JSTOR</b>) dengan memanfaatkan operator Boolean (mis. <code>satisfaction AND loyalty</code>), filter <i>Date range</i>, dan filter <i>Scholarly</i>; utamakan mengunduh format <code>.pdf</code> agar tata letak dan nomor halaman asli terjaga.</p>
+
+    <div class="abc"><span class="ltr">E</span><h4>Penelaahan dan Pengorganisasian Literatur (Ary et al., 2010)</h4></div>
+    <p>Mulai membaca dari publikasi <b>terbaru lalu telusuri mundur</b> ke terbitan lama; saring cepat lewat abstrak; catat <b>satu sumber per kartu/file</b> lengkap dengan nomor halaman kutipan &amp; rentang halaman artikel; bedakan tegas kalimat sendiri vs kutipan; serta catat URL/database sumbernya.</p>
+
+    <div class="abc"><span class="ltr">F</span><h4>Kerangka Kerja Teoritis</h4></div>
+    <p>Hasil akhir seleksi dan penelaahan literatur adalah kerangka kerja teoritis yang mengelaborasi definisi tiap variabel, teori &amp; arah kaitan antarvariabel, serta riset relevan sebagai fondasi langsung perumusan hipotesis.</p>
+  </div>
+
+  <h2 class="section" id="glosarium"><span class="dot"></span>Glosarium Kilat</h2>
+  <div class="card"><dl class="glossary">
+    <dt>Fenomena (Phenomenon)</dt><dd>Obyek penelitian kualitatif yang berorientasi pada makna utuh sehingga tidak direduksi menjadi angka.</dd>
+    <dt>Hipotesis (Penelitian, Statistik/Nol, Mayor/Minor, Terarah/Tak Terarah)</dt><dd>Jawaban sementara (teoritis) atas rumusan masalah. $H_0$ diciptakan untuk uji statistik; hipotesis terarah menyatakan arah kaitan secara eksplisit.</dd>
+    <dt>Konsep &amp; Konstrak</dt><dd>Konsep = istilah abstraksi atas atribut suatu obyek; konstrak = konsep dengan penambahan makna khusus untuk tujuan pengukuran ilmiah.</dd>
+    <dt>Landasan Teori (Kerangka Kerja Teoritis)</dt><dd>Dasar teoritis menghasilkan hipotesis: definisi variabel, teori/proposisi kaitan antarvariabel, dan penelitian yang relevan.</dd>
+    <dt>Masalah vs Peluang</dt><dd>Kesenjangan antara harapan dan kenyataan; masalah berkonotasi negatif, sedangkan peluang berkonotasi positif.</dd>
+    <dt>Model Pengukuran vs Model Struktural (SEM)</dt><dd>Model pengukuran mengaitkan indikator dengan variabel laten (validitas/reliabilitas); model struktural mengaitkan antarvariabel laten (hipotesis). Gabungannya dianalisis lewat SEM.</dd>
+    <dt>Proposisi</dt><dd>Pernyataan mengenai kaitan (relasi) antara beberapa konsep.</dd>
+    <dt>Sumber Utama vs Sekunder Literatur</dt><dd>Sumber utama = tulisan belum dipublikasikan (skripsi, tesis, disertasi, manuskrip, prosiding); sumber sekunder = telah dipublikasikan (jurnal ilmiah, buku teks).</dd>
+    <dt>Teori</dt><dd>Penjelasan yang logis dan sistematis mengenai kaitan antara variabel-variabel (konsep/konstrak) untuk menguraikan, menjelaskan, memprediksi, dan mengendalikan.</dd>
+    <dt>Variabel (Dependen, Independen, Extraneous, Perlakuan, Kontrol)</dt><dd>Dependen = dijelaskan; independen = penjelas; extraneous = IV tak disertakan; perlakuan = IV dimanipulasi (eksperimen); kontrol = dibuat konstan.</dd>
+    <dt>Variabel Eksogen vs Endogen (SEM)</dt><dd>Eksogen = IV yang tidak dijelaskan variabel lain; endogen = variabel yang variasinya dijelaskan variabel lain dalam SEM.</dd>
+    <dt>Variabel Mediator (Intervening) vs Moderator</dt><dd>Mediator mengantarai secara kausal kaitan $X \to Y$ (intervening di tingkat teoritis); moderator mengubah kekuatan/arah kaitan $X$ dan $Y$.</dd>
+  </dl></div>
+</div>
+<footer><b>EKMA5104 — Metode Penelitian Bisnis (Edisi 3)</b> · Modul 3: Masalah, Teori, Penelitian yang Relevan, Kerangka Pemikiran, Hipotesis, dan Literatur<br>Bahan belajar ringkas untuk persiapan ujian · Dr. Lerbin Roberto Aritonang R., M.M.</footer>
+<script>
+(function(){
+  var pb=document.getElementById('progress');
+  function onScroll(){var h=document.documentElement;var sc=h.scrollTop||document.body.scrollTop;var max=(h.scrollHeight-h.clientHeight)||1;pb.style.width=(sc/max*100)+'%';}
+  document.addEventListener('scroll',onScroll,{passive:true});onScroll();
+
+  var list=document.getElementById('conceptList');var items=[].slice.call(list.querySelectorAll('li'));var boxes=items.map(function(li){return li.querySelector('input');});
+  document.getElementById('totalCount').textContent=items.length;var doneEl=document.getElementById('doneCount');var KEY='studi_ekma5104_m3_concepts_v1';
+  function load(){try{var a=JSON.parse(localStorage.getItem(KEY)||'[]');boxes.forEach(function(b,i){if(a[i])b.checked=true;});}catch(e){}}
+  function save(){try{localStorage.setItem(KEY,JSON.stringify(boxes.map(function(b){return b.checked?1:0;})));}catch(e){}}
+  function refresh(){var n=0;items.forEach(function(li,i){if(boxes[i].checked){li.classList.add('done');n++;}else li.classList.remove('done');});doneEl.textContent=n;}
+  load();refresh();boxes.forEach(function(b){b.addEventListener('change',function(){refresh();save();});});
+  document.getElementById('resetBtn').addEventListener('click',function(){boxes.forEach(function(b){b.checked=false;});refresh();save();});
+
+  [].slice.call(document.querySelectorAll('[data-revealgroup]')).forEach(function(g){
+    var det=g.querySelector('[data-revealdetail]');if(!det){var sib=g.nextElementSibling;if(sib&&sib.hasAttribute&&sib.hasAttribute('data-revealdetail'))det=sib;}
+    var cells=[].slice.call(g.querySelectorAll('[data-reveal]'));
+    cells.forEach(function(c){c.addEventListener('click',function(){cells.forEach(function(x){x.classList.remove('active');});c.classList.add('active');if(det){det.innerHTML=c.getAttribute('data-detail');if(window.MathJax&&window.MathJax.typesetPromise)window.MathJax.typesetPromise([det]);}});});
+  });
+
+  (function(){
+    var ROWH=46,NODE_H=32,PAD=13,GAP=52;var COL={root:'#0f5e8f',kb1:'#1a86c7',kb2:'#e08a1e',kb3:'#2a9d6f',kb4:'#7a5cc0',kb5:'#c75b7a'};
+    var mc=document.createElement('canvas').getContext('2d');mc.font='700 13px -apple-system,Segoe UI,Roboto,sans-serif';
+    function tw(t){return Math.ceil(mc.measureText(t).width);}function esc(t){return t.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');}
+    function rgba(hex,a){var h=hex.replace('#','');return 'rgba('+parseInt(h.substr(0,2),16)+','+parseInt(h.substr(2,2),16)+','+parseInt(h.substr(4,2),16)+','+a+')';}
+    var DATA={label:'MODUL 3 — Masalah, Teori, Kerangka, Hipotesis & Literatur',color:COL.root,children:[
+  {label:'KB1 · Masalah, Teori, Kerangka Pemikiran & Hipotesis',color:COL.kb1,children:[
+    {label:'A. Masalah Penelitian (Pengertian, Sumber, 4 Komponen, 3 Ciri)'},
+    {label:'B. Teori (Konsep/Konstrak/Variabel/Fenomena & 4 Tujuan)'},
+    {label:'C. Roda Ilmu: Induksi & Deduksi (Wallace)'},
+    {label:'D. Landasan Teori (Definisi, Kaitan, Riset Relevan)'},
+    {label:'E. Kerangka Pemikiran (Tanpa Kutipan)'},
+    {label:'F. Hipotesis (Mayor/Minor, Terarah/Tak Terarah, Ha/H0)'},
+    {label:'G. Status Variabel',children:[
+      {label:'DV, IV, Extraneous, Perlakuan, Kontrol'},
+      {label:'Moderator vs Mediator/Intervening (Baron & Kenny + Sobel)'},
+      {label:'SEM: Laten, Model Pengukuran/Struktural, Eksogen/Endogen'}
+    ]}
+  ]},
+  {label:'KB2 · Literatur',color:COL.kb2,children:[
+    {label:'A. Peran Literatur (Hindari Plagiarisme & Riset Empiris)'},
+    {label:'B. Jenis Literatur & 5 Database Bisnis (Jurnal vs Buku)'},
+    {label:'C. 5 Kriteria Penilaian Literatur & Tabel 3.6'},
+    {label:'D. Pencarian Literatur (Google Scholar, ProQuest, Boolean)'},
+    {label:'E. Penelaahan & Pengorganisasian (Ary et al.)'},
+    {label:'F. Menyusun Kerangka Kerja Teoritis'}
+  ]}
+]};
+    var idc=0;(function w(n,c){n.id='n'+(idc++);n.color=n.color||c;(n.children||[]).forEach(function(k){w(k,n.color);});})(DATA,COL.root);
+    (function w(n,d){if(d>=2&&n.children&&n.children.length)n.collapsed=true;(n.children||[]).forEach(function(k){w(k,d+1);});})(DATA,0);
+    var host=document.getElementById('mindmap');
+    function render(){
+      var colW=[];(function w(n,d){var width=tw(n.label)+PAD*2+((n.children&&n.children.length)?20:0);colW[d]=Math.max(colW[d]||0,width);if(!n.collapsed)(n.children||[]).forEach(function(k){w(k,d+1);});})(DATA,0);
+      var colX=[],acc=14;for(var d=0;d<colW.length;d++){colX[d]=acc;acc+=colW[d]+GAP;}var row={v:0};
+      (function lay(n,d){if(!n.children||!n.children.length||n.collapsed){n._y=row.v*ROWH+ROWH/2+8;row.v++;return;}var f,l;n.children.forEach(function(k,i){lay(k,d+1);if(i===0)f=k._y;l=k._y;});n._y=(f+l)/2;})(DATA,0);
+      var totalW=acc,totalH=row.v*ROWH+24;var nodes=[],links=[];
+      (function col(n,d,p){n._x=colX[d];n._w=tw(n.label)+PAD*2+((n.children&&n.children.length)?20:0);nodes.push({n:n,d:d});if(p)links.push([p,n]);if(!n.collapsed)(n.children||[]).forEach(function(k){col(k,d+1,n);});})(DATA,0,null);
+      var s='<svg width="'+totalW+'" height="'+totalH+'" viewBox="0 0 '+totalW+' '+totalH+'" xmlns="http://www.w3.org/2000/svg">';
+      links.forEach(function(pr){var a=pr[0],b=pr[1],x1=a._x+a._w,y1=a._y,x2=b._x,y2=b._y,mx=(x1+x2)/2;s+='<path d="M'+x1+' '+y1+' C'+mx+' '+y1+' '+mx+' '+y2+' '+x2+' '+y2+'" fill="none" stroke="'+rgba(b.color,.5)+'" stroke-width="2"/>';});
+      nodes.forEach(function(o){var n=o.n,x=n._x,y=n._y-NODE_H/2,w=n._w,hk=n.children&&n.children.length;var fill=o.d===0?n.color:(o.d===1?rgba(n.color,.12):'#fff');var tf=o.d===0?'#fff':'#1c2733';
+        s+='<g data-id="'+n.id+'" style="cursor:'+(hk?'pointer':'default')+'"><rect x="'+x+'" y="'+y+'" rx="9" width="'+w+'" height="'+NODE_H+'" fill="'+fill+'" stroke="'+n.color+'" stroke-width="'+(o.d===0?0:1.6)+'"/><text x="'+(x+PAD)+'" y="'+(n._y+4)+'" font-size="13" font-weight="'+(o.d<=1?'700':'500')+'" fill="'+tf+'" font-family="-apple-system,Segoe UI,Roboto,sans-serif">'+esc(n.label)+'</text>';
+        if(hk){var cx=x+w-12,cy=n._y;s+='<circle cx="'+cx+'" cy="'+cy+'" r="8.5" fill="'+n.color+'"/><text x="'+cx+'" y="'+(cy+4.5)+'" font-size="13" font-weight="700" fill="#fff" text-anchor="middle" font-family="sans-serif">'+(n.collapsed?'+':'\u2013')+'</text>';}s+='</g>';});
+      s+='</svg>';host.innerHTML=s;
+    }
+    host.addEventListener('click',function(e){var g=e.target.closest('g[data-id]');if(!g)return;var id=g.getAttribute('data-id');(function f(n){if(n.id===id){if(n.children&&n.children.length)n.collapsed=!n.collapsed;return true;}return (n.children||[]).some(f);})(DATA);render();});
+    document.getElementById('mmExpand').addEventListener('click',function(){(function w(n){if(n.children)n.collapsed=false;(n.children||[]).forEach(w);})(DATA);render();});
+    document.getElementById('mmCollapse').addEventListener('click',function(){(function w(n,d){if(d>=1&&n.children&&n.children.length)n.collapsed=true;(n.children||[]).forEach(function(k){w(k,d+1);});})(DATA,0);render();});
+    render();
+  })();
+
+  window.addEventListener('load',function(){setTimeout(function(){if(window.MathJax&&window.MathJax.typesetPromise)window.MathJax.typesetPromise();},400);});
+})();
+</script></body></html>

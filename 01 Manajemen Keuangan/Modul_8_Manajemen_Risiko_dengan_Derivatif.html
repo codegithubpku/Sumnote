@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+<html lang="id"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Modul 8 — Manajemen Risiko dengan Derivatif | EKMA5205</title>
+<script>window.MathJax={tex:{inlineMath:[['$','$']],displayMath:[['\\[','\\]'],['$$','$$']]},svg:{fontCache:'global'},startup:{typeset:true}};</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js" async></script>
+<style>
+:root{--bg:#f4f6f9;--panel:#fff;--ink:#1c2733;--muted:#5c6b7a;--line:#e4e9f0;--brand:#1a86c7;--brand-dark:#0f5e8f;--brand-soft:#e7f3fb;--kb1:#1a86c7;--kb2:#e08a1e;--kb3:#2a9d6f;--kb4:#7a5cc0;--kb5:#c75b7a;--radius:14px;--shadow:0 1px 2px rgba(16,42,67,.06),0 6px 20px rgba(16,42,67,.06);--maxw:900px}
+*{box-sizing:border-box}html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;line-height:1.72}
+#progress{position:fixed;top:0;left:0;height:4px;width:0;background:linear-gradient(90deg,var(--brand),#53c0ec);z-index:200;transition:width .1s}
+header.top{position:sticky;top:0;z-index:100;background:rgba(255,255,255,.92);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+.top-in{max-width:var(--maxw);margin:0 auto;padding:10px 20px;display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+.badge{background:var(--brand);color:#fff;font-weight:700;font-size:.72rem;letter-spacing:.5px;padding:4px 10px;border-radius:999px}
+.homebtn{text-decoration:none;display:inline-flex;align-items:center;gap:7px;background:var(--brand);color:#fff;font-weight:700;font-size:.8rem;padding:7px 15px;border-radius:999px;box-shadow:0 2px 6px rgba(16,42,67,.22);line-height:1}
+.top-title{font-size:.9rem;font-weight:600;color:var(--muted)}
+nav.jump{margin-left:auto;display:flex;gap:4px;flex-wrap:wrap}
+nav.jump a{font-size:.78rem;color:var(--muted);text-decoration:none;padding:5px 10px;border-radius:8px}
+nav.jump a:hover{background:var(--brand-soft);color:var(--brand-dark)}
+.wrap{max-width:var(--maxw);margin:0 auto;padding:0 20px 90px}
+.hero{margin-top:26px;padding:30px 28px;border-radius:var(--radius);color:#fff;background:linear-gradient(135deg,#0f5e8f,#1a86c7 60%,#2fa4df);box-shadow:var(--shadow);position:relative;overflow:hidden}
+.hero .eyebrow{font-size:.78rem;letter-spacing:1.5px;text-transform:uppercase;opacity:.9;font-weight:600}
+.hero h1{margin:.3em 0 .25em;font-size:1.62rem;line-height:1.25;max-width:90%}
+.hero .meta{display:flex;gap:18px;flex-wrap:wrap;font-size:.84rem;opacity:.95;margin-top:10px}
+h2.section{font-size:1.3rem;margin:48px 0 4px;display:flex;align-items:center;gap:10px;scroll-margin-top:70px}
+h2.section .dot{width:10px;height:22px;border-radius:4px;background:var(--brand)}
+.section-sub{color:var(--muted);font-size:.9rem;margin:0 0 18px}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);padding:22px 24px;margin:16px 0;--dot:var(--brand);overflow-x:clip;overflow-wrap:break-word;word-wrap:break-word}
+.concepts{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:minmax(0,1fr);gap:10px}
+.concepts li{display:flex;gap:12px;align-items:flex-start;padding:12px 14px;border:1px solid var(--line);border-radius:10px;background:#fcfdff;min-width:0;max-width:100%}
+.concepts li>span{min-width:0;max-width:100%;overflow-wrap:break-word;word-wrap:break-word}
+.concepts input{margin-top:4px;width:18px;height:18px;accent-color:var(--brand);flex:none;cursor:pointer}
+.concepts .ct{font-weight:600}.concepts .cd{display:block;font-weight:400;color:var(--muted);font-size:.86rem;margin-top:2px}
+.concepts li.done{background:var(--brand-soft);border-color:#bfe0f3}.concepts li.done .ct{text-decoration:line-through;opacity:.65}
+.cl-head{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-bottom:6px}
+.cl-head .count{font-size:.82rem;color:var(--muted);background:var(--brand-soft);padding:3px 10px;border-radius:999px;font-weight:600}
+.btn-reset{font-size:.78rem;border:1px solid var(--line);background:#fff;color:var(--muted);padding:5px 12px;border-radius:8px;cursor:pointer}
+.mm-toolbar{display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin-bottom:10px}
+.mm-btn{font-size:.78rem;border:1px solid var(--line);background:#fff;padding:6px 13px;border-radius:8px;cursor:pointer;color:var(--brand-dark);font-weight:600}
+.mindmap-host{height:580px;overflow:auto;border:1px solid var(--line);border-radius:10px;background:#fcfdff}.mindmap-host svg{display:block}
+.kb-tag{display:inline-flex;align-items:center;gap:8px;font-size:.78rem;font-weight:700;color:#fff;padding:5px 12px;border-radius:999px;margin-bottom:6px}
+.kb1t{background:var(--kb1)}.kb2t{background:var(--kb2)}.kb3t{background:var(--kb3)}
+.kb1b{--dot:var(--kb1)}.kb2b{--dot:var(--kb2)}.kb3b{--dot:var(--kb3)}
+.lead{font-size:1.02rem}.term{font-weight:700;color:var(--dot)}.en{font-style:italic;color:var(--muted);font-weight:500}
+.abc{display:flex;align-items:center;gap:10px;margin:28px 0 10px;padding-bottom:6px;border-bottom:2px solid color-mix(in srgb,var(--dot) 18%,#fff)}
+.abc .ltr{background:var(--dot);color:#fff;font-weight:800;min-width:30px;height:30px;padding:0 7px;border-radius:8px;display:grid;place-items:center;flex:none}
+.abc h4{margin:0;font-size:1.06rem;color:var(--dot)}
+.numh{font-weight:700;color:var(--dot);margin:22px 0 6px;font-size:1rem}
+ol.book{margin:12px 0;padding-left:28px}ol.book>li{margin:9px 0;padding-left:6px}ol.book>li::marker{font-weight:700;color:var(--dot)}
+ul.exp{list-style:none;margin:12px 0;padding:0;display:grid;grid-template-columns:minmax(0,1fr);gap:10px}
+ul.exp>li{position:relative;padding-left:20px;min-width:0;max-width:100%;overflow-wrap:break-word;word-wrap:break-word}
+ul.exp>li::before{content:"";position:absolute;left:0;top:11px;width:8px;height:8px;border-radius:2px;background:var(--dot)}
+.flow{border-left:4px solid var(--dot);background:color-mix(in srgb,var(--dot) 9%,#fff);padding:11px 15px;border-radius:0 10px 10px 0;margin:18px 0;font-size:.9rem;min-width:0;max-width:100%;overflow-wrap:break-word;word-wrap:break-word}
+.flow::before{content:"🔗 Benang merah — ";font-weight:700;color:var(--dot)}.flow b{color:var(--dot)}
+.casebox{background:#f8fafc;border:1px solid var(--line);border-left:4px solid var(--dot);border-radius:0 10px 10px 0;padding:12px 15px;margin:14px 0;font-size:.88rem;min-width:0;max-width:100%;overflow-wrap:break-word;word-wrap:break-word}
+.casebox .ctitle{font-weight:700;color:var(--dot);margin-bottom:4px;display:block}
+.table-wrap{width:100%;overflow-x:auto;-webkit-overflow-scrolling:touch;margin:14px 0;border-radius:10px}
+table.mini{width:100%;border-collapse:collapse;margin:0;font-size:.86rem;table-layout:auto}
+table.mini th,table.mini td{border:1px solid var(--line);padding:10px 12px;text-align:left;vertical-align:top;overflow-wrap:break-word;word-wrap:break-word}
+table.mini th{background:color-mix(in srgb,var(--dot) 12%,#fff);color:var(--dot);font-weight:700}
+.rgrid{display:grid;gap:8px;margin:14px 0}.rgrid.c2{grid-template-columns:repeat(2,1fr)}.rgrid.c3{grid-template-columns:repeat(3,1fr)}.rgrid.c4{grid-template-columns:repeat(4,1fr)}
+.rcell{border:1px solid var(--line);border-radius:10px;padding:11px 13px;cursor:pointer;background:#fff;display:flex;gap:10px;align-items:flex-start;transition:.15s;min-width:0;max-width:100%}
+.rcell>span{min-width:0;max-width:100%;overflow-wrap:break-word;word-wrap:break-word}
+.rcell:hover{border-color:var(--dot);box-shadow:var(--shadow);transform:translateY(-2px)}
+.rcell.active{border-color:var(--dot);background:color-mix(in srgb,var(--dot) 8%,#fff)}
+.rcell .stepnum{background:var(--dot);color:#fff;font-weight:700;min-width:24px;height:24px;border-radius:7px;display:grid;place-items:center;flex:none;font-size:.82rem}
+.rcell .rt{font-weight:700;font-size:.9rem;color:var(--dot);display:block}.rcell .rp{font-size:.78rem;color:var(--muted);display:block;margin-top:2px}
+.rdetail{font-size:.88rem;border-left:4px solid var(--dot);background:color-mix(in srgb,var(--dot) 8%,#fff);border-radius:0 10px 10px 0;padding:12px 15px;margin-top:6px;min-width:0;max-width:100%;overflow-wrap:break-word;word-wrap:break-word}
+.eqbox{background:#fcfdff;border:1px solid var(--line);border-radius:10px;padding:8px 14px;margin:14px 0;overflow-x:auto}
+mjx-container{max-width:100%;overflow-x:auto;overflow-y:hidden}
+mjx-container:not([display="true"]){display:inline-block;vertical-align:middle}
+.chart-wrap{background:#fcfdff;border:1px solid var(--line);border-radius:12px;padding:14px 16px;margin:16px 0}
+.chart-title{font-weight:700;font-size:.9rem;color:var(--dot);margin:0 0 4px}
+.chart-sub{font-size:.78rem;color:var(--muted);margin:0 0 10px}
+.chart-host{width:100%;overflow-x:auto;position:relative}.chart-host svg{display:block;max-width:100%;height:auto;margin:0 auto}
+.chart-legend{display:flex;gap:14px;flex-wrap:wrap;justify-content:center;margin-top:8px;font-size:.78rem;color:var(--muted)}
+.chart-legend span{display:inline-flex;align-items:center;gap:6px}.chart-legend i{display:inline-block;width:14px;height:3px;border-radius:2px}
+.glossary dt{font-weight:700;color:var(--brand-dark);margin-top:10px}.glossary dd{margin:0 0 2px;color:var(--muted);font-size:.9rem}
+footer{max-width:var(--maxw);margin:0 auto;padding:30px 20px 60px;color:var(--muted);font-size:.82rem;border-top:1px solid var(--line)}
+.offline-note{font-size:.76rem;color:var(--muted);background:#fff8e6;border:1px solid #f0e2b8;border-radius:8px;padding:8px 12px;margin:10px 0}
+.acro-box{background:#f8fafc;border:1px solid var(--line);border-radius:10px;padding:12px 14px;margin:14px 0;font-size:.84rem;min-width:0;max-width:100%;overflow-wrap:break-word;word-wrap:break-word}
+.acro-title{font-weight:700;color:var(--dot);font-size:.86rem;margin-bottom:8px;display:block}
+.acro-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:6px 14px;margin:0;padding:0;list-style:none}
+.acro-grid li{min-width:0;line-height:1.5}.acro-grid b{color:var(--dot)}
+.fguide{background:color-mix(in srgb,var(--dot) 5%,#fff);border:1px solid color-mix(in srgb,var(--dot) 22%,#e4e9f0);border-radius:10px;padding:12px 15px;margin:-6px 0 16px;font-size:.86rem;min-width:0;max-width:100%;overflow-wrap:break-word;word-wrap:break-word}
+.fguide .fg-head{font-weight:700;color:var(--dot);font-size:.84rem;text-transform:uppercase;letter-spacing:.35px;margin:0 0 6px}
+.fguide ul{margin:4px 0 8px;padding-left:18px}.fguide ul li{margin:3px 0}
+.fguide .fg-core{border-top:1px dashed color-mix(in srgb,var(--dot) 30%,#cbd5e1);padding-top:8px;margin-top:8px;display:grid;grid-template-columns:minmax(0,1fr);gap:4px}
+.fguide .fg-core div{min-width:0}
+@media(max-width:680px){
+ .table-wrap{overflow-x:visible}
+ table.mini,table.mini thead,table.mini tbody,table.mini th,table.mini td,table.mini tr{display:block;width:100%}
+ table.mini thead{display:none}
+ table.mini tr{margin-bottom:12px;border:1.5px solid color-mix(in srgb,var(--dot) 28%,#e4e9f0);border-radius:10px;background:#fff;overflow:hidden;box-shadow:0 1px 4px rgba(16,42,67,.05)}
+ table.mini td{border:none;border-bottom:1px solid var(--line);padding:10px 12px;text-align:left}
+ table.mini td:last-child{border-bottom:none}
+ table.mini td::before{content:attr(data-label);display:block;font-size:.74rem;font-weight:700;text-transform:uppercase;letter-spacing:.4px;color:var(--dot);margin-bottom:4px}
+}
+@media(max-width:640px){.hero h1{font-size:1.3rem;max-width:100%}nav.jump{display:none}.rgrid.c2,.rgrid.c3,.rgrid.c4,.acro-grid{grid-template-columns:minmax(0,1fr)}.mindmap-host{height:440px}}
+</style></head><body>
+<div id="progress"></div>
+<header class="top"><div class="top-in">
+ <span class="badge">MODUL 8</span>
+ <a class="homebtn" href="index.html" title="Kembali ke daftar modul"><span style="font-size:1rem;line-height:1">&#8962;</span> Daftar Modul</a>
+ <span class="top-title">Manajemen Keuangan · EKMA5205</span>
+ <nav class="jump">
+ <a href="#konsep">Konsep</a>
+ <a href="#peta">Peta Konsep</a>
+ <a href="#kb1">KB 1</a>
+ <a href="#kb2">KB 2</a>
+ <a href="#glosarium">Glosarium</a>
+ </nav>
+</div></header>
+
+<div class="wrap">
+ <section class="hero">
+ <div class="eyebrow">Ringkasan Belajar · EKMA5205 (Edisi 3)</div>
+ <h1>Manajemen Risiko dengan Derivatif</h1>
+ <div class="meta">
+ <span>⏱️ ±40 menit</span>
+ <span>📚 2 Kegiatan Belajar (KB)</span>
+ <span>✍️ Dr. Said Kelana Asnawi, M.M.</span>
+ </div>
+ </section>
+
+ <p class="section-sub" style="margin-top:22px">Modul 8 mengulas rekayasa keuangan (<span class="en">financial engineering</span>) untuk mengelola risiko keuangan pada level yang disanggupi (<span class="en">hedging</span>), mencari laba spekulatif, maupun melakukan arbitrase. <b>KB 1</b> menguraikan derivatif opsi secara menyeluruh (manajemen risiko, <i>call</i> &amp; <i>put</i>, 4 posisi transaksi, risiko premi hangus, 4 strategi opsi, <i>Put–Call Parity</i> &amp; arbitrase, <i>Black–Scholes</i>, dan <i>Real Options</i>); <b>KB 2</b> menguraikan derivatif <i>futures</i>, <i>forward</i>, bursa berjangka &amp; margin, lindung nilai eksportir-importir, <i>Spot–Futures Parity</i> &amp; arbitrase, hingga lindung nilai dengan <i>SWAP</i>.</p>
+
+ <div class="casebox">
+ <span class="ctitle">Kotak 1 Pendahuluan · Perlunya Lindung Nilai (Ibu Mayya Mariya)</span>
+ Ibu MM mengekspor suvenir ke Jepang (yen) dan Eropa (euro) yang dibayar 3 bulanan, sementara biaya produksinya keluar bulanan dalam rupiah. Fluktuasi kurs mengancam stabilitas arus kasnya. Menurut <b>Merton</b>, risiko keuangan dapat diatasi dengan <i>tool</i> derivatif (<i>hedging</i>), berbeda dari risiko strategis (<b>Slywotzky &amp; Drzik</b>) yang dapat merusak bisnis secara total.
+ </div>
+ <p class="offline-note">ℹ️ Peta konsep, grafik SVG, kartu penjelasan interaktif, dan checklist konsep berjalan tanpa internet. Koneksi internet hanya diperlukan untuk merender persamaan matematika (MathJax).</p>
+
+ <!-- KONSEP PENTING -->
+ <h2 class="section" id="konsep"><span class="dot"></span>Konsep Penting yang Harus Dikuasai</h2>
+ <div class="card">
+ <div class="cl-head">
+ <span class="count"><span id="doneCount">0</span>/<span id="totalCount">0</span> dikuasai</span>
+ <button class="btn-reset" id="resetBtn">Reset centang</button>
+ </div>
+ <ul class="concepts" id="conceptList">
+ <li><input type="checkbox"><span><span class="ct">Konsep Derivatif, Manajemen Risiko, &amp; Hedging</span><span class="cd">Derivatif (dari <i>derive</i>) nilainya diturunkan dari <i>underlying asset</i>; manajemen risiko mengelola risiko ke batas yang disanggupi (bukan menghilangkan 100%) via posisi berlawanan (<i>offset</i>).</span></span></li>
+ <li><input type="checkbox"><span><span class="ct">Tiga Jenis Derivatif: Opsi, Futures, &amp; Forward</span><span class="cd">Opsi &amp; futures diperdagangkan di bursa dengan satuan lot terstandar; forward adalah kontrak <i>customize</i> langsung antar dua pihak.</span></span></li>
+ <li><input type="checkbox"><span><span class="ct">Opsi Call vs Opsi Put, Status ITM/ATM/OTM, &amp; 4 Posisi Transaksi</span><span class="cd">Call = hak beli (ITM jika $S_T &gt; X$); Put = hak jual (ITM jika $S_T &lt; X$); <i>long</i> (pembeli) punya hak, <i>short</i> (<i>writer</i>) punya kewajiban dan menerima premi.</span></span></li>
+ <li><input type="checkbox"><span><span class="ct">Risiko Riil Opsi (Premi Hangus / Exhausted)</span><span class="cd">Risiko derivatif jauh lebih tinggi dari saham karena premi dapat hangus 100% jika opsi berakhir OTM (ilustrasi Ronny: return opsi −100% s.d. +200%).</span></span></li>
+ <li><input type="checkbox"><span><span class="ct">Empat Strategi Opsi: Protective Put, Covered Call, Spreads, &amp; Straddle</span><span class="cd">Protective put (lindung nilai ala asuransi), covered call (penyangga penjual call), spreads (beli call + put sekaligus untuk volatilitas tinggi), dan straddle (kombinasi multi-opsi/aset).</span></span></li>
+ <li><input type="checkbox"><span><span class="ct">Put–Call Parity Relationship &amp; Zero Net Investment (Arbitrase)</span><span class="cd">$P_0 + S_0 = C_0 + X/(1+r_f)^T$; ketimpangan harga memberi peluang arbitrase tanpa risiko (jual/pinjam sisi mahal, beli/tabung sisi murah).</span></span></li>
+ <li><input type="checkbox"><span><span class="ct">Model Black–Scholes &amp; Real Options (R&amp;D, SDA, Penetrasi Pasar)</span><span class="cd">Black–Scholes menaksir harga wajar opsi ($P_c, P_p$); <i>Real Options</i> melengkapi DCF dengan membayar uang muka kecil untuk "melihat peluang dulu" sebelum eksekusi penuh (Luehrman).</span></span></li>
+ <li><input type="checkbox"><span><span class="ct">Perbedaan Opsi vs Futures/Forward &amp; Payoff Simetris</span><span class="cd">Opsi = hak (berpremi, payoff $\ge 0$ bagi pembeli); Futures/Forward = kewajiban mengikat tanpa premi awal (payoff bisa negatif: Long $S_T - F^L$, Short $F^S - S_T$).</span></span></li>
+ <li><input type="checkbox"><span><span class="ct">Bursa Berjangka (BBJ/BKDI/BAPPEBTI), Settlement, &amp; Margin Call</span><span class="cd">Komoditas fisik (<i>goods settlement</i>) vs instrumen keuangan (<i>cash settlement</i>); setoran margin awal dinilai harian (<i>mark-to-market</i>) dan memicu <i>margin call</i> di bawah <i>maintenance margin</i>.</span></span></li>
+ <li><input type="checkbox"><span><span class="ct">Lindung Nilai Eksportir vs Importir &amp; Spot–Futures Parity</span><span class="cd">Hedging memakai posisi berlawanan (eksportir ambil <i>short</i>, importir ambil <i>long</i>); harga wajar $F_0 = S_0(1+r_f)-\text{Div}$ menjadi dasar deteksi arbitrase.</span></span></li>
+ <li><input type="checkbox"><span><span class="ct">Lindung Nilai dengan SWAP (Fixed ↔ Floating)</span><span class="cd">Pertukaran arus kas bunga tetap dan mengambang (SIBOR) melalui <i>dealer SWAP</i> untuk menyesuaikan profil risiko perusahaan.</span></span></li>
+ </ul>
+ </div>
+
+ <!-- PETA KONSEP -->
+ <h2 class="section" id="peta"><span class="dot"></span>Peta Konsep (Mind Map)</h2>
+ <div class="card">
+ <div class="mm-toolbar">
+ <button class="mm-btn" id="mmExpand">Perluas semua</button>
+ <button class="mm-btn" id="mmCollapse">Ciutkan</button>
+ <span style="font-size:.76rem;color:var(--muted)">Klik simpul bertanda + / – untuk buka-tutup · Gulir untuk menggeser</span>
+ </div>
+ <div class="mindmap-host" id="mindmap"></div>
+ </div>
+
+ <!-- ========================================================= -->
+ <!-- KB 1 -->
+ <!-- ========================================================= -->
+ <h2 class="section" id="kb1"><span class="dot" style="background:var(--kb1)"></span>KB 1 — Derivatif Opsi</h2>
+ <div class="card kb1b">
+ <span class="kb-tag kb1t">KB 1 · MANAJEMEN RISIKO, OPSI CALL/PUT, 4 STRATEGI, PARITY, BLACK–SCHOLES, &amp; REAL OPTIONS (Hal. 8.4 – 8.31)</span>
+ <p class="lead"><span class="term">Derivatif</span> (dari kata <i>derive</i> = turunan) adalah aset keuangan yang nilainya diturunkan dari aset acuan (<span class="term">underlying asset</span>). Dalam KB 1, fokus utamanya adalah <span class="term">opsi</span>—instrumen yang memberi <b>hak</b> (bukan kewajiban) kepada pemegangnya.</p>
+
+ <div class="acro-box">
+ <span class="acro-title">📖 Kamus Lengkap Terminologi, Singkatan, &amp; Akronim KB 1</span>
+ <ul class="acro-grid">
+ <li><b>Derivatif &amp; Underlying Asset</b>: Aset turunan yang nilainya bergantung pada pergerakan harga aset acuannya (<i>underlying asset</i>, mis. saham, kurs, komoditas).</li>
+ <li><b>Financial Engineering &amp; Hedging</b>: Rekayasa keuangan menggunakan derivatif dengan mengambil posisi berlawanan agar potensi rugi pasar aktual tertutup (<i>offset</i>) oleh untung derivatif.</li>
+ <li><b>Manajemen Risiko</b>: Pengelolaan risiko hingga ke level yang disanggupi (bukan menghapus risiko 100%; contoh: asuransi membatasi rugi maksimal sebesar premi).</li>
+ <li><b>Opsi (Option), Call, &amp; Put</b>: Hak (pilihan) bagi pembeli untuk membeli (<i>call</i>) atau menjual (<i>put</i>) aset acuan pada harga tertentu tanpa kewajiban mengeksekusi jika merugikan.</li>
+ <li><b>American vs European Option</b>: <i>American</i> dapat dieksekusi kapan saja hingga jatuh tempo; <i>European</i> hanya dapat dieksekusi tepat pada tanggal jatuh tempo ($T$).</li>
+ <li><b>$S_0, S_T, X, T$</b>: Harga spot aset saat ini ($S_0$), harga aktual saat jatuh tempo ($S_T$), harga eksekusi/<i>strike price</i> ($X$), &amp; waktu jatuh tempo ($T$).</li>
+ <li><b>Premi ($C_0 / P_c$, $P_0 / P_p$) &amp; Payoff</b>: Premi = biaya/harga beli opsi (bersifat hangus/<i>exhausted</i>); <i>Payoff</i> = nilai manfaat opsi saat jatuh tempo.</li>
+ <li><b>ITM / ATM / OTM</b>: <i>In-the-Money</i> (dieksekusi, payoff $&gt;0$), <i>At-the-Money</i> ($S_T = X$, payoff $0$), &amp; <i>Out-of-the-Money</i> (tidak dieksekusi, payoff $0$).</li>
+ <li><b>Long (Holder/Buyer) vs Short (Writer/Seller)</b>: <i>Long</i> = pembeli pemegang hak; <i>Short/Writer</i> = penjual penerima premi yang wajib memenuhi hak pembeli.</li>
+ <li><b>Bullish vs Bearish</b>: <i>Bullish</i> = ekspektasi harga pasar naik (cocok <i>long call</i>); <i>Bearish</i> = ekspektasi harga pasar turun (cocok <i>long put</i>).</li>
+ <li><b>Protective Put &amp; Covered Call</b>: <i>Protective put</i> = saham + <i>long put</i> (lindung nilai); <i>Covered call</i> = saham + <i>short call</i> (penyangga risiko penjual <i>call</i>).</li>
+ <li><b>Spreads &amp; Straddle</b>: <i>Spreads</i> = beli <i>call</i> + <i>put</i> bersamaan pada $X$ sama (menangkap volatilitas dua arah); <i>Straddle</i> = kombinasi beragam opsi/aset dengan variasi $X$, posisi, &amp; tenor.</li>
+ <li><b>Put–Call Parity &amp; Zero Net Investment</b>: Keseimbangan harga antara <i>protective put</i> dan <i>call + deposito</i>; penyimpangannya memicu <b>arbitrase</b> (untung pasti tanpa modal bersih &amp; tanpa risiko) oleh <b>arbitrageur</b>.</li>
+ <li><b>Black–Scholes &amp; $N(d)$</b>: Model estimasi harga wajar opsi berbasis $S_0, X, T, r_f, \sigma$ dan probabilitas distribusi normal kumulatif $N(d)$.</li>
+ <li><b>Real Options &amp; DCF</b>: Penerapan logika opsi <i>call</i> pada proyek nyata (R&amp;D, eksplorasi SDA, penetrasi pasar) sebagai komplemen <i>Discounted Cash Flow</i> (DCF).</li>
+ </ul>
+ </div>
+
+ <div class="abc"><span class="ltr">A</span><h4>Derivatif dan Manajemen Risiko</h4></div>
+ <p>Secara ekonomi, harga barang lazimnya ditentukan permintaan-penawarannya sendiri. Pada <span class="term">derivatif</span>, nilai barang X diturunkan dari barang Y (ilustrasi buku: jika harga jambu ditentukan oleh harga mangga, maka jambu adalah produk derivatif mangga). Bila kita punya kontrak jual mangga Rp1.000/kg untuk 3 bulan lagi dan khawatir harga pasar naik, kita masuk pasar derivatif mengambil <b>posisi berlawanan</b> (kontrak beli) sehingga potensi rugi di pasar aktual ter-<i>offset</i> oleh untung derivatif (<span class="term">hedging</span>). Inilah hakikat <b>manajemen risiko</b>: mengendalikan potensi kerugian pada batas maksimal yang sanggup ditanggung (seperti premi asuransi kendaraan).</p>
+
+ <div class="abc"><span class="ltr">B</span><h4>Derivatif dan Lindung Nilai</h4></div>
+ <p>Derivatif dapat dipakai untuk dua tujuan berlawanan: <b>lindung nilai (<i>hedging</i>)</b> dan <b>spekulatif</b> (mencari keuntungan). Tiga jenis derivatif utama: <b>opsi</b> dan <b>futures</b> (memiliki bursa terorganisasi dengan satuan <i>lot</i> standar) serta <b>forward</b> (kontrak <i>customize</i> langsung antar dua pihak tanpa bursa).</p>
+
+ <div class="abc"><span class="ltr">C</span><h4>Derivatif Opsi: Opsi Call &amp; Opsi Put</h4></div>
+ <p>Opsi memberi <b>hak</b> kepada pembeli (<i>holder</i>)—boleh dipakai bila menguntungkan, boleh diabaikan bila tidak (sehingga payoff minimal $0$, bukan negatif)—atas suatu <i>underlying asset</i> pada <i>strike price</i> ($X$) hingga jatuh tempo ($T$) dengan membayar premi. Pelaksanaannya terbagi atas <b>American option</b> (kapan saja hingga $T$) dan <b>European option</b> (hanya tepat saat $T$).</p>
+ <div class="rgrid c2" data-revealgroup>
+ <div class="rcell active" data-reveal data-detail="<b>1. Opsi Call (Hak Beli — Tabel 8.1 &amp; Gambar 8.1):</b> Ilustrasi saham INDF ($X = \text{Rp1.000}$, $T = 3$ bln, premi Rp100):<br>• Jika $S_T = \text{Rp1.500}$ ($S_T &gt; X$): eksekusi hak beli di Rp1.000 → <b>In-the-Money</b>, $\text{Payoff} = S_T - X = \mathbf{\text{Rp500}}$.<br>• Jika $S_T = \text{Rp700}$ ($S_T &lt; X$): abaikan hak (lebih murah beli di pasar) → <b>Out-of-the-Money</b>, $\text{Payoff} = \mathbf{0}$.<br>• Jika $S_T = \text{Rp1.000}$ ($S_T = X$): sama saja → <b>At-the-Money</b>, $\text{Payoff} = \mathbf{0}$. Cocok saat pasar <i>bullish</i>."><span class="stepnum">1</span><span><span class="rt">Opsi Call (Hak Beli)</span><span class="rp">Payoff = max(ST − X, 0) · Bullish</span></span></div>
+ <div class="rcell" data-reveal data-detail="<b>2. Opsi Put (Hak Jual — Tabel 8.2 &amp; Gambar 8.2):</b> Ilustrasi saham BBNI ($X = \text{Rp2.000}$, $T = 3$ bln, premi Rp100):<br>• Jika $S_T = \text{Rp1.200}$ ($S_T &lt; X$): eksekusi hak jual di Rp2.000 → <b>In-the-Money</b>, $\text{Payoff} = X - S_T = \mathbf{\text{Rp800}}$ (payoff maks $= X = \text{Rp2.000}$ jika perusahaan bangkrut $S_T = 0$).<br>• Jika $S_T = \text{Rp2.500}$ ($S_T &gt; X$): abaikan hak (lebih untung jual di pasar) → <b>Out-of-the-Money</b>, $\text{Payoff} = \mathbf{0}$.<br>• Jika $S_T = \text{Rp2.000}$ ($S_T = X$): <b>At-the-Money</b>, $\text{Payoff} = \mathbf{0}$. Cocok saat pasar <i>bearish</i>."><span class="stepnum">2</span><span><span class="rt">Opsi Put (Hak Jual)</span><span class="rp">Payoff = max(X − ST, 0) · Bearish</span></span></div>
+ </div>
+ <div class="rdetail" data-revealdetail><b>1. Opsi Call (Hak Beli — Tabel 8.1 &amp; Gambar 8.1):</b> Ilustrasi saham INDF ($X = \text{Rp1.000}$, $T = 3$ bln, premi Rp100): $S_T = 1.500 \implies$ <b>In-the-Money</b> (payoff Rp500); $S_T = 700 \implies$ <b>Out-of-the-Money</b> (payoff 0); $S_T = 1.000 \implies$ <b>At-the-Money</b> (payoff 0).</div>
+
+ <div class="abc"><span class="ltr">D</span><h4>Beli–Jual: Hak Beli dan Hak Jual (4 Posisi Transaksi)</h4></div>
+ <p>Baik <i>call</i> maupun <i>put</i> dapat dibeli (<b>Long / L</b>) atau dijual (<b>Short / S / Writer</b>). Pembeli memegang <b>hak</b>, sedangkan penjual (<i>writer</i>) menerima premi di awal dan memegang <b>kewajiban</b> memenuhi hak pembeli—sehingga payoff penjual persis kebalikan payoff pembeli (Tabel 8.3–8.4 &amp; Gambar 8.3–8.4):</p>
+ <div class="table-wrap">
+ <table class="mini">
+ <thead><tr><th>Posisi Opsi</th><th>Peran &amp; Arus Premi</th><th>Payoff saat $S_T &gt; X$</th><th>Payoff saat $S_T &lt; X$</th><th>Ekspektasi Pasar</th></tr></thead>
+ <tbody>
+ <tr><td data-label="Posisi Opsi"><b>Long Call</b></td><td data-label="Peran &amp; Arus Premi">Pembeli hak beli (bayar premi)</td><td data-label="Payoff saat ST > X">$+(S_T - X)$ (ITM)</td><td data-label="Payoff saat ST < X">$0$ (OTM)</td><td data-label="Ekspektasi Pasar">Bullish (harga naik)</td></tr>
+ <tr><td data-label="Posisi Opsi"><b>Long Put</b></td><td data-label="Peran &amp; Arus Premi">Pembeli hak jual (bayar premi)</td><td data-label="Payoff saat ST > X">$0$ (OTM)</td><td data-label="Payoff saat ST < X">$+(X - S_T)$ (ITM)</td><td data-label="Ekspektasi Pasar">Bearish (harga turun)</td></tr>
+ <tr><td data-label="Posisi Opsi"><b>Short Call</b></td><td data-label="Peran &amp; Arus Premi"><i>Writer</i> hak beli (terima premi)</td><td data-label="Payoff saat ST > X">$-(S_T - X)$ (rugi tak terbatas)</td><td data-label="Payoff saat ST < X">$0$ (untung premi)</td><td data-label="Ekspektasi Pasar">Netral / turun</td></tr>
+ <tr><td data-label="Posisi Opsi"><b>Short Put</b></td><td data-label="Peran &amp; Arus Premi"><i>Writer</i> hak jual (terima premi)</td><td data-label="Payoff saat ST > X">$0$ (untung premi)</td><td data-label="Payoff saat ST < X">$-(X - S_T)$ (rugi maks $X$)</td><td data-label="Ekspektasi Pasar">Netral / naik</td></tr>
+ </tbody>
+ </table>
+ </div>
+ <div class="chart-wrap">
+ <div class="chart-title">Grafik 8.1 – 8.4 · Diagram Payoff Empat Posisi Opsi ($X = \text{Rp1.000}$)</div>
+ <div class="chart-sub">Kurva <i>hockey-stick</i>: pembeli (Long) menikmati potensi untung besar dengan payoff minimum 0 (sebelum premi), penjual (Short) berkebalikan.</div>
+ <div class="chart-host" id="ch_m8_opt"></div>
+ </div>
+
+ <div class="abc"><span class="ltr">E</span><h4>Apakah Opsi Tidak Berisiko?</h4></div>
+ <p>Keliru bila menganggap opsi tanpa risiko hanya karena payoff minimalnya nol. <b>Risiko riil opsi adalah premi yang dibayar di $T_0$ dapat hangus 100% (<i>exhausted</i>)</b>. Ilustrasi buku (<b>Ronny</b>, modal Rp1.000 jt, ANTM $S_0=\text{Rp1.000}$, $T=3$ bln — Tabel 8.5 &amp; 8.6):</p>
+ <div class="table-wrap">
+ <table class="mini">
+ <thead><tr><th>Alternatif Investasi Ronny (Rp1.000 jt)</th><th>$S_T=800$</th><th>$S_T=1.000$</th><th>$S_T=1.200$</th><th>$S_T=1.300$</th><th>Tingkat Risiko</th></tr></thead>
+ <tbody>
+ <tr><td data-label="Alternatif"><b>1. Saham Penuh</b> (1 jt lbr @1.000)</td><td data-label="ST=800">Rp800 jt (−20%)</td><td data-label="ST=1.000">Rp1.000 jt (0%)</td><td data-label="ST=1.200">Rp1.200 jt (+20%)</td><td data-label="ST=1.300">Rp1.300 jt (+30%)</td><td data-label="Tingkat Risiko">Menengah</td></tr>
+ <tr><td data-label="Alternatif"><b>2. Opsi Call Penuh</b> (10 jt opsi @100)</td><td data-label="ST=800"><b>Rp0 (−100%)</b></td><td data-label="ST=1.000"><b>Rp0 (−100%)</b></td><td data-label="ST=1.200">Rp2.000 jt (+100%)</td><td data-label="ST=1.300"><b>Rp3.000 jt (+200%)</b></td><td data-label="Tingkat Risiko"><b>Paling Berisiko!</b></td></tr>
+ <tr><td data-label="Alternatif"><b>3. Kombinasi</b> (800 jt tabungan 3% + 2 jt opsi)</td><td data-label="ST=800">Rp824 jt (−17,6%)</td><td data-label="ST=1.000">Rp824 jt (−17,6%)</td><td data-label="ST=1.200">Rp1.224 jt (+22,4%)</td><td data-label="ST=1.300">Rp1.424 jt (+42,4%)</td><td data-label="Tingkat Risiko">Paling Terkendali</td></tr>
+ </tbody>
+ </table>
+ </div>
+
+ <div class="flow">Karena membeli opsi murni sangat berisiko (premi bisa hangus 100%), bagian F menunjukkan bagaimana mengombinasikan opsi dengan saham atau opsi lain membentuk <b>empat strategi utama</b>.</div>
+
+ <div class="abc"><span class="ltr">F</span><h4>Beberapa Strategi untuk Opsi</h4></div>
+ <div class="rgrid c4" data-revealgroup>
+ <div class="rcell active" data-reveal data-detail="<b>1. Protective Put (Saham + Long Put — Tabel 8.7 &amp; Gambar 8.5):</b> Strategi <b>lindung nilai</b> layaknya asuransi. Ilustrasi <b>Yusi</b> (BBCA/INDF $S_0=2.000, X=2.000$, premi put Rp200): jika $S_T &lt; 2.000$ (bahkan bila bangkrut $S_T=0$), kekayaan tetap terlindungi minimal Rp2.000 (rugi maksimal hanya sebesar premi); jika $S_T &gt; 2.000$, kekayaan ikut naik penuh sebesar $S_T$."><span class="stepnum">1</span><span><span class="rt">Protective Put</span><span class="rp">Saham + Long Put (Hedging)</span></span></div>
+ <div class="rcell" data-reveal data-detail="<b>2. Covered Call (Saham + Short Call — Tabel 8.8 &amp; Gambar 8.6):</b> Membeli saham sekaligus menjual opsi call atas saham sama sebagai penyangga (<i>buffer</i>) risiko tak terbatas penjual call. Ilustrasi <b>Asep</b> (BBCA $S_0=1.000, X=1.000$, premi Rp150): jika $S_T \le X$, payoff $= S_T$ (+premi); jika $S_T &gt; X$, payoff tertahan di $X$ (+premi)."><span class="stepnum">2</span><span><span class="rt">Covered Call</span><span class="rp">Saham + Short Call</span></span></div>
+ <div class="rcell" data-reveal data-detail="<b>3. Spreads (Long Call + Long Put pada $X$ sama — Tabel 8.9 &amp; Gambar 8.7):</b> Ilustrasi <b>Andi</b> (AALI $X=1.000$, premi call Rp100 + put Rp100 = Rp200). Cocok bila yakin harga akan bergejolak tajam tetapi <b>tidak tahu arahnya</b>: untung jika $S_T &lt; 800$ atau $S_T &gt; 1.200$ (melampaui total biaya Rp200)."><span class="stepnum">3</span><span><span class="rt">Spreads</span><span class="rp">Long Call + Long Put</span></span></div>
+ <div class="rcell" data-reveal data-detail="<b>4. Straddle (Kombinasi Multi-Opsi/Aset — Tabel 8.10 &amp; Gambar 8.8):</b> Memakai berbagai opsi dengan variasi $X$, posisi beli/jual, dan aset lain. Ilustrasi <b>Cindy</b>: 2 Long Call BMRI ($X_1=1.000, X_2=2.000$) menghasilkan payoff $0$, $S_T-X_1$, dan $2S_T-X_1-X_2$. Contoh <b>Bapak Fachruddin</b>: 5 jt saham ($S_0=40$) + Short Call ($X=35$, premi +Rp2) + Long Put ($X=45$, premi −Rp3) → biaya neto Rp1, melindungi kekayaan saat harga jatuh ke Rp30."><span class="stepnum">4</span><span><span class="rt">Straddle</span><span class="rp">Multi-opsi &amp; multi-strike</span></span></div>
+ </div>
+ <div class="rdetail" data-revealdetail><b>1. Protective Put (Saham + Long Put — Tabel 8.7 &amp; Gambar 8.5):</b> Strategi <b>lindung nilai</b> layaknya asuransi. Ilustrasi <b>Yusi</b> (BBCA/INDF $S_0=2.000, X=2.000$, premi put Rp200): jika $S_T &lt; 2.000$, kekayaan terlindungi minimal Rp2.000 (rugi maksimal sebesar premi); jika $S_T &gt; 2.000$, kekayaan naik penuh mengikuti $S_T$.</div>
+
+ <div class="chart-wrap">
+ <div class="chart-title">Grafik 8.5 &amp; 8.6 · Payoff Strategi Protective Put vs Covered Call ($X = \text{Rp1.000}$)</div>
+ <div class="chart-sub">Protective Put memberi lantai proteksi minimal di $X = 1.000$; Covered Call membatasi kenaikan maksimum di $X = 1.000$ (plus premi).</div>
+ <div class="chart-host" id="ch_m8_strat"></div>
+ </div>
+
+ <div class="casebox">
+ <span class="ctitle">Kotak 2 · Pasar Aset Keuangan Sangat Meriah (Saham AAA &amp; IBM)</span>
+ Satu saham acuan (mis. saham IBM harga $127,21) dapat memiliki puluhan kontrak opsi <i>call</i> dan <i>put</i> pada berbagai <i>strike price</i> ($120, $125, $130, $135) dan 3 jatuh tempo (total 24 opsi). Karena begitu banyak pihak berkepentingan atas satu saham, pasar keuangan sangat dinamis namun sekaligus <b>fragile (mudah pecah)</b> bila krisis melanda—sehingga kredibilitas dan norma pasar wajib dijaga.
+ </div>
+
+ <div class="abc"><span class="ltr">G</span><h4>Put–Call Parity Relationship</h4></div>
+ <p>Pada Tabel 8.11 (ilustrasi <b>Usman</b>), menabung deposito bebas risiko sebesar $X/(1+r_f)^T$ ditambah membeli <i>Long Call</i> menghasilkan payoff persis sama dengan strategi <i>Protective Put</i> ($S_T &lt; X \implies X$; $S_T &gt; X \implies S_T$). Karena payoff identik, harga keduanya hari ini wajib seimbang:</p>
+ <div class="eqbox">
+ \[\text{Put–Call Parity: } P_0 + S_0 = C_0 + \frac{X}{(1+r_f)^T}\]
+ </div>
+ <div class="fguide">
+ <div class="fg-head">Bedah Variabel &amp; Intisari Formula Put–Call Parity</div>
+ <ul>
+ <li><b>$P_0$</b> = harga premi opsi <i>put</i>; <b>$S_0$</b> = harga spot saham saat ini; <b>$C_0$</b> = harga premi opsi <i>call</i>; <b>$X$</b> = <i>strike price</i> identik untuk kedua opsi; <b>$X/(1+r_f)^T$</b> = nilai sekarang deposito bebas risiko yang jatuh tempo sebesar $X$.</li>
+ <li><b>Makna formula:</b> Nilai portofolio <i>Protective Put</i> ($P_0 + S_0$) harus selalu sama dengan nilai portofolio <i>Long Call + Deposito</i> ($C_0 + \text{PV}(X)$).</li>
+ </ul>
+ <div class="fg-core">
+ <div>🧭 <b>Filosofis:</b> Mengikuti hukum paritas ("hukum aliran air" / <i>Law of One Price</i>), dua portofolio ber-<i>payoff</i> masa depan identik tidak boleh punya harga berbeda hari ini; ketimpangan akan langsung diserbu <i>arbitrageur</i> hingga seimbang kembali.</div>
+ <div>📏 <b>Mengukur:</b> Keseimbangan harga wajar relatif antara opsi <i>call</i>, opsi <i>put</i>, saham acuan, dan suku bunga bebas risiko.</div>
+ <div>🎯 <b>Manfaat:</b> Mendeteksi <i>mispricing</i> untuk mengeksekusi arbitrase <b>zero net investment</b> (untung pasti tanpa modal bersih dan tanpa risiko): jual/pinjam sisi yang lebih mahal, beli/tabung sisi yang lebih murah.</div>
+ </div>
+ </div>
+ <ul class="exp">
+ <li><span class="term">Contoh Arbitrase Buku (Ismail — Saham SMGR)</span> — $S_0=1.000, X=1.050, r_f=5\%/6\text{ bln}, C_0=20, P_0=15$. Sisi kiri $15+1.000 = \mathbf{1.015} &lt;$ sisi kanan $20+(1.050/1{,}05) = \mathbf{1.020}$. <b>Tindakan di $T_0$:</b> <i>short call</i> (+20) + pinjam (+1.000) + <i>long put</i> (−15) + beli saham (−1.000) = <b>laba instan +Rp5</b>. Di $T_1$, baik saat $S_T &lt; 1.050$ maupun $S_T &gt; 1.050$, total arus kas persis <b>Rp0</b> (bebas risiko!).</li>
+ </ul>
+
+ <div class="abc"><span class="ltr">H</span><h4>Penentuan Harga Opsi (Black–Scholes) &amp; Real Options</h4></div>
+ <p>Harga premi opsi sangat dipengaruhi <i>strike price</i> ($X$): makin besar $X$, harga <b>opsi call makin murah</b> sedangkan harga <b>opsi put makin mahal</b>. Model teoretis paling populer adalah <b>Black–Scholes Option Pricing</b>:</p>
+ <div class="eqbox">
+ \[P_c = S_0 N(d_1) - X e^{-r_f T} N(d_2) \qquad\big|\qquad P_p = X e^{-r_f T}\big[1 - N(d_2)\big] - S_0\big[1 - N(d_1)\big]\]
+ \[d_1 = \frac{\ln(S_0/X) + \left(r_f + \frac{\sigma^2}{2}\right)T}{\sigma\sqrt{T}} \qquad\big|\qquad d_2 = d_1 - \sigma\sqrt{T}\]
+ </div>
+ <div class="fguide">
+ <div class="fg-head">Bedah Variabel &amp; Intisari Formula Black–Scholes</div>
+ <ul>
+ <li><b>$P_c, P_p$</b> = estimasi harga wajar opsi <i>call</i> &amp; <i>put</i>; <b>$S_0$</b> = harga spot saham; <b>$X$</b> = <i>strike price</i>; <b>$T$</b> = sisa waktu jatuh tempo (tahun); <b>$r_f$</b> = bunga bebas risiko kontinu; <b>$\sigma$</b> = standar deviasi (volatilitas) return saham; <b>$N(d)$</b> = probabilitas kumulatif distribusi normal standar (Excel: <code>NORMSDIST(d)</code>).</li>
+ <li><b>Makna formula:</b> Menghitung nilai sekarang ekspektasi keuntungan opsi dengan mempertimbangkan 5 faktor utama sekaligus ($S_0, X, T, r_f, \sigma$).</li>
+ </ul>
+ <div class="fg-core">
+ <div>🧭 <b>Filosofis:</b> Harga sebuah hak (opsi) bergantung bukan hanya pada selisih harga saat ini ($S_0$ vs $X$), tetapi juga pada "nilai waktu" ($T$) dan seberapa liar harga saham bisa bergejolak ($\sigma$) sebelum jatuh tempo.</div>
+ <div>📏 <b>Mengukur:</b> Estimasi harga premi teoritis wajar untuk opsi <i>call</i> dan <i>put</i> tipe Eropa.</div>
+ <div>🎯 <b>Manfaat:</b> Menjadi tolok ukur harga wajar di bursa derivatif (contoh buku saham ABC: $S_0=1.000, X=900, T=1, \sigma=30\%, r_f=7\% \implies d_1=0{,}734, d_2=0{,}434 \implies P_c=\mathbf{\text{Rp208}}, P_p=\mathbf{\text{Rp47,3}}$).</div>
+ </div>
+ </div>
+ <ul class="exp">
+ <li><span class="term">Contoh Strategi Bearish (Ibu Rohani)</span> — <i>Short Call</i> $X=50$ (@Rp9) + <i>Long Call</i> $X=60$ (@Rp3) → terima premi bersih awal <b>+Rp6</b>; titik impas (BEP) di $S_T = \mathbf{\text{Rp56}}$; untung bila harga turun di bawah Rp56 dan rugi maksimal −Rp4 bila di atas Rp60.</li>
+ <li><span class="term">Kotak 3 · Real Options (Penilaian Peluang Korporat)</span> — Metode DCF sering menolak proyek tak pasti (NPV awal negatif), sehingga <b>opsi nyata (<i>real options</i>)</b> hadir sebagai <b>komplemen</b> (bukan substitusi) DCF. Sesuai diagram <b>Luehrman</b>: DCF <i>memutuskan dulu baru melihat kondisi</i>, sedangkan Opsi <i>membayar uang muka kecil untuk melihat peluang dulu, baru memutuskan</i>. Penerapannya: (1) <b>R&amp;D</b> (bayar lisensi $I$, lanjutkan jika $R&gt;I$), (2) <b>Eksplorasi SDA</b> (biaya eksplorasi awal $C$, lanjutkan jika cadangan bernilai $R&gt;C$), dan (3) <b>Penetrasi Pasar</b>. <b>Tiga syarat evaluasi:</b> (i) prasyarat investasi lanjutan, (ii) hak eksklusif (paten), dan (iii) sumber <i>competitive advantage</i>.</li>
+ </ul>
+ </div>
+
+ <!-- ========================================================= -->
+ <!-- KB 2 -->
+ <!-- ========================================================= -->
+ <h2 class="section" id="kb2"><span class="dot" style="background:var(--kb2)"></span>KB 2 — Derivatif Futures</h2>
+ <div class="card kb2b">
+ <span class="kb-tag kb2t">KB 2 · PERBEDAAN OPSI VS FUTURES, BURSA BERJANGKA, HEDGING, PARITY, &amp; SWAP (Hal. 8.33 – 8.47)</span>
+ <p class="lead">Selain opsi, terdapat derivatif <span class="term">futures</span> (diperdagangkan di bursa berjangka dengan satuan <i>lot</i> terstandar dan setoran <i>margin</i>) serta <span class="term">forward</span> (kontrak <i>customize</i> antar dua pihak), ditambah <span class="term">SWAP</span> untuk pertukaran arus kas.</p>
+
+ <div class="acro-box">
+ <span class="acro-title">📖 Kamus Lengkap Terminologi, Singkatan, &amp; Akronim KB 2</span>
+ <ul class="acro-grid">
+ <li><b>Futures vs Forward</b>: Keduanya kontrak kewajiban jual-beli di masa depan; <i>futures</i> terstandar di bursa (pakai <i>lot</i> &amp; <i>margin</i>), <i>forward</i> <i>customize</i> langsung antar dua pihak.</li>
+ <li><b>$F_0, F^L, F^S$</b>: Harga kontrak <i>futures</i> wajar ($F_0$), harga kontrak posisi beli/<i>Long</i> ($F^L$), &amp; posisi jual/<i>Short</i> ($F^S$).</li>
+ <li><b>BBJ, BKDI, &amp; BAPPEBTI</b>: <i>Bursa Berjangka Jakarta</i> &amp; <i>Bursa Komoditi dan Derivatif Indonesia</i> di bawah pengawasan <i>Badan Pengawas Perdagangan Berjangka Komoditi</i> (Kemendag).</li>
+ <li><b>Goods vs Cash Settlement</b>: <i>Goods settlement</i> = serah terima fisik komoditas di gudang saat jatuh tempo; <i>Cash settlement</i> = penyelesaian selisih tunai (wajib untuk kontrak keuangan).</li>
+ <li><b>Margin, Maintenance Margin, &amp; Margin Call</b>: Uang muka jaminan (mis. 10%) yang dihitung harian (<i>mark-to-market</i>); bila saldo jatuh ke batas <i>maintenance margin</i>, muncul <i>margin call</i> untuk top-up atau tutup kontrak.</li>
+ <li><b>Short Sale</b>: Menjual saham terlebih dahulu (meminjam saham pihak lain) dengan janji membeli kembali untuk mengembalikannya saat jatuh tempo.</li>
+ <li><b>Div &amp; $d$</b>: Dividen tunai ($\text{Div}$) &amp; <i>dividend yield</i> ($d = \text{Div}/S_0$) dari aset acuan.</li>
+ <li><b>SWAP, Dealer SWAP, Notional, &amp; SIBOR</b>: Kontrak tukar arus kas (<i>fixed</i> ↔ <i>floating</i>) melalui bank/<i>dealer</i> atas pokok acuan (<i>notional</i>) memakai suku bunga acuan <i>Singapore Interbank Offered Rate</i> (SIBOR).</li>
+ </ul>
+ </div>
+
+ <div class="abc"><span class="ltr">A</span><h4>Perbedaan Opsi dan Futures (Forward)</h4></div>
+ <ol class="book">
+ <li><span class="term">Hak vs Kewajiban Mengikat</span> — Opsi memberi <b>hak</b> kepada pembeli (payoff minimal $0$); <i>futures/forward</i> mengikat <b>kewajiban</b> bagi kedua pihak sehingga payoff dapat bernilai <b>negatif</b> bila harga bergerak berlawanan (Contoh kurs Rp10.000/$ saat jatuh tempo Rp9.000/$: <i>call</i> payoff 0, sedangkan <i>future long</i> rugi −Rp1.000/$; Gambar 8.9–8.10).</li>
+ <li><span class="term">Berpremi vs Tanpa Premi Awal</span> — Pembeli opsi wajib membayar premi (harga opsi), sedangkan memasuki kontrak <i>futures/forward</i> tidak dikenakan premi/biaya kontrak (di luar komisi/administrasi dan setoran jaminan <i>margin</i>).</li>
+ </ol>
+
+ <div class="abc"><span class="ltr">B</span><h4>Kontrak Futures, Bursa Berjangka, Hedging, Parity, &amp; SWAP</h4></div>
+ <div class="eqbox">
+ \[\text{Long Position Payoff} = S_T - F^L \qquad\big|\qquad \text{Short Position Payoff} = F^S - S_T\]
+ </div>
+ <div class="fguide">
+ <div class="fg-head">Bedah Variabel &amp; Intisari Formula Payoff Futures</div>
+ <ul>
+ <li><b>$S_T$</b> = harga aktual aset saat jatuh tempo; <b>$F^L$</b> = harga kontrak posisi beli (<i>long</i>); <b>$F^S$</b> = harga kontrak posisi jual (<i>short</i>).</li>
+ <li><b>Makna formula:</b> Keuntungan/kerugian <i>futures</i> bersifat simetris linear satu-banding-satu terhadap selisih harga pasar aktual dan harga kontrak yang telah dikunci.</li>
+ </ul>
+ <div class="fg-core">
+ <div>🧭 <b>Filosofis:</b> Tanpa premi awal, kedua pihak sepakat mengunci kepastian harga—<i>long</i> untung tak terbatas &amp; rugi maks $F^L$ (saat $S_T=0$), sedangkan <i>short</i> untung maks $F^S$ &amp; rugi tak terbatas.</div>
+ <div>📏 <b>Mengukur:</b> Laba/rugi bersih posisi <i>long</i> dan <i>short</i> pada tanggal penyelesaian kontrak berjangka.</div>
+ <div>🎯 <b>Manfaat:</b> Contoh buku (<b>Andreas</b> $F^L=10.000$ &amp; <b>Ahmad</b> $F^S=9.000$): pada $S_T=5.000$, Andreas rugi −5.000 dan Ahmad untung +4.000; pada $S_T=15.000$, Andreas untung +5.000 dan Ahmad rugi −6.000.</div>
+ </div>
+ </div>
+ <div class="chart-wrap">
+ <div class="chart-title">Grafik 8.9 &amp; 8.10 · Payoff Kontrak Futures: Posisi Long ($S_T - F$) vs Short ($F - S_T$) pada $F = \text{Rp10.000}$</div>
+ <div class="chart-sub">Payoff futures berbentuk garis lurus simetris (dapat bernilai negatif) karena mengikat kewajiban kedua pihak.</div>
+ <div class="chart-host" id="ch_m8_fut"></div>
+ </div>
+
+ <div class="casebox">
+ <span class="ctitle">Kotak 1 &amp; Kotak 2 · Bursa Berjangka (BBJ/BKDI) &amp; Mekanisme Margin</span>
+ • <b>Bursa Berjangka:</b> Mempertemukan penjual-pembeli komoditas riil (pertanian/pertambangan → <i>goods settlement</i>) dan kontrak keuangan (kurs, indeks, suku bunga → <i>cash settlement</i>). Membentuk harga pasar transparan dan standar mutu. Di Indonesia terdapat <b>BBJ</b> dan <b>BKDI</b> di bawah pengawasan <b>BAPPEBTI</b>.<br>
+ • <b>Transaksi Margin:</b> Untuk kontrak Rp1.000 jt, investor cukup menyetor <b>margin</b> awal (mis. 10% = Rp100 jt). Laba/rugi dihitung setiap hari; bila saldo turun menyentuh <b>maintenance margin</b>, muncul <b>margin call</b> (wajib tambah dana atau tutup kontrak).
+ </div>
+
+ <div class="numh">1. Lindung Nilai (Hedging) dengan Futures</div>
+ <p>Tiga aturan pembeda motif: (a) punya aset + kontrak derivatif <b>berlawanan arah</b> = <b>lindung nilai (<i>hedging</i>)</b>; (b) punya aset + kontrak <b>searah</b> = <b>spekulatif</b>; (c) tanpa aset + masuk derivatif = <b>pasti spekulatif</b>.</p>
+ <ul class="exp">
+ <li><span class="term">Contoh Eksportir (Pak Jokowi — Piutang Ekspor $1 juta)</span> — Khawatir kurs turun: masuk kontrak <b>short futures</b> @Rp10.000/$ → berapa pun kurs aktual (Rp8.000 s.d. Rp12.000/$), penerimaan bersih terkunci pasti di <b>Rp10 miliar</b> (fokus tinggal menekan biaya produksi). Jika ambil <i>long</i>, justru jadi spekulatif (penerimaan berayun Rp6 M – Rp14 M).</li>
+ <li><span class="term">Contoh Importir (Pak Basuki — Utang Impor Mesin $1 juta)</span> — Khawatir kurs naik: masuk kontrak <b>long futures</b> @Rp10.000/$ → total pembayaran terkunci pasti di <b>Rp10 miliar</b> (fokus tinggal menetapkan harga jual produk).</li>
+ <li><span class="term">Kotak 3 · Cokelat Monggo Mencari Harga</span> — Industri hilir kakao Indonesia rentan lonjakan harga kakao global karena harga belum dikendalikan domestik; instrumen berjangka membantu mengunci biaya bahan baku.</li>
+ </ul>
+
+ <div class="numh">2. Estimasi Harga Wajar Future (Spot–Futures Parity Theorem)</div>
+ <p>Jika investor ZZ memegang saham AAA ($S_0=1.000$, dividen Rp100) sambil masuk <i>short futures</i> Rp1.000, payoff akhir selalu pasti Rp1.100 di segala skenario harga saham. Karena bebas risiko, imbal hasilnya wajib sama dengan $r_f$, melahirkan <b>Spot–Futures Parity Theorem</b>:</p>
+ <div class="eqbox">
+ \[F_0 = S_0(1 + r_f) - \text{Div} = S_0(1 + r_f - d)\]
+ </div>
+ <div class="fguide">
+ <div class="fg-head">Bedah Variabel &amp; Intisari Formula Spot–Futures Parity</div>
+ <ul>
+ <li><b>$F_0$</b> = harga teoritis wajar kontrak <i>futures</i>; <b>$S_0$</b> = harga spot saham hari ini; <b>$r_f$</b> = suku bunga bebas risiko; <b>$\text{Div}$</b> = dividen tunai selama masa kontrak; <b>$d = \text{Div}/S_0$</b> = <i>dividend yield</i>.</li>
+ <li><b>Makna formula:</b> Harga wajar <i>futures</i> sama dengan harga spot ditambah biaya bunga bebas risiko ($r_f$) dikurangi dividen yang tidak diterima pemegang kontrak <i>futures</i>.</li>
+ </ul>
+ <div class="fg-core">
+ <div>🧭 <b>Filosofis:</b> Membeli lewat <i>futures</i> menunda keluarnya uang (hemat bunga $r_f$) tetapi merelakan dividen—harga wajar <i>futures</i> wajib menyeimbangkan kedua efek ini agar tidak ada untung bebas risiko.</div>
+ <div>📏 <b>Mengukur:</b> Harga ekuilibrium wajar kontrak <i>futures</i> dibandingkan kuotasi aktual di bursa.</div>
+ <div>🎯 <b>Manfaat:</b> Contoh buku (<b>Saham YY</b>: $S_0=10.000, \text{Div}=100, r_f=10\% \implies F_0 = \mathbf{10.900}$): jika kontrak aktual <b>Rp12.000</b> (terlalu mahal), pinjam Rp10.000 + beli saham + <i>short futures</i> → <b>laba arbitrase +Rp1.100</b>; jika aktual <b>Rp10.500</b> (terlalu murah), <i>short sale</i> saham Rp10.000 + pinjamkan di $r_f$ + <i>long futures</i> → <b>laba arbitrase +Rp400</b> (tanpa keluar kas awal!).</div>
+ </div>
+ </div>
+
+ <div class="numh">3. Lindung Nilai dengan SWAP</div>
+ <p><span class="term">SWAP</span> adalah perjanjian pertukaran aliran kas antara dua pihak (langsung atau melalui bank/<b>dealer SWAP</b>) guna mengubah kewajiban bunga tetap (<i>fixed</i>) menjadi mengambang (<i>floating</i>) atau sebaliknya sesuai karakter risiko dan proyeksi ekonomi perusahaan:</p>
+ <div class="casebox">
+ <span class="ctitle">Contoh Buku · Interest Rate SWAP (Notional Rp100 Miliar)</span>
+ • <b>PT A</b> (obligasi <i>fixed</i> 8% ingin <i>floating</i>): bayar SIBOR ke dealer, terima 7,5% dari dealer → tagihan akhir menjadi <b>SIBOR + 0,5% (floating)</b>.<br>
+ • <b>PT B</b> (obligasi <i>floating</i> SIBOR ingin <i>fixed</i>): bayar 8,5% ke dealer, terima SIBOR dari dealer → tagihan akhir menjadi <b>8,5% (fixed)</b>.<br>
+ • <b>Dealer SWAP</b>: menerima (SIBOR + 8,5%) dan membayar (7,5% + SIBOR) → <b>net revenue = 1%</b> dari notional (<b>Rp1 miliar</b>).
+ </div>
+ </div>
+
+ <!-- GLOSARIUM -->
+ <h2 class="section" id="glosarium"><span class="dot"></span>Glosarium Kilat</h2>
+ <div class="card">
+ <dl class="glossary">
+ <dt>Arbitrase (Zero Net Investment)</dt><dd>Strategi memanfaatkan ketimpangan harga pasar untuk meraih keuntungan pasti tanpa modal bersih dan tanpa risiko.</dd>
+ <dt>Black–Scholes &amp; Real Options</dt><dd>Model estimasi harga premi wajar opsi Eropa; <i>Real Options</i> menerapkan logika opsi <i>call</i> pada proyek nyata (R&amp;D, SDA, penetrasi pasar).</dd>
+ <dt>Call vs Put Option</dt><dd>Call memberi hak beli (untung bila $S_T &gt; X$); Put memberi hak jual (untung bila $S_T &lt; X$) atas aset acuan pada <i>strike price</i> ($X$).</dd>
+ <dt>Goods Settlement vs Cash Settlement</dt><dd>Penyelesaian kontrak berjangka dengan serah terima fisik komoditas vs penyelesaian selisih tunai.</dd>
+ <dt>Margin, Maintenance Margin, &amp; Margin Call</dt><dd>Setoran jaminan awal bursa berjangka, batas bawah saldo margin, dan panggilan tambah dana bila saldo jatuh di bawah batas pemeliharaan.</dd>
+ <dt>Put–Call Parity &amp; Spot–Futures Parity</dt><dd>Persamaan keseimbangan harga opsi ($P_0+S_0 = C_0 + X/(1+r_f)^T$) dan harga wajar futures ($F_0 = S_0(1+r_f) - \text{Div}$).</dd>
+ <dt>Short Sale</dt><dd>Penjualan saham pinjaman di awal dengan kewajiban membeli kembali saham tersebut saat jatuh tempo untuk dikembalikan.</dd>
+ <dt>SWAP</dt><dd>Kontrak pertukaran aliran kas (mis. bunga <i>fixed</i> vs <i>floating</i> SIBOR) melalui <i>dealer</i> untuk menyesuaikan profil risiko perusahaan.</dd>
+ </dl>
+ </div>
+</div>
+
+<footer><b>EKMA5205 — Manajemen Keuangan</b> · Modul 8: Manajemen Risiko dengan Derivatif<br>Bahan belajar ringkas untuk persiapan ujian (berdasarkan BMP UT Edisi 3, Dr. Said Kelana Asnawi, M.M.).</footer>
+
+<script>
+(function(){
+ var pb=document.getElementById('progress');
+ function onScroll(){var h=document.documentElement;var sc=h.scrollTop||document.body.scrollTop;var max=(h.scrollHeight-h.clientHeight)||1;pb.style.width=(sc/max*100)+'%';}
+ document.addEventListener('scroll',onScroll,{passive:true});onScroll();
+
+ var list=document.getElementById('conceptList');var items=[].slice.call(list.querySelectorAll('li'));var boxes=items.map(function(li){return li.querySelector('input');});
+ document.getElementById('totalCount').textContent=items.length;var doneEl=document.getElementById('doneCount');var KEY='studi_ekma5205_m8_concepts_v2';
+ function load(){try{var a=JSON.parse(localStorage.getItem(KEY)||'[]');boxes.forEach(function(b,i){if(a[i])b.checked=true;});}catch(e){}}
+ function save(){try{localStorage.setItem(KEY,JSON.stringify(boxes.map(function(b){return b.checked?1:0;})));}catch(e){}}
+ function refresh(){var n=0;items.forEach(function(li,i){if(boxes[i].checked){li.classList.add('done');n++;}else li.classList.remove('done');});doneEl.textContent=n;}
+ load();refresh();boxes.forEach(function(b){b.addEventListener('change',function(){refresh();save();});});
+ document.getElementById('resetBtn').addEventListener('click',function(){boxes.forEach(function(b){b.checked=false;});refresh();save();});
+
+ [].slice.call(document.querySelectorAll('[data-revealgroup]')).forEach(function(g){
+ var det=g.querySelector('[data-revealdetail]');if(!det){var sib=g.nextElementSibling;if(sib&&sib.hasAttribute&&sib.hasAttribute('data-revealdetail'))det=sib;}
+ var cells=[].slice.call(g.querySelectorAll('[data-reveal]'));
+ cells.forEach(function(c){c.addEventListener('click',function(){cells.forEach(function(x){x.classList.remove('active');});c.classList.add('active');if(det){det.innerHTML=c.getAttribute('data-detail');if(window.MathJax&&window.MathJax.typesetPromise)window.MathJax.typesetPromise([det]);}});});
+ });
+
+ (function(){
+ var ROWH=46,NODE_H=32,PAD=13,GAP=52;var COL={root:'#0f5e8f',kb1:'#1a86c7',kb2:'#e08a1e',kb3:'#2a9d6f'};
+ var mc=document.createElement('canvas').getContext('2d');mc.font='700 13px -apple-system,Segoe UI,Roboto,sans-serif';
+ function tw(t){return Math.ceil(mc.measureText(t).width);}function esc(t){return t.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');}
+ function rgba(hex,a){var h=hex.replace('#','');return 'rgba('+parseInt(h.substr(0,2),16)+','+parseInt(h.substr(2,2),16)+','+parseInt(h.substr(4,2),16)+','+a+')';}
+ var DATA={label:'MODUL 8 — Manajemen Risiko dengan Derivatif',color:COL.root,children:[
+ {label:'KB 1 · Derivatif Opsi',color:COL.kb1,children:[
+ {label:'A–B. Derivatif, Manajemen Risiko & 3 Jenis Derivatif'},
+ {label:'C–D. Opsi Call/Put, ITM/ATM/OTM & 4 Posisi (Long/Short)'},
+ {label:'E. Risiko Premi Hangus (Contoh Ronny)'},
+ {label:'F. 4 Strategi (Protective Put, Covered Call, Spreads, Straddle)'},
+ {label:'G. Put–Call Parity & Arbitrase Zero Net Investment'},
+ {label:'H. Black–Scholes & Real Options (R&D, SDA, Penetrasi Pasar)'}
+ ]},
+ {label:'KB 2 · Derivatif Futures',color:COL.kb2,children:[
+ {label:'A. Perbedaan Opsi (Hak/Premi) vs Futures/Forward (Kewajiban)'},
+ {label:'B. Payoff Simetris, Bursa Berjangka (BBJ/BKDI) & Margin Call'},
+ {label:'1. Lindung Nilai Eksportir (Short) vs Importir (Long)'},
+ {label:'2. Spot–Futures Parity & Arbitrase (Short Sale)'},
+ {label:'3. Lindung Nilai dengan SWAP (Fixed ↔ Floating)'}
+ ]}
+ ]};
+ var idc=0;(function w(n,c){n.id='n'+(idc++);n.color=n.color||c;(n.children||[]).forEach(function(k){w(k,n.color);});})(DATA,COL.root);
+ (function w(n,d){if(d>=2&&n.children&&n.children.length)n.collapsed=true;(n.children||[]).forEach(function(k){w(k,d+1);});})(DATA,0);
+ var host=document.getElementById('mindmap');
+ function render(){
+ var colW=[];(function w(n,d){var width=tw(n.label)+PAD*2+((n.children&&n.children.length)?20:0);colW[d]=Math.max(colW[d]||0,width);if(!n.collapsed)(n.children||[]).forEach(function(k){w(k,d+1);});})(DATA,0);
+ var colX=[],acc=14;for(var d=0;d<colW.length;d++){colX[d]=acc;acc+=colW[d]+GAP;}var row={v:0};
+ (function lay(n,d){if(!n.children||!n.children.length||n.collapsed){n._y=row.v*ROWH+ROWH/2+8;row.v++;return;}var f,l;n.children.forEach(function(k,i){lay(k,d+1);if(i===0)f=k._y;l=k._y;});n._y=(f+l)/2;})(DATA,0);
+ var totalW=acc,totalH=row.v*ROWH+24;var nodes=[],links=[];
+ (function col(n,d,p){n._x=colX[d];n._w=tw(n.label)+PAD*2+((n.children&&n.children.length)?20:0);nodes.push({n:n,d:d});if(p)links.push([p,n]);if(!n.collapsed)(n.children||[]).forEach(function(k){col(k,d+1,n);});})(DATA,0,null);
+ var s='<svg width="'+totalW+'" height="'+totalH+'" viewBox="0 0 '+totalW+' '+totalH+'" xmlns="http://www.w3.org/2000/svg">';
+ links.forEach(function(pr){var a=pr[0],b=pr[1],x1=a._x+a._w,y1=a._y,x2=b._x,y2=b._y,mx=(x1+x2)/2;s+='<path d="M'+x1+' '+y1+' C'+mx+' '+y1+' '+mx+' '+y2+' '+x2+' '+y2+'" fill="none" stroke="'+rgba(b.color,.5)+'" stroke-width="2"/>';});
+ nodes.forEach(function(o){var n=o.n,x=n._x,y=n._y-NODE_H/2,w=n._w,hk=n.children&&n.children.length;var fill=o.d===0?n.color:(o.d===1?rgba(n.color,.12):'#fff');var tf=o.d===0?'#fff':'#1c2733';
+ s+='<g data-id="'+n.id+'" style="cursor:'+(hk?'pointer':'default')+'"><rect x="'+x+'" y="'+y+'" rx="9" width="'+w+'" height="'+NODE_H+'" fill="'+fill+'" stroke="'+n.color+'" stroke-width="'+(o.d===0?0:1.6)+'"/><text x="'+(x+PAD)+'" y="'+(n._y+4)+'" font-size="13" font-weight="'+(o.d<=1?'700':'500')+'" fill="'+tf+'" font-family="-apple-system,Segoe UI,Roboto,sans-serif">'+esc(n.label)+'</text>';
+ if(hk){var cx=x+w-12,cy=n._y;s+='<circle cx="'+cx+'" cy="'+cy+'" r="8.5" fill="'+n.color+'"/><text x="'+cx+'" y="'+(cy+4.5)+'" font-size="13" font-weight="700" fill="#fff" text-anchor="middle" font-family="sans-serif">'+(n.collapsed?'+':'\u2013')+'</text>';}s+='</g>';});
+ s+='</svg>';host.innerHTML=s;
+ }
+ host.addEventListener('click',function(e){var g=e.target.closest('g[data-id]');if(!g)return;var id=g.getAttribute('data-id');(function f(n){if(n.id===id){if(n.children&&n.children.length)n.collapsed=!n.collapsed;return true;}return (n.children||[]).some(f);})(DATA);render();});
+ document.getElementById('mmExpand').addEventListener('click',function(){(function w(n){if(n.children)n.collapsed=false;(n.children||[]).forEach(w);})(DATA);render();});
+ document.getElementById('mmCollapse').addEventListener('click',function(){(function w(n,d){if(d>=1&&n.children&&n.children.length)n.collapsed=true;(n.children||[]).forEach(function(k){w(k,d+1);});})(DATA,0);render();});
+ render();
+ })();
+
+ function drawCartesian(hostId, cfg){
+ var host=document.getElementById(hostId);if(!host)return;
+ var W=cfg.w||680,H=cfg.h||300,P={t:24,r:28,b:44,l:58};
+ var pw=W-P.l-P.r,ph=H-P.t-P.b;
+ var x0=cfg.xmin,x1=cfg.xmax,y0=cfg.ymin,y1=cfg.ymax;
+ function sx(x){return P.l+(x-x0)/(x1-x0)*pw;}
+ function sy(y){return P.t+ph-(y-y0)/(y1-y0)*ph;}
+ function esc(t){return String(t).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');}
+ var s='<svg viewBox="0 0 '+W+' '+H+'" width="'+W+'" height="'+H+'" xmlns="http://www.w3.org/2000/svg">';
+ s+='<rect x="'+P.l+'" y="'+P.t+'" width="'+pw+'" height="'+ph+'" fill="#fff" stroke="#e4e9f0"/>';
+ var xticks=cfg.xticks||5,yticks=cfg.yticks||5;
+ for(var i=0;i<=xticks;i++){var xv=x0+(x1-x0)*i/xticks,px=sx(xv);s+='<line x1="'+px.toFixed(1)+'" y1="'+P.t+'" x2="'+px.toFixed(1)+'" y2="'+(P.t+ph)+'" stroke="#eef2f6" stroke-width="1"/>';var xl=cfg.xfmt?cfg.xfmt(xv):(Math.round(xv*100)/100);s+='<text x="'+px.toFixed(1)+'" y="'+(P.t+ph+16)+'" text-anchor="middle" font-size="11" fill="#5c6b7a" font-family="-apple-system,Segoe UI,sans-serif">'+esc(xl)+'</text>';}
+ for(var j=0;j<=yticks;j++){var yv=y0+(y1-y0)*j/yticks,py=sy(yv);s+='<line x1="'+P.l+'" y1="'+py.toFixed(1)+'" x2="'+(P.l+pw)+'" y2="'+py.toFixed(1)+'" stroke="#eef2f6" stroke-width="1"/>';var yl=cfg.yfmt?cfg.yfmt(yv):(Math.round(yv*100)/100);s+='<text x="'+(P.l-8)+'" y="'+(py+4).toFixed(1)+'" text-anchor="end" font-size="11" fill="#5c6b7a" font-family="-apple-system,Segoe UI,sans-serif">'+esc(yl)+'</text>';}
+ if(y0<0&&y1>0){var zy=sy(0);s+='<line x1="'+P.l+'" y1="'+zy.toFixed(1)+'" x2="'+(P.l+pw)+'" y2="'+zy.toFixed(1)+'" stroke="#94a3b8" stroke-width="1.3" stroke-dasharray="4 3"/>';}
+ if(x0<0&&x1>0){var zx=sx(0);s+='<line x1="'+zx.toFixed(1)+'" y1="'+P.t+'" x2="'+zx.toFixed(1)+'" y2="'+(P.t+ph)+'" stroke="#94a3b8" stroke-width="1.3" stroke-dasharray="4 3"/>';}
+ s+='<line x1="'+P.l+'" y1="'+(P.t+ph)+'" x2="'+(P.l+pw)+'" y2="'+(P.t+ph)+'" stroke="#64748b" stroke-width="1.5"/>';
+ s+='<line x1="'+P.l+'" y1="'+P.t+'" x2="'+P.l+'" y2="'+(P.t+ph)+'" stroke="#64748b" stroke-width="1.5"/>';
+ if(cfg.xlabel)s+='<text x="'+(P.l+pw/2)+'" y="'+(H-8)+'" text-anchor="middle" font-size="12" font-weight="700" fill="#1c2733" font-family="-apple-system,Segoe UI,sans-serif">'+esc(cfg.xlabel)+'</text>';
+ if(cfg.ylabel)s+='<text x="15" y="'+(P.t+ph/2)+'" text-anchor="middle" font-size="12" font-weight="700" fill="#1c2733" font-family="-apple-system,Segoe UI,sans-serif" transform="rotate(-90 15 '+(P.t+ph/2)+')">'+esc(cfg.ylabel)+'</text>';
+ (cfg.vlines||[]).forEach(function(vl){var px=sx(vl.x);s+='<line x1="'+px.toFixed(1)+'" y1="'+P.t+'" x2="'+px.toFixed(1)+'" y2="'+(P.t+ph)+'" stroke="'+(vl.color||'#94a3b8')+'" stroke-width="1.2" stroke-dasharray="5 4"/>';if(vl.label)s+='<text x="'+(px+4).toFixed(1)+'" y="'+(P.t+14)+'" font-size="10.5" font-weight="700" fill="'+(vl.color||'#475569')+'" font-family="-apple-system,Segoe UI,sans-serif">'+esc(vl.label)+'</text>';});
+ (cfg.hlines||[]).forEach(function(hl){var py=sy(hl.y);s+='<line x1="'+P.l+'" y1="'+py.toFixed(1)+'" x2="'+(P.l+pw)+'" y2="'+py.toFixed(1)+'" stroke="'+(hl.color||'#94a3b8')+'" stroke-width="1.2" stroke-dasharray="5 4"/>';if(hl.label)s+='<text x="'+(P.l+pw-4)+'" y="'+(py-5).toFixed(1)+'" text-anchor="end" font-size="10.5" font-weight="700" fill="'+(hl.color||'#475569')+'" font-family="-apple-system,Segoe UI,sans-serif">'+esc(hl.label)+'</text>';});
+ (cfg.series||[]).forEach(function(sr){var pts=sr.pts.map(function(p){return sx(p[0]).toFixed(1)+','+sy(p[1]).toFixed(1);}).join(' ');s+='<polyline fill="none" stroke="'+sr.color+'" stroke-width="'+(sr.w||2.5)+'"'+(sr.dash?' stroke-dasharray="'+sr.dash+'"':'')+' points="'+pts+'"/>';});
+ (cfg.markers||[]).forEach(function(mk){var cx=sx(mk.x),cy=sy(mk.y);s+='<circle cx="'+cx.toFixed(1)+'" cy="'+cy.toFixed(1)+'" r="4.8" fill="'+(mk.color||'#0f5e8f')+'" stroke="#fff" stroke-width="1.6"/>';var dx=mk.dx||8,dy=mk.dy||-8,anc=mk.anchor||'start';if(mk.label)s+='<text x="'+(cx+dx).toFixed(1)+'" y="'+(cy+dy).toFixed(1)+'" text-anchor="'+anc+'" font-size="11" font-weight="700" fill="'+(mk.color||'#0f5e8f')+'" font-family="-apple-system,Segoe UI,sans-serif">'+esc(mk.label)+'</text>';});
+ s+='</svg>';
+ var leg=(cfg.series&&cfg.series.length>1)?'<div class="chart-legend">'+cfg.series.map(function(sr){return '<span><i style="background:'+sr.color+';'+(sr.dash?'border-top:2px dashed '+sr.color+';background:none;height:0':'')+'"></i>'+esc(sr.name)+'</span>';}).join('')+'</div>':'';
+ host.innerHTML=s+leg;
+ }
+
+ (function(){
+ drawCartesian('ch_m8_opt',{
+ xmin:500,xmax:1500,ymin:-500,ymax:500,xticks:5,yticks:4,
+ xlabel:'Harga Saham saat Jatuh Tempo ST (Rp)',ylabel:'Payoff Opsi (Rp)',
+ vlines:[{x:1000,label:'Strike X = 1.000',color:'#64748b'}],
+ series:[
+ {name:'Long Call: max(ST − X, 0)',color:'#1a86c7',pts:[[500,0],[1000,0],[1500,500]]},
+ {name:'Long Put: max(X − ST, 0)',color:'#2a9d6f',pts:[[500,500],[1000,0],[1500,0]]},
+ {name:'Short Call: −max(ST − X, 0)',color:'#c75b7a',dash:'5 4',pts:[[500,0],[1000,0],[1500,-500]]},
+ {name:'Short Put: −max(X − ST, 0)',color:'#e08a1e',dash:'5 4',pts:[[500,-500],[1000,0],[1500,0]]}
+ ]
+ });
+ drawCartesian('ch_m8_strat',{
+ xmin:500,xmax:1500,ymin:400,ymax:1600,xticks:5,yticks:4,
+ xlabel:'Harga Saham saat Jatuh Tempo ST (Rp)',ylabel:'Total Payoff Portofolio (Rp)',
+ vlines:[{x:1000,label:'Strike X = 1.000',color:'#64748b'}],
+ series:[
+ {name:'Protective Put (Saham + Long Put)',color:'#1a86c7',w:2.8,pts:[[500,1000],[1000,1000],[1500,1500]]},
+ {name:'Covered Call (Saham + Short Call)',color:'#e08a1e',w:2.8,pts:[[500,500],[1000,1000],[1500,1000]]},
+ {name:'Saham Saja (ST)',color:'#94a3b8',dash:'4 4',pts:[[500,500],[1500,1500]]}
+ ],
+ markers:[{x:1000,y:1000,label:'Titik X (1.000)',color:'#0f5e8f',dx:8,dy:-10}]
+ });
+ drawCartesian('ch_m8_fut',{
+ xmin:5000,xmax:15000,ymin:-5000,ymax:5000,xticks:5,yticks:4,
+ xlabel:'Harga Aktual saat Jatuh Tempo ST (Rp)',ylabel:'Payoff Futures (Rp)',
+ vlines:[{x:10000,label:'Harga Kontrak F = 10.000',color:'#64748b'}],
+ series:[
+ {name:'Long Futures (ST − F)',color:'#1a86c7',pts:[[5000,-5000],[10000,0],[15000,5000]]},
+ {name:'Short Futures (F − ST)',color:'#e08a1e',pts:[[5000,5000],[10000,0],[15000,-5000]]}
+ ]
+ });
+ })();
+
+ window.addEventListener('load',function(){setTimeout(function(){if(window.MathJax&&window.MathJax.typesetPromise)window.MathJax.typesetPromise();},400);});
+})();
+</script></body></html>

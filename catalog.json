@@ -1,0 +1,274 @@
+{
+  "appTitle": "Modul S2 MM — UT",
+  "appSubtitle": "Ringkasan BMP Magister Manajemen Universitas Terbuka (Edisi 3)",
+  "courses": [
+    {
+      "id": "ekma5205",
+      "code": "EKMA5205",
+      "folder": "01 Manajemen Keuangan",
+      "title": "Manajemen Keuangan",
+      "author": "Dr. Said Kelana Asnawi, M.M.",
+      "sks": 3,
+      "color": "#0f5e8f",
+      "accent": "#1a86c7",
+      "icon": "💰",
+      "modules": [
+        {
+          "num": 1,
+          "file": "Modul_1_Pengantar_Manajemen_Keuangan.html",
+          "title": "Pengantar Manajemen Keuangan",
+          "topics": "Konsep 3M, 3 keputusan keuangan, agency problems, pasar keuangan, laporan keuangan, arus kas & FCF, rasio & DuPont ROE"
+        },
+        {
+          "num": 2,
+          "file": "Modul_2_Pengantar_Valuasi_dan_Keputusan_Investasi.html",
+          "title": "Pengantar Valuasi dan Keputusan Investasi",
+          "topics": "Nilai waktu uang (PV/FV, EAR, amortisasi, perpetuity), penganggaran modal (NPV, IRR, PI, AAR, cross rate)"
+        },
+        {
+          "num": 3,
+          "file": "Modul_3_Risiko_dan_Biaya_Modal.html",
+          "title": "Risiko dan Biaya Modal",
+          "topics": "Imbalan & risiko aset tunggal, diversifikasi portofolio, CAPM, Multifaktor/APT, Fama-French, biaya modal & WACC"
+        },
+        {
+          "num": 4,
+          "file": "Modul_4_Valuasi.html",
+          "title": "Valuasi",
+          "topics": "Substansi valuasi, valuasi obligasi (ZCB, YTM, durasi, Altman Z-Score), valuasi saham (DDM, PVGO, FCFF/FCFE, EVA)"
+        },
+        {
+          "num": 5,
+          "file": "Modul_5_Pembiayaan_Jangka_Pendek.html",
+          "title": "Pembiayaan Jangka Pendek",
+          "topics": "Manajemen modal kerja, kas, piutang, persediaan, dan sumber pembiayaan jangka pendek"
+        },
+        {
+          "num": 6,
+          "file": "Modul_6_Teori_Struktur_Modal.html",
+          "title": "Teori Struktur Modal",
+          "topics": "Modigliani-Miller (MM), trade-off theory, pecking order, biaya kebangkrutan & struktur modal optimal"
+        },
+        {
+          "num": 7,
+          "file": "Modul_7_Pembiayaan_Jangka_Panjang.html",
+          "title": "Pembiayaan Jangka Panjang",
+          "topics": "Penerbitan saham (IPO/right issue), obligasi jangka panjang, leasing, dan instrumen hibrida"
+        },
+        {
+          "num": 8,
+          "file": "Modul_8_Manajemen_Risiko_dengan_Derivatif.html",
+          "title": "Manajemen Risiko dengan Derivatif",
+          "topics": "Forward, futures, options (call/put, Black-Scholes), swaps, dan strategi lindung nilai (hedging)"
+        },
+        {
+          "num": 9,
+          "file": "Modul_9_Merger_dan_Akuisisi.html",
+          "title": "Merger dan Akuisisi",
+          "topics": "Motif & sinergi M&A, valuasi target, metode pembayaran, taktik pertahanan takeover, dan restrukturisasi"
+        }
+      ]
+    },
+    {
+      "id": "ekma5206",
+      "code": "EKMA5206",
+      "folder": "02 Manajemen Pemasaran",
+      "title": "Manajemen Pemasaran",
+      "author": "Dr. Ir. FX. Bambang Wiharto, M.M.",
+      "sks": 3,
+      "color": "#b45309",
+      "accent": "#e08a1e",
+      "icon": "📣",
+      "modules": [
+        {
+          "num": 1,
+          "file": "Modul_1_Manajemen_Pemasaran.html",
+          "title": "Manajemen Pemasaran, Lingkungan dan Strategi Pemasaran",
+          "topics": "Konsep dasar, STP, 9 societal forces, holistic marketing, BCG, Ansoff, 4P, lingkungan global"
+        },
+        {
+          "num": 2,
+          "file": "Modul_2_Peluang_Pasar_dan_Nilai_Pelanggan.html",
+          "title": "Peluang Pasar, Kepuasan, Loyalitas, Nilai Pelanggan & Analisis Pasar",
+          "topics": "CPV, CLV, kepuasan & loyalitas, CRM, perilaku konsumen & pasar bisnis, analisis pasar"
+        },
+        {
+          "num": 3,
+          "file": "Modul_3_Ekuitas_Merek_Positioning_Persaingan.html",
+          "title": "Ekuitas Merek, Positioning dan Persaingan",
+          "topics": "Brand equity, membangun & mengukur merek, diferensiasi, positioning, strategi persaingan"
+        },
+        {
+          "num": 4,
+          "file": "Modul_4_Strategi_Produk_Jasa_Harga.html",
+          "title": "Strategi Pengembangan Produk dan Jasa serta Strategi Harga",
+          "topics": "Karakteristik produk, manajemen jasa & kualitas layanan, strategi penetapan harga"
+        },
+        {
+          "num": 5,
+          "file": "Modul_5_Membangun_Program_Pemasaran_Strategic.html",
+          "title": "Membangun Program Pemasaran Strategic",
+          "topics": "Pengembangan program pemasaran terpadu, inovasi produk baru, siklus hidup produk (PLC)"
+        },
+        {
+          "num": 6,
+          "file": "Modul_6_Menyerahkan_Nilai_Pelanggan.html",
+          "title": "Menyerahkan Nilai Pelanggan",
+          "topics": "Saluran distribusi, ritel, grosir, logistik pasar, dan manajemen rantai nilai"
+        },
+        {
+          "num": 7,
+          "file": "Modul_7_Mengkomunikasikan_Nilai_Pelanggan.html",
+          "title": "Mengkomunikasikan Nilai Pelanggan",
+          "topics": "Integrated Marketing Communications (IMC), periklanan, promosi, PR, pemasaran digital & personal selling"
+        },
+        {
+          "num": 8,
+          "file": "Modul_8_Strategi_Pemasaran_Situasi_Tertentu.html",
+          "title": "Strategi Pemasaran untuk Situasi Tertentu",
+          "topics": "Pemasaran di pasar global, ekonomi dinamis, dan konteks industri spesifik"
+        },
+        {
+          "num": 9,
+          "file": "Modul_9_Organisasi_Fungsi_Pemasaran_Efektif.html",
+          "title": "Organisasi Fungsi Pemasaran yang Efektif",
+          "topics": "Organisasi pemasaran, pemasaran internal, evaluasi & kontrol pemasaran, audit pemasaran"
+        }
+      ]
+    },
+    {
+      "id": "ekma5207",
+      "code": "EKMA5207",
+      "folder": "03 Manajemen SDM",
+      "title": "Manajemen Sumber Daya Manusia",
+      "author": "Prof. Dr. Mutiara Sibarani Panggabean, S.E., M.E.",
+      "sks": 3,
+      "color": "#047857",
+      "accent": "#2a9d6f",
+      "icon": "👥",
+      "modules": [
+        {
+          "num": 1,
+          "file": "Modul_1_Sifat_Dasar_Manajemen_SDM.html",
+          "title": "Sifat Dasar Manajemen Sumber Daya Manusia",
+          "topics": "Hakikat, peran, kompetensi, tantangan MSDM, peran strategis SDM, etika bisnis & CSR"
+        },
+        {
+          "num": 2,
+          "file": "Modul_2_Perencanaan_SDM.html",
+          "title": "Perencanaan Sumber Daya Manusia",
+          "topics": "Aliran kerja, struktur organisasi, analisis jabatan (PAQ/FJAS/KJI), Matriks Transisi, outsourcing UU 13/2003, AAP"
+        },
+        {
+          "num": 3,
+          "file": "Modul_3_Pengadaan_SDM.html",
+          "title": "Pengadaan Sumber Daya Manusia",
+          "topics": "Kebijakan & sumber rekrutmen, 9 langkah & 7 metode seleksi, orientasi, promosi, transfer & demosi"
+        },
+        {
+          "num": 4,
+          "file": "Modul_4_Manajemen_Kinerja_dan_Pengembangan_Karier.html",
+          "title": "Manajemen Kinerja dan Pengembangan Karier",
+          "topics": "Sistem penilaian kinerja, metode evaluasi, umpan balik, perencanaan & jalur pengembangan karier"
+        },
+        {
+          "num": 5,
+          "file": "Modul_5_Pelatihan_dan_Pengembangan_Karyawan.html",
+          "title": "Pelatihan dan Pengembangan Karyawan",
+          "topics": "Analisis kebutuhan pelatihan (TNA), desain & metode pelatihan, evaluasi efektivitas (Kirkpatrick)"
+        },
+        {
+          "num": 6,
+          "file": "Modul_6_Kompensasi.html",
+          "title": "Kompensasi",
+          "topics": "Struktur upah & gaji, evaluasi jabatan, insentif berbasis kinerja, tunjangan & keadilan kompensasi"
+        },
+        {
+          "num": 7,
+          "file": "Modul_7_Keselamatan_dan_Kesehatan_Karyawan.html",
+          "title": "Keselamatan dan Kesehatan Karyawan",
+          "topics": "Program K3, pencegahan kecelakaan kerja, stres kerja, kesehatan mental & lingkungan kerja aman"
+        },
+        {
+          "num": 8,
+          "file": "Modul_8_Perundingan_Kolektif_dan_Hubungan_Ketenagakerjaan.html",
+          "title": "Perundingan Kolektif dan Hubungan Ketenagakerjaan",
+          "topics": "Serikat pekerja, perjanjian kerja bersama (PKB), penyelesaian perselisihan hubungan industrial"
+        },
+        {
+          "num": 9,
+          "file": "Modul_9_Riset_Manajemen_SDM.html",
+          "title": "Riset Manajemen Sumber Daya Manusia",
+          "topics": "Metodologi riset SDM, audit SDM, analitik SDM & pengukuran kontribusi SDM terhadap kinerja"
+        }
+      ]
+    },
+    {
+      "id": "ekma5104",
+      "code": "EKMA5104",
+      "folder": "04 Metode Penelitian Bisnis",
+      "title": "Metode Penelitian Bisnis",
+      "author": "Dr. Lerbin Roberto Aritonang R., M.M.",
+      "sks": 3,
+      "color": "#5b21b6",
+      "accent": "#7a5cc0",
+      "icon": "🔬",
+      "modules": [
+        {
+          "num": 1,
+          "file": "Modul_1_Pengertian_dan_Proses_Penelitian_Bisnis.html",
+          "title": "Pengertian dan Proses Penelitian Bisnis",
+          "topics": "Hakikat kebenaran & penelitian ilmiah, jenis penelitian, postulat ilmu, benang merah & 13 tahap riset"
+        },
+        {
+          "num": 2,
+          "file": "Modul_2_Metode_Statistik.html",
+          "title": "Metode Statistik",
+          "topics": "Skala pengukuran, deskriptif, distribusi normal Z/t/F/chi-square, SEM, uji hipotesis, ANOVA, korelasi & regresi"
+        },
+        {
+          "num": 3,
+          "file": "Modul_3_Masalah_Teori_Penelitian_Relevan_Kerangka_Hipotesis_Literatur.html",
+          "title": "Masalah, Teori, Penelitian Relevan, Kerangka Pemikiran, Hipotesis & Literatur",
+          "topics": "Perumusan masalah, teori, kerangka pemikiran, hipotesis, dan penelaahan literatur ilmiah"
+        },
+        {
+          "num": 4,
+          "file": "Modul_4_Desain_Penelitian.html",
+          "title": "Desain Penelitian",
+          "topics": "Klasifikasi desain penelitian bisnis, desain eksperimen, kontrol variansi, validitas internal & eksternal"
+        },
+        {
+          "num": 5,
+          "file": "Modul_5_Subyek_Penelitian.html",
+          "title": "Subyek Penelitian",
+          "topics": "Populasi & sampel, teknik probability vs non-probability sampling, penentuan ukuran sampel"
+        },
+        {
+          "num": 6,
+          "file": "Modul_6_Operasionalisasi_Variabel_Validitas_Reliabilitas.html",
+          "title": "Operasionalisasi Variabel serta Validitas dan Reliabilitas Instrumen",
+          "topics": "Definisi operasional, pengujian validitas (isi, konstruk, kriteria) & reliabilitas (Alpha Cronbach)"
+        },
+        {
+          "num": 7,
+          "file": "Modul_7_Kuesioner_dan_Skala_Sikap.html",
+          "title": "Kuesioner dan Skala Sikap",
+          "topics": "Perancangan kuesioner, skala Likert, Semantic Differential, Guttman, Thurstone, dan uji coba instrumen"
+        },
+        {
+          "num": 8,
+          "file": "Modul_8_Observasi_Wawancara_dan_Lain_Lain.html",
+          "title": "Observasi, Wawancara, dan Lain-Lain",
+          "topics": "Teknik observasi, wawancara terstruktur/mendalam, data sekunder, dan triangulasi pengumpulan data"
+        },
+        {
+          "num": 9,
+          "file": "Modul_9_Proposal_dan_Laporan_Penelitian.html",
+          "title": "Proposal dan Laporan Penelitian",
+          "topics": "Sistematika proposal tesis/riset, penulisan laporan ilmiah, sitasi & etika publikasi"
+        }
+      ]
+    }
+  ]
+}

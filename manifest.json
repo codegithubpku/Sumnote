@@ -1,0 +1,24 @@
+{
+  "name": "Modul S2 MM \u2014 Universitas Terbuka",
+  "short_name": "Modul MM UT",
+  "description": "Ringkasan belajar interaktif offline untuk S2 Magister Manajemen UT (EKMA5205, EKMA5206, EKMA5207, EKMA5104)",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "orientation": "portrait-primary",
+  "background_color": "#f1f5f9",
+  "theme_color": "#0f5e8f",
+  "icons": [
+    {
+      "src": "icons/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "icons/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}

@@ -1,0 +1,627 @@
+<!DOCTYPE html>
+<html lang="id"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Modul 4 — Valuasi | EKMA5205</title>
+<script>window.MathJax={tex:{inlineMath:[['$','$']],displayMath:[['\\[','\\]'],['$$','$$']]},svg:{fontCache:'global'},startup:{typeset:true}};</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js" async></script>
+<style>
+:root{--bg:#f4f6f9;--panel:#fff;--ink:#1c2733;--muted:#5c6b7a;--line:#e4e9f0;--brand:#1a86c7;--brand-dark:#0f5e8f;--brand-soft:#e7f3fb;--kb1:#1a86c7;--kb2:#e08a1e;--kb3:#2a9d6f;--kb4:#7a5cc0;--kb5:#c75b7a;--radius:14px;--shadow:0 1px 2px rgba(16,42,67,.06),0 6px 20px rgba(16,42,67,.06);--maxw:900px}
+*{box-sizing:border-box}html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;line-height:1.72}
+#progress{position:fixed;top:0;left:0;height:4px;width:0;background:linear-gradient(90deg,var(--brand),#53c0ec);z-index:200;transition:width .1s}
+header.top{position:sticky;top:0;z-index:100;background:rgba(255,255,255,.92);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+.top-in{max-width:var(--maxw);margin:0 auto;padding:10px 20px;display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+.badge{background:var(--brand);color:#fff;font-weight:700;font-size:.72rem;letter-spacing:.5px;padding:4px 10px;border-radius:999px}
+.homebtn{text-decoration:none;display:inline-flex;align-items:center;gap:7px;background:var(--brand);color:#fff;font-weight:700;font-size:.8rem;padding:7px 15px;border-radius:999px;box-shadow:0 2px 6px rgba(16,42,67,.22);line-height:1}
+.top-title{font-size:.9rem;font-weight:600;color:var(--muted)}
+nav.jump{margin-left:auto;display:flex;gap:4px;flex-wrap:wrap}
+nav.jump a{font-size:.78rem;color:var(--muted);text-decoration:none;padding:5px 10px;border-radius:8px}
+nav.jump a:hover{background:var(--brand-soft);color:var(--brand-dark)}
+.wrap{max-width:var(--maxw);margin:0 auto;padding:0 20px 90px}
+.hero{margin-top:26px;padding:30px 28px;border-radius:var(--radius);color:#fff;background:linear-gradient(135deg,#0f5e8f,#1a86c7 60%,#2fa4df);box-shadow:var(--shadow);position:relative;overflow:hidden}
+.hero .eyebrow{font-size:.78rem;letter-spacing:1.5px;text-transform:uppercase;opacity:.9;font-weight:600}
+.hero h1{margin:.3em 0 .25em;font-size:1.62rem;line-height:1.25;max-width:90%}
+.hero .meta{display:flex;gap:18px;flex-wrap:wrap;font-size:.84rem;opacity:.95;margin-top:10px}
+h2.section{font-size:1.3rem;margin:48px 0 4px;display:flex;align-items:center;gap:10px;scroll-margin-top:70px}
+h2.section .dot{width:10px;height:22px;border-radius:4px;background:var(--brand)}
+.section-sub{color:var(--muted);font-size:.9rem;margin:0 0 18px}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);padding:22px 24px;margin:16px 0;--dot:var(--brand)}
+.concepts{list-style:none;margin:0;padding:0;display:grid;gap:10px}
+.concepts li{display:flex;gap:12px;align-items:flex-start;padding:12px 14px;border:1px solid var(--line);border-radius:10px;background:#fcfdff}
+.concepts input{margin-top:4px;width:18px;height:18px;accent-color:var(--brand);flex:none;cursor:pointer}
+.concepts .ct{font-weight:600}.concepts .cd{display:block;font-weight:400;color:var(--muted);font-size:.86rem;margin-top:2px}
+.concepts li.done{background:var(--brand-soft);border-color:#bfe0f3}.concepts li.done .ct{text-decoration:line-through;opacity:.65}
+.cl-head{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-bottom:6px}
+.cl-head .count{font-size:.82rem;color:var(--muted);background:var(--brand-soft);padding:3px 10px;border-radius:999px;font-weight:600}
+.btn-reset{font-size:.78rem;border:1px solid var(--line);background:#fff;color:var(--muted);padding:5px 12px;border-radius:8px;cursor:pointer}
+.mm-toolbar{display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin-bottom:10px}
+.mm-btn{font-size:.78rem;border:1px solid var(--line);background:#fff;padding:6px 13px;border-radius:8px;cursor:pointer;color:var(--brand-dark);font-weight:600}
+.mindmap-host{height:580px;overflow:auto;border:1px solid var(--line);border-radius:10px;background:#fcfdff}.mindmap-host svg{display:block}
+.kb-tag{display:inline-flex;align-items:center;gap:8px;font-size:.78rem;font-weight:700;color:#fff;padding:5px 12px;border-radius:999px;margin-bottom:6px}
+.kb1t{background:var(--kb1)}.kb2t{background:var(--kb2)}.kb3t{background:var(--kb3)}.kb4t{background:var(--kb4)}.kb5t{background:var(--kb5)}
+.kb1b{--dot:var(--kb1)}.kb2b{--dot:var(--kb2)}.kb3b{--dot:var(--kb3)}.kb4b{--dot:var(--kb4)}.kb5b{--dot:var(--kb5)}
+.lead{font-size:1.02rem}.term{font-weight:700;color:var(--dot)}.en{font-style:italic;color:var(--muted);font-weight:500}
+.abc{display:flex;align-items:center;gap:10px;margin:28px 0 10px;padding-bottom:6px;border-bottom:2px solid color-mix(in srgb,var(--dot) 18%,#fff)}
+.abc .ltr{background:var(--dot);color:#fff;font-weight:800;min-width:30px;height:30px;padding:0 7px;border-radius:8px;display:grid;place-items:center;flex:none}
+.abc h4{margin:0;font-size:1.06rem;color:var(--dot)}
+.numh{font-weight:700;color:var(--dot);margin:22px 0 4px;font-size:1rem}
+.leth{font-weight:800;color:var(--dot);margin:20px 0 6px;font-size:.98rem;border-left:3px solid var(--dot);padding-left:10px}
+ol.book{margin:12px 0;padding-left:28px}ol.book>li{margin:10px 0;padding-left:6px}ol.book>li::marker{font-weight:700;color:var(--dot)}
+ul.exp{list-style:none;margin:12px 0;padding:0;display:grid;gap:10px}ul.exp>li{position:relative;padding-left:20px}
+ul.exp>li::before{content:"";position:absolute;left:0;top:11px;width:8px;height:8px;border-radius:2px;background:var(--dot)}
+ul.let{list-style:lower-alpha;margin:10px 0;padding-left:28px}ul.let>li{margin:8px 0;padding-left:4px}ul.let>li::marker{color:var(--dot);font-weight:700}
+.flow{border-left:4px solid var(--dot);background:color-mix(in srgb,var(--dot) 9%,#fff);padding:11px 15px;border-radius:0 10px 10px 0;margin:18px 0;font-size:.9rem}
+.flow::before{content:"🔗 Benang merah — ";font-weight:700;color:var(--dot)}.flow b{color:var(--dot)}
+table.mini{width:100%;border-collapse:collapse;margin:14px 0;font-size:.86rem}
+table.mini th,table.mini td{border:1px solid var(--line);padding:9px 11px;text-align:left;vertical-align:top}
+table.mini th{background:color-mix(in srgb,var(--dot) 12%,#fff);color:var(--dot);font-weight:700}
+.rgrid{display:grid;gap:8px;margin:14px 0}.rgrid.c2{grid-template-columns:repeat(2,1fr)}.rgrid.c3{grid-template-columns:repeat(3,1fr)}.rgrid.c4{grid-template-columns:repeat(4,1fr)}
+.rcell{border:1px solid var(--line);border-radius:10px;padding:11px 13px;cursor:pointer;background:#fff;display:flex;gap:10px;align-items:flex-start;transition:.15s}
+.rcell:hover{border-color:var(--dot);box-shadow:var(--shadow);transform:translateY(-2px)}
+.rcell.active{border-color:var(--dot);background:color-mix(in srgb,var(--dot) 8%,#fff)}
+.rcell .stepnum{background:var(--dot);color:#fff;font-weight:700;min-width:24px;height:24px;border-radius:7px;display:grid;place-items:center;flex:none;font-size:.82rem}
+.rcell .rt{font-weight:700;font-size:.9rem;color:var(--dot);display:block}.rcell .rp{font-size:.78rem;color:var(--muted);display:block;margin-top:2px}
+.rdetail{font-size:.88rem;border-left:4px solid var(--dot);background:color-mix(in srgb,var(--dot) 8%,#fff);border-radius:0 10px 10px 0;padding:12px 15px;margin-top:6px}
+.flowchart{display:flex;align-items:center;gap:6px;flex-wrap:wrap;margin:16px 0;justify-content:center}
+.fc-node{background:color-mix(in srgb,var(--dot) 12%,#fff);border:1.5px solid var(--dot);color:var(--dot);font-weight:700;font-size:.8rem;padding:8px 12px;border-radius:9px;text-align:center}
+.fc-arrow{color:var(--dot);font-weight:800;font-size:1.05rem}
+.eqbox{background:#fcfdff;border:1px solid var(--line);border-radius:10px;padding:8px 14px;margin:14px 0;overflow-x:auto}
+.glossary dt{font-weight:700;color:var(--brand-dark);margin-top:10px}.glossary dd{margin:0 0 2px;color:var(--muted);font-size:.9rem}
+footer{max-width:var(--maxw);margin:0 auto;padding:30px 20px 60px;color:var(--muted);font-size:.82rem;border-top:1px solid var(--line)}
+.offline-note{font-size:.76rem;color:var(--muted);background:#fff8e6;border:1px solid #f0e2b8;border-radius:8px;padding:8px 12px;margin:10px 0}
+.casebox{background:#f8fafc;border:1px solid var(--line);border-left:4px solid var(--dot);border-radius:0 10px 10px 0;padding:12px 15px;margin:14px 0;font-size:.88rem}
+.casebox .ctitle{font-weight:700;color:var(--dot);margin-bottom:4px;display:block}
+
+.chart-wrap{background:#fcfdff;border:1px solid var(--line);border-radius:12px;padding:14px 16px;margin:16px 0}
+.chart-title{font-weight:700;font-size:.9rem;color:var(--dot);margin:0 0 4px}
+.chart-sub{font-size:.78rem;color:var(--muted);margin:0 0 10px}
+.chart-host{width:100%;overflow-x:auto;position:relative}
+.chart-host svg{display:block;max-width:100%;height:auto;margin:0 auto}
+.chart-legend{display:flex;gap:14px;flex-wrap:wrap;justify-content:center;margin-top:8px;font-size:.78rem;color:var(--muted)}
+.chart-legend span{display:inline-flex;align-items:center;gap:6px}
+.chart-legend i{display:inline-block;width:14px;height:3px;border-radius:2px}
+@media(max-width:640px){.hero h1{font-size:1.3rem;max-width:100%}nav.jump{display:none}.rgrid.c2,.rgrid.c3,.rgrid.c4{grid-template-columns:1fr}.mindmap-host{height:440px}}
+
+/* GLOBAL RESPONSIVE & OVERFLOW PROTECTION */
+.card{overflow-x:clip;overflow-wrap:break-word;word-wrap:break-word}
+ul.exp,.concepts{grid-template-columns:minmax(0,1fr)}
+ul.exp>li,.concepts li,.concepts li>span,.rcell,.rcell>span,.bs-col,.casebox,.rdetail,.flow{min-width:0;max-width:100%;overflow-wrap:break-word;word-wrap:break-word}
+mjx-container{max-width:100%;overflow-x:auto;overflow-y:hidden}
+mjx-container:not([display="true"]){display:inline-block;vertical-align:middle}
+.table-wrap{width:100%;overflow-x:auto;-webkit-overflow-scrolling:touch;margin:14px 0;border-radius:10px}
+table.mini{width:100%;border-collapse:collapse;margin:0;font-size:.86rem;table-layout:auto}
+table.mini th,table.mini td{border:1px solid var(--line);padding:10px 12px;text-align:left;vertical-align:top;overflow-wrap:break-word;word-wrap:break-word}
+@media(max-width:680px){
+  .table-wrap{overflow-x:visible}
+  table.mini,table.mini thead,table.mini tbody,table.mini th,table.mini td,table.mini tr{display:block;width:100%}
+  table.mini thead{display:none}
+  table.mini tr{margin-bottom:12px;border:1.5px solid color-mix(in srgb,var(--dot) 28%,#e4e9f0);border-radius:10px;background:#fff;overflow:hidden;box-shadow:0 1px 4px rgba(16,42,67,.05)}
+  table.mini td{border:none;border-bottom:1px solid var(--line);padding:10px 12px;text-align:left}
+  table.mini td:last-child{border-bottom:none}
+  table.mini td::before{content:attr(data-label);display:block;font-size:.74rem;font-weight:700;text-transform:uppercase;letter-spacing:.4px;color:var(--dot);margin-bottom:4px}
+}
+
+/* KAMUS AKRONIM & BEDAH FORMULA */
+.acro-box{background:#f8fafc;border:1px solid var(--line);border-radius:10px;padding:12px 14px;margin:14px 0;font-size:.84rem;min-width:0;max-width:100%;overflow-wrap:break-word;word-wrap:break-word}
+.acro-title{font-weight:700;color:var(--dot);font-size:.86rem;margin-bottom:8px;display:block}
+.acro-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:6px 14px;margin:0;padding:0;list-style:none}
+.acro-grid li{min-width:0;line-height:1.5}
+.acro-grid b{color:var(--dot)}
+.fguide{background:color-mix(in srgb,var(--dot) 5%,#fff);border:1px solid color-mix(in srgb,var(--dot) 22%,#e4e9f0);border-radius:10px;padding:12px 15px;margin:-6px 0 16px;font-size:.86rem;min-width:0;max-width:100%;overflow-wrap:break-word;word-wrap:break-word}
+.fguide .fg-head{font-weight:700;color:var(--dot);font-size:.84rem;text-transform:uppercase;letter-spacing:.35px;margin:0 0 6px}
+.fguide ul{margin:4px 0 8px;padding-left:18px}
+.fguide ul li{margin:3px 0}
+.fguide .fg-core{border-top:1px dashed color-mix(in srgb,var(--dot) 30%,#cbd5e1);padding-top:8px;margin-top:8px;display:grid;grid-template-columns:minmax(0,1fr);gap:4px}
+.fguide .fg-core div{min-width:0}
+@media(max-width:640px){.acro-grid{grid-template-columns:minmax(0,1fr)}}
+</style></head><body>
+<div id="progress"></div>
+<header class="top"><div class="top-in">
+ <span class="badge">MODUL 4</span>
+ <a class="homebtn" href="index.html" title="Kembali ke daftar modul"><span style="font-size:1rem;line-height:1">&#8962;</span> Daftar Modul</a>
+ <span class="top-title">Manajemen Keuangan · EKMA5205</span>
+ <nav class="jump">
+ <a href="#konsep">Konsep</a>
+ <a href="#peta">Peta Konsep</a>
+ <a href="#kb1">KB 1</a>
+ <a href="#kb2">KB 2</a>
+ <a href="#kb3">KB 3</a>
+ <a href="#glosarium">Glosarium</a>
+ </nav>
+</div></header>
+
+<div class="wrap">
+ <section class="hero">
+ <div class="eyebrow">Ringkasan Belajar · EKMA5205 (Edisi 3)</div>
+ <h1>Valuasi</h1>
+ <div class="meta">
+ <span>⏱️ ±40 menit</span>
+ <span>📚 3 Kegiatan Belajar (KB)</span>
+ <span>✍️ Dr. Said Kelana Asnawi, M.M.</span>
+ </div>
+ </section>
+
+ <p class="section-sub" style="margin-top:22px">Modul 4 menuntaskan rangkaian pengantar valuasi (Modul 2–4) dengan mengestimasi <b>nilai wajar (fair value)</b> berbasis data historis (<i>ex-post</i>) untuk memprediksi masa depan (<i>ex-ante</i>). Pembahasan dimulai dari <b>4 substansi valuasi</b> termasuk aspek nonkeuangan (KB 1), dilanjutkan <b>valuasi utang/obligasi</b> beserta YTM, spot/forward rate, durasi, rating, dan Z-Score (KB 2), hingga <b>valuasi saham dan perusahaan</b> melalui DDM, PVGO, FCFF/FCFE, Abnormal Earning, valuasi relatif, dan EVA (KB 3).</p>
+ <p class="offline-note">ℹ️ Peta konsep, kartu penjelasan interaktif, dan checklist konsep berjalan tanpa internet. Koneksi internet hanya diperlukan untuk merender persamaan matematika (MathJax).</p>
+
+ <!-- KONSEP PENTING -->
+ <h2 class="section" id="konsep"><span class="dot"></span>Konsep Penting yang Harus Dikuasai</h2>
+ <div class="card">
+ <div class="cl-head">
+ <span class="count"><span id="doneCount">0</span>/<span id="totalCount">0</span> dikuasai</span>
+ <button class="btn-reset" id="resetBtn">Reset centang</button>
+ </div>
+ <ul class="concepts" id="conceptList">
+ <li><input type="checkbox"><span><span class="ct">Empat Substansi Dasar Valuasi (Nonkeuangan + Keuangan)</span><span class="cd">Analisis strategi bisnis, analisis akuntansi, analisis keuangan, dan analisis prospektif; faktor nonkeuangan (SDM, lokasi, merek) sering bernilai premium.</span></span></li>
+ <li><input type="checkbox"><span><span class="ct">Analisis Strategi Bisnis: Porter 5-Forces, Keunggulan Kompetitif, &amp; Risiko Strategis</span><span class="cd">Lima kekuatan industri (Porter), cost leadership vs differentiation, strategi korporat, serta 7 risiko strategis (Slywotzky &amp; Drzik).</span></span></li>
+ <li><input type="checkbox"><span><span class="ct">Analisis Strategi Akuntansi &amp; Penyesuaian Peer-to-Peer</span><span class="cd">Mendeteksi bias pengakuan akrual, pos fleksibel (depresiasi/inventori), dan menyelaraskan umur ekonomis aset antarperusahaan seindustri.</span></span></li>
+ <li><input type="checkbox"><span><span class="ct">Valuasi Zero Coupon Bond (ZCB) vs Coupon Bond (CB)</span><span class="cd">ZCB selalu dijual diskon di bawah par (harga naik mendekati jatuh tempo); CB bisa premium (kupon &gt; diskonto), par, atau diskon (kupon &lt; diskonto).</span></span></li>
+ <li><input type="checkbox"><span><span class="ct">Current Yield, Yield to Maturity (YTM), &amp; Holding Period Return (HPR)</span><span class="cd">Current yield = kupon/harga beli; YTM (= IRR) mengasumsikan reinvestasi kupon pada satu tingkat diskonto tunggal; $\text{HPR} = (C_{\text{total}} + P_1 - P_0)/P_0$.</span></span></li>
+ <li><input type="checkbox"><span><span class="ct">Spot Rate, Forward Rate, &amp; Durasi (Duration)</span><span class="cd">Spot rate = YTM dari ZCB; forward rate $(1+f_n) = (1+y_n)^n/(1+y_{n-1})^{n-1}$; durasi mengukur waktu balik modal (ZCB: durasi = tenor; CB: durasi &lt; tenor).</span></span></li>
+ <li><input type="checkbox"><span><span class="ct">Rating Obligasi &amp; Model Diskriminan Altman Z-Score</span><span class="cd">Kelas investasi (AAA–BBB) vs spekulatif (BB ke bawah); Z-Score (&lt;1,23 rawan bangkrut; 1,23–2,9 abu-abu; &gt;2,9 kuat).</span></span></li>
+ <li><input type="checkbox"><span><span class="ct">Dividend Discount Model (DDM), Gordon Growth, &amp; Nilai Terminal</span><span class="cd">$P_0 = D_1/(k-g)$ dengan syarat $k &gt; g$; proyeksi eksplisit 5–7 tahun ditambah nilai terminal $P_N = D_{N+1}/(k-g)$.</span></span></li>
+ <li><input type="checkbox"><span><span class="ct">Kewaspadaan Pertumbuhan Negatif &amp; Sumber Pertumbuhan ($g = b \times \text{ROE}$)</span><span class="cd">Data awal negatif wajib dibagi nilai absolut $|P_0|$ agar arah pertumbuhan bermakna benar; sumber $g$ dari plowback $(1-\text{DPR}) \times \text{ROE}$.</span></span></li>
+ <li><input type="checkbox"><span><span class="ct">Present Value of Growth Opportunities (PVGO)</span><span class="cd">$\text{Harga} = \text{No Growth Value} + \text{PV(growth)}$; reinvestasi hanya menambah nilai jika $\text{ROE} &gt; k$ (jika $\text{ROE} &lt; k$, lebih baik jadi cash cow).</span></span></li>
+ <li><input type="checkbox"><span><span class="ct">Valuasi Arus Kas Bebas: FCFF (WACC) vs FCFE ($k_e$)</span><span class="cd">FCFF milik perusahaan didiskontokan dengan WACC; FCFE milik pemegang saham (memasukkan arus utang neto) didiskontokan dengan $k_e$; selisihnya = nilai utang.</span></span></li>
+ <li><input type="checkbox"><span><span class="ct">Model Abnormal Earning (Ohlson)</span><span class="cd">$V_0 = B_0 + \sum \text{AE}_t/(1+k_e)^t$ dengan $\text{AE}_t = X_t - k_e B_{t-1}$; unggul karena data laba selalu tersedia dan tetap bisa memvaluasi perusahaan rugi.</span></span></li>
+ <li><input type="checkbox"><span><span class="ct">Valuasi Relatif (PER, PBV, P/CF, P/S) &amp; Aturan Konsistensi</span><span class="cd">Pembilang dan penyebut wajib konsisten: Equity/Equity (P/EPS) atau Firm/Firm (EV/EBITDA); rasio P/EBITDA tidak konsisten.</span></span></li>
+ <li><input type="checkbox"><span><span class="ct">Metode Nilai Sisa — Economic Value Added (EVA)</span><span class="cd">$\text{EVA} = \text{NOPAT} - \text{Biaya Modal}$; memperhitungkan opportunity cost ekuitas selain bunga utang, digunakan bersama metode lain (tidak mutually exclusive).</span></span></li>
+ </ul>
+ </div>
+
+ <!-- PETA KONSEP -->
+ <h2 class="section" id="peta"><span class="dot"></span>Peta Konsep (Mind Map)</h2>
+ <div class="card">
+ <div class="mm-toolbar">
+ <button class="mm-btn" id="mmExpand">Perluas semua</button>
+ <button class="mm-btn" id="mmCollapse">Ciutkan</button>
+ <span style="font-size:.76rem;color:var(--muted)">Klik simpul bertanda + / – untuk buka-tutup · Gulir untuk menggeser</span>
+ </div>
+ <div class="mindmap-host" id="mindmap"></div>
+ </div>
+
+ <!-- ========================================================= -->
+ <!-- KB 1 -->
+ <!-- ========================================================= -->
+ <h2 class="section" id="kb1"><span class="dot" style="background:var(--kb1)"></span>KB 1 — Konsep Valuasi</h2>
+ <div class="card kb1b">
+ <span class="kb-tag kb1t">KB 1 · EMPAT SUBSTANSI VALUASI (Hal. 4.5 – 4.14)</span>
+ <p class="lead">Valuasi tidak boleh hanya melihat angka laporan keuangan. Aset tak tercatat seperti SDM, lokasi strategis, kemampuan manajerial, hubungan pemasok-pelanggan, dan reputasi sering membuat pembeli tetap bersedia membayar <span class="term">harga premium</span> meski ekuitas buku negatif (Kotak 1: aset Rp1.000, utang Rp1.200, tetap terjual Rp100 → premium Rp300).</p>
+ <div class="acro-box">
+ <span class="acro-title">📖 Kamus Konteks Singkatan &amp; Akronim KB 1</span>
+ <ul class="acro-grid">
+ <li><b>5-Forces</b>: Kerangka 5 kekuatan persaingan industri Michael Porter (<i>rivalry, new entrants, substitutes, buyers, suppliers</i>).</li>
+ <li><b>R&amp;D</b>: <i>Research &amp; Development</i> — riset &amp; pengembangan produk/teknologi.</li>
+ <li><b>SDM</b>: <i>Sumber Daya Manusia</i> — aset tak tercatat (<i>intangible</i>) yang sering menciptakan nilai premium.</li>
+ <li><b>RBT</b>: <i>Ring Back Tone</i> — contoh inovasi bisnis musik saat kaset tergerus MP3.</li>
+ <li><b>NPV</b>: <i>Net Present Value</i> — kriteria valuasi arus kas yang perlu dilengkapi metode opsi pada risiko strategis.</li>
+ <li><b>Ex-post &amp; Ex-ante</b>: Data historis masa lalu (<i>ex-post</i>) yang dianalisis untuk memproyeksikan masa depan (<i>ex-ante</i>).</li>
+ </ul>
+ </div>
+
+ <div class="abc"><span class="ltr">A</span><h4>Empat Substansi dari Valuasi</h4></div>
+
+ <div class="numh">1. Analisis Strategi Bisnis</div>
+ <p>Mengidentifikasi <span class="term">key success factor</span> (pendorong kemajuan) dan <span class="term">key business risk</span> (ancaman kebangkrutan) melalui tiga lapis analisis:</p>
+ <ul class="let">
+ <li><span class="term">Analisis Industri — Lima Kekuatan Porter <span class="en">(5-Forces, Gambar 4.1)</span></span> — (1) Persaingan antarperusahaan yang ada (<span class="en">rivalry</span>), (2) ancaman pendatang baru (<span class="en">new entrants</span>), (3) ancaman produk substitusi, (4) daya tawar pembeli, dan (5) daya tawar pemasok. Intensitasnya ditentukan oleh <b>pertumbuhan industri</b> (industri mapan tumbuh lambat → perang harga), <b>kapasitas/aset tetap besar</b> (kejar <i>economies of scale</i>), dan <b>halangan masuk</b> (<i>learning curve</i>, lisensi, paten, modal besar). Perubahan teknologi dapat merombak industri secara drastis (Kotak 2: kaset jatuh dari 85 jt ke 15 jt kopi akibat MP3, namun melahirkan peluang RBT).</li>
+ <li><span class="term">Analisis Strategi Keunggulan Kompetitif</span> — Bersumber dari <b>cost leadership</b> (efisiensi biaya internal untuk margin lebih tinggi atau harga lebih murah) dan <b>differentiation</b> (keunikan produk nyata maupun persepsi konsumen yang memberi daya monopoli—Kotak 3: merek obat generik yang dipercaya konsumen).</li>
+ <li><span class="term">Analisis Strategi Korporat</span> — Mengarahkan sumber daya untuk (i) menurunkan biaya transaksi (mis. pemanfaatan internet/website) dan (ii) mencari sumber efisiensi (<i>side products</i>, gugus tugas).</li>
+ </ul>
+
+ <div class="casebox">
+ <span class="ctitle">Kotak 4 · Risiko Strategis Merupakan Risiko Terbesar (Slywotzky &amp; Drzik, 2005)</span>
+ Berbeda dari risiko keuangan yang bisa di-<i>hedge</i>, <b>7 risiko strategis</b> dapat merusak bisnis secara total: risiko industri, teknologi (<i>obsolete</i>), <i>brand</i> (erosi merek), kompetitor, konsumen, proyek baru, dan stagnasi. Mitigasinya: kolaborasi R&amp;D, eksperimen pasar murah &amp; cepat, metode opsi (tes pasar dulu sebelum menolak proyek lewat NPV), dan inovasi permintaan.
+ </div>
+
+ <div class="numh">2. Analisis Strategi Akuntansi</div>
+ <p>Memeriksa bagaimana perusahaan menyusun laporan akrual karena waktu dan besaran pengakuan dapat "digeser" manajemen (mis. demi bonus atau meredam tuntutan serikat pekerja). Fokus indikator tiap industri berbeda (bank: risiko kredit; ritel: perputaran inventori; <i>bio-tech</i>: R&amp;D; <i>consumer goods</i>: pemasaran &amp; merek).</p>
+ <ul class="exp">
+ <li><span class="term">Penyesuaian Peer-to-Peer (Kotak 5 · Perbandingan 2 Aset Tetap)</span> — Mesin seharga Rp105 jt dengan umur industri 15 th (depresiasi wajar Rp7 jt/th): PT A menyusutkan 10 th (Rp10,5 jt/th → kelebihan beban Rp3,5 jt, kurang bayar pajak Rp0,35 jt, aset &amp; modal tampak lebih kecil Rp3,15 jt), sedangkan PT B menyusutkan 20 th (Rp5,25 jt/th → kekurangan beban, lebih bayar pajak, aset &amp; modal tampak lebih besar). Penyelarasan mutlak dilakukan sebelum membandingkan kinerja.</li>
+ </ul>
+
+ <div class="numh">3. Analisis Strategi Keuangan &amp; 4. Analisis Prospektif</div>
+ <ul class="exp">
+ <li><span class="term">Analisis Strategi Keuangan</span> — Membedah laporan keuangan melalui rasio, arus kas, distribusi laba, dan arus kas bebas (diperdalam pada KB 2 &amp; KB 3).</li>
+ <li><span class="term">Analisis Prospektif</span> — Menggabungkan ketiga analisis sebelumnya untuk memproyeksikan masa depan (memastikan apakah pendapatan <i>overstated</i> atau beban <i>understated</i>). Bobot tiap analisis menyesuaikan jenis industri: teknologi tinggi menekan <b>strategi bisnis</b>, keuangan menekan <b>akuntansi</b>, manufaktur/ritel menekan <b>keuangan</b>. Peramalan kuantitatif (<i>forecasting</i>) tetap wajib dilengkapi pertimbangan kualitatif.</li>
+ </ul>
+ </div>
+
+ <!-- ========================================================= -->
+ <!-- KB 2 -->
+ <!-- ========================================================= -->
+ <h2 class="section" id="kb2"><span class="dot" style="background:var(--kb2)"></span>KB 2 — Valuasi Utang</h2>
+ <div class="card kb2b">
+ <span class="kb-tag kb2t">KB 2 · OBLIGASI, YIELD, DURASI, &amp; Z-SCORE (Hal. 4.16 – 4.28)</span>
+ <p class="lead">Valuasi utang jangka panjang (pinjaman bank maupun obligasi) bertujuan menentukan <span class="term">harga wajar <span class="en">(fair valued, undervalued, overvalued)</span></span> serta tingkat pengembalian (<span class="en">yield</span>) obligasi untuk dibandingkan dengan <i>benchmark</i>.</p>
+ <div class="acro-box">
+ <span class="acro-title">📖 Kamus Konteks Singkatan &amp; Akronim KB 2</span>
+ <ul class="acro-grid">
+ <li><b>ZCB &amp; CB</b>: <i>Zero Coupon Bond</i> (obligasi tanpa kupon, selalu diskon) &amp; <i>Coupon Bond</i> (obligasi berkupon rutin).</li>
+ <li><b>YTM</b>: <i>Yield to Maturity</i> — tingkat imbal hasil hingga jatuh tempo (identik dengan IRR obligasi).</li>
+ <li><b>HPR</b>: <i>Holding Period Return</i> — total imbal hasil (kupon + selisih harga) selama periode kepemilikan.</li>
+ <li><b>$y_n$ &amp; $f_n$</b>: <i>Spot rate</i> (YTM ZCB tenor $n$) &amp; <i>Forward rate</i> (ekspektasi suku bunga 1 tahun di masa depan).</li>
+ <li><b>PVIFA</b>: <i>Present Value Interest Factor of Annuity</i> — faktor nilai sekarang aliran kupon obligasi.</li>
+ <li><b>S&amp;P &amp; AAA–BBB</b>: <i>Standard &amp; Poor's</i> (lembaga pemeringkat) &amp; peringkat obligasi kelas investasi (<i>investment grade</i>).</li>
+ <li><b>Z-Score</b>: Skor model diskriminan Edward Altman (1968) untuk memprediksi potensi kebangkrutan.</li>
+ <li><b>TA, TL, RE, WC</b>: <i>Total Assets</i>, <i>Total Liabilities</i>, <i>Retained Earnings</i>, &amp; <i>Working Capital</i> pada rumus Z-Score.</li>
+ </ul>
+ </div>
+
+ <div class="abc"><span class="ltr">A – C</span><h4>Obligasi Tanpa Kupon (ZCB) vs Obligasi dengan Kupon (CB)</h4></div>
+ <div class="rgrid c2" data-revealgroup>
+ <div class="rcell active" data-reveal data-detail="<b>B. Obligasi Tanpa Kupon (Zero Coupon Bond / ZCB):</b> Emiten tidak membayar kupon berkala; obligasi <b>selalu dijual diskon</b> di bawah nilai par. Keuntungan investor = selisih par dan harga beli (<i>implied interest</i>).<br><i>Contoh buku:</i> Par Rp10.000, $T=5$, dijual Rp5.250 $\implies 5.250 = 10.000/(1+k)^5 \implies \mathbf{k = 13{,}75\%/\text{th}}$. Harga wajar naik tiap tahun (5.250 → 5.973 → 6.974 → 7.729 → 8.791 → 10.000)."><span class="stepnum">1</span><span><span class="rt">Zero Coupon Bond (ZCB)</span><span class="rp">Selalu diskon; naik menuju par</span></span></div>
+ <div class="rcell" data-reveal data-detail="<b>C. Obligasi dengan Kupon (Coupon Bond / CB):</b> Membayar kupon rutin $C$ tiap periode plus nilai par saat jatuh tempo:<br>\[P_0 = C\cdot\text{PVIFA}(k,T) + \frac{\text{Par}}{(1+k)^T}\]<br>• Kupon &lt; $k$ → <b>Discount Bond</b> ($P &lt; 100$, mis. $k=12\% \implies P &lt; 1.000$)<br>• Kupon = $k$ → <b>At Par</b> ($P = 100$, $k=8\% \implies P=1.000$)<br>• Kupon &gt; $k$ → <b>Premium Bond</b> ($P &gt; 100$, $k=4\% \implies P &gt; 1.000$). Satuan harga berstandar 100 (107 = premium 7%; 95 = diskon 5%)."><span class="stepnum">2</span><span><span class="rt">Coupon Bond (CB)</span><span class="rp">Bisa premium, at par, atau diskon</span></span></div>
+ </div>
+ <div class="rdetail" data-revealdetail><b>B. Obligasi Tanpa Kupon (Zero Coupon Bond / ZCB):</b> Emiten tidak membayar kupon berkala; obligasi <b>selalu dijual diskon</b> di bawah nilai par. Keuntungan investor = selisih par dan harga beli (<i>implied interest</i>). Contoh: Par Rp10.000, $T=5$, dijual Rp5.250 $\implies k = 13{,}75\%$/th.</div>
+
+ <div class="numh">Yield to Maturity (YTM), Current Yield, &amp; Holding Period Return (HPR)</div>
+ <ul class="exp">
+ <li><span class="term">Yield to Maturity (YTM)</span> — Identik dengan <b>IRR</b>: tingkat diskonto tunggal yang menyamakan harga pasar obligasi dengan nilai sekarang seluruh kupon dan par (contoh: kupon 8%, par 1.000, $T=5$, harga 1.129,9 $\implies \text{YTM} = \mathbf{5\%}$). Layak dibeli bila tingkat diskonto investor $&lt; \text{YTM}$. <b>Realized YTM</b> memperhitungkan tingkat bunga reinvestasi kupon (mis. kupon 100 direinvestasi pada 8% → nilai akhir 1.208 $\implies \text{realized YTM} = 9{,}91\%$).</li>
+ <li><span class="term">Current Yield</span> — Rasio kupon tahunan terhadap harga pasar beli ($\text{Kupon}/P_0$).</li>
+ <li><span class="term">Holding Period Return (HPR)</span> — Total imbalan selama periode kepemilikan: $\text{HPR} = \dfrac{C_{\text{total}} + (P_1 - P_0)}{P_0}$ (contoh: beli 1.050, terima kupon 200 selama 2 th, jatuh tempo 1.000 $\implies \text{HPR} = (200-50)/1.050 = 14{,}29\%$ atau ~6,9%/th geometrik).</li>
+ </ul>
+
+ <div class="flow">Mendekati jatuh tempo ($T$), harga <b>premium bond</b> akan terus turun dan <b>discount bond</b> akan terus naik hingga bertemu di nilai par (Gambar 4.3). Bagian D membedah dinamika suku bunga, durasi, peringkat, dan risiko gagal bayar.</div>
+
+ 
+    <div class="chart-wrap">
+      <div class="chart-title">Grafik 4.3 · Jalur Harga Obligasi Menuju Jatuh Tempo (Par = Rp1.000, $T = 5$ tahun)</div>
+      <div class="chart-sub">Semakin mendekati jatuh tempo ($t \to 5$), harga <i>Premium Bond</i> turun dan harga <i>Discount / ZCB</i> naik menuju nilai par Rp1.000.</div>
+      <div class="chart-host" id="ch_m4_bond"></div>
+    </div>
+    <div class="abc"><span class="ltr">D</span><h4>Perkembangan Harga, Spot/Forward Rate, Durasi, Rating, &amp; Z-Score</h4></div>
+ <ol class="book">
+ <li><span class="term">Spot Rate vs Forward Rate</span> — <span class="term">Spot rate ($y_n$)</span> adalah YTM dari ZCB jatuh tempo $n$ tahun. <span class="term">Forward rate ($f_n$)</span> adalah ekspektasi suku bunga 1 tahun di masa depan yang menyamakan hasil investasi langsung $n$ tahun dengan investasi $(n-1)$ tahun lalu reinvestasi 1 tahun:
+ <div class="eqbox">\[1 + f_n = \frac{(1+y_n)^n}{(1+y_{n-1})^{n-1}} \qquad \text{(Contoh: } y_3=9{,}98\%, y_4=9{,}99\% \implies f_4 = \mathbf{10{,}02\%}\text{)}\]</div>
+ <div class="fguide">
+ <div class="fg-head">Bedah Variabel &amp; Intisari Formula Forward Rate</div>
+ <ul>
+ <li><b>$f_n$</b> = <i>forward rate</i> (ekspektasi suku bunga 1 tahun pada tahun ke-$n$); <b>$y_n$</b> = <i>spot rate</i> tenor $n$ tahun; <b>$y_{n-1}$</b> = <i>spot rate</i> tenor $(n-1)$ tahun.</li>
+ <li><b>Makna formula:</b> Menyatakan suku bunga tersirat 1 tahun di masa depan yang membuat hasil investasi langsung $n$ tahun setara dengan investasi $(n-1)$ tahun lalu diperpanjang 1 tahun.</li>
+ </ul>
+ <div class="fg-core">
+ <div>🧭 <b>Filosofis:</b> Di pasar obligasi yang efisien, investor tidak bisa meraih untung tanpa risiko hanya dengan memilih tenor panjang vs memperpanjang tenor pendek secara beruntun.</div>
+ <div>📏 <b>Mengukur:</b> Ekspektasi pasar terhadap tingkat suku bunga 1 tahun pada periode mendatang.</div>
+ <div>🎯 <b>Manfaat:</b> Membaca kurva imbal hasil (<i>yield curve</i>), menyusun strategi tenor obligasi, dan menilai kewajaran harga kontrak bunga.</div>
+ </div>
+ </div>
+ </li>
+ <li><span class="term">Durasi <span class="en">(Duration)</span></span> — Mengukur rata-rata tertimbang waktu (dalam tahun) kembalinya dana investor (setara <i>payback period</i>). Makin pendek durasi, makin rendah risiko. Pada <b>ZCB, durasi = waktu jatuh tempo</b> (2 tahun → durasi 2,00 th); pada <b>CB, durasi &lt; waktu jatuh tempo</b> karena ada cicilan kupon berkala (kupon 8% semiannual, $T=2$ th, $k=10\% \implies \text{durasi} = \mathbf{1{,}885\text{ th}}$).
+ <div class="eqbox">\[\text{Duration} = \sum_{t=1}^{T} t \times \frac{\text{PV}(CF_t)}{\text{Bond Price}}\]</div>
+ <div class="fguide">
+ <div class="fg-head">Bedah Variabel &amp; Intisari Formula Durasi Obligasi</div>
+ <ul>
+ <li><b>$t$</b> = waktu penerimaan arus kas (tahun ke-$1 \dots T$); <b>$\text{PV}(CF_t)$</b> = nilai sekarang kupon/pokok pada tahun ke-$t$; <b>$\text{Bond Price}$</b> = harga pasar obligasi saat ini.</li>
+ <li><b>Makna formula:</b> Rata-rata tertimbang waktu (dalam tahun) kembalinya seluruh modal investasi obligasi, di mana bobotnya adalah porsi PV setiap arus kas terhadap harga obligasi.</li>
+ </ul>
+ <div class="fg-core">
+ <div>🧭 <b>Filosofis:</b> Dua obligasi bertenor sama bisa punya risiko sangat berbeda—obligasi berkupon besar mengembalikan uang lebih cepat daripada ZCB sehingga lebih kebal terhadap guncangan suku bunga.</div>
+ <div>📏 <b>Mengukur:</b> Waktu balik modal efektif obligasi (setara <i>payback period</i> berbobot PV) dan sensitivitas harga obligasi terhadap perubahan suku bunga.</div>
+ <div>🎯 <b>Manfaat:</b> Membandingkan tingkat risiko antar-obligasi secara objektif (makin pendek durasi, makin rendah risiko fluktuasi harga).</div>
+ </div>
+ </div>
+ </li>
+ <li><span class="term">Rating Obligasi (Kotak 6)</span> — Diterbitkan lembaga seperti Moody's &amp; S&amp;P untuk menilai risiko gagal bayar sekaligus patokan kupon (rating bagus → kupon lebih rendah). Terbagi atas <b>Kelas Investasi</b> (Aaa/AAA, Aa/AA, A/A, Baa/BBB) dan <b>Kelas Spekulatif</b> (Ba/BB, B/B, di bawah B).</li>
+ <li><span class="term">Model Diskriminan — Altman Z-Score (1968)</span> — Mengklasifikasikan potensi kebangkrutan perusahaan melalui lima rasio keuangan:
+ <div class="eqbox">\[Z = 3{,}1\frac{\text{EBIT}}{\text{TA}} + 1{,}0\frac{\text{Sales}}{\text{TA}} + 0{,}42\frac{E}{\text{TL}} + 0{,}85\frac{\text{RE}}{\text{TA}} + 0{,}72\frac{\text{WC}}{\text{TA}}\]</div>
+ <div class="fguide">
+ <div class="fg-head">Bedah Variabel &amp; Intisari Formula Altman Z-Score</div>
+ <ul>
+ <li><b>$\text{EBIT}/\text{TA}$</b> = produktivitas aset; <b>$\text{Sales}/\text{TA}$</b> = perputaran aset; <b>$E/\text{TL}$</b> = penyangga ekuitas terhadap total utang; <b>$\text{RE}/\text{TA}$</b> = akumulasi profitabilitas historis; <b>$\text{WC}/\text{TA}$</b> = likuiditas modal kerja.</li>
+ <li><b>Makna formula:</b> Menggabungkan lima rasio keuangan kunci dengan bobot diskriminan statistik menjadi satu skor tunggal kesehatan finansial.</li>
+ </ul>
+ <div class="fg-core">
+ <div>🧭 <b>Filosofis:</b> Kebangkrutan jarang disebabkan satu gejala tunggal; Z-Score memadukan likuiditas, profitabilitas, efisiensi, dan solvabilitas sekaligus untuk menangkap sinyal krisis lebih awal.</div>
+ <div>📏 <b>Mengukur:</b> Tingkat risiko gagal bayar/kebangkrutan perusahaan ($Z<1{,}23$ rawan; $1{,}23\text{–}2{,}9$ abu-abu; $Z>2{,}9$ kuat).</div>
+ <div>🎯 <b>Manfaat:</b> Alat skrining cepat bagi investor obligasi dan kreditor sebelum membeli surat utang korporasi.</div>
+ </div>
+ </div>
+ Kriteria: <b>$Z &lt; 1{,}23$</b> berpotensi bangkrut; <b>$1{,}23 \le Z \le 2{,}9$</b> daerah abu-abu; <b>$Z &gt; 2{,}9$</b> indikasi kuat (Contoh 1: $Z = 3{,}162 \implies$ sehat). Catatan: karena data asli Altman berasal dari AS pra-1968, untuk konteks Indonesia saat ini sebaiknya membangun model diskriminan sendiri (mis. via SPSS).
+ </li>
+ </ol>
+ </div>
+
+ <!-- ========================================================= -->
+ <!-- KB 3 -->
+ <!-- ========================================================= -->
+ <h2 class="section" id="kb3"><span class="dot" style="background:var(--kb3)"></span>KB 3 — Valuasi Saham dan Perusahaan</h2>
+ <div class="card kb3b">
+ <span class="kb-tag kb3t">KB 3 · DDM, FCF, ABNORMAL EARNING, RELATIF, &amp; EVA (Hal. 4.31 – 4.46)</span>
+ <p class="lead">Tiga pendekatan utama valuasi saham/perusahaan adalah <span class="term">Model Diskonto</span> (DDM, FCFF/FCFE, Abnormal Earning) yang bertumpu pada arus kas, tingkat diskonto, dan nilai terminal; <span class="term">Valuasi Relatif</span> (PER, PBV, P/CF, P/S); serta <span class="term">Metode Nilai Sisa (EVA)</span>.</p>
+ <div class="acro-box">
+ <span class="acro-title">📖 Kamus Konteks Singkatan &amp; Akronim KB 3</span>
+ <ul class="acro-grid">
+ <li><b>DDM</b>: <i>Dividend Discount Model</i> — valuasi saham dengan mendiskontokan ekspektasi dividen.</li>
+ <li><b>PVGO</b>: <i>Present Value of Growth Opportunities</i> — nilai sekarang peluang pertumbuhan ($\text{ROE} > k$).</li>
+ <li><b>$b$ &amp; DPR</b>: <i>Plowback/Retention Ratio</i> ($b = 1 - \text{DPR}$) &amp; <i>Dividend Payout Ratio</i>.</li>
+ <li><b>FCFF &amp; FCFE</b>: <i>Free Cash Flow to the Firm</i> (didiskonto WACC) &amp; <i>to Equity</i> (didiskonto $k_e$).</li>
+ <li><b>Capex &amp; $\Delta\text{WC}$</b>: <i>Capital Expenditure</i> (belanja aset tetap) &amp; perubahan modal kerja.</li>
+ <li><b>AE &amp; $B_0$</b>: <i>Abnormal Earning</i> (Model Ohlson) &amp; nilai buku ekuitas awal ($B_0$).</li>
+ <li><b>PER, PBV, P/CF, P/S</b>: Rasio valuasi relatif: <i>Price/Earning</i>, <i>Price/Book Value</i>, <i>Price/Cash Flow</i>, &amp; <i>Price/Sales</i>.</li>
+ <li><b>EV, EBITDA, EVA</b>: <i>Enterprise Value</i>, <i>Earnings Before Interest, Taxes, Depr. &amp; Amort.</i>, &amp; <i>Economic Value Added</i>.</li>
+ </ul>
+ </div>
+
+ <div class="abc"><span class="ltr">A</span><h4>Model Diskonto <span class="en">(Discount Model)</span></h4></div>
+
+ <div class="numh">1. Model Diskonto Dividen <span class="en">(Dividend Discount Model / DDM)</span></div>
+ <p>Menghitung nilai sekarang ekspektasi dividen dengan diskonto biaya modal sendiri ($k_e$), tersirat mengasumsikan pasar efisien. Jika dividen sempat Rp0 (kebijakan residual), analis dapat memproksinya dengan dividen konstan atau rerata DPR.</p>
+ <div class="eqbox">
+ \[\text{Konstan: } P_0 = \frac{D}{k} \quad\big|\quad \text{Gordon Growth: } P_0 = \frac{D_1}{k - g}\;(k &gt; g) \quad\big|\quad \text{Terminal Value: } P_N = \frac{D_{N+1}}{k - g}\]
+ \[\text{Sumber Pertumbuhan: } g = b \times \text{ROE} = (1 - \text{DPR}) \times \text{ROE}\]
+ </div>
+ <div class="fguide">
+ <div class="fg-head">Bedah Variabel &amp; Intisari Formula DDM, Gordon Growth, &amp; Pertumbuhan ($g$)</div>
+ <ul>
+ <li><b>$P_0$</b> = harga wajar saham hari ini; <b>$D, D_1$</b> = dividen konstan / ekspektasi dividen tahun depan; <b>$k$</b> = biaya modal sendiri ($k_e$); <b>$g$</b> = tingkat pertumbuhan dividen konstan ($k>g$); <b>$b = 1-\text{DPR}$</b> = rasio laba ditahan; <b>$\text{ROE}$</b> = imbal hasil ekuitas; <b>$P_N$</b> = nilai terminal di akhir periode proyeksi eksplisit.</li>
+ <li><b>Makna formula:</b> Nilai wajar saham adalah nilai sekarang seluruh dividen masa depan, dengan pertumbuhan berkelanjutan bersumber dari porsi laba yang direinvestasikan dikali tingkat imbal hasil investasinya ($b \times \text{ROE}$).</li>
+ </ul>
+ <div class="fg-core">
+ <div>🧭 <b>Filosofis:</b> Nilai intrinsik saham ditentukan oleh arus kas dividen yang mengalir ke pemilik; menahan laba hanya menciptakan nilai tambah (PVGO positif) apabila perusahaan mampu memutarnya pada $\text{ROE} > k$.</div>
+ <div>📏 <b>Mengukur:</b> Harga wajar saham berbasis dividen dan kelayakan kebijakan penahanan laba (<i>plowback</i>).</div>
+ <div>🎯 <b>Manfaat:</b> Menilai apakah harga saham di bursa sedang <i>undervalued</i> atau <i>overvalued</i> serta mengevaluasi kebijakan dividen emiten.</div>
+ </div>
+ </div>
+ <ul class="exp">
+ <li><span class="term">Kewaspadaan Pertumbuhan ($g$) pada Data Negatif</span> — Jika nilai awal negatif (mis. rugi $-5.000$ membaik jadi rugi $-4.000$), rumus baku menghasilkan $-180\%$ padahal kerugian mengecil $+20\%$. <b>Solusi:</b> gunakan <b>nilai absolut $|P_0|$ sebagai pembagi</b>: $(-4.000 - (-5.000))/5.000 = +20\%$; rugi $-5.000 \to$ untung $+4.000$ menjadi $+180\%$; rugi $-5.000 \to -9.000$ menjadi $-80\%$. Jika ROE negatif, pakai proksi pertumbuhan penjualan, aset, EBITDA, atau EBIT.</li>
+ <li><span class="term">Nilai Sekarang Peluang Pertumbuhan <span class="en">(PVGO)</span></span> — $\text{Harga} = \text{No Growth Value } (E_1/k) + \text{PV(growth)}$. Contoh: EPS Rp4.000, $k=10\%$ → <i>No Growth Value</i> $= \text{Rp40.000}$. Jika menahan 40% laba (<i>plowback</i> $b=0{,}4$, dividen Rp2.400):
+ <div class="table-wrap">
+<table class="mini">
+ <thead><tr><th>Skenario ROE Reinvestasi</th><th>Pertumbuhan ($g = 0{,}4 \times \text{ROE}$)</th><th>Harga Wajar ($2.400/(0{,}10-g)$)</th><th>PV(growth) &amp; Keputusan</th></tr></thead>
+ <tbody>
+ <tr><td data-label="Skenario ROE Reinvestasi"><b>$\text{ROE} = 15\% &gt; k$</b></td><td data-label="Pertumbuhan (g = 0,4 × ROE)">6,0%</td><td data-label="Harga Wajar (2.400/(0,10-g))"><b>Rp60.000</b></td><td data-label="PV(growth) &amp; Keputusan"><b>+Rp20.000</b> → Reinvestasi menciptakan nilai!</td></tr>
+ <tr><td data-label="Skenario ROE Reinvestasi"><b>$\text{ROE} = 10\% = k$</b></td><td data-label="Pertumbuhan (g = 0,4 × ROE)">4,0%</td><td data-label="Harga Wajar (2.400/(0,10-g))">Rp40.000</td><td data-label="PV(growth) &amp; Keputusan"><b>Rp0</b> → Reinvestasi netral (tidak tambah manfaat).</td></tr>
+ <tr><td data-label="Skenario ROE Reinvestasi"><b>$\text{ROE} = 8\% &lt; k$</b></td><td data-label="Pertumbuhan (g = 0,4 × ROE)">3,2%</td><td data-label="Harga Wajar (2.400/(0,10-g))">Rp35.294</td><td data-label="PV(growth) &amp; Keputusan"><b>−Rp4.706</b> → Merusak nilai; jadikan <i>cash cow</i> (bagi dividen)!</td></tr>
+ </tbody>
+ </table>
+</div>
+ </li>
+ </ul>
+
+ <div class="numh">2. Model Arus Kas Bebas <span class="en">(FCFF vs FCFE)</span></div>
+ <div class="eqbox">
+ \[\text{FCFF} = \text{EBIT}(1-t) + \text{Depr} + \text{Nonkas} - \text{Capex} - \Delta\text{WC} \implies V_{\text{firm}} = \sum \frac{\text{FCFF}_t}{(1+\text{WACC})^t}\]
+ \[\text{FCFE} = \text{Net Income} + \text{Depr} + \text{Nonkas} - \text{Capex} - \Delta\text{WC} - \text{Bayar Pokok Utang} + \text{Utang Baru} \implies V_{\text{equity}} = \sum \frac{\text{FCFE}_t}{(1+k_e)^t}\]
+ </div>
+ <div class="fguide">
+ <div class="fg-head">Bedah Variabel &amp; Intisari Formula FCFF &amp; FCFE</div>
+ <ul>
+ <li><b>$\text{EBIT}(1-t)$</b> = laba operasi setelah pajak; <b>$\text{Depr}$</b> = depresiasi; <b>$\text{Capex}$</b> = belanja modal aset tetap; <b>$\Delta\text{WC}$</b> = tambahan modal kerja; <b>$V_{\text{firm}}$</b> = nilai total perusahaan; <b>$V_{\text{equity}}$</b> = nilai ekuitas.</li>
+ <li><b>Makna formula:</b> FCFF menghitung arus kas bebas bagi seluruh penyedia modal (didiskonto WACC), sedangkan FCFE menghitung arus kas bebas khusus pemegang saham setelah bunga &amp; arus utang neto (didiskonto $k_e$).</li>
+ </ul>
+ <div class="fg-core">
+ <div>🧭 <b>Filosofis:</b> Arus kas bebas mengatasi keterbatasan DDM pada perusahaan yang tidak/belum rutin membagikan dividen—selisih $V_{\text{firm}}$ dan $V_{\text{equity}}$ secara alami mencerminkan nilai utang.</div>
+ <div>📏 <b>Mengukur:</b> Nilai intrinsik keseluruhan perusahaan (FCFF) dan nilai intrinsik ekuitas pemegang saham (FCFE).</div>
+ <div>🎯 <b>Manfaat:</b> Standar utama valuasi korporat untuk IPO, akuisisi, dan analisis saham emiten bertumbuh.</div>
+ </div>
+ </div>
+ <p>Secara teoretis $\text{FCFF} &gt; \text{FCFE}$ karena FCFF mencakup hak kreditor + pemegang saham. Pada <b>Contoh 6 (PT A, 1.000 saham)</b>: proyeksi 5 th dengan $\text{WACC}=32\%$ ($g=30\%$) menghasilkan nilai perusahaan Rp29.141 (<b>Rp29,1/saham</b>), sedangkan FCFE dengan $k_e=38\%$ ($g=27\%$) menghasilkan nilai ekuitas Rp20.798 (<b>Rp20,8/saham</b>); selisih Rp8,3/saham mencerminkan nilai utang per saham.</p>
+
+ <div class="numh">3. Metode Earning — Abnormal Earning Model (Ohlson)</div>
+ <p>Mengganti dividen dengan laba akuntansi; unggul karena data laba selalu tersedia dan tetap bisa memvaluasi perusahaan yang sedang rugi:</p>
+ <div class="eqbox">
+ \[V_0 = B_0 + \sum_{t=1}^{T} \frac{\text{AE}_t}{(1+k_e)^t} \qquad\text{dengan}\qquad \text{AE}_t = X_t - k_e B_{t-1}, \quad B_t = B_{t-1} + X_t - \text{DIV}_t\]
+ <p style="font-size:.82rem;color:var(--muted);margin:4px 0 0;text-align:center">Contoh 7 (PT A, $k_e=38\%, B_0=1.200$): $\text{PV(AE)} = 5.728 \implies V_0 = 6.928$ atau <b>Rp6,9/saham</b>.</p>
+ </div>
+ <div class="fguide">
+ <div class="fg-head">Bedah Variabel &amp; Intisari Formula Abnormal Earning (Ohlson)</div>
+ <ul>
+ <li><b>$V_0$</b> = nilai wajar ekuitas saat ini; <b>$B_0, B_{t-1}$</b> = nilai buku ekuitas awal / periode sebelumnya; <b>$X_t$</b> = laba bersih akuntansi periode $t$; <b>$k_e B_{t-1}$</b> = laba normal yang disyaratkan; <b>$\text{AE}_t$</b> = laba abnormal (kelebihan di atas laba normal); <b>$\text{DIV}_t$</b> = dividen.</li>
+ <li><b>Makna formula:</b> Nilai wajar saham sama dengan nilai buku ekuitas hari ini ditambah nilai sekarang seluruh kelebihan laba di atas imbalan normal ($\text{AE}_t$).</li>
+ </ul>
+ <div class="fg-core">
+ <div>🧭 <b>Filosofis:</b> Perusahaan hanya pantas dihargai di atas nilai bukunya ($\text{PBV}>1$) jika mampu mencetak laba melampaui biaya modal pemiliknya; jika tidak, nilai tambahnya nol atau negatif.</div>
+ <div>📏 <b>Mengukur:</b> Nilai intrinsik ekuitas berbasis data laba akuntansi dan nilai buku.</div>
+ <div>🎯 <b>Manfaat:</b> Sangat ampuh saat perusahaan tidak membagikan dividen atau bahkan sedang mengalami kerugian sementara.</div>
+ </div>
+ </div>
+
+ <div class="flow">Selain model diskonto yang sarat asumsi proyeksi dan terminal value, praktisi pasar modal sangat sering menggunakan <b>valuasi relatif</b> (bagian B) dan <b>nilai sisa EVA</b> (bagian C) sebagai pembanding cepat.</div>
+
+ <div class="abc"><span class="ltr">B</span><h4>Valuasi Secara Relatif <span class="en">(Relative Valuation)</span></h4></div>
+ <p>Membandingkan harga pasar dengan pengali (<span class="en">multiples</span>) akuntansi terhadap perusahaan sejenis (<span class="en">similar benchmark</span>). Cepat dan mencerminkan <i>mood</i> pasar, tetapi mengabaikan risiko/pertumbuhan, rawan bias pasar dan manipulasi pembanding, serta terdistorsi oleh <i>stock split</i>.</p>
+ <ul class="exp">
+ <li><span class="term">Empat Rasio Relatif Utama</span> — <b>PER</b> (tidak bisa dipakai bila laba negatif/fluktuatif), <b>PBV/MBV</b> (sangat penting bagi perusahaan rugi), <b>Price to Cash Flow (P/CF)</b> (lebih objektif karena kas minim <i>discretionary</i>), dan <b>Price to Sales (P/S)</b> (berguna menilai aktivitas perusahaan yang belum berlaba).</li>
+ <li><span class="term">Aturan Konsistensi Numerator &amp; Denominator</span> — Jika pembilang adalah <i>equity value</i> (harga saham $P$), penyebut <b>wajib</b> <i>equity value</i> (EPS, Net Income, Book Value of Equity) → <b>PER konsisten</b>. Jika pembilang <i>firm value</i> (Enterprise Value), penyebut wajib <i>firm value</i> (EBIT, EBITDA). Rasio <b>P/EBITDA tidak konsisten</b> karena mencampur nilai ekuitas dengan laba perusahaan sebelum bunga.</li>
+ </ul>
+
+ <div class="abc"><span class="ltr">C</span><h4>Metode Nilai Sisa — Economic Value Added (EVA)</h4></div>
+ <p><span class="term">EVA</span> mengukur nilai tambah ekonomis sesungguhnya dengan mengurangkan seluruh biaya modal—termasuk <i>opportunity cost</i> ekuitas—dari laba operasi setelah pajak (NOPAT):</p>
+ <div class="eqbox">
+ \[\text{EVA} = (\text{EBIT} - \text{Tax}) - \text{Biaya Modal} = \text{NOPAT} - \big(D\cdot k_d(1-t) + E\cdot k_e\big)\]
+ </div>
+ <div class="fguide">
+ <div class="fg-head">Bedah Variabel &amp; Intisari Formula Economic Value Added (EVA)</div>
+ <ul>
+ <li><b>$\text{NOPAT} = \text{EBIT} - \text{Tax}$</b> = laba operasi setelah pajak; <b>$D\cdot k_d(1-t)$</b> = biaya utang setelah pajak; <b>$E\cdot k_e$</b> = biaya kesempatan (<i>opportunity cost</i>) ekuitas.</li>
+ <li><b>Makna formula:</b> Mengurangkan seluruh biaya modal—baik bunga utang yang tampak di laporan laba rugi maupun biaya ekuitas yang implisit—dari NOPAT.</li>
+ </ul>
+ <div class="fg-core">
+ <div>🧭 <b>Filosofis:</b> Laba akuntansi (EAT positif) bisa menipu karena melupakan biaya modal sendiri; perusahaan baru sungguh-sungguh menciptakan kekayaan ekonomis apabila $\text{EVA} > 0$.</div>
+ <div>📏 <b>Mengukur:</b> Nilai tambah ekonomis murni yang diciptakan manajemen dalam satu periode.</div>
+ <div>🎯 <b>Manfaat:</b> Digunakan sebagai alat ukur kinerja manajemen berbasis penciptaan nilai sekaligus pelengkap metode valuasi lainnya.</div>
+ </div>
+ </div>
+ <div class="table-wrap">
+<table class="mini">
+ <thead><tr><th>Contoh 8 (Utang 5.000, Ekuitas 5.000, Pajak 30%)</th><th>NOPAT</th><th>$k_d$ / $k_e$</th><th>Total Biaya Modal</th><th>EAT</th><th>EVA</th></tr></thead>
+ <tbody>
+ <tr><td data-label="Contoh 8 (Utang 5.000, Ekuitas 5.000, Pajak 30%)"><b>Perusahaan A</b></td><td data-label="NOPAT"><b>1.200</b></td><td data-label="kd / ke">10% / 18%</td><td data-label="Total Biaya Modal">1.250</td><td data-label="EAT"><b>850</b></td><td data-label="EVA"><b>−50</b></td></tr>
+ <tr><td data-label="Contoh 8 (Utang 5.000, Ekuitas 5.000, Pajak 30%)"><b>Perusahaan B</b></td><td data-label="NOPAT">1.100</td><td data-label="kd / ke">8% / 15%</td><td data-label="Total Biaya Modal">1.030</td><td data-label="EAT">820</td><td data-label="EVA"><b>+70</b></td></tr>
+ </tbody>
+ </table>
+</div>
+ <p>Perusahaan A unggul di NOPAT dan EAT, tetapi kalah di EVA karena biaya modalnya lebih tinggi. Pelajaran kuncinya: <b>tidak ada satu metode valuasi yang mutlak terbaik</b>—gunakan beberapa metode secara komplementer (bukan <i>mutually exclusive</i>) sambil mencermati asumsi masing-masing.</p>
+ </div>
+
+ <!-- GLOSARIUM -->
+ <h2 class="section" id="glosarium"><span class="dot"></span>Glosarium Kilat</h2>
+ <div class="card">
+ <dl class="glossary">
+ <dt>Abnormal Earning (Ohlson)</dt><dd>Kelebihan laba akuntansi aktual di atas laba normal yang disyaratkan atas nilai buku ekuitas awal ($\text{AE}_t = X_t - k_e B_{t-1}$).</dd>
+ <dt>Duration (Durasi)</dt><dd>Rata-rata tertimbang waktu (tahun) hingga seluruh investasi obligasi kembali; mencerminkan sensitivitas risiko obligasi.</dd>
+ <dt>Economic Value Added (EVA)</dt><dd>Nilai tambah ekonomis perusahaan setelah NOPAT dikurangi seluruh biaya modal eksplisit (utang) dan implisit (ekuitas).</dd>
+ <dt>FCFF &amp; FCFE</dt><dd>Arus kas bebas untuk seluruh perusahaan (didiskonto WACC) vs arus kas bebas khusus pemegang saham setelah arus utang neto (didiskonto $k_e$).</dd>
+ <dt>Forward Rate &amp; Spot Rate</dt><dd>Spot rate adalah YTM obligasi tanpa kupon (ZCB); forward rate adalah suku bunga tersirat untuk periode masa depan.</dd>
+ <dt>PVGO (Present Value of Growth Opportunities)</dt><dd>Nilai sekarang peluang pertumbuhan perusahaan yang bernilai positif hanya jika $\text{ROE} &gt; k$.</dd>
+ <dt>Yield to Maturity (YTM)</dt><dd>Tingkat diskonto tunggal (= IRR) yang menyamakan harga pasar obligasi dengan nilai sekarang seluruh kupon dan nilai parnya.</dd>
+ <dt>Zero Coupon Bond (ZCB)</dt><dd>Obligasi tanpa pembayaran kupon berkala yang selalu dijual dengan harga diskon di bawah nilai parnya.</dd>
+ </dl>
+ </div>
+</div>
+
+<footer><b>EKMA5205 — Manajemen Keuangan</b> · Modul 4: Valuasi<br>Bahan belajar ringkas untuk persiapan ujian (berdasarkan BMP UT Edisi 3, Dr. Said Kelana Asnawi, M.M.).</footer>
+
+<script>
+(function(){
+ var pb=document.getElementById('progress');
+ function onScroll(){var h=document.documentElement;var sc=h.scrollTop||document.body.scrollTop;var max=(h.scrollHeight-h.clientHeight)||1;pb.style.width=(sc/max*100)+'%';}
+ document.addEventListener('scroll',onScroll,{passive:true});onScroll();
+
+ var list=document.getElementById('conceptList');var items=[].slice.call(list.querySelectorAll('li'));var boxes=items.map(function(li){return li.querySelector('input');});
+ document.getElementById('totalCount').textContent=items.length;var doneEl=document.getElementById('doneCount');var KEY='studi_ekma5205_m4_concepts_v1';
+ function load(){try{var a=JSON.parse(localStorage.getItem(KEY)||'[]');boxes.forEach(function(b,i){if(a[i])b.checked=true;});}catch(e){}}
+ function save(){try{localStorage.setItem(KEY,JSON.stringify(boxes.map(function(b){return b.checked?1:0;})));}catch(e){}}
+ function refresh(){var n=0;items.forEach(function(li,i){if(boxes[i].checked){li.classList.add('done');n++;}else li.classList.remove('done');});doneEl.textContent=n;}
+ load();refresh();boxes.forEach(function(b){b.addEventListener('change',function(){refresh();save();});});
+ document.getElementById('resetBtn').addEventListener('click',function(){boxes.forEach(function(b){b.checked=false;});refresh();save();});
+
+ [].slice.call(document.querySelectorAll('[data-revealgroup]')).forEach(function(g){
+ var det=g.querySelector('[data-revealdetail]');if(!det){var sib=g.nextElementSibling;if(sib&&sib.hasAttribute&&sib.hasAttribute('data-revealdetail'))det=sib;}
+ var cells=[].slice.call(g.querySelectorAll('[data-reveal]'));
+ cells.forEach(function(c){c.addEventListener('click',function(){cells.forEach(function(x){x.classList.remove('active');});c.classList.add('active');if(det){det.innerHTML=c.getAttribute('data-detail');if(window.MathJax&&window.MathJax.typesetPromise)window.MathJax.typesetPromise([det]);}});});
+ });
+
+ (function(){
+ var ROWH=46,NODE_H=32,PAD=13,GAP=52;var COL={root:'#0f5e8f',kb1:'#1a86c7',kb2:'#e08a1e',kb3:'#2a9d6f',kb4:'#7a5cc0',kb5:'#c75b7a'};
+ var mc=document.createElement('canvas').getContext('2d');mc.font='700 13px -apple-system,Segoe UI,Roboto,sans-serif';
+ function tw(t){return Math.ceil(mc.measureText(t).width);}function esc(t){return t.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');}
+ function rgba(hex,a){var h=hex.replace('#','');return 'rgba('+parseInt(h.substr(0,2),16)+','+parseInt(h.substr(2,2),16)+','+parseInt(h.substr(4,2),16)+','+a+')';}
+ var DATA={label:'MODUL 4 — Valuasi',color:COL.root,children:[
+ {label:'KB 1 · Konsep Valuasi',color:COL.kb1,children:[
+ {label:'1. Strategi Bisnis',children:[{label:'Porter 5-Forces & Industri'},{label:'Cost Leadership vs Differentiation'},{label:'Strategi Korporat & 7 Risiko Strategis'}]},
+ {label:'2. Strategi Akuntansi',children:[{label:'Bias Akrual & Pos Fleksibel'},{label:'Penyesuaian Peer-to-Peer'}]},
+ {label:'3–4. Strategi Keuangan & Prospektif'}
+ ]},
+ {label:'KB 2 · Valuasi Utang',color:COL.kb2,children:[
+ {label:'A–C. ZCB vs Coupon Bond',children:[{label:'ZCB Selalu Diskon'},{label:'CB: Premium, Par, Diskon'},{label:'YTM, Current Yield & HPR'}]},
+ {label:'D. Dinamika & Risiko Obligasi',children:[{label:'Spot Rate & Forward Rate'},{label:'Durasi (ZCB = T; CB < T)'},{label:'Rating & Altman Z-Score'}]}
+ ]},
+ {label:'KB 3 · Valuasi Saham & Perusahaan',color:COL.kb3,children:[
+ {label:'A. Model Diskonto',children:[{label:'DDM, Gordon Growth & Terminal Value'},{label:'Pertumbuhan Negatif & PVGO (ROE vs k)'},{label:'FCFF (WACC) vs FCFE (ke)'},{label:'Abnormal Earning (Ohlson)'}]},
+ {label:'B. Valuasi Relatif',children:[{label:'PER, PBV, P/CF, P/S'},{label:'Konsistensi Equity vs Firm Value'}]},
+ {label:'C. Nilai Sisa (EVA = NOPAT − Biaya Modal)'}
+ ]}
+ ]};
+ var idc=0;(function w(n,c){n.id='n'+(idc++);n.color=n.color||c;(n.children||[]).forEach(function(k){w(k,n.color);});})(DATA,COL.root);
+ (function w(n,d){if(d>=2&&n.children&&n.children.length)n.collapsed=true;(n.children||[]).forEach(function(k){w(k,d+1);});})(DATA,0);
+ var host=document.getElementById('mindmap');
+ function render(){
+ var colW=[];(function w(n,d){var width=tw(n.label)+PAD*2+((n.children&&n.children.length)?20:0);colW[d]=Math.max(colW[d]||0,width);if(!n.collapsed)(n.children||[]).forEach(function(k){w(k,d+1);});})(DATA,0);
+ var colX=[],acc=14;for(var d=0;d<colW.length;d++){colX[d]=acc;acc+=colW[d]+GAP;}var row={v:0};
+ (function lay(n,d){if(!n.children||!n.children.length||n.collapsed){n._y=row.v*ROWH+ROWH/2+8;row.v++;return;}var f,l;n.children.forEach(function(k,i){lay(k,d+1);if(i===0)f=k._y;l=k._y;});n._y=(f+l)/2;})(DATA,0);
+ var totalW=acc,totalH=row.v*ROWH+24;var nodes=[],links=[];
+ (function col(n,d,p){n._x=colX[d];n._w=tw(n.label)+PAD*2+((n.children&&n.children.length)?20:0);nodes.push({n:n,d:d});if(p)links.push([p,n]);if(!n.collapsed)(n.children||[]).forEach(function(k){col(k,d+1,n);});})(DATA,0,null);
+ var s='<svg width="'+totalW+'" height="'+totalH+'" viewBox="0 0 '+totalW+' '+totalH+'" xmlns="http://www.w3.org/2000/svg">';
+ links.forEach(function(pr){var a=pr[0],b=pr[1],x1=a._x+a._w,y1=a._y,x2=b._x,y2=b._y,mx=(x1+x2)/2;s+='<path d="M'+x1+' '+y1+' C'+mx+' '+y1+' '+mx+' '+y2+' '+x2+' '+y2+'" fill="none" stroke="'+rgba(b.color,.5)+'" stroke-width="2"/>';});
+ nodes.forEach(function(o){var n=o.n,x=n._x,y=n._y-NODE_H/2,w=n._w,hk=n.children&&n.children.length;var fill=o.d===0?n.color:(o.d===1?rgba(n.color,.12):'#fff');var tf=o.d===0?'#fff':'#1c2733';
+ s+='<g data-id="'+n.id+'" style="cursor:'+(hk?'pointer':'default')+'"><rect x="'+x+'" y="'+y+'" rx="9" width="'+w+'" height="'+NODE_H+'" fill="'+fill+'" stroke="'+n.color+'" stroke-width="'+(o.d===0?0:1.6)+'"/><text x="'+(x+PAD)+'" y="'+(n._y+4)+'" font-size="13" font-weight="'+(o.d<=1?'700':'500')+'" fill="'+tf+'" font-family="-apple-system,Segoe UI,Roboto,sans-serif">'+esc(n.label)+'</text>';
+ if(hk){var cx=x+w-12,cy=n._y;s+='<circle cx="'+cx+'" cy="'+cy+'" r="8.5" fill="'+n.color+'"/><text x="'+cx+'" y="'+(cy+4.5)+'" font-size="13" font-weight="700" fill="#fff" text-anchor="middle" font-family="sans-serif">'+(n.collapsed?'+':'\u2013')+'</text>';}s+='</g>';});
+ s+='</svg>';host.innerHTML=s;
+ }
+ host.addEventListener('click',function(e){var g=e.target.closest('g[data-id]');if(!g)return;var id=g.getAttribute('data-id');(function f(n){if(n.id===id){if(n.children&&n.children.length)n.collapsed=!n.collapsed;return true;}return (n.children||[]).some(f);})(DATA);render();});
+ document.getElementById('mmExpand').addEventListener('click',function(){(function w(n){if(n.children)n.collapsed=false;(n.children||[]).forEach(w);})(DATA);render();});
+ document.getElementById('mmCollapse').addEventListener('click',function(){(function w(n,d){if(d>=1&&n.children&&n.children.length)n.collapsed=true;(n.children||[]).forEach(function(k){w(k,d+1);});})(DATA,0);render();});
+ render();
+ })();
+
+ 
+  // OFFLINE CARTESIAN SVG CHART ENGINE (zero external library, 100% offline)
+  function drawCartesian(hostId, cfg){
+    var host=document.getElementById(hostId);if(!host)return;
+    var W=cfg.w||680,H=cfg.h||300,P={t:24,r:28,b:44,l:58};
+    var pw=W-P.l-P.r,ph=H-P.t-P.b;
+    var x0=cfg.xmin,x1=cfg.xmax,y0=cfg.ymin,y1=cfg.ymax;
+    function sx(x){return P.l+(x-x0)/(x1-x0)*pw;}
+    function sy(y){return P.t+ph-(y-y0)/(y1-y0)*ph;}
+    function esc(t){return String(t).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');}
+    var s='<svg viewBox="0 0 '+W+' '+H+'" width="'+W+'" height="'+H+'" xmlns="http://www.w3.org/2000/svg">';
+    s+='<rect x="'+P.l+'" y="'+P.t+'" width="'+pw+'" height="'+ph+'" fill="#fff" stroke="#e4e9f0"/>';
+    var xticks=cfg.xticks||5,yticks=cfg.yticks||5;
+    for(var i=0;i<=xticks;i++){
+      var xv=x0+(x1-x0)*i/xticks,px=sx(xv);
+      s+='<line x1="'+px.toFixed(1)+'" y1="'+P.t+'" x2="'+px.toFixed(1)+'" y2="'+(P.t+ph)+'" stroke="#eef2f6" stroke-width="1"/>';
+      var xl=cfg.xfmt?cfg.xfmt(xv):(Math.round(xv*100)/100);
+      s+='<text x="'+px.toFixed(1)+'" y="'+(P.t+ph+16)+'" text-anchor="middle" font-size="11" fill="#5c6b7a" font-family="-apple-system,Segoe UI,sans-serif">'+esc(xl)+'</text>';
+    }
+    for(var j=0;j<=yticks;j++){
+      var yv=y0+(y1-y0)*j/yticks,py=sy(yv);
+      s+='<line x1="'+P.l+'" y1="'+py.toFixed(1)+'" x2="'+(P.l+pw)+'" y2="'+py.toFixed(1)+'" stroke="#eef2f6" stroke-width="1"/>';
+      var yl=cfg.yfmt?cfg.yfmt(yv):(Math.round(yv*100)/100);
+      s+='<text x="'+(P.l-8)+'" y="'+(py+4).toFixed(1)+'" text-anchor="end" font-size="11" fill="#5c6b7a" font-family="-apple-system,Segoe UI,sans-serif">'+esc(yl)+'</text>';
+    }
+    if(y0<0&&y1>0){var zy=sy(0);s+='<line x1="'+P.l+'" y1="'+zy.toFixed(1)+'" x2="'+(P.l+pw)+'" y2="'+zy.toFixed(1)+'" stroke="#94a3b8" stroke-width="1.3" stroke-dasharray="4 3"/>';}
+    if(x0<0&&x1>0){var zx=sx(0);s+='<line x1="'+zx.toFixed(1)+'" y1="'+P.t+'" x2="'+zx.toFixed(1)+'" y2="'+(P.t+ph)+'" stroke="#94a3b8" stroke-width="1.3" stroke-dasharray="4 3"/>';}
+    s+='<line x1="'+P.l+'" y1="'+(P.t+ph)+'" x2="'+(P.l+pw)+'" y2="'+(P.t+ph)+'" stroke="#64748b" stroke-width="1.5"/>';
+    s+='<line x1="'+P.l+'" y1="'+P.t+'" x2="'+P.l+'" y2="'+(P.t+ph)+'" stroke="#64748b" stroke-width="1.5"/>';
+    if(cfg.xlabel)s+='<text x="'+(P.l+pw/2)+'" y="'+(H-8)+'" text-anchor="middle" font-size="12" font-weight="700" fill="#1c2733" font-family="-apple-system,Segoe UI,sans-serif">'+esc(cfg.xlabel)+'</text>';
+    if(cfg.ylabel)s+='<text x="15" y="'+(P.t+ph/2)+'" text-anchor="middle" font-size="12" font-weight="700" fill="#1c2733" font-family="-apple-system,Segoe UI,sans-serif" transform="rotate(-90 15 '+(P.t+ph/2)+')">'+esc(cfg.ylabel)+'</text>';
+    (cfg.vlines||[]).forEach(function(vl){
+      var px=sx(vl.x);
+      s+='<line x1="'+px.toFixed(1)+'" y1="'+P.t+'" x2="'+px.toFixed(1)+'" y2="'+(P.t+ph)+'" stroke="'+(vl.color||'#94a3b8')+'" stroke-width="1.2" stroke-dasharray="5 4"/>';
+      if(vl.label)s+='<text x="'+(px+4).toFixed(1)+'" y="'+(P.t+14)+'" font-size="10.5" font-weight="700" fill="'+(vl.color||'#475569')+'" font-family="-apple-system,Segoe UI,sans-serif">'+esc(vl.label)+'</text>';
+    });
+    (cfg.hlines||[]).forEach(function(hl){
+      var py=sy(hl.y);
+      s+='<line x1="'+P.l+'" y1="'+py.toFixed(1)+'" x2="'+(P.l+pw)+'" y2="'+py.toFixed(1)+'" stroke="'+(hl.color||'#94a3b8')+'" stroke-width="1.2" stroke-dasharray="5 4"/>';
+      if(hl.label)s+='<text x="'+(P.l+pw-4)+'" y="'+(py-5).toFixed(1)+'" text-anchor="end" font-size="10.5" font-weight="700" fill="'+(hl.color||'#475569')+'" font-family="-apple-system,Segoe UI,sans-serif">'+esc(hl.label)+'</text>';
+    });
+    (cfg.series||[]).forEach(function(sr){
+      var pts=sr.pts.map(function(p){return sx(p[0]).toFixed(1)+','+sy(p[1]).toFixed(1);}).join(' ');
+      s+='<polyline fill="none" stroke="'+sr.color+'" stroke-width="'+(sr.w||2.5)+'"'+(sr.dash?' stroke-dasharray="'+sr.dash+'"':'')+' points="'+pts+'"/>';
+    });
+    (cfg.markers||[]).forEach(function(mk){
+      var cx=sx(mk.x),cy=sy(mk.y);
+      s+='<circle cx="'+cx.toFixed(1)+'" cy="'+cy.toFixed(1)+'" r="4.8" fill="'+(mk.color||'#0f5e8f')+'" stroke="#fff" stroke-width="1.6"/>';
+      var dx=mk.dx||8,dy=mk.dy||-8,anc=mk.anchor||'start';
+      if(mk.label)s+='<text x="'+(cx+dx).toFixed(1)+'" y="'+(cy+dy).toFixed(1)+'" text-anchor="'+anc+'" font-size="11" font-weight="700" fill="'+(mk.color||'#0f5e8f')+'" font-family="-apple-system,Segoe UI,sans-serif">'+esc(mk.label)+'</text>';
+    });
+    s+='</svg>';
+    var leg='';
+    if(cfg.series&&cfg.series.length>1){
+      leg='<div class="chart-legend">'+cfg.series.map(function(sr){
+        return '<span><i style="background:'+sr.color+';'+(sr.dash?'border-top:2px dashed '+sr.color+';background:none;height:0':'')+'"></i>'+esc(sr.name)+'</span>';
+      }).join('')+'</div>';
+    }
+    host.innerHTML=s+leg;
+  }
+
+
+  (function(){
+    function cbPrice(c,k,rem){if(rem===0)return 1000;var pv=0;for(var t=1;t<=rem;t++)pv+=c/Math.pow(1+k,t);return pv+1000/Math.pow(1+k,rem);}
+    var prem=[],par=[],disc=[],zcb=[];
+    for(var t=0;t<=5;t++){
+      var rem=5-t;
+      prem.push([t, cbPrice(120,0.08,rem)]);
+      par.push([t, 1000]);
+      disc.push([t, cbPrice(50,0.08,rem)]);
+      zcb.push([t, 1000/Math.pow(1.1375,rem)]);
+    }
+    drawCartesian('ch_m4_bond',{
+      xmin:0,xmax:5,ymin:450,ymax:1250,xticks:5,yticks:4,
+      xlabel:'Tahun ke- (t)',ylabel:'Harga Wajar Obligasi (Rp)',
+      hlines:[{y:1000,label:'Nilai Par (1.000)',color:'#64748b'}],
+      series:[
+        {name:'Premium Bond (kupon > k)',color:'#2a9d6f',pts:prem},
+        {name:'At Par (kupon = k)',color:'#64748b',dash:'5 4',pts:par},
+        {name:'Discount Bond (kupon < k)',color:'#e08a1e',pts:disc},
+        {name:'Zero Coupon Bond (ZCB)',color:'#1a86c7',pts:zcb}
+      ],
+      markers:[{x:5,y:1000,label:'Jatuh Tempo = Par',color:'#0f5e8f',dx:-10,dy:-10,anchor:'end'}]
+    });
+  })();
+
+  window.addEventListener('load',function(){setTimeout(function(){if(window.MathJax&&window.MathJax.typesetPromise)window.MathJax.typesetPromise();},400);});
+})();
+</script></body></html>

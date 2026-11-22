@@ -1,0 +1,656 @@
+<!DOCTYPE html>
+<html lang="id"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Modul 7 — Pembiayaan Jangka Panjang | EKMA5205</title>
+<script>window.MathJax={tex:{inlineMath:[['$','$']],displayMath:[['\\[','\\]'],['$$','$$']]},svg:{fontCache:'global'},startup:{typeset:true}};</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js" async></script>
+<style>
+:root{--bg:#f4f6f9;--panel:#fff;--ink:#1c2733;--muted:#5c6b7a;--line:#e4e9f0;--brand:#1a86c7;--brand-dark:#0f5e8f;--brand-soft:#e7f3fb;--kb1:#1a86c7;--kb2:#e08a1e;--kb3:#2a9d6f;--kb4:#7a5cc0;--kb5:#c75b7a;--radius:14px;--shadow:0 1px 2px rgba(16,42,67,.06),0 6px 20px rgba(16,42,67,.06);--maxw:900px}
+*{box-sizing:border-box}html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;line-height:1.72}
+#progress{position:fixed;top:0;left:0;height:4px;width:0;background:linear-gradient(90deg,var(--brand),#53c0ec);z-index:200;transition:width .1s}
+header.top{position:sticky;top:0;z-index:100;background:rgba(255,255,255,.92);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+.top-in{max-width:var(--maxw);margin:0 auto;padding:10px 20px;display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+.badge{background:var(--brand);color:#fff;font-weight:700;font-size:.72rem;letter-spacing:.5px;padding:4px 10px;border-radius:999px}
+.homebtn{text-decoration:none;display:inline-flex;align-items:center;gap:7px;background:var(--brand);color:#fff;font-weight:700;font-size:.8rem;padding:7px 15px;border-radius:999px;box-shadow:0 2px 6px rgba(16,42,67,.22);line-height:1}
+.top-title{font-size:.9rem;font-weight:600;color:var(--muted)}
+nav.jump{margin-left:auto;display:flex;gap:4px;flex-wrap:wrap}
+nav.jump a{font-size:.78rem;color:var(--muted);text-decoration:none;padding:5px 10px;border-radius:8px}
+nav.jump a:hover{background:var(--brand-soft);color:var(--brand-dark)}
+.wrap{max-width:var(--maxw);margin:0 auto;padding:0 20px 90px}
+.hero{margin-top:26px;padding:30px 28px;border-radius:var(--radius);color:#fff;background:linear-gradient(135deg,#0f5e8f,#1a86c7 60%,#2fa4df);box-shadow:var(--shadow);position:relative;overflow:hidden}
+.hero .eyebrow{font-size:.78rem;letter-spacing:1.5px;text-transform:uppercase;opacity:.9;font-weight:600}
+.hero h1{margin:.3em 0 .25em;font-size:1.62rem;line-height:1.25;max-width:90%}
+.hero .meta{display:flex;gap:18px;flex-wrap:wrap;font-size:.84rem;opacity:.95;margin-top:10px}
+h2.section{font-size:1.3rem;margin:48px 0 4px;display:flex;align-items:center;gap:10px;scroll-margin-top:70px}
+h2.section .dot{width:10px;height:22px;border-radius:4px;background:var(--brand)}
+.section-sub{color:var(--muted);font-size:.9rem;margin:0 0 18px}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);padding:22px 24px;margin:16px 0;--dot:var(--brand);overflow-x:clip;overflow-wrap:break-word;word-wrap:break-word}
+.concepts{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:minmax(0,1fr);gap:10px}
+.concepts li{display:flex;gap:12px;align-items:flex-start;padding:12px 14px;border:1px solid var(--line);border-radius:10px;background:#fcfdff;min-width:0;max-width:100%}
+.concepts li>span{min-width:0;max-width:100%;overflow-wrap:break-word;word-wrap:break-word}
+.concepts input{margin-top:4px;width:18px;height:18px;accent-color:var(--brand);flex:none;cursor:pointer}
+.concepts .ct{font-weight:600}.concepts .cd{display:block;font-weight:400;color:var(--muted);font-size:.86rem;margin-top:2px}
+.concepts li.done{background:var(--brand-soft);border-color:#bfe0f3}.concepts li.done .ct{text-decoration:line-through;opacity:.65}
+.cl-head{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-bottom:6px}
+.cl-head .count{font-size:.82rem;color:var(--muted);background:var(--brand-soft);padding:3px 10px;border-radius:999px;font-weight:600}
+.btn-reset{font-size:.78rem;border:1px solid var(--line);background:#fff;color:var(--muted);padding:5px 12px;border-radius:8px;cursor:pointer}
+.mm-toolbar{display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin-bottom:10px}
+.mm-btn{font-size:.78rem;border:1px solid var(--line);background:#fff;padding:6px 13px;border-radius:8px;cursor:pointer;color:var(--brand-dark);font-weight:600}
+.mindmap-host{height:580px;overflow:auto;border:1px solid var(--line);border-radius:10px;background:#fcfdff}.mindmap-host svg{display:block}
+.kb-tag{display:inline-flex;align-items:center;gap:8px;font-size:.78rem;font-weight:700;color:#fff;padding:5px 12px;border-radius:999px;margin-bottom:6px}
+.kb1t{background:var(--kb1)}.kb2t{background:var(--kb2)}.kb3t{background:var(--kb3)}.kb4t{background:var(--kb4)}.kb5t{background:var(--kb5)}
+.kb1b{--dot:var(--kb1)}.kb2b{--dot:var(--kb2)}.kb3b{--dot:var(--kb3)}.kb4b{--dot:var(--kb4)}.kb5b{--dot:var(--kb5)}
+.lead{font-size:1.02rem}.term{font-weight:700;color:var(--dot)}.en{font-style:italic;color:var(--muted);font-weight:500}
+.abc{display:flex;align-items:center;gap:10px;margin:28px 0 10px;padding-bottom:6px;border-bottom:2px solid color-mix(in srgb,var(--dot) 18%,#fff)}
+.abc .ltr{background:var(--dot);color:#fff;font-weight:800;min-width:30px;height:30px;padding:0 7px;border-radius:8px;display:grid;place-items:center;flex:none}
+.abc h4{margin:0;font-size:1.06rem;color:var(--dot)}
+.numh{font-weight:700;color:var(--dot);margin:22px 0 6px;font-size:1rem}
+.leth{font-weight:800;color:var(--dot);margin:18px 0 6px;font-size:.95rem;border-left:3px solid var(--dot);padding-left:10px}
+ol.book{margin:12px 0;padding-left:28px}ol.book>li{margin:9px 0;padding-left:6px}ol.book>li::marker{font-weight:700;color:var(--dot)}
+ul.exp{list-style:none;margin:12px 0;padding:0;display:grid;grid-template-columns:minmax(0,1fr);gap:10px}
+ul.exp>li{position:relative;padding-left:20px;min-width:0;max-width:100%;overflow-wrap:break-word;word-wrap:break-word}
+ul.exp>li::before{content:"";position:absolute;left:0;top:11px;width:8px;height:8px;border-radius:2px;background:var(--dot)}
+.flow{border-left:4px solid var(--dot);background:color-mix(in srgb,var(--dot) 9%,#fff);padding:11px 15px;border-radius:0 10px 10px 0;margin:18px 0;font-size:.9rem;min-width:0;max-width:100%;overflow-wrap:break-word;word-wrap:break-word}
+.flow::before{content:"🔗 Benang merah — ";font-weight:700;color:var(--dot)}.flow b{color:var(--dot)}
+.casebox{background:#f8fafc;border:1px solid var(--line);border-left:4px solid var(--dot);border-radius:0 10px 10px 0;padding:12px 15px;margin:14px 0;font-size:.88rem;min-width:0;max-width:100%;overflow-wrap:break-word;word-wrap:break-word}
+.casebox .ctitle{font-weight:700;color:var(--dot);margin-bottom:4px;display:block}
+.table-wrap{width:100%;overflow-x:auto;-webkit-overflow-scrolling:touch;margin:14px 0;border-radius:10px}
+table.mini{width:100%;border-collapse:collapse;margin:0;font-size:.86rem;table-layout:auto}
+table.mini th,table.mini td{border:1px solid var(--line);padding:10px 12px;text-align:left;vertical-align:top;overflow-wrap:break-word;word-wrap:break-word}
+table.mini th{background:color-mix(in srgb,var(--dot) 12%,#fff);color:var(--dot);font-weight:700}
+.rgrid{display:grid;gap:8px;margin:14px 0}.rgrid.c2{grid-template-columns:repeat(2,1fr)}.rgrid.c3{grid-template-columns:repeat(3,1fr)}.rgrid.c4{grid-template-columns:repeat(4,1fr)}
+.rcell{border:1px solid var(--line);border-radius:10px;padding:11px 13px;cursor:pointer;background:#fff;display:flex;gap:10px;align-items:flex-start;transition:.15s;min-width:0;max-width:100%}
+.rcell>span{min-width:0;max-width:100%;overflow-wrap:break-word;word-wrap:break-word}
+.rcell:hover{border-color:var(--dot);box-shadow:var(--shadow);transform:translateY(-2px)}
+.rcell.active{border-color:var(--dot);background:color-mix(in srgb,var(--dot) 8%,#fff)}
+.rcell .stepnum{background:var(--dot);color:#fff;font-weight:700;min-width:24px;height:24px;border-radius:7px;display:grid;place-items:center;flex:none;font-size:.82rem}
+.rcell .rt{font-weight:700;font-size:.9rem;color:var(--dot);display:block}.rcell .rp{font-size:.78rem;color:var(--muted);display:block;margin-top:2px}
+.rdetail{font-size:.88rem;border-left:4px solid var(--dot);background:color-mix(in srgb,var(--dot) 8%,#fff);border-radius:0 10px 10px 0;padding:12px 15px;margin-top:6px;min-width:0;max-width:100%;overflow-wrap:break-word;word-wrap:break-word}
+.eqbox{background:#fcfdff;border:1px solid var(--line);border-radius:10px;padding:8px 14px;margin:14px 0;overflow-x:auto}
+mjx-container{max-width:100%;overflow-x:auto;overflow-y:hidden}
+mjx-container:not([display="true"]){display:inline-block;vertical-align:middle}
+.chart-wrap{background:#fcfdff;border:1px solid var(--line);border-radius:12px;padding:14px 16px;margin:16px 0}
+.chart-title{font-weight:700;font-size:.9rem;color:var(--dot);margin:0 0 4px}
+.chart-sub{font-size:.78rem;color:var(--muted);margin:0 0 10px}
+.chart-host{width:100%;overflow-x:auto;position:relative}.chart-host svg{display:block;max-width:100%;height:auto;margin:0 auto}
+.chart-legend{display:flex;gap:14px;flex-wrap:wrap;justify-content:center;margin-top:8px;font-size:.78rem;color:var(--muted)}
+.chart-legend span{display:inline-flex;align-items:center;gap:6px}.chart-legend i{display:inline-block;width:14px;height:3px;border-radius:2px}
+.glossary dt{font-weight:700;color:var(--brand-dark);margin-top:10px}.glossary dd{margin:0 0 2px;color:var(--muted);font-size:.9rem}
+footer{max-width:var(--maxw);margin:0 auto;padding:30px 20px 60px;color:var(--muted);font-size:.82rem;border-top:1px solid var(--line)}
+.offline-note{font-size:.76rem;color:var(--muted);background:#fff8e6;border:1px solid #f0e2b8;border-radius:8px;padding:8px 12px;margin:10px 0}
+.acro-box{background:#f8fafc;border:1px solid var(--line);border-radius:10px;padding:12px 14px;margin:14px 0;font-size:.84rem;min-width:0;max-width:100%;overflow-wrap:break-word;word-wrap:break-word}
+.acro-title{font-weight:700;color:var(--dot);font-size:.86rem;margin-bottom:8px;display:block}
+.acro-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:6px 14px;margin:0;padding:0;list-style:none}
+.acro-grid li{min-width:0;line-height:1.5}.acro-grid b{color:var(--dot)}
+.fguide{background:color-mix(in srgb,var(--dot) 5%,#fff);border:1px solid color-mix(in srgb,var(--dot) 22%,#e4e9f0);border-radius:10px;padding:12px 15px;margin:-6px 0 16px;font-size:.86rem;min-width:0;max-width:100%;overflow-wrap:break-word;word-wrap:break-word}
+.fguide .fg-head{font-weight:700;color:var(--dot);font-size:.84rem;text-transform:uppercase;letter-spacing:.35px;margin:0 0 6px}
+.fguide ul{margin:4px 0 8px;padding-left:18px}.fguide ul li{margin:3px 0}
+.fguide .fg-core{border-top:1px dashed color-mix(in srgb,var(--dot) 30%,#cbd5e1);padding-top:8px;margin-top:8px;display:grid;grid-template-columns:minmax(0,1fr);gap:4px}
+.fguide .fg-core div{min-width:0}
+@media(max-width:680px){
+ .table-wrap{overflow-x:visible}
+ table.mini,table.mini thead,table.mini tbody,table.mini th,table.mini td,table.mini tr{display:block;width:100%}
+ table.mini thead{display:none}
+ table.mini tr{margin-bottom:12px;border:1.5px solid color-mix(in srgb,var(--dot) 28%,#e4e9f0);border-radius:10px;background:#fff;overflow:hidden;box-shadow:0 1px 4px rgba(16,42,67,.05)}
+ table.mini td{border:none;border-bottom:1px solid var(--line);padding:10px 12px;text-align:left}
+ table.mini td:last-child{border-bottom:none}
+ table.mini td::before{content:attr(data-label);display:block;font-size:.74rem;font-weight:700;text-transform:uppercase;letter-spacing:.4px;color:var(--dot);margin-bottom:4px}
+}
+@media(max-width:640px){.hero h1{font-size:1.3rem;max-width:100%}nav.jump{display:none}.rgrid.c2,.rgrid.c3,.rgrid.c4,.acro-grid{grid-template-columns:minmax(0,1fr)}.mindmap-host{height:440px}}
+</style></head><body>
+<div id="progress"></div>
+<header class="top"><div class="top-in">
+ <span class="badge">MODUL 7</span>
+ <a class="homebtn" href="index.html" title="Kembali ke daftar modul"><span style="font-size:1rem;line-height:1">&#8962;</span> Daftar Modul</a>
+ <span class="top-title">Manajemen Keuangan · EKMA5205</span>
+ <nav class="jump">
+ <a href="#konsep">Konsep</a>
+ <a href="#peta">Peta Konsep</a>
+ <a href="#kb1">KB 1</a>
+ <a href="#kb2">KB 2</a>
+ <a href="#kb3">KB 3</a>
+ <a href="#glosarium">Glosarium</a>
+ </nav>
+</div></header>
+
+<div class="wrap">
+ <section class="hero">
+ <div class="eyebrow">Ringkasan Belajar · EKMA5205 (Edisi 3)</div>
+ <h1>Pembiayaan Jangka Panjang</h1>
+ <div class="meta">
+ <span>⏱️ ±40 menit</span>
+ <span>📚 3 Kegiatan Belajar (KB)</span>
+ <span>✍️ Dr. Said Kelana Asnawi, M.M.</span>
+ </div>
+ </section>
+
+ <p class="section-sub" style="margin-top:22px">Modul 7 membahas secara utuh tiga sumber utama pendanaan jangka panjang untuk membiayai aset tetap dan sebagian modal kerja: <b>Penerbitan Saham</b> (modal dasar/disetor/portapel, FC vs BE, model NPV proyek, 6 faktor underpricing, <i>earning management</i>, 5 biaya emisi, &amp; HMETD) pada <b>KB 1</b>; <b>Utang Jangka Panjang</b> (obligasi &amp; <i>private placement</i>, nilai par vs pasar, <i>protective covenant</i>, <i>disclosure</i>, <i>sinking fund</i>, 5 jenis obligasi, &amp; krisis 2008) pada <b>KB 2</b>; serta <b>Leasing</b> (manfaat &amp; 6 unsur, 3 jenis leasing, perbedaan pembukuan <i>operating</i> vs <i>capital lease</i> &amp; dampak rasio, perhitungan <i>Net Advantage of Leasing</i>, &amp; <i>reservation payment</i>) pada <b>KB 3</b>.</p>
+ <p class="offline-note">ℹ️ Peta konsep, grafik SVG, kartu penjelasan interaktif, dan checklist konsep berjalan tanpa internet. Koneksi internet hanya diperlukan untuk merender persamaan matematika (MathJax).</p>
+
+ <!-- KONSEP PENTING -->
+ <h2 class="section" id="konsep"><span class="dot"></span>Konsep Penting yang Harus Dikuasai</h2>
+ <div class="card">
+ <div class="cl-head">
+ <span class="count"><span id="doneCount">0</span>/<span id="totalCount">0</span> dikuasai</span>
+ <button class="btn-reset" id="resetBtn">Reset centang</button>
+ </div>
+ <ul class="concepts" id="conceptList">
+ <li><input type="checkbox"><span><span class="ct">Modal Dasar, Modal Disetor Penuh, Saham Portapel, &amp; Agio Saham</span><span class="cd">Modal dasar = modal pendirian; bagian belum disetor = saham portapel yang dijual saat IPO; selisih harga jual di atas nilai nominal dicatat sebagai agio saham.</span></span></li>
+ <li><input type="checkbox"><span><span class="ct">Metode Penawaran IPO: Firm Commitment (FC) vs Best Effort (BE) &amp; Certification Hypothesis</span><span class="cd">FC menanggung 100% sisa tak laku (fee tinggi, ~80% IPO memilih FC sebagai sertifikasi kualitas menurut Booth &amp; Smith); BE hanya mengupayakan semaksimal mungkin tanpa kewajiban membeli sisa.</span></span></li>
+ <li><input type="checkbox"><span><span class="ct">Nilai Proyek (NPV) &amp; Pemilihan Metode IPO (Model Bower)</span><span class="cd">Laba pemilik lama $\pi = (\text{NPV} - \text{Biaya Emisi})(1-p)$ dengan $Z > C$; proyek ber-NPV besar &amp; butuh dana besar memilih FC, sedangkan NPV kecil atau selisih $Z-C$ besar memilih BE.</span></span></li>
+ <li><input type="checkbox"><span><span class="ct">Fenomena Underpricing (6 Alasan), Earning Management, &amp; 5 Biaya Emisi</span><span class="cd">Harga perdana melonjak di pasar sekunder karena 6 alasan (tarik uninformed investor, sertifikasi underwriter, asimetri informasi, arahan regulator, eksploitasi underwriter, risiko FC); emiten rawan memoles discretionary accrual pra-IPO; 5 biaya: spread, direct, indirect, underpricing, green shoe option.</span></span></li>
+ <li><input type="checkbox"><span><span class="ct">Hak Memesan Efek Terlebih Dahulu (HMETD / Right Issue)</span><span class="cd">Hak beli saham baru berdiskon sebelum jatuh tempo; kekayaan total pemegang saham lama tetap identik baik saat mengeksekusi maupun menjual right-nya.</span></span></li>
+ <li><input type="checkbox"><span><span class="ct">Utang Jangka Panjang, Private Placement, Nilai Par vs Harga Pasar</span><span class="cd">Tenor 5–30 tahun; private placement bebas registrasi bursa tapi covenant lebih ketat; harga pasar >100 (premium) bila kupon > tingkat diskonto pasar.</span></span></li>
+ <li><input type="checkbox"><span><span class="ct">Protective Covenant (Negatif vs Positif), Disclosure, &amp; Sinking Fund</span><span class="cd">Covenant membatasi dividen/jual aset/merger/utang baru dan mewajibkan modal kerja &amp; laporan berkala; disclosure cegah asimetri; sinking fund mencadangkan dana pelunasan pokok.</span></span></li>
+ <li><input type="checkbox"><span><span class="ct">Lima Jenis Obligasi &amp; Tipe Kupon</span><span class="cd">Zero Coupon Bond, Treasury Bond (ORI), Callable Bond (4 alasan penerbitan), Putable Bond, Income Bond (serta asset-backed film), kupon tetap vs mengambang (cap &amp; floor).</span></span></li>
+ <li><input type="checkbox"><span><span class="ct">Surat Utang &amp; Krisis Keuangan 2008 (MBS, CDO, SIV, Tranches, CDS)</span><span class="cd">Sekuritisasi KPR subprime (FNMA/FHLMC), CDO bertingkat lewat SIV, dan spekulasi CDS (Lehman Brothers $400 M vs utang $155 M) beserta 4 pelajaran regulasi.</span></span></li>
+ <li><input type="checkbox"><span><span class="ct">Manfaat, 6 Unsur, &amp; 3 Jenis Leasing</span><span class="cd">Manfaat: kas, teknologi terkini, off-balance sheet; 6 unsur (lessor, lessee, objek, rent, lease term, salvage value); 3 jenis: operating, capital/financial, dan sale &amp; leaseback.</span></span></li>
+ <li><input type="checkbox"><span><span class="ct">Perbedaan Operating vs Capital Lease (Imputed Interest, Depresiasi, &amp; Dampak Rasio)</span><span class="cd">Capital lease on-balance sheet memunculkan imputed interest &amp; imputed depreciation (penghematan pajak lebih besar), namun menaikkan Debt Ratio &amp; menurunkan ROA dibanding operating lease.</span></span></li>
+ <li><input type="checkbox"><span><span class="ct">Net Advantage of Leasing (NAL) &amp; Reservation Payment</span><span class="cd">NAL membandingkan 6 aspek menyewa vs membeli (diskonto $k_d^*$ untuk arus kas sewa/pajak dan $k_s$ untuk nilai sisa); $\text{NAL} > 0 \implies$ leasing; $\text{NAL} = 0$ menghasilkan reservation payment (maks lessee / min lessor).</span></span></li>
+ </ul>
+ </div>
+
+ <!-- PETA KONSEP -->
+ <h2 class="section" id="peta"><span class="dot"></span>Peta Konsep (Mind Map)</h2>
+ <div class="card">
+ <div class="mm-toolbar">
+ <button class="mm-btn" id="mmExpand">Perluas semua</button>
+ <button class="mm-btn" id="mmCollapse">Ciutkan</button>
+ <span style="font-size:.76rem;color:var(--muted)">Klik simpul bertanda + / – untuk buka-tutup · Gulir untuk menggeser</span>
+ </div>
+ <div class="mindmap-host" id="mindmap"></div>
+ </div>
+
+ <!-- ========================================================= -->
+ <!-- KB 1 -->
+ <!-- ========================================================= -->
+ <h2 class="section" id="kb1"><span class="dot" style="background:var(--kb1)"></span>KB 1 — Penerbitan Saham</h2>
+ <div class="card kb1b">
+ <span class="kb-tag kb1t">KB 1 · PENAWARAN SAHAM, IPO, UNDERPRICING, EARNING MANAGEMENT, &amp; HMETD (Hal. 7.4 – 7.15)</span>
+ <p class="lead">Penerbitan saham merupakan cara pertama memperoleh pendanaan jangka panjang dengan membagi kepemilikan dan risiko kepada publik (<span class="term">go public / IPO</span>). Tidak menimbulkan beban bunga tetap, tetapi menuntut keterbukaan, biaya emisi, serta pengelolaan hubungan dengan <span class="term">underwriter</span> dan investor.</p>
+
+ <div class="acro-box">
+ <span class="acro-title">📖 Kamus Lengkap Terminologi, Singkatan, &amp; Akronim KB 1</span>
+ <ul class="acro-grid">
+ <li><b>IPO (<span class="en">Initial Public Offering</span>) / Go Public</b>: Penawaran saham perdana perusahaan tertutup kepada masyarakat luas untuk pertama kali agar tercatat di bursa.</li>
+ <li><b>Pasar Primer vs Pasar Sekunder</b>: Pasar primer = transaksi perdana langsung antara emiten &amp; investor (dana masuk ke emiten); pasar sekunder = perdagangan saham antarinvestor di bursa efek.</li>
+ <li><b>Emiten (<span class="en">Issuer / Supplier</span>) vs Investor (<span class="en">Demander</span>)</b>: Emiten adalah perusahaan penjual saham yang membutuhkan dana; investor (publik) adalah penyedia dana yang menjadi pemilik baru.</li>
+ <li><b>Bapepam / OJK</b>: <i>Badan Pengawas Pasar Modal</i> (kini OJK) — regulator yang menetapkan syarat IPO (kondisi laba &amp; prospektus) demi melindungi investor.</li>
+ <li><b>Prospektus</b>: Dokumen resmi yang memuat informasi fundamental, rencana penggunaan dana, laporan keuangan, dan biaya langsung emisi bagi calon investor.</li>
+ <li><b>Modal Dasar</b>: Total modal maksimal yang disepakati para pendiri saat mendirikan perusahaan (terdiri atas modal disetor + modal belum disetor).</li>
+ <li><b>Modal Ditempatkan &amp; Disetor Penuh</b>: Bagian dari modal dasar yang telah benar-benar disetor kasnya oleh pemilik lama maupun investor publik.</li>
+ <li><b>Saham dalam Portapel</b>: Bagian modal dasar yang belum disetor/diterbitkan; saham inilah yang biasanya dilepas ke publik saat IPO.</li>
+ <li><b>Agio Saham</b>: Selisih lebih harga jual saham IPO di atas nilai nominalnya (mis. nominal Rp1.000 dijual Rp1.200 → agio Rp200/lbr).</li>
+ <li><b>Underwriter (Penjamin Emisi / Wali Amanat)</b>: Lembaga keuangan penasihat sekaligus pemasar saham IPO yang menjembatani emiten dan publik.</li>
+ <li><b>FC (<span class="en">Firm / Full Commitment</span>)</b>: Metode penjaminan penuh (100%) di mana <i>underwriter</i> wajib membeli seluruh sisa saham yang tidak laku terjual.</li>
+ <li><b>BE (<span class="en">Best Effort</span>)</b>: Metode penawaran di mana <i>underwriter</i> hanya berupaya sebaik mungkin; sisa saham tak laku dikembalikan ke emiten.</li>
+ <li><b>Proceed</b>: Total kas bersih yang diterima emiten dari hasil penjualan saham IPO setelah memperhitungkan harga jual dan biaya penjaminan.</li>
+ <li><b>Asimetri Informasi &amp; Certification Hypothesis</b>: Ketimpangan informasi antara <i>insider</i> (emiten) dan <i>outsider</i> (investor); <i>underwriter</i> berperan sebagai "penyertifikat" kualitas saham (Booth &amp; Smith, 1986).</li>
+ <li><b>Informed vs Uninformed Investor</b>: <i>Informed</i> = investor paham fundamental yang mampu menaksir harga wajar; <i>Uninformed</i> = investor kurang informasi yang butuh harga murah sebagai pemanis.</li>
+ <li><b>Underpricing vs Overpricing</b>: <i>Underpricing</i> = harga saham naik saat masuk pasar sekunder (harga perdana dinilai murah); <i>Overpricing</i> = harga justru turun di pasar sekunder.</li>
+ <li><b>Earning Management &amp; Discretionary Accrual</b>: Pengaturan besaran &amp; waktu pengakuan pendapatan/beban akrual demi memoles laba pra-IPO agar memenuhi syarat laba 3 tahun berturut-turut.</li>
+ <li><b>Spread (<span class="en">Underwriting Discount</span>) &amp; Green Shoe Option</b>: <i>Spread</i> = selisih harga IPO dengan dana diterima emiten; <i>Green shoe option</i> = hak <i>underwriter</i> menambah jatah saham saat kelebihan permintaan (<i>overallotments</i>).</li>
+ <li><b>HMETD (<span class="en">Hak Memesan Efek Terlebih Dahulu / Right</span>) &amp; Ex-Right Date</b>: Hak pemegang saham lama membeli saham baru berdiskon sebelum jatuh tempo; setelah <i>ex-right date</i>, pembeli saham tidak lagi memperoleh hak tersebut.</li>
+ <li><b>NPV, $Z, C, p, \pi$</b>: <i>Net Present Value</i> proyek, biaya emisi FC ($Z$) &amp; BE ($C$), porsi saham dijual ke publik ($p$), dan laba pemilik lama ($\pi$).</li>
+ </ul>
+ </div>
+
+ <div class="abc"><span class="ltr">A</span><h4>Penawaran Saham</h4></div>
+ <p>Cara pertama memperoleh pendanaan jangka panjang adalah membagi kepemilikan kepada publik (<span class="term">go public / IPO</span>) di bursa saham (pasar modal). Di bursa bertemu <b>penjual (emiten)</b> yang butuh dana dan <b>pembeli (investor publik)</b> yang menyetor dana dengan konsekuensi menjadi pemilik baru. Sebelum bertransaksi, emiten wajib memenuhi aturan <b>Bapepam (OJK)</b>—antara lain perusahaan dalam kondisi <b>berlaba</b> dan menerbitkan <b>prospektus</b>—untuk melindungi kepentingan investor.</p>
+
+ <div class="abc"><span class="ltr">B</span><h4>Modal Dasar dan Modal Disetor</h4></div>
+ <p>Struktur permodalan awal terdiri atas <span class="term">modal dasar</span> (disepakati saat pendirian), <span class="term">modal ditempatkan &amp; disetor penuh</span> (sudah masuk kasnya), dan <span class="term">modal dalam portapel</span> (belum disetor). Saat IPO, perusahaan menjual saham portapel sehingga modal disetor naik, saham portapel menyusut, dan selisih harga jual di atas nominal dicatat sebagai <span class="term">agio saham</span>.</p>
+ <div class="table-wrap">
+ <table class="mini">
+ <thead><tr><th>Ilustrasi PT AAA (Nominal Rp1.000; Jual 500 jt lbr @Rp1.200)</th><th>Sebelum IPO</th><th>Sesudah IPO</th><th>Perubahan &amp; Makna</th></tr></thead>
+ <tbody>
+ <tr><td data-label="Ilustrasi PT AAA"><b>Modal Disetor — Tn A</b></td><td data-label="Sebelum IPO">100 jt lbr · Rp100 M (33%)</td><td data-label="Sesudah IPO">100 jt lbr · Rp100 M (12,5%)</td><td data-label="Perubahan &amp; Makna">Kepemilikan terdilusi karena masuknya publik</td></tr>
+ <tr><td data-label="Ilustrasi PT AAA"><b>Modal Disetor — Tn B</b></td><td data-label="Sebelum IPO">200 jt lbr · Rp200 M (67%)</td><td data-label="Sesudah IPO">200 jt lbr · Rp200 M (25,0%)</td><td data-label="Perubahan &amp; Makna">Nominal tetap, persentase kendali berkurang</td></tr>
+ <tr><td data-label="Ilustrasi PT AAA"><b>Modal Disetor — Publik</b></td><td data-label="Sebelum IPO">0</td><td data-label="Sesudah IPO">500 jt lbr · Rp500 M (62,5%)</td><td data-label="Perubahan &amp; Makna">Total modal disetor naik dari Rp300 M → Rp800 M</td></tr>
+ <tr><td data-label="Ilustrasi PT AAA"><b>Agio Saham</b></td><td data-label="Sebelum IPO">0</td><td data-label="Sesudah IPO"><b>Rp100 M</b> (500 jt × Rp200)</td><td data-label="Perubahan &amp; Makna">Kelebihan harga jual Rp1.200 di atas nominal Rp1.000</td></tr>
+ <tr><td data-label="Ilustrasi PT AAA"><b>Modal dalam Portapel</b></td><td data-label="Sebelum IPO">Rp700 M</td><td data-label="Sesudah IPO"><b>Rp200 M</b></td><td data-label="Perubahan &amp; Makna">Berkurang Rp500 M karena dilepas ke publik</td></tr>
+ <tr><td data-label="Ilustrasi PT AAA"><b>Total Modal Dasar</b></td><td data-label="Sebelum IPO">Rp1.000 M (Rp1 T)</td><td data-label="Sesudah IPO">Rp1.000 M (Rp1 T)</td><td data-label="Perubahan &amp; Makna">Modal dasar tidak berubah (tetap Rp1 triliun)</td></tr>
+ </tbody>
+ </table>
+ </div>
+
+ <div class="flow">Setelah memahami saham portapel yang dijual ke publik, bagian C membahas dua aktor utama IPO (<b>emiten</b> vs <b>underwriter</b>) serta dua metode penawaran yang membagi risiko penjualan di antara keduanya.</div>
+
+ <div class="abc"><span class="ltr">C</span><h4>Metode Penawaran IPO: Firm Commitment dan Best Effort</h4></div>
+ <p>Harga dan kelancaran IPO ditentukan dua aktor dengan kepentingan berbeda: <b>emiten</b> menginginkan perolehan dana seoptimal mungkin, sedangkan <b>underwriter</b> (penasihat keuangan sekaligus pemasar) mengejar <i>fee</i> dan reputasi. Terdapat dua metode kesepakatan penjaminan:</p>
+ <div class="table-wrap">
+ <table class="mini">
+ <thead><tr><th>Indikator Perbandingan (Tabel 7.1)</th><th>Firm / Full Commitment (FC)</th><th>Best Effort (BE)</th></tr></thead>
+ <tbody>
+ <tr><td data-label="Indikator"><b>Tanggung Jawab Underwriter</b></td><td data-label="Firm Commitment"><b>Tinggi (100%)</b> — wajib membeli sendiri seluruh sisa saham yang tidak laku di pasar.</td><td data-label="Best Effort"><b>Rendah</b> — hanya mengupayakan semaksimal mungkin; sisa tak laku dikembalikan ke emiten.</td></tr>
+ <tr><td data-label="Indikator"><b>Prospek Pemasaran &amp; Sinyal</b></td><td data-label="Firm Commitment"><b>Tinggi</b> — berfungsi sebagai jaminan (<i>guarantee</i>) bagi investor bahwa saham layak dibeli.</td><td data-label="Best Effort"><b>Rendah</b> — tidak ada komitmen penanggungan risiko dari <i>underwriter</i>.</td></tr>
+ <tr><td data-label="Indikator"><b>Fee Underwriter</b></td><td data-label="Firm Commitment"><b>Tinggi</b> (kompensasi risiko menanggung sisa saham).</td><td data-label="Best Effort"><b>Rendah</b> (emiten bereputasi tinggi bisa menghemat <i>fee</i>).</td></tr>
+ <tr><td data-label="Indikator"><b>Harga Jual Saham (Hipotesis)</b></td><td data-label="Firm Commitment">Cenderung <b>lebih rendah</b> agar <i>underwriter</i> lebih mudah menghabiskan seluruh saham.</td><td data-label="Best Effort">Cenderung <b>lebih tinggi</b> karena tekanan risiko <i>underwriter</i> lebih ringan.</td></tr>
+ <tr><td data-label="Indikator"><b>Proceed untuk Emiten</b></td><td data-label="Firm Commitment"><b>Tanda tanya (?)</b> — terjamin 100% terjual, tetapi <i>fee</i> tinggi &amp; harga jual cenderung ditekan.</td><td data-label="Best Effort"><b>Tanda tanya (?)</b> — <i>fee</i> hemat, tetapi berisiko dana tidak terkumpul penuh.</td></tr>
+ </tbody>
+ </table>
+ </div>
+ <ul class="exp">
+ <li><span class="term">Certification Hypothesis (Booth &amp; Smith, 1986)</span> — Karena adanya <b>asimetri informasi</b> antara <i>insider</i> (emiten) dan <i>outsider</i> (investor) serta kecenderungan pasar membaca penerbitan saham baru sebagai "sinyal buruk" (<i>overvalued</i>), emiten membutuhkan <i>underwriter</i> sebagai <b>penyertifikat</b> bahwa peluang investasi masa depan (<i>future investment opportunity</i>) benar-benar prospektif. Bukti empirisnya: sekitar <b>80%</b> penerbitan efek di AS memilih metode FC.</li>
+ </ul>
+
+ <div class="abc"><span class="ltr">D</span><h4>Nilai Proyek dan Pemilihan Metode IPO</h4></div>
+ <p>Menurut <b>Bower (1989)</b>, sebelum memilih FC atau BE, emiten mengestimasi fundamental proyek (<span class="term">NPV</span>). Besarnya NPV tidak dipengaruhi metode IPO, tetapi biaya penjaminan emisi berbeda: biaya FC ($Z$) selalu lebih besar daripada biaya BE ($C$), atau $Z &gt; C$. Jika porsi saham portapel yang dijual ke publik sebesar $p$, pemilik lama tetap memegang $(1 - p)$ dari nilai proyek bersih:</p>
+ <div class="eqbox">
+ \[\pi_{\text{BE}} = (\text{NPV} - C)(1 - p) \qquad\text{vs}\qquad \pi_{\text{FC}} = (\text{NPV} - Z)(1 - p) \qquad (Z &gt; C)\]
+ </div>
+ <div class="fguide">
+ <div class="fg-head">Bedah Variabel &amp; Intisari Formula Pemilihan Metode IPO</div>
+ <ul>
+ <li><b>$\pi$</b> = keuntungan bersih (<i>profit</i>) yang dinikmati pemilik saham lama; <b>$\text{NPV}$</b> = nilai tambah bersih proyek yang didanai IPO; <b>$C$</b> = biaya emisi metode <i>Best Effort</i>; <b>$Z$</b> = biaya emisi metode <i>Firm Commitment</i> ($Z &gt; C$); <b>$p$</b> = proporsi saham baru dijual ke publik; <b>$(1-p)$</b> = proporsi kepemilikan yang dipertahankan pemilik lama.</li>
+ <li><b>Makna formula:</b> Mengukur bagian kekayaan bersih proyek yang tersisa bagi pemilik lama setelah dipotong biaya emisi ($C$ atau $Z$) dan dibagi dengan investor baru sebesar $p$.</li>
+ </ul>
+ <div class="fg-core">
+ <div>🧭 <b>Filosofis:</b> Memilih metode IPO adalah <i>trade-off</i> antara biaya emisi mahal namun dana pasti masuk (FC) versus biaya murah namun berisiko gagal menggalang dana (BE).</div>
+ <div>📏 <b>Mengukur:</b> Kelayakan ekonomis pemilihan metode penjaminan FC vs BE berdasarkan skala NPV dan kebutuhan dana investasi ($I$).</div>
+ <div>🎯 <b>Manfaat:</b> Panduan strategis manajemen: pilih <b>BE</b> bila NPV proyek kecil (tidak menutup $Z$) atau selisih biaya $(Z-C)$ melebar; pilih <b>FC</b> bila NPV dan kebutuhan investasi ($I$) sangat besar sehingga kepastian dana masuk menjadi prioritas utama.</div>
+ </div>
+ </div>
+
+ <div class="chart-wrap">
+ <div class="chart-title">Grafik 7.1 · Relasi Laba Pemilik Lama ($\pi$) vs Estimasi Nilai Proyek (NPV): FC vs BE</div>
+ <div class="chart-sub">Biaya FC ($Z$) lebih tinggi dari BE ($C$): pada NPV rendah, BE lebih aman; pada NPV tinggi &amp; kebutuhan dana besar, FC unggul karena kepastian pendanaan.</div>
+ <div class="chart-host" id="ch_m7_ipo"></div>
+ </div>
+
+ <div class="flow">Setelah memilih metode penawaran, emiten menghadapi dua fenomena empiris paling terkenal di pasar IPO pada bagian E: <b>underpricing</b> di pasar sekunder dan praktik <b>earning management</b> sebelum IPO, serta mekanisme <b>HMETD</b>.</div>
+
+ <div class="abc"><span class="ltr">E</span><h4>Fenomena Underpricing, Earning Management, &amp; HMETD</h4></div>
+ <p><span class="term">Underpricing</span> adalah fenomena ketika harga saham perdana di <b>pasar primer</b> melonjak signifikan saat mulai diperdagangkan di <b>pasar sekunder (bursa)</b>. Buku merinci <b>enam alasan utama</b> terjadinya underpricing:</p>
+ <ol class="book">
+ <li><span class="term">Menarik Minat Uninformed Investor</span> — <i>Informed investor</i> paham fundamental dan sanggup menilai harga wajar, sedangkan <i>uninformed investor</i> enggan membeli karena minim informasi. Harga jual dibuat lebih murah dari nilai wajar sebagai "pemanis" agar <i>uninformed investor</i> bersedia masuk.</li>
+ <li><span class="term">Hipotesis Sertifikasi &amp; Promosi Reputasi Underwriter</span> — <i>Underwriter</i> kurang dikenal (<i>less reputation</i>) menjual murah agar investor untung sebagai promosi untuk <i>future underwriting</i>; <i>underwriter</i> mapan pun melakukannya sebagai "asuransi" reputasi agar investor tidak kecewa.</li>
+ <li><span class="term">Asimetri Informasi (Insider vs Outsider)</span> — Emiten lebih memahami kondisi riil perusahaan daripada publik; makin lebar jurang informasi ini, makin besar insentif diskon harga yang diperlukan agar investor percaya.</li>
+ <li><span class="term">Arahan Regulator (Sangat Jarang)</span> — Meski penetapan harga bukan wewenang Bapepam, regulator kadang memberi arahan implisit agar investor perdana memperoleh <i>capital gain</i>.</li>
+ <li><span class="term">Eksploitasi Underwriter terhadap Emiten Pemula</span> — <i>Underwriter</i> membujuk emiten yang belum berpengalaman IPO untuk menjual murah agar saham cepat habis (risikonya: emiten kecewa dan enggan bekerja sama lagi di masa depan).</li>
+ <li><span class="term">Minimalisasi Risiko pada Metode Firm Commitment</span> — Jika <i>fee</i> FC belum menutup seluruh biaya penjaminan, <i>underwriter</i> menekan harga perdana agar saham pasti terserap dan tidak menanggung sisa tak laku.</li>
+ </ol>
+
+ <div class="casebox">
+ <span class="ctitle">Kotak Buku · IPO Krakatau Steel (Underpricing) vs Garuda Indonesia (Overpricing)</span>
+ • <b>PT Krakatau Steel (KS, 10 Nov 2010):</b> IPO @Rp850 sebanyak 3,155 miliar saham (dana Rp2,681 T) → harga di pasar sekunder cenderung <b>meningkat (underpricing)</b>.<br>
+ • <b>PT Garuda Indonesia (GIA, 11 Feb 2011):</b> IPO @Rp750 sebanyak 6,335 miliar saham (dana ~Rp3,34 T) → harga di pasar sekunder cenderung <b>turun (overpricing)</b>.
+ </div>
+
+ <div class="numh">1. Earning Management pada IPO</div>
+ <ul class="exp">
+ <li><span class="term">Mekanisme &amp; Motif</span> — <span class="term">Earning management</span> adalah pengelolaan laba dengan mengatur <b>besaran</b> maupun <b>waktu pengakuan</b> (memajukan/menangguhkan) pendapatan dan beban yang bersifat <b>akrual</b>. Motivasinya: memenuhi syarat IPO (harus berlaba <b>3 tahun berturut-turut</b>) serta memoles laporan keuangan agar saham mudah terjual pada harga tinggi.</li>
+ <li><span class="term">Deteksi &amp; Hambatan Underwriter</span> — Secara akademis diukur lewat <b>uji beda <i>discretionary accrual</i></b> sebelum vs sesudah IPO (jika pra-IPO jauh lebih besar → indikasi kuat <i>earning management</i>). Emiten berani melakukannya karena bagi <i>underwriter</i> dan investor, membongkar penyesuaian akuntansi secara penuh sangat sukar dan berbiaya mahal (harus memahami nilai informasi akuntansi, seluruh pilihan metode akuntansi emiten, dan implikasi penyesuaiannya).</li>
+ </ul>
+
+ <div class="casebox">
+ <span class="ctitle">Kotak Buku · Lima Komponen Biaya Penerbitan Saham (Kas &amp; Nonkas)</span>
+ <b>1. Spread (<span class="en">Underwriting Discount</span>):</b> selisih harga IPO dengan dana diterima emiten (mis. IPO Rp100, emiten terima Rp98 → spread Rp2 atau 2%).<br>
+ <b>2. Biaya Langsung (<span class="en">Other Direct Expenses</span>):</b> biaya akuntan, konsultan hukum (legal), dan penilai aset (tercantum di prospektus).<br>
+ <b>3. Biaya Tidak Langsung:</b> pengorbanan waktu dan usaha manajemen (tidak tercantum di prospektus).<br>
+ <b>4. Underpricing:</b> hilangnya potensi tambahan dana yang seharusnya bisa diterima emiten.<br>
+ <b>5. Green Shoe Option:</b> hak <i>underwriter</i> menambah jumlah saham ditawarkan saat terjadi kelebihan permintaan (<i>overallotments</i>).
+ </div>
+
+ <div class="numh">2. Hak Memesan Efek Terlebih Dahulu (HMETD / Right Issue)</div>
+ <p>Hak bagi pemegang saham lama untuk membeli saham baru pada harga diskon sebelum tanggal jatuh tempo (setelahnya hangus). Meski ditawarkan sebagai "pemanis", <b>secara matematis total kekayaan investor tidak berubah</b> baik saat mengeksekusi maupun menjual <i>right</i>-nya:</p>
+ <div class="eqbox">
+ \[\text{Rasio HMETD} = \frac{\#\text{Saham Lama}}{\#\text{Saham Baru}} \quad\big|\quad P_{\text{ex-right}} = \frac{(N_{\text{lama}}\cdot P_0) + P_{\text{baru}}}{N_{\text{lama}} + 1} \quad\big|\quad \text{Nilai Right} = P_0 - P_{\text{ex-right}}\]
+ </div>
+ <div class="fguide">
+ <div class="fg-head">Bedah Variabel &amp; Intisari Formula HMETD (Right Issue)</div>
+ <ul>
+ <li><b>$N_{\text{lama}}$</b> = jumlah saham lama yang diperlukan untuk membeli 1 saham baru; <b>$P_0$</b> = harga pasar saham sebelum <i>ex-right</i>; <b>$P_{\text{baru}}$</b> = harga penawaran diskon saham baru; <b>$P_{\text{ex-right}}$</b> = harga teoretis wajar saham setelah HMETD; <b>Nilai Right</b> = harga wajar 1 hak pesan efek.</li>
+ <li><b>Makna formula:</b> Menghitung harga rata-rata tertimbang saham pasca-HMETD ($P_{\text{ex-right}}$) serta nilai ekonomis hak (<i>right</i>) yang persis menutup penurunan harga pasar akibat dilusi.</li>
+ </ul>
+ <div class="fg-core">
+ <div>🧭 <b>Filosofis:</b> Diskon pada <i>right issue</i> bukan "uang gratis"—penurunan harga saham pasca-eksekusi persis diimbangi oleh nilai <i>right</i> yang dimiliki pemegang saham lama.</div>
+ <div>📏 <b>Mengukur:</b> Harga wajar saham pasca-<i>right issue</i> ($P_{\text{ex-right}}$) dan harga jual wajar sertifikat <i>right</i> di pasar.</div>
+ <div>🎯 <b>Manfaat:</b> Melindungi pemegang saham lama dari dilusi kekayaan—pemegang saham yang tidak ingin menyetor dana baru cukup menjual <i>right</i>-nya pada harga wajar agar kekayaannya tetap utuh.</div>
+ </div>
+ </div>
+ <ul class="exp">
+ <li><span class="term">Contoh Buku (PT RRR)</span> — 1 juta saham lama @Rp1.000 ingin menghimpun Rp100 jt dengan harga diskon Rp500 (50%) → terbit 200.000 saham baru (rasio <b>5 saham lama : 1 saham baru</b>). Investasi 5 lama + 1 baru $= 5(1.000)+500 = \text{Rp5.500} \implies P_{\text{ex-right}} = 5.500/6 = \mathbf{\text{Rp917}}$ dan <b>nilai 1 right $= 1.000 - 917 = \text{Rp83}$</b>. Jika investor pemegang 5 saham menjual <i>right</i>: saham $5 \times 917 = 4.583{,}33$ + jual <i>right</i> $5 \times 83{,}33 = 416{,}67 \implies$ total tetap <b>Rp5.000</b>!</li>
+ </ul>
+ </div>
+
+ <!-- ========================================================= -->
+ <!-- KB 2 -->
+ <!-- ========================================================= -->
+ <h2 class="section" id="kb2"><span class="dot" style="background:var(--kb2)"></span>KB 2 — Utang Jangka Panjang</h2>
+ <div class="card kb2b">
+ <span class="kb-tag kb2t">KB 2 · OBLIGASI, PROTECTIVE COVENANT, SINKING FUND, JENIS OBLIGASI, &amp; KRISIS 2008 (Hal. 7.16 – 7.25)</span>
+ <p class="lead">Alternatif pendanaan jangka panjang kedua adalah <span class="term">utang jangka panjang</span> (kredit bank yang bersifat <i>custom</i> atau penerbitan <span class="term">obligasi</span> di pasar modal). Tidak mendilusi kepemilikan, tetapi mengikat perusahaan pada pelunasan pokok dan kupon selama 5–30 tahun.</p>
+
+ <div class="acro-box">
+ <span class="acro-title">📖 Kamus Konteks Singkatan &amp; Akronim KB 2</span>
+ <ul class="acro-grid">
+ <li><b>Private Placement</b>: Transaksi surat utang langsung antar dua pihak tanpa melalui bursa/Bapepam (bebas biaya registrasi, tetapi <i>covenant</i> lebih ketat).</li>
+ <li><b>ZCB &amp; CB</b>: <i>Zero Coupon Bond</i> (tanpa kupon, dijual diskon besar) &amp; <i>Coupon Bond</i> (obligasi berkupon rutin).</li>
+ <li><b>ORI</b>: <i>Obligasi Republik Indonesia</i> — surat utang pemerintah (<i>Treasury Bond</i>) paling aman dengan kupon acuan terendah.</li>
+ <li><b>SBI</b>: <i>Sertifikat Bank Indonesia</i> — patokan suku bunga acuan untuk obligasi berkupon mengambang (<i>floating</i>).</li>
+ <li><b>Pefindo &amp; idAA+ / idBBB</b>: <i>PT Pemeringkat Efek Indonesia</i> &amp; kode peringkat kelayakan kredit obligasi domestik.</li>
+ <li><b>MBS &amp; KPR</b>: <i>Mortgage-Backed Securities</i> — obligasi hasil sekuritisasi (<i>securitization</i>) tagihan Kredit Pemilikan Rumah (KPR).</li>
+ <li><b>FNMA &amp; FHLMC</b>: <i>Fannie Mae</i> &amp; <i>Freddie Mac</i> — dua lembaga sekuritisasi KPR raksasa AS ($5,1 T pada 2009).</li>
+ <li><b>CDO, SIV, &amp; Tranches</b>: <i>Collateralized Debt Obligations</i> yang dikemas lewat <i>Structured Investment Vehicle</i> (didanai CP) menjadi irisan senioritas (<i>tranches</i>).</li>
+ <li><b>CDS</b>: <i>Credit Default Swap</i> — kontrak asuransi terhadap risiko gagal bayar obligasi/CDO.</li>
+ </ul>
+ </div>
+
+ <div class="abc"><span class="ltr">A</span><h4>Pengertian Utang Jangka Panjang</h4></div>
+ <ul class="exp">
+ <li><span class="term">Karakteristik &amp; Jalur Penerbitan</span> — Kewajiban berjatuh tempo &gt; 1 tahun (lazimnya <b>5–30 tahun</b>) yang wajib dilunasi pokok dan kuponnya. Obligasi publik didaftarkan ke Bapepam agar investor terlindungi dari gagal bayar dan asimetri informasi. Alternatifnya adalah <span class="term">private placement</span>: transaksi langsung dua pihak bermodal perjanjian hukum tanpa campur tangan Bapepam (kelebihannya: bebas biaya registrasi; konsekuensinya: <i>bondholder</i> menuntut prasyarat lebih ketat).</li>
+ <li><span class="term">Sub-heading: Nilai Par dan Harga Pasar</span> — <b>Nilai par</b> (harga nominal, standar 100%) adalah patokan pokok utang yang diakui debitur. <b>Harga pasar</b> bisa menyimpang dari 100—misal <b>105 (premium 5%)</b> apabila kupon obligasi lebih tinggi daripada tingkat diskonto (suku bunga) yang berlaku di pasar.</li>
+ </ul>
+
+ <div class="abc"><span class="ltr">B</span><h4>Protective Covenant, Keterbukaan Informasi, &amp; Sinking Fund</h4></div>
+ <p>Karena dana yang ditanamkan investor besar, debitur menyepakati perjanjian perlindungan (<span class="term">protective covenant</span>) yang terbagi menjadi <span class="term">negative covenant</span> (melarang/membatasi tindakan tertentu) dan <span class="term">positive covenant</span> (mewajibkan tindakan tertentu):</p>
+ <ol class="book">
+ <li><b>Negatif:</b> Pembatasan pembayaran dividen kepada pemegang saham.</li>
+ <li><b>Negatif:</b> Larangan menjual aset tetap (jika dijual, sebagian besar kas wajib untuk melunasi obligasi — <i>Kotak 1: LBO Scott mewajibkan 75% hasil jual aset untuk bayar utang</i>).</li>
+ <li><b>Negatif:</b> Larangan melakukan merger dengan perusahaan lain.</li>
+ <li><b>Negatif:</b> Larangan menerbitkan/menjual surat utang baru lainnya.</li>
+ <li><b>Positif:</b> Kewajiban memelihara kebutuhan modal kerja minimum.</li>
+ <li><b>Positif:</b> Kewajiban menyerahkan laporan keuangan secara periodik.</li>
+ </ol>
+
+ <div class="numh">1. Keterbukaan Informasi (Disclosure)</div>
+ <p>Untuk mencegah asimetri informasi, prospektus obligasi wajib memuat pernyataan utang (jangka pendek, panjang, derivatif), kondisi/strategi/prospek bisnis, ikhtisar keuangan, serta rencana penggunaan dana (<i>Kotak 2 · Obligasi PT Berlian Laju Tanker Tbk 2003 senilai Rp340 M: 67% menambah armada kapal tanker, 33% modal kerja</i>).</p>
+
+ <div class="numh">2. Sinking Fund</div>
+ <p>Pencadangan dana secara rutin dan kontinu oleh emiten agar pelunasan pokok utang jangka panjang saat jatuh tempo tidak memberatkan arus kas (<i>Kotak 3 · Obligasi BLT Tbk tanpa agunan khusus: jika peringkat turun di bawah idBBB, wajib menyerahkan jaminan kapal/piutang ≥110% nilai obligasi ke wali amanat serta cash collateral 10%/tahun di escrow account</i>).</p>
+
+ <div class="flow">Setelah memahami aturan main dan perlindungan kreditor, bagian C menguraikan <b>lima jenis obligasi</b> beserta motif penerbitan dan karakteristik kuponnya.</div>
+
+ <div class="abc"><span class="ltr">C</span><h4>Jenis-Jenis Obligasi</h4></div>
+ <div class="rgrid c3" data-revealgroup>
+ <div class="rcell active" data-reveal data-detail="<b>1. Zero Coupon / Deep Discount Bond:</b> Tidak membayar kupon berkala; dijual jauh di bawah nilai par. Keuntungan investor = selisih par saat jatuh tempo dan harga beli (contoh buku: par Rp1.000, $T=5$ th, dijual Rp475 → keuntungan Rp525; harga naik bertahap dari Rp475 ke Rp1.000).<br><br><b>2. Treasury Bond (ORI):</b> Diterbitkan pemerintah sehingga paling aman (rating tertinggi) dan kuponnya paling rendah; menjadi patokan bagi obligasi BUMN maupun swasta."><span class="stepnum">1–2</span><span><span class="rt">ZCB &amp; Treasury (ORI)</span><span class="rp">Tanpa kupon vs obligasi negara</span></span></div>
+ <div class="rcell" data-reveal data-detail="<b>3. Callable Bond:</b> Emiten berhak membeli ulang obligasi sebelum jatuh tempo (mis. setelah tahun ke-5 dari tenor 10 th) dengan harga <b>premium</b> (mis. 106 = +6%) dan menawarkan kupon lebih tinggi. Meski secara umum bersifat <i>zero sum game</i>, terdapat <b>4 alasan penerbitan</b>: (i) memprediksi suku bunga akan turun (refinancing lebih murah), (ii) kupon tinggi memperbesar <i>tax shield</i> pajak, (iii) melepas batasan <i>covenant</i> demi peluang investasi baru, dan (iv) menekan sensitivitas suku bunga pada obligasi baru."><span class="stepnum">3</span><span><span class="rt">Callable Bond (4 Alasan)</span><span class="rp">Hak beli ulang emiten</span></span></div>
+ <div class="rcell" data-reveal data-detail="<b>4. Putable Bond:</b> Kebalikan <i>callable</i> — memberi hak istimewa kepada <b>investor</b> untuk menjual kembali obligasi ke emiten sebelum jatuh tempo (pada harga <b>diskon</b>) bila kupon dirasa terlalu rendah.<br><br><b>5. Income Bond &amp; Asset-Backed:</b> Kupon didasarkan pada <b>pendapatan/laba emiten</b> (mirip <i>floating rate</i>); menekan risiko <i>default/financial distress</i> &amp; tetap dapat <i>tax shield</i>, namun rawan konflik akuntansi (<i>agency costs</i>) dan memberi sinyal buruk kemampuan bayar. Dapat pula dijamin penerimaan proyek spesifik (contoh buku: obligasi pembuatan film AA)."><span class="stepnum">4–5</span><span><span class="rt">Putable &amp; Income Bond</span><span class="rp">Hak jual investor &amp; berbasis laba</span></span></div>
+ </div>
+ <div class="rdetail" data-revealdetail><b>1. Zero Coupon / Deep Discount Bond:</b> Tidak membayar kupon berkala; dijual jauh di bawah nilai par (contoh buku: par Rp1.000, $T=5$ th, dijual Rp475 → untung Rp525). <b>2. Treasury Bond (ORI):</b> Diterbitkan pemerintah, paling aman, kupon terendah sebagai patokan obligasi BUMN/swasta.</div>
+
+ <div class="casebox">
+ <span class="ctitle">Kotak 4 &amp; Kotak 5 · Contoh Obligasi Nyata (Indofood VI 2012 &amp; BLT Tbk 2003)</span>
+ • <b>Kotak 4 — PT Indofood Sukses Makmur Tbk (2012):</b> Nilai Rp2 triliun, tenor 5 tahun, kupon <b>tetap</b> 7%–7,75%/th dibayar per 3 bulan, rating <b>idAA+ (Pefindo)</b>; tahapan: <i>bookbuilding</i> (3–14 Mei) → penawaran (25–28 Mei) → penjatahan (29 Mei) → distribusi (31 Mei) → pencatatan BEI (1 Juni); dana dipakai melunasi obligasi lama 2007.<br>
+ • <b>Kotak 5 — PT Berlian Laju Tanker Tbk (2003):</b> Nilai Rp340 M, senior, rating A−, harga penawaran 100%, terbagi dua tipe kupon: <b>Seri A</b> (kupon tetap 14,75%/th) dan <b>Seri B</b> (kupon <b>mengambang</b>: 14,75% thn 1, lalu SBI/deposito 3 bln + margin 2,5% dengan <i>cap</i> maks 16,75% dan <i>floor</i> min 12,75%).
+ </div>
+
+ <div class="abc"><span class="ltr">D</span><h4>Surat Utang dan Krisis Keuangan 2008</h4></div>
+ <p>Krisis keuangan global 2008 (pasar modal anjlok ~50%, gelombang PHK, bangkrutnya Lehman Brothers) berakar dari rekayasa surat utang KPR tanpa manajemen risiko yang <i>prudent</i>:</p>
+ <ol class="book">
+ <li><span class="term">Mortgage-Backed Securities (MBS) &amp; Subprime</span> — Bank menjual tagihan KPR ke lembaga raksasa <b>Fannie Mae (FNMA)</b> &amp; <b>Freddie Mac (FHLMC)</b> untuk disekuritisasi menjadi obligasi ($5,1 T pada 2009 — melampaui seluruh pasar <i>corporate bond</i> $4 T dan mendekati <i>treasury</i> $7,1 T). Karena standar kredit KPR longgar (<i>nonconforming subprime</i>), gagal bayar KPR langsung meruntuhkan nilai MBS.</li>
+ <li><span class="term">Collateralized Debt Obligations (CDO), SIV, &amp; Tranches</span> — Lembaga keuangan membeli surat utang melalui <i>Structured Investment Vehicle</i> (SIV) yang didanai <i>Commercial Paper</i> (CP), lalu mengemas dan menjualnya secara ritel dalam irisan bertingkat senioritas (<i>tranches</i>).</li>
+ <li><span class="term">Credit Default Swaps (CDS) &amp; Spekulasi Lehman Brothers</span> — Pemegang CDO membeli asuransi gagal bayar (CDS) sehingga <i>junk bond</i> seolah berubah menjadi rating AAA. Masalah fatalnya: CDS diperdagangkan secara spekulatif jauh melampaui utang fisiknya—<b>Lehman Brothers memiliki kontrak CDS senilai $400 M padahal total utangnya hanya $155 M</b> sehingga gagal bayar dan bangkrut.</li>
+ </ol>
+ <ul class="exp">
+ <li><span class="term">Empat Pelajaran Kunci Krisis 2008</span> — (1) Regulator wajib menerapkan batasan prasyarat yang ketat, (2) manajemen risiko lebih ketat pada setiap penerbitan surat utang, (3) jaminan fisik/aset yang memadai, dan (4) mencegah spekulasi derivatif dengan mewajibkan penerbit kontrak (<i>writer</i>) memiliki aset sepadan dengan kontraknya.</li>
+ </ul>
+ </div>
+
+ <!-- ========================================================= -->
+ <!-- KB 3 -->
+ <!-- ========================================================= -->
+ <h2 class="section" id="kb3"><span class="dot" style="background:var(--kb3)"></span>KB 3 — Leasing</h2>
+ <div class="card kb3b">
+ <span class="kb-tag kb3t">KB 3 · MANFAAT, JENIS, OPERATING VS CAPITAL LEASE, NAL, &amp; RESERVATION PAYMENT (Hal. 7.26 – 7.40)</span>
+ <p class="lead">Pendanaan jangka panjang ketiga adalah <span class="term">sewa guna usaha (leasing)</span>: perusahaan memanfaatkan kemampuan produksi barang modal (<i>capital expenditure</i>) melalui hak pakai tanpa harus membeli di awal, sehingga kepemilikan tetap berada di <span class="term">lessor</span> selama masa sewa.</p>
+
+ <div class="acro-box">
+ <span class="acro-title">📖 Kamus Konteks Singkatan &amp; Akronim KB 3</span>
+ <ul class="acro-grid">
+ <li><b>Lessor &amp; Lessee</b>: <i>Lessor</i> = pihak pemilik/penyewa-kan barang modal (berizin Kemenkeu); <i>Lessee</i> = pihak penyewa aset.</li>
+ <li><b>KPKM</b>: <i>Kredit Pemilikan Kendaraan Motor</i> — contoh sehari-hari mekanisme <i>capital lease</i> 3 pihak.</li>
+ <li><b>Off- vs On-Balance Sheet</b>: Tidak dicatat di neraca (<i>operating lease</i>) vs dicatat sebagai aset &amp; utang di neraca (<i>capital lease</i>).</li>
+ <li><b>Imputed Interest &amp; Depresiasi</b>: Beban bunga &amp; penyusutan "seolah-olah" yang timbul pada pembukuan <i>capital lease</i> untuk penghematan pajak.</li>
+ <li><b>NAL</b>: <i>Net Advantage of Leasing</i> — nilai sekarang manfaat bersih menyewa dibandingkan membeli aset.</li>
+ <li><b>$I_0, O_t, R_t$</b>: Harga beli awal aset ($I_0$), biaya operasi/asuransi yang dihemat ($O_t$), &amp; pembayaran sewa leasing ($R_t$).</li>
+ <li><b>$\text{Int}_t, \text{Dep}_t, T$</b>: Beban bunga utang ($\text{Int}_t$), beban depresiasi ($\text{Dep}_t$), &amp; tarif pajak badan ($T$).</li>
+ <li><b>$k_d^*, k_s, \text{PVIFA}$</b>: Biaya utang setelah pajak ($k_d^*$), biaya ekuitas ($k_s$, diskonto nilai sisa), &amp; faktor anuitas nilai sekarang.</li>
+ </ul>
+ </div>
+
+ <div class="abc"><span class="ltr">A</span><h4>Manfaat Leasing &amp; Enam Unsurnya</h4></div>
+ <p>Secara operasional, hasil produksi barang modal yang dibeli vs disewa adalah <b>identik</b> (mis. lembar fotokopi dari mesin fotokopi). Namun leasing menawarkan <b>3 manfaat utama</b> dan melibatkan <b>6 unsur kontrak</b>:</p>
+ <ul class="exp">
+ <li><span class="term">Tiga Manfaat Utama Leasing</span> — (1) <b>Ketersediaan arus kas</b>: tidak perlu mengeluarkan kas besar di awal sehingga selisihnya menambah modal kerja; (2) <b>Pemanfaatan teknologi terkini</b>: mudah mengganti ke model terbaru saat kontrak habis tanpa terjebak aset kuno (<i>out of date</i>); (3) <b>Off-balance sheet</b>: pada <i>operating lease</i>, kewajiban tidak tercatat di neraca sehingga rasio utang tampak lebih rendah.</li>
+ <li><span class="term">Enam Unsur Kontrak Leasing</span> — (1) <b>Lessor</b> (perusahaan penyewa-kan berizin Kemenkeu), (2) <b>Lessee</b> (penyewa), (3) <b>Objek leasing</b> (barang modal), (4) <b>Pembayaran uang sewa (<i>rent</i>)</b> berkala, (5) <b>Jangka waktu sewa (<i>lease term</i>)</b>, dan (6) <b>Nilai sisa (<i>salvage value</i>)</b> sebagai acuan opsi beli di akhir kontrak.</li>
+ </ul>
+
+ <div class="abc"><span class="ltr">B</span><h4>Jenis Leasing</h4></div>
+ <div class="rgrid c3" data-revealgroup>
+ <div class="rcell active" data-reveal data-detail="<b>1. Operating Lease (Sewa Operasi):</b> Aset milik lessor; jangka waktu sewa lebih pendek dari umur ekonomis sehingga di akhir kontrak aset kembali ke lessor untuk disewakan lagi (mis. alat berat, traktor, pesawat). <b>Off-balance sheet</b>, uang sewa mengurangi pajak, dan <b>biaya perawatan &amp; asuransi ditanggung lessor</b>."><span class="stepnum">1</span><span><span class="rt">Operating Lease</span><span class="rp">Off-balance sheet; dirawat lessor</span></span></div>
+ <div class="rcell" data-reveal data-detail="<b>2. Capital / Financial Lease (Sewa Modal):</b> Melibatkan <b>3 pihak</b> (lessee, lessor, supplier; contoh KPKM). Lessee memiliki <b>hak opsi beli</b> di akhir kontrak berdasarkan nilai sisa, menanggung seluruh perawatan, dan mencatat aset serta kewajiban sewa di <b>neraca lessee (on-balance sheet)</b>."><span class="stepnum">2</span><span><span class="rt">Capital / Financial Lease</span><span class="rp">On-balance sheet; 3 pihak &amp; opsi beli</span></span></div>
+ <div class="rcell" data-reveal data-detail="<b>3. Sale &amp; Leaseback Lease:</b> Lessee membeli aset → menjualnya ke lessor → menyewanya kembali. <b>Manfaat:</b> memperoleh kas besar untuk modal kerja &amp; memperkuat posisi kas neraca sementara kewajiban dicicil. <b>Dampak negatif:</b> aset tetap &amp; beban depresiasi hilang sehingga EBT naik dan <b>pajak yang dibayar meningkat</b>."><span class="stepnum">3</span><span><span class="rt">Sale &amp; Leaseback</span><span class="rp">Beli → Jual → Sewa kembali</span></span></div>
+ </div>
+ <div class="rdetail" data-revealdetail><b>1. Operating Lease (Sewa Operasi):</b> Aset milik lessor; jangka waktu sewa lebih pendek dari umur ekonomis sehingga di akhir kontrak aset kembali ke lessor. <b>Off-balance sheet</b>, uang sewa mengurangi pajak, dan perawatan &amp; asuransi ditanggung lessor.</div>
+
+ <div class="casebox">
+ <span class="ctitle">Kotak 1 · Sewa Pesawat PT Merpati Nusantara Airline (MNA, 2012)</span>
+ PT MNA menyewa 8 pesawat Boeing 737-800 NG selama 5 tahun dengan biaya sewa <b>Rp2,85 miliar/bln</b> ($300.000) daripada membeli seharga $44–74 juta/unit. Asumsi 100 penumpang × 5 penerbangan/hr × Rp500.000 × 22 hari = penerimaan <b>Rp5.500 jt/bln</b> → dikurangi sewa Rp2.850 jt masih tersisa margin <b>Rp2.650 jt/bln</b> (sebelum biaya operasi).
+ </div>
+
+ <div class="abc"><span class="ltr">C</span><h4>Perbedaan antara Operating Lease dan Capital Lease</h4></div>
+ <p>Perbedaan utamanya terletak pada <b>pencatatan neraca</b> dan <b>penghematan pajak</b>. Pada <i>operating lease</i> (<i>off-balance sheet</i>), direktur dapat memutuskan cepat tanpa izin tertulis pemilik, dan hanya biaya sewa yang menjadi beban. Pada <i>capital lease</i> (<i>on-balance sheet</i>), biasanya butuh izin tertulis pemilik tetapi memberikan transparansi penuh sekaligus <b>dua pengurang pajak tambahan</b>: <span class="term">imputed interest cost</span> (bunga seolah-olah atas PV utang sewa) dan <span class="term">imputed depresiasi</span> (PV utang sewa ÷ umur ekonomis).</p>
+ <div class="eqbox">
+ \[\text{PV(Lease Liability)} = R \times \text{PVIFA}(k_d, T) \qquad\big|\qquad \text{Imputed Depr.} = \frac{\text{PV(Lease Liability)}}{T}\]
+ </div>
+ <div class="fguide">
+ <div class="fg-head">Bedah Variabel &amp; Intisari Formula Pembukuan Capital Lease</div>
+ <ul>
+ <li><b>$R$</b> = pembayaran sewa tahunan; <b>$k_d$</b> = biaya utang perusahaan; <b>$T$</b> = jangka waktu sewa; <b>$\text{PV(Lease Liability)}$</b> = nilai sekarang kewajiban sewa yang dicatat di sisi aset &amp; utang neraca.</li>
+ <li><b>Makna formula:</b> Mengkapitalisasi komitmen sewa masa depan menjadi aset &amp; utang di neraca, lalu memisahkannya setiap tahun menjadi beban bunga (<i>imputed interest</i> $= k_d \times \text{Sisa Utang}$) dan cicilan pokok, serta menyusutkan asetnya secara garis lurus.</li>
+ </ul>
+ <div class="fg-core">
+ <div>🧭 <b>Filosofis:</b> Secara substansi ekonomi, <i>capital lease</i> setara membeli aset dengan kredit jangka panjang—mencatatnya di neraca memberi transparansi bagi investor sekaligus manfaat <i>tax shield</i> bunga dan depresiasi.</div>
+ <div>📏 <b>Mengukur:</b> Besarnya nilai aset/utang sewa di neraca serta basis penghematan pajak tahunan (<i>imputed interest</i> + <i>imputed depreciation</i>).</div>
+ <div>🎯 <b>Manfaat:</b> Menghitung efek pembukuan <i>capital lease</i> terhadap pajak dan rasio keuangan perusahaan sebelum memilih skema sewa.</div>
+ </div>
+ </div>
+ <ul class="exp">
+ <li><span class="term">Contoh Buku PT DEF (Tabel 7.1)</span> — Sewa gudang &amp; pabrik Rp1.000 jt/th selama 7 th, $k_d=10\% \implies \text{PV(Lease Liability)} = 1.000 \times 4{,}8684 = \mathbf{\text{Rp4.868,4 jt}}$. Tahun 1: <i>imputed interest</i> $= 10\% \times 4.868{,}4 = \text{Rp486,8 jt}$ (cicilan pokok Rp513,2 jt → sisa Rp4.355,2 jt); <i>imputed depresiasi</i> $= 4.868/7 = \mathbf{\text{Rp695 jt/th}}$. Basis penghematan pajak Thn 1 $= 486{,}8 + 695 = \mathbf{\text{Rp1.181,8 jt}}$ (lebih besar dari sewa Rp1.000 jt!).</li>
+ </ul>
+ <div class="table-wrap">
+ <table class="mini">
+ <thead><tr><th>Rasio Keuangan (Tabel 7.2)</th><th>Efek pada Operating Lease</th><th>Efek pada Capital Lease</th></tr></thead>
+ <tbody>
+ <tr><td data-label="Rasio Keuangan"><b>EBIT</b></td><td data-label="Operating Lease">Lebih rendah (seluruh biaya sewa diakui sebagai beban operasi)</td><td data-label="Capital Lease">Lebih tinggi (hanya depresiasi yang masuk beban operasi; bunga di bawah EBIT)</td></tr>
+ <tr><td data-label="Rasio Keuangan"><b>ROA (Return on Assets)</b></td><td data-label="Operating Lease"><b>Tampak lebih tinggi</b> (aset sewa tidak tercatat di penyebut)</td><td data-label="Capital Lease"><b>Lebih rendah</b> (aset di neraca bertambah besar)</td></tr>
+ <tr><td data-label="Rasio Keuangan"><b>Interest Coverage Ratio (ICR)</b></td><td data-label="Operating Lease">Lebih tinggi (tidak ada beban bunga tambahan)</td><td data-label="Capital Lease">Lebih rendah (muncul <i>imputed interest expense</i>)</td></tr>
+ <tr><td data-label="Rasio Keuangan"><b>Debt Ratio (DR)</b></td><td data-label="Operating Lease"><b>Tampak lebih rendah</b> (utang sewa tersembunyi / <i>off-balance sheet</i>)</td><td data-label="Capital Lease"><b>Meningkat</b> (utang sewa tercatat di sisi pasiva neraca)</td></tr>
+ </tbody>
+ </table>
+ </div>
+ <p style="font-size:.88rem"><i>Catatan buku:</i> Meski <i>capital lease</i> memberi penghematan pajak lebih besar, sebagian manajer tetap memilih <i>operating lease</i> karena rasio ROA dan Debt Ratio tampak lebih baik (rawan menyesatkan investor bila tidak cermat).</p>
+
+ <div class="flow">Setelah membedah pencatatan akuntansi <i>operating</i> vs <i>capital lease</i>, bagian D–F menyajikan kerangka valuasi kuantitatif untuk memutuskan <b>membeli atau menyewa</b> lewat <b>Net Advantage of Leasing (NAL)</b>.</div>
+
+ <div class="abc"><span class="ltr">D – F</span><h4>Net Advantage of Leasing (NAL): Membeli Aset vs Melakukan Leasing</h4></div>
+ <ul class="exp">
+ <li><span class="term">D. Pengertian NAL</span> — Selisih nilai sekarang antara manfaat menyewa (<i>operating lease</i>) dan manfaat membeli aset. Jika $\mathbf{\text{NAL} &gt; 0}$, leasing lebih menguntungkan daripada membeli (NPV leasing &gt; NPV beli).</li>
+ <li><span class="term">E. Posisi Membeli Aset</span> — Perusahaan keluar kas $I_0$ di $t=0$, namun menikmati <b>tax shield depresiasi</b> ($t\cdot\delta$), <b>tax shield bunga</b> ($t\cdot I$) bila dibiayai utang, serta <b>nilai sisa setelah pajak</b> di akhir umur. Arus kas operasi dari produksi mesin sama persis baik dibeli maupun disewa.</li>
+ <li><span class="term">F. Posisi Melakukan Leasing (6 Aspek Perbandingan)</span> — (1) Hemat biaya operasi/asuransi $+O(1-T)$, (2) bayar sewa $-R(1-T)$, (3) hilang <i>tax shield</i> depresiasi $-\text{Dep}\cdot T$, (4) hilang <i>tax shield</i> bunga $-\text{Int}\cdot T$, (5) hilang nilai sisa setelah pajak (didiskonto $k_s$), dan (6) hemat kas beli awal $+I_0$. Menurut Keown, aspek (1)–(4) didiskontokan dengan biaya utang setelah pajak $k_d^* = k_d(1-T)$, sedangkan aspek (5) dengan $k_s$.</li>
+ </ul>
+ <div class="eqbox">
+ \[\text{NAL} = I_0 + \sum_{t=1}^{T}\frac{O_t(1-T) - R_t(1-T) - \text{Int}_t\cdot T - \text{Dep}_t\cdot T}{(1+k_d^*)^t} - \frac{\text{Salvage}_{\text{after-tax}}}{(1+k_s)^T}\]
+ </div>
+ <div class="fguide">
+ <div class="fg-head">Bedah Variabel &amp; Intisari Formula Net Advantage of Leasing (NAL)</div>
+ <ul>
+ <li><b>$I_0$</b> = harga beli aset yang dihemat di $t=0$; <b>$O_t(1-T)$</b> = penghematan biaya perawatan/asuransi setelah pajak; <b>$R_t(1-T)$</b> = kas keluar biaya sewa setelah pajak; <b>$\text{Int}_t\cdot T$</b> &amp; <b>$\text{Dep}_t\cdot T$</b> = hilangnya <i>tax shield</i> bunga &amp; depresiasi; <b>$\text{Salvage}_{\text{after-tax}}$</b> = hilangnya kas bersih nilai sisa akhir setelah pajak atas laba jual aset; <b>$k_d^*$</b> = biaya utang setelah pajak; <b>$k_s$</b> = biaya ekuitas (diskonto nilai sisa yang lebih berisiko).</li>
+ <li><b>Makna formula:</b> Mengukur nilai bersih sekarang dari seluruh penghematan dan pengorbanan arus kas tambahan jika memilih menyewa dibandingkan membeli secara kredit.</li>
+ </ul>
+ <div class="fg-core">
+ <div>🧭 <b>Filosofis:</b> Menyewa tidak hanya menghemat kas beli awal dan perawatan, tetapi juga mengorbankan penghematan pajak penyusutan, penghematan pajak bunga, dan nilai jual kembali aset di akhir masa pakai.</div>
+ <div>📏 <b>Mengukur:</b> Keunggulan bersih (rupiah hari ini) opsi <i>leasing</i> dibandingkan membeli aset tetap.</div>
+ <div>🎯 <b>Manfaat:</b> Menentukan keputusan pendanaan aset tetap (<i>lease vs buy</i>); ingat kotak catatan buku: $\text{NAL} &gt; 0$ bukan berarti membeli pasti rugi, melainkan <b>NPV proyek bertambah sebesar NAL</b> jika didanai lewat leasing.</div>
+ </div>
+ </div>
+ <div class="casebox">
+ <span class="ctitle">Contoh (1) Buku · PT Maju Makmur (MM) — Mesin Pengolah Plastik Rp14.000 Juta</span>
+ Harga beli $I_0=\text{Rp14.000 jt}$, umur 5 th, nilai sisa buku Rp2.000 jt (depresiasi garis lurus Rp2.400 jt/th), harga jual akhir Rp2.500 jt (laba Rp500 jt, pajak 30% = Rp150 jt → kas nilai sisa bersih Rp2.350 jt). $k_d=10\% \implies k_d^*=7\%$, $k_s=15\%$. Sewa $R=\text{Rp3.500 jt/th}$, hemat perawatan/asuransi $O=\text{Rp500 jt/th}$.<br>
+ • Angsuran utang beli $= 14.000 / \text{PVIFA}(10\%,5) = \text{Rp3.693 jt/th}$ (Tabel 7.3).<br>
+ • PV arus kas leasing 5 th (pada $k_d^*=7\%$): <b>−Rp12.705 jt</b>.<br>
+ • PV hilang nilai sisa (pada $k_s=15\%$): $-2.350/(1{,}15)^5 = \mathbf{-\text{Rp1.168 jt}}$.<br>
+ • <b>$\text{NAL} = +14.000 - 12.705 - 1.168 = \mathbf{+\text{Rp127 juta}} &gt; 0$</b> → <i>Operating lease</i> lebih menguntungkan!
+ </div>
+
+ <div class="abc"><span class="ltr">G</span><h4>Reservation Payment</h4></div>
+ <p><span class="term">Reservation payment</span> adalah besaran biaya sewa yang membuat $\mathbf{\text{NAL} = 0}$ (titik <i>indifferent</i> antara menyewa dan membeli, analog dengan konsep IRR saat $\text{NPV}=0$). Bagi <b>lessee</b>, ini adalah <b>batas sewa maksimum</b> yang bersedia dibayar (jika sewa di atasnya, NAL negatif); bagi <b>lessor</b>, ini adalah <b>batas sewa minimum</b> yang bersedia ditawarkan.</p>
+ <div class="eqbox">
+ \[\text{NAL} = 0 \implies I_0 - \text{PVIFA}(k_d^*, T) \cdot \big[R_{\text{maks}}(1-T) + \text{Dep}\cdot T\big] = 0\]
+ </div>
+ <div class="fguide">
+ <div class="fg-head">Bedah Variabel &amp; Intisari Formula Reservation Payment</div>
+ <ul>
+ <li><b>$R_{\text{maks}}$</b> = biaya sewa maksimum (<i>reservation payment</i>) bagi lessee; <b>$I_0$</b> = harga beli mesin; <b>$\text{PVIFA}(k_d^*, T)$</b> = faktor anuitas pada biaya utang setelah pajak; <b>$\text{Dep}\cdot T$</b> = <i>tax shield</i> depresiasi tahunan yang hilang.</li>
+ <li><b>Makna formula:</b> Mencari nilai sewa $R$ tepat di mana total PV pengorbanan leasing (sewa setelah pajak + hilangnya <i>tax shield</i> depresiasi) sama persis dengan penghematan harga beli $I_0$.</li>
+ </ul>
+ <div class="fg-core">
+ <div>🧭 <b>Filosofis:</b> Negosiasi sewa yang saling menguntungkan hanya terjadi bila <i>reservation payment</i> lessee lebih tinggi dari <i>reservation payment</i> lessor (umumnya dimungkinkan bila tarif pajak lessee dan lessor berbeda).</div>
+ <div>📏 <b>Mengukur:</b> Ambang batas harga sewa impas ($\text{NAL}=0$) untuk posisi tawar lessee maupun lessor.</div>
+ <div>🎯 <b>Manfaat:</b> Menjadi batas plafon negosiasi harga sewa agar perusahaan tidak membayar sewa lebih mahal daripada opsi membeli sendiri.</div>
+ </div>
+ </div>
+ <ul class="exp">
+ <li><span class="term">Contoh (2), (5), &amp; (4) Buku — PT Salam Sejahtera (SS)</span> — Mesin Rp9.000 jt, umur 5 th (depresiasi Rp1.800 jt/th), $k_d=10\%, T=20\% \implies k_d^*=8\%, \text{PVIFA}(8\%,5)=3{,}9927$, <i>tax shield</i> depresiasi $= \text{Rp360 jt/th}$. (Penghematan biaya operasi mesin Rp3.000 jt/th diabaikan karena terjadi pada kedua opsi).<br>
+ • <b>Contoh (2) Sewa Rp3.000 jt/th:</b> Arus kas bersih leasing $-3.000(0{,}8) - 360 = -2.760\text{ jt/th} \implies \text{NAL} = 9.000 - 3{,}9927(2.760) = \mathbf{-\text{Rp2.020 jt}}$ → merugikan, sebaiknya <b>beli</b>!<br>
+ • <b>Contoh (5) Batas Maksimum Lessee:</b> $9.000 / 3{,}9927 = 2.254 \implies R(0{,}8) = 2.254 - 360 = 1.894 \implies \mathbf{R_{\text{maks}} = \text{Rp2.368 jt/th}}$.<br>
+ • <b>Contoh (4) Batas Minimum Lessor:</b> Jika tarif pajak sama, batas minimum lessor pada teks buku adalah <b>Rp2.254 jt/th</b> (bila tarif pajak lessee &amp; lessor berbeda, perlu penyesuaian $k_d^*$ dan <i>tax shield</i>).</li>
+ </ul>
+ </div>
+
+ <!-- GLOSARIUM -->
+ <h2 class="section" id="glosarium"><span class="dot"></span>Glosarium Kilat</h2>
+ <div class="card">
+ <dl class="glossary">
+ <dt>Callable vs Putable Bond</dt><dd>Callable memberi hak emiten membeli ulang sebelum jatuh tempo (harga premium); Putable memberi hak investor menjual kembali ke emiten (harga diskon).</dd>
+ <dt>CDO, SIV, &amp; CDS</dt><dd>Collateralized Debt Obligation (dikemas lewat Structured Investment Vehicle menjadi tranches) dan Credit Default Swap (asuransi gagal bayar obligasi).</dd>
+ <dt>Certification Hypothesis</dt><dd>Hipotesis Booth &amp; Smith (1986) bahwa pemilihan underwriter dan metode FC berfungsi menyertifikasi kualitas saham untuk mengatasi asimetri informasi.</dd>
+ <dt>Earning Management (Discretionary Accrual)</dt><dd>Pengaturan besaran dan waktu pengakuan akrual pra-IPO guna memenuhi syarat berlaba 3 tahun berturut-turut dan memoles kinerja.</dd>
+ <dt>Firm Commitment vs Best Effort</dt><dd>Metode IPO di mana underwriter menjamin 100% penjualan saham (biaya $Z$) vs sekadar berupaya menjual semampunya (biaya $C$).</dd>
+ <dt>HMETD (Right Issue)</dt><dd>Hak memesan efek terlebih dahulu bagi pemegang saham lama untuk membeli saham baru pada harga diskon; total kekayaan investor tetap sama.</dd>
+ <dt>Imputed Interest &amp; Imputed Depreciation</dt><dd>Beban bunga dan penyusutan "seolah-olah" pada pembukuan capital lease (on-balance sheet) yang memperbesar basis penghematan pajak.</dd>
+ <dt>Net Advantage of Leasing (NAL) &amp; Reservation Payment</dt><dd>NAL adalah PV manfaat bersih menyewa vs membeli ($\text{NAL}>0 \implies$ leasing); reservation payment adalah biaya sewa saat $\text{NAL}=0$.</dd>
+ <dt>Private Placement</dt><dd>Penerbitan dan penjualan surat utang secara langsung kepada pihak tertentu tanpa melalui bursa/Bapepam (bebas biaya registrasi, covenant lebih ketat).</dd>
+ <dt>Saham Portapel &amp; Agio Saham</dt><dd>Saham portapel adalah bagian modal dasar yang belum disetor dan dijual saat IPO; agio adalah selisih lebih harga jual di atas nilai nominal.</dd>
+ </dl>
+ </div>
+</div>
+
+<footer><b>EKMA5205 — Manajemen Keuangan</b> · Modul 7: Pembiayaan Jangka Panjang<br>Bahan belajar ringkas untuk persiapan ujian (berdasarkan BMP UT Edisi 3, Dr. Said Kelana Asnawi, M.M.).</footer>
+
+<script>
+(function(){
+ var pb=document.getElementById('progress');
+ function onScroll(){var h=document.documentElement;var sc=h.scrollTop||document.body.scrollTop;var max=(h.scrollHeight-h.clientHeight)||1;pb.style.width=(sc/max*100)+'%';}
+ document.addEventListener('scroll',onScroll,{passive:true});onScroll();
+
+ var list=document.getElementById('conceptList');var items=[].slice.call(list.querySelectorAll('li'));var boxes=items.map(function(li){return li.querySelector('input');});
+ document.getElementById('totalCount').textContent=items.length;var doneEl=document.getElementById('doneCount');var KEY='studi_ekma5205_m7_concepts_v2';
+ function load(){try{var a=JSON.parse(localStorage.getItem(KEY)||'[]');boxes.forEach(function(b,i){if(a[i])b.checked=true;});}catch(e){}}
+ function save(){try{localStorage.setItem(KEY,JSON.stringify(boxes.map(function(b){return b.checked?1:0;})));}catch(e){}}
+ function refresh(){var n=0;items.forEach(function(li,i){if(boxes[i].checked){li.classList.add('done');n++;}else li.classList.remove('done');});doneEl.textContent=n;}
+ load();refresh();boxes.forEach(function(b){b.addEventListener('change',function(){refresh();save();});});
+ document.getElementById('resetBtn').addEventListener('click',function(){boxes.forEach(function(b){b.checked=false;});refresh();save();});
+
+ [].slice.call(document.querySelectorAll('[data-revealgroup]')).forEach(function(g){
+ var det=g.querySelector('[data-revealdetail]');if(!det){var sib=g.nextElementSibling;if(sib&&sib.hasAttribute&&sib.hasAttribute('data-revealdetail'))det=sib;}
+ var cells=[].slice.call(g.querySelectorAll('[data-reveal]'));
+ cells.forEach(function(c){c.addEventListener('click',function(){cells.forEach(function(x){x.classList.remove('active');});c.classList.add('active');if(det){det.innerHTML=c.getAttribute('data-detail');if(window.MathJax&&window.MathJax.typesetPromise)window.MathJax.typesetPromise([det]);}});});
+ });
+
+ (function(){
+ var ROWH=46,NODE_H=32,PAD=13,GAP=52;var COL={root:'#0f5e8f',kb1:'#1a86c7',kb2:'#e08a1e',kb3:'#2a9d6f',kb4:'#7a5cc0',kb5:'#c75b7a'};
+ var mc=document.createElement('canvas').getContext('2d');mc.font='700 13px -apple-system,Segoe UI,Roboto,sans-serif';
+ function tw(t){return Math.ceil(mc.measureText(t).width);}function esc(t){return t.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');}
+ function rgba(hex,a){var h=hex.replace('#','');return 'rgba('+parseInt(h.substr(0,2),16)+','+parseInt(h.substr(2,2),16)+','+parseInt(h.substr(4,2),16)+','+a+')';}
+ var DATA={label:'MODUL 7 — Pembiayaan Jangka Panjang',color:COL.root,children:[
+ {label:'KB 1 · Penerbitan Saham',color:COL.kb1,children:[
+ {label:'A. Penawaran Saham (Go Public / IPO & Bapepam)'},
+ {label:'B. Modal Dasar, Disetor, Portapel & Agio'},
+ {label:'C. Firm Commitment vs Best Effort & Certification'},
+ {label:'D. Nilai Proyek (NPV) & Model Bower'},
+ {label:'E. Underpricing (6 Alasan), Earning Mgmt, 5 Biaya & HMETD'}
+ ]},
+ {label:'KB 2 · Utang Jangka Panjang',color:COL.kb2,children:[
+ {label:'A. Pengertian, Private Placement, Nilai Par vs Pasar'},
+ {label:'B. Protective Covenant (Neg/Pos), Disclosure & Sinking Fund'},
+ {label:'C. 5 Jenis Obligasi (ZCB, ORI, Callable, Putable, Income)'},
+ {label:'D. Krisis 2008 (MBS Subprime, CDO/SIV, CDS & 4 Pelajaran)'}
+ ]},
+ {label:'KB 3 · Leasing',color:COL.kb3,children:[
+ {label:'A. 3 Manfaat Leasing & 6 Unsur Kontrak'},
+ {label:'B. 3 Jenis (Operating, Capital, Sale & Leaseback)'},
+ {label:'C. Beda Operating vs Capital (Imputed Cost & Rasio)'},
+ {label:'D–F. NAL: Membeli vs Menyewa (6 Aspek & PT MM)'},
+ {label:'G. Reservation Payment (NAL = 0 & PT SS)'}
+ ]}
+ ]};
+ var idc=0;(function w(n,c){n.id='n'+(idc++);n.color=n.color||c;(n.children||[]).forEach(function(k){w(k,n.color);});})(DATA,COL.root);
+ (function w(n,d){if(d>=2&&n.children&&n.children.length)n.collapsed=true;(n.children||[]).forEach(function(k){w(k,d+1);});})(DATA,0);
+ var host=document.getElementById('mindmap');
+ function render(){
+ var colW=[];(function w(n,d){var width=tw(n.label)+PAD*2+((n.children&&n.children.length)?20:0);colW[d]=Math.max(colW[d]||0,width);if(!n.collapsed)(n.children||[]).forEach(function(k){w(k,d+1);});})(DATA,0);
+ var colX=[],acc=14;for(var d=0;d<colW.length;d++){colX[d]=acc;acc+=colW[d]+GAP;}var row={v:0};
+ (function lay(n,d){if(!n.children||!n.children.length||n.collapsed){n._y=row.v*ROWH+ROWH/2+8;row.v++;return;}var f,l;n.children.forEach(function(k,i){lay(k,d+1);if(i===0)f=k._y;l=k._y;});n._y=(f+l)/2;})(DATA,0);
+ var totalW=acc,totalH=row.v*ROWH+24;var nodes=[],links=[];
+ (function col(n,d,p){n._x=colX[d];n._w=tw(n.label)+PAD*2+((n.children&&n.children.length)?20:0);nodes.push({n:n,d:d});if(p)links.push([p,n]);if(!n.collapsed)(n.children||[]).forEach(function(k){col(k,d+1,n);});})(DATA,0,null);
+ var s='<svg width="'+totalW+'" height="'+totalH+'" viewBox="0 0 '+totalW+' '+totalH+'" xmlns="http://www.w3.org/2000/svg">';
+ links.forEach(function(pr){var a=pr[0],b=pr[1],x1=a._x+a._w,y1=a._y,x2=b._x,y2=b._y,mx=(x1+x2)/2;s+='<path d="M'+x1+' '+y1+' C'+mx+' '+y1+' '+mx+' '+y2+' '+x2+' '+y2+'" fill="none" stroke="'+rgba(b.color,.5)+'" stroke-width="2"/>';});
+ nodes.forEach(function(o){var n=o.n,x=n._x,y=n._y-NODE_H/2,w=n._w,hk=n.children&&n.children.length;var fill=o.d===0?n.color:(o.d===1?rgba(n.color,.12):'#fff');var tf=o.d===0?'#fff':'#1c2733';
+ s+='<g data-id="'+n.id+'" style="cursor:'+(hk?'pointer':'default')+'"><rect x="'+x+'" y="'+y+'" rx="9" width="'+w+'" height="'+NODE_H+'" fill="'+fill+'" stroke="'+n.color+'" stroke-width="'+(o.d===0?0:1.6)+'"/><text x="'+(x+PAD)+'" y="'+(n._y+4)+'" font-size="13" font-weight="'+(o.d<=1?'700':'500')+'" fill="'+tf+'" font-family="-apple-system,Segoe UI,Roboto,sans-serif">'+esc(n.label)+'</text>';
+ if(hk){var cx=x+w-12,cy=n._y;s+='<circle cx="'+cx+'" cy="'+cy+'" r="8.5" fill="'+n.color+'"/><text x="'+cx+'" y="'+(cy+4.5)+'" font-size="13" font-weight="700" fill="#fff" text-anchor="middle" font-family="sans-serif">'+(n.collapsed?'+':'\u2013')+'</text>';}s+='</g>';});
+ s+='</svg>';host.innerHTML=s;
+ }
+ host.addEventListener('click',function(e){var g=e.target.closest('g[data-id]');if(!g)return;var id=g.getAttribute('data-id');(function f(n){if(n.id===id){if(n.children&&n.children.length)n.collapsed=!n.collapsed;return true;}return (n.children||[]).some(f);})(DATA);render();});
+ document.getElementById('mmExpand').addEventListener('click',function(){(function w(n){if(n.children)n.collapsed=false;(n.children||[]).forEach(w);})(DATA);render();});
+ document.getElementById('mmCollapse').addEventListener('click',function(){(function w(n,d){if(d>=1&&n.children&&n.children.length)n.collapsed=true;(n.children||[]).forEach(function(k){w(k,d+1);});})(DATA,0);render();});
+ render();
+ })();
+
+ function drawCartesian(hostId, cfg){
+ var host=document.getElementById(hostId);if(!host)return;
+ var W=cfg.w||680,H=cfg.h||300,P={t:24,r:28,b:44,l:58};
+ var pw=W-P.l-P.r,ph=H-P.t-P.b;
+ var x0=cfg.xmin,x1=cfg.xmax,y0=cfg.ymin,y1=cfg.ymax;
+ function sx(x){return P.l+(x-x0)/(x1-x0)*pw;}
+ function sy(y){return P.t+ph-(y-y0)/(y1-y0)*ph;}
+ function esc(t){return String(t).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');}
+ var s='<svg viewBox="0 0 '+W+' '+H+'" width="'+W+'" height="'+H+'" xmlns="http://www.w3.org/2000/svg">';
+ s+='<rect x="'+P.l+'" y="'+P.t+'" width="'+pw+'" height="'+ph+'" fill="#fff" stroke="#e4e9f0"/>';
+ var xticks=cfg.xticks||5,yticks=cfg.yticks||5;
+ for(var i=0;i<=xticks;i++){var xv=x0+(x1-x0)*i/xticks,px=sx(xv);s+='<line x1="'+px.toFixed(1)+'" y1="'+P.t+'" x2="'+px.toFixed(1)+'" y2="'+(P.t+ph)+'" stroke="#eef2f6" stroke-width="1"/>';var xl=cfg.xfmt?cfg.xfmt(xv):(Math.round(xv*100)/100);s+='<text x="'+px.toFixed(1)+'" y="'+(P.t+ph+16)+'" text-anchor="middle" font-size="11" fill="#5c6b7a" font-family="-apple-system,Segoe UI,sans-serif">'+esc(xl)+'</text>';}
+ for(var j=0;j<=yticks;j++){var yv=y0+(y1-y0)*j/yticks,py=sy(yv);s+='<line x1="'+P.l+'" y1="'+py.toFixed(1)+'" x2="'+(P.l+pw)+'" y2="'+py.toFixed(1)+'" stroke="#eef2f6" stroke-width="1"/>';var yl=cfg.yfmt?cfg.yfmt(yv):(Math.round(yv*100)/100);s+='<text x="'+(P.l-8)+'" y="'+(py+4).toFixed(1)+'" text-anchor="end" font-size="11" fill="#5c6b7a" font-family="-apple-system,Segoe UI,sans-serif">'+esc(yl)+'</text>';}
+ if(y0<0&&y1>0){var zy=sy(0);s+='<line x1="'+P.l+'" y1="'+zy.toFixed(1)+'" x2="'+(P.l+pw)+'" y2="'+zy.toFixed(1)+'" stroke="#94a3b8" stroke-width="1.3" stroke-dasharray="4 3"/>';}
+ if(x0<0&&x1>0){var zx=sx(0);s+='<line x1="'+zx.toFixed(1)+'" y1="'+P.t+'" x2="'+zx.toFixed(1)+'" y2="'+(P.t+ph)+'" stroke="#94a3b8" stroke-width="1.3" stroke-dasharray="4 3"/>';}
+ s+='<line x1="'+P.l+'" y1="'+(P.t+ph)+'" x2="'+(P.l+pw)+'" y2="'+(P.t+ph)+'" stroke="#64748b" stroke-width="1.5"/>';
+ s+='<line x1="'+P.l+'" y1="'+P.t+'" x2="'+P.l+'" y2="'+(P.t+ph)+'" stroke="#64748b" stroke-width="1.5"/>';
+ if(cfg.xlabel)s+='<text x="'+(P.l+pw/2)+'" y="'+(H-8)+'" text-anchor="middle" font-size="12" font-weight="700" fill="#1c2733" font-family="-apple-system,Segoe UI,sans-serif">'+esc(cfg.xlabel)+'</text>';
+ if(cfg.ylabel)s+='<text x="15" y="'+(P.t+ph/2)+'" text-anchor="middle" font-size="12" font-weight="700" fill="#1c2733" font-family="-apple-system,Segoe UI,sans-serif" transform="rotate(-90 15 '+(P.t+ph/2)+')">'+esc(cfg.ylabel)+'</text>';
+ (cfg.vlines||[]).forEach(function(vl){var px=sx(vl.x);s+='<line x1="'+px.toFixed(1)+'" y1="'+P.t+'" x2="'+px.toFixed(1)+'" y2="'+(P.t+ph)+'" stroke="'+(vl.color||'#94a3b8')+'" stroke-width="1.2" stroke-dasharray="5 4"/>';if(vl.label)s+='<text x="'+(px+4).toFixed(1)+'" y="'+(P.t+14)+'" font-size="10.5" font-weight="700" fill="'+(vl.color||'#475569')+'" font-family="-apple-system,Segoe UI,sans-serif">'+esc(vl.label)+'</text>';});
+ (cfg.hlines||[]).forEach(function(hl){var py=sy(hl.y);s+='<line x1="'+P.l+'" y1="'+py.toFixed(1)+'" x2="'+(P.l+pw)+'" y2="'+py.toFixed(1)+'" stroke="'+(hl.color||'#94a3b8')+'" stroke-width="1.2" stroke-dasharray="5 4"/>';if(hl.label)s+='<text x="'+(P.l+pw-4)+'" y="'+(py-5).toFixed(1)+'" text-anchor="end" font-size="10.5" font-weight="700" fill="'+(hl.color||'#475569')+'" font-family="-apple-system,Segoe UI,sans-serif">'+esc(hl.label)+'</text>';});
+ (cfg.series||[]).forEach(function(sr){var pts=sr.pts.map(function(p){return sx(p[0]).toFixed(1)+','+sy(p[1]).toFixed(1);}).join(' ');s+='<polyline fill="none" stroke="'+sr.color+'" stroke-width="'+(sr.w||2.5)+'"'+(sr.dash?' stroke-dasharray="'+sr.dash+'"':'')+' points="'+pts+'"/>';});
+ (cfg.markers||[]).forEach(function(mk){var cx=sx(mk.x),cy=sy(mk.y);s+='<circle cx="'+cx.toFixed(1)+'" cy="'+cy.toFixed(1)+'" r="4.8" fill="'+(mk.color||'#0f5e8f')+'" stroke="#fff" stroke-width="1.6"/>';var dx=mk.dx||8,dy=mk.dy||-8,anc=mk.anchor||'start';if(mk.label)s+='<text x="'+(cx+dx).toFixed(1)+'" y="'+(cy+dy).toFixed(1)+'" text-anchor="'+anc+'" font-size="11" font-weight="700" fill="'+(mk.color||'#0f5e8f')+'" font-family="-apple-system,Segoe UI,sans-serif">'+esc(mk.label)+'</text>';});
+ s+='</svg>';
+ var leg=(cfg.series&&cfg.series.length>1)?'<div class="chart-legend">'+cfg.series.map(function(sr){return '<span><i style="background:'+sr.color+';'+(sr.dash?'border-top:2px dashed '+sr.color+';background:none;height:0':'')+'"></i>'+esc(sr.name)+'</span>';}).join('')+'</div>':'';
+ host.innerHTML=s+leg;
+ }
+
+ (function(){
+ drawCartesian('ch_m7_ipo',{
+ xmin:0,xmax:100,ymin:-15,ymax:70,xticks:5,yticks:5,
+ xlabel:'Estimasi NPV Proyek (Rp Miliar)',ylabel:'Ekspektasi Laba Pemilik Lama π',
+ vlines:[{x:40,label:'Titik Potong NPV',color:'#e08a1e'}],
+ series:[
+ {name:'Firm Commitment (biaya Z tinggi, sukses pasti)',color:'#1a86c7',pts:[[0,-12],[40,16],[100,58]]},
+ {name:'Best Effort (biaya C rendah, peluang sukses parsial)',color:'#2a9d6f',pts:[[0,-4],[40,16],[100,46]]}
+ ],
+ markers:[{x:40,y:16,label:'BE ← | → FC',color:'#e08a1e',dx:8,dy:-10}]
+ });
+ })();
+
+ window.addEventListener('load',function(){setTimeout(function(){if(window.MathJax&&window.MathJax.typesetPromise)window.MathJax.typesetPromise();},400);});
+})();
+</script></body></html>

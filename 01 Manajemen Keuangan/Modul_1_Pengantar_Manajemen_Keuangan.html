@@ -1,0 +1,877 @@
+<!DOCTYPE html>
+<html lang="id"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Modul 1 — Pengantar Manajemen Keuangan | EKMA5205</title>
+<script>window.MathJax={tex:{inlineMath:[['$','$']],displayMath:[['\\[','\\]'],['$$','$$']]},svg:{fontCache:'global'},startup:{typeset:true}};</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js" async></script>
+<style>
+:root{--bg:#f4f6f9;--panel:#fff;--ink:#1c2733;--muted:#5c6b7a;--line:#e4e9f0;--brand:#1a86c7;--brand-dark:#0f5e8f;--brand-soft:#e7f3fb;--kb1:#1a86c7;--kb2:#e08a1e;--kb3:#2a9d6f;--kb4:#7a5cc0;--kb5:#c75b7a;--radius:14px;--shadow:0 1px 2px rgba(16,42,67,.06),0 6px 20px rgba(16,42,67,.06);--maxw:900px}
+*{box-sizing:border-box}html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;line-height:1.72}
+#progress{position:fixed;top:0;left:0;height:4px;width:0;background:linear-gradient(90deg,var(--brand),#53c0ec);z-index:200;transition:width .1s}
+header.top{position:sticky;top:0;z-index:100;background:rgba(255,255,255,.92);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+.top-in{max-width:var(--maxw);margin:0 auto;padding:10px 20px;display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+.badge{background:var(--brand);color:#fff;font-weight:700;font-size:.72rem;letter-spacing:.5px;padding:4px 10px;border-radius:999px}
+.homebtn{text-decoration:none;display:inline-flex;align-items:center;gap:7px;background:var(--brand);color:#fff;font-weight:700;font-size:.8rem;padding:7px 15px;border-radius:999px;box-shadow:0 2px 6px rgba(16,42,67,.22);line-height:1}
+.top-title{font-size:.9rem;font-weight:600;color:var(--muted)}
+nav.jump{margin-left:auto;display:flex;gap:4px;flex-wrap:wrap}
+nav.jump a{font-size:.78rem;color:var(--muted);text-decoration:none;padding:5px 10px;border-radius:8px}
+nav.jump a:hover{background:var(--brand-soft);color:var(--brand-dark)}
+.wrap{max-width:var(--maxw);margin:0 auto;padding:0 20px 90px}
+.hero{margin-top:26px;padding:30px 28px;border-radius:var(--radius);color:#fff;background:linear-gradient(135deg,#0f5e8f,#1a86c7 60%,#2fa4df);box-shadow:var(--shadow);position:relative;overflow:hidden}
+.hero .eyebrow{font-size:.78rem;letter-spacing:1.5px;text-transform:uppercase;opacity:.9;font-weight:600}
+.hero h1{margin:.3em 0 .25em;font-size:1.62rem;line-height:1.25;max-width:90%}
+.hero .meta{display:flex;gap:18px;flex-wrap:wrap;font-size:.84rem;opacity:.95;margin-top:10px}
+h2.section{font-size:1.3rem;margin:48px 0 4px;display:flex;align-items:center;gap:10px;scroll-margin-top:70px}
+h2.section .dot{width:10px;height:22px;border-radius:4px;background:var(--brand)}
+.section-sub{color:var(--muted);font-size:.9rem;margin:0 0 18px}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);padding:22px 24px;margin:16px 0;--dot:var(--brand)}
+.concepts{list-style:none;margin:0;padding:0;display:grid;gap:10px}
+.concepts li{display:flex;gap:12px;align-items:flex-start;padding:12px 14px;border:1px solid var(--line);border-radius:10px;background:#fcfdff}
+.concepts input{margin-top:4px;width:18px;height:18px;accent-color:var(--brand);flex:none;cursor:pointer}
+.concepts .ct{font-weight:600}.concepts .cd{display:block;font-weight:400;color:var(--muted);font-size:.86rem;margin-top:2px}
+.concepts li.done{background:var(--brand-soft);border-color:#bfe0f3}.concepts li.done .ct{text-decoration:line-through;opacity:.65}
+.cl-head{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-bottom:6px}
+.cl-head .count{font-size:.82rem;color:var(--muted);background:var(--brand-soft);padding:3px 10px;border-radius:999px;font-weight:600}
+.btn-reset{font-size:.78rem;border:1px solid var(--line);background:#fff;color:var(--muted);padding:5px 12px;border-radius:8px;cursor:pointer}
+.mm-toolbar{display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin-bottom:10px}
+.mm-btn{font-size:.78rem;border:1px solid var(--line);background:#fff;padding:6px 13px;border-radius:8px;cursor:pointer;color:var(--brand-dark);font-weight:600}
+.mindmap-host{height:580px;overflow:auto;border:1px solid var(--line);border-radius:10px;background:#fcfdff}.mindmap-host svg{display:block}
+.kb-tag{display:inline-flex;align-items:center;gap:8px;font-size:.78rem;font-weight:700;color:#fff;padding:5px 12px;border-radius:999px;margin-bottom:6px}
+.kb1t{background:var(--kb1)}.kb2t{background:var(--kb2)}.kb3t{background:var(--kb3)}.kb4t{background:var(--kb4)}.kb5t{background:var(--kb5)}
+.kb1b{--dot:var(--kb1)}.kb2b{--dot:var(--kb2)}.kb3b{--dot:var(--kb3)}.kb4b{--dot:var(--kb4)}.kb5b{--dot:var(--kb5)}
+.lead{font-size:1.02rem}.term{font-weight:700;color:var(--dot)}.en{font-style:italic;color:var(--muted);font-weight:500}
+.abc{display:flex;align-items:center;gap:10px;margin:28px 0 10px;padding-bottom:6px;border-bottom:2px solid color-mix(in srgb,var(--dot) 18%,#fff)}
+.abc .ltr{background:var(--dot);color:#fff;font-weight:800;min-width:30px;height:30px;padding:0 7px;border-radius:8px;display:grid;place-items:center;flex:none}
+.abc h4{margin:0;font-size:1.06rem;color:var(--dot)}
+.numh{font-weight:700;color:var(--dot);margin:22px 0 4px;font-size:1rem}
+.leth{font-weight:800;color:var(--dot);margin:20px 0 6px;font-size:.98rem;border-left:3px solid var(--dot);padding-left:10px}
+ol.book{margin:12px 0;padding-left:28px}ol.book>li{margin:10px 0;padding-left:6px}ol.book>li::marker{font-weight:700;color:var(--dot)}
+ul.exp{list-style:none;margin:12px 0;padding:0;display:grid;gap:10px}ul.exp>li{position:relative;padding-left:20px}
+ul.exp>li::before{content:"";position:absolute;left:0;top:11px;width:8px;height:8px;border-radius:2px;background:var(--dot)}
+ul.let{list-style:lower-alpha;margin:10px 0;padding-left:28px}ul.let>li{margin:8px 0;padding-left:4px}ul.let>li::marker{color:var(--dot);font-weight:700}
+.flow{border-left:4px solid var(--dot);background:color-mix(in srgb,var(--dot) 9%,#fff);padding:11px 15px;border-radius:0 10px 10px 0;margin:18px 0;font-size:.9rem}
+.flow::before{content:"🔗 Benang merah — ";font-weight:700;color:var(--dot)}.flow b{color:var(--dot)}
+table.mini{width:100%;border-collapse:collapse;margin:14px 0;font-size:.86rem}
+table.mini th,table.mini td{border:1px solid var(--line);padding:9px 11px;text-align:left;vertical-align:top}
+table.mini th{background:color-mix(in srgb,var(--dot) 12%,#fff);color:var(--dot);font-weight:700}
+.rgrid{display:grid;gap:8px;margin:14px 0}.rgrid.c2{grid-template-columns:repeat(2,1fr)}.rgrid.c3{grid-template-columns:repeat(3,1fr)}.rgrid.c4{grid-template-columns:repeat(4,1fr)}
+.rcell{border:1px solid var(--line);border-radius:10px;padding:11px 13px;cursor:pointer;background:#fff;display:flex;gap:10px;align-items:flex-start;transition:.15s}
+.rcell:hover{border-color:var(--dot);box-shadow:var(--shadow);transform:translateY(-2px)}
+.rcell.active{border-color:var(--dot);background:color-mix(in srgb,var(--dot) 8%,#fff)}
+.rcell .stepnum{background:var(--dot);color:#fff;font-weight:700;min-width:24px;height:24px;border-radius:7px;display:grid;place-items:center;flex:none;font-size:.82rem}
+.rcell .rt{font-weight:700;font-size:.9rem;color:var(--dot);display:block}.rcell .rp{font-size:.78rem;color:var(--muted);display:block;margin-top:2px}
+.rdetail{font-size:.88rem;border-left:4px solid var(--dot);background:color-mix(in srgb,var(--dot) 8%,#fff);border-radius:0 10px 10px 0;padding:12px 15px;margin-top:6px}
+.pill-row{display:flex;gap:8px;flex-wrap:wrap;margin:10px 0}.pill{font-size:.8rem;background:#eef3f8;color:#36506a;border:1px solid #e0e8f0;padding:4px 11px;border-radius:999px;font-weight:600}
+.flowchart{display:flex;align-items:center;gap:6px;flex-wrap:wrap;margin:16px 0;justify-content:center}
+.fc-node{background:color-mix(in srgb,var(--dot) 12%,#fff);border:1.5px solid var(--dot);color:var(--dot);font-weight:700;font-size:.8rem;padding:8px 12px;border-radius:9px;text-align:center}
+.fc-arrow{color:var(--dot);font-weight:800;font-size:1.05rem}
+.pyramid{display:flex;flex-direction:column;align-items:center;gap:4px;margin:16px 0}.pyr-row{color:#fff;font-weight:700;text-align:center;padding:9px 12px;border-radius:7px;font-size:.84rem}
+.eqbox{background:#fcfdff;border:1px solid var(--line);border-radius:10px;padding:8px 14px;margin:14px 0;overflow-x:auto}
+.glossary dt{font-weight:700;color:var(--brand-dark);margin-top:10px}.glossary dd{margin:0 0 2px;color:var(--muted);font-size:.9rem}
+footer{max-width:var(--maxw);margin:0 auto;padding:30px 20px 60px;color:var(--muted);font-size:.82rem;border-top:1px solid var(--line)}
+.offline-note{font-size:.76rem;color:var(--muted);background:#fff8e6;border:1px solid #f0e2b8;border-radius:8px;padding:8px 12px;margin:10px 0}
+.bs-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:14px 0}
+.bs-col{border:1.5px solid var(--dot);border-radius:10px;overflow:hidden}
+.bs-head{background:var(--dot);color:#fff;font-weight:700;font-size:.84rem;padding:7px 12px;text-align:center}
+.bs-box{padding:10px 12px;border-bottom:1px dashed var(--line);font-size:.84rem}
+.bs-box:last-child{border-bottom:none}
+.casebox{background:#f8fafc;border:1px solid var(--line);border-left:4px solid var(--dot);border-radius:0 10px 10px 0;padding:12px 15px;margin:14px 0;font-size:.88rem}
+.casebox .ctitle{font-weight:700;color:var(--dot);margin-bottom:4px;display:block}
+
+.chart-wrap{background:#fcfdff;border:1px solid var(--line);border-radius:12px;padding:14px 16px;margin:16px 0}
+.chart-title{font-weight:700;font-size:.9rem;color:var(--dot);margin:0 0 4px}
+.chart-sub{font-size:.78rem;color:var(--muted);margin:0 0 10px}
+.chart-host{width:100%;overflow-x:auto;position:relative}
+.chart-host svg{display:block;max-width:100%;height:auto;margin:0 auto}
+.chart-legend{display:flex;gap:14px;flex-wrap:wrap;justify-content:center;margin-top:8px;font-size:.78rem;color:var(--muted)}
+.chart-legend span{display:inline-flex;align-items:center;gap:6px}
+.chart-legend i{display:inline-block;width:14px;height:3px;border-radius:2px}
+@media(max-width:640px){.hero h1{font-size:1.3rem;max-width:100%}nav.jump{display:none}.rgrid.c2,.rgrid.c3,.rgrid.c4,.bs-grid{grid-template-columns:1fr}.mindmap-host{height:440px}}
+
+/* GLOBAL RESPONSIVE & OVERFLOW PROTECTION */
+.card{overflow-x:clip;overflow-wrap:break-word;word-wrap:break-word}
+ul.exp,.concepts{grid-template-columns:minmax(0,1fr)}
+ul.exp>li,.concepts li,.concepts li>span,.rcell,.rcell>span,.bs-col,.casebox,.rdetail,.flow{min-width:0;max-width:100%;overflow-wrap:break-word;word-wrap:break-word}
+mjx-container{max-width:100%;overflow-x:auto;overflow-y:hidden}
+mjx-container:not([display="true"]){display:inline-block;vertical-align:middle}
+.table-wrap{width:100%;overflow-x:auto;-webkit-overflow-scrolling:touch;margin:14px 0;border-radius:10px}
+table.mini{width:100%;border-collapse:collapse;margin:0;font-size:.86rem;table-layout:auto}
+table.mini th,table.mini td{border:1px solid var(--line);padding:10px 12px;text-align:left;vertical-align:top;overflow-wrap:break-word;word-wrap:break-word}
+@media(max-width:680px){
+  .table-wrap{overflow-x:visible}
+  table.mini,table.mini thead,table.mini tbody,table.mini th,table.mini td,table.mini tr{display:block;width:100%}
+  table.mini thead{display:none}
+  table.mini tr{margin-bottom:12px;border:1.5px solid color-mix(in srgb,var(--dot) 28%,#e4e9f0);border-radius:10px;background:#fff;overflow:hidden;box-shadow:0 1px 4px rgba(16,42,67,.05)}
+  table.mini td{border:none;border-bottom:1px solid var(--line);padding:10px 12px;text-align:left}
+  table.mini td:last-child{border-bottom:none}
+  table.mini td::before{content:attr(data-label);display:block;font-size:.74rem;font-weight:700;text-transform:uppercase;letter-spacing:.4px;color:var(--dot);margin-bottom:4px}
+}
+
+/* KAMUS AKRONIM & BEDAH FORMULA */
+.acro-box{background:#f8fafc;border:1px solid var(--line);border-radius:10px;padding:12px 14px;margin:14px 0;font-size:.84rem;min-width:0;max-width:100%;overflow-wrap:break-word;word-wrap:break-word}
+.acro-title{font-weight:700;color:var(--dot);font-size:.86rem;margin-bottom:8px;display:block}
+.acro-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:6px 14px;margin:0;padding:0;list-style:none}
+.acro-grid li{min-width:0;line-height:1.5}
+.acro-grid b{color:var(--dot)}
+.fguide{background:color-mix(in srgb,var(--dot) 5%,#fff);border:1px solid color-mix(in srgb,var(--dot) 22%,#e4e9f0);border-radius:10px;padding:12px 15px;margin:-6px 0 16px;font-size:.86rem;min-width:0;max-width:100%;overflow-wrap:break-word;word-wrap:break-word}
+.fguide .fg-head{font-weight:700;color:var(--dot);font-size:.84rem;text-transform:uppercase;letter-spacing:.35px;margin:0 0 6px}
+.fguide ul{margin:4px 0 8px;padding-left:18px}
+.fguide ul li{margin:3px 0}
+.fguide .fg-core{border-top:1px dashed color-mix(in srgb,var(--dot) 30%,#cbd5e1);padding-top:8px;margin-top:8px;display:grid;grid-template-columns:minmax(0,1fr);gap:4px}
+.fguide .fg-core div{min-width:0}
+@media(max-width:640px){.acro-grid{grid-template-columns:minmax(0,1fr)}}
+</style></head><body>
+<div id="progress"></div>
+<header class="top"><div class="top-in">
+ <span class="badge">MODUL 1</span>
+ <a class="homebtn" href="index.html" title="Kembali ke daftar modul"><span style="font-size:1rem;line-height:1">&#8962;</span> Daftar Modul</a>
+ <span class="top-title">Manajemen Keuangan · EKMA5205</span>
+ <nav class="jump">
+ <a href="#konsep">Konsep</a>
+ <a href="#peta">Peta Konsep</a>
+ <a href="#kb1">KB 1</a>
+ <a href="#kb2">KB 2</a>
+ <a href="#kb3">KB 3</a>
+ <a href="#kb4">KB 4</a>
+ <a href="#glosarium">Glosarium</a>
+ </nav>
+</div></header>
+
+<div class="wrap">
+ <section class="hero">
+ <div class="eyebrow">Ringkasan Belajar · EKMA5205 (Edisi 3)</div>
+ <h1>Pengantar Manajemen Keuangan</h1>
+ <div class="meta">
+ <span>⏱️ ±35 menit</span>
+ <span>📚 4 Kegiatan Belajar (KB)</span>
+ <span>✍️ Dr. Said Kelana Asnawi, M.M.</span>
+ </div>
+ </section>
+
+ <p class="section-sub" style="margin-top:22px">Modul 1 meletakkan fondasi seluruh mata kuliah Manajemen Keuangan: mulai dari ruang lingkup 3M, tiga keputusan manajer keuangan, konflik agensi, dan peran pasar keuangan (KB 1), dilanjutkan dengan prinsip serta anatomi laporan keuangan (KB 2), analisis arus kas akuntansi dan keuangan (KB 3), hingga standardisasi kinerja melalui rasio-rasio keuangan dan kualitas laba (KB 4).</p>
+ <p class="offline-note">ℹ️ Peta konsep, kartu penjelasan interaktif, dan checklist konsep berjalan tanpa internet. Koneksi internet hanya diperlukan untuk merender persamaan matematika (MathJax).</p>
+
+ <!-- KONSEP PENTING -->
+ <h2 class="section" id="konsep"><span class="dot"></span>Konsep Penting yang Harus Dikuasai</h2>
+ <div class="card">
+ <div class="cl-head">
+ <span class="count"><span id="doneCount">0</span>/<span id="totalCount">0</span> dikuasai</span>
+ <button class="btn-reset" id="resetBtn">Reset centang</button>
+ </div>
+ <ul class="concepts" id="conceptList">
+ <li><input type="checkbox"><span><span class="ct">3M dalam Manajemen Keuangan &amp; Prinsip Matching</span><span class="cd">Sinergi Money (objek), Market (sarana), dan Man (pengelola); aset lancar didanai utang lancar, aset tetap didanai dana jangka panjang.</span></span></li>
+ <li><input type="checkbox"><span><span class="ct">Tiga Keputusan Keuangan (Gambar 1.1)</span><span class="cd">Pengelolaan modal kerja bersih (net working capital), keputusan investasi aset tetap, dan penentuan struktur modal (capital structure).</span></span></li>
+ <li><input type="checkbox"><span><span class="ct">Permasalahan Agensi (Agency Problems) &amp; 4 Solusinya</span><span class="cd">Konflik pemilik vs pengelola akibat pemisahan fungsi; diredam lewat dividen rutin, utang, monitoring langsung, dan insider ownership/ESOP.</span></span></li>
+ <li><input type="checkbox"><span><span class="ct">Konflik Pemegang Saham vs Kreditor &amp; Proteksinya</span><span class="cd">Kecenderungan stockholder memilih proyek lebih berisiko; dilindungi lewat protective covenant, utang jangka pendek, dan opsi convertible.</span></span></li>
+ <li><input type="checkbox"><span><span class="ct">Pasar Uang vs Pasar Modal</span><span class="cd">Pasar uang untuk likuiditas jangka pendek (&lt;1 tahun) seperti SBI &amp; Commercial Paper; pasar modal untuk pendanaan jangka panjang (obligasi &amp; saham).</span></span></li>
+ <li><input type="checkbox"><span><span class="ct">Prinsip Akrual, Waktu Pengakuan &amp; Nilai Buku</span><span class="cd">Pendapatan/beban diakui saat terjadi (bukan saat kas berpindah), celah earning management, dan pencatatan neraca berbasis harga perolehan.</span></span></li>
+ <li><input type="checkbox"><span><span class="ct">Anatomi 4 Laporan Keuangan &amp; Beda Laba vs Kas</span><span class="cd">Neraca (posisi satu tanggal), LLR (kinerja periode: EBIT → EBT → EAT), Arus Kas, dan Perubahan Modal; laba akuntansi tidak sama dengan kas masuk.</span></span></li>
+ <li><input type="checkbox"><span><span class="ct">Tax Shield Depresiasi &amp; Beban Bunga</span><span class="cd">Depresiasi (nonkas) menghemat pajak sebesar $\text{Depresiasi} \times t$; bunga menghemat pajak sebesar $r \times D \times t$ sehingga bunga riil menjadi $r(1 - t)$.</span></span></li>
+ <li><input type="checkbox"><span><span class="ct">Analisis Vertikal (Common Size) &amp; Horizontal (Time Series)</span><span class="cd">Vertikal membandingkan pos terhadap total aset/penjualan; horizontal melacak pertumbuhan tiap pos terhadap tahun dasar.</span></span></li>
+ <li><input type="checkbox"><span><span class="ct">Arus Kas Secara Akuntansi (OCF, ICF, FCF)</span><span class="cd">Klasifikasi perubahan kas dari aktivitas operasi ($\text{EAT} - \Delta\text{NWC} + \text{Depresiasi}$), investasi ($\Delta\text{FA} + \text{Depresiasi}$), dan pendanaan.</span></span></li>
+ <li><input type="checkbox"><span><span class="ct">Arus Kas Keuangan / Free Cash Flow (FCF)</span><span class="cd">Arus kas bebas ($\text{NOPAT} - \text{Inv} - \Delta\text{WC}$) yang didistribusikan secara neto kepada kreditor ($CF_D$) dan pemegang saham ($CF_S$).</span></span></li>
+ <li><input type="checkbox"><span><span class="ct">Estimasi External Funding (EF) &amp; Anggaran Kas</span><span class="cd">Menghitung tambahan dana eksternal akibat pertumbuhan penjualan serta menyusun cash budget bulanan dengan batas kas minimum.</span></span></li>
+ <li><input type="checkbox"><span><span class="ct">Empat Kelompok Rasio Keuangan &amp; DuPont ROE</span><span class="cd">Likuiditas (CR, QR, KR), Solvabilitas (DER, DR, TIER), Aktivitas (ARTO, ITO, FATO, TATO, ACP), dan Profitabilitas (GPM, OPM, NPM, ROA, $\text{ROE} = \text{NPM} \times \text{TATO} \times (1+\text{DER})$).</span></span></li>
+ <li><input type="checkbox"><span><span class="ct">Rasio Pasar, Red Flags, &amp; Kualitas Earning</span><span class="cd">PER dan MBV sebagai respons pasar; 10 indikator red flags; keterbatasan rasio (window dressing, inflasi, konteks industri) dan 7 ciri laba berkualitas.</span></span></li>
+ </ul>
+ </div>
+
+ <!-- PETA KONSEP -->
+ <h2 class="section" id="peta"><span class="dot"></span>Peta Konsep (Mind Map)</h2>
+ <div class="card">
+ <div class="mm-toolbar">
+ <button class="mm-btn" id="mmExpand">Perluas semua</button>
+ <button class="mm-btn" id="mmCollapse">Ciutkan</button>
+ <span style="font-size:.76rem;color:var(--muted)">Klik simpul bertanda + / – untuk buka-tutup · Gulir untuk menggeser</span>
+ </div>
+ <div class="mindmap-host" id="mindmap"></div>
+ </div>
+
+ <!-- ========================================================= -->
+ <!-- KB 1 -->
+ <!-- ========================================================= -->
+ <h2 class="section" id="kb1"><span class="dot" style="background:var(--kb1)"></span>KB 1 — Pengantar Manajemen Keuangan</h2>
+ <div class="card kb1b">
+ <span class="kb-tag kb1t">KB 1 · FUNDAMENTAL &amp; PASAR (Hal. 1.6 – 1.18)</span>
+ <p class="lead">KB 1 membahas fondasi pengelolaan keuangan perusahaan yang merangkum tiga unsur tak terpisahkan (<span class="term">3M: Money, Market, Man</span>), tiga keputusan utama manajer keuangan pada neraca, konflik kepentingan (<span class="term">agency problems</span>) beserta solusinya, serta peran pasar uang dan pasar modal.</p>
+ <div class="acro-box">
+ <span class="acro-title">📖 Kamus Konteks Singkatan &amp; Akronim KB 1</span>
+ <ul class="acro-grid">
+ <li><b>3M</b>: <i>Money</i> (objek dana), <i>Market</i> (pasar keuangan), <i>Man</i> (manajer keuangan).</li>
+ <li><b>NWC</b>: <i>Net Working Capital</i> (modal kerja bersih = aset lancar − utang lancar).</li>
+ <li><b>IO &amp; ESOP</b>: <i>Insider Ownership</i> (kepemilikan saham manajer) &amp; <i>Employee Stock Opportunity Program</i>.</li>
+ <li><b>LBO</b>: <i>Leveraged Buyout</i> — pembelian perusahaan oleh internal memakai utang pribadi.</li>
+ <li><b>ICH &amp; WRH</b>: <i>Information Content Hypothesis</i> vs <i>Wealth Redistribution Hypothesis</i> (dampak dividen pada saham vs obligasi).</li>
+ <li><b>SBI, L/C, CP</b>: <i>Sertifikat Bank Indonesia</i>, <i>Letter of Credit</i> (ekspor-impor), &amp; <i>Commercial Paper</i> (surat utang jangka pendek korporasi).</li>
+ <li><b>GCG</b>: <i>Good Corporate Governance</i> — tata kelola perusahaan yang transparan dan akuntabel.</li>
+ <li><b>BI</b>: <i>Bank Indonesia</i> — bank sentral pengatur jumlah uang beredar lewat pasar uang.</li>
+ </ul>
+ </div>
+
+ <div class="abc"><span class="ltr">A</span><h4>Pengertian Manajemen Keuangan</h4></div>
+ <p>Manajemen keuangan berkenaan dengan pengelolaan <span class="term">sumber</span> sekaligus <span class="term">penggunaan keuangan</span> pada institusi bisnis (berorientasi laba), institusi nirlaba, maupun individu. Keperluan (penggunaan) dana dan sumber pendanaan harus direncanakan secara bersamaan dan selalu seimbang sebagaimana tergambar pada <span class="term">neraca <span class="en">(balance sheet)</span></span>.</p>
+ <ul class="exp">
+ <li><span class="term">Prinsip Kesesuaian <span class="en">(Matching Principle)</span></span> — Aset lancar <span class="en">(current assets)</span> harus didanai dengan utang lancar <span class="en">(current liabilities)</span>, sedangkan aset tetap <span class="en">(fixed assets)</span> yang bernilai besar dan berumur panjang harus didanai dengan pendanaan jangka panjang. Jika aset tetap dibiayai utang jangka pendek, perusahaan rawan mengalami <span class="term">kesulitan likuiditas</span>; sebaliknya, membiayai aset lancar dengan utang jangka panjang akan memberatkan pemberi pinjaman.</li>
+ <li><span class="term">Modal Kerja Bersih <span class="en">(Net Working Capital)</span></span> — Selisih antara aset lancar dan utang lancar yang digunakan untuk mendukung operasional harian perusahaan.</li>
+ <li><span class="term">Tiga Komponen Utama (3M)</span> — <span class="term">Money</span> (uang sebagai objek yang dikelola), <span class="term">Market</span> (pasar keuangan/bursa sebagai sarana mempertemukan pihak yang memerlukan dana dengan pendana, tidak harus berbentuk fisik), dan <span class="term">Man</span> (manajer keuangan yang menjalankan aktivitas pengelolaan).</li>
+ </ul>
+
+ <div class="flow">Setelah memahami bahwa uang (<b>Money</b>) dan pasar (<b>Market</b>) harus digerakkan oleh pengelola (<b>Man</b>), bagian B merinci <b>tiga peran/keputusan konkret</b> yang dijalankan manajer keuangan pada struktur neraca.</div>
+
+ <div class="abc"><span class="ltr">B</span><h4>Peran dari Manajer Keuangan</h4></div>
+ <p>Manajer keuangan menjalankan tiga peran utama yang tercermin langsung pada sisi kiri (aktiva) dan sisi kanan (pasiva) neraca (Gambar 1.1):</p>
+
+ <div class="bs-grid">
+ <div class="bs-col">
+ <div class="bs-head">Sisi Kiri — Aktiva (Penggunaan Dana)</div>
+ <div class="bs-box"><b>Aset Lancar</b> <span class="en">(Current Assets)</span><br>Kas, piutang, inventori → dikelola bersama Utang Lancar sebagai <b>1. Modal Kerja Bersih</b>.</div>
+ <div class="bs-box"><b>Aset Tetap</b> <span class="en">(Fixed Assets)</span><br>Mesin, tanah, gedung → fokus <b>2. Keputusan Investasi</b> (pemeliharaan &amp; penggantian periodik).</div>
+ </div>
+ <div class="bs-col">
+ <div class="bs-head">Sisi Kanan — Pasiva (Sumber Dana)</div>
+ <div class="bs-box"><b>Utang Lancar</b> <span class="en">(Current Liabilities)</span><br>Utang dagang, pinjaman segera bayar → penopang <b>1. Modal Kerja Bersih</b>.</div>
+ <div class="bs-box"><b>Utang Jk. Panjang + Modal Sendiri</b><br>Komposisi sumber jangka panjang → fokus <b>3. Struktur Modal (Pendanaan)</b>.</div>
+ </div>
+ </div>
+
+ <div class="rgrid c3" data-revealgroup>
+ <div class="rcell active" data-reveal data-detail="<b>1. Mengelola Modal Kerja Bersih (Net Working Capital):</b> Menjaga kelancaran produksi harian (kas, piutang, inventori vs utang lancar) agar tidak terjadi <i>mismatch</i> waktu maupun jumlah antara arus kas masuk (<i>cash inflow</i>) dan arus kas keluar (<i>cash outflow</i>). Piutang meningkatkan penjualan tetapi menekan kas; utang dagang membantu menyiasati keterbatasan kas membeli bahan baku."><span class="stepnum">1</span><span><span class="rt">Modal Kerja Bersih</span><span class="rp">Aktivitas jangka pendek &amp; rutin</span></span></div>
+ <div class="rcell" data-reveal data-detail="<b>2. Keputusan Investasi (Fixed Assets):</b> Menempatkan dana pada aset tetap bernilai besar dan berumur panjang (mesin, tanah, bangunan) sebagai landasan produksi. Manajer wajib menjaga kualitasnya lewat pemeliharaan berkala, menghitung umur ekonomis, dan merencanakan penggantian tepat waktu."><span class="stepnum">2</span><span><span class="rt">Keputusan Investasi</span><span class="rp">Penempatan dana aset tetap</span></span></div>
+ <div class="rcell" data-reveal data-detail="<b>3. Struktur Modal (Capital Structure):</b> Menentukan komposisi utang jangka panjang dan modal sendiri. Utang menuntut pembayaran pokok + bunga secara mengikat, sedangkan modal saham memberi imbalan <b>dividen</b> yang bersifat <b>residual</b> (sisa setelah kewajiban kreditor dan pajak). Manajer sering menahan sebagian laba (<i>retained earnings</i>) untuk ekspansi—di sinilah muncul potensi konflik dengan pemegang saham."><span class="stepnum">3</span><span><span class="rt">Struktur Modal</span><span class="rp">Komposisi utang jk. panjang &amp; ekuitas</span></span></div>
+ </div>
+ <div class="rdetail" data-revealdetail><b>1. Mengelola Modal Kerja Bersih (Net Working Capital):</b> Menjaga kelancaran produksi harian (kas, piutang, inventori vs utang lancar) agar tidak terjadi <i>mismatch</i> waktu maupun jumlah antara arus kas masuk (<i>cash inflow</i>) dan arus kas keluar (<i>cash outflow</i>). Piutang meningkatkan penjualan tetapi menekan kas; utang dagang membantu menyiasati keterbatasan kas membeli bahan baku.</div>
+
+ <div class="flow">Karena keputusan struktur modal dan penahanan laba (<b>retained earnings</b>) kerap memicu tarik-menarik kepentingan antara pengelola dan pemilik, bagian C membedah inti dari sebagian besar keputusan keuangan: <b>permasalahan agensi</b>.</div>
+
+ <div class="abc"><span class="ltr">C</span><h4>Permasalahan Agensi <span class="en">(Agency Problems)</span></h4></div>
+ <p>Permasalahan agensi (<span class="term">agency costs</span>) bersumber dari <span class="term">pemisahan antara pemilik <span class="en">(principal)</span> dan pengelola profesional <span class="en">(agent)</span></span> ketika perusahaan membesar. Bentuk penyimpangan agen meliputi:</p>
+ <ul class="exp">
+ <li><span class="term">Pengambilan Risiko Berlebih <span class="en">(Risk Taking at the Expense of Stakeholders)</span></span> — Pengelola menjalankan fungsi mengelola (<span class="en">entrepreneur</span>) sekaligus mengambil risiko. Jika berhasil, manajer menikmati bonus; jika gagal, pemilik yang menanggung kerugian besar.</li>
+ <li><span class="term">Pemanfaatan Harta Perusahaan</span> — Bisa terjadi secara <b>legal</b> melalui tunjangan mewah yang kurang menunjang kerja (<span class="en">fringe benefits</span> seperti kendaraan/ruang kerja mewah), maupun <b>ilegal/tidak etis</b> seperti memasukkan pengeluaran pribadi ke kas perusahaan atau membuat proyek tidak relevan yang dikerjakan entitas milik pengelola.</li>
+ <li><span class="term">Pemicu Utama: Arus Kas Bebas <span class="en">(Free Cash Flow)</span> &amp; <span class="en">Moral Hazard</span></span> — Ketersediaan kas berlebih memicu perilaku buruk (<span class="en">moral hazard</span>), misalnya berinvestasi tanpa pertimbangan matang demi manfaat pribadi agen.</li>
+ </ul>
+
+ <div class="numh">Empat Cara Mengurangi Masalah Agensi (Pemilik vs Manajer)</div>
+ <div class="rgrid c4" data-revealgroup>
+ <div class="rcell active" data-reveal data-detail="<b>1. Pembagian Dividen Rutin (Easterbrook, 1984):</b> Membatasi jumlah kas yang bebas dikelola agen dengan secara konsisten meminta bagian laba sebagai dividen, sehingga ruang untuk <i>moral hazard</i> menyempit."><span class="stepnum">1</span><span><span class="rt">Dividen Rutin</span><span class="rp">Batasi kas di tangan agen</span></span></div>
+ <div class="rcell" data-reveal data-detail="<b>2. Penggunaan Utang (Jensen, 1986):</b> Jika kas kurang untuk investasi bagus, pemilik menganjurkan berutang. Kehadiran kreditor (<i>bondholder</i>) menambah pengawas eksternal yang menuntut disiplin kas, rasio keuangan, dan <i>sinking funds</i>—meski berisiko hak klaim pertama saat likuidasi."><span class="stepnum">2</span><span><span class="rt">Utang (Debt)</span><span class="rp">Disiplin lewat kreditor</span></span></div>
+ <div class="rcell" data-reveal data-detail="<b>3. Monitoring &amp; Evaluasi (Monev):</b> Pemegang saham menempatkan wakilnya untuk mengawasi kinerja dan keputusan manajemen secara teratur dan terstruktur."><span class="stepnum">3</span><span><span class="rt">Monitoring</span><span class="rp">Pengawasan langsung</span></span></div>
+ <div class="rcell" data-reveal data-detail="<b>4. Insider Ownership (IO) &amp; ESOP:</b> Menghilangkan pemisahan pemilik–pengelola dengan memberi saham kepada manajer (gratis maupun paksa lewat utang pribadi) atau karyawan (<i>Employee Stock Opportunity Program</i>). Riset Kim, Lee, &amp; Francis (1980) menunjukkan IO tinggi berkorelasi dengan return saham tinggi."><span class="stepnum">4</span><span><span class="rt">Insider Ownership</span><span class="rp">Saham bagi manajer/ESOP</span></span></div>
+ </div>
+ <div class="rdetail" data-revealdetail><b>1. Pembagian Dividen Rutin (Easterbrook, 1984):</b> Membatasi jumlah kas yang bebas dikelola agen dengan secara konsisten meminta bagian laba sebagai dividen, sehingga ruang untuk <i>moral hazard</i> menyempit.</div>
+
+ <div class="casebox">
+ <span class="ctitle">Kotak 1 · Leveraged Buyout (LBO): Solusi Jitu (Kasus Scott — Baker &amp; Wruck, 1989)</span>
+ <b>LBO</b> adalah kepemilikan perusahaan oleh pihak internal (manajer) melalui utang pribadi (bukan utang perusahaan), sehingga risiko perusahaan menjadi risiko inheren manajer. Pada kasus Scott, leverage melonjak hingga 91%, tetapi memicu 3 perubahan organisasi: (i) <i>constraint</i> utang &amp; <i>debt covenant</i> (kewajiban <i>sinking funds</i>, 75% hasil penjualan aset untuk bayar utang), (ii) perubahan kompensasi &amp; insentif (bonus berbasis target 80–125%), serta (iii) peningkatan <i>monitoring</i> dan dewan penasihat. Hasilnya: EBIT melonjak 56%, kebutuhan modal kerja turun 42%, dan perputaran aset naik 54%.
+ </div>
+
+ <div class="numh">1. Konflik Kreditor dan Manajer–Pemegang Saham</div>
+ <p>Ketika perusahaan berutang, kreditor (<span class="en">bondholder</span>) memegang klaim pertama dan imbalan tetap sesuai perjanjian, sedangkan pemegang saham (<span class="en">stockholder</span>) memegang klaim sisa (<span class="en">residual</span>). Jika untung besar, pemegang saham menikmati seluruh kelebihannya; jika rugi, kreditor ikut menanggung kerugian. Akibatnya, manajer (yang dipilih pemegang saham) cenderung memilih proyek lebih berisiko.</p>
+
+ <div class="table-wrap">
+<table class="mini">
+ <thead><tr><th>Alternatif Investasi PT ABC (Kebutuhan Rp1.000 jt; Utang Rp700 jt, Ekuitas Rp300 jt)</th><th>Peluang Buruk (50%)</th><th>Peluang Baik (50%)</th><th>Expected Value (r=0%)</th><th>PV Stockholder (Utang 700)</th><th>PV Bondholder (Utang 700)</th><th>PV Stockholder (Utang 550)</th></tr></thead>
+ <tbody>
+ <tr><td data-label="Alternatif Investasi PT ABC (Kebutuhan Rp1.000 jt; Utang Rp700 jt, Ekuitas Rp300 jt)"><b>Investasi X</b> (risiko lebih rendah)</td><td data-label="Peluang Buruk (50%)">800</td><td data-label="Peluang Baik (50%)">1.500</td><td data-label="Expected Value (r=0%)"><b>1.150</b></td><td data-label="PV Stockholder (Utang 700)">450</td><td data-label="PV Bondholder (Utang 700)"><b>700</b> (lunas)</td><td data-label="PV Stockholder (Utang 550)"><b>600</b> (dipilih!)</td></tr>
+ <tr><td data-label="Alternatif Investasi PT ABC (Kebutuhan Rp1.000 jt; Utang Rp700 jt, Ekuitas Rp300 jt)"><b>Investasi Y</b> (lebih berisiko)</td><td data-label="Peluang Buruk (50%)">400</td><td data-label="Peluang Baik (50%)">1.700</td><td data-label="Expected Value (r=0%)">1.050</td><td data-label="PV Stockholder (Utang 700)"><b>500</b> (dipilih!)</td><td data-label="PV Bondholder (Utang 700)">550 (rugi 150)</td><td data-label="PV Stockholder (Utang 550)">575</td></tr>
+ </tbody>
+ </table>
+</div>
+ <p>Dengan utang Rp700 jt, pemegang saham lebih menyukai Investasi Y (PV 500 &gt; 450) meski mengorbankan kreditor (rugi Rp150 jt). Jika kreditor cermat, kreditor hanya bersedia meminjamkan Rp550 jt (memaksa pemegang saham menyetor Rp450 jt), sehingga Investasi X kembali lebih menguntungkan (600 &gt; 575). Tiga cara proteksi kreditor:</p>
+ <ol class="book">
+ <li><span class="term">Peraturan Mengikat <span class="en">(Protective Covenant)</span></span> — Menetapkan rambu proyek, kriteria rasio keuangan minimal, atau larangan menjual aset tetap tanpa mengalokasikan hasilnya untuk melunasi utang.</li>
+ <li><span class="term">Pinjaman Jangka Pendek</span> — Mengganti utang jangka panjang karena utang jangka pendek kurang sensitif terhadap perubahan kebijakan berisiko oleh pemegang saham.</li>
+ <li><span class="term">Opsi Pinjaman Konversi <span class="en">(Convertible)</span></span> — Memberi hak kepada kreditor untuk mengubah utang menjadi saham bila kondisi menguntungkan pemegang utang.</li>
+ </ol>
+
+ <div class="numh">2. Kebangkrutan, Obligasi Senior, dan Obligasi Junior</div>
+ <p>Jika perusahaan gagal membayar kewajiban kepada pemegang obligasi senior, obligasi senior dapat mengajukan gugatan pailit agar aset disita untuk melunasi haknya terlebih dahulu, baru sisanya untuk obligasi junior dan pemegang saham. Untuk mempertahankan kelangsungan usaha (<span class="term">going concern</span>), perusahaan dapat memanfaatkan <span class="term">bondholder junior</span>:</p>
+ <ul class="exp">
+ <li><span class="term">Ilustrasi PT A</span> — Utang senior Rp1.000 jt + kupon jatuh tempo Rp150 jt; utang junior Rp200 jt. Jika dilikuidasi sekarang (nilai Rp1.200 jt): senior dapat penuh Rp1.150 jt, junior hanya Rp50 jt, pemegang saham Rp0. Jika tetap beroperasi (50% berhasil Rp1.500 jt; 50% gagal Rp500 jt), PT A dapat meminta tambahan pinjaman Rp150 jt dari junior untuk membayar kupon senior. Jika berhasil, senior lunas Rp1.000 jt, junior menerima hingga Rp450 jt (di atas kewajiban Rp350 jt), dan pemegang saham masih mendapat Rp50 jt. Kuncinya adalah kesediaan dan keyakinan junior atas skenario berhasil.</li>
+ </ul>
+
+ <div class="casebox">
+ <span class="ctitle">Kotak 2 · Dampak Kenaikan Dividen pada Saham vs Obligasi (Dhillon &amp; Johnson, 1994)</span>
+ Dua hipotesis yang tidak saling meniadakan: (1) <b>Information Content Hypothesis (ICH)</b> memprediksi kenaikan dividen ($\Delta\text{div}\uparrow$) menaikkan harga saham ($P_S\uparrow$) sekaligus harga obligasi ($P_B\uparrow$); (2) <b>Wealth Redistribution Hypothesis (WRH)</b> memprediksi $\Delta\text{div}\uparrow$ menaikkan $P_S\uparrow$ tetapi menurunkan $P_B\downarrow$ (transfer kekayaan). Bukti empiris untuk kenaikan dividen &gt;30% menunjukkan rata-rata return 2 hari saham $+1{,}21\%$, sedangkan obligasi $-0{,}33\%$.
+ </div>
+
+ <div class="flow">Untuk menjalankan keputusan modal kerja, investasi, struktur modal, hingga menerbitkan saham/obligasi secara efisien, manajer membutuhkan sarana utama yang dibahas pada bagian D: <b>pasar keuangan</b>.</div>
+
+ <div class="abc"><span class="ltr">D</span><h4>Pasar Keuangan <span class="en">(Financial Market)</span></h4></div>
+ <p>Pasar keuangan mempertemukan permintaan dana (perusahaan/pemerintah) dan penawaran dana (masyarakat) secara cepat dan murah berkat dukungan teknologi dan SDM andal. Pasar keuangan terbagi dua—<span class="term">pasar uang</span> dan <span class="term">pasar modal</span>—yang sekaligus berperan sebagai <span class="term">substitusi</span> (pilihan alternatif pendanaan/investasi) maupun <span class="term">komplementer</span> (saling melengkapi dan memengaruhi kondisi pasar keuangan secara umum).</p>
+
+ <div class="numh">1. Pasar Uang <span class="en">(Money Market)</span></div>
+ <ul class="exp">
+ <li><span class="term">Karakteristik &amp; Fungsi</span> — Mempertemukan penyedia dan pengguna dana jangka pendek (jatuh tempo &lt; 1 tahun) dengan instrumen sangat likuid. Sangat penting untuk mengatasi <i>mismatch</i> kas operasional (modal kerja): pihak surplus meminjamkan (<span class="en">lending</span>), pihak defisit meminjam (<span class="en">borrowing</span>). Bank sentral (BI) juga memakainya untuk mengatur jumlah uang beredar.</li>
+ <li><span class="term">Instrumen &amp; Pelaku</span> — Instrumen meliputi <span class="term">SBI</span> (Sertifikat Bank Indonesia), <span class="term">deposito berjangka</span>, <span class="term">wesel berjangka</span>, <span class="term">Letter of Credit (L/C)</span> untuk ekspor-impor, dan <span class="term">Commercial Paper</span> (surat utang jangka pendek perusahaan besar). Tiga pelaku utama: investor (penerima bunga), debitur (pencari dana berbunga rendah), dan penyelenggara perantara (<span class="en">security house</span>, penerima margin).</li>
+ <li><span class="term">Enam Risiko Pasar Uang</span> — <span class="term">Default risk</span> (gagal bayar, risiko terbesar), <span class="term">interest rate risk</span> (fluktuasi bunga), <span class="term">foreign exchange risk</span> (risiko kurs valas), <span class="term">risiko politik</span> (perubahan regulasi), <span class="term">risiko likuiditas</span> (sulit menjual ulang instrumen), dan <span class="term">inflation rate risk</span> (penurunan nilai riil aset).</li>
+ </ul>
+
+ <div class="numh">2. Pasar Modal <span class="en">(Capital Market)</span></div>
+ <ul class="exp">
+ <li><span class="term">Karakteristik &amp; Risiko</span> — Mengikat dana kontrak jangka panjang seperti <span class="term">obligasi</span> hingga seumur hidup melalui <span class="term">saham</span>, terutama untuk membiayai investasi (struktur modal). Jatuh tempo panjang meningkatkan ketidakpastian sehingga investor menuntut <i>return</i> lebih tinggi (dari <i>capital gain</i> dan dividen); perusahaan menghadapi risiko jika suku bunga turun namun sulit mengganti pendanaan lama.</li>
+ <li><span class="term">Manfaat Strategis</span> — Bagi perusahaan: alternatif di luar kredit bank, dana besar diperoleh sekaligus, dan minim <i>covenant</i> ketat. Bagi masyarakat &amp; negara: memperluas kepemilikan dan pemerataan pembangunan, mendorong transparansi (<span class="term">Good Corporate Governance / GCG</span>), menjadi <span class="term">leading indicator</span> perekonomian, memengaruhi arus valas/cadangan devisa, serta menyerap SDM terbaik melalui institusi pendukung (<span class="en">underwriter</span>, bank kustodian, broker/pialang).</li>
+ </ul>
+ </div>
+
+ <!-- ========================================================= -->
+ <!-- KB 2 -->
+ <!-- ========================================================= -->
+ <h2 class="section" id="kb2"><span class="dot" style="background:var(--kb2)"></span>KB 2 — Laporan Keuangan</h2>
+ <div class="card kb2b">
+ <span class="kb-tag kb2t">KB 2 · PRINSIP &amp; ANATOMI LAPORAN (Hal. 1.22 – 1.34)</span>
+ <p class="lead">Untuk mengevaluasi besar kecilnya perusahaan secara objektif dan dapat diperbandingkan, diperlukan standardisasi dalam satuan mata uang melalui <span class="term">laporan keuangan <span class="en">(financial statements)</span></span>. Laporan ini bersifat historis (<span class="en">ex-post</span>) dan terdiri atas empat laporan utama: neraca, laporan laba rugi, laporan arus kas, dan laporan perubahan modal.</p>
+ <div class="acro-box">
+ <span class="acro-title">📖 Kamus Konteks Singkatan &amp; Akronim KB 2</span>
+ <ul class="acro-grid">
+ <li><b>LLR</b>: <i>Laporan Laba Rugi</i> (<i>Income Statement</i>) — kinerja operasi selama satu periode.</li>
+ <li><b>HPP / COGS</b>: <i>Harga Pokok Penjualan / Cost of Goods Sold</i> — biaya langsung barang/jasa terjual.</li>
+ <li><b>FIFO &amp; LIFO</b>: <i>First-In First-Out</i> vs <i>Last-In First-Out</i> — metode pencatatan arus persediaan.</li>
+ <li><b>EBIT, EBT, EAT</b>: <i>Earnings Before Interest &amp; Taxes</i> (laba operasi), <i>Before Taxes</i>, &amp; <i>After Taxes</i> (laba bersih).</li>
+ <li><b>R/E</b>: <i>Retained Earnings</i> — saldo laba ditahan yang tidak dibagikan sebagai dividen.</li>
+ <li><b>IPO</b>: <i>Initial Public Offering</i> — penawaran saham perdana perusahaan ke publik.</li>
+ <li><b>R&amp;D &amp; PSAK</b>: <i>Research &amp; Development</i> (riset &amp; pengembangan) &amp; <i>Pernyataan Standar Akuntansi Keuangan</i>.</li>
+ <li><b>$r, D, t$</b>: Tingkat bunga utang ($r$), nilai utang ($D$), dan tarif pajak penghasilan badan ($t$).</li>
+ </ul>
+ </div>
+
+ <div class="abc"><span class="ltr">A</span><h4>Prinsip-Prinsip Laporan Keuangan</h4></div>
+ <div class="rgrid c3" data-revealgroup>
+ <div class="rcell active" data-reveal data-detail="<b>1. Basis Akrual (Accrual Basis):</b> Pendapatan diakui saat barang/jasa selesai diserahkan (termasuk penjualan kredit meski kas belum masuk), dan beban diakui pada periode manfaatnya terpakai (misal sewa gedung tunai Rp60 jt untuk 3 tahun hanya diakui beban Rp20 jt/tahun; gaji/listrik terutang tetap dicatat beban saat ini). Prinsip konservatif menunda pengakuan pendapatan hingga pasti dan mendahulukan pengakuan beban."><span class="stepnum">1</span><span><span class="rt">Basis Akrual</span><span class="rp">Pengakuan ≠ perpindahan kas</span></span></div>
+ <div class="rcell" data-reveal data-detail="<b>2. Waktu Pengakuan:</b> Penentuan saat pendapatan diakui (misal serah terima atau persentase penyelesaian proyek), umur ekonomis mesin, dan metode depresiasi memberi ruang fleksibilitas legal. Celah ini rawan dimanfaatkan untuk <b>earning management</b> (mengatur besaran laba, misal demi bonus), meski pembuat laporan tetap wajib konsisten memakai metodenya."><span class="stepnum">2</span><span><span class="rt">Waktu Pengakuan</span><span class="rp">Matching &amp; celah earning management</span></span></div>
+ <div class="rcell" data-reveal data-detail="<b>3. Nilai Buku (Book Value):</b> Aset dicatat berdasarkan harga perolehan dikurangi penyusutan, bukan harga pasar. Contoh: mobil dibeli Rp100 jt, setelah 5 tahun (penyusutan Rp10 jt/th) nilai bukunya Rp50 jt meski harga pasarnya Rp70 jt. Jika dijual Rp70 jt, selisih Rp20 jt dicatat sebagai <b>capital gain</b> (pendapatan lain-lain)."><span class="stepnum">3</span><span><span class="rt">Nilai Buku</span><span class="rp">Harga perolehan vs harga pasar</span></span></div>
+ </div>
+ <div class="rdetail" data-revealdetail><b>1. Basis Akrual (Accrual Basis):</b> Pendapatan diakui saat barang/jasa selesai diserahkan (termasuk penjualan kredit meski kas belum masuk), dan beban diakui pada periode manfaatnya terpakai (misal sewa gedung tunai Rp60 jt untuk 3 tahun hanya diakui beban Rp20 jt/tahun; gaji/listrik terutang tetap dicatat beban saat ini). Prinsip konservatif menunda pengakuan pendapatan hingga pasti dan mendahulukan pengakuan beban.</div>
+
+ <div class="flow">Dengan memahami bahwa laporan keuangan berbasis <b>akrual</b> dan <b>nilai buku</b>, bagian B membedah struktur keempat jenis laporan keuangan beserta akun-akun penyusunnya.</div>
+
+ <div class="abc"><span class="ltr">B</span><h4>Laporan Keuangan</h4></div>
+
+ <div class="numh">1. Neraca <span class="en">(Balance Sheet)</span></div>
+ <p>Menunjukkan posisi kekayaan (aktiva) dan sumber pembiayaannya (pasiva) pada <span class="term">satu tanggal tertentu</span> (misal 31 Desember), layaknya timbangan yang sisi kiri dan kanannya harus selalu sama.</p>
+ <ul class="let">
+ <li><span class="term">Aktiva / Aset-aset <span class="en">(Assets)</span></span> — Diurutkan berdasarkan tingkat likuiditas (kecepatan menjadi kas): dimulai dari aset lancar (<span class="en">current assets</span>: kas, piutang, inventori) hingga aset tetap (<span class="en">fixed assets</span>). Aset tetap terbagi atas berwujud (<span class="en">tangible</span>, mis. mesin) dan tidak berwujud (<span class="en">intangible</span>, mis. merek). Semua aset tetap kecuali tanah disusutkan; depresiasi aset berwujud mengurangi beban pajak, sedangkan penyusutan <i>intangible</i> tertentu (seperti <i>goodwill</i>) tidak mengurangi pajak.</li>
+ <li><span class="term">Pasiva <span class="en">(Liabilities &amp; Equities)</span></span> — Diurutkan berdasarkan prioritas hak klaim saat likuidasi: utang lancar, utang jangka panjang (yang segera jatuh tempo berpindah ke utang lancar), baru terakhir modal sendiri.</li>
+ <li><span class="term">Utang Lancar <span class="en">(Current Liabilities)</span></span> — Terdiri atas tiga pos utama: <b>utang dagang</b> (pemasok usaha), <b>notes payable</b> (utang bank jangka pendek), dan <b>accrual</b> (kewajiban tertunda seperti pajak dan gaji terutang).</li>
+ <li><span class="term">Utang Jangka Panjang <span class="en">(Long-Term Debt)</span></span> — Umumnya disertai syarat mengikat (<span class="term">debt covenant</span>) untuk mengamankan dana kreditor, seperti kewajiban mengalokasikan 75% hasil penjualan aset untuk bayar utang atau larangan mengganti manajer selama masa utang.</li>
+ <li><span class="term">Modal Kerja Bersih <span class="en">(Net Working Capital)</span></span> — Selisih aset lancar dikurangi utang lancar (tanpa <i>notes payable</i> dalam analisis arus kas). Umumnya besar saat awal operasi atau ekspansi, dan mengecil pada tahap akhir usaha.</li>
+ <li><span class="term">Modal <span class="en">(Equity)</span></span> — Berasal dari setoran modal saham (saat IPO) ditambah akumulasi laba yang tidak dibagikan (<span class="term">laba ditahan / retained earnings</span>) dari tahun ke tahun. (<i>Kotak 4 · Agio/Disagio Saham:</i> jika IPO 1 juta lembar bernilai nominal Rp1.000 terjual Rp1.200/lembar, Rp1.000 jt dicatat sebagai modal saham dan selisih Rp200 jt dicatat sebagai <b>agio saham</b>.)</li>
+ </ul>
+
+ <div class="numh">2. Laporan Laba Rugi <span class="en">(Income Statement)</span></div>
+ <p>Menggambarkan aktivitas operasi selama <span class="term">satu periode</span> (misal 1 Jan – 31 Des). Aktivitas utama diletakkan di atas, sedangkan pos tidak rutin (<span class="en">extraordinary items</span> seperti laba/rugi selisih kurs penjualan aset) dipisahkan. Alur perhitungannya membentuk tangga profitabilitas:</p>
+ <div class="flowchart">
+ <span class="fc-node">Penjualan<br><small>(Tunai + Kredit)</small></span><span class="fc-arrow">− HPP →</span>
+ <span class="fc-node">Laba Kotor<br><small>(Gross Profit)</small></span><span class="fc-arrow">− Beban Ops &amp; Depr →</span>
+ <span class="fc-node">EBIT<br><small>(Business Risk)</small></span><span class="fc-arrow">− Bunga →</span>
+ <span class="fc-node">EBT<br><small>(+ Financial Risk)</small></span><span class="fc-arrow">− Pajak →</span>
+ <span class="fc-node">EAT<br><small>(Milik Pemegang Saham)</small></span>
+ </div>
+ <ul class="exp">
+ <li><span class="term">Harga Pokok Penjualan / HPP <span class="en">(Cost of Goods Sold / COGS)</span></span> — Biaya bahan baku/inventori yang dipengaruhi metode pencatatan seperti <b>FIFO</b> (<i>first-in first-out</i>) atau <b>LIFO</b> (<i>last-in first-out</i>).</li>
+ <li><span class="term">EBIT vs EBT vs EAT</span> — <b>EBIT</b> (<span class="en">operating profit</span>) mengukur kelayakan bisnis inti (<span class="en">business risk</span>). Pengurangan beban bunga mencerminkan risiko utang (<span class="en">financial risk</span>) hingga menghasilkan <b>EBT</b>. Setelah dikurangi pajak, diperoleh <b>EAT</b> sebagai hak pemegang saham.</li>
+ </ul>
+
+ <div class="numh">3. Laporan Arus Kas &amp; 4. Laporan Perubahan Modal</div>
+ <ul class="exp">
+ <li><span class="term">Laporan Arus Kas <span class="en">(Statement of Cash Flows)</span></span> — Menunjukkan ketersediaan kas riil karena penerimaan dan beban di LLR berbasis akrual (dibahas mendalam pada KB 3).</li>
+ <li><span class="term">Laporan Perubahan Modal / Laba Ditahan <span class="en">(Statement of Stockholders' Equity)</span></span> — Menghubungkan LLR ke neraca: $\text{R/E}_{\text{akhir}} = \text{R/E}_{\text{awal}} + \text{EAT} - \text{Dividen}$. Akumulasi R/E dapat turun jika perusahaan merugi (EAT negatif) atau membagikan dividen melebihi EAT / saat merugi.</li>
+ </ul>
+
+ <div class="flow">Karena aturan akuntansi memiliki nuansa yang memengaruhi laba, pajak, dan kas secara berbeda, bagian C menyoroti <b>lima persoalan teknis penting</b> yang wajib dicermati analis keuangan.</div>
+
+ <div class="abc"><span class="ltr">C</span><h4>Beberapa Hal yang Perlu Dipertimbangkan</h4></div>
+ <ol class="book">
+ <li><span class="term">Laba dan Kas Berbeda Fundamental</span> — Laba adalah hasil pengakuan akuntansi, sedangkan kas adalah aset lancar riil. Contoh: laptop Rp5 jt (umur 5 th, depresiasi Rp1 jt/th) menghasilkan pendapatan kas Rp5 jt/th, pajak 10%. Laba sebelum pajak = Rp4 jt, <b>EAT = Rp3,6 jt</b>, tetapi <b>kas riil = Rp4,6 jt</b> (EAT Rp3,6 jt + depresiasi nonkas Rp1 jt, atau kas Rp5 jt − pajak Rp0,4 jt).</li>
+ <li><span class="term">Perbaikan Mesin: Beban <span class="en">(Expense)</span> atau Kapitalisasi <span class="en">(Capitalize)</span>?</span> — Jika perbaikan Rp1 miliar langsung dibebankan, laba &amp; pajak tahun ini turun drastis tetapi periode depan beban turun dan pajak naik. Jika <b>dikapitalisasi</b> sebagai penambah nilai mesin lalu disusutkan bertahap, arus kas lebih merata. Bangunan/mesin lama yang penyusutannya sudah kecil, serta beban bermasa manfaat tak pasti seperti <b>R&amp;D</b> dan <b>iklan</b> (<span class="en">advertising expense</span>, umur ekonomis 3–5 tahun) sebaiknya dikapitalisasi.</li>
+ <li><span class="term">Aset Tak Berwujud <span class="en">(Intangible Assets)</span></span> — Meliputi <span class="term">patent</span> (penyusutannya mengurangi pajak) dan <span class="term">goodwill</span> (kelebihan harga akuisisi di atas nilai buku; penyusutannya <b>tidak</b> mengurangi pajak).</li>
+ <li><span class="term">Beban Depresiasi, Beban Bunga, dan Penghematan Pajak <span class="en">(Tax Shield)</span></span> — Keduanya menurunkan kewajiban pajak, tetapi berbeda efek kas dan risikonya. Depresiasi bersifat nonkas sehingga langsung menambah kas; beban bunga mengurangi pajak namun membawa tekanan pembayaran mengikat dari kreditor.</li>
+ <li><span class="term">Perubahan Metode Akuntansi</span> — Mengubah metode (mis. depresiasi atau inventori) mengubah laba, pajak (bisa memicu kurang bayar kas pajak), serta laba ditahan. Perubahan diperbolehkan asal konsisten dari awal, disetujui pihak berwenang, dan sesuai PSAK.</li>
+ </ol>
+
+ <div class="eqbox">
+ \[\text{Tax Shield Depresiasi} = \text{Depresiasi} \times t \qquad\big|\qquad \text{Tax Shield Bunga} = r \times D \times t \qquad\big|\qquad r_{\text{riil}} = r(1 - t)\]
+ <p style="font-size:.82rem;color:var(--muted);margin:4px 0 0;text-align:center">Contoh buku: Utang $D = 2.000$, bunga $r = 8\%$, pajak $t = 10\%$ → bunga nominal $= 160$, <i>tax shield</i> $= 16$, beban bunga riil $= 144$, sehingga $r_{\text{riil}} = 8\%(1-10\%) = 7{,}2\%$.</p>
+ </div>
+ <div class="fguide">
+ <div class="fg-head">Bedah Variabel &amp; Intisari Formula Tax Shield</div>
+ <ul>
+ <li><b>Depresiasi</b> = beban penyusutan aset tetap (nonkas); <b>$t$</b> = tarif pajak badan; <b>$r$</b> = tingkat bunga utang nominal; <b>$D$</b> = pokok utang; <b>$r_{\text{riil}}$</b> = biaya utang efektif setelah pajak.</li>
+ <li><b>Makna formula:</b> Mengukur besarnya pengurangan kas pajak akibat beban depresiasi dan bunga, serta menurunkan biaya utang efektif dari $r$ menjadi $r(1-t)$.</li>
+ </ul>
+ <div class="fg-core">
+ <div>🧭 <b>Filosofis:</b> Beban yang diakui sebagai pengurang pajak (<i>tax-deductible</i>) membuat negara ikut menanggung sebagian beban tersebut sehingga kas keluar riil perusahaan lebih kecil.</div>
+ <div>📏 <b>Mengukur:</b> Besaran penghematan kas pajak (rupiah) dan tarif bunga riil setelah pajak.</div>
+ <div>🎯 <b>Manfaat:</b> Menghitung arus kas riil secara akurat dan membandingkan biaya pendanaan utang terhadap sumber modal lain.</div>
+ </div>
+ </div>
+
+ <div class="flow">Setelah memahami seluruh pos laporan keuangan beserta nuansa pajaknya, bagian D dan E menunjukkan <b>cara menganalisis</b> laporan keuangan secara komparatif melalui contoh PT Usaha Ternama.</div>
+
+ <div class="abc"><span class="ltr">D</span><h4>Analisis Laporan Keuangan</h4></div>
+ <div class="rgrid c2" data-revealgroup>
+ <div class="rcell active" data-reveal data-detail="<b>Analisis Vertikal (Common Size):</b> Membandingkan setiap pos dalam satu tahun terhadap pos terbesarnya sebagai patokan 100% — yaitu <b>Total Aset</b> untuk Neraca dan <b>Penjualan</b> untuk Laporan Laba Rugi. Contoh: kas 6% dari aset, utang lancar 20% dari aset, atau laba bersih 8% dari penjualan."><span class="stepnum">V</span><span><span class="rt">Analisis Vertikal (Common Size)</span><span class="rp">Proporsi terhadap Total Aset / Penjualan</span></span></div>
+ <div class="rcell" data-reveal data-detail="<b>Analisis Horizontal (Time Series):</b> Membandingkan perkembangan setiap pos dari beberapa tahun terhadap satu <b>tahun dasar (indeks 100)</b>. Contoh: jika indeks kas tahun ini 105 (naik 5%) dari kas dasar Rp40 jt, maka kas saat ini Rp42 jt. Berguna melihat tren pertumbuhan tiap akun."><span class="stepnum">H</span><span><span class="rt">Analisis Horizontal (Time Series)</span><span class="rp">Tren perkembangan lintas tahun</span></span></div>
+ </div>
+ <div class="rdetail" data-revealdetail><b>Analisis Vertikal (Common Size):</b> Membandingkan setiap pos dalam satu tahun terhadap pos terbesarnya sebagai patokan 100% — yaitu <b>Total Aset</b> untuk Neraca dan <b>Penjualan</b> untuk Laporan Laba Rugi. Contoh: kas 6% dari aset, utang lancar 20% dari aset, atau laba bersih 8% dari penjualan.</div>
+
+ <div class="abc"><span class="ltr">E</span><h4>Contoh Laporan Keuangan (PT Usaha Ternama / UT, 2015–2016)</h4></div>
+ <div class="table-wrap">
+<table class="mini">
+ <thead><tr><th>Ringkasan Pos Utama PT UT</th><th>2015</th><th>2016</th><th>Interpretasi Awal</th></tr></thead>
+ <tbody>
+ <tr><td data-label="Ringkasan Pos Utama PT UT"><b>Total Aktiva / Pasiva</b></td><td data-label="2015">13.080 (100%)</td><td data-label="2016">14.388 (100%)</td><td data-label="Interpretasi Awal">Aset lancar 34% vs utang lancar 17% (2016) → likuiditas tampak kuat.</td></tr>
+ <tr><td data-label="Ringkasan Pos Utama PT UT"><b>Penjualan → Laba Kotor</b></td><td data-label="2015">10.258 → 3.424 (33%)</td><td data-label="2016">12.296 → 3.944 (32%)</td><td data-label="Interpretasi Awal">HPP sekitar 67–68% dari penjualan.</td></tr>
+ <tr><td data-label="Ringkasan Pos Utama PT UT"><b>Beban Operasional</b></td><td data-label="2015">2.212 (22%)</td><td data-label="2016">2.272 (18%)</td><td data-label="Interpretasi Awal">Turun 4 poin persentase → indikasi efisiensi usaha membaik.</td></tr>
+ <tr><td data-label="Ringkasan Pos Utama PT UT"><b>EAT &amp; Margin Laba Bersih</b></td><td data-label="2015">592 (6%)</td><td data-label="2016">924 (8%)</td><td data-label="Interpretasi Awal">Laba bersih meningkat; R/E naik dari 4.048 menjadi 4.540 (+492 setelah dividen 432).</td></tr>
+ </tbody>
+ </table>
+</div>
+ <p>Laporan keuangan saja belum cukup untuk menyimpulkan baik-buruknya perusahaan secara mutlak; analis tetap memerlukan informasi <span class="term">nature bisnis</span>, situasi perekonomian, dan tingkat persaingan (<span class="en">benchmark</span>).</p>
+ </div>
+
+ <!-- ========================================================= -->
+ <!-- KB 3 -->
+ <!-- ========================================================= -->
+ <h2 class="section" id="kb3"><span class="dot" style="background:var(--kb3)"></span>KB 3 — Arus Kas</h2>
+ <div class="card kb3b">
+ <span class="kb-tag kb3t">KB 3 · CASH IS KING! (Hal. 1.38 – 1.47)</span>
+ <p class="lead">KB 3 membedah aliran kas dari dua sudut pandang: <span class="term">arus kas secara akuntansi</span> (sumber perubahan kas dari operasi, investasi, pendanaan) dan <span class="term">arus kas secara keuangan / Free Cash Flow</span> (kas aktual dari aset yang dibagikan ke kreditor dan pemegang saham), dilanjutkan dengan estimasi kebutuhan dana eksternal, anggaran kas, dan kualitas penerimaan.</p>
+ <div class="acro-box">
+ <span class="acro-title">📖 Kamus Konteks Singkatan &amp; Akronim KB 3</span>
+ <ul class="acro-grid">
+ <li><b>$C, NCA, L, S$</b>: <i>Cash</i> (kas), <i>Non-Cash Assets</i> (aset nonkas), <i>Liabilities</i> (utang), &amp; <i>Stockholders' Equity</i> (modal).</li>
+ <li><b>OCF, ICF, FCF</b>: <i>Operating Cash Flow</i>, <i>Investing Cash Flow</i> ($CF_I$), &amp; <i>Free Cash Flow</i> (arus kas bebas keuangan).</li>
+ <li><b>$\Delta\text{NWC}, \Delta\text{FA}$</b>: Perubahan modal kerja bersih nonkas dan perubahan aset tetap bersih (<i>Fixed Assets</i>).</li>
+ <li><b>NOPAT</b>: <i>Net Operating Profit After Tax</i> — laba operasi setelah pajak sebelum beban bunga.</li>
+ <li><b>$CF_D$ &amp; $CF_S$</b>: Arus kas neto yang didistribusikan kepada kreditor (<i>Debt</i>) dan pemegang saham (<i>Stock</i>).</li>
+ <li><b>EF &amp; SL</b>: <i>External Funding</i> (kebutuhan dana eksternal) &amp; <i>Spontaneous Liabilities</i> (utang dagang spontan).</li>
+ <li><b>NPM &amp; DPR</b>: <i>Net Profit Margin</i> ($\text{EAT}/\text{Sales}$) &amp; <i>Dividend Payout Ratio</i> (porsi laba dibagikan dividen).</li>
+ <li><b>LTD</b>: <i>Long-Term Debt</i> — utang jangka panjang perusahaan.</li>
+ </ul>
+ </div>
+
+ <div class="abc"><span class="ltr">B</span><h4>Persamaan Perubahan Kas Sederhana</h4></div>
+ <p>Dari keseimbangan neraca antara aktiva—kas ($C$) ditambah aset bukan kas ($NCA$)—dengan pasiva—utang ($L$) ditambah modal ($S$)—diperoleh persamaan perubahan kas:</p>
+ <div class="eqbox">
+ \[C + NCA = L + S \quad\Longrightarrow\quad \Delta C = \Delta L + \Delta S - \Delta NCA\]
+ </div>
+ <div class="fguide">
+ <div class="fg-head">Bedah Variabel &amp; Intisari Formula Perubahan Kas</div>
+ <ul>
+ <li><b>$C$</b> = saldo kas; <b>$NCA$</b> = aset bukan kas (piutang, inventori, aset tetap); <b>$L$</b> = total utang; <b>$S$</b> = total ekuitas; <b>$\Delta$</b> = perubahan antarperiode.</li>
+ <li><b>Makna formula:</b> Saldo kas bertambah bila utang atau modal naik, dan berkurang bila aset nonkas (piutang, stok, mesin) bertambah.</li>
+ </ul>
+ <div class="fg-core">
+ <div>🧭 <b>Filosofis:</b> Karena neraca selalu seimbang, setiap rupiah yang 'terparkir' di piutang, persediaan, atau mesin otomatis mengurangi uang tunai di brankas kecuali ditutup oleh utang/modal baru.</div>
+ <div>📏 <b>Mengukur:</b> Sumber perubahan saldo kas bersih dari pergerakan pos-pos neraca.</div>
+ <div>🎯 <b>Manfaat:</b> Alat deteksi cepat mengapa perusahaan yang berlaba tetap bisa kehabisan kas (mis. karena lonjakan piutang/stok).</div>
+ </div>
+ </div>
+ <ul class="exp">
+ <li><span class="term">Penambah Kas ($+$)</span> — Kenaikan utang ($\Delta L$, baik jangka pendek maupun jangka panjang) atau kenaikan modal sendiri ($\Delta S$). Contoh: utang naik Rp100 menaikkan kas Rp100.</li>
+ <li><span class="term">Pengurang Kas ($-$)</span> — Kenaikan aset bukan kas ($\Delta NCA$), baik aset lancar nonkas (kenaikan piutang berarti penjualan kredit; kenaikan inventori berarti kas tertahan di stok) maupun aset tetap (pembelian kendaraan/perbaikan mesin).</li>
+ </ul>
+
+ <div class="flow">Persamaan perubahan kas sederhana di atas menjadi fondasi untuk mengelompokkan aliran kas ke dalam tiga aktivitas utama pada <b>laporan arus kas secara akuntansi</b> di bagian C.</div>
+
+ <div class="abc"><span class="ltr">C</span><h4>Arus Kas Secara Akuntansi <span class="en">(Accounting Statement of Cash Flows)</span></h4></div>
+ <p>Dapat disusun dengan metode langsung (<span class="en">direct method</span>) atau <span class="term">metode tidak langsung <span class="en">(indirect method)</span></span> yang dipakai dalam modul ini, terbagi atas tiga komponen:</p>
+ <div class="rgrid c3" data-revealgroup>
+ <div class="rcell active" data-reveal data-detail="<b>1. Arus Kas Operasi (OCF):</b> Dihitung dari <b>$\text{EAT} - \Delta\text{NWC} + \text{Depresiasi}$</b>. Meliputi tiga bagian: (1) laba akhir (EAT) sebagai sumber utama, (2) perubahan modal kerja nonkas (piutang/inventori naik → kas turun; utang dagang/accrual naik → kas naik), dan (3) penambahan kembali beban nonkas seperti depresiasi. Harus diharapkan bernilai <b>positif (+)</b>."><span class="stepnum">1</span><span><span class="rt">Aktivitas Operasi (OCF)</span><span class="rp">Kriteria sehat: Positif (+)</span></span></div>
+ <div class="rcell" data-reveal data-detail="<b>2. Arus Kas Investasi (ICF / $CF_I$):</b> Dihitung dari $\Delta\text{FA} + \text{Depresiasi}$ (perubahan aset tetap bersih + depresiasi). Pada perusahaan yang sedang bertumbuh (<i>growth</i>), nilainya lazim <b>negatif (−)</b> karena kas keluar untuk menambah pabrik/mesin demi penjualan masa depan. Justru jika positif, patut diwaspadai adanya penjualan aset tetap."><span class="stepnum">2</span><span><span class="rt">Aktivitas Investasi (ICF)</span><span class="rp">Perusahaan tumbuh: Negatif (−)</span></span></div>
+ <div class="rcell" data-reveal data-detail="<b>3. Arus Kas Pendanaan (FCF akuntansi):</b> Transaksi dengan kreditor dan pemegang saham. Tambahan utang/saham baru = kas masuk (+); pelunasan utang, <i>repurchase</i> saham, dan pembayaran dividen = kas keluar (−). <b>Catatan penting:</b> pembayaran bunga <i>tidak</i> masuk sini karena sudah dikurangkan sebelum memperoleh EAT. Nilainya bisa (+) atau (−)."><span class="stepnum">3</span><span><span class="rt">Aktivitas Pendanaan</span><span class="rp">Bisa (+) atau (−)</span></span></div>
+ </div>
+ <div class="rdetail" data-revealdetail><b>1. Arus Kas Operasi (OCF):</b> Dihitung dari <b>$\text{EAT} - \Delta\text{NWC} + \text{Depresiasi}$</b>. Meliputi tiga bagian: (1) laba akhir (EAT) sebagai sumber utama, (2) perubahan modal kerja nonkas (piutang/inventori naik → kas turun; utang dagang/accrual naik → kas naik), dan (3) penambahan kembali beban nonkas seperti depresiasi. Harus diharapkan bernilai <b>positif (+)</b>.</div>
+
+ <div class="eqbox">
+ \[\text{OCF} = \text{EAT} - \Delta\text{NWC} + \text{Depresiasi} \qquad\big|\qquad CF_I = \Delta\text{FA} + \text{Depresiasi}\]
+ </div>
+ <div class="fguide">
+ <div class="fg-head">Bedah Variabel &amp; Intisari Formula OCF &amp; ICF Akuntansi</div>
+ <ul>
+ <li><b>$\text{OCF}$</b> = arus kas operasi; <b>$\text{EAT}$</b> = laba bersih; <b>$\Delta\text{NWC}$</b> = perubahan modal kerja bersih nonkas; <b>$\text{Depresiasi}$</b> = beban nonkas; <b>$CF_I$</b> = arus kas investasi; <b>$\Delta\text{FA}$</b> = perubahan aset tetap bersih.</li>
+ <li><b>Makna formula:</b> Mengonversi laba akrual (EAT) menjadi kas riil operasi dengan menambah kembali depresiasi dan menyesuaikan perubahan modal kerja, serta menghitung belanja modal bruto ($CF_I$).</li>
+ </ul>
+ <div class="fg-core">
+ <div>🧭 <b>Filosofis:</b> Laba akuntansi baru sebagian dari cerita; kas operasi sejati adalah laba yang sudah dibersihkan dari pos nonkas dan uang yang tertahan di modal kerja.</div>
+ <div>📏 <b>Mengukur:</b> Kemampuan bisnis inti mencetak kas tunai (OCF) dan besarnya belanja ekspansi aset tetap ($CF_I$).</div>
+ <div>🎯 <b>Manfaat:</b> Menilai kesehatan likuiditas operasional dan membedakan perusahaan yang bertumbuh sehat ($\text{OCF}>0, CF_I<0$) dari yang bermasalah.</div>
+ </div>
+ </div>
+
+ <div class="table-wrap">
+<table class="mini">
+ <thead><tr><th>Ilustrasi Arus Kas Akuntansi PT UT (2016)</th><th>Rincian Perhitungan</th><th>Nilai</th></tr></thead>
+ <tbody>
+ <tr><td data-label="Ilustrasi Arus Kas Akuntansi PT UT (2016)"><b>Arus Kas Operasi (OCF)</b></td><td data-label="Rincian Perhitungan">$924 - (-120) + 956$</td><td data-label="Nilai"><b>+2.000</b></td></tr>
+ <tr><td data-label="Ilustrasi Arus Kas Akuntansi PT UT (2016)"><b>Arus Kas Investasi (ICF)</b></td><td data-label="Rincian Perhitungan">$\Delta\text{FA}\,(432) + \text{Depresiasi}\,(956)$ → kas keluar</td><td data-label="Nilai"><b>−1.388</b></td></tr>
+ <tr><td data-label="Ilustrasi Arus Kas Akuntansi PT UT (2016)"><b>Arus Kas Pendanaan</b></td><td data-label="Rincian Perhitungan">$\Delta\text{Wesel}\,(-80) + \Delta\text{LTD}\,(+224)$ + Saham Baru (+44) − Dividen (432)</td><td data-label="Nilai"><b>−244</b></td></tr>
+ <tr><td data-label="Ilustrasi Arus Kas Akuntansi PT UT (2016)"><b>Total Perubahan Kas ($\Delta C$)</b></td><td data-label="Rincian Perhitungan">$2.000 - 1.388 - 244$ = selisih kas &amp; setara kas (1.724 − 1.356)</td><td data-label="Nilai"><b>+368</b></td></tr>
+ </tbody>
+ </table>
+</div>
+
+ <div class="flow">Arus kas akuntansi menjelaskan perubahan saldo kas di neraca, tetapi belum memisahkan berapa kas yang benar-benar <b>bebas</b> tersedia bagi pemilik dana. Bagian D memperkenalkan sudut pandang <b>arus kas keuangan (FCF)</b>.</div>
+
+ <div class="abc"><span class="ltr">D</span><h4>Arus Kas Keuangan <span class="en">(Financial Cash Flow / Free Cash Flow)</span></h4></div>
+ <p>Menunjukkan arus kas aktual yang dihasilkan oleh aset perusahaan (<span class="term">Free Cash Flow / FCF</span>) setelah memenuhi kebutuhan investasi dan modal kerja total (termasuk kas operasional), yang selanjutnya didistribusikan secara neto kepada kreditor ($CF_D$) dan pemegang saham ($CF_S$).</p>
+ <div class="eqbox">
+ \[\text{NOPAT}_{\text{kas}} = (\text{EBIT} - \text{Tax}) + \text{Depresiasi} \qquad\Longrightarrow\qquad \text{FCF} = (\text{EBIT} - \text{Tax}) + \text{Depresiasi} - \text{Inv} - \Delta\text{WC}\]
+ \[CF_D = \text{Pendapatan Bunga} - \Delta\text{Utang Jk. Panjang} \qquad\big|\qquad CF_S = \text{Dividen} + \text{Repurchase Stock} - \text{Saham Baru}\]
+ </div>
+ <div class="fguide">
+ <div class="fg-head">Bedah Variabel &amp; Intisari Formula Free Cash Flow (FCF)</div>
+ <ul>
+ <li><b>$\text{NOPAT}_{\text{kas}}$</b> = kas operasi sebelum bunga; <b>$\text{Inv}$</b> = investasi aset tetap bruto; <b>$\Delta\text{WC}$</b> = perubahan modal kerja total; <b>$CF_D$</b> = arus kas neto ke kreditor; <b>$CF_S$</b> = arus kas neto ke pemegang saham.</li>
+ <li><b>Makna formula:</b> Arus kas bebas yang dihasilkan aset perusahaan ($\text{FCF}$) selalu tepat sama dengan total kas yang didistribusikan kepada kreditor ($CF_D$) dan pemegang saham ($CF_S$).</li>
+ </ul>
+ <div class="fg-core">
+ <div>🧭 <b>Filosofis:</b> Kas bebas adalah 'sisa murni' yang benar-benar bisa dibawa pulang pemilik modal setelah bisnis membiayai operasional dan kebutuhan ekspansinya sendiri.</div>
+ <div>📏 <b>Mengukur:</b> Kapasitas kas bebas perusahaan untuk membayar bunga/utang dan membagikan dividen/<i>buyback</i>.</div>
+ <div>🎯 <b>Manfaat:</b> Menjadi fondasi utama valuasi perusahaan (DCF/FCFF) dan deteksi risiko <i>agency cost</i> dari kelebihan kas.</div>
+ </div>
+ </div>
+ <ul class="exp">
+ <li><span class="term">Verifikasi Keseimbangan pada PT UT (2016)</span> — $\text{NOPAT}_{\text{kas}} = 1.672 - 376 + 956 = 2.252$; $\text{Inv} = 1.388$; $\Delta\text{WC} = (4.892-2.480) - (4.016-1.932) = 328 \Rightarrow \mathbf{\text{FCF} = 536}$. Distribusi: $CF_D = 372 - (4.092-3.868) = \mathbf{+148}$ dan $CF_S = (40+392) + 0 - 4 - 40 = \mathbf{+388}$. Total $CF_D + CF_S = 148 + 388 = \mathbf{536}$ (sama persis dengan FCF!).</li>
+ </ul>
+
+ <div class="flow">Jika bagian C dan D melihat kas dari laporan masa lalu, manajer juga harus mengantisipasi kebutuhan kas masa depan ketika penjualan bertumbuh. Bagian E dan F membahas <b>estimasi pendanaan eksternal</b> dan <b>anggaran kas</b>.</div>
+
+ <div class="abc"><span class="ltr">E</span><h4>Estimasi Besaran Keperluan Kas dan Pendanaan Eksternal</h4></div>
+ <p>Karena penjualan (<span class="en">revenue</span>) menjadi motor penggerak aset dan biaya, pertumbuhan penjualan menuntut tambahan aset yang sebagian ditutup oleh utang spontan dan laba ditahan, sedangkan sisanya harus dicari dari luar (<span class="term">External Funding / EF</span>):</p>
+ <div class="eqbox">
+ \[\text{EF} = \left(\frac{\text{Asset}}{\text{Sales}}\right)\Delta\text{Sales} - \left(\frac{\text{Spontaneous Liabilities}}{\text{Sales}}\right)\Delta\text{Sales} - \text{NPM} \cdot \text{Sales}_{\text{baru}} \cdot (1 - \text{DPR})\]
+ </div>
+ <div class="fguide">
+ <div class="fg-head">Bedah Variabel &amp; Intisari Formula External Funding (EF)</div>
+ <ul>
+ <li><b>$\text{Asset}/\text{Sales}$</b> = <i>capital intensity ratio</i>; <b>$\Delta\text{Sales}$</b> = kenaikan penjualan; <b>$\text{SL}/\text{Sales}$</b> = rasio utang spontan (utang dagang); <b>$\text{NPM}$</b> = margin laba bersih; <b>$\text{DPR}$</b> = rasio pembayaran dividen.</li>
+ <li><b>Makna formula:</b> Tambahan kebutuhan aset akibat pertumbuhan penjualan dikurangi pendanaan otomatis (utang spontan + laba ditahan) menghasilkan kekurangan dana yang harus dicari dari luar (EF).</li>
+ </ul>
+ <div class="fg-core">
+ <div>🧭 <b>Filosofis:</b> Pertumbuhan penjualan tidak gratis—makin cepat perusahaan tumbuh, makin besar aset yang harus dibeli di muka sebelum kas dari laba terkumpul.</div>
+ <div>📏 <b>Mengukur:</b> Besaran rupiah dana eksternal (utang baru/saham baru) yang wajib disiapkan agar target pertumbuhan penjualan tidak terhambat.</div>
+ <div>🎯 <b>Manfaat:</b> Mencegah <i>overtrading</i> (kehabisan napas kas saat ekspansi) dan merencanakan jadwal pinjaman bank/penerbitan saham sejak dini.</div>
+ </div>
+ </div>
+ <ul class="exp">
+ <li><span class="term">Empat Variabel Penentu</span> — (1) <span class="term">Capital Intensity Ratio</span> ($\text{Asset}/\text{Sales}$, mis. $2{,}5$), (2) rasio <span class="term">utang spontan</span> seperti utang dagang ($\text{SL}/\text{Sales}$, mis. $0{,}3$), (3) <span class="term">Net Profit Margin (NPM)</span> (mis. 20%), dan (4) <span class="term">Dividend Payout Ratio (DPR)</span> (mis. 40% sehingga laba ditahan $= 60\%$).</li>
+ <li><span class="term">Ilustrasi Buku</span> — Penjualan naik 20% ($1.000 \to 1.200$, $\Delta\text{Sales}=200$): butuh tambahan aset $2{,}5 \times 200 = 500$; utang dagang spontan naik $0{,}3 \times 200 = 60$; tambahan laba ditahan $= 20\% \times 1.200 \times (1-0{,}4) = 144$. Kekurangan dana eksternal $\text{EF} = 500 - 60 - 144 = \mathbf{296}$ (dapat dipenuhi dari campuran <i>notes payable</i>, utang jangka panjang, atau saham baru).</li>
+ <li><span class="term">Catatan Keterbatasan</span> — Model mengasumsikan rasio-rasio tetap proporsional terhadap penjualan dan hanya menyoroti utang spontan tertentu; dalam praktik, perusahaan dapat menyesuaikan model mengikuti daur hidup bisnisnya.</li>
+ </ul>
+
+ <div class="abc"><span class="ltr">F</span><h4>Anggaran Kas <span class="en">(Cash Budget)</span></h4></div>
+ <p>Digunakan untuk merencanakan kebutuhan kas operasional jangka pendek (bulanan) berdasarkan jadwal penerimaan penjualan tunai/kredit, pembayaran bahan baku tunai/utang dagang, serta batas <span class="term">kas minimum</span> untuk berjaga-jaga. Surplus kas ditempatkan di pasar uang (<span class="en">lender</span>); defisit ditutup dengan meminjam (<span class="en">borrower</span>).</p>
+ <div class="table-wrap">
+<table class="mini">
+ <thead><tr><th>Ilustrasi Anggaran Kas PT BBB (Rp juta)</th><th>Bulan 1 (Sales 1.000)</th><th>Bulan 2 (Sales 800)</th><th>Bulan 3 (Sales 1.300)</th></tr></thead>
+ <tbody>
+ <tr><td data-label="Ilustrasi Anggaran Kas PT BBB (Rp juta)">Penerimaan Kas (60% tunai; 40% kredit dicicil 2 bln)</td><td data-label="Bulan 1 (Sales 1.000)">600</td><td data-label="Bulan 2 (Sales 800)">680 (480+200)</td><td data-label="Bulan 3 (Sales 1.300)">1.140 (780+200+160)</td></tr>
+ <tr><td data-label="Ilustrasi Anggaran Kas PT BBB (Rp juta)">Pengeluaran Bahan Baku (70% sales; 70% tunai, 30% kredit 2 bln) + Kas Min. 100</td><td data-label="Bulan 1 (Sales 1.000)">590 (490+100)</td><td data-label="Bulan 2 (Sales 800)">597 (392+105+100)</td><td data-label="Bulan 3 (Sales 1.300)">926 (637+105+84+100)</td></tr>
+ <tr><td data-label="Ilustrasi Anggaran Kas PT BBB (Rp juta)"><b>Surplus Kas (+)</b></td><td data-label="Bulan 1 (Sales 1.000)"><b>+10</b></td><td data-label="Bulan 2 (Sales 800)"><b>+83</b></td><td data-label="Bulan 3 (Sales 1.300)"><b>+214</b></td></tr>
+ </tbody>
+ </table>
+</div>
+
+ <div class="abc"><span class="ltr">G</span><h4>Kegunaan Laporan Arus Kas</h4></div>
+ <p>Karena kas adalah "darah" perusahaan (<span class="en">cash is king</span>), laporan arus kas digunakan kreditor dan investor untuk menganalisis lima hal utama:</p>
+ <ol class="book">
+ <li><span class="term">Kemampuan menghasilkan kas masa depan</span> — Memprediksi apakah operasi inti mampu mencetak arus kas berkelanjutan.</li>
+ <li><span class="term">Kapasitas memenuhi kewajiban kas</span> — Menilai kesanggupan membayar utang jatuh tempo, bunga, dan dividen secara tunai.</li>
+ <li><span class="term">Kebutuhan pembiayaan eksternal</span> — Mengukur seberapa besar ketergantungan perusahaan pada pinjaman atau penerbitan saham baru.</li>
+ <li><span class="term">Tingkat kesuksesan aktivitas investasi</span> — Melihat apakah belanja modal benar-benar memperkuat kapasitas produksi.</li>
+ <li><span class="term">Efektivitas strategi investasi &amp; pembiayaan</span> — Mengevaluasi keselarasan antara cara memperoleh dana dan cara menginvestasikannya.</li>
+ </ol>
+
+ <div class="abc"><span class="ltr">H</span><h4>Kas dan Penerimaan <span class="en">(Cash and Earnings)</span></h4></div>
+ <p>Semakin erat korelasi antara kas dan laba (<span class="en">earning</span>), semakin tinggi kualitas labanya. Perusahaan bisa saja mencetak EAT tinggi (<span class="en">highly profitable</span>) namun tetap bangkrut karena kekurangan kas. Empat indikasi <span class="term">earning kurang berkualitas</span>:</p>
+ <ol class="book">
+ <li><span class="term">OCF tinggi tetapi tidak stabil</span> — Terutama jika dipicu penurunan inventori atau pos nonoperasi sekali waktu (<span class="en">one-time items</span>), menandakan arus kas tidak langgeng.</li>
+ <li><span class="term">Earning &amp; OCF positif, tetapi OCF &lt; Earning</span> — Mengindikasikan besarnya komponen akrual dalam laba atau adanya keuntungan nonoperasi (mis. penjualan aset tetap).</li>
+ <li><span class="term">Earning naik dibanding tahun lalu, tetapi OCF turun</span> — Laba kemungkinan besar berasal dari aktivitas nonoperasi atau perubahan metode akuntansi, bukan kinerja kas riil.</li>
+ <li><span class="term">Dividen &lt; Earning, tetapi Dividen &gt; OCF</span> — Pembayaran dividen saat ini tidak berkelanjutan; jika ditutup dengan utang baru, beban bunga di masa depan akan membesar.</li>
+ </ol>
+ </div>
+
+ <!-- ========================================================= -->
+ <!-- KB 4 -->
+ <!-- ========================================================= -->
+ <h2 class="section" id="kb4"><span class="dot" style="background:var(--kb4)"></span>KB 4 — Rasio-Rasio Keuangan</h2>
+ <div class="card kb4b">
+ <span class="kb-tag kb4t">KB 4 · STANDARDISASI KINERJA &amp; KUALITAS LABA (Hal. 1.51 – 1.63)</span>
+ <p class="lead">Rasio keuangan mengubah angka mentah laporan keuangan menjadi ukuran standar yang memudahkan perbandingan lintas ukuran perusahaan (misal membandingkan PT A beraset Rp1.000 laba Rp100 vs PT B beraset Rp10.000 laba Rp500). Analisis kuantitatif ini tetap perlu dilengkapi pemahaman strategi perusahaan agar analis tidak terjebak masalah <span class="en">not seeing the forest for the trees</span> (terlalu sempit melihat detail hingga lupa gambaran besar).</p>
+ <div class="acro-box">
+ <span class="acro-title">📖 Kamus Konteks Singkatan &amp; Akronim KB 4</span>
+ <ul class="acro-grid">
+ <li><b>CR, QR, KR</b>: <i>Current Ratio</i>, <i>Quick Ratio</i>, &amp; <i>Cash Ratio</i> — kelompok rasio likuiditas jangka pendek.</li>
+ <li><b>CA &amp; CL</b>: <i>Current Assets</i> (aset lancar) &amp; <i>Current Liabilities</i> (utang lancar).</li>
+ <li><b>DER &amp; DR</b>: <i>Debt-to-Equity Ratio</i> ($\text{LTD}/E$) &amp; <i>Debt Ratio</i> ($\text{TD}/A$).</li>
+ <li><b>TIER, TIERD, TFCER</b>: <i>Times Interest Earned Ratio</i>, versi <i>Depreciation</i> (EBITDA), &amp; <i>Times Fixed Cost Earned Ratio</i>.</li>
+ <li><b>ARTO, ITO, FATO, TATO</b>: <i>Turnover</i> (perputaran) Piutang (AR), Inventori, Aset Tetap (FA), &amp; Total Aset (TA).</li>
+ <li><b>RS &amp; ACP</b>: <i>Receivables to Sales</i> &amp; <i>Average Collection Period</i> (rata-rata hari penagihan piutang).</li>
+ <li><b>GPM, OPM, NPM</b>: <i>Gross</i>, <i>Operating</i>, &amp; <i>Net Profit Margin</i> — tingkat margin laba terhadap penjualan.</li>
+ <li><b>ROA, ROE, PER, MBV</b>: <i>Return on Assets</i>, <i>Return on Equity</i>, <i>Price Earning Ratio</i>, &amp; <i>Market to Book Value</i>.</li>
+ </ul>
+ </div>
+
+ <div class="abc"><span class="ltr">A</span><h4>Rasio-Rasio Keuangan (4 Kelompok Utama)</h4></div>
+
+ <div class="numh">1. Rasio-Rasio Likuiditas</div>
+ <p>Mengukur kemampuan memenuhi kewajiban jangka pendek (≤ 12 bulan) melalui ketersediaan aset lancar. Fokusnya sempit (jangka pendek) dan sangat diperhatikan kreditor (sering menetapkan <span class="en">rule of thumb</span>, misal CR 1,8).</p>
+ <div class="eqbox">
+ \[\text{CR} = \frac{\text{CA}}{\text{CL}} \qquad\big|\qquad \text{QR} = \frac{\text{CA} - \text{Inventori}}{\text{CL}} \qquad\big|\qquad \text{KR} = \frac{\text{Cash}}{\text{CL}}\]
+ </div>
+ <div class="fguide">
+ <div class="fg-head">Bedah Variabel &amp; Intisari Rasio Likuiditas</div>
+ <ul>
+ <li><b>$\text{CA}$</b> = aset lancar; <b>$\text{CL}$</b> = utang lancar; <b>$\text{CR}$</b> = <i>Current Ratio</i>; <b>$\text{QR}$</b> = <i>Quick Ratio</i> (tanpa inventori); <b>$\text{KR}$</b> = <i>Cash Ratio</i> (hanya kas).</li>
+ <li><b>Makna formula:</b> Membandingkan berbagai lapis kekayaan paling cair terhadap kewajiban yang jatuh tempo dalam ≤ 12 bulan.</li>
+ </ul>
+ <div class="fg-core">
+ <div>🧭 <b>Filosofis:</b> Perusahaan yang menguntungkan tetap bisa kolaps bila gagal membayar tagihan bulan ini; rasio likuiditas menguji bantalan napas jangka pendek dari yang luas (CR) hingga paling ketat (KR).</div>
+ <div>📏 <b>Mengukur:</b> Kemampuan perusahaan melunasi seluruh kewajiban jangka pendek tepat waktu.</div>
+ <div>🎯 <b>Manfaat:</b> Acuan utama kreditor jangka pendek/bank (<i>debt covenant</i>) dan manajemen kas agar terhindar dari gagal bayar sekaligus <i>idle cash</i>.</div>
+ </div>
+ </div>
+ <ul class="exp">
+ <li><span class="term">Current Ratio (CR)</span> — Ukuran likuiditas luas; standar umum $\text{CR} \ge 1$ (likuid), $\text{CR} &lt; 1$ (<i>illiquid</i>). Bisa terdistorsi faktor musiman atau utang dagang abnormal; bisnis dengan arus kas stabil atau sistem <i>Just-In-Time (JIT)</i> dapat beroperasi dengan CR rendah.</li>
+ <li><span class="term">Quick Ratio (QR)</span> — Memperketat aset lancar dengan mengeluarkan inventori (dan aset lancar lain yang kurang likuid); $\text{QR} &gt; 1$ menunjukkan likuiditas kuat.</li>
+ <li><span class="term">Cash Ratio (KR)</span> — Ukuran paling likuid, tetapi tanpa patokan baku; KR terlalu besar (mis. &gt; 1) justru mengindikasikan dana menganggur (<span class="en">idle cash / mismanagement</span>).</li>
+ </ul>
+
+ <div class="numh">2. Rasio-Rasio Solvabilitas</div>
+ <p>Mengukur kemampuan memenuhi kewajiban jangka panjang dengan fokus pada utang jangka panjang (<span class="en">long-term debt / LTD</span>) dari sisi komposisi pendanaan dan proteksi bagi kreditor.</p>
+ <div class="eqbox">
+ \[\text{DER} = \frac{\text{LTD}}{E} \quad\big|\quad \text{DR} = \frac{\text{TD}}{A} \quad\big|\quad \text{TIER} = \frac{\text{EBIT}}{\text{Interest}} \quad\big|\quad \text{TIERD} = \frac{\text{EBITDA}}{\text{Interest}} \quad\big|\quad \text{TFCER} = \frac{\text{EBIT}}{\text{Lease} + \text{Interest} + \text{Div}}\]
+ </div>
+ <div class="fguide">
+ <div class="fg-head">Bedah Variabel &amp; Intisari Rasio Solvabilitas</div>
+ <ul>
+ <li><b>$\text{LTD}$</b> = utang jangka panjang; <b>$E$</b> = ekuitas; <b>$\text{TD}$</b> = total utang; <b>$A$</b> = total aset; <b>$\text{EBIT}/\text{EBITDA}$</b> = laba operasi (dengan/tanpa depresiasi); <b>$\text{Interest}$</b> = bunga; <b>$\text{Lease}$</b> = sewa.</li>
+ <li><b>Makna formula:</b> DER &amp; DR mengukur seberapa besar porsi aset didanai utang, sedangkan TIER/TIERD/TFCER mengukur berapa kali lipat laba operasi mampu menutup beban tetap keuangan.</li>
+ </ul>
+ <div class="fg-core">
+ <div>🧭 <b>Filosofis:</b> Utang adalah pedang bermata dua—solvabilitas memastikan struktur pendanaan jangka panjang memiliki penyangga ekuitas dan laba yang cukup saat bisnis diterpa guncangan.</div>
+ <div>📏 <b>Mengukur:</b> Tingkat risiko gagal bayar jangka panjang dan margin keamanan pembayaran bunga/beban tetap.</div>
+ <div>🎯 <b>Manfaat:</b> Menentukan kapasitas utang aman perusahaan serta menjadi pertimbangan utama pemegang obligasi dan lembaga pemeringkat.</div>
+ </div>
+ </div>
+ <ul class="exp">
+ <li><span class="term">Komposisi Pendanaan (DER &amp; DR)</span> — <b>DER</b> membandingkan utang jangka panjang dengan ekuitas ($\text{DER}=1$ berarti utang setara modal sendiri); <b>DR</b> membandingkan total utang dengan total aset ($\text{DR}=0{,}6$ berarti 60% aset dibiayai utang). Modal sendiri lebih tahan banting dalam kondisi bisnis bergejolak (<span class="en">turbulence</span>).</li>
+ <li><span class="term">Proteksi Kreditor (TIER, TIERD, TFCER)</span> — <b>TIER</b> (<span class="en">Times Interest Earned Ratio / Coverage Ratio</span>) mengukur berapa kali EBIT menutup beban bunga; <b>TIERD</b> menambahkan depresiasi (EBITDA) untuk melihat kapasitas kas; <b>TFCER</b> (<span class="en">Times Fixed Cost Earned Ratio</span>) membandingkan EBIT dengan seluruh beban tetap (sewa guna usaha, bunga, dividen preferen).</li>
+ </ul>
+
+ <div class="numh">3. Rasio-Rasio Aktivitas <span class="en">(Turnover)</span></div>
+ <p>Mengukur seberapa aktif aset dimanfaatkan untuk menghasilkan penjualan. Semakin tinggi perputaran (<span class="en">turnover</span>), semakin efektif—namun sangat bergantung jenis industri (misal industri perkapalan beraset mahal lazim memiliki TATO rendah) dan bisa terbias turun akibat inflasi saat membeli aset baru yang lebih mahal.</p>
+ <div class="eqbox">
+ \[\text{ARTO} = \frac{\text{Sales}}{\text{AR}} \quad\big|\quad \text{ITO} = \frac{\text{COGS}}{\text{Inventori}} \quad\big|\quad \text{FATO} = \frac{\text{Sales}}{\text{FA}} \quad\big|\quad \text{TATO} = \frac{\text{Sales}}{\text{TA}}\]
+ \[\text{RS} = \frac{\text{AR}}{\text{Sales}} \qquad\big|\qquad \text{ACP} = \frac{\text{AR}}{\text{Sales}} \times 360\text{ hari}\]
+ </div>
+ <div class="fguide">
+ <div class="fg-head">Bedah Variabel &amp; Intisari Rasio Aktivitas (Turnover)</div>
+ <ul>
+ <li><b>$\text{AR}$</b> = piutang usaha; <b>$\text{COGS}$</b> = harga pokok penjualan; <b>$\text{FA}$</b> = aset tetap; <b>$\text{TA}$</b> = total aset; <b>$\text{ARTO/ITO/FATO/TATO}$</b> = frekuensi perputaran per tahun; <b>$\text{ACP}$</b> = rata-rata hari tagih piutang.</li>
+ <li><b>Makna formula:</b> Menghitung berapa kali aset berputar menjadi penjualan dalam setahun (atau berapa hari kas tertahan di piutang lewat ACP).</li>
+ </ul>
+ <div class="fg-core">
+ <div>🧭 <b>Filosofis:</b> Aset yang diam tidak menciptakan nilai—makin cepat piutang, stok, dan mesin berputar menghasilkan penjualan, makin produktif modal perusahaan.</div>
+ <div>📏 <b>Mengukur:</b> Efisiensi pemanfaatan aset operasional dan kedisiplinan penagihan piutang.</div>
+ <div>🎯 <b>Manfaat:</b> Mendeteksi stok menumpuk (ITO rendah), kredit terlalu longgar (ACP membengkak), atau kapasitas mesin menganggur (FATO rendah).</div>
+ </div>
+ </div>
+ <ul class="exp">
+ <li><span class="term">Empat Rasio Perputaran</span> — <b>ARTO</b> (piutang), <b>ITO</b> (inventori, khusus memakai HPP/COGS), <b>FATO</b> (aset tetap), dan <b>TATO</b> (total aset).</li>
+ <li><span class="term">Receivables to Sales (RS) &amp; Average Collection Period (ACP)</span> — <b>RS</b> (kebalikan ARTO) menunjukkan persentase penjualan kredit; <b>ACP</b> mengukur rata-rata hari penagihan piutang. Semakin tinggi RS dan ACP, semakin buruk kebijakan kredit perusahaan.</li>
+ </ul>
+
+ <div class="numh">4. Rasio-Rasio Keuntungan <span class="en">(Profitability)</span></div>
+ <p>Diukur lewat dua pendekatan: (1) persentase dari penjualan (<span class="term">margin laba</span>: GPM, OPM, NPM) untuk melihat efisiensi tiap rupiah penjualan, dan (2) persentase dari dana yang diinvestasikan (<span class="term">ROA</span> dan <span class="term">ROE</span>).</p>
+ <div class="eqbox">
+ \[\text{GPM} = \frac{\text{Sales}-\text{COGS}}{\text{Sales}} \quad\big|\quad \text{OPM} = \frac{\text{EBIT}}{\text{Sales}} \quad\big|\quad \text{NPM} = \frac{\text{EAT}}{\text{Sales}} \quad\big|\quad \text{ROA} = \frac{\text{EAT}}{\text{Assets}}\]
+ \[\text{ROE} = \frac{\text{EAT}}{\text{Equity}} = \underbrace{\frac{\text{EAT}}{\text{Sales}}}_{\text{NPM (Efisiensi)}} \times \underbrace{\frac{\text{Sales}}{\text{Assets}}}_{\text{TATO (Aktivitas)}} \times \underbrace{(1 + \text{DER})}_{\text{Pendanaan / Leverage}}\]
+ </div>
+ <div class="fguide">
+ <div class="fg-head">Bedah Variabel &amp; Intisari Rasio Profitabilitas &amp; DuPont ROE</div>
+ <ul>
+ <li><b>$\text{GPM/OPM/NPM}$</b> = margin laba kotor/operasi/bersih terhadap penjualan; <b>$\text{ROA}$</b> = imbal hasil atas aset; <b>$\text{ROE}$</b> = imbal hasil atas ekuitas; <b>$(1+\text{DER})$</b> = pengganda ekuitas (<i>equity multiplier</i>).</li>
+ <li><b>Makna formula:</b> Mengukur efisiensi tiap rupiah penjualan hingga tingkat pengembalian modal pemilik, serta memecah ROE menjadi 3 mesin penggerak: efisiensi (NPM) × aktivitas (TATO) × leverage (1+DER).</li>
+ </ul>
+ <div class="fg-core">
+ <div>🧭 <b>Filosofis:</b> ROE tinggi tidak otomatis berarti operasi efisien—identitas DuPont membongkar apakah laba pemilik berasal dari margin unggul, perputaran cepat, atau sekadar tumpukan utang.</div>
+ <div>📏 <b>Mengukur:</b> Tingkat kemampuan perusahaan mencetak laba bersih dan sumber pendorong utama imbal hasil pemegang saham.</div>
+ <div>🎯 <b>Manfaat:</b> Mengevaluasi kinerja manajemen secara menyeluruh dan mengarahkan strategi perbaikan ROE yang berkelanjutan.</div>
+ </div>
+ </div>
+ <p>Dekomposisi <b>ROE</b> menunjukkan tiga tuas utama untuk meningkatkan imbal hasil pemegang saham: (1) memperbesar efisiensi usaha (<span class="term">NPM</span>), (2) mempercepat perputaran aset (<span class="term">TATO</span>), dan (3) meningkatkan porsi pendanaan utang (<span class="term">DER</span>).</p>
+
+ <div class="table-wrap">
+<table class="mini">
+ <thead><tr><th>Rekap Rasio PT UT (2015 vs 2016)</th><th>Likuiditas (CR / QR / KR)</th><th>Solvabilitas (DER / DR / TIER / TIERD)</th><th>Aktivitas (ARTO / ITO / FATO / TATO / ACP)</th><th>Profitabilitas (GPM / NPM / ROA / ROE)</th></tr></thead>
+ <tbody>
+ <tr><td data-label="Rekap Rasio PT UT (2015 vs 2016)"><b>2015</b></td><td data-label="Likuiditas (CR / QR / KR)">2,08 / 1,45 / 0,60</td><td data-label="Solvabilitas (DER / DR / TIER / TIERD)">0,67 / 0,45 / 3,33 / 5,78</td><td data-label="Aktivitas (ARTO / ITO / FATO / TATO / ACP)">7,03 / 5,70 / 1,13 / 0,79 / 51 hr</td><td data-label="Profitabilitas (GPM / NPM / ROA / ROE)">33% / 6% / 5% / 8%</td></tr>
+ <tr><td data-label="Rekap Rasio PT UT (2015 vs 2016)"><b>2016</b></td><td data-label="Likuiditas (CR / QR / KR)">1,97 / 1,50 / 0,59</td><td data-label="Solvabilitas (DER / DR / TIER / TIERD)">0,62 / 0,46 / 4,49 / 7,06</td><td data-label="Aktivitas (ARTO / ITO / FATO / TATO / ACP)">6,11 / 7,22 / 1,29 / 0,85 / 58,9 hr</td><td data-label="Profitabilitas (GPM / NPM / ROA / ROE)">32% / 8% / 6% / 12%</td></tr>
+ </tbody>
+ </table>
+</div>
+
+ <div class="flow">Keempat kelompok rasio di atas bersumber sepenuhnya dari laporan akuntansi internal. Bagian B melengkapinya dengan <b>rasio pasar</b> yang menangkap respons investor di bursa.</div>
+
+ <div class="abc"><span class="ltr">B</span><h4>Rasio Pasar <span class="en">(Market Ratios)</span></h4></div>
+ <div class="rgrid c2" data-revealgroup>
+ <div class="rcell active" data-reveal data-detail="<b>Price Earning Ratio (PER):</b> Membandingkan harga pasar saham dengan laba per lembar saham ($\text{EPS} = \text{EAT} / \text{Saham Beredar}$). Contoh buku: EAT Rp10.000, saham beredar 200 lembar → $\text{EPS} = \text{Rp50}$; jika harga saham Rp700, maka $\mathbf{\text{PER} = 14\text{ kali}}$ (investor membayar Rp14 untuk setiap Rp1 laba). Tinggi-rendahnya dinilai terhadap rerata PER industri."><span class="stepnum">1</span><span><span class="rt">Price Earning Ratio (PER)</span><span class="rp">Harga Saham ÷ EPS</span></span></div>
+ <div class="rcell" data-reveal data-detail="<b>Market to Book Value (MBV):</b> Membandingkan kapitalisasi pasar ekuitas (harga saham × saham beredar) dengan nilai buku modal di neraca. Pada PT UT (2016): nilai pasar 20.000 ÷ nilai buku 14.388 = <b>1,39</b>, artinya pasar menghargai perusahaan 39% di atas nilai bukunya. Sering dipakai sebagai acuan transaksi jual-beli perusahaan."><span class="stepnum">2</span><span><span class="rt">Market to Book Value (MBV)</span><span class="rp">Nilai Pasar ÷ Nilai Buku</span></span></div>
+ </div>
+ <div class="rdetail" data-revealdetail><b>Price Earning Ratio (PER):</b> Membandingkan harga pasar saham dengan laba per lembar saham ($\text{EPS} = \text{EAT} / \text{Saham Beredar}$). Contoh buku: EAT Rp10.000, saham beredar 200 lembar → $\text{EPS} = \text{Rp50}$; jika harga saham Rp700, maka $\mathbf{\text{PER} = 14\text{ kali}}$ (investor membayar Rp14 untuk setiap Rp1 laba). Tinggi-rendahnya dinilai terhadap rerata PER industri.</div>
+
+ <div class="abc"><span class="ltr">C</span><h4>Faktor Pembanding <span class="en">(Benchmark)</span></h4></div>
+ <p>Rasio baru bermakna setelah dibandingkan dengan <span class="term">rerata rasio industri</span>. Namun perbandingan tidak boleh mekanis karena adanya perbedaan metode akuntansi antarperusahaan serta <span class="term">faktor sistematis</span> di luar kendali manajemen—seperti fluktuasi kurs valas (yang memengaruhi stabilitas laba), faktor lingkungan/politik, dan peraturan pemerintah.</p>
+
+ <div class="abc"><span class="ltr">D</span><h4>Red Flags (Indikator Potensi Buruk Kualitas Earning)</h4></div>
+ <p>Laba berkualitas mencerminkan realitas ekonomi kemarin, kini, dan besok (<span class="en">tell it like it is</span>). Sebaliknya, sepuluh tanda peringatan (<span class="term">red flags</span>) berikut mengisyaratkan potensi laba yang menyesatkan (<span class="en">misleading</span>) di masa depan (<span class="en">later</span>, bukan kepastian mutlak saat ini):</p>
+ <ol class="book">
+ <li><span class="term">Penurunan beban diskresioner</span> — Beban yang bisa diatur seperti biaya iklan turun relatif terhadap penjualan demi mendongkrak laba jangka pendek.</li>
+ <li><span class="term">Kebijakan akuntansi makin liberal</span> — Pergeseran metode ke arah yang lebih agresif untuk menciptakan <i>earning</i> tampak lebih tinggi.</li>
+ <li><span class="term">Lonjakan piutang pesat</span> — Mengindikasikan kebijakan kredit terlalu longgar yang berisiko memicu kredit macet.</li>
+ <li><span class="term">Kenaikan tak wajar intangible assets</span> — Pos tak berwujud sulit diverifikasi fisiknya sehingga rawan melebih-lebihkan nilai aset.</li>
+ <li><span class="term">Pendapatan luar biasa (extraordinary income) besar</span> — Laba ditopang pos insidental yang jarang berulang, seperti penjualan aset.</li>
+ <li><span class="term">Pencadangan kerugian terlalu rendah</span> — Perusahaan kurang menyisihkan cadangan untuk potensi kerugian masa depan.</li>
+ <li><span class="term">Kenaikan pinjaman luar biasa</span> — Lonjakan pembiayaan utang yang mendadak dan tidak proporsional.</li>
+ <li><span class="term">Kas &amp; setara kas akhir tahun sangat minim</span> — Sinyal tekanan likuiditas meski laba tampak positif.</li>
+ <li><span class="term">Penurunan Gross Profit Margin (GPM)</span> — Mengindikasikan perang harga (<span class="en">price competition</span>) atau pembengkakan harga pokok produksi.</li>
+ <li><span class="term">Rendahnya perputaran inventori</span> — Stok menumpuk dan lambat terjual, berisiko usang atau turun nilainya.</li>
+ </ol>
+
+ <div class="flow">Selain mewaspadai <i>red flags</i>, analis perlu menyadari bahwa manajemen dapat secara aktif "mengatur" angka rasio agar memenuhi syarat kredit atau target kinerja (bagian E), sehingga dibutuhkan kehati-hatian ekstra (bagian F dan G).</div>
+
+ <div class="abc"><span class="ltr">E</span><h4>Mengelola Rasio</h4></div>
+ <ul class="exp">
+ <li><span class="term">Meningkatkan Rasio Likuiditas (CR)</span> — Dapat dilakukan dengan (i) menaikkan aset lancar, (ii) mengurangi utang lancar, atau (iii) <b>membayar utang lancar memakai aset lancar</b> jika kondisi awal $\text{CR} &gt; 1$ (contoh: $1.200/1.000 = 1{,}20$; bayar utang $200 \to 1.000/800 = \mathbf{1{,}25}$). Sebaliknya, jika awal $\text{CR} &lt; 1$ ($1.000/1.200 = 0{,}83$), CR justru naik jika menambah aset lancar &amp; utang lancar bersama-sama ($+200 \to 1.200/1.400 = \mathbf{0{,}86}$).</li>
+ <li><span class="term">Memperbaiki Rasio Solvabilitas</span> — Melalui empat cara: (i) menambah aktiva tanpa menambah utang, (ii) menambah aktiva relatif lebih besar dari tambahan utang, (iii) mengurangi utang tanpa mengurangi aktiva, atau (iv) mengurangi utang relatif lebih besar dari pengurangan aktiva.</li>
+ </ul>
+
+ <div class="abc"><span class="ltr">F</span><h4>Kehati-Hatian dalam Rasio Keuangan (Kotak 7)</h4></div>
+ <p>Tujuh keterbatasan fundamental yang wajib diingat sebelum menarik kesimpulan dari rasio keuangan:</p>
+ <ol class="book">
+ <li><span class="term">Hanya data kuantitatif</span> — Mengabaikan faktor kualitatif krusial seperti etika, kualitas manajemen, dan moral pekerja.</li>
+ <li><span class="term">Dapat dipermanis <span class="en">(Window Dressing)</span></span> — Manajemen bisa melunasi utang lancar sesaat sebelum tanggal neraca agar CR tampak sehat.</li>
+ <li><span class="term">Tidak boleh diperbandingkan langsung</span> — Perbedaan metode akuntansi (depresiasi, pengakuan pendapatan, aset tak berwujud) harus diselaraskan dulu.</li>
+ <li><span class="term">Beragam definisi rasio</span> — Rumus yang berbeda antar-sumber dapat memicu interpretasi keliru.</li>
+ <li><span class="term">Distorsi inflasi (data historis)</span> — Perubahan daya beli rupiah membuat rasio seperti <i>Sales/Asset</i> atau <i>EAT/Asset</i> bias ke atas saat inflasi.</li>
+ <li><span class="term">Harus sesuai konteks bisnis &amp; industri</span> — Satu rasio tak bermakna tanpa konteks (toko daging butuh ITO tinggi; toko perhiasan wajar ITO rendah).</li>
+ <li><span class="term">Catatan masa lalu</span> — Rasio mencerminkan kinerja historis, belum tentu mencerminkan kondisi sekarang dan masa depan.</li>
+ </ol>
+
+ <div class="abc"><span class="ltr">G</span><h4>Analisis Kualitas Earning</h4></div>
+ <p>Menjadi pelengkap rasio keuangan bagi investor saham dengan empat penekanan: barometer kehati-hatian manajemen (<span class="en">prudence</span>), deteksi dampak perubahan kebijakan akuntansi, porsi laba yang benar-benar dapat dikonversi menjadi kas, serta bagian analisis risiko saham. Tujuh ciri <span class="term">earning berkualitas</span>:</p>
+ <ol class="book">
+ <li><span class="term">Kebijakan akuntansi konservatif &amp; konsisten</span> — Pengukuran keuangan dan <i>net income</i> dilakukan secara hati-hati tanpa gonta-ganti metode.</li>
+ <li><span class="term">Pendapatan berasal dari transaksi kontinu</span> — Bukan bersumber dari kejadian sekali waktu (insidental).</li>
+ <li><span class="term">Penjualan mudah dikonversi menjadi kas</span> — Tidak menumpuk menjadi piutang tak tertagih.</li>
+ <li><span class="term">Tidak bergantung pada tarif pajak rendah</span> — Pertumbuhan laba murni dari kekuatan operasional, bukan fasilitas pajak sementara.</li>
+ <li><span class="term">Tingkat utang tidak dimanipulasi</span> — Struktur kewajiban disajikan transparan apa adanya.</li>
+ <li><span class="term">Tidak bias keuntungan valas atau inflasi</span> — Laba tidak semata-mata terdongkrak selisih kurs atau kenaikan harga umum.</li>
+ <li><span class="term">Tren stabil dan dapat diprediksi</span> — Menjadi indikator yang andal untuk memproyeksikan level <i>earning</i> ke depan.</li>
+ </ol>
+ </div>
+
+ <!-- GLOSARIUM -->
+ <h2 class="section" id="glosarium"><span class="dot"></span>Glosarium Kilat</h2>
+ <div class="card">
+ <dl class="glossary">
+ <dt>Agency Problems (Permasalahan Agensi)</dt><dd>Konflik kepentingan akibat pemisahan antara pemilik (pemegang saham) dan pengelola (manajer), atau antara pemegang saham dan kreditor.</dd>
+ <dt>Accrual Basis (Basis Akrual)</dt><dd>Prinsip pencatatan akuntansi yang mengakui pendapatan dan beban saat peristiwa ekonominya terjadi, bukan saat uang kas diterima/dibayarkan.</dd>
+ <dt>Capital Intensity Ratio</dt><dd>Perbandingan total aset terhadap penjualan ($\text{Asset}/\text{Sales}$) yang mengukur kebutuhan aset untuk menopang setiap rupiah penjualan.</dd>
+ <dt>Debt Covenant</dt><dd>Perjanjian atau syarat mengikat dari kreditor kepada perusahaan (mis. batasan rasio, larangan jual aset) untuk mengamankan pinjaman.</dd>
+ <dt>Free Cash Flow (FCF)</dt><dd>Arus kas bebas yang dihasilkan aset perusahaan ($\text{NOPAT}_{\text{kas}} - \text{Inv} - \Delta\text{WC}$) yang tersedia untuk dibagikan kepada kreditor dan pemegang saham.</dd>
+ <dt>Goodwill</dt><dd>Aset tak berwujud berupa selisih lebih harga akuisisi perusahaan di atas nilai bukunya; penyusutannya tidak mengurangi beban pajak.</dd>
+ <dt>Leveraged Buyout (LBO)</dt><dd>Pengambilalihan kepemilikan perusahaan oleh pihak internal (manajer) yang dibiayai dengan utang pribadi guna menyelaraskan insentif.</dd>
+ <dt>Net Working Capital (Modal Kerja Bersih)</dt><dd>Selisih antara aset lancar dan utang lancar yang digunakan untuk mendanai operasi rutin harian perusahaan.</dd>
+ <dt>Red Flags</dt><dd>Indikator peringatan dini pada laporan keuangan yang mengisyaratkan potensi rendahnya kualitas laba (<i>earning</i>) di masa depan.</dd>
+ <dt>Tax Shield (Penghematan Pajak)</dt><dd>Pengurangan beban pajak yang timbul akibat adanya beban depresiasi ($\text{Depr} \times t$) atau beban bunga utang ($r \times D \times t$).</dd>
+ </dl>
+ </div>
+</div>
+
+<footer><b>EKMA5205 — Manajemen Keuangan</b> · Modul 1: Pengantar Manajemen Keuangan<br>Bahan belajar ringkas untuk persiapan ujian (berdasarkan BMP UT Edisi 3, Dr. Said Kelana Asnawi, M.M.).</footer>
+
+<script>
+(function(){
+ var pb=document.getElementById('progress');
+ function onScroll(){var h=document.documentElement;var sc=h.scrollTop||document.body.scrollTop;var max=(h.scrollHeight-h.clientHeight)||1;pb.style.width=(sc/max*100)+'%';}
+ document.addEventListener('scroll',onScroll,{passive:true});onScroll();
+
+ var list=document.getElementById('conceptList');var items=[].slice.call(list.querySelectorAll('li'));var boxes=items.map(function(li){return li.querySelector('input');});
+ document.getElementById('totalCount').textContent=items.length;var doneEl=document.getElementById('doneCount');var KEY='studi_ekma5205_m1_concepts_v1';
+ function load(){try{var a=JSON.parse(localStorage.getItem(KEY)||'[]');boxes.forEach(function(b,i){if(a[i])b.checked=true;});}catch(e){}}
+ function save(){try{localStorage.setItem(KEY,JSON.stringify(boxes.map(function(b){return b.checked?1:0;})));}catch(e){}}
+ function refresh(){var n=0;items.forEach(function(li,i){if(boxes[i].checked){li.classList.add('done');n++;}else li.classList.remove('done');});doneEl.textContent=n;}
+ load();refresh();boxes.forEach(function(b){b.addEventListener('change',function(){refresh();save();});});
+ document.getElementById('resetBtn').addEventListener('click',function(){boxes.forEach(function(b){b.checked=false;});refresh();save();});
+
+ // REVEAL HELPER (dengan perbaikan sibling)
+ [].slice.call(document.querySelectorAll('[data-revealgroup]')).forEach(function(g){
+ var det=g.querySelector('[data-revealdetail]');if(!det){var sib=g.nextElementSibling;if(sib&&sib.hasAttribute&&sib.hasAttribute('data-revealdetail'))det=sib;}
+ var cells=[].slice.call(g.querySelectorAll('[data-reveal]'));
+ cells.forEach(function(c){c.addEventListener('click',function(){cells.forEach(function(x){x.classList.remove('active');});c.classList.add('active');if(det){det.innerHTML=c.getAttribute('data-detail');if(window.MathJax&&window.MathJax.typesetPromise)window.MathJax.typesetPromise([det]);}});});
+ });
+
+ // MIND MAP ENGINE (SVG collapsible)
+ (function(){
+ var ROWH=46,NODE_H=32,PAD=13,GAP=52;var COL={root:'#0f5e8f',kb1:'#1a86c7',kb2:'#e08a1e',kb3:'#2a9d6f',kb4:'#7a5cc0',kb5:'#c75b7a'};
+ var mc=document.createElement('canvas').getContext('2d');mc.font='700 13px -apple-system,Segoe UI,Roboto,sans-serif';
+ function tw(t){return Math.ceil(mc.measureText(t).width);}function esc(t){return t.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');}
+ function rgba(hex,a){var h=hex.replace('#','');return 'rgba('+parseInt(h.substr(0,2),16)+','+parseInt(h.substr(2,2),16)+','+parseInt(h.substr(4,2),16)+','+a+')';}
+ var DATA={label:'MODUL 1 — Pengantar Manajemen Keuangan',color:COL.root,children:[
+ {label:'KB 1 · Pengantar Manajemen Keuangan',color:COL.kb1,children:[
+ {label:'A. Pengertian & 3M (Money, Market, Man)',children:[{label:'Prinsip Matching Aset & Pendanaan'},{label:'Net Working Capital'}]},
+ {label:'B. Peran Manajer Keuangan (3 Keputusan)',children:[{label:'Modal Kerja Bersih'},{label:'Investasi Aset Tetap'},{label:'Struktur Modal & Dividen Residual'}]},
+ {label:'C. Permasalahan Agensi',children:[{label:'4 Solusi (Dividen, Utang, Monev, IO/ESOP)'},{label:'Konflik Kreditor vs Stockholder'},{label:'Obligasi Senior vs Junior & LBO'}]},
+ {label:'D. Pasar Keuangan',children:[{label:'Pasar Uang (<1 th, Instrumen & 6 Risiko)'},{label:'Pasar Modal (Jangka Panjang, GCG)'}]}
+ ]},
+ {label:'KB 2 · Laporan Keuangan',color:COL.kb2,children:[
+ {label:'A. Prinsip Laporan Keuangan',children:[{label:'Basis Akrual'},{label:'Waktu Pengakuan & Earning Mgmt'},{label:'Nilai Buku (Book Value)'}]},
+ {label:'B. 4 Laporan Utama',children:[{label:'Neraca (Aktiva & Pasiva)'},{label:'Laba Rugi (EBIT → EBT → EAT)'},{label:'Arus Kas & Perubahan Modal'}]},
+ {label:'C. Pertimbangan Khusus',children:[{label:'Laba vs Kas & Kapitalisasi'},{label:'Intangible Assets (Patent vs Goodwill)'},{label:'Tax Shield Depresiasi & Bunga'}]},
+ {label:'D–E. Analisis Vertikal, Horizontal & PT UT'}
+ ]},
+ {label:'KB 3 · Arus Kas',color:COL.kb3,children:[
+ {label:'B. Persamaan Perubahan Kas (ΔC = ΔL + ΔS − ΔNCA)'},
+ {label:'C. Arus Kas Akuntansi',children:[{label:'Operasi (OCF)'},{label:'Investasi (ICF)'},{label:'Pendanaan'}]},
+ {label:'D. Arus Kas Keuangan (FCF = CF_D + CF_S)'},
+ {label:'E–F. External Funding (EF) & Anggaran Kas'},
+ {label:'G–H. Kegunaan & Kualitas Earning vs Kas'}
+ ]},
+ {label:'KB 4 · Rasio-Rasio Keuangan',color:COL.kb4,children:[
+ {label:'A. 4 Kelompok Rasio',children:[{label:'Likuiditas (CR, QR, KR)'},{label:'Solvabilitas (DER, DR, TIER)'},{label:'Aktivitas (ARTO, ITO, FATO, TATO, ACP)'},{label:'Profitabilitas (GPM, OPM, NPM, ROA, DuPont ROE)'}]},
+ {label:'B–C. Rasio Pasar (PER, MBV) & Benchmark'},
+ {label:'D–E. 10 Red Flags & Mengelola Rasio'},
+ {label:'F–G. 7 Keterbatasan & Kualitas Earning'}
+ ]}
+ ]};
+ var idc=0;(function w(n,c){n.id='n'+(idc++);n.color=n.color||c;(n.children||[]).forEach(function(k){w(k,n.color);});})(DATA,COL.root);
+ (function w(n,d){if(d>=2&&n.children&&n.children.length)n.collapsed=true;(n.children||[]).forEach(function(k){w(k,d+1);});})(DATA,0);
+ var host=document.getElementById('mindmap');
+ function render(){
+ var colW=[];(function w(n,d){var width=tw(n.label)+PAD*2+((n.children&&n.children.length)?20:0);colW[d]=Math.max(colW[d]||0,width);if(!n.collapsed)(n.children||[]).forEach(function(k){w(k,d+1);});})(DATA,0);
+ var colX=[],acc=14;for(var d=0;d<colW.length;d++){colX[d]=acc;acc+=colW[d]+GAP;}var row={v:0};
+ (function lay(n,d){if(!n.children||!n.children.length||n.collapsed){n._y=row.v*ROWH+ROWH/2+8;row.v++;return;}var f,l;n.children.forEach(function(k,i){lay(k,d+1);if(i===0)f=k._y;l=k._y;});n._y=(f+l)/2;})(DATA,0);
+ var totalW=acc,totalH=row.v*ROWH+24;var nodes=[],links=[];
+ (function col(n,d,p){n._x=colX[d];n._w=tw(n.label)+PAD*2+((n.children&&n.children.length)?20:0);nodes.push({n:n,d:d});if(p)links.push([p,n]);if(!n.collapsed)(n.children||[]).forEach(function(k){col(k,d+1,n);});})(DATA,0,null);
+ var s='<svg width="'+totalW+'" height="'+totalH+'" viewBox="0 0 '+totalW+' '+totalH+'" xmlns="http://www.w3.org/2000/svg">';
+ links.forEach(function(pr){var a=pr[0],b=pr[1],x1=a._x+a._w,y1=a._y,x2=b._x,y2=b._y,mx=(x1+x2)/2;s+='<path d="M'+x1+' '+y1+' C'+mx+' '+y1+' '+mx+' '+y2+' '+x2+' '+y2+'" fill="none" stroke="'+rgba(b.color,.5)+'" stroke-width="2"/>';});
+ nodes.forEach(function(o){var n=o.n,x=n._x,y=n._y-NODE_H/2,w=n._w,hk=n.children&&n.children.length;var fill=o.d===0?n.color:(o.d===1?rgba(n.color,.12):'#fff');var tf=o.d===0?'#fff':'#1c2733';
+ s+='<g data-id="'+n.id+'" style="cursor:'+(hk?'pointer':'default')+'"><rect x="'+x+'" y="'+y+'" rx="9" width="'+w+'" height="'+NODE_H+'" fill="'+fill+'" stroke="'+n.color+'" stroke-width="'+(o.d===0?0:1.6)+'"/><text x="'+(x+PAD)+'" y="'+(n._y+4)+'" font-size="13" font-weight="'+(o.d<=1?'700':'500')+'" fill="'+tf+'" font-family="-apple-system,Segoe UI,Roboto,sans-serif">'+esc(n.label)+'</text>';
+ if(hk){var cx=x+w-12,cy=n._y;s+='<circle cx="'+cx+'" cy="'+cy+'" r="8.5" fill="'+n.color+'"/><text x="'+cx+'" y="'+(cy+4.5)+'" font-size="13" font-weight="700" fill="#fff" text-anchor="middle" font-family="sans-serif">'+(n.collapsed?'+':'\u2013')+'</text>';}s+='</g>';});
+ s+='</svg>';host.innerHTML=s;
+ }
+ host.addEventListener('click',function(e){var g=e.target.closest('g[data-id]');if(!g)return;var id=g.getAttribute('data-id');(function f(n){if(n.id===id){if(n.children&&n.children.length)n.collapsed=!n.collapsed;return true;}return (n.children||[]).some(f);})(DATA);render();});
+ document.getElementById('mmExpand').addEventListener('click',function(){(function w(n){if(n.children)n.collapsed=false;(n.children||[]).forEach(w);})(DATA);render();});
+ document.getElementById('mmCollapse').addEventListener('click',function(){(function w(n,d){if(d>=1&&n.children&&n.children.length)n.collapsed=true;(n.children||[]).forEach(function(k){w(k,d+1);});})(DATA,0);render();});
+ render();
+ })();
+
+ window.addEventListener('load',function(){setTimeout(function(){if(window.MathJax&&window.MathJax.typesetPromise)window.MathJax.typesetPromise();},400);});
+})();
+</script></body></html>

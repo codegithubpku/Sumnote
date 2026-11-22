@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Modul 3 — Ekuitas Merek, Positioning dan Persaingan | EKMA5206</title>
+<script>window.MathJax={tex:{inlineMath:[['$','$']],displayMath:[['\\[','\\]']]},svg:{fontCache:'global'},startup:{typeset:true}};</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js" id="MathJax-script" async></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+<style>
+  :root{
+    --bg:#f4f6f9;--panel:#fff;--ink:#1c2733;--muted:#5c6b7a;--line:#e4e9f0;
+    --brand:#1a86c7;--brand-dark:#0f5e8f;--brand-soft:#e7f3fb;
+    --kb1:#1a86c7;--kb2:#e08a1e;--kb3:#2a9d6f;
+    --radius:14px;--shadow:0 1px 2px rgba(16,42,67,.06),0 6px 20px rgba(16,42,67,.06);--maxw:900px;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{margin:0;background:var(--bg);color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;line-height:1.72;-webkit-font-smoothing:antialiased}
+  #progress{position:fixed;top:0;left:0;height:4px;width:0;background:linear-gradient(90deg,var(--brand),#53c0ec);z-index:200;transition:width .1s}
+  header.top{position:sticky;top:0;z-index:100;background:rgba(255,255,255,.92);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+  .top-in{max-width:var(--maxw);margin:0 auto;padding:10px 20px;display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+  .badge{background:var(--brand);color:#fff;font-weight:700;font-size:.72rem;letter-spacing:.5px;padding:4px 10px;border-radius:999px;white-space:nowrap}
+  .top-title{font-size:.9rem;font-weight:600;color:var(--muted)}
+  nav.jump{margin-left:auto;display:flex;gap:4px;flex-wrap:wrap}
+  nav.jump a{font-size:.78rem;color:var(--muted);text-decoration:none;padding:5px 10px;border-radius:8px}
+  nav.jump a:hover{background:var(--brand-soft);color:var(--brand-dark)}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 20px 90px}
+  .hero{margin-top:26px;padding:30px 28px;border-radius:var(--radius);color:#fff;background:linear-gradient(135deg,#0f5e8f 0%,#1a86c7 60%,#2fa4df 100%);box-shadow:var(--shadow);position:relative;overflow:hidden}
+  .hero::after{content:"03";position:absolute;right:18px;bottom:-26px;font-size:150px;font-weight:800;opacity:.12;line-height:1}
+  .hero .eyebrow{font-size:.78rem;letter-spacing:1.5px;text-transform:uppercase;opacity:.9;font-weight:600}
+  .hero h1{margin:.3em 0 .25em;font-size:1.68rem;line-height:1.25;max-width:88%}
+  .hero .meta{display:flex;gap:18px;flex-wrap:wrap;font-size:.84rem;opacity:.95;margin-top:10px}
+  h2.section{font-size:1.3rem;margin:48px 0 4px;display:flex;align-items:center;gap:10px;scroll-margin-top:70px}
+  h2.section .dot{width:10px;height:22px;border-radius:4px;background:var(--brand)}
+  .section-sub{color:var(--muted);font-size:.9rem;margin:0 0 18px}
+  .card{background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);padding:22px 24px;margin:16px 0;--dot:var(--brand)}
+  .concepts{list-style:none;margin:0;padding:0;display:grid;gap:10px}
+  .concepts li{display:flex;gap:12px;align-items:flex-start;padding:12px 14px;border:1px solid var(--line);border-radius:10px;background:#fcfdff;transition:.15s}
+  .concepts li:hover{border-color:#cfe3f2}
+  .concepts input{margin-top:4px;width:18px;height:18px;accent-color:var(--brand);flex:none;cursor:pointer}
+  .concepts .ct{font-weight:600}
+  .concepts .cd{display:block;font-weight:400;color:var(--muted);font-size:.86rem;margin-top:2px}
+  .concepts li.done{background:var(--brand-soft);border-color:#bfe0f3}
+  .concepts li.done .ct{text-decoration:line-through;opacity:.65}
+  .cl-head{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-bottom:6px}
+  .cl-head .count{font-size:.82rem;color:var(--muted);background:var(--brand-soft);padding:3px 10px;border-radius:999px;font-weight:600}
+  .btn-reset{font-size:.78rem;border:1px solid var(--line);background:#fff;color:var(--muted);padding:5px 12px;border-radius:8px;cursor:pointer}
+  .btn-reset:hover{background:#f6f8fb}
+  .mm-toolbar{display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin-bottom:10px}
+  .mm-btn{font-size:.78rem;border:1px solid var(--line);background:#fff;padding:6px 13px;border-radius:8px;cursor:pointer;color:var(--brand-dark);font-weight:600}
+  .mm-btn:hover{background:var(--brand-soft)}
+  .mm-hint{font-size:.76rem;color:var(--muted)}
+  .mindmap-host{height:560px;overflow:auto;border:1px solid var(--line);border-radius:10px;background:#fcfdff}
+  .mindmap-host svg{display:block}
+  .kb-tag{display:inline-flex;align-items:center;gap:8px;font-size:.78rem;font-weight:700;letter-spacing:.3px;color:#fff;padding:5px 12px;border-radius:999px;margin-bottom:6px}
+  .kb1t{background:var(--kb1)}.kb2t{background:var(--kb2)}.kb3t{background:var(--kb3)}
+  .kb1b{--dot:var(--kb1)}.kb2b{--dot:var(--kb2)}.kb3b{--dot:var(--kb3)}
+  .lead{font-size:1.02rem}
+  .term{font-weight:700;color:var(--dot)}
+  .en{font-style:italic;color:var(--muted);font-weight:500}
+  .abc{display:flex;align-items:center;gap:10px;margin:28px 0 10px;padding-bottom:6px;border-bottom:2px solid currentColor;border-bottom-color:color-mix(in srgb,var(--dot) 18%,#fff)}
+  .abc .ltr{background:var(--dot);color:#fff;font-weight:800;min-width:30px;height:30px;padding:0 7px;border-radius:8px;display:grid;place-items:center;flex:none}
+  .abc h4{margin:0;font-size:1.08rem;color:var(--dot)}
+  .numh{font-weight:700;color:var(--dot);margin:22px 0 4px;font-size:1rem}
+  .leth{font-weight:800;color:var(--dot);margin:20px 0 6px;font-size:.98rem;border-left:3px solid var(--dot);padding-left:10px}
+  .subn{margin:12px 0 2px}
+  ol.book{margin:12px 0;padding-left:28px}
+  ol.book>li{margin:10px 0;padding-left:6px}
+  ol.book>li::marker{font-weight:700;color:var(--dot)}
+  ul.exp{list-style:none;margin:12px 0;padding:0;display:grid;gap:10px}
+  ul.exp>li{position:relative;padding-left:20px}
+  ul.exp>li::before{content:"";position:absolute;left:0;top:11px;width:8px;height:8px;border-radius:2px;background:var(--dot)}
+  ol.book b,ul.exp b{color:var(--ink)}
+  ul.let{list-style:lower-alpha;margin:10px 0;padding-left:28px}
+  ul.let>li{margin:8px 0;padding-left:4px}
+  ul.let>li::marker{color:var(--dot);font-weight:700}
+  .flow{border-left:4px solid var(--dot);background:color-mix(in srgb,var(--dot) 9%,#fff);padding:11px 15px;border-radius:0 10px 10px 0;margin:18px 0;font-size:.9rem}
+  .flow::before{content:"🔗 Benang merah — ";font-weight:700;color:var(--dot)}
+  .flow b{color:var(--dot)}
+  table.mini{width:100%;border-collapse:collapse;margin:14px 0;font-size:.86rem}
+  table.mini th,table.mini td{border:1px solid var(--line);padding:9px 11px;text-align:left;vertical-align:top}
+  table.mini th{background:color-mix(in srgb,var(--dot) 12%,#fff);color:var(--dot);font-weight:700}
+  table.mini tr:nth-child(even) td{background:#fafcfe}
+  .eqbox{background:#fbfcfe;border:1px solid var(--line);border-radius:10px;padding:14px 16px;margin:14px 0;text-align:center;overflow-x:auto}
+  .eqbox .cap{font-size:.78rem;color:var(--muted);margin-top:6px}
+  .chartbox{background:#fff;border:1px solid var(--line);border-radius:12px;padding:14px;margin:16px 0}
+  .chartbox .cw{position:relative;height:340px}
+  .chartbox .cap{font-size:.8rem;color:var(--muted);text-align:center;margin-top:8px}
+  .rgrid{display:grid;gap:8px;margin:14px 0}
+  .rgrid.c3{grid-template-columns:repeat(3,1fr)}
+  .rgrid.c2{grid-template-columns:repeat(2,1fr)}
+  .rcell{border:1px solid var(--line);border-radius:10px;padding:11px 13px;cursor:pointer;background:#fff;transition:.15s;display:flex;gap:10px;align-items:flex-start}
+  .rcell:hover{border-color:var(--dot);box-shadow:var(--shadow);transform:translateY(-2px)}
+  .rcell.active{border-color:var(--dot);background:color-mix(in srgb,var(--dot) 8%,#fff)}
+  .rcell .stepnum{background:var(--dot);color:#fff;font-weight:700;min-width:24px;height:24px;border-radius:7px;display:grid;place-items:center;flex:none;font-size:.82rem}
+  .rcell .rt{font-weight:700;font-size:.9rem;color:var(--dot);display:block}
+  .rcell .rp{font-size:.78rem;color:var(--muted);display:block;margin-top:2px}
+  .rdetail{font-size:.88rem;border-left:4px solid var(--dot);background:color-mix(in srgb,var(--dot) 8%,#fff);border-radius:0 10px 10px 0;padding:12px 15px;margin-top:6px}
+  .continuum{display:flex;margin:14px 0 2px;border-radius:10px;overflow:hidden;border:1px solid var(--line);flex-wrap:wrap}
+  .cseg{flex:1;min-width:120px;cursor:pointer;padding:12px 8px;text-align:center;font-size:.8rem;font-weight:700;color:#fff;transition:.15s}
+  .cseg:hover{filter:brightness(1.08)}
+  .clabels{display:flex;justify-content:space-between;font-size:.72rem;color:var(--muted);margin-bottom:8px}
+  .pyramid{display:flex;flex-direction:column;align-items:center;gap:7px;margin:14px 0}
+  .ptier{cursor:pointer;color:#fff;text-align:center;padding:11px 10px;border-radius:8px;font-weight:600;font-size:.85rem;transition:.15s;box-shadow:var(--shadow)}
+  .ptier:hover{filter:brightness(1.06);transform:scale(1.02)}
+  /* Porter five forces */
+  .porter{display:grid;grid-template-columns:1fr 1fr 1fr;grid-template-rows:auto auto auto;gap:10px;margin:14px 0;align-items:stretch}
+  .pf{border:1.5px solid var(--dot);border-radius:10px;padding:10px;text-align:center;cursor:pointer;background:#fff;transition:.15s;display:flex;flex-direction:column;justify-content:center}
+  .pf:hover,.pf.active{background:color-mix(in srgb,var(--dot) 10%,#fff);box-shadow:var(--shadow)}
+  .pf b{font-size:.84rem;color:var(--dot)}
+  .pf span{font-size:.72rem;color:var(--muted)}
+  .pf.center{background:var(--dot);color:#fff}.pf.center b{color:#fff}.pf.center span{color:rgba(255,255,255,.85)}
+  .pf.top{grid-column:2;grid-row:1}.pf.left{grid-column:1;grid-row:2}.pf.center{grid-column:2;grid-row:2}.pf.right{grid-column:3;grid-row:2}.pf.bottom{grid-column:2;grid-row:3}
+  .pill-row{display:flex;gap:8px;flex-wrap:wrap;margin:10px 0}
+  .pill{font-size:.8rem;background:#eef3f8;color:#36506a;border:1px solid #e0e8f0;padding:4px 11px;border-radius:999px;font-weight:600}
+  .glossary dt{font-weight:700;color:var(--brand-dark);margin-top:10px}
+  .glossary dd{margin:0 0 2px;color:var(--muted);font-size:.9rem}
+  footer{max-width:var(--maxw);margin:0 auto;padding:30px 20px 60px;color:var(--muted);font-size:.82rem;border-top:1px solid var(--line)}
+  footer .refs{margin-top:10px;font-size:.78rem;line-height:1.6}
+  .offline-note{font-size:.76rem;color:var(--muted);background:#fff8e6;border:1px solid #f0e2b8;border-radius:8px;padding:8px 12px;margin:10px 0}
+  @media(max-width:640px){
+    .hero h1{font-size:1.36rem;max-width:100%}.hero::after{font-size:110px}
+    nav.jump{display:none}
+    .rgrid.c3,.rgrid.c2{grid-template-columns:1fr}
+    .chartbox .cw{height:300px}.mindmap-host{height:440px}
+    .porter{grid-template-columns:1fr}.pf.top,.pf.left,.pf.center,.pf.right,.pf.bottom{grid-column:1;grid-row:auto}
+  }
+  @media print{#progress,header.top,.btn-reset,.mm-toolbar{display:none}body{background:#fff}.card{box-shadow:none}}
+</style>
+</head>
+<body>
+<div id="progress"></div>
+<header class="top">
+  <div class="top-in">
+    <span class="badge">MODUL 3</span>
+    <a href="index.html" title="Kembali ke daftar modul" style="text-decoration:none;display:inline-flex;align-items:center;gap:7px;background:var(--brand);color:#fff;font-weight:700;font-size:.8rem;padding:7px 15px;border-radius:999px;white-space:nowrap;box-shadow:0 2px 6px rgba(16,42,67,.22);line-height:1"><span style="font-size:1rem;line-height:1">&#8962;</span> Daftar Modul</a><span class="top-title">Manajemen Pemasaran · EKMA5206</span>
+    <nav class="jump">
+      <a href="#konsep">Konsep Penting</a><a href="#peta">Peta Konsep</a>
+      <a href="#kb1">KB 1</a><a href="#kb2">KB 2</a><a href="#kb3">KB 3</a><a href="#glosarium">Glosarium</a>
+    </nav>
+  </div>
+</header>
+<div class="wrap">
+  <section class="hero">
+    <div class="eyebrow">Buku Materi Pokok · EKMA5206 · 3 SKS</div>
+    <h1>Ekuitas Merek, Positioning dan Persaingan</h1>
+    <div class="meta">
+      <span>⏱️ Estimasi belajar <b>±30–40 menit</b></span>
+      <span>📚 <b>3</b> Kegiatan Belajar</span>
+      <span>✍️ Dr. Ir. FX. Bambang Wiharto, M.M.</span>
+    </div>
+  </section>
+  <p class="section-sub" style="margin-top:22px">Ringkasan mengikuti alur heading buku (A/1/a) dengan kotak <b>🔗 Benang merah</b>, penjelasan tiap poin, dan istilah asli (brand equity, POD/POP, PLC, Porter's Five Forces) + terjemahan.</p>
+  <p class="offline-note">ℹ️ Peta konsep &amp; elemen interaktif berjalan tanpa internet. Grafik &amp; persamaan memuat pustaka dari internet saat pertama dibuka; teks tetap terbaca offline.</p>
+
+  <h2 class="section" id="konsep"><span class="dot"></span>Konsep Penting yang Harus Dikuasai</h2>
+  <p class="section-sub">Istilah inti, urut sesuai buku. Centang sebagai penanda belajar (tersimpan otomatis).</p>
+  <div class="card">
+    <div class="cl-head"><span class="count"><span id="doneCount">0</span>/<span id="totalCount">0</span> dikuasai</span><button class="btn-reset" id="resetBtn">Reset centang</button></div>
+    <ul class="concepts" id="conceptList">
+      <li><input type="checkbox"><span><span class="ct">Merek &amp; branding</span><span class="cd">Definisi AMA; pembeda fungsional vs simbolik.</span></span></li>
+      <li><input type="checkbox"><span><span class="ct">5 derajat brand familiarity</span><span class="cd">Rejection, nonrecognition, recognition, preference, insistence.</span></span></li>
+      <li><input type="checkbox"><span><span class="ct">6 makna merek</span><span class="cd">Atribut, manfaat, nilai, budaya, kepribadian, pengguna.</span></span></li>
+      <li><input type="checkbox"><span><span class="ct">Brand equity &amp; customer-based brand equity</span><span class="cd">Nilai tambah; brand audit &amp; brand tracking.</span></span></li>
+      <li><input type="checkbox"><span><span class="ct">Strategi &amp; perluasan merek</span><span class="cd">Line/category extension, sub/parent brand, kanibalisme.</span></span></li>
+      <li><input type="checkbox"><span><span class="ct">Keputusan nama merek (4 jenis)</span><span class="cd">Individual, blanket family, separate family, corporate+individual.</span></span></li>
+      <li><input type="checkbox"><span><span class="ct">Customer equity</span><span class="cd">Penjumlahan CLV; ekuitas merek vs ekuitas pelanggan.</span></span></li>
+      <li><input type="checkbox"><span><span class="ct">STP &amp; positioning</span><span class="cd">Segmentation, Targeting, Positioning; value proposition.</span></span></li>
+      <li><input type="checkbox"><span><span class="ct">Points-of-Difference &amp; Points-of-Parity</span><span class="cd">POD unik; POP category &amp; competitive.</span></span></li>
+      <li><input type="checkbox"><span><span class="ct">Diferensiasi (5 dimensi)</span><span class="cd">Produk, pelayanan, personel, saluran, citra.</span></span></li>
+      <li><input type="checkbox"><span><span class="ct">Product Life Cycle (4 tahap)</span><span class="cd">Introduction, growth, maturity, decline.</span></span></li>
+      <li><input type="checkbox"><span><span class="ct">Strategi pemasaran per tahap PLC</span><span class="cd">First mover; modifikasi pasar/produk/bauran; harvesting.</span></span></li>
+      <li><input type="checkbox"><span><span class="ct">Porter's Five Forces</span><span class="cd">Competitors, entrants, substitutes, buyers, suppliers.</span></span></li>
+      <li><input type="checkbox"><span><span class="ct">Analisis pesaing</span><span class="cd">Strategic group; share of market/mind/heart; benchmark.</span></span></li>
+      <li><input type="checkbox"><span><span class="ct">Strategi pemimpin &amp; pengikut pasar</span><span class="cd">Leader/challenger/follower/nicher; counterfeiter–adapter.</span></span></li>
+    </ul>
+  </div>
+
+  <h2 class="section" id="peta"><span class="dot"></span>Peta Konsep (Mind Map)</h2>
+  <p class="section-sub">Struktur lengkap modul mengikuti outline buku. Klik +/− pada simpul untuk buka/tutup cabang.</p>
+  <div class="card">
+    <div class="mm-toolbar"><button class="mm-btn" id="mmExpand">Perluas semua</button><button class="mm-btn" id="mmCollapse">Ciutkan</button><span class="mm-hint">Gulir di dalam kotak untuk menggeser</span></div>
+    <div class="mindmap-host" id="mindmap"></div>
+  </div>
+
+  <!-- KB1 -->
+  <h2 class="section" id="kb1"><span class="dot"></span>KB 1 — Membangun Ekuitas Merek</h2>
+  <div class="card kb1b">
+    <span class="kb-tag kb1t">EKUITAS MEREK</span>
+    <p class="lead">Tidak ada perusahaan yang menang bila produknya hanya mirip penawaran lain. Setiap penawaran harus menyatakan <b>ide besar</b> yang berbeda di benak pasar sasaran. <span class="term">Manajemen merek strategic</span> menempuh empat langkah (Kotler &amp; Keller 2009): (1) mengidentifikasi &amp; membangun <em>positioning</em> merek, (2) merencanakan &amp; mengimplementasikan pemasaran merek, (3) mengukur &amp; menginterpretasikan kinerja merek, (4) menumbuhkembangkan &amp; memelihara nilai merek.</p>
+
+    <div class="numh">1 · Apa itu Merek?</div>
+    <p>Menurut <span class="term">American Marketing Association</span>, <span class="term">merek</span> adalah nama, istilah, tanda, simbol, atau rancangan (atau kombinasinya) untuk mengidentifikasi barang/jasa penjual tertentu &amp; membedakannya dari pesaing. Dari sisi pelanggan, perbedaan yang dibawa merek bisa bersifat <b>fungsional/rasional/kasatmata</b> (kinerja produk) atau <b>simbolik/emosional/tak kasatmata</b>. Merek terkenal (Starbucks, Sony, Nike) menuntut harga premium sekaligus loyalitas.</p>
+
+    <div class="numh">2 · Peran Sebuah Merek</div>
+    <p><b>Bagi konsumen</b>, merek mengidentifikasi sumber produk, menyederhanakan proses keputusan, &amp; mengurangi risiko (Suri &amp; Monroe 2003). <b>Bagi perusahaan</b>, merek menyederhanakan penanganan &amp; pencatatan produk, memberi perlindungan legal atas fitur unik (nama via merek dagang, kemasan via <em>copyright</em>/<em>proprietary design</em>), memancarkan sinyal kualitas, &amp; membangun loyalitas yang menjadi <em>barrier to entry</em>. Pesaing dapat meniru produk, tetapi tak mampu meniru impresi merek yang tertanam bertahun-tahun.</p>
+
+    <div class="numh">3 · Apa itu Membangun Merek (Branding)?</div>
+    <p><span class="term">Branding</span> = penggunaan nama, istilah, simbol, atau rancangan untuk mengidentifikasi &amp; membedakan produk. <span class="term">Brand familiarity</span> (pengenalan merek) adalah sejauh mana pelanggan mengenal &amp; menerima merek — ada <b>lima derajat</b> (Perreault dkk. 2009); klik tiap derajat:</p>
+    <div data-revealgroup>
+      <div class="continuum">
+        <div class="cseg" data-reveal style="background:#b23a48" data-detail="<b>Brand rejection</b> (penolakan) — pelanggan hanya mau membeli bila citra merek berubah. Mengatasi citra buruk sulit &amp; mahal; solusinya mengubah karakteristik produk atau beralih ke pelanggan sasaran yang citranya lebih baik.">1. Rejection</div>
+        <div class="cseg" data-reveal style="background:#7a5c3e" data-detail="<b>Brand nonrecognition</b> (tidak dikenal) — pelanggan sama sekali tak mengenal merek, meski distributor memakainya untuk identifikasi &amp; kontrol persediaan.">2. Nonrecognition</div>
+        <div class="cseg" data-reveal style="background:#5c6b7a" data-detail="<b>Brand recognition</b> (dikenal) — pelanggan dapat mengingat merek, bahkan tanpa bantuan saat melihatnya di antara merek lain di toko.">3. Recognition</div>
+        <div class="cseg" data-reveal style="background:#1a86c7" data-detail="<b>Brand preference</b> (disukai) — target memilih merek ini di antara merek lain, karena kebiasaan atau pengalaman yang menyenangkan.">4. Preference</div>
+        <div class="cseg" data-reveal style="background:#2a9d6f" data-detail="<b>Brand insistence</b> (diinginkan/dipaksakan) — derajat tertinggi: pelanggan memaksa membeli merek tertentu &amp; mencarinya saat dibutuhkan; merek menjadi jaminan kualitas.">5. Insistence</div>
+      </div>
+      <div class="rdetail" data-revealdetail>Klik salah satu derajat di atas untuk penjelasannya (kiri = terlemah, kanan = terkuat).</div>
+    </div>
+    <p style="margin-top:14px">Bagi pengguna, merek membawa <b>enam makna</b> — klik:</p>
+    <div class="rgrid c3" data-revealgroup>
+      <div class="rcell" data-reveal data-detail="<b>Atribut</b> — merek menyampaikan atribut produk. Mercedes = mobil mahal, mutakhir, awet, prestise."><span><span class="rt">Atribut</span><span class="rp">Ciri produk yang disandang.</span></span></div>
+      <div class="rcell" data-reveal data-detail="<b>Manfaat</b> — atribut diterjemahkan ke manfaat fungsional &amp; emosional (awet = fungsional; mahal = emosional 'membuat saya dikagumi')."><span><span class="rt">Manfaat</span><span class="rp">Fungsional &amp; emosional.</span></span></div>
+      <div class="rcell" data-reveal data-detail="<b>Nilai</b> — merek mencerminkan nilai penting produsen (Mercedes = kinerja tinggi, aman, prestise)."><span><span class="rt">Nilai</span><span class="rp">Nilai yang dijunjung produsen.</span></span></div>
+      <div class="rcell" data-reveal data-detail="<b>Budaya</b> — merek mencerminkan budaya negara pembuatnya (Mercedes = kultur Jerman yang berkualitas)."><span><span class="rt">Budaya</span><span class="rp">Budaya negara pembuat.</span></span></div>
+      <div class="rcell" data-reveal data-detail="<b>Kepribadian</b> — merek memproyeksikan kepribadian penggunanya (Mercedes = pengusaha pekerja keras)."><span><span class="rt">Kepribadian</span><span class="rp">Kepribadian yang diproyeksikan.</span></span></div>
+      <div class="rcell" data-reveal data-detail="<b>Pengguna</b> — merek menunjukkan jenis konsumen pemakainya (Avanza = keluarga dengan 7 penumpang)."><span><span class="rt">Pengguna</span><span class="rp">Jenis konsumen pemakai.</span></span></div>
+    </div>
+    <div class="rdetail" data-revealdetail>Klik salah satu makna merek di atas untuk penjelasannya.</div>
+
+    <div class="flow">Pengenalan &amp; makna merek membangun sesuatu yang bernilai — itulah <b>ekuitas merek</b>, bahasan berikutnya.</div>
+
+    <div class="numh">4 · Ekuitas Merek</div>
+    <p><span class="term">Ekuitas merek (brand equity)</span> = nilai tambah yang diberikan merek pada produk/jasa, tercermin dalam cara konsumen berpikir, merasa, &amp; bertindak terkait merek, serta pada harga, pangsa pasar, &amp; profitabilitas (Aaker 1991). <span class="term">Customer-based brand equity</span> = pengaruh diferensial pengetahuan merek pada respons konsumen; positif bila konsumen lebih menyukai produk saat mereknya teridentifikasi. Tiga hal dasarnya: <b>(a)</b> muncul dari perbedaan respons (tanpa perbedaan = komoditas, bersaing di harga saja); <b>(b)</b> berasal dari pengetahuan merek — maka merek harus membangun asosiasi yang <em>kuat, unik, &amp; disukai</em> (Volvo=keselamatan, Harley-Davidson=petualangan); <b>(c)</b> tercermin pada persepsi, preferensi, &amp; perilaku.</p>
+    <p>Ekuitas merek tinggi memberi keunggulan bersaing: menurunkan biaya pemasaran, memungkinkan harga premium (perceived quality tinggi), memudahkan peluncuran produk baru lewat perluasan merek, &amp; melindungi dari persaingan harga.</p>
+
+    <div class="numh">5 · Mengukur Ekuitas Merek</div>
+    <p>Dua pendekatan yang saling melengkapi: <b>pengukuran tidak langsung</b> lewat <span class="term">brand audit</span> (prosedur terpusat pada konsumen untuk menilai kesehatan &amp; sumber ekuitas merek), &amp; <b>pengukuran langsung</b> lewat <span class="term">brand tracking</span> (pengumpulan data kuantitatif rutin tentang kinerja merek terhadap kegiatan pemasaran).</p>
+
+    <div class="numh">6 · Mengelola Ekuitas Merek</div>
+    <p>Memerlukan gambaran jangka panjang. Ekuitas diperkuat kegiatan pemasaran konsisten yang membawa makna: <b>(1)</b> produk apa yang diwakili merek &amp; kebutuhan yang dipenuhinya; <b>(2)</b> bagaimana merek membuat produk lebih superior. Menuntut inovasi &amp; relevansi — merek harus terus bergerak ke depan.</p>
+
+    <div class="numh">7 · Revitalisasi Merek</div>
+    <p>Perubahan selera, pesaing/teknologi baru dapat mengikis keuntungan merek. Revitalisasi berada pada sebuah kontinum: dari <b>"back to basics"</b> (kembali ke akar, mis. Harley-Davidson) di satu sisi, hingga <b>"reinvention strategy"</b> (penemuan ulang, bila <em>positioning</em> lama sudah tak layak) di sisi lain.</p>
+
+    <div class="numh">8 · Strategi Merek</div>
+    <p>Saat memperkenalkan produk baru, perusahaan dapat <b>(a)</b> membangun elemen merek baru, <b>(b)</b> memakai elemen merek yang sudah ada, atau <b>(c)</b> mengombinasikan keduanya. Istilah kuncinya:</p>
+    <ul class="exp">
+      <li><b>Brand extension</b> (perluasan merek) — memakai merek yang sudah ada untuk produk baru: <em>line extension</em> (produk baru dalam kategori yang sama) &amp; <em>category extension</em> (masuk kategori berbeda, mis. Honda untuk mobil, motor, lawnmower).</li>
+      <li><b>Sub brand</b> — kombinasi merek baru + merek lama (Toyota Vios); <b>parent brand</b> = merek induk yang melahirkannya; <b>family brand</b> = parent brand yang terhubung banyak sub/extension.</li>
+      <li><b>Brand line, brand mix, branded variants, licensed product</b> — lini merek, himpunan lini, varian untuk jalur distribusi berbeda, &amp; merek yang dilisensikan ke pabrikan lain.</li>
+    </ul>
+
+    <div class="numh">9 · Keputusan Merek</div>
+    <p><b>Bermerek atau tidak?</b> Kini pemberian merek nyaris sebuah keharusan (meski ada <em>store brand</em> &amp; produk generik). Keunggulan merek bagi penjual: <b>(a)</b> memudahkan pengolahan pesanan &amp; pelacakan masalah; <b>(b)</b> perlindungan resmi atas fitur unik; <b>(c)</b> peluang pelanggan loyal yang menjadi proteksi; <b>(d)</b> membantu segmentasi; <b>(e)</b> membangun citra &amp; memudahkan peluncuran merek baru. Produsen memilih antara <span class="term">manufacturer brand</span> (national brand) &amp; <span class="term">distributor brand</span> / <b>label privat</b> (merek toko). Label privat menarik bagi pengecer karena <b>lebih menguntungkan</b> (biaya litbang/iklan/distribusi rendah → margin tinggi) &amp; <b>eksklusif</b> (membedakan dari pesaing).</p>
+
+    <div class="numh">10 · Keputusan Nama Merek</div>
+    <p>Empat jenis keputusan nama — klik:</p>
+    <div class="rgrid c2" data-revealgroup>
+      <div class="rcell" data-reveal data-detail="<b>Individual name</b> — nama tak terikat reputasi perusahaan; bila produk gagal, citra perusahaan tak terkena (mis. maskapai membuat low-fair carrier dengan nama berbeda)."><span><span class="rt">Individual name</span><span class="rp">Nama per produk, terpisah dari perusahaan.</span></span></div>
+      <div class="rcell" data-reveal data-detail="<b>Blanket family name</b> — satu nama perusahaan untuk banyak produk (Heinz, General Electric); biaya rendah karena tak perlu pencarian nama/iklan besar."><span><span class="rt">Blanket family name</span><span class="rp">Satu nama untuk semua produk.</span></span></div>
+      <div class="rcell" data-reveal data-detail="<b>Separate family names</b> — nama keluarga terpisah per lini produk (Sears: Kenmore untuk peralatan, Craftsman untuk tools); cocok bila jenis produk sangat berbeda."><span><span class="rt">Separate family names</span><span class="rp">Nama keluarga per lini produk.</span></span></div>
+      <div class="rcell" data-reveal data-detail="<b>Corporate + individual name</b> — gabungan nama perusahaan &amp; nama produk (Kellogg's Rice Krispies); nama perusahaan memberi legitimasi, nama produk memberi individualitas."><span><span class="rt">Corporate + individual</span><span class="rp">Gabungan nama perusahaan &amp; produk.</span></span></div>
+    </div>
+    <div class="rdetail" data-revealdetail>Klik salah satu jenis keputusan nama di atas untuk penjelasannya.</div>
+
+    <div class="numh">11 · Perluasan Merek (Brand Extension)</div>
+    <p><b>Manfaat:</b> memfasilitasi penerimaan produk baru &amp; memberi umpan balik positif bagi <em>parent brand</em>. <b>Kekurangan:</b> dapat melemahkan/membingungkan citra merek, &amp; memicu <span class="term">kanibalisme</span> — penjualan perluasan tinggi tetapi pendapatannya berasal dari konsumen yang beralih dari parent brand (pengikisan pangsa). <b>Karakteristik keberhasilan:</b> perluasan harus <em>cocok</em> dengan yang ada di benak konsumen (atribut fisik, situasi penggunaan, atau jenis pemakai).</p>
+
+    <div class="numh">12 · Portofolio Merek</div>
+    <p>Karena setiap merek punya batas citra, perusahaan memperkenalkan beberapa merek (<span class="term">portofolio merek</span>) dalam satu kategori untuk: <b>(a)</b> meningkatkan kehadiran di rak; <b>(b)</b> menarik konsumen pencari keragaman; <b>(c)</b> meningkatkan persaingan internal; <b>(d)</b> membangun skala ekonomi distribusi/promosi.</p>
+
+    <div class="numh">13 · Ekuitas Pelanggan</div>
+    <p><span class="term">Customer equity</span> (ekuitas pelanggan) = penjumlahan seluruh <em>lifetime value</em> pelanggan. Perspektif ekuitas merek &amp; ekuitas pelanggan sama-sama menekankan loyalitas: ekuitas pelanggan menekankan <b>nilai finansial</b>, sedangkan ekuitas merek menekankan keunggulan membangun <em>strong brand</em> untuk menarik pelanggan. Keduanya saling melengkapi.</p>
+  </div>
+
+  <!-- KB2 -->
+  <h2 class="section" id="kb2"><span class="dot"></span>KB 2 — Positioning</h2>
+  <div class="card kb2b">
+    <span class="kb-tag kb2t">POSITIONING</span>
+    <p class="lead">Semua strategi pemasaran dibangun di atas konsep <span class="term">STP</span> — <b>Segmentation</b> (membagi pasar jadi segmen homogen), <b>Targeting</b> (menentukan pasar sasaran), &amp; <b>Positioning</b> (memosisikan penawaran di benak konsumen).</p>
+
+    <div class="numh">1 · Membangun &amp; Mengomunikasikan Strategi Positioning</div>
+    <p><span class="term">Positioning</span> = merancang penawaran &amp; citra perusahaan agar menempati posisi berbeda dari pesaing di benak konsumen sasaran, untuk memaksimalkan manfaat potensial. Hasilnya adalah <em>customer-focused value proposition</em> (proposisi nilai berfokus pelanggan) — alasan kuat mengapa pasar sasaran harus membeli.</p>
+    <ul class="let">
+      <li><b>Kerangka referensi kompetitif <span class="en">(competitive frame of reference)</span></b> — titik awal: tentukan <em>category membership</em> (kategori tempat merek bersaing &amp; produk substitusinya), lalu analisis kompetitif (sumber daya, kemampuan, kemungkinan pendatang baru).</li>
+      <li><b>Points-of-Difference (POD) &amp; Points-of-Parity (POP)</b> — klik tiap konsep:
+        <div class="rgrid c2" data-revealgroup style="margin-top:8px">
+          <div class="rcell" data-reveal data-detail="<b>Points-of-Difference (POD)</b> — atribut/manfaat yang dihubungkan kuat dengan merek, dievaluasi positif, &amp; dipercaya tak dimiliki pesaing (Apple=rancangan, Lexus=kualitas, Nike=kinerja). Harus kuat, disukai, &amp; unik."><span><span class="rt">POD</span><span class="rp">Keunggulan unik merek.</span></span></div>
+          <div class="rcell" data-reveal data-detail="<b>Category POP</b> — asosiasi esensial agar merek dianggap sah &amp; dipercaya dalam kategori (kondisi perlu, belum tentu cukup). Mis. biro perjalanan harus mampu reservasi hotel/penerbangan."><span><span class="rt">Category POP</span><span class="rp">Syarat sah masuk kategori.</span></span></div>
+          <div class="rcell" data-reveal data-detail="<b>Competitive POP</b> — asosiasi yang dirancang untuk menetralkan POD pesaing (mencapai 'titik impas' di wilayah kekuatan pesaing), sambil merek meraih keunggulan di area lain."><span><span class="rt">Competitive POP</span><span class="rp">Menetralkan keunggulan pesaing.</span></span></div>
+          <div class="rcell" data-reveal data-detail="<b>POP vs POD</b> — untuk POP, cukup konsumen percaya merek 'cukup baik' pada suatu dimensi (ada rentang toleransi). Kunci positioning sering bukan menumpuk POD, melainkan memenuhi POP."><span><span class="rt">POP vs POD</span><span class="rp">Cukup baik vs benar-benar unik.</span></span></div>
+        </div>
+        <div class="rdetail" data-revealdetail>Klik salah satu di atas untuk penjelasannya.</div>
+      </li>
+    </ul>
+
+    <div class="numh">2 · Membangun Keanggotaan Kategori</div>
+    <p>Pemasar memberi tahu konsumen keanggotaan kategori sebelum menyatakan POD (penting untuk produk baru / kategori tak jelas). <span class="term">Straddle positioning</span> memakai dua asosiasi sekaligus (BMW: POD kinerja + POP kemewahan) — "best of both world" tetapi berisiko bila keduanya tak kredibel.</p>
+    <ul class="let">
+      <li><b>Mengomunikasikan keanggotaan</b> — tiga cara: (1) mengumumkan manfaat merek dari kategori; (2) membandingkan dengan merek yang sudah dikenal; (3) menyandarkan pada deskriptor produk (Ford "Freestyle" disebut "sports wagon").</li>
+      <li><b>Memilih POPs &amp; PODs</b> — dua pertimbangan memilih POD: konsumen menginginkannya &amp; perusahaan mampu membuatnya nyata.</li>
+      <li><b>Membangun POPs &amp; PODs</b> — tantangannya: atribut pembentuk POP &amp; POD sering berkorelasi negatif (sulit "murah" sekaligus "berkualitas tinggi"). POD dikaitkan pada tingkat <em>brand attributes</em> → <em>brand benefits</em> → <em>brand value</em> (tertinggi); atribut adalah dasar yang paling mudah ditiru.</li>
+      <li><b>Strategi diferensiasi</b> — hindari <em>commodity trap</em>; bangun <span class="term">competitive advantage</span> yang sulit ditiru &amp; terasa sebagai <em>customer advantage</em>. Dimensinya: <em>personnel</em> (Singapore Airline), <em>channel</em>, &amp; <em>image</em> differentiation (Marlboro = cowboy macho).</li>
+    </ul>
+
+    <div class="numh">3 · Strategi Pemasaran Berdasarkan Siklus Hidup Produk (PLC)</div>
+    <p>Konsep <span class="term">Product Life Cycle (PLC)</span>: produk punya umur terbatas, melalui tahapan berbeda dengan tantangan &amp; keuntungan berbeda, dan menuntut strategi berbeda. Kurvanya berbentuk lonceng dengan empat tahap:</p>
+    <div class="chartbox"><div class="cw"><canvas id="plcChart"></canvas></div><div class="cap">Gambar 3.1 — Kurva Siklus Hidup Produk (Product Life Cycle).</div></div>
+    <ul class="let">
+      <li><b>Tahap introduksi</b> — pertumbuhan lambat, laba belum ada (biaya perkenalan besar); rasio promosi tertinggi; harga cenderung tinggi. Keputusan kunci: kapan masuk pasar. Keuntungan <span class="term">first mover</span> (pionir) tak selalu bertahan; <b>siklus kompetitif</b> pionir: penetrasi kompetitif → share stability → persaingan komoditi.</li>
+      <li><b>Tahap pertumbuhan</b> — penjualan naik cepat, <em>early adopter</em> menyukai produk, pesaing baru masuk. Strategi mempertahankan: perbaiki kualitas/fitur/style, tambah model, masuk segmen baru, perluas distribusi, alihkan iklan ke preferensi, &amp; turunkan harga untuk pembeli sensitif.</li>
+      <li><b>Tahap kedewasaan</b> — penjualan melambat (tiga subtahap: growth, stable, decaying). Strategi: <em>modifikasi pasar</em> (volume = jumlah pengguna × laju pemakaian), <em>modifikasi produk</em> (perbaikan kualitas/fitur/style), &amp; <em>modifikasi bauran pemasaran</em> (harga, distribusi, iklan, promosi, personal selling, pelayanan).</li>
+      <li><b>Tahap penurunan</b> — penjualan menurun drastis (teknologi, selera, persaingan). Strategi: tingkatkan/pertahankan investasi, kurangi selektif, <span class="term">harvesting</span> (tuai kas), atau ubah arah usaha cepat.</li>
+    </ul>
+
+    <div class="numh">4 · Kritik atas Konsep PLC</div>
+    <p>Pola daur hidup sangat beragam bentuk &amp; durasinya sehingga sulit digeneralisasi; pemasar jarang tahu di tahap mana produknya berada. Kritik lain: arah penjualan sebenarnya hasil <b>strategi pemasaran</b>, bukan takdir PLC — dengan keterampilan tinggi, produk bisa bertumbuh kembali, bukan menurun.</p>
+
+    <div class="numh">5 · Evolusi Pasar</div>
+    <p>PLC hanya memandang produk/merek, bukan pasar secara keseluruhan. Pasar juga berevolusi: <b>emergence</b> (kemunculan — pasar laten dengan kebutuhan belum terpenuhi) → <b>growth</b> (pertumbuhan) → <b>maturity</b> (kedewasaan — fragmentasi lalu konsolidasi pasar) → <b>decline</b> (penurunan).</p>
+
+    <div class="numh">6 · Strategi Diferensiasi Produk</div>
+    <p>Perusahaan terus membedakan penawaran (layanan, garansi, imbalan loyalitas). Karena keunggulan bisa ditiru cepat, produk harus memberi <b>nilai tambah yang signifikan</b> agar memenangkan perhatian konsumen yang sensitif harga.</p>
+
+    <div class="numh">7 · Bagaimana Melakukan Diferensiasi?</div>
+    <p><b>Arti penting:</b> proses tiga langkah — (1) mendefinisikan model nilai pelanggan; (2) membangun hierarki nilai pelanggan dalam empat kelompok: <em>basic, expected, desired, unanticipated</em>; (3) memutuskan paket nilai (kombinasi item berwujud &amp; tak berwujud).</p>
+    <p><b>Metode:</b> <span class="term">diferensiasi</span> dirancang melalui <b>lima dimensi</b> — klik:</p>
+    <div class="rgrid c3" data-revealgroup>
+      <div class="rcell" data-reveal data-detail="<b>Produk</b> — bentuk, fitur, kualitas kinerja, kesesuaian kualitas (conformance), keawetan (durability), kehandalan (reliability), kemampuan diperbaiki (repairability), style, &amp; desain."><span><span class="rt">Produk</span><span class="rp">Fitur, kualitas, keawetan, style.</span></span></div>
+      <div class="rcell" data-reveal data-detail="<b>Pelayanan</b> — kemudahan pemesanan, pengiriman, instalasi, pelatihan pelanggan, konsultasi, pemeliharaan, &amp; perbaikan."><span><span class="rt">Pelayanan</span><span class="rp">Layanan pendukung produk.</span></span></div>
+      <div class="rcell" data-reveal data-detail="<b>Personel</b> — melatih pegawai agar bekerja lebih baik (mis. awak kabin Singapore Airline)."><span><span class="rt">Personel</span><span class="rp">Kualitas SDM pelayan.</span></span></div>
+      <div class="rcell" data-reveal data-detail="<b>Saluran</b> — merancang cakupan, kinerja, &amp; pengalaman jalur distribusi secara unik."><span><span class="rt">Saluran</span><span class="rp">Jalur distribusi.</span></span></div>
+      <div class="rcell" data-reveal data-detail="<b>Citra</b> — membangun citra merek yang menarik &amp; kuat (Marlboro = cowboy macho)."><span><span class="rt">Citra</span><span class="rp">Image merek.</span></span></div>
+    </div>
+    <div class="rdetail" data-revealdetail>Klik salah satu dimensi diferensiasi di atas untuk penjelasannya.</div>
+    <p style="margin-top:12px"><b>Kualitas kinerja</b> memiliki empat jenjang (rendah, rata-rata, tinggi, unggul); kinerja lebih tinggi cenderung memberi profitabilitas lebih tinggi (harga premium, pembelian ulang, WOM positif), tetapi perusahaan merancang tingkat yang <em>tepat</em> bagi pasar sasaran, bukan selalu tertinggi.</p>
+  </div>
+
+  <!-- KB3 -->
+  <h2 class="section" id="kb3"><span class="dot"></span>KB 3 — Menghadapi Persaingan</h2>
+  <div class="card kb3b">
+    <span class="kb-tag kb3t">PERSAINGAN</span>
+    <p class="lead">Membangun merek kuat menuntut pemahaman pesaing yang terus bertumbuh &amp; makin intens: pesaing global, pesaing <em>online</em>, <em>store brand</em>/private label, hingga <em>brand extension</em> dari megabrand. Cara terbaik menghadapinya adalah rancangan kreatif &amp; program pemasaran yang dilaksanakan dengan baik (Kotler dkk. 2009).</p>
+
+    <div class="numh">1 · Berbagai Kekuatan Kompetitif (Porter's Five Forces)</div>
+    <p>Porter mengidentifikasi <b>lima kekuatan</b> yang menentukan ketertarikan jangka panjang sebuah pasar. Klik tiap kekuatan:</p>
+    <div class="porter" data-revealgroup>
+      <div class="pf top" data-reveal data-detail="<b>Ancaman pendatang baru (threat of new entrants)</b> — segmen paling menarik jika entry barrier tinggi &amp; exit barrier rendah. Kondisi terburuk: entry barrier rendah + exit barrier tinggi → masuk mudah saat baik, sulit keluar saat buruk (mis. penerbangan)."><b>Potential Entrants</b><span>pendatang baru</span></div>
+      <div class="pf left" data-reveal data-detail="<b>Kekuatan tawar pemasok (suppliers' bargaining power)</b> — segmen tak menarik bila pemasok bisa menaikkan harga/mengurangi pasokan (pemasok terkonsentrasi, substitusi terbatas, input penting, biaya beralih tinggi). Pertahanan: hubungan jangka panjang atau sumber pasokan rangkap."><b>Suppliers</b><span>pemasok</span></div>
+      <div class="pf center" data-reveal data-detail="<b>Pesaing industri (industry competitors / rivalry)</b> — segmen tak menarik bila banyak pesaing kuat/agresif, pasar stabil/menurun, biaya tetap &amp; exit barrier tinggi → perang harga &amp; iklan (mis. pasar telepon seluler)."><b>Industry Competitors</b><span>rivalry antar-perusahaan</span></div>
+      <div class="pf right" data-reveal data-detail="<b>Kekuatan tawar pembeli (buyers' bargaining power)</b> — segmen tak menarik bila pembeli kuat: terkonsentrasi, produk jadi bagian besar biaya pembeli, produk tak terdiferensiasi, switching cost rendah, peka harga, atau bisa integrasi ke hulu. Pertahanan: tawaran superior yang sulit ditolak."><b>Buyers</b><span>pembeli</span></div>
+      <div class="pf bottom" data-reveal data-detail="<b>Ancaman produk substitusi (threat of substitutes)</b> — produk pengganti membatasi harga &amp; keuntungan; bila teknologi pengganti meningkat, harga &amp; laba jatuh (mis. penerbangan low-cost menggantikan bus/kereta)."><b>Substitutes</b><span>produk pengganti</span></div>
+    </div>
+    <div class="rdetail" data-revealdetail>Klik salah satu dari lima kekuatan di atas untuk penjelasannya.</div>
+
+    <div class="numh">2 · Mengidentifikasi Pesaing</div>
+    <p>Pesaing potensial lebih banyak daripada yang terlihat. Hindari <span class="term">marketing myopia</span> — memandang persaingan terlalu sempit (Coca-Cola fokus <em>soft drink</em> hingga lengah terhadap <em>coffee bars</em> &amp; jus buah). Persaingan dipahami dari sudut <b>industri</b> (kelompok penjual produk pengganti mirip, digolongkan berdasar jumlah penjual, diferensiasi, mobilitas, struktur biaya, integrasi, globalisasi) &amp; <b>pasar</b> (perusahaan yang memuaskan kebutuhan pelanggan yang sama).</p>
+
+    <div class="numh">3 · Menganalisis Pesaing</div>
+    <ul class="let">
+      <li><b>Strategi</b> — pesaing berstrategi mirip membentuk <span class="term">strategic group</span>; masuk ke sebuah group langsung menjadikan anggotanya pesaing.</li>
+      <li><b>Objektif</b> — ketahui apa yang dicari pesaing &amp; pendorong perilakunya (ukuran, sejarah, manajemen, situasi finansial; apakah induk mengejar pertumbuhan atau laba).</li>
+      <li><b>Keunggulan &amp; kelemahan</b> — pantau <em>share of market</em> (pangsa pasar), <em>share of mind</em> (merek pertama yang teringat), &amp; <em>share of heart</em> (merek yang paling disukai); gunakan <span class="term">benchmark</span> terhadap perusahaan terbaik.</li>
+      <li><b>Memilih pesaing</b> — pusatkan serangan: <em>strong vs weak</em>, <em>close vs distant</em>, &amp; <em>good vs bad</em> (serang pesaing "buruk" yang mengganggu keseimbangan industri).</li>
+      <li><b>Memilih pelanggan</b> — evaluasi basis pelanggan; pikirkan siapa yang mungkin pergi &amp; siapa yang bernilai vs merugikan.</li>
+    </ul>
+
+    <div class="numh">4 · Strategi Kompetitif dari Pemimpin Pasar</div>
+    <p>Perusahaan dikelompokkan menjadi <span class="term">market leader, challenger, follower, &amp; nicher</span>. Pemimpin pasar menghadapi tiga medan: <b>(a) memperluas pasar total</b> (cari pelanggan baru via <em>market penetration/new-market segment/geographical expansion strategy</em>, atau dorong konsumsi lebih banyak); <b>(b) mempertahankan pangsa</b> lewat <em>continuous innovation</em> &amp; strategi defensif — menjadi <em>market-driving company</em> yang mengatur pasar, bukan sekadar <em>market-driven</em>; <b>(c) memperluas pangsa</b> dengan hati-hati (ada <span class="term">optimal market share</span>; di atasnya profitabilitas justru turun). Tiga jenis pemasaran: <em>responsive, anticipative, &amp; creative marketing</em>.</p>
+
+    <div class="numh">5 · Strategi Kompetitif Lain</div>
+    <p>Perusahaan peringkat berikutnya (<em>runner-up</em>) bisa menjadi <b>penantang</b> atau <b>pengikut</b> pasar.</p>
+    <ul class="let">
+      <li><b>Strategi penantang pasar (challenger)</b> — definisikan objektif strategik (umumnya menaikkan pangsa) &amp; tentukan sasaran: pemimpin pasar (risiko besar), perusahaan berkinerja buruk, atau perusahaan kecil/lokal.</li>
+      <li><b>Strategi pengikut pasar (follower)</b> — pelihara pelanggan yang ada dengan keunggulan berbeda; empat tipe (klik):
+        <div class="rgrid c2" data-revealgroup style="margin-top:8px">
+          <div class="rcell" data-reveal data-detail="<b>Counterfeiter</b> (pemalsu) — membuat tiruan produk/kemasan mirip pemimpin &amp; menjualnya di pasar gelap (black market) atau penyalur reputasi buruk. Ilegal."><span><span class="rt">Counterfeiter</span><span class="rp">Pemalsu produk.</span></span></div>
+          <div class="rcell" data-reveal data-detail="<b>Cloner</b> (kloner) — menyamai produk, merek, kemasan, &amp; bauran yang mirip pemimpin; parasit yang berharap bertahan dari investasi pemimpin."><span><span class="rt">Cloner</span><span class="rp">Meniru nyaris identik.</span></span></div>
+          <div class="rcell" data-reveal data-detail="<b>Imitator</b> — meniru beberapa hal tetapi tetap mempertahankan diferensiasi (kemasan, iklan, harga, wilayah); pemimpin biasanya tak terlalu terganggu."><span><span class="rt">Imitator</span><span class="rp">Meniru sebagian, tetap berbeda.</span></span></div>
+          <div class="rcell" data-reveal data-detail="<b>Adapter</b> (adaptor) — mengadaptasi/memperbaiki produk pemimpin &amp; menjual ke pasar sasaran berbeda; inovatif &amp; bisa menjadi penantang di masa depan."><span><span class="rt">Adapter</span><span class="rp">Mengadaptasi ke pasar lain.</span></span></div>
+        </div>
+        <div class="rdetail" data-revealdetail>Klik salah satu tipe pengikut pasar di atas untuk penjelasannya.</div>
+      </li>
+      <li><b>Strategi ceruk pasar (market nicher)</b> — menjadi pemimpin di pasar kecil yang tak menarik bagi pemimpin besar; pangsa kecil tetapi profitabilitas tinggi (produk bernilai tinggi, harga premium, biaya rendah, budaya &amp; visi kuat).</li>
+    </ul>
+  </div>
+
+  <h2 class="section" id="glosarium"><span class="dot"></span>Glosarium Kilat</h2>
+  <div class="card">
+    <dl class="glossary">
+      <dt>Brand equity</dt><dd>Nilai tambah merek pada produk; tercermin pada pikiran, perasaan, &amp; perilaku konsumen.</dd>
+      <dt>Brand familiarity</dt><dd>Derajat pengenalan merek: rejection → nonrecognition → recognition → preference → insistence.</dd>
+      <dt>Brand/line/category extension</dt><dd>Perluasan merek ke produk/kategori baru.</dd>
+      <dt>Kanibalisme</dt><dd>Perluasan merek mengambil penjualan dari parent brand-nya sendiri.</dd>
+      <dt>STP</dt><dd>Segmentation, Targeting, Positioning.</dd>
+      <dt>POD / POP</dt><dd>Points-of-Difference (keunggulan unik) / Points-of-Parity (titik kesamaan).</dd>
+      <dt>PLC</dt><dd>Product Life Cycle: introduction, growth, maturity, decline.</dd>
+      <dt>First mover</dt><dd>Pionir/perintis pasar yang pertama masuk.</dd>
+      <dt>Porter's Five Forces</dt><dd>Competitors, entrants, substitutes, buyers, suppliers.</dd>
+      <dt>Share of market/mind/heart</dt><dd>Pangsa pasar / merek pertama teringat / merek paling disukai.</dd>
+      <dt>Market leader/challenger/follower/nicher</dt><dd>Pemimpin, penantang, pengikut, &amp; pemain ceruk pasar.</dd>
+    </dl>
+  </div>
+</div>
+
+<footer>
+  <b>EKMA5206 — Manajemen Pemasaran</b> · Modul 3: Ekuitas Merek, Positioning dan Persaingan (Edisi 3) · Penulis: Dr. Ir. FX. Bambang Wiharto, M.M.<br>
+  Bahan belajar ringkas — disusun ulang mengikuti alur modul (hal. 3.1–3.58) untuk persiapan ujian.
+  <div class="refs"><b>Rujukan utama modul:</b> Kotler &amp; Keller (2009) <i>Marketing Management</i> 13e · Erdem &amp; Swait (1998) <i>Brand Equity as a Signaling Phenomenon</i> · Perreault, Cannon &amp; McCarthy (2009) · Solomon, Marshall &amp; Stuart (2012) · Mullins &amp; Walker (2010) · Porter (1985) <i>Competitive Advantage</i>.</div>
+</footer>
+
+<script>
+(function(){
+  var pb=document.getElementById('progress');
+  function onScroll(){var h=document.documentElement;var sc=h.scrollTop||document.body.scrollTop;var max=(h.scrollHeight-h.clientHeight)||1;pb.style.width=(sc/max*100)+'%';}
+  document.addEventListener('scroll',onScroll,{passive:true});onScroll();
+  var list=document.getElementById('conceptList');
+  var items=[].slice.call(list.querySelectorAll('li'));var boxes=items.map(function(li){return li.querySelector('input');});
+  document.getElementById('totalCount').textContent=items.length;var doneEl=document.getElementById('doneCount');var KEY='ekma5206_m3_concepts_v1';
+  function load(){try{var a=JSON.parse(localStorage.getItem(KEY)||'[]');boxes.forEach(function(b,i){if(a[i])b.checked=true;});}catch(e){}}
+  function save(){try{localStorage.setItem(KEY,JSON.stringify(boxes.map(function(b){return b.checked?1:0;})));}catch(e){}}
+  function refresh(){var n=0;items.forEach(function(li,i){if(boxes[i].checked){li.classList.add('done');n++;}else li.classList.remove('done');});doneEl.textContent=n;}
+  load();refresh();boxes.forEach(function(b){b.addEventListener('change',function(){refresh();save();});});
+  document.getElementById('resetBtn').addEventListener('click',function(){boxes.forEach(function(b){b.checked=false;});refresh();save();});
+
+  [].slice.call(document.querySelectorAll('[data-revealgroup]')).forEach(function(g){
+    var det=g.querySelector('[data-revealdetail]');
+    if(!det){var sib=g.nextElementSibling;if(sib&&sib.hasAttribute&&sib.hasAttribute('data-revealdetail'))det=sib;}
+    var cells=[].slice.call(g.querySelectorAll('[data-reveal]'));
+    cells.forEach(function(c){c.addEventListener('click',function(){cells.forEach(function(x){x.classList.remove('active');});c.classList.add('active');if(det)det.innerHTML=c.getAttribute('data-detail');});});
+  });
+
+  (function(){
+    var ROWH=46,NODE_H=32,PAD=13,GAP=52;
+    var COL={root:'#0f5e8f',kb1:'#1a86c7',kb2:'#e08a1e',kb3:'#2a9d6f'};
+    var mc=document.createElement('canvas').getContext('2d');mc.font='700 13px -apple-system,Segoe UI,Roboto,sans-serif';
+    function tw(t){return Math.ceil(mc.measureText(t).width);}
+    function esc(t){return t.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');}
+    function rgba(hex,a){var h=hex.replace('#','');return 'rgba('+parseInt(h.substr(0,2),16)+','+parseInt(h.substr(2,2),16)+','+parseInt(h.substr(4,2),16)+','+a+')';}
+    var DATA={label:'MODUL 3 — Ekuitas Merek, Positioning & Persaingan',color:COL.root,children:[
+      {label:'KB1 · Membangun Ekuitas Merek',color:COL.kb1,children:[
+        {label:'Apa itu merek & branding'},{label:'5 derajat brand familiarity'},{label:'6 makna merek'},
+        {label:'Ekuitas merek',children:[{label:'Customer-based brand equity'},{label:'Keunggulan bersaing'}]},
+        {label:'Mengukur & mengelola ekuitas'},{label:'Revitalisasi merek'},
+        {label:'Strategi & perluasan merek'},{label:'Keputusan merek & nama merek'},
+        {label:'Portofolio merek'},{label:'Ekuitas pelanggan'}
+      ]},
+      {label:'KB2 · Positioning',color:COL.kb2,children:[
+        {label:'STP & positioning'},
+        {label:'POD & POP',children:[{label:'Category POP'},{label:'Competitive POP'}]},
+        {label:'Keanggotaan kategori & diferensiasi'},
+        {label:'Strategi per tahap PLC',children:[{label:'Introduksi (first mover)'},{label:'Pertumbuhan'},{label:'Kedewasaan'},{label:'Penurunan (harvesting)'}]},
+        {label:'Kritik PLC & evolusi pasar'},
+        {label:'Diferensiasi (5 dimensi)'}
+      ]},
+      {label:'KB3 · Menghadapi Persaingan',color:COL.kb3,children:[
+        {label:'Porter Five Forces'},{label:'Mengidentifikasi pesaing'},
+        {label:'Menganalisis pesaing',children:[{label:'Strategic group'},{label:'Share of market/mind/heart'},{label:'Memilih pesaing'}]},
+        {label:'Strategi pemimpin pasar'},
+        {label:'Penantang & pengikut pasar',children:[{label:'Counterfeiter/cloner'},{label:'Imitator/adapter'},{label:'Ceruk pasar'}]}
+      ]}
+    ]};
+    var idc=0;(function w(n,c){n.id='n'+(idc++);n.color=n.color||c;(n.children||[]).forEach(function(k){w(k,n.color);});})(DATA,COL.root);
+    (function w(n,d){if(d>=2&&n.children&&n.children.length)n.collapsed=true;(n.children||[]).forEach(function(k){w(k,d+1);});})(DATA,0);
+    var host=document.getElementById('mindmap');
+    function render(){
+      var colW=[];(function w(n,d){var width=tw(n.label)+PAD*2+((n.children&&n.children.length)?20:0);colW[d]=Math.max(colW[d]||0,width);if(!n.collapsed)(n.children||[]).forEach(function(k){w(k,d+1);});})(DATA,0);
+      var colX=[],acc=14;for(var d=0;d<colW.length;d++){colX[d]=acc;acc+=colW[d]+GAP;}
+      var row={v:0};
+      (function lay(n,d){if(!n.children||!n.children.length||n.collapsed){n._y=row.v*ROWH+ROWH/2+8;row.v++;return;}var f,l;n.children.forEach(function(k,i){lay(k,d+1);if(i===0)f=k._y;l=k._y;});n._y=(f+l)/2;})(DATA,0);
+      var totalW=acc,totalH=row.v*ROWH+24;var nodes=[],links=[];
+      (function col(n,d,p){n._x=colX[d];n._w=tw(n.label)+PAD*2+((n.children&&n.children.length)?20:0);nodes.push({n:n,d:d});if(p)links.push([p,n]);if(!n.collapsed)(n.children||[]).forEach(function(k){col(k,d+1,n);});})(DATA,0,null);
+      var s='<svg width="'+totalW+'" height="'+totalH+'" viewBox="0 0 '+totalW+' '+totalH+'" xmlns="http://www.w3.org/2000/svg">';
+      links.forEach(function(pr){var a=pr[0],b=pr[1],x1=a._x+a._w,y1=a._y,x2=b._x,y2=b._y,mx=(x1+x2)/2;s+='<path d="M'+x1+' '+y1+' C'+mx+' '+y1+' '+mx+' '+y2+' '+x2+' '+y2+'" fill="none" stroke="'+rgba(b.color,.5)+'" stroke-width="2"/>';});
+      nodes.forEach(function(o){var n=o.n,x=n._x,y=n._y-NODE_H/2,w=n._w,hk=n.children&&n.children.length;var fill=o.d===0?n.color:(o.d===1?rgba(n.color,.12):'#fff');var tf=o.d===0?'#fff':'#1c2733';
+        s+='<g data-id="'+n.id+'" style="cursor:'+(hk?'pointer':'default')+'"><rect x="'+x+'" y="'+y+'" rx="9" width="'+w+'" height="'+NODE_H+'" fill="'+fill+'" stroke="'+n.color+'" stroke-width="'+(o.d===0?0:1.6)+'"/><text x="'+(x+PAD)+'" y="'+(n._y+4)+'" font-size="13" font-weight="'+(o.d<=1?'700':'500')+'" fill="'+tf+'" font-family="-apple-system,Segoe UI,Roboto,sans-serif">'+esc(n.label)+'</text>';
+        if(hk){var cx=x+w-12,cy=n._y;s+='<circle cx="'+cx+'" cy="'+cy+'" r="8.5" fill="'+n.color+'"/><text x="'+cx+'" y="'+(cy+4.5)+'" font-size="13" font-weight="700" fill="#fff" text-anchor="middle" font-family="sans-serif">'+(n.collapsed?'+':'\u2013')+'</text>';}s+='</g>';});
+      s+='</svg>';host.innerHTML=s;
+    }
+    host.addEventListener('click',function(e){var g=e.target.closest('g[data-id]');if(!g)return;var id=g.getAttribute('data-id');(function f(n){if(n.id===id){if(n.children&&n.children.length)n.collapsed=!n.collapsed;return true;}return (n.children||[]).some(f);})(DATA);render();});
+    document.getElementById('mmExpand').addEventListener('click',function(){(function w(n){if(n.children)n.collapsed=false;(n.children||[]).forEach(w);})(DATA);render();});
+    document.getElementById('mmCollapse').addEventListener('click',function(){(function w(n,d){if(d>=1&&n.children&&n.children.length)n.collapsed=true;(n.children||[]).forEach(function(k){w(k,d+1);});})(DATA,0);render();});
+    render();
+  })();
+
+  window.addEventListener('load',function(){setTimeout(function(){if(window.MathJax&&window.MathJax.typesetPromise)window.MathJax.typesetPromise();},400);});
+  var chartsBuilt=false;
+  function buildCharts(){
+    if(chartsBuilt||!window.Chart)return;chartsBuilt=true;
+    var p=document.getElementById('plcChart');
+    if(p)new Chart(p,{type:'line',
+      data:{labels:['','Introduction','','Growth','','Maturity','','','Decline',''],
+        datasets:[{data:[6,16,34,58,78,90,92,86,66,40],borderColor:'#e08a1e',backgroundColor:'rgba(224,138,30,.12)',fill:true,tension:.45,pointRadius:0}]},
+      options:{maintainAspectRatio:false,
+        plugins:{legend:{display:false},tooltip:{enabled:false}},
+        scales:{y:{title:{display:true,text:'Penjualan Produk'},ticks:{display:false},grid:{display:false}},
+          x:{title:{display:true,text:'Waktu →'},grid:{display:false}}}}});
+  }
+  if(document.readyState!=='loading')buildCharts();else document.addEventListener('DOMContentLoaded',buildCharts);
+  window.addEventListener('load',buildCharts);
+})();
+</script>
+</body>
+</html>

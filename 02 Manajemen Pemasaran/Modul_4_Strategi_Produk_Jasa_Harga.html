@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Modul 4 — Strategi Pengembangan Produk dan Jasa serta Strategi Harga | EKMA5206</title>
+<script>window.MathJax={tex:{inlineMath:[['$','$']],displayMath:[['\\[','\\]']]},svg:{fontCache:'global'},startup:{typeset:true}};</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js" id="MathJax-script" async></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+<style>
+  :root{--bg:#f4f6f9;--panel:#fff;--ink:#1c2733;--muted:#5c6b7a;--line:#e4e9f0;--brand:#1a86c7;--brand-dark:#0f5e8f;--brand-soft:#e7f3fb;--kb1:#1a86c7;--kb2:#e08a1e;--kb3:#2a9d6f;--radius:14px;--shadow:0 1px 2px rgba(16,42,67,.06),0 6px 20px rgba(16,42,67,.06);--maxw:900px}
+  *{box-sizing:border-box}html{scroll-behavior:smooth}
+  body{margin:0;background:var(--bg);color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;line-height:1.72;-webkit-font-smoothing:antialiased}
+  #progress{position:fixed;top:0;left:0;height:4px;width:0;background:linear-gradient(90deg,var(--brand),#53c0ec);z-index:200;transition:width .1s}
+  header.top{position:sticky;top:0;z-index:100;background:rgba(255,255,255,.92);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+  .top-in{max-width:var(--maxw);margin:0 auto;padding:10px 20px;display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+  .badge{background:var(--brand);color:#fff;font-weight:700;font-size:.72rem;letter-spacing:.5px;padding:4px 10px;border-radius:999px;white-space:nowrap}
+  .top-title{font-size:.9rem;font-weight:600;color:var(--muted)}
+  nav.jump{margin-left:auto;display:flex;gap:4px;flex-wrap:wrap}
+  nav.jump a{font-size:.78rem;color:var(--muted);text-decoration:none;padding:5px 10px;border-radius:8px}
+  nav.jump a:hover{background:var(--brand-soft);color:var(--brand-dark)}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 20px 90px}
+  .hero{margin-top:26px;padding:30px 28px;border-radius:var(--radius);color:#fff;background:linear-gradient(135deg,#0f5e8f 0%,#1a86c7 60%,#2fa4df 100%);box-shadow:var(--shadow);position:relative;overflow:hidden}
+  .hero::after{content:"04";position:absolute;right:18px;bottom:-26px;font-size:150px;font-weight:800;opacity:.12;line-height:1}
+  .hero .eyebrow{font-size:.78rem;letter-spacing:1.5px;text-transform:uppercase;opacity:.9;font-weight:600}
+  .hero h1{margin:.3em 0 .25em;font-size:1.58rem;line-height:1.25;max-width:90%}
+  .hero .meta{display:flex;gap:18px;flex-wrap:wrap;font-size:.84rem;opacity:.95;margin-top:10px}
+  h2.section{font-size:1.3rem;margin:48px 0 4px;display:flex;align-items:center;gap:10px;scroll-margin-top:70px}
+  h2.section .dot{width:10px;height:22px;border-radius:4px;background:var(--brand)}
+  .section-sub{color:var(--muted);font-size:.9rem;margin:0 0 18px}
+  .card{background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);padding:22px 24px;margin:16px 0;--dot:var(--brand)}
+  .concepts{list-style:none;margin:0;padding:0;display:grid;gap:10px}
+  .concepts li{display:flex;gap:12px;align-items:flex-start;padding:12px 14px;border:1px solid var(--line);border-radius:10px;background:#fcfdff;transition:.15s}
+  .concepts li:hover{border-color:#cfe3f2}
+  .concepts input{margin-top:4px;width:18px;height:18px;accent-color:var(--brand);flex:none;cursor:pointer}
+  .concepts .ct{font-weight:600}.concepts .cd{display:block;font-weight:400;color:var(--muted);font-size:.86rem;margin-top:2px}
+  .concepts li.done{background:var(--brand-soft);border-color:#bfe0f3}.concepts li.done .ct{text-decoration:line-through;opacity:.65}
+  .cl-head{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-bottom:6px}
+  .cl-head .count{font-size:.82rem;color:var(--muted);background:var(--brand-soft);padding:3px 10px;border-radius:999px;font-weight:600}
+  .btn-reset{font-size:.78rem;border:1px solid var(--line);background:#fff;color:var(--muted);padding:5px 12px;border-radius:8px;cursor:pointer}.btn-reset:hover{background:#f6f8fb}
+  .mm-toolbar{display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin-bottom:10px}
+  .mm-btn{font-size:.78rem;border:1px solid var(--line);background:#fff;padding:6px 13px;border-radius:8px;cursor:pointer;color:var(--brand-dark);font-weight:600}.mm-btn:hover{background:var(--brand-soft)}
+  .mm-hint{font-size:.76rem;color:var(--muted)}
+  .mindmap-host{height:560px;overflow:auto;border:1px solid var(--line);border-radius:10px;background:#fcfdff}.mindmap-host svg{display:block}
+  .kb-tag{display:inline-flex;align-items:center;gap:8px;font-size:.78rem;font-weight:700;letter-spacing:.3px;color:#fff;padding:5px 12px;border-radius:999px;margin-bottom:6px}
+  .kb1t{background:var(--kb1)}.kb2t{background:var(--kb2)}.kb3t{background:var(--kb3)}
+  .kb1b{--dot:var(--kb1)}.kb2b{--dot:var(--kb2)}.kb3b{--dot:var(--kb3)}
+  .lead{font-size:1.02rem}.term{font-weight:700;color:var(--dot)}.en{font-style:italic;color:var(--muted);font-weight:500}
+  .abc{display:flex;align-items:center;gap:10px;margin:28px 0 10px;padding-bottom:6px;border-bottom:2px solid currentColor;border-bottom-color:color-mix(in srgb,var(--dot) 18%,#fff)}
+  .abc .ltr{background:var(--dot);color:#fff;font-weight:800;min-width:30px;height:30px;padding:0 7px;border-radius:8px;display:grid;place-items:center;flex:none}
+  .abc h4{margin:0;font-size:1.08rem;color:var(--dot)}
+  .numh{font-weight:700;color:var(--dot);margin:22px 0 4px;font-size:1rem}
+  .leth{font-weight:800;color:var(--dot);margin:20px 0 6px;font-size:.98rem;border-left:3px solid var(--dot);padding-left:10px}
+  .subn{margin:12px 0 2px}
+  ol.book{margin:12px 0;padding-left:28px}ol.book>li{margin:10px 0;padding-left:6px}ol.book>li::marker{font-weight:700;color:var(--dot)}
+  ul.exp{list-style:none;margin:12px 0;padding:0;display:grid;gap:10px}ul.exp>li{position:relative;padding-left:20px}
+  ul.exp>li::before{content:"";position:absolute;left:0;top:11px;width:8px;height:8px;border-radius:2px;background:var(--dot)}
+  ol.book b,ul.exp b{color:var(--ink)}
+  ul.let{list-style:lower-alpha;margin:10px 0;padding-left:28px}ul.let>li{margin:8px 0;padding-left:4px}ul.let>li::marker{color:var(--dot);font-weight:700}
+  .flow{border-left:4px solid var(--dot);background:color-mix(in srgb,var(--dot) 9%,#fff);padding:11px 15px;border-radius:0 10px 10px 0;margin:18px 0;font-size:.9rem}
+  .flow::before{content:"🔗 Benang merah — ";font-weight:700;color:var(--dot)}.flow b{color:var(--dot)}
+  table.mini{width:100%;border-collapse:collapse;margin:14px 0;font-size:.86rem}
+  table.mini th,table.mini td{border:1px solid var(--line);padding:9px 11px;text-align:left;vertical-align:top}
+  table.mini th{background:color-mix(in srgb,var(--dot) 12%,#fff);color:var(--dot);font-weight:700}
+  table.mini tr:nth-child(even) td{background:#fafcfe}
+  .eqbox{background:#fbfcfe;border:1px solid var(--line);border-radius:10px;padding:14px 16px;margin:14px 0;text-align:center;overflow-x:auto}.eqbox .cap{font-size:.78rem;color:var(--muted);margin-top:6px}
+  .chartbox{background:#fff;border:1px solid var(--line);border-radius:12px;padding:14px;margin:16px 0}.chartbox .cw{position:relative;height:320px}.chartbox .cap{font-size:.8rem;color:var(--muted);text-align:center;margin-top:8px}
+  .rgrid{display:grid;gap:8px;margin:14px 0}.rgrid.c3{grid-template-columns:repeat(3,1fr)}.rgrid.c2{grid-template-columns:repeat(2,1fr)}
+  .rcell{border:1px solid var(--line);border-radius:10px;padding:11px 13px;cursor:pointer;background:#fff;transition:.15s;display:flex;gap:10px;align-items:flex-start}
+  .rcell:hover{border-color:var(--dot);box-shadow:var(--shadow);transform:translateY(-2px)}
+  .rcell.active{border-color:var(--dot);background:color-mix(in srgb,var(--dot) 8%,#fff)}
+  .rcell .stepnum{background:var(--dot);color:#fff;font-weight:700;min-width:24px;height:24px;border-radius:7px;display:grid;place-items:center;flex:none;font-size:.82rem}
+  .rcell .rt{font-weight:700;font-size:.9rem;color:var(--dot);display:block}.rcell .rp{font-size:.78rem;color:var(--muted);display:block;margin-top:2px}
+  .rdetail{font-size:.88rem;border-left:4px solid var(--dot);background:color-mix(in srgb,var(--dot) 8%,#fff);border-radius:0 10px 10px 0;padding:12px 15px;margin-top:6px}
+  .ladder{display:grid;gap:6px;margin:14px 0}
+  .lrung{cursor:pointer;color:#fff;border-radius:8px;padding:10px 14px;font-weight:600;font-size:.86rem;transition:.15s;display:flex;justify-content:space-between;align-items:center}
+  .lrung:hover{filter:brightness(1.07)}.lrung .ln{font-size:.72rem;opacity:.85}
+  /* concentric product levels */
+  .levels-svg{display:block;margin:10px auto;max-width:340px}
+  .pill-row{display:flex;gap:8px;flex-wrap:wrap;margin:10px 0}
+  .pill{font-size:.8rem;background:#eef3f8;color:#36506a;border:1px solid #e0e8f0;padding:4px 11px;border-radius:999px;font-weight:600}
+  .glossary dt{font-weight:700;color:var(--brand-dark);margin-top:10px}.glossary dd{margin:0 0 2px;color:var(--muted);font-size:.9rem}
+  footer{max-width:var(--maxw);margin:0 auto;padding:30px 20px 60px;color:var(--muted);font-size:.82rem;border-top:1px solid var(--line)}
+  footer .refs{margin-top:10px;font-size:.78rem;line-height:1.6}
+  .offline-note{font-size:.76rem;color:var(--muted);background:#fff8e6;border:1px solid #f0e2b8;border-radius:8px;padding:8px 12px;margin:10px 0}
+  @media(max-width:640px){.hero h1{font-size:1.3rem;max-width:100%}.hero::after{font-size:110px}nav.jump{display:none}.rgrid.c3,.rgrid.c2{grid-template-columns:1fr}.chartbox .cw{height:280px}.mindmap-host{height:440px}}
+  @media print{#progress,header.top,.btn-reset,.mm-toolbar{display:none}body{background:#fff}.card{box-shadow:none}}
+</style>
+</head>
+<body>
+<div id="progress"></div>
+<header class="top"><div class="top-in"><span class="badge">MODUL 4</span><a href="index.html" title="Kembali ke daftar modul" style="text-decoration:none;display:inline-flex;align-items:center;gap:7px;background:var(--brand);color:#fff;font-weight:700;font-size:.8rem;padding:7px 15px;border-radius:999px;white-space:nowrap;box-shadow:0 2px 6px rgba(16,42,67,.22);line-height:1"><span style="font-size:1rem;line-height:1">&#8962;</span> Daftar Modul</a><span class="top-title">Manajemen Pemasaran · EKMA5206</span>
+  <nav class="jump"><a href="#konsep">Konsep Penting</a><a href="#peta">Peta Konsep</a><a href="#kb1">KB 1</a><a href="#kb2">KB 2</a><a href="#kb3">KB 3</a><a href="#glosarium">Glosarium</a></nav></div></header>
+<div class="wrap">
+  <section class="hero"><div class="eyebrow">Buku Materi Pokok · EKMA5206 · 3 SKS</div>
+    <h1>Strategi Pengembangan Produk dan Jasa, serta Strategi Harga</h1>
+    <div class="meta"><span>⏱️ Estimasi belajar <b>±35–40 menit</b></span><span>📚 <b>3</b> Kegiatan Belajar</span><span>✍️ Dr. Ir. FX. Bambang Wiharto, M.M.</span></div></section>
+  <p class="section-sub" style="margin-top:22px">Ringkasan mengikuti alur heading buku (A/1/a) dengan kotak <b>🔗 Benang merah</b>, penjelasan tiap poin, dan istilah asli (product mix, SERVQUAL, price elasticity) + terjemahan.</p>
+  <p class="offline-note">ℹ️ Peta konsep &amp; elemen interaktif berjalan tanpa internet. Grafik &amp; persamaan memuat pustaka dari internet saat pertama dibuka; teks tetap terbaca offline.</p>
+
+  <h2 class="section" id="konsep"><span class="dot"></span>Konsep Penting yang Harus Dikuasai</h2>
+  <p class="section-sub">Istilah inti, urut sesuai buku. Centang sebagai penanda belajar (tersimpan otomatis).</p>
+  <div class="card"><div class="cl-head"><span class="count"><span id="doneCount">0</span>/<span id="totalCount">0</span> dikuasai</span><button class="btn-reset" id="resetBtn">Reset centang</button></div>
+    <ul class="concepts" id="conceptList">
+      <li><input type="checkbox"><span><span class="ct">5 tingkatan produk</span><span class="cd">Core, basic, expected, augmented, potential.</span></span></li>
+      <li><input type="checkbox"><span><span class="ct">Klasifikasi barang konsumsi</span><span class="cd">Convenience, shopping, specialty, unsought.</span></span></li>
+      <li><input type="checkbox"><span><span class="ct">Klasifikasi barang industri</span><span class="cd">Materials &amp; parts, capital items, supplies &amp; services.</span></span></li>
+      <li><input type="checkbox"><span><span class="ct">Hierarki produk (6 jenjang)</span><span class="cd">Need family → ... → item.</span></span></li>
+      <li><input type="checkbox"><span><span class="ct">Product mix (4 dimensi)</span><span class="cd">Width, length, depth, consistency.</span></span></li>
+      <li><input type="checkbox"><span><span class="ct">Line stretching &amp; filling</span><span class="cd">Down/up/two-way stretch; line filling.</span></span></li>
+      <li><input type="checkbox"><span><span class="ct">Product-mix pricing</span><span class="cd">Line, optional, captive, two-part, by-product, bundling.</span></span></li>
+      <li><input type="checkbox"><span><span class="ct">4 karakteristik jasa</span><span class="cd">Intangibility, inseparability, variability, perishability.</span></span></li>
+      <li><input type="checkbox"><span><span class="ct">Service encounter &amp; servicescape</span><span class="cd">Moment of truth; bukti fisik jasa.</span></span></li>
+      <li><input type="checkbox"><span><span class="ct">SERVQUAL (5 dimensi) &amp; Gap model</span><span class="cd">Tangibles, reliability, responsiveness, assurance, emphaty.</span></span></li>
+      <li><input type="checkbox"><span><span class="ct">7P &amp; 3 jenis pemasaran jasa</span><span class="cd">+People, physical evidence, process; eksternal/internal/interaktif.</span></span></li>
+      <li><input type="checkbox"><span><span class="ct">Psikologi harga</span><span class="cd">Reference price, price-quality inference, price ending.</span></span></li>
+      <li><input type="checkbox"><span><span class="ct">6 langkah penentuan harga</span><span class="cd">Objektif → permintaan → biaya → pesaing → metode → harga akhir.</span></span></li>
+      <li><input type="checkbox"><span><span class="ct">Price elasticity &amp; ABC/target costing</span><span class="cd">Elastisitas; activity-based &amp; target costing.</span></span></li>
+      <li><input type="checkbox"><span><span class="ct">6 metode &amp; adaptasi harga</span><span class="cd">Markup...auction; geographical, diskon, promosi, differentiated.</span></span></li>
+    </ul>
+  </div>
+
+  <h2 class="section" id="peta"><span class="dot"></span>Peta Konsep (Mind Map)</h2>
+  <p class="section-sub">Struktur lengkap modul mengikuti outline buku. Klik +/− pada simpul untuk buka/tutup cabang.</p>
+  <div class="card"><div class="mm-toolbar"><button class="mm-btn" id="mmExpand">Perluas semua</button><button class="mm-btn" id="mmCollapse">Ciutkan</button><span class="mm-hint">Gulir di dalam kotak untuk menggeser</span></div><div class="mindmap-host" id="mindmap"></div></div>
+
+  <!-- KB1 -->
+  <h2 class="section" id="kb1"><span class="dot"></span>KB 1 — Pengertian Produk</h2>
+  <div class="card kb1b">
+    <span class="kb-tag kb1t">PRODUK</span>
+    <p class="lead"><span class="term">Produk</span> adalah elemen kunci dalam <em>market offering</em> — apa pun yang ditawarkan ke pasar untuk memenuhi kebutuhan (10 jenis: benda fisik, jasa, pengalaman, peristiwa, orang, tempat, properti, organisasi, informasi, &amp; ide).</p>
+
+    <div class="numh">1 · Konsep Produk — Lima Tingkatan</div>
+    <p>Setiap tingkatan menambah nilai pelanggan (Kotler &amp; Keller 2009). Klik tiap tingkatan:</p>
+    <svg class="levels-svg" viewBox="0 0 320 200" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <ellipse cx="160" cy="100" rx="158" ry="95" fill="#e7f3fb" stroke="#1a86c7"/>
+      <ellipse cx="160" cy="100" rx="126" ry="76" fill="#d6ebf8" stroke="#1a86c7"/>
+      <ellipse cx="160" cy="100" rx="94" ry="57" fill="#bfe0f3" stroke="#1a86c7"/>
+      <ellipse cx="160" cy="100" rx="60" ry="37" fill="#8ec9ea" stroke="#1a86c7"/>
+      <ellipse cx="160" cy="100" rx="30" ry="20" fill="#1a86c7"/>
+      <text x="160" y="104" text-anchor="middle" font-size="9" fill="#fff" font-weight="700" font-family="sans-serif">Core</text>
+    </svg>
+    <div class="rgrid" data-revealgroup>
+      <div class="rcell" data-reveal data-detail="<b>Produk inti (core benefit)</b> — jasa/manfaat dasar yang sebenarnya dibeli pelanggan (tamu hotel sebenarnya membeli 'istirahat &amp; tidur')."><span class="stepnum">1</span><span><span class="rt">Produk inti</span><span class="rp">Manfaat dasar yang dibeli.</span></span></div>
+      <div class="rcell" data-reveal data-detail="<b>Produk dasar (basic product)</b> — mengubah manfaat inti menjadi sarana nyata (hotel: tempat tidur, kamar mandi, handuk, meja, lemari)."><span class="stepnum">2</span><span><span class="rt">Produk dasar</span><span class="rp">Wujud minimum manfaat inti.</span></span></div>
+      <div class="rcell" data-reveal data-detail="<b>Produk yang diharapkan (expected product)</b> — kesatuan atribut &amp; kondisi yang biasa diharapkan pembeli (tempat tidur bersih, handuk segar, lampu kerja, ketenangan)."><span class="stepnum">3</span><span><span class="rt">Produk diharapkan</span><span class="rp">Yang diharapkan pembeli.</span></span></div>
+      <div class="rcell" data-reveal data-detail="<b>Produk yang disempurnakan (augmented product)</b> — melebihi harapan &amp; membedakan dari pesaing (TV + remote, buah segar, check-in cepat). Persaingan masa kini terjadi di tingkat ini; tiap penyempurnaan ada biaya &amp; cepat menjadi 'yang diharapkan'."><span class="stepnum">4</span><span><span class="rt">Produk disempurnakan</span><span class="rp">Melebihi harapan (arena bersaing).</span></span></div>
+      <div class="rcell" data-reveal data-detail="<b>Produk potensial (potential product)</b> — semua kemungkinan penyempurnaan &amp; transformasi di masa depan."><span class="stepnum">5</span><span><span class="rt">Produk potensial</span><span class="rp">Kemungkinan masa depan.</span></span></div>
+    </div>
+    <div class="rdetail" data-revealdetail>Klik salah satu tingkatan produk untuk penjelasannya (inti → potensial).</div>
+
+    <div class="numh">2 · Klasifikasi Produk</div>
+    <p>Berdasar keawetan &amp; keberwujudan: <b>barang tidak awet</b> <span class="en">(nondurable)</span> — cepat habis, strategi banyak lokasi &amp; margin kecil; <b>barang awet</b> <span class="en">(durable)</span> — tahan lama, butuh personal selling, layanan, &amp; margin lebih tinggi; &amp; <b>jasa</b> — tidak berwujud, tak terpisahkan, bervariasi, &amp; cepat rusak.</p>
+
+    <div class="numh">3 · Klasifikasi Barang Konsumsi</div>
+    <p>Berdasar kebiasaan membeli — klik:</p>
+    <div class="rgrid c2" data-revealgroup>
+      <div class="rcell" data-reveal data-detail="<b>Convenience goods</b> — sering dibeli, segera, upaya minimum. Sub: staple (rutin), impulse (tanpa rencana), emergency (mendesak, mis. payung saat hujan)."><span><span class="rt">Convenience goods</span><span class="rp">Sering dibeli, upaya minimum.</span></span></div>
+      <div class="rcell" data-reveal data-detail="<b>Shopping goods</b> — konsumen membandingkan kecocokan, kualitas, harga, style. Sub: homogen (kualitas sama, beda harga) &amp; heterogen (fitur/layanan lebih penting)."><span><span class="rt">Shopping goods</span><span class="rp">Dibandingkan sebelum dibeli.</span></span></div>
+      <div class="rcell" data-reveal data-detail="<b>Specialty goods</b> — karakteristik unik/merek khusus; pembeli bersedia melakukan upaya pembelian khusus &amp; tak membandingkan (mobil, elektronik premium)."><span><span class="rt">Specialty goods</span><span class="rp">Unik; pembeli berupaya khusus.</span></span></div>
+      <div class="rcell" data-reveal data-detail="<b>Unsought goods</b> — tak dicari konsumen (tanah makam, ensiklopedia); butuh personal selling &amp; iklan agresif."><span><span class="rt">Unsought goods</span><span class="rp">Tak dicari; perlu didorong.</span></span></div>
+    </div>
+    <div class="rdetail" data-revealdetail>Klik salah satu jenis barang konsumsi untuk penjelasannya.</div>
+
+    <div class="numh">4 · Klasifikasi Barang Industri</div>
+    <ul class="exp">
+      <li><b>Materials &amp; parts</b> — masuk seluruhnya ke produksi: bahan mentah (pertanian &amp; natural) serta <em>manufactured materials &amp; parts</em>; harga &amp; keandalan pengiriman penting.</li>
+      <li><b>Capital items</b> — barang modal berumur panjang: instalasi (pabrik/kantor, dibeli langsung, negosiasi panjang) &amp; peralatan (generator, komputer).</li>
+      <li><b>Supplies &amp; business services</b> — masa pakai pendek: <em>operating supplies</em> (alat tulis) &amp; jasa pemeliharaan/perbaikan.</li>
+    </ul>
+
+    <div class="flow">Setelah mengenal jenis produk, buku memetakan <b>bagaimana produk saling berhubungan</b> — dari hierarki hingga bauran.</div>
+
+    <div class="numh">5 · Hubungan Merek dan Produk</div>
+    <p><b>Hierarki produk</b> — enam jenjang (contoh asuransi jiwa), klik tiap jenjang:</p>
+    <div data-revealgroup>
+      <div class="ladder">
+        <div class="lrung" data-reveal style="background:#0f5e8f" data-detail="<b>Need family</b> — kebutuhan inti yang melandasi keberadaan product family (mis. 'rasa aman').">Need family <span class="ln">kebutuhan inti</span></div>
+        <div class="lrung" data-reveal style="background:#1a73a8" data-detail="<b>Product family</b> — semua kelas produk yang dapat memenuhi kebutuhan inti (jasa tabungan &amp; pendapatan dari bank).">Product family <span class="ln">kelas produk pemenuh</span></div>
+        <div class="lrung" data-reveal style="background:#1a86c7" data-detail="<b>Product class</b> — kelompok produk dalam family dengan fungsi terkait (instrumen finansial).">Product class <span class="ln">kategori produk</span></div>
+        <div class="lrung" data-reveal style="background:#3a9bd4" data-detail="<b>Product line</b> — kelompok produk berkaitan erat (fungsi sama, pelanggan sama, saluran sama, rentang harga sama) — mis. asuransi jiwa.">Product line <span class="ln">lini produk</span></div>
+        <div class="lrung" data-reveal style="background:#5fb0df" data-detail="<b>Product type</b> — sekelompok item dalam lini yang berbagi bentuk produk (pasal-pasal dalam polis asuransi jiwa).">Product type <span class="ln">tipe produk</span></div>
+        <div class="lrung" data-reveal style="background:#8ec9ea" data-detail="<b>Item (product variant)</b> — unit berbeda dalam lini merek, dibedakan ukuran/harga/penampilan.">Item <span class="ln">varian produk</span></div>
+      </div>
+      <div class="rdetail" data-revealdetail>Klik salah satu jenjang hierarki produk untuk penjelasannya (paling luas → paling spesifik).</div>
+    </div>
+    <p style="margin-top:14px"><b>Product mix (product assortment)</b> = himpunan semua lini &amp; item penjual, dengan empat dimensi:</p>
+    <table class="mini">
+      <tr><th>Dimensi</th><th>Arti</th></tr>
+      <tr><td><b>Width</b> (lebar)</td><td>Jumlah lini produk yang berbeda.</td></tr>
+      <tr><td><b>Length</b> (panjang)</td><td>Jumlah seluruh item dalam product mix.</td></tr>
+      <tr><td><b>Depth</b> (dalam)</td><td>Jumlah varian tiap produk.</td></tr>
+      <tr><td><b>Consistency</b> (konsistensi)</td><td>Kedekatan lini-lini pada penggunaan akhir, produksi, &amp; distribusi.</td></tr>
+    </table>
+    <p><b>Panjang lini</b> diperpanjang lewat <span class="term">line stretching</span> — <em>down-market</em> (tambah produk lebih murah; risiko kanibalisasi &amp; citra, mis. Kodak Funtime), <em>up-market</em> (masuk high-end dengan nama baru, mis. Lexus/Toyota), &amp; <em>two-way</em> (dua arah) — serta <span class="term">line filling</span> (menambah item dalam kisaran yang ada).</p>
+
+    <div class="numh">6 · Product-Mix Pricing</div>
+    <p>Logika harga berubah bila produk adalah bagian dari bauran — klik tiap jenis:</p>
+    <div class="rgrid c3" data-revealgroup>
+      <div class="rcell" data-reveal data-detail="<b>Product-line pricing</b> — bangun jenjang harga (price steps) antar produk dalam lini; konsumen memetakan jenjang kualitas sesuai harga."><span><span class="rt">Product-line</span><span class="rp">Jenjang harga dalam lini.</span></span></div>
+      <div class="rcell" data-reveal data-detail="<b>Optional-feature pricing</b> — harga untuk fitur/jasa tambahan di samping produk utama (aksesori mobil)."><span><span class="rt">Optional-feature</span><span class="rp">Harga fitur tambahan.</span></span></div>
+      <div class="rcell" data-reveal data-detail="<b>Captive-product pricing</b> — produk inti butuh produk pelengkap (kamera + lensa; ponsel + layanan). Hati-hati: harga captive terlalu tinggi mendorong konsumen ke substitusi (tinta isi ulang)."><span><span class="rt">Captive-product</span><span class="rp">Produk inti + pelengkap wajib.</span></span></div>
+      <div class="rcell" data-reveal data-detail="<b>Two-part pricing</b> — bayaran tetap (fixed fee) + biaya penggunaan variabel (telepon: abonemen + pulsa)."><span><span class="rt">Two-part</span><span class="rp">Fixed fee + biaya penggunaan.</span></span></div>
+      <div class="rcell" data-reveal data-detail="<b>By-product pricing</b> — produk sampingan dijual dengan harga tertentu sehingga menurunkan harga produk utama."><span><span class="rt">By-product</span><span class="rp">Jual produk sampingan.</span></span></div>
+      <div class="rcell" data-reveal data-detail="<b>Product-bundling pricing</b> — gabungan beberapa produk yang saling menunjang dalam satu kemasan; harga bundel lebih murah dari membeli terpisah."><span><span class="rt">Product-bundling</span><span class="rp">Paket lebih murah.</span></span></div>
+    </div>
+    <div class="rdetail" data-revealdetail>Klik salah satu jenis product-mix pricing untuk penjelasannya.</div>
+
+    <div class="numh">7 · Co-Branding, Packaging &amp; Labeling</div>
+    <p><b>Co-branding</b> (dual-branding) menggabungkan dua merek dikenal (Pepsi dengan KFC); <b>ingredient branding</b> membangun ekuitas dari komponen (Intel dalam laptop, Dolby dalam audio Sony). <b>Packaging</b> (P kelima) kini alat pemasaran penting karena <em>self-service</em>, kenyamanan konsumen, citra merek, &amp; peluang inovasi; tujuannya mengidentifikasi, menginformasikan, melindungi, menyimpan, &amp; membantu konsumsi. <b>Labeling</b> mengidentifikasi, mencerminkan grade, menjelaskan, &amp; mempromosikan produk — diubah dengan hati-hati agar tak merusak citra merek.</p>
+  </div>
+
+  <!-- KB2 -->
+  <h2 class="section" id="kb2"><span class="dot"></span>KB 2 — Merancang dan Mengelola Jasa</h2>
+  <div class="card kb2b">
+    <span class="kb-tag kb2t">JASA</span>
+    <p class="lead"><span class="term">Jasa</span> adalah aktivitas/kinerja yang ditawarkan satu pihak kepada pihak lain, pada dasarnya <em>tidak nyata (intangible)</em> &amp; tidak menghasilkan kepemilikan. Karena produk fisik makin sulit dibedakan, perusahaan membedakan diri lewat layanan jasa yang superior.</p>
+
+    <div class="numh">1 · Konsep &amp; Karakteristik Jasa</div>
+    <p>Lima kategori penawaran: <b>(a)</b> barang berwujud murni; <b>(b)</b> barang + jasa pendukung (TV + pemasangan); <b>(c)</b> campuran produk &amp; jasa; <b>(d)</b> jasa dominan + sedikit barang (penerbangan); <b>(e)</b> jasa murni (konsultasi). Setiap pembelian jasa mencakup <span class="term">core service</span> (manfaat pokok) &amp; <span class="term">augmented service</span> (jasa tambahan pembeda, mis. bengkel yang antar-jemput &amp; cuci gratis).</p>
+
+    <div class="numh">2 · Empat Karakteristik Jasa</div>
+    <p>Klik tiap karakteristik untuk implikasi pemasarannya:</p>
+    <div class="rgrid c2" data-revealgroup>
+      <div class="rcell" data-reveal data-detail="<b>Intangibility (tidak berwujud)</b> — tak bisa dilihat/diraba sebelum dibeli. Pelanggan mencari bukti kualitas (tempat, orang, peralatan, simbol, harga); tugas penyedia 'mewujudkan' jasa."><span><span class="rt">Intangibility</span><span class="rp">Tidak berwujud.</span></span></div>
+      <div class="rcell" data-reveal data-detail="<b>Inseparability (tak terpisahkan)</b> — jasa diproduksi &amp; dikonsumsi bersamaan; pengguna hadir saat produksi, maka interaksi penyedia–pengguna menentukan kualitas."><span><span class="rt">Inseparability</span><span class="rp">Produksi = konsumsi.</span></span></div>
+      <div class="rcell" data-reveal data-detail="<b>Variability (bervariasi)</b> — kualitas bergantung siapa/kapan/di mana. Dikendalikan lewat seleksi &amp; pelatihan, standarisasi (service blueprint), &amp; pemantauan kepuasan."><span><span class="rt">Variability</span><span class="rp">Kualitas tak seragam.</span></span></div>
+      <div class="rcell" data-reveal data-detail="<b>Perishability (mudah rusak)</b> — jasa tak dapat disimpan; masalah saat permintaan berfluktuasi. Diatasi dengan peak pricing, karyawan paruh waktu, partisipasi konsumen (manajemen permintaan jasa)."><span><span class="rt">Perishability</span><span class="rp">Tak dapat disimpan.</span></span></div>
+    </div>
+    <div class="rdetail" data-revealdetail>Klik salah satu karakteristik jasa untuk penjelasannya.</div>
+
+    <div class="numh">3–4 · Service Encounter &amp; Servicescape</div>
+    <p><span class="term">Service encounter</span> = interaksi penyedia–pengguna saat jasa terjadi; kontak fisik adalah <b>"moment of truth"</b> di mana pegawai menentukan impresi positif/negatif. <span class="term">Servicescape</span> = lingkungan fisik tempat jasa diserahkan (eksterior: arsitektur, logo, parkir; interior: desain, warna, suhu, bau) — bisa rumit (hotel) atau sederhana (ATM). Website juga bukti kasatmata bisnis jasa.</p>
+
+    <div class="numh">5–6 · Kualitas Jasa &amp; SERVQUAL</div>
+    <p>Atribut kualitas jasa: <b>search qualities</b> (bisa dinilai sebelum beli), <b>experience qualities</b> (saat/sesudah konsumsi), <b>credence qualities</b> (sulit dinilai bahkan setelah konsumsi — mis. diagnosis dokter). Diukur dengan <span class="term">SERVQUAL</span> (5 dimensi) — klik:</p>
+    <div class="rgrid c3" data-revealgroup>
+      <div class="rcell" data-reveal data-detail="<b>Tangibles</b> — fasilitas fisik, peralatan, &amp; penampilan profesional penyedia jasa."><span><span class="rt">Tangibles</span><span class="rp">Bukti fisik.</span></span></div>
+      <div class="rcell" data-reveal data-detail="<b>Reliability</b> — kemampuan menyediakan jasa yang andal &amp; akurat sesuai janji."><span><span class="rt">Reliability</span><span class="rp">Keandalan.</span></span></div>
+      <div class="rcell" data-reveal data-detail="<b>Responsiveness</b> — kesediaan membantu &amp; memberi layanan segera, tidak bertele-tele."><span><span class="rt">Responsiveness</span><span class="rp">Ketanggapan.</span></span></div>
+      <div class="rcell" data-reveal data-detail="<b>Assurance</b> — pengetahuan &amp; sikap hormat pegawai yang membangun kepercayaan &amp; rasa nyaman."><span><span class="rt">Assurance</span><span class="rp">Jaminan/kepercayaan.</span></span></div>
+      <div class="rcell" data-reveal data-detail="<b>Emphaty</b> — derajat perhatian personal kepada pelanggan saat mengonsumsi jasa."><span><span class="rt">Emphaty</span><span class="rp">Empati.</span></span></div>
+    </div>
+    <div class="rdetail" data-revealdetail>Klik salah satu dimensi SERVQUAL untuk penjelasannya.</div>
+    <p style="margin-top:12px"><span class="term">Gap Analysis</span> (Model Kesenjangan Penyerahan Jasa, Gambar 4.2) memetakan lima kesenjangan — klik:</p>
+    <div class="rgrid" data-revealgroup>
+      <div class="rcell" data-reveal data-detail="<b>Gap 1</b> — antara ekspektasi pelanggan &amp; persepsi manajemen: manajer tak memahami apa yang sebenarnya dibutuhkan pelanggan."><span class="stepnum">1</span><span><span class="rt">Gap 1</span><span class="rp">Ekspektasi pelanggan vs persepsi manajemen.</span></span></div>
+      <div class="rcell" data-reveal data-detail="<b>Gap 2</b> — antara persepsi manajemen &amp; standar kualitas yang ditetapkan: gagal menerjemahkan ke sasaran kualitas tertulis."><span class="stepnum">2</span><span><span class="rt">Gap 2</span><span class="rp">Persepsi manajemen vs standar kualitas.</span></span></div>
+      <div class="rcell" data-reveal data-detail="<b>Gap 3</b> — antara standar kualitas &amp; penyerahan jasa (service delivery): pegawai tak mampu menyerahkan pada tingkat yang ditetapkan."><span class="stepnum">3</span><span><span class="rt">Gap 3</span><span class="rp">Standar vs penyerahan jasa.</span></span></div>
+      <div class="rcell" data-reveal data-detail="<b>Gap 4</b> — antara penyerahan jasa &amp; komunikasi eksternal: janji berlebihan/tak akurat kepada pelanggan."><span class="stepnum">4</span><span><span class="rt">Gap 4</span><span class="rp">Penyerahan vs komunikasi/janji.</span></span></div>
+      <div class="rcell" data-reveal data-detail="<b>Gap 5</b> — antara ekspektasi pelanggan &amp; kualitas yang dirasakan: akumulasi gap 1–4; pelanggan tetap kurang puas (restoran mewah menuntut ekspektasi tinggi)."><span class="stepnum">5</span><span><span class="rt">Gap 5</span><span class="rp">Ekspektasi vs jasa yang dirasakan.</span></span></div>
+    </div>
+    <div class="rdetail" data-revealdetail>Klik salah satu gap untuk penjelasannya.</div>
+
+    <div class="numh">7–10 · Memasarkan Tempat/Orang/Ide, Masa Depan, &amp; Strategi Jasa</div>
+    <p>Selain jasa, dipasarkan pula <b>orang</b> (politikus, pelamar kerja), <b>tempat</b> (kota/tujuan wisata sebagai merek), &amp; <b>ide</b> (konsep/kepercayaan — paling sulit). Ke depan jasa makin dominan (<em>new dominant logic for marketing</em>). Pemasaran jasa memperluas 4P menjadi <span class="term">7P</span> dengan tambahan <b>People, Physical evidence, Process</b>, dan menuntut tiga jenis pemasaran: <b>eksternal</b> (ke pelanggan), <b>internal</b> (melatih &amp; memotivasi karyawan), &amp; <b>interaktif</b> (keterampilan karyawan saat melayani). Empat tugas pokoknya: membangun <b>diferensiasi jasa, daya saing, kualitas jasa, &amp; produktivitas</b>.</p>
+  </div>
+
+  <!-- KB3 -->
+  <h2 class="section" id="kb3"><span class="dot"></span>KB 3 — Strategi Harga</h2>
+  <div class="card kb3b">
+    <span class="kb-tag kb3t">HARGA</span>
+    <p class="lead"><span class="term">Harga</span> adalah satu-satunya elemen bauran pemasaran yang <b>menghasilkan pendapatan</b> (elemen lain = biaya) &amp; paling mudah diubah. Harga juga mengomunikasikan <em>positioning</em> nilai yang diinginkan.</p>
+
+    <div class="numh">1–2 · Psikologi Konsumen atas Harga</div>
+    <p>Ekonom memandang konsumen sebagai <em>price takers</em>, tetapi pemasar menyadari konsumen aktif menafsirkan harga. Tiga faktor cara berpikir konsumen: <b>reference prices</b> (harga rujukan internal/eksternal), <b>price-quality inferences</b> (harga sebagai indikator kualitas; penting untuk barang mewah yang menekankan eksklusivitas), &amp; <b>price endings</b> (akhiran ganjil seperti Rp299.000 memberi kesan <em>bargain</em>; makin sering dipakai makin tak efektif).</p>
+
+    <div class="numh">3 · Enam Langkah Menentukan Harga</div>
+    <p>Klik tiap langkah:</p>
+    <div data-revealgroup>
+      <div class="rgrid">
+        <div class="rcell" data-reveal data-detail="<b>Langkah 1 — Memilih objektif.</b> Lima objektif: (1) Survival (bertahan saat over-capacity); (2) Maximum current profit (laba/ROI maksimum saat ini); (3) Maximum market share — market-penetration pricing (harga rendah, cocok bila pasar peka harga); (4) Maximum market skimming — harga tinggi di awal lalu diturunkan (teknologi baru); (5) Product-quality leadership (pemimpin kualitas, mis. Starbucks)."><span class="stepnum">1</span><span><span class="rt">Memilih objektif</span><span class="rp">5 objektif: survival → quality leadership.</span></span></div>
+        <div class="rcell" data-reveal data-detail="<b>Langkah 2 — Menentukan permintaan.</b> Tiap harga → tingkat permintaan berbeda. Perhatikan price sensitivity (konsumen kurang peka bila substitusi sedikit, produk terdiferensiasi, biaya kecil dari pendapatan) &amp; price elasticity (makin elastis, penurunan harga 1% menaikkan volume lebih besar; lebih elastis jangka panjang)."><span class="stepnum">2</span><span><span class="rt">Menentukan permintaan</span><span class="rp">Price sensitivity &amp; elasticity.</span></span></div>
+        <div class="rcell" data-reveal data-detail="<b>Langkah 3 — Estimasi biaya.</b> Biaya = batas bawah harga. Biaya tetap (overhead) + variabel = total cost; average cost = total/jumlah. Gunakan activity-based costing (ABC) untuk biaya melayani tiap pelanggan, &amp; target costing (tetapkan harga jual → kurangi marjin → biaya target)."><span class="stepnum">3</span><span><span class="rt">Estimasi biaya</span><span class="rp">Fixed/variable, ABC, target costing.</span></span></div>
+        <div class="rcell" data-reveal data-detail="<b>Langkah 4 — Analisis penawaran, harga &amp; biaya pesaing.</b> Dalam kisaran (permintaan = atas, biaya = bawah), bandingkan dengan pesaing terdekat; tambah/kurangi harga sesuai fitur yang dimiliki/tak dimiliki; antisipasi reaksi pesaing."><span class="stepnum">4</span><span><span class="rt">Analisis pesaing</span><span class="rp">Harga &amp; biaya pesaing.</span></span></div>
+        <div class="rcell" data-reveal data-detail="<b>Langkah 5 — Memilih metode penentuan harga</b> (lihat enam metode di bawah)."><span class="stepnum">5</span><span><span class="rt">Memilih metode</span><span class="rp">6 metode penentuan harga.</span></span></div>
+        <div class="rcell" data-reveal data-detail="<b>Langkah 6 — Memilih harga akhir.</b> Pertimbangkan pengaruh ke kegiatan pemasaran lain (kualitas &amp; iklan), kebijakan harga perusahaan, gain-and-risk-sharing pricing, &amp; pengaruh harga pada pihak lain (distributor, pesaing, pemerintah)."><span class="stepnum">6</span><span><span class="rt">Memilih harga akhir</span><span class="rp">Faktor tambahan penentu.</span></span></div>
+      </div>
+      <div class="rdetail" data-revealdetail>Klik salah satu langkah untuk penjelasannya.</div>
+    </div>
+    <div class="chartbox"><div class="cw"><canvas id="elasChart"></canvas></div><div class="cap">Elastisitas harga: permintaan elastis (ungu) sangat responsif terhadap harga; inelastis (biru) kurang responsif.</div></div>
+
+    <div class="numh">Enam Metode Penentuan Harga (Langkah 5)</div>
+    <div class="rgrid c3" data-revealgroup>
+      <div class="rcell" data-reveal data-detail="<b>Markup pricing</b> — tambahkan markup di atas biaya. Populer (penjual lebih pasti biaya daripada permintaan) tetapi mengabaikan permintaan, nilai, &amp; pesaing."><span><span class="rt">Markup</span><span class="rp">Biaya + markup.</span></span></div>
+      <div class="rcell" data-reveal data-detail="<b>Target-return pricing</b> — harga yang menghasilkan ROI yang ditargetkan (mis. GM menargetkan ROI 15–20%)."><span><span class="rt">Target-return</span><span class="rp">Harga untuk ROI target.</span></span></div>
+      <div class="rcell" data-reveal data-detail="<b>Perceived-value pricing</b> — harga berdasar persepsi nilai pelanggan (citra, kualitas saluran, jaminan, reputasi), bukan biaya. Kunci: menyerahkan &amp; mendemonstrasikan nilai lebih dari pesaing."><span><span class="rt">Perceived-value</span><span class="rp">Berdasar nilai yang dirasakan.</span></span></div>
+      <div class="rcell" data-reveal data-detail="<b>Value pricing</b> — harga rendah untuk produk berkualitas tinggi (low cost tanpa korbankan kualitas); contoh everyday low pricing (EDLP) peritel."><span><span class="rt">Value pricing</span><span class="rp">Murah tapi berkualitas (EDLP).</span></span></div>
+      <div class="rcell" data-reveal data-detail="<b>Going-rate pricing</b> — mengikuti harga pesaing (sama/sedikit beda); lazim di industri oligopoli komoditas (baja, pupuk)."><span><span class="rt">Going-rate</span><span class="rp">Mengikuti harga pesaing.</span></span></div>
+      <div class="rcell" data-reveal data-detail="<b>Auction-type pricing</b> — harga lelang (makin populer via Internet): English auction (harga naik), Dutch auction (harga turun), &amp; sealed-bid auction (penawaran tertutup)."><span><span class="rt">Auction-type</span><span class="rp">Harga lelang.</span></span></div>
+    </div>
+    <div class="rdetail" data-revealdetail>Klik salah satu metode penentuan harga untuk penjelasannya.</div>
+
+    <div class="numh">4 · Melakukan Adaptasi Harga</div>
+    <ul class="let">
+      <li><b>Geographical pricing</b> — harga berbeda per lokasi/negara; termasuk <span class="term">countertrade</span>: barter, compensation deal, buyback arrangement, &amp; offset.</li>
+      <li><b>Diskon &amp; allowance</b> — potongan untuk pembayaran dini, jumlah besar, atau off-season; hati-hati agar tak merusak citra.</li>
+      <li><b>Harga promosi</b> — loss-leader pricing, special-event pricing, cash rebates, low-interest financing, longer-term payments, warranties gratis, &amp; psychological discounting. Bersifat <em>zero-sum game</em> (pesaing cepat meniru).</li>
+      <li><b>Differentiated pricing</b> (diskriminasi harga) — customer-segment, product-form, image, channel, location, &amp; time pricing; penerbangan/hotel memakai <em>yield management</em>.</li>
+    </ul>
+
+    <div class="numh">5 · Mengawali &amp; Merespon Perubahan Harga</div>
+    <p><b>Memotong harga</b> (karena kapasitas berlebih/mengejar pasar) berisiko <span class="term">low-quality trap</span>, loyalitas rapuh, &amp; perang harga. <b>Menaikkan harga</b> (akibat <em>cost inflation</em>/permintaan berlebih) dilakukan via <em>delayed quotation pricing</em>, <em>escalator clauses</em>, <em>unbundling</em>, &amp; <em>reduction of discounts</em>.</p>
+  </div>
+
+  <h2 class="section" id="glosarium"><span class="dot"></span>Glosarium Kilat</h2>
+  <div class="card"><dl class="glossary">
+    <dt>5 tingkatan produk</dt><dd>Core, basic, expected, augmented, potential.</dd>
+    <dt>Product mix</dt><dd>Himpunan semua lini &amp; item; dimensi width, length, depth, consistency.</dd>
+    <dt>Line stretching / filling</dt><dd>Memperlebar rentang / mengisi item dalam lini.</dd>
+    <dt>Captive product</dt><dd>Produk pelengkap yang wajib untuk produk inti (lensa, tinta).</dd>
+    <dt>4 karakteristik jasa</dt><dd>Intangibility, inseparability, variability, perishability.</dd>
+    <dt>Moment of truth</dt><dd>Kontak fisik penyedia–pelanggan yang menentukan impresi.</dd>
+    <dt>SERVQUAL</dt><dd>Tangibles, reliability, responsiveness, assurance, emphaty.</dd>
+    <dt>7P</dt><dd>Product, Price, Place, Promotion + People, Physical evidence, Process.</dd>
+    <dt>Price elasticity</dt><dd>Responsivitas permintaan terhadap perubahan harga.</dd>
+    <dt>ABC / target costing</dt><dd>Biaya aktual per pelanggan / biaya yang dikejar dari harga jual.</dd>
+    <dt>Market penetration / skimming</dt><dd>Harga rendah untuk pangsa / harga tinggi awal untuk laba.</dd>
+  </dl></div>
+</div>
+
+<footer><b>EKMA5206 — Manajemen Pemasaran</b> · Modul 4: Strategi Pengembangan Produk dan Jasa, serta Strategi Harga (Edisi 3) · Penulis: Dr. Ir. FX. Bambang Wiharto, M.M.<br>
+  Bahan belajar ringkas — disusun ulang mengikuti alur modul (hal. 4.1–4.60) untuk persiapan ujian.
+  <div class="refs"><b>Rujukan utama modul:</b> Kotler &amp; Keller (2009) <i>Marketing Management</i> 13e · Perreault, Cannon &amp; McCarthy (2009) · Solomon, Marshall &amp; Stuart (2012) · Mullins &amp; Walker (2010) · Porter (1985).</div></footer>
+
+<script>
+(function(){
+  var pb=document.getElementById('progress');
+  function onScroll(){var h=document.documentElement;var sc=h.scrollTop||document.body.scrollTop;var max=(h.scrollHeight-h.clientHeight)||1;pb.style.width=(sc/max*100)+'%';}
+  document.addEventListener('scroll',onScroll,{passive:true});onScroll();
+  var list=document.getElementById('conceptList');var items=[].slice.call(list.querySelectorAll('li'));var boxes=items.map(function(li){return li.querySelector('input');});
+  document.getElementById('totalCount').textContent=items.length;var doneEl=document.getElementById('doneCount');var KEY='ekma5206_m4_concepts_v1';
+  function load(){try{var a=JSON.parse(localStorage.getItem(KEY)||'[]');boxes.forEach(function(b,i){if(a[i])b.checked=true;});}catch(e){}}
+  function save(){try{localStorage.setItem(KEY,JSON.stringify(boxes.map(function(b){return b.checked?1:0;})));}catch(e){}}
+  function refresh(){var n=0;items.forEach(function(li,i){if(boxes[i].checked){li.classList.add('done');n++;}else li.classList.remove('done');});doneEl.textContent=n;}
+  load();refresh();boxes.forEach(function(b){b.addEventListener('change',function(){refresh();save();});});
+  document.getElementById('resetBtn').addEventListener('click',function(){boxes.forEach(function(b){b.checked=false;});refresh();save();});
+  [].slice.call(document.querySelectorAll('[data-revealgroup]')).forEach(function(g){
+    var det=g.querySelector('[data-revealdetail]');if(!det){var sib=g.nextElementSibling;if(sib&&sib.hasAttribute&&sib.hasAttribute('data-revealdetail'))det=sib;}
+    var cells=[].slice.call(g.querySelectorAll('[data-reveal]'));
+    cells.forEach(function(c){c.addEventListener('click',function(){cells.forEach(function(x){x.classList.remove('active');});c.classList.add('active');if(det)det.innerHTML=c.getAttribute('data-detail');});});
+  });
+  (function(){
+    var ROWH=46,NODE_H=32,PAD=13,GAP=52;var COL={root:'#0f5e8f',kb1:'#1a86c7',kb2:'#e08a1e',kb3:'#2a9d6f'};
+    var mc=document.createElement('canvas').getContext('2d');mc.font='700 13px -apple-system,Segoe UI,Roboto,sans-serif';
+    function tw(t){return Math.ceil(mc.measureText(t).width);}function esc(t){return t.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');}
+    function rgba(hex,a){var h=hex.replace('#','');return 'rgba('+parseInt(h.substr(0,2),16)+','+parseInt(h.substr(2,2),16)+','+parseInt(h.substr(4,2),16)+','+a+')';}
+    var DATA={label:'MODUL 4 — Strategi Produk, Jasa & Harga',color:COL.root,children:[
+      {label:'KB1 · Pengertian Produk',color:COL.kb1,children:[
+        {label:'5 tingkatan produk'},{label:'Klasifikasi produk & barang konsumsi'},{label:'Klasifikasi barang industri'},
+        {label:'Hierarki produk (6 jenjang)'},{label:'Product mix (width/length/depth/consistency)'},
+        {label:'Line stretching & filling'},{label:'Product-mix pricing'},{label:'Co-branding, packaging & labeling'}
+      ]},
+      {label:'KB2 · Merancang & Mengelola Jasa',color:COL.kb2,children:[
+        {label:'Konsep & 5 kategori jasa'},{label:'4 karakteristik jasa'},{label:'Service encounter & servicescape'},
+        {label:'Kualitas jasa & SERVQUAL'},{label:'Gap model (5 gap)'},{label:'Memasarkan tempat/orang/ide'},
+        {label:'7P & 3 jenis pemasaran jasa'}
+      ]},
+      {label:'KB3 · Strategi Harga',color:COL.kb3,children:[
+        {label:'Psikologi harga'},
+        {label:'6 langkah penentuan harga',children:[{label:'Objektif (5)'},{label:'Permintaan & elastisitas'},{label:'Biaya (ABC, target costing)'},{label:'Analisis pesaing'},{label:'6 metode harga'},{label:'Harga akhir'}]},
+        {label:'Adaptasi harga'},{label:'Mengawali & respon perubahan harga'}
+      ]}
+    ]};
+    var idc=0;(function w(n,c){n.id='n'+(idc++);n.color=n.color||c;(n.children||[]).forEach(function(k){w(k,n.color);});})(DATA,COL.root);
+    (function w(n,d){if(d>=2&&n.children&&n.children.length)n.collapsed=true;(n.children||[]).forEach(function(k){w(k,d+1);});})(DATA,0);
+    var host=document.getElementById('mindmap');
+    function render(){
+      var colW=[];(function w(n,d){var width=tw(n.label)+PAD*2+((n.children&&n.children.length)?20:0);colW[d]=Math.max(colW[d]||0,width);if(!n.collapsed)(n.children||[]).forEach(function(k){w(k,d+1);});})(DATA,0);
+      var colX=[],acc=14;for(var d=0;d<colW.length;d++){colX[d]=acc;acc+=colW[d]+GAP;}var row={v:0};
+      (function lay(n,d){if(!n.children||!n.children.length||n.collapsed){n._y=row.v*ROWH+ROWH/2+8;row.v++;return;}var f,l;n.children.forEach(function(k,i){lay(k,d+1);if(i===0)f=k._y;l=k._y;});n._y=(f+l)/2;})(DATA,0);
+      var totalW=acc,totalH=row.v*ROWH+24;var nodes=[],links=[];
+      (function col(n,d,p){n._x=colX[d];n._w=tw(n.label)+PAD*2+((n.children&&n.children.length)?20:0);nodes.push({n:n,d:d});if(p)links.push([p,n]);if(!n.collapsed)(n.children||[]).forEach(function(k){col(k,d+1,n);});})(DATA,0,null);
+      var s='<svg width="'+totalW+'" height="'+totalH+'" viewBox="0 0 '+totalW+' '+totalH+'" xmlns="http://www.w3.org/2000/svg">';
+      links.forEach(function(pr){var a=pr[0],b=pr[1],x1=a._x+a._w,y1=a._y,x2=b._x,y2=b._y,mx=(x1+x2)/2;s+='<path d="M'+x1+' '+y1+' C'+mx+' '+y1+' '+mx+' '+y2+' '+x2+' '+y2+'" fill="none" stroke="'+rgba(b.color,.5)+'" stroke-width="2"/>';});
+      nodes.forEach(function(o){var n=o.n,x=n._x,y=n._y-NODE_H/2,w=n._w,hk=n.children&&n.children.length;var fill=o.d===0?n.color:(o.d===1?rgba(n.color,.12):'#fff');var tf=o.d===0?'#fff':'#1c2733';
+        s+='<g data-id="'+n.id+'" style="cursor:'+(hk?'pointer':'default')+'"><rect x="'+x+'" y="'+y+'" rx="9" width="'+w+'" height="'+NODE_H+'" fill="'+fill+'" stroke="'+n.color+'" stroke-width="'+(o.d===0?0:1.6)+'"/><text x="'+(x+PAD)+'" y="'+(n._y+4)+'" font-size="13" font-weight="'+(o.d<=1?'700':'500')+'" fill="'+tf+'" font-family="-apple-system,Segoe UI,Roboto,sans-serif">'+esc(n.label)+'</text>';
+        if(hk){var cx=x+w-12,cy=n._y;s+='<circle cx="'+cx+'" cy="'+cy+'" r="8.5" fill="'+n.color+'"/><text x="'+cx+'" y="'+(cy+4.5)+'" font-size="13" font-weight="700" fill="#fff" text-anchor="middle" font-family="sans-serif">'+(n.collapsed?'+':'\u2013')+'</text>';}s+='</g>';});
+      s+='</svg>';host.innerHTML=s;
+    }
+    host.addEventListener('click',function(e){var g=e.target.closest('g[data-id]');if(!g)return;var id=g.getAttribute('data-id');(function f(n){if(n.id===id){if(n.children&&n.children.length)n.collapsed=!n.collapsed;return true;}return (n.children||[]).some(f);})(DATA);render();});
+    document.getElementById('mmExpand').addEventListener('click',function(){(function w(n){if(n.children)n.collapsed=false;(n.children||[]).forEach(w);})(DATA);render();});
+    document.getElementById('mmCollapse').addEventListener('click',function(){(function w(n,d){if(d>=1&&n.children&&n.children.length)n.collapsed=true;(n.children||[]).forEach(function(k){w(k,d+1);});})(DATA,0);render();});
+    render();
+  })();
+  window.addEventListener('load',function(){setTimeout(function(){if(window.MathJax&&window.MathJax.typesetPromise)window.MathJax.typesetPromise();},400);});
+  var chartsBuilt=false;
+  function buildCharts(){
+    if(chartsBuilt||!window.Chart)return;chartsBuilt=true;
+    var e=document.getElementById('elasChart');
+    if(e)new Chart(e,{type:'line',
+      data:{labels:['','','','','',''],datasets:[
+        {label:'Permintaan elastis',data:[100,70,45,28,16,8],borderColor:'#7a5cc0',backgroundColor:'rgba(122,92,192,.08)',tension:.3,pointRadius:0},
+        {label:'Permintaan inelastis',data:[100,94,88,82,77,72],borderColor:'#1a86c7',backgroundColor:'rgba(26,134,199,.08)',tension:.3,pointRadius:0}
+      ]},
+      options:{maintainAspectRatio:false,plugins:{legend:{position:'bottom'}},
+        scales:{y:{title:{display:true,text:'Kuantitas diminta'},ticks:{display:false}},x:{title:{display:true,text:'Harga naik →'},ticks:{display:false}}}}});
+  }
+  if(document.readyState!=='loading')buildCharts();else document.addEventListener('DOMContentLoaded',buildCharts);
+  window.addEventListener('load',buildCharts);
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="id"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Modul 3 — Pengadaan Sumber Daya Manusia | EKMA5207</title>
+<script>window.MathJax={tex:{inlineMath:[['$','$']],displayMath:[['\\[','\\]']]},svg:{fontCache:'global'},startup:{typeset:true}};</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js" async></script>
+<style>
+:root{--bg:#f4f6f9;--panel:#fff;--ink:#1c2733;--muted:#5c6b7a;--line:#e4e9f0;--brand:#1a86c7;--brand-dark:#0f5e8f;--brand-soft:#e7f3fb;--kb1:#1a86c7;--kb2:#e08a1e;--kb3:#2a9d6f;--kb4:#7a5cc0;--kb5:#c75b7a;--radius:14px;--shadow:0 1px 2px rgba(16,42,67,.06),0 6px 20px rgba(16,42,67,.06);--maxw:900px}
+*{box-sizing:border-box}html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;line-height:1.72}
+#progress{position:fixed;top:0;left:0;height:4px;width:0;background:linear-gradient(90deg,var(--brand),#53c0ec);z-index:200;transition:width .1s}
+header.top{position:sticky;top:0;z-index:100;background:rgba(255,255,255,.92);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+.top-in{max-width:var(--maxw);margin:0 auto;padding:10px 20px;display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+.badge{background:var(--brand);color:#fff;font-weight:700;font-size:.72rem;letter-spacing:.5px;padding:4px 10px;border-radius:999px}
+.homebtn{text-decoration:none;display:inline-flex;align-items:center;gap:7px;background:var(--brand);color:#fff;font-weight:700;font-size:.8rem;padding:7px 15px;border-radius:999px;box-shadow:0 2px 6px rgba(16,42,67,.22);line-height:1}
+.top-title{font-size:.9rem;font-weight:600;color:var(--muted)}
+nav.jump{margin-left:auto;display:flex;gap:4px;flex-wrap:wrap}
+nav.jump a{font-size:.78rem;color:var(--muted);text-decoration:none;padding:5px 10px;border-radius:8px}
+nav.jump a:hover{background:var(--brand-soft);color:var(--brand-dark)}
+.wrap{max-width:var(--maxw);margin:0 auto;padding:0 20px 90px}
+.hero{margin-top:26px;padding:30px 28px;border-radius:var(--radius);color:#fff;background:linear-gradient(135deg,#0f5e8f,#1a86c7 60%,#2fa4df);box-shadow:var(--shadow);position:relative;overflow:hidden}
+.hero .eyebrow{font-size:.78rem;letter-spacing:1.5px;text-transform:uppercase;opacity:.9;font-weight:600}
+.hero h1{margin:.3em 0 .25em;font-size:1.62rem;line-height:1.25;max-width:92%}
+.hero .meta{display:flex;gap:18px;flex-wrap:wrap;font-size:.84rem;opacity:.95;margin-top:10px}
+h2.section{font-size:1.3rem;margin:48px 0 4px;display:flex;align-items:center;gap:10px;scroll-margin-top:70px}
+h2.section .dot{width:10px;height:22px;border-radius:4px;background:var(--brand)}
+.section-sub{color:var(--muted);font-size:.9rem;margin:0 0 18px}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);padding:22px 24px;margin:16px 0;--dot:var(--brand)}
+.concepts{list-style:none;margin:0;padding:0;display:grid;gap:10px}
+.concepts li{display:flex;gap:12px;align-items:flex-start;padding:12px 14px;border:1px solid var(--line);border-radius:10px;background:#fcfdff}
+.concepts input{margin-top:4px;width:18px;height:18px;accent-color:var(--brand);flex:none;cursor:pointer}
+.concepts .ct{font-weight:600}.concepts .cd{display:block;font-weight:400;color:var(--muted);font-size:.86rem;margin-top:2px}
+.concepts li.done{background:var(--brand-soft);border-color:#bfe0f3}.concepts li.done .ct{text-decoration:line-through;opacity:.65}
+.cl-head{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-bottom:6px}
+.cl-head .count{font-size:.82rem;color:var(--muted);background:var(--brand-soft);padding:3px 10px;border-radius:999px;font-weight:600}
+.btn-reset{font-size:.78rem;border:1px solid var(--line);background:#fff;color:var(--muted);padding:5px 12px;border-radius:8px;cursor:pointer}
+.mm-toolbar{display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin-bottom:10px}
+.mm-btn{font-size:.78rem;border:1px solid var(--line);background:#fff;padding:6px 13px;border-radius:8px;cursor:pointer;color:var(--brand-dark);font-weight:600}
+.mindmap-host{height:580px;overflow:auto;border:1px solid var(--line);border-radius:10px;background:#fcfdff}.mindmap-host svg{display:block}
+.kb-tag{display:inline-flex;align-items:center;gap:8px;font-size:.78rem;font-weight:700;color:#fff;padding:5px 12px;border-radius:999px;margin-bottom:6px}
+.kb1t{background:var(--kb1)}.kb2t{background:var(--kb2)}.kb3t{background:var(--kb3)}
+.kb1b{--dot:var(--kb1)}.kb2b{--dot:var(--kb2)}.kb3b{--dot:var(--kb3)}
+.lead{font-size:1.02rem}.term{font-weight:700;color:var(--dot)}.en{font-style:italic;color:var(--muted);font-weight:500}
+.abc{display:flex;align-items:center;gap:10px;margin:28px 0 10px;padding-bottom:6px;border-bottom:2px solid color-mix(in srgb,var(--dot) 18%,#fff)}
+.abc .ltr{background:var(--dot);color:#fff;font-weight:800;min-width:30px;height:30px;padding:0 7px;border-radius:8px;display:grid;place-items:center;flex:none}
+.abc h4{margin:0;font-size:1.06rem;color:var(--dot)}
+.numh{font-weight:700;color:var(--dot);margin:22px 0 4px;font-size:1rem}
+.leth{font-weight:800;color:var(--dot);margin:20px 0 6px;font-size:.98rem;border-left:3px solid var(--dot);padding-left:10px}
+ol.book{margin:12px 0;padding-left:28px}ol.book>li{margin:10px 0;padding-left:6px}ol.book>li::marker{font-weight:700;color:var(--dot)}
+ul.exp{list-style:none;margin:12px 0;padding:0;display:grid;gap:10px}ul.exp>li{position:relative;padding-left:20px}
+ul.exp>li::before{content:"";position:absolute;left:0;top:11px;width:8px;height:8px;border-radius:2px;background:var(--dot)}
+ul.let{list-style:lower-alpha;margin:10px 0;padding-left:28px}ul.let>li{margin:8px 0;padding-left:4px}ul.let>li::marker{color:var(--dot);font-weight:700}
+.flow{border-left:4px solid var(--dot);background:color-mix(in srgb,var(--dot) 9%,#fff);padding:11px 15px;border-radius:0 10px 10px 0;margin:18px 0;font-size:.9rem}
+.flow::before{content:"🔗 Benang merah — ";font-weight:700;color:var(--dot)}.flow b{color:var(--dot)}
+table.mini{width:100%;border-collapse:collapse;margin:14px 0;font-size:.86rem}
+table.mini th,table.mini td{border:1px solid var(--line);padding:9px 11px;text-align:left;vertical-align:top}
+table.mini th{background:color-mix(in srgb,var(--dot) 12%,#fff);color:var(--dot);font-weight:700}
+.rgrid{display:grid;gap:8px;margin:14px 0}.rgrid.c2{grid-template-columns:repeat(2,1fr)}.rgrid.c3{grid-template-columns:repeat(3,1fr)}.rgrid.c4{grid-template-columns:repeat(4,1fr)}
+.rcell{border:1px solid var(--line);border-radius:10px;padding:11px 13px;cursor:pointer;background:#fff;display:flex;gap:10px;align-items:flex-start;transition:.15s}
+.rcell:hover{border-color:var(--dot);box-shadow:var(--shadow);transform:translateY(-2px)}
+.rcell.active{border-color:var(--dot);background:color-mix(in srgb,var(--dot) 8%,#fff)}
+.rcell .stepnum{background:var(--dot);color:#fff;font-weight:700;min-width:24px;height:24px;border-radius:7px;display:grid;place-items:center;flex:none;font-size:.82rem}
+.rcell .rt{font-weight:700;font-size:.9rem;color:var(--dot);display:block}.rcell .rp{font-size:.78rem;color:var(--muted);display:block;margin-top:2px}
+.rdetail{font-size:.88rem;border-left:4px solid var(--dot);background:color-mix(in srgb,var(--dot) 8%,#fff);border-radius:0 10px 10px 0;padding:12px 15px;margin-top:6px}
+.pill-row{display:flex;gap:8px;flex-wrap:wrap;margin:10px 0}.pill{font-size:.8rem;background:#eef3f8;color:#36506a;border:1px solid #e0e8f0;padding:4px 11px;border-radius:999px;font-weight:600}
+.flowchart{display:flex;align-items:center;gap:6px;flex-wrap:wrap;margin:16px 0;justify-content:center}
+.fc-node{background:color-mix(in srgb,var(--dot) 12%,#fff);border:1.5px solid var(--dot);color:var(--dot);font-weight:700;font-size:.8rem;padding:8px 12px;border-radius:9px;text-align:center}
+.fc-arrow{color:var(--dot);font-weight:800;font-size:1.05rem}
+.eqbox{background:#fcfdff;border:1px solid var(--line);border-radius:10px;padding:10px 16px;margin:14px 0;overflow-x:auto}
+.glossary dt{font-weight:700;color:var(--brand-dark);margin-top:10px}.glossary dd{margin:0 0 2px;color:var(--muted);font-size:.9rem}
+.diagram-box{border:1px solid var(--line);border-radius:12px;background:#fcfdff;padding:16px;margin:16px 0;text-align:center}
+.diagram-cap{font-size:.8rem;color:var(--muted);margin-top:10px;font-weight:600}
+footer{max-width:var(--maxw);margin:0 auto;padding:30px 20px 60px;color:var(--muted);font-size:.82rem;border-top:1px solid var(--line)}
+.offline-note{font-size:.76rem;color:var(--muted);background:#fff8e6;border:1px solid #f0e2b8;border-radius:8px;padding:8px 12px;margin:10px 0}
+@media(max-width:640px){.hero h1{font-size:1.3rem;max-width:100%}nav.jump{display:none}.rgrid.c2,.rgrid.c3,.rgrid.c4{grid-template-columns:1fr}.mindmap-host{height:440px}}
+</style></head><body>
+<div id="progress"></div>
+<header class="top"><div class="top-in">
+ <span class="badge">MODUL 3</span>
+ <a class="homebtn" href="index.html" title="Kembali ke daftar modul"><span style="font-size:1rem;line-height:1">&#8962;</span> Daftar Modul</a>
+ <span class="top-title">Manajemen Sumber Daya Manusia · EKMA5207</span>
+ <nav class="jump"><a href="#konsep">Konsep</a><a href="#peta">Peta Konsep</a><a href="#kb1">KB1</a><a href="#kb2">KB2</a><a href="#kb3">KB3</a><a href="#glosarium">Glosarium</a></nav>
+</div></header>
+
+<div class="wrap">
+ <section class="hero"><div class="eyebrow">Ringkasan Belajar · EKMA5207 Edisi 3</div>
+ <h1>Pengadaan Sumber Daya Manusia</h1>
+ <div class="meta"><span>⏱️ ±30 menit</span><span>📚 3 bagian (KB)</span><span>✍️ Prof. Dr. Mutiara Sibarani Panggabean, S.E., M.E.</span></div></section>
+
+ <p class="section-sub" style="margin-top:22px">Setelah perencanaan SDM di Modul 2 memetakan kebutuhan tenaga kerja, Modul 3 menguraikan cara meminimumkan kesalahan dalam pengadaan SDM melalui tiga tahap berurutan: <b>KB 1 Rekrutmen</b> (menarik pelamar berkualitas), <b>KB 2 Seleksi</b> (memilih pelamar paling sesuai secara ilmiah dan legal), serta <b>KB 3 Orientasi dan Penempatan</b> (menyelaraskan karyawan ke jabatan baru secara produktif).</p>
+ <p class="offline-note">ℹ️ Peta konsep, kartu penjelasan interaktif, dan daftar cek konsep berjalan tanpa internet. Rumus rasio seleksi menggunakan MathJax saat daring.</p>
+
+ <!-- KONSEP PENTING -->
+ <h2 class="section" id="konsep"><span class="dot"></span>Konsep Penting yang Harus Dikuasai</h2>
+ <div class="card"><div class="cl-head"><span class="count"><span id="doneCount">0</span>/<span id="totalCount">0</span> dikuasai</span><button class="btn-reset" id="resetBtn">Reset centang</button></div>
+ <ul class="concepts" id="conceptList">
+  <li><input type="checkbox"><span><span class="ct">3 Keputusan Utama Proses Rekrutmen (Gambar 3.1)</span><span class="cd">Kebijakan karyawan (memengaruhi sifat lowongan), sumber rekrutmen (memengaruhi jenis pelamar), dan karakteristik/perilaku perekrut.</span></span></li>
+  <li><input type="checkbox"><span><span class="ct">4 Kebijakan Kepegawaian dalam Rekrutmen</span><span class="cd">Penarikan internal/eksternal, gaji pemimpin pasar, kebijakan ketenagakerjaan sesuka hati vs proses semestinya, dan periklanan citra.</span></span></li>
+  <li><input type="checkbox"><span><span class="ct">Sumber Internal vs 6 Sumber Eksternal &amp; 3 Alternatif Penarikan</span><span class="cd">Pelamar langsung/referrals, iklan, e-recruitment, Depnaker/agen swasta, head hunters, kampus/job fair; alternatif: lembur, sewa, sementara.</span></span></li>
+  <li><input type="checkbox"><span><span class="ct">Evaluasi Sumber Rekrutmen (Rasio Hasil &amp; Biaya per Penarikan)</span><span class="cd">Yield ratio mengukur persentase pelamar yang lolos dari satu tahap rekrutmen/seleksi ke tahap berikutnya.</span></span></li>
+  <li><input type="checkbox"><span><span class="ct">Karakteristik &amp; Perilaku Perekrut</span><span class="cd">Bidang fungsi perekrut, sikap hangat &amp; informatif (lebih kuat dari demografi), realisme perekrut, dan 4 cara meningkatkan dampaknya.</span></span></li>
+  <li><input type="checkbox"><span><span class="ct">9 Langkah Proses Seleksi Karyawan</span><span class="cd">Dari penerimaan pendahuluan, berkas, ujian, wawancara, cek referensi, tes kesehatan, wawancara atasan, ulasan pekerjaan, hingga keputusan.</span></span></li>
+  <li><input type="checkbox"><span><span class="ct">5 Standar Ilmiah Metode Seleksi</span><span class="cd">Reliabilitas (keandalan), Validitas (keabsahan: kriteria, serempak, isi), Generalisasi (3 konteks), Utilitas (pemanfaatan), dan Legalitas.</span></span></li>
+  <li><input type="checkbox"><span><span class="ct">7 Metode Seleksi Umum (termasuk Big Five &amp; Kecerdasan Emosional)</span><span class="cd">Wawancara, referensi/CV, tes fisik (5), tes kognitif (3), inventarisasi kepribadian (5 sifat + 5 kecerdasan emosional), sampel kerja, tes narkoba/kejujuran.</span></span></li>
+  <li><input type="checkbox"><span><span class="ct">7 Faktor Lingkungan Seleksi &amp; Rumus Rasio Seleksi</span><span class="cd">Fungsi SDM lain, hukum, kecepatan keputusan, hierarki, kumpulan pelamar (rasio seleksi), jenis organisasi, dan masa percobaan (60–90 hari).</span></span></li>
+  <li><input type="checkbox"><span><span class="ct">3 Kendala Utama Seleksi</span><span class="cd">Tolok ukur (sulit objektif), penyeleksi (sulit yang benar-benar objektif), dan pelamar (cenderung menyembunyikan kelemahan) → atasi dengan seleksi bertingkat.</span></span></li>
+  <li><input type="checkbox"><span><span class="ct">Arti Penting, 6 Tujuan &amp; 2 Kelompok Topik Orientasi</span><span class="cd">13 topik mengenai organisasi/SOP/keselamatan dan 6 topik mengenai hak-hak karyawan serta perkenalan (atasan, rekan, pelatih, penasihat).</span></span></li>
+  <li><input type="checkbox"><span><span class="ct">Penempatan Karyawan (Promosi, Transfer, Demosi) &amp; Kaitannya dengan Orientasi</span><span class="cd">Karyawan lama yang berpindah posisi tetap membutuhkan orientasi untuk mengurangi kecemasan interpersonal dan tugas baru.</span></span></li>
+ </ul></div>
+
+ <!-- PETA KONSEP -->
+ <h2 class="section" id="peta"><span class="dot"></span>Peta Konsep (Mind Map)</h2>
+ <div class="card"><div class="mm-toolbar"><button class="mm-btn" id="mmExpand">Perluas semua</button><button class="mm-btn" id="mmCollapse">Ciutkan</button><span style="font-size:.76rem;color:var(--muted)">Klik simpul (+) atau (–) untuk membuka/menutup cabang · Gulir untuk menggeser</span></div><div class="mindmap-host" id="mindmap"></div></div>
+
+ <!-- ==================== KB 1 ==================== -->
+ <h2 class="section" id="kb1"><span class="dot" style="background:var(--kb1)"></span>KB 1 — Rekrutmen</h2>
+ <div class="card kb1b"><span class="kb-tag kb1t">KB 1 · Hal. 3.4–3.13</span>
+  <p class="lead">Merekrut orang yang tidak dikenal merupakan salah satu aspek MSDM yang paling berisiko. Rekrutmen yang baik tidak mengejar sekadar banyaknya pelamar, melainkan memastikan tersedianya sejumlah pelamar <b>berkualitas</b> yang sesuai uraian dan spesifikasi pekerjaan.</p>
+
+  <!-- KB1 A -->
+  <div class="abc"><span class="ltr">A</span><h4>Arti Pentingnya Penarikan SDM</h4></div>
+  <p><span class="term">Penarikan / Rekrutmen SDM <span class="en">(recruitment)</span></span> adalah seluruh kegiatan organisasi untuk memengaruhi (1) jumlah pelamar, (2) tipe orang yang melamar, dan (3) kemungkinan mereka menerima tawaran kerja. Tujuannya menjamin organisasi memiliki kumpulan pelamar berkualitas saat lowongan muncul, sekaligus memberi informasi pekerjaan dan persyaratan secara jelas agar pelamar tidak memenuhi syarat tidak membanjiri seleksi dan membengkakkan biaya.</p>
+
+  <!-- KB1 B -->
+  <div class="abc"><span class="ltr">B</span><h4>Proses Rekrutmen SDM</h4></div>
+  <p>Menurut Noe dkk. (2006), keberhasilan proses rekrutmen bertumpu pada <b>tiga keputusan utama</b> yang saling membentuk keputusan pilihan pekerjaan pelamar (Gambar 3.1):</p>
+  <div class="diagram-box">
+   <div class="flowchart">
+    <span class="fc-node">1. Kebijakan Karyawan<br><small style="font-weight:400">→ Karakteristik Lowongan</small></span>
+    <span class="fc-arrow">+</span>
+    <span class="fc-node">2. Sumber Rekrutmen<br><small style="font-weight:400">→ Karakteristik Pelamar</small></span>
+    <span class="fc-arrow">+</span>
+    <span class="fc-node">3. Ciri &amp; Perilaku Perekrut<br><small style="font-weight:400">→ Persepsi &amp; Daya Tarik</small></span>
+    <span class="fc-arrow">➔</span>
+    <span class="fc-node" style="background:var(--dot);color:#fff">PILIHAN PEKERJAAN</span>
+   </div>
+   <div class="diagram-cap">Reproduksi Gambar 3.1 — Proses Rekrutmen (Noe dkk., 2006)</div>
+  </div>
+
+  <!-- KB1 C -->
+  <div class="abc"><span class="ltr">C</span><h4>Kebijakan-Kebijakan Karyawan</h4></div>
+  <p>Empat kebijakan kepegawaian yang memengaruhi daya tarik lowongan pekerjaan:</p>
+  <ol class="book">
+   <li><b>Penarikan Internal dan Eksternal:</b> Promosi dari dalam (melalui buletin dinding, surat kabar perusahaan, memo) memberi peluang maju saat ekspansi dan kestabilan saat penurunan (contoh: <b>McDonald's</b>—mantan juru masak kini memiliki restoran sendiri).</li>
+   <li><b>Strategi Pembayaran Gaji Memimpin Pasar <span class="en">(Lead-the-Market Pay)</span>:</b> Membayar gaji di atas rata-rata pasar untuk menarik pelamar terbaik atau mengompensasi kondisi kerja kurang diminati (seperti kerja malam), sekaligus mendorong produktivitas dan kualitas tinggi.</li>
+   <li><b>Kebijakan Ketenagakerjaan Sesuka Hati <span class="en">(Employment-at-Will)</span> vs Proses Semestinya <span class="en">(Due Process)</span>:</b> Kebijakan sesuka hati mengizinkan pemutusan hubungan kerja kapan saja tanpa sebab (dibatasi undang-undang). Pelamar umumnya lebih tertarik pada perusahaan dengan <i>proses semestinya</i> (ada mekanisme banding PHK), kecuali kompensasi jauh lebih tinggi.</li>
+   <li><b>Periklanan Citra <span class="en">(Image Advertising)</span>:</b> Mempromosikan organisasi sebagai tempat kerja terbaik, terutama krusial jika perusahaan diterpa citra negatif (contoh: <b>Dow Chemical</b> menghabiskan 60 juta dolar AS untuk memulihkan kesan positif di pasar tenaga kerja).</li>
+  </ol>
+
+  <div class="flow">Setelah kebijakan penarikan ditetapkan, organisasi memilih dari mana calon pelamar dicari melalui <b>Sumber-Sumber Perekrutan (Bagian D)</b>.</div>
+
+  <!-- KB1 D -->
+  <div class="abc"><span class="ltr">D</span><h4>Sumber-Sumber Perekrutan</h4></div>
+  <div class="numh">1. Sumber Internal</div>
+  <p>Karyawan sudah dikenal baik dan memahami organisasi, tetapi sering tak mencukupi untuk posisi awal, kurang memicu kreativitas/perubahan baru, dan berisiko menciptakan angkatan kerja homogen yang memicu masalah hukum diskriminasi.</p>
+
+  <div class="numh">2. Sumber Eksternal</div>
+  <ul class="let">
+   <li><b>Pelamar langsung <span class="en">(direct applicants)</span> &amp; <span class="en">referrals</span>:</b> Pelamar langsung melamar tanpa anjuran dan sudah melakukan <i>seleksi sendiri</i>; <i>referrals</i> (rujukan karyawan lama) melibatkan <i>seleksi sendiri yang dibantu</i> sehingga kecocokannya sering sangat unggul.</li>
+   <li><b>Iklan di surat kabar &amp; majalah:</b> Cenderung kurang efektif dan lebih mahal dibanding pelamar langsung/<i>referrals</i>; surat kabar lokal kurang menargetkan keterampilan spesifik, sedangkan jurnal/majalah/TV membantu menjangkau audiens khusus.</li>
+   <li><b>Perekrutan elektronik <span class="en">(e-recruitment)</span>:</b> (1) lewat situs web organisasi sendiri (pesan sangat terfokus), dan (2) lewat portal lowongan besar seperti <i>karier.com, duniakarir.com, karir_up.com</i>, atau <i>klikakrir.com</i>.</li>
+   <li><b>Agen ketenagakerjaan pemerintah &amp; swasta:</b> Di Indonesia dikelola <b>Depnaker</b> (mempertemukan pemberi kerja dan pencari kerja) serta <b>Perusahaan Penyalur Tenaga Kerja</b> swasta (menampung, melatih, dan menyalurkan tenaga kerja dalam maupun luar negeri seperti Malaysia, Singapura, Hong Kong, Arab Saudi dengan imbalan komisi).</li>
+   <li><b>Perusahaan pencari tenaga eksekutif <span class="en">(head hunters)</span>:</b> Merekrut eksekutif puncak yang sedang bekerja secara rahasia; biaya tinggi (1/3 hingga 1/2 gaji setahun eksekutif), namun sepadan untuk posisi kritis.</li>
+   <li><b>Sekolah tinggi &amp; universitas:</b> Wawancara kampus untuk profesional pemula, <b>program pemagangan</b> (menilai langsung &amp; memberi gambaran nyata pekerjaan), serta <b>pameran pekerjaan <span class="en">(job fair)</span></b> untuk menjaring banyak pelamar dalam waktu singkat.</li>
+  </ul>
+
+  <div class="numh">3. Alternatif Sumber Penarikan</div>
+  <p>Demi efisiensi biaya, perusahaan dapat memilih <b>kerja lembur</b> (memberi tambahan penghasilan, tetapi dalam jangka panjang memicu kelelahan, kecelakaan, absensi, biaya tinggi, dan turunnya kualitas/produktivitas), <b>menyewa karyawan</b>, atau <b>mempekerjakan sementara</b>.</p>
+
+  <!-- KB1 E, F, G -->
+  <div class="abc"><span class="ltr">E</span><h4>Evaluasi Kualitas dari Sumber-Sumber Rekrutmen</h4></div>
+  <p>Kualitas dan efisiensi tiap sumber rekrutmen dipantau melalui <b>rasio hasil <span class="en">(yield ratio)</span></b>—persentase pelamar yang berhasil lolos dari satu tahap rekrutmen/seleksi ke tahap berikutnya—serta <b>biaya per penarikan <span class="en">(cost per hire)</span></b>.</p>
+
+  <div class="abc"><span class="ltr">F</span><h4>Faktor Penentu Perbedaan Karakteristik dan Perilaku Perekrut</h4></div>
+  <ol class="book">
+   <li><b>Bidang fungsi perekrut:</b> Perekrut lebih dipercaya bila berasal dari bidang fungsi yang sama dengan posisi yang dilamar.</li>
+   <li><b>Karakteristik perekrut:</b> Dua sifat paling kritis adalah <b>hangat</b> (menunjukkan kepedulian) dan <b>informatif</b>—keduanya jauh lebih menentukan respons pelamar dibanding faktor demografi (usia, gender, suku).</li>
+   <li><b>Realisme perekrut:</b> Menutupi sisi negatif pekerjaan akan memicu <i>turnover</i> di kemudian hari; keterbukaan perlu diimbangi perbaikan atribut/kebijakan pekerjaan.</li>
+   <li><b>Meningkatkan dampak perekrut:</b> Beri umpan balik tepat waktu, hindari perilaku yang mencoreng citra, fokus pada pelamar kurang berpengalaman, pisahkan rekrutmen dari seleksi, dan gunakan <b>tim perekrut</b> (mencakup wakil bidang fungsi, minoritas, dan perempuan).</li>
+  </ol>
+
+  <div class="abc"><span class="ltr">G</span><h4>Faktor-Faktor yang Mempengaruhi Usaha Penarikan</h4></div>
+  <p>Dipengaruhi oleh <b>ukuran organisasi</b> (perusahaan besar lebih sering merekrut), <b>paket kompensasi</b> (gaji pokok, insentif, fasilitas yang memengaruhi <i>turnover</i> dan daya tarik), serta <b>tingkat pertumbuhan perusahaan</b> (meningkat saat bertumbuh, menyusut saat menurun).</p>
+ </div>
+
+ <!-- ==================== KB 2 ==================== -->
+ <h2 class="section" id="kb2"><span class="dot" style="background:var(--kb2)"></span>KB 2 — Seleksi</h2>
+ <div class="card kb2b"><span class="kb-tag kb2t">KB 2 · Hal. 3.14–3.28</span>
+  <p class="lead">Ketika jumlah pelamar melebihi kebutuhan, perusahaan melakukan <span class="term">seleksi</span>—proses memilih dari sekelompok pelamar orang yang paling tepat untuk posisi dan organisasi. Kesalahan seleksi sangat mahal: Wakil Presiden SDM <b>Southwest Airlines</b> bahkan menegaskan mereka lebih memilih kekurangan staf dan lembur daripada mempekerjakan satu karyawan malas.</p>
+
+  <!-- KB2 A & B -->
+  <div class="abc"><span class="ltr">A</span><h4>Arti Pentingnya Seleksi</h4></div>
+  <p>Tujuannya mencocokkan orang dengan pekerjaan dan budaya organisasi. Karyawan yang tidak cocok (kurang atau melebihi syarat) akan tidak efektif, merusak suasana kerja, dan meninggalkan perusahaan secara sukarela maupun terpaksa. Rencana, struktur, dan pengendalian sempurna tetap gagal bila diisi orang yang salah.</p>
+
+  <div class="abc"><span class="ltr">B</span><h4>Proses Seleksi (9 Langkah Berurutan)</h4></div>
+  <div class="rgrid c3" data-revealgroup>
+   <div class="rcell active" data-reveal data-detail="<b>1. Penerimaan Pendahuluan:</b> Kunjungan calon pelamar ke bagian personalia atau permintaan formulir lamaran—kesan pertama mulai membentuk opini pelamar terhadap perusahaan."><span class="stepnum">1</span><span><span class="rt">Penerimaan Awal</span><span class="rp">Kesan pertama pelamar</span></span></div>
+   <div class="rcell" data-reveal data-detail="<b>2. Pemeriksaan Berkas Lamaran:</b> Menyaring surat lamaran berdasarkan syarat jabatan; pelamar tidak memenuhi syarat langsung gugur, yang memenuhi dipanggil lanjut."><span class="stepnum">2</span><span><span class="rt">Pemeriksaan Berkas</span><span class="rp">Penyaringan syarat awal</span></span></div>
+   <div class="rcell" data-reveal data-detail="<b>3. Ujian Pekerjaan:</b> Tes tertulis/praktik sesuai spesifikasi jabatan untuk memperoleh data objektif kemampuan calon karyawan."><span class="stepnum">3</span><span><span class="rt">Ujian Pekerjaan</span><span class="rp">Tes sesuai spesifikasi</span></span></div>
+   <div class="rcell" data-reveal data-detail="<b>4. Wawancara Seleksi:</b> Menggali data mendalam tentang kemampuan dan kecocokan pelamar sebagai dasar menerima atau menolak."><span class="stepnum">4</span><span><span class="rt">Wawancara Seleksi</span><span class="rp">Gali kemampuan mendalam</span></span></div>
+   <div class="rcell" data-reveal data-detail="<b>5. Pemeriksaan Latar Belakang &amp; Referensi:</b> Memverifikasi perilaku masa lalu serta kebenaran informasi pada formulir lamaran."><span class="stepnum">5</span><span><span class="rt">Cek Referensi</span><span class="rp">Verifikasi rekam jejak</span></span></div>
+   <div class="rcell" data-reveal data-detail="<b>6. Tes Kesehatan:</b> Pemeriksaan fisik oleh dokter perusahaan untuk mencegah penyakit menular, memastikan kelayakan fisik jabatan, dan menekan biaya kesehatan/asuransi jiwa."><span class="stepnum">6</span><span><span class="rt">Tes Kesehatan</span><span class="rp">Kelayakan fisik &amp; K3</span></span></div>
+   <div class="rcell" data-reveal data-detail="<b>7. Wawancara Atasan Langsung:</b> Atasan langsung paling tepat mengevaluasi kecakapan teknis dan menjawab pertanyaan pelamar tentang realitas pekerjaan."><span class="stepnum">7</span><span><span class="rt">Wawancara Atasan</span><span class="rp">Uji teknis oleh user</span></span></div>
+   <div class="rcell" data-reveal data-detail="<b>8. Ulasan Pekerjaan Sebenarnya:</b> Menjelaskan jenis pekerjaan, peralatan, dan kondisi perusahaan secara jujur sebelum diterima agar mencegah ketidakpuasan pasca-masuk."><span class="stepnum">8</span><span><span class="rt">Ulasan Pekerjaan</span><span class="rp">Transparansi kondisi kerja</span></span></div>
+   <div class="rcell" data-reveal data-detail="<b>9. Keputusan Penerimaan:</b> Tahap akhir oleh atasan langsung untuk memutuskan diterima/ditolaknya pelamar dan penempatannya."><span class="stepnum">9</span><span><span class="rt">Keputusan Akhir</span><span class="rp">Penerimaan &amp; penempatan</span></span></div>
+  </div>
+  <div class="rdetail" data-revealdetail><b>1. Penerimaan Pendahuluan:</b> Kunjungan calon pelamar ke bagian personalia atau permintaan formulir lamaran—kesan pertama mulai membentuk opini pelamar terhadap perusahaan.</div>
+
+  <div class="flow">Agar kesembilan langkah seleksi tersebut benar-benar menghasilkan keputusan yang akurat dan sah secara hukum, setiap alat seleksi harus memenuhi <b>lima standar ilmiah (Bagian C)</b>.</div>
+
+  <!-- KB2 C -->
+  <div class="abc"><span class="ltr">C</span><h4>Standar dalam Proses Seleksi Karyawan</h4></div>
+  <ol class="book">
+   <li><b>Reliabilitas / Keandalan <span class="en">(Reliability)</span>:</b> Tingkat bebasnya alat ukur dari kesalahan/konsistensi hasil saat diuji ulang (<i>test-retest</i>) atau dinilai oleh penilai berbeda (<i>reliabilitas antarpenilai</i>). Reliabilitas penting, namun belum cukup untuk menjamin validitas.</li>
+   <li><b>Keabsahan / Validitas <span class="en">(Validity)</span>:</b> Sejauh mana tes benar-benar mengukur apa yang seharusnya diukur (hubungan kinerja saat seleksi dengan kinerja nyata di tempat kerja). Mencakup:
+    <ul class="let">
+     <li><b>Validitas kriteria <span class="en">(criterion-related validity)</span>:</b> Hubungan empiris skor tes dengan skor kinerja, terdiri dari <i>keabsahan yang diramalkan / predictive</i> (tes sebelum direkrut dibandingkan kinerja kemudian) dan <i>keabsahan serempak / concurrent</i> (tes diberikan kepada karyawan yang sudah bekerja).</li>
+     <li><b>Keabsahan isi <span class="en">(content validity)</span>:</b> Dipakai bila ukuran sampel kecil—soal/tugas ujian merupakan sampel representatif pekerjaan nyata (misal tes entri data untuk posisi petugas entri data).</li>
+    </ul>
+   </li>
+   <li><b>Generalisasi <span class="en">(Generalizability)</span>:</b> Sejauh mana validitas metode seleksi pada satu konteks dapat diterapkan ke <b>tiga konteks lain</b> (situasi/organisasi berbeda, sampel orang berbeda, periode waktu berbeda). Diproses lewat 3 langkah: (a) bukti kajian validitas sebelumnya, (b) bukti analisis jabatan bahwa pekerjaannya serupa, dan (c) penggunaan ujian yang serupa.</li>
+   <li><b>Pemanfaatan / Utilitas <span class="en">(Utility)</span>:</b> Sejauh mana informasi dari metode seleksi meningkatkan efektivitas target organisasi secara bernilai ekonomis.</li>
+   <li><b>Legalitas <span class="en">(Legality)</span>:</b> Kepatuhan metode seleksi terhadap hukum anti-diskriminasi (contoh di AS: UU Hak Sipil 1991, UU Diskriminasi Usia 1967, UU Penyandang Cacat 1991).</li>
+  </ol>
+
+  <!-- KB2 D -->
+  <div class="abc"><span class="ltr">D</span><h4>Metode Seleksi</h4></div>
+  <ol class="book">
+   <li><b>Wawancara <span class="en">(Interviews)</span>:</b> Efektivitasnya meningkat jika (a) terstruktur, terstandarisasi, dan fokus pada perilaku teramati, (b) memaksa pelamar menunjukkan tingkah laku &amp; pengetahuan kerja, (c) memakai beberapa pewawancara terlatih. <i>Wawancara situasional</i> mencakup (a) pertanyaan berdasarkan pengalaman masa lalu dan (b) pertanyaan berorientasi masa depan.</li>
+   <li><b>Surat Referensi, Data Riwayat Hidup (CV), dan Formulir Lamaran:</b> Sangat umum digunakan sebelum wawancara untuk cek latar belakang, meski bukti keandalan dan keabsahan referensi sering tergolong lemah.</li>
+   <li><b>Ujian Kemampuan Fisik:</b> Memprediksi kinerja fisik sekaligus risiko cedera/cacat. 5 tipe: (a) ketegangan, kekuatan &amp; ketahanan otot, (b) ketahanan jantung &amp; pembuluh darah, (c) kelenturan, (d) keseimbangan, dan (e) koordinasi.</li>
+   <li><b>Ujian Kemampuan Kognitif:</b> Mengukur kemampuan mental—3 aspek utama: (a) <i>pemahaman verbal</i>, (b) <i>kemampuan kuantitatif</i> (aritmetika), dan (c) <i>kemampuan penalaran</i>. Validitasnya makin tinggi pada pekerjaan yang <b>rumit</b> dan <b>dinamis</b>.</li>
+   <li><b>Inventarisasi Kepribadian <span class="en">(Personality Inventories)</span>:</b> Mengukur apa yang <i>disukai</i> individu (berbeda dari tes kemampuan). Mencakup <b>5 aspek kepribadian (Big Five)</b>: (a) <i>keterbukaan/ekstroversi</i> (ramah, ekspresif), (b) <i>penyesuaian diri</i> (stabil secara emosi), (c) <i>keramahan</i> (sopan, kooperatif), (d) <i>kerajinan/ketekunan</i> (teratur, berorientasi prestasi—prediktor terkuat terutama bila dipasangkan dengan tes kognitif), dan (e) <i>keingintahuan/keterbukaan pengalaman</i> (imajinatif, berwawasan luas). Juga dibahas <b>5 aspek kecerdasan emosional</b>: (a) kesadaran diri, (b) pengaturan diri, (c) motivasi diri, (d) empati, dan (e) keterampilan sosial. <i>Catatan validitas:</i> penilaian diri pelamar rentan bias karena (a) kurang mengenal diri sendiri, (b) kepribadian berubah sesuai konteks, dan (c) mudah memalsukan jawaban.</li>
+   <li><b>Sampel-Sampel Pekerjaan <span class="en">(Work Samples)</span>:</b> Menirukan tugas nyata sebelum diangkat tetap—mulai beberapa jam/hari, masa percobaan 3 bulan–1 tahun, hingga hasil kompetisi (desain arsitektur, busana, pemrograman).</li>
+   <li><b>Tes Narkotika dan Ujian Kejujuran:</b> Alat poligraf dilarang di perusahaan sejak UU Poligraf 1988 (kini hanya di kepolisian); diganti kuesioner kejujuran berbasis sifat penyesuaian diri/kerajinan/stabilitas emosi. Tes narkotika dan <i>medical test</i> umum dipakai secara preventif mencegah biaya tinggi di masa depan.</li>
+  </ol>
+
+  <div class="flow">Pelaksanaan ketujuh metode seleksi di atas tidak berlangsung di ruang hampa, melainkan dipengaruhi <b>faktor lingkungan (Bagian E)</b> dan <b>kendala lapangan (Bagian F)</b>.</div>
+
+  <!-- KB2 E & F -->
+  <div class="abc"><span class="ltr">E</span><h4>Faktor-Faktor Lingkungan yang Mempengaruhi Proses Seleksi</h4></div>
+  <ol class="book">
+   <li><b>Fungsi-Fungsi SDM Lainnya:</b> Kompensasi kurang menarik, K3 buruk, atau pelatihan minim menyulitkan seleksi memperoleh kandidat terbaik.</li>
+   <li><b>Berbagai Pertimbangan Hukum:</b> Menjaga praktik nondiskriminatif—pedoman pertanyaan seleksi: <i>"mengapa saya melontarkan pertanyaan ini?"</i> dan apakah benar-benar terkait pekerjaan.</li>
+   <li><b>Kecepatan Pengambilan Keputusan:</b> Pengisian lowongan yang cepat berkorelasi dengan imbal hasil pemegang saham lebih tinggi (waspadai birokrasi berbelit).</li>
+   <li><b>Hierarki Organisasi:</b> Makin tinggi jabatan (misal CEO), makin ketat pemeriksaan latar belakang dan wawancara berulang dibanding posisi klerikal/pengetik.</li>
+   <li><b>Kumpulan Pelamar <span class="en">(Applicant Pool)</span> &amp; Rasio Seleksi:</b> Seleksi baru benar-benar selektif jika kumpulan pelamar besar (dipengaruhi pengangguran &amp; pasar kerja):
+    <div class="eqbox"><div>\[\text{Rasio Seleksi (Rasio Pelamar)} = \frac{\text{Jumlah orang yang dipekerjakan}}{\text{Jumlah pelamar yang memenuhi syarat (kumpulan pelamar)}}\]</div></div>
+    Rasio $1{,}00$ berarti hanya ada 1 pelamar memenuhi syarat untuk 1 lowongan; makin kecil rasio (misal $0{,}10$ = 10 pelamar untuk 1 posisi), makin leluasa manajer memilih.
+   </li>
+   <li><b>Jenis Organisasi:</b> Perusahaan swasta berorientasi laba, berbeda prioritasnya dengan lembaga pemerintah atau nirlaba.</li>
+   <li><b>Masa Percobaan <span class="en">(Probationary Period)</span>:</b> Umumnya <b>60 hingga 90 hari</b> untuk mengevaluasi kinerja nyata secara langsung; selama masa ini karyawan dapat diberhentikan dengan sedikit/tanpa alasan sebelum terikat kesepakatan karyawan tetap.</li>
+  </ol>
+
+  <div class="abc"><span class="ltr">F</span><h4>Kendala-Kendala Seleksi</h4></div>
+  <ol class="book">
+   <li><b>Tolok Ukur:</b> Sulit menetapkan standar objektif untuk sifat abstrak seperti kejujuran atau kesetiaan.</li>
+   <li><b>Penyeleksi:</b> Sulit memperoleh penyeleksi yang benar-benar kompeten, jujur, dan objektif.</li>
+   <li><b>Pelamar:</b> Cenderung hanya menonjolkan sisi baik dan menyembunyikan kelemahan. <i>Solusi:</i> terapkan <b>seleksi bertingkat</b>—makin banyak tahapan saringan, makin cermat dan teliti penerimaan karyawan.</li>
+  </ol>
+ </div>
+
+ <!-- ==================== KB 3 ==================== -->
+ <h2 class="section" id="kb3"><span class="dot" style="background:var(--kb3)"></span>KB 3 — Orientasi dan Penempatan</h2>
+ <div class="card kb3b"><span class="kb-tag kb3t">KB 3 · Hal. 3.29–3.32</span>
+  <p class="lead">Pengadaan SDM belum selesai saat pelamar dinyatakan diterima—karyawan terpilih harus menjalani <b>orientasi (sosialisasi)</b> dan <b>penempatan</b> agar cepat beradaptasi dan produktif pada jabatan barunya.</p>
+
+  <!-- KB3 A -->
+  <div class="abc"><span class="ltr">A</span><h4>Arti Pentingnya Orientasi</h4></div>
+  <p><span class="term">Orientasi <span class="en">(orientation / socialization)</span></span> adalah upaya pelatihan dan pengembangan awal bagi karyawan baru untuk membekali informasi tentang perusahaan, jabatan, dan kelompok kerja. <b>Enam tujuannya</b> adalah memperkenalkan karyawan baru pada: (1) peran masing-masing, (2) organisasi dan kebijakannya, (3) rekan-rekan kerja, (4) kesiapan mental beralih dari dunia pendidikan ke dunia kerja nyata, (5) menghilangkan hambatan psikologis memasuki kelompok baru, serta (6) mengenal lingkungan kerja baru secara singkat.</p>
+  <table class="mini">
+   <thead><tr><th style="width:52%">13 Topik tentang Organisasi &amp; Pekerjaan</th><th>6 Topik tentang Hak Karyawan &amp; Perkenalan</th></tr></thead>
+   <tbody>
+    <tr>
+     <td>1. Sejarah perusahaan · 2. Struktur organisasi · 3. Nama &amp; jabatan eksekutif · 4. Jabatan &amp; departemen karyawan · 5. Denah fasilitas fisik · 6. Masa percobaan · 7. Deskripsi produk/jasa · 8. Tinjauan proses produksi · 9. Kebijakan &amp; peraturan perusahaan · 10. Peraturan kedisiplinan · 11. Buku saku karyawan · 12. <i>Standard Operating Procedure (SOP)</i> relevan · 13. Prosedur &amp; penegakan keselamatan (K3).</td>
+     <td>1. Skala &amp; waktu penggajian · 2. Cuti &amp; libur · 3. Jam kerja &amp; istirahat · 4. Konseling · 5. Fasilitas &amp; tunjangan (pendidikan/pelatihan, asuransi, pensiun) · 6. Perkenalan dengan: (a) <b>atasan</b>, (b) <b>rekan kerja</b>, (c) <b>pelatih</b>, dan (d) <b>penasihat karyawan</b>.</td>
+    </tr>
+   </tbody>
+  </table>
+
+  <div class="flow">Setelah karyawan memahami lingkungan kerja dan hak-kewajibannya melalui orientasi, organisasi menugaskannya secara tepat pada jabatan baru—termasuk bagi karyawan lama yang berpindah posisi—di <b>Bagian B</b>.</div>
+
+  <!-- KB3 B -->
+  <div class="abc"><span class="ltr">B</span><h4>Penempatan Karyawan <span class="en">(Placement)</span></h4></div>
+  <p><span class="term">Penempatan karyawan</span> adalah penugasan atau penugasan kembali karyawan pada jabatan baru sesuai minat dan kemampuannya agar produktif. Sebagian besar keputusan penempatan diambil oleh <b>manajer lini (atasan langsung)</b>, sedangkan departemen SDM berperan memberi saran kebijakan dan konseling karyawan.</p>
+
+  <div class="numh">1. Jenis-Jenis Penempatan</div>
+  <div class="rgrid c3" data-revealgroup>
+   <div class="rcell active" data-reveal data-detail="<b>a. Promosi (Promotion):</b> Pemindahan karyawan ke posisi yang <b>lebih tinggi</b> dari segi bayaran, tanggung jawab, dan/atau level organisasional. Terbagi menjadi dua dasar: (1) <b>berdasarkan prestasi</b> dan (2) <b>berdasarkan senioritas</b>."><span class="stepnum">a</span><span><span class="rt">Promosi</span><span class="rp">Naik level · prestasi/senioritas</span></span></div>
+   <div class="rcell" data-reveal data-detail="<b>b. Transfer (Mutasi Horizontal):</b> Pemindahan karyawan ke posisi lain yang <b>setara</b> dari segi bayaran, tanggung jawab, dan/atau level organisasional."><span class="stepnum">b</span><span><span class="rt">Transfer</span><span class="rp">Pindah posisi setara</span></span></div>
+   <div class="rcell" data-reveal data-detail="<b>c. Demosi (Demotion):</b> Pemindahan karyawan ke posisi lain yang <b>lebih rendah</b> dari segi bayaran, tanggung jawab, dan/atau level organisasional."><span class="stepnum">c</span><span><span class="rt">Demosi</span><span class="rp">Turun level jabatan</span></span></div>
+  </div>
+  <div class="rdetail" data-revealdetail><b>a. Promosi (Promotion):</b> Pemindahan karyawan ke posisi yang <b>lebih tinggi</b> dari segi bayaran, tanggung jawab, dan/atau level organisasional. Terbagi menjadi dua dasar: (1) <b>berdasarkan prestasi</b> dan (2) <b>berdasarkan senioritas</b>.</div>
+
+  <div class="numh">2. Kaitan Orientasi dengan Penempatan</div>
+  <p>Meski dalam promosi, transfer, dan demosi yang ditempatkan adalah <b>karyawan lama</b> yang sudah mengenal strategi, kompensasi, dan peraturan umum perusahaan, mereka <b>tetap memerlukan orientasi</b> untuk meredakan dua sumber kecemasan utama saat berpindah posisi (Gambar hal. 3.31):</p>
+  <div class="diagram-box">
+   <div class="flowchart">
+    <span class="fc-node">Kecemasan Tugas Baru<br><small style="font-weight:400">"Apakah saya mampu melaksanakan pekerjaan baru dengan baik?"</small></span>
+    <span class="fc-arrow">+</span>
+    <span class="fc-node">Kecemasan Interpersonal<br><small style="font-weight:400">"Apakah saya akan diterima dengan baik di unit kerja baru?"</small></span>
+    <span class="fc-arrow">➔</span>
+    <span class="fc-node" style="background:var(--dot);color:#fff">Diredakan lewat ORIENTASI PENEMPATAN</span>
+   </div>
+   <div class="diagram-cap">Reproduksi Skema Hal. 3.31 — Kecemasan Karyawan yang Mengalami Perpindahan Posisi</div>
+  </div>
+ </div>
+
+ <!-- GLOSARIUM -->
+ <h2 class="section" id="glosarium"><span class="dot"></span>Glosarium Kilat Modul 3</h2>
+ <div class="card"><dl class="glossary">
+  <dt>Rekrutmen (Penarikan SDM)</dt><dd>Proses menarik minat pelamar berkualifikasi dalam jumlah memadai dan tepat waktu untuk melamar lowongan organisasi.</dd>
+  <dt>Yield Ratio (Rasio Hasil)</dt><dd>Persentase pelamar yang berhasil lolos dari satu tahap rekrutmen/seleksi ke tahap berikutnya untuk mengevaluasi efektivitas sumber rekrutmen.</dd>
+  <dt>Employment-at-Will vs Due Process</dt><dd>Kebijakan ketenagakerjaan sesuka hati (PHK kapan saja tanpa sebab) dibanding kebijakan proses semestinya yang menyediakan jalur banding PHK.</dd>
+  <dt>Reliabilitas, Validitas, Generalisasi, Utilitas, Legalitas</dt><dd>Lima standar ilmiah yang wajib dipenuhi metode seleksi agar konsisten, akurat mengukur kinerja, berlaku lintas konteks, bernilai guna, dan taat hukum.</dd>
+  <dt>Rasio Seleksi (Selection Ratio)</dt><dd>Perbandingan jumlah orang yang dipekerjakan terhadap total pelamar memenuhi syarat; makin kecil nilainya, makin tinggi daya selektivitas perusahaan.</dd>
+  <dt>Orientasi &amp; Penempatan (Promosi, Transfer, Demosi)</dt><dd>Orientasi menyosialisasikan karyawan ke lingkungan/tugas baru; penempatan menugaskan karyawan ke posisi baru (naik, setara, atau turun level).</dd>
+ </dl></div>
+</div>
+
+<footer><b>EKMA5207 — Manajemen Sumber Daya Manusia (Edisi 3)</b> · Modul 3: Pengadaan Sumber Daya Manusia (Prof. Dr. Mutiara Sibarani Panggabean, S.E., M.E.)<br>Bahan belajar ringkas untuk persiapan ujian.</footer>
+
+<script>
+(function(){
+ var pb=document.getElementById('progress');
+ function onScroll(){var h=document.documentElement;var sc=h.scrollTop||document.body.scrollTop;var max=(h.scrollHeight-h.clientHeight)||1;pb.style.width=(sc/max*100)+'%';}
+ document.addEventListener('scroll',onScroll,{passive:true});onScroll();
+ var list=document.getElementById('conceptList');var items=[].slice.call(list.querySelectorAll('li'));var boxes=items.map(function(li){return li.querySelector('input');});
+ document.getElementById('totalCount').textContent=items.length;var doneEl=document.getElementById('doneCount');var KEY='studi_ekma5207_m3_concepts_v1';
+ function load(){try{var a=JSON.parse(localStorage.getItem(KEY)||'[]');boxes.forEach(function(b,i){if(a[i])b.checked=true;});}catch(e){}}
+ function save(){try{localStorage.setItem(KEY,JSON.stringify(boxes.map(function(b){return b.checked?1:0;})));}catch(e){}}
+ function refresh(){var n=0;items.forEach(function(li,i){if(boxes[i].checked){li.classList.add('done');n++;}else li.classList.remove('done');});doneEl.textContent=n;}
+ load();refresh();boxes.forEach(function(b){b.addEventListener('change',function(){refresh();save();});});
+ document.getElementById('resetBtn').addEventListener('click',function(){boxes.forEach(function(b){b.checked=false;});refresh();save();});
+ [].slice.call(document.querySelectorAll('[data-revealgroup]')).forEach(function(g){
+  var det=g.querySelector('[data-revealdetail]');if(!det){var sib=g.nextElementSibling;if(sib&&sib.hasAttribute&&sib.hasAttribute('data-revealdetail'))det=sib;}
+  var cells=[].slice.call(g.querySelectorAll('[data-reveal]'));
+  cells.forEach(function(c){c.addEventListener('click',function(){cells.forEach(function(x){x.classList.remove('active');});c.classList.add('active');if(det)det.innerHTML=c.getAttribute('data-detail');});});
+ });
+ (function(){
+  var ROWH=46,NODE_H=32,PAD=13,GAP=52;var COL={root:'#0f5e8f',kb1:'#1a86c7',kb2:'#e08a1e',kb3:'#2a9d6f',kb4:'#7a5cc0',kb5:'#c75b7a'};
+  var mc=document.createElement('canvas').getContext('2d');mc.font='700 13px -apple-system,Segoe UI,Roboto,sans-serif';
+  function tw(t){return Math.ceil(mc.measureText(t).width);}function esc(t){return t.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');}
+  function rgba(hex,a){var h=hex.replace('#','');return 'rgba('+parseInt(h.substr(0,2),16)+','+parseInt(h.substr(2,2),16)+','+parseInt(h.substr(4,2),16)+','+a+')';}
+  var DATA={label:'MODUL 3 — Pengadaan SDM',color:COL.root,children:[
+   {label:'KB1 · Rekrutmen',color:COL.kb1,children:[
+    {label:'A–B. Arti Penting & 3 Keputusan (Gbr 3.1)'},
+    {label:'C. 4 Kebijakan Karyawan',children:[{label:'Internal/Eksternal & Gaji Pasar'},{label:'Sesuka Hati vs Due Process & Citra'}]},
+    {label:'D. Sumber Internal, 6 Eksternal & 3 Alternatif'},
+    {label:'E–G. Yield Ratio, Perekrut & Faktor Penarikan'}
+   ]},
+   {label:'KB2 · Seleksi',color:COL.kb2,children:[
+    {label:'A–B. Arti Penting & 9 Langkah Seleksi'},
+    {label:'C. 5 Standar Seleksi',children:[{label:'Reliabilitas & Validitas'},{label:'Generalisasi, Utilitas, Legalitas'}]},
+    {label:'D. 7 Metode Seleksi',children:[{label:'Wawancara, CV, Fisik, Kognitif'},{label:'Kepribadian (Big 5 & EQ), Sampel, Tes'}]},
+    {label:'E–F. 7 Faktor Lingkungan (Rasio) & 3 Kendala'}
+   ]},
+   {label:'KB3 · Orientasi & Penempatan',color:COL.kb3,children:[
+    {label:'A. Orientasi (6 Tujuan & 13+6 Topik)'},
+    {label:'B. Penempatan',children:[{label:'Promosi, Transfer, Demosi'},{label:'Kaitan Orientasi & Kecemasan'}]}
+   ]}
+  ]};
+  var idc=0;(function w(n,c){n.id='n'+(idc++);n.color=n.color||c;(n.children||[]).forEach(function(k){w(k,n.color);});})(DATA,COL.root);
+  (function w(n,d){if(d>=2&&n.children&&n.children.length)n.collapsed=true;(n.children||[]).forEach(function(k){w(k,d+1);});})(DATA,0);
+  var host=document.getElementById('mindmap');
+  function render(){
+   var colW=[];(function w(n,d){var width=tw(n.label)+PAD*2+((n.children&&n.children.length)?20:0);colW[d]=Math.max(colW[d]||0,width);if(!n.collapsed)(n.children||[]).forEach(function(k){w(k,d+1);});})(DATA,0);
+   var colX=[],acc=14;for(var d=0;d<colW.length;d++){colX[d]=acc;acc+=colW[d]+GAP;}var row={v:0};
+   (function lay(n,d){if(!n.children||!n.children.length||n.collapsed){n._y=row.v*ROWH+ROWH/2+8;row.v++;return;}var f,l;n.children.forEach(function(k,i){lay(k,d+1);if(i===0)f=k._y;l=k._y;});n._y=(f+l)/2;})(DATA,0);
+   var totalW=acc,totalH=row.v*ROWH+24;var nodes=[],links=[];
+   (function col(n,d,p){n._x=colX[d];n._w=tw(n.label)+PAD*2+((n.children&&n.children.length)?20:0);nodes.push({n:n,d:d});if(p)links.push([p,n]);if(!n.collapsed)(n.children||[]).forEach(function(k){col(k,d+1,n);});})(DATA,0,null);
+   var s='<svg width="'+totalW+'" height="'+totalH+'" viewBox="0 0 '+totalW+' '+totalH+'" xmlns="http://www.w3.org/2000/svg">';
+   links.forEach(function(pr){var a=pr[0],b=pr[1],x1=a._x+a._w,y1=a._y,x2=b._x,y2=b._y,mx=(x1+x2)/2;s+='<path d="M'+x1+' '+y1+' C'+mx+' '+y1+' '+mx+' '+y2+' '+x2+' '+y2+'" fill="none" stroke="'+rgba(b.color,.5)+'" stroke-width="2"/>';});
+   nodes.forEach(function(o){var n=o.n,x=n._x,y=n._y-NODE_H/2,w=n._w,hk=n.children&&n.children.length;var fill=o.d===0?n.color:(o.d===1?rgba(n.color,.12):'#fff');var tf=o.d===0?'#fff':'#1c2733';
+    s+='<g data-id="'+n.id+'" style="cursor:'+(hk?'pointer':'default')+'"><rect x="'+x+'" y="'+y+'" rx="9" width="'+w+'" height="'+NODE_H+'" fill="'+fill+'" stroke="'+n.color+'" stroke-width="'+(o.d===0?0:1.6)+'"/><text x="'+(x+PAD)+'" y="'+(n._y+4)+'" font-size="13" font-weight="'+(o.d<=1?'700':'500')+'" fill="'+tf+'" font-family="-apple-system,Segoe UI,Roboto,sans-serif">'+esc(n.label)+'</text>';
+    if(hk){var cx=x+w-12,cy=n._y;s+='<circle cx="'+cx+'" cy="'+cy+'" r="8.5" fill="'+n.color+'"/><text x="'+cx+'" y="'+(cy+4.5)+'" font-size="13" font-weight="700" fill="#fff" text-anchor="middle" font-family="sans-serif">'+(n.collapsed?'+':'\u2013')+'</text>';}s+='</g>';});
+   s+='</svg>';host.innerHTML=s;
+  }
+  host.addEventListener('click',function(e){var g=e.target.closest('g[data-id]');if(!g)return;var id=g.getAttribute('data-id');(function f(n){if(n.id===id){if(n.children&&n.children.length)n.collapsed=!n.collapsed;return true;}return (n.children||[]).some(f);})(DATA);render();});
+  document.getElementById('mmExpand').addEventListener('click',function(){(function w(n){if(n.children)n.collapsed=false;(n.children||[]).forEach(w);})(DATA);render();});
+  document.getElementById('mmCollapse').addEventListener('click',function(){(function w(n,d){if(d>=1&&n.children&&n.children.length)n.collapsed=true;(n.children||[]).forEach(function(k){w(k,d+1);});})(DATA,0);render();});
+  render();
+ })();
+ window.addEventListener('load',function(){setTimeout(function(){if(window.MathJax&&window.MathJax.typesetPromise)window.MathJax.typesetPromise();},400);});
+})();
+</script></body></html>

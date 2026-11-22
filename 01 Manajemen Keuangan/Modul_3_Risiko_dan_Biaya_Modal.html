@@ -1,0 +1,608 @@
+<!DOCTYPE html>
+<html lang="id"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Modul 3 — Risiko dan Biaya Modal | EKMA5205</title>
+<script>window.MathJax={tex:{inlineMath:[['$','$']],displayMath:[['\\[','\\]'],['$$','$$']]},svg:{fontCache:'global'},startup:{typeset:true}};</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js" async></script>
+<style>
+:root{--bg:#f4f6f9;--panel:#fff;--ink:#1c2733;--muted:#5c6b7a;--line:#e4e9f0;--brand:#1a86c7;--brand-dark:#0f5e8f;--brand-soft:#e7f3fb;--kb1:#1a86c7;--kb2:#e08a1e;--kb3:#2a9d6f;--kb4:#7a5cc0;--kb5:#c75b7a;--radius:14px;--shadow:0 1px 2px rgba(16,42,67,.06),0 6px 20px rgba(16,42,67,.06);--maxw:900px}
+*{box-sizing:border-box}html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;line-height:1.72}
+#progress{position:fixed;top:0;left:0;height:4px;width:0;background:linear-gradient(90deg,var(--brand),#53c0ec);z-index:200;transition:width .1s}
+header.top{position:sticky;top:0;z-index:100;background:rgba(255,255,255,.92);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+.top-in{max-width:var(--maxw);margin:0 auto;padding:10px 20px;display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+.badge{background:var(--brand);color:#fff;font-weight:700;font-size:.72rem;letter-spacing:.5px;padding:4px 10px;border-radius:999px}
+.homebtn{text-decoration:none;display:inline-flex;align-items:center;gap:7px;background:var(--brand);color:#fff;font-weight:700;font-size:.8rem;padding:7px 15px;border-radius:999px;box-shadow:0 2px 6px rgba(16,42,67,.22);line-height:1}
+.top-title{font-size:.9rem;font-weight:600;color:var(--muted)}
+nav.jump{margin-left:auto;display:flex;gap:4px;flex-wrap:wrap}
+nav.jump a{font-size:.78rem;color:var(--muted);text-decoration:none;padding:5px 10px;border-radius:8px}
+nav.jump a:hover{background:var(--brand-soft);color:var(--brand-dark)}
+.wrap{max-width:var(--maxw);margin:0 auto;padding:0 20px 90px}
+.hero{margin-top:26px;padding:30px 28px;border-radius:var(--radius);color:#fff;background:linear-gradient(135deg,#0f5e8f,#1a86c7 60%,#2fa4df);box-shadow:var(--shadow);position:relative;overflow:hidden}
+.hero .eyebrow{font-size:.78rem;letter-spacing:1.5px;text-transform:uppercase;opacity:.9;font-weight:600}
+.hero h1{margin:.3em 0 .25em;font-size:1.62rem;line-height:1.25;max-width:90%}
+.hero .meta{display:flex;gap:18px;flex-wrap:wrap;font-size:.84rem;opacity:.95;margin-top:10px}
+h2.section{font-size:1.3rem;margin:48px 0 4px;display:flex;align-items:center;gap:10px;scroll-margin-top:70px}
+h2.section .dot{width:10px;height:22px;border-radius:4px;background:var(--brand)}
+.section-sub{color:var(--muted);font-size:.9rem;margin:0 0 18px}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);padding:22px 24px;margin:16px 0;--dot:var(--brand)}
+.concepts{list-style:none;margin:0;padding:0;display:grid;gap:10px}
+.concepts li{display:flex;gap:12px;align-items:flex-start;padding:12px 14px;border:1px solid var(--line);border-radius:10px;background:#fcfdff}
+.concepts input{margin-top:4px;width:18px;height:18px;accent-color:var(--brand);flex:none;cursor:pointer}
+.concepts .ct{font-weight:600}.concepts .cd{display:block;font-weight:400;color:var(--muted);font-size:.86rem;margin-top:2px}
+.concepts li.done{background:var(--brand-soft);border-color:#bfe0f3}.concepts li.done .ct{text-decoration:line-through;opacity:.65}
+.cl-head{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-bottom:6px}
+.cl-head .count{font-size:.82rem;color:var(--muted);background:var(--brand-soft);padding:3px 10px;border-radius:999px;font-weight:600}
+.btn-reset{font-size:.78rem;border:1px solid var(--line);background:#fff;color:var(--muted);padding:5px 12px;border-radius:8px;cursor:pointer}
+.mm-toolbar{display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin-bottom:10px}
+.mm-btn{font-size:.78rem;border:1px solid var(--line);background:#fff;padding:6px 13px;border-radius:8px;cursor:pointer;color:var(--brand-dark);font-weight:600}
+.mindmap-host{height:580px;overflow:auto;border:1px solid var(--line);border-radius:10px;background:#fcfdff}.mindmap-host svg{display:block}
+.kb-tag{display:inline-flex;align-items:center;gap:8px;font-size:.78rem;font-weight:700;color:#fff;padding:5px 12px;border-radius:999px;margin-bottom:6px}
+.kb1t{background:var(--kb1)}.kb2t{background:var(--kb2)}.kb3t{background:var(--kb3)}.kb4t{background:var(--kb4)}.kb5t{background:var(--kb5)}
+.kb1b{--dot:var(--kb1)}.kb2b{--dot:var(--kb2)}.kb3b{--dot:var(--kb3)}.kb4b{--dot:var(--kb4)}.kb5b{--dot:var(--kb5)}
+.lead{font-size:1.02rem}.term{font-weight:700;color:var(--dot)}.en{font-style:italic;color:var(--muted);font-weight:500}
+.abc{display:flex;align-items:center;gap:10px;margin:28px 0 10px;padding-bottom:6px;border-bottom:2px solid color-mix(in srgb,var(--dot) 18%,#fff)}
+.abc .ltr{background:var(--dot);color:#fff;font-weight:800;min-width:30px;height:30px;padding:0 7px;border-radius:8px;display:grid;place-items:center;flex:none}
+.abc h4{margin:0;font-size:1.06rem;color:var(--dot)}
+.numh{font-weight:700;color:var(--dot);margin:22px 0 4px;font-size:1rem}
+.leth{font-weight:800;color:var(--dot);margin:20px 0 6px;font-size:.98rem;border-left:3px solid var(--dot);padding-left:10px}
+ol.book{margin:12px 0;padding-left:28px}ol.book>li{margin:10px 0;padding-left:6px}ol.book>li::marker{font-weight:700;color:var(--dot)}
+ul.exp{list-style:none;margin:12px 0;padding:0;display:grid;gap:10px}ul.exp>li{position:relative;padding-left:20px}
+ul.exp>li::before{content:"";position:absolute;left:0;top:11px;width:8px;height:8px;border-radius:2px;background:var(--dot)}
+ul.let{list-style:lower-alpha;margin:10px 0;padding-left:28px}ul.let>li{margin:8px 0;padding-left:4px}ul.let>li::marker{color:var(--dot);font-weight:700}
+.flow{border-left:4px solid var(--dot);background:color-mix(in srgb,var(--dot) 9%,#fff);padding:11px 15px;border-radius:0 10px 10px 0;margin:18px 0;font-size:.9rem}
+.flow::before{content:"🔗 Benang merah — ";font-weight:700;color:var(--dot)}.flow b{color:var(--dot)}
+.table-wrap{width:100%;overflow-x:auto;-webkit-overflow-scrolling:touch;margin:14px 0;border-radius:10px}
+table.mini{width:100%;border-collapse:collapse;margin:0;font-size:.86rem;table-layout:auto}
+table.mini th,table.mini td{border:1px solid var(--line);padding:10px 12px;text-align:left;vertical-align:top;overflow-wrap:break-word;word-wrap:break-word}
+table.mini td mjx-container{max-width:100%;overflow-x:auto;overflow-y:hidden;display:inline-block;vertical-align:middle}
+table.mini th{background:color-mix(in srgb,var(--dot) 12%,#fff);color:var(--dot);font-weight:700}
+.rgrid{display:grid;gap:8px;margin:14px 0}.rgrid.c2{grid-template-columns:repeat(2,1fr)}.rgrid.c3{grid-template-columns:repeat(3,1fr)}.rgrid.c4{grid-template-columns:repeat(4,1fr)}
+.rcell{border:1px solid var(--line);border-radius:10px;padding:11px 13px;cursor:pointer;background:#fff;display:flex;gap:10px;align-items:flex-start;transition:.15s}
+.rcell:hover{border-color:var(--dot);box-shadow:var(--shadow);transform:translateY(-2px)}
+.rcell.active{border-color:var(--dot);background:color-mix(in srgb,var(--dot) 8%,#fff)}
+.rcell .stepnum{background:var(--dot);color:#fff;font-weight:700;min-width:24px;height:24px;border-radius:7px;display:grid;place-items:center;flex:none;font-size:.82rem}
+.rcell .rt{font-weight:700;font-size:.9rem;color:var(--dot);display:block}.rcell .rp{font-size:.78rem;color:var(--muted);display:block;margin-top:2px}
+.rdetail{font-size:.88rem;border-left:4px solid var(--dot);background:color-mix(in srgb,var(--dot) 8%,#fff);border-radius:0 10px 10px 0;padding:12px 15px;margin-top:6px}
+.eqbox{background:#fcfdff;border:1px solid var(--line);border-radius:10px;padding:8px 14px;margin:14px 0;overflow-x:auto}
+.glossary dt{font-weight:700;color:var(--brand-dark);margin-top:10px}.glossary dd{margin:0 0 2px;color:var(--muted);font-size:.9rem}
+footer{max-width:var(--maxw);margin:0 auto;padding:30px 20px 60px;color:var(--muted);font-size:.82rem;border-top:1px solid var(--line)}
+.offline-note{font-size:.76rem;color:var(--muted);background:#fff8e6;border:1px solid #f0e2b8;border-radius:8px;padding:8px 12px;margin:10px 0}
+.casebox{background:#f8fafc;border:1px solid var(--line);border-left:4px solid var(--dot);border-radius:0 10px 10px 0;padding:12px 15px;margin:14px 0;font-size:.88rem}
+.casebox .ctitle{font-weight:700;color:var(--dot);margin-bottom:4px;display:block}
+
+.chart-wrap{background:#fcfdff;border:1px solid var(--line);border-radius:12px;padding:14px 16px;margin:16px 0}
+.chart-title{font-weight:700;font-size:.9rem;color:var(--dot);margin:0 0 4px}
+.chart-sub{font-size:.78rem;color:var(--muted);margin:0 0 10px}
+.chart-host{width:100%;overflow-x:auto;position:relative}
+.chart-host svg{display:block;max-width:100%;height:auto;margin:0 auto}
+.chart-legend{display:flex;gap:14px;flex-wrap:wrap;justify-content:center;margin-top:8px;font-size:.78rem;color:var(--muted)}
+.chart-legend span{display:inline-flex;align-items:center;gap:6px}
+.chart-legend i{display:inline-block;width:14px;height:3px;border-radius:2px}
+
+@media(max-width:680px){
+  .table-wrap{overflow-x:visible}
+  table.mini,table.mini thead,table.mini tbody,table.mini th,table.mini td,table.mini tr{display:block;width:100%}
+  table.mini thead{display:none}
+  table.mini tr{margin-bottom:12px;border:1.5px solid color-mix(in srgb,var(--dot) 28%,#e4e9f0);border-radius:10px;background:#fff;overflow:hidden;box-shadow:0 1px 4px rgba(16,42,67,.05)}
+  table.mini td{border:none;border-bottom:1px solid var(--line);padding:10px 12px;text-align:left}
+  table.mini td:last-child{border-bottom:none}
+  table.mini td::before{content:attr(data-label);display:block;font-size:.74rem;font-weight:700;text-transform:uppercase;letter-spacing:.4px;color:var(--dot);margin-bottom:4px}
+}
+@media(max-width:640px){.hero h1{font-size:1.3rem;max-width:100%}nav.jump{display:none}.rgrid.c2,.rgrid.c3,.rgrid.c4{grid-template-columns:1fr}.mindmap-host{height:440px}}
+
+/* GLOBAL RESPONSIVE & OVERFLOW PROTECTION */
+.card{overflow-x:clip;overflow-wrap:break-word;word-wrap:break-word}
+ul.exp,.concepts{grid-template-columns:minmax(0,1fr)}
+ul.exp>li,.concepts li,.concepts li>span,.rcell,.rcell>span,.bs-col,.casebox,.rdetail,.flow{min-width:0;max-width:100%;overflow-wrap:break-word;word-wrap:break-word}
+mjx-container{max-width:100%;overflow-x:auto;overflow-y:hidden}
+mjx-container:not([display="true"]){display:inline-block;vertical-align:middle}
+.table-wrap{width:100%;overflow-x:auto;-webkit-overflow-scrolling:touch;margin:14px 0;border-radius:10px}
+table.mini{width:100%;border-collapse:collapse;margin:0;font-size:.86rem;table-layout:auto}
+table.mini th,table.mini td{border:1px solid var(--line);padding:10px 12px;text-align:left;vertical-align:top;overflow-wrap:break-word;word-wrap:break-word}
+@media(max-width:680px){
+  .table-wrap{overflow-x:visible}
+  table.mini,table.mini thead,table.mini tbody,table.mini th,table.mini td,table.mini tr{display:block;width:100%}
+  table.mini thead{display:none}
+  table.mini tr{margin-bottom:12px;border:1.5px solid color-mix(in srgb,var(--dot) 28%,#e4e9f0);border-radius:10px;background:#fff;overflow:hidden;box-shadow:0 1px 4px rgba(16,42,67,.05)}
+  table.mini td{border:none;border-bottom:1px solid var(--line);padding:10px 12px;text-align:left}
+  table.mini td:last-child{border-bottom:none}
+  table.mini td::before{content:attr(data-label);display:block;font-size:.74rem;font-weight:700;text-transform:uppercase;letter-spacing:.4px;color:var(--dot);margin-bottom:4px}
+}
+
+/* KAMUS AKRONIM & BEDAH FORMULA */
+.acro-box{background:#f8fafc;border:1px solid var(--line);border-radius:10px;padding:12px 14px;margin:14px 0;font-size:.84rem;min-width:0;max-width:100%;overflow-wrap:break-word;word-wrap:break-word}
+.acro-title{font-weight:700;color:var(--dot);font-size:.86rem;margin-bottom:8px;display:block}
+.acro-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:6px 14px;margin:0;padding:0;list-style:none}
+.acro-grid li{min-width:0;line-height:1.5}
+.acro-grid b{color:var(--dot)}
+.fguide{background:color-mix(in srgb,var(--dot) 5%,#fff);border:1px solid color-mix(in srgb,var(--dot) 22%,#e4e9f0);border-radius:10px;padding:12px 15px;margin:-6px 0 16px;font-size:.86rem;min-width:0;max-width:100%;overflow-wrap:break-word;word-wrap:break-word}
+.fguide .fg-head{font-weight:700;color:var(--dot);font-size:.84rem;text-transform:uppercase;letter-spacing:.35px;margin:0 0 6px}
+.fguide ul{margin:4px 0 8px;padding-left:18px}
+.fguide ul li{margin:3px 0}
+.fguide .fg-core{border-top:1px dashed color-mix(in srgb,var(--dot) 30%,#cbd5e1);padding-top:8px;margin-top:8px;display:grid;grid-template-columns:minmax(0,1fr);gap:4px}
+.fguide .fg-core div{min-width:0}
+@media(max-width:640px){.acro-grid{grid-template-columns:minmax(0,1fr)}}
+</style></head><body>
+<div id="progress"></div>
+<header class="top"><div class="top-in">
+ <span class="badge">MODUL 3</span>
+ <a class="homebtn" href="index.html" title="Kembali ke daftar modul"><span style="font-size:1rem;line-height:1">&#8962;</span> Daftar Modul</a>
+ <span class="top-title">Manajemen Keuangan · EKMA5205</span>
+ <nav class="jump">
+ <a href="#konsep">Konsep</a>
+ <a href="#peta">Peta Konsep</a>
+ <a href="#kb1">KB 1</a>
+ <a href="#kb2">KB 2</a>
+ <a href="#kb3">KB 3</a>
+ <a href="#glosarium">Glosarium</a>
+ </nav>
+</div></header>
+
+<div class="wrap">
+ <section class="hero">
+ <div class="eyebrow">Ringkasan Belajar · EKMA5205 (Edisi 3)</div>
+ <h1>Risiko dan Biaya Modal</h1>
+ <div class="meta">
+ <span>⏱️ ±35 menit</span>
+ <span>📚 3 Kegiatan Belajar (KB)</span>
+ <span>✍️ Dr. Said Kelana Asnawi, M.M.</span>
+ </div>
+ </section>
+
+ <p class="section-sub" style="margin-top:22px">Jika Modul 2 memperlakukan tingkat diskonto sebagai angka <i>given</i>, Modul 3 membedah dari mana tingkat diskonto tersebut berasal: mulai dari pengukuran <b>imbalan (return) dan risiko</b> pada aset tunggal maupun portofolio (KB 1), <b>model penetapan harga risiko saham</b> seperti CAPM, Model Multifaktor, dan pengujian Fama–French/CHL (KB 2), hingga merakit seluruh komponen biaya pendanaan menjadi <b>Biaya Modal Rerata Tertimbang (WACC)</b> (KB 3).</p>
+ <p class="offline-note">ℹ️ Peta konsep, kartu penjelasan interaktif, dan checklist konsep berjalan tanpa internet. Koneksi internet hanya diperlukan untuk merender persamaan matematika (MathJax).</p>
+
+ <!-- KONSEP PENTING -->
+ <h2 class="section" id="konsep"><span class="dot"></span>Konsep Penting yang Harus Dikuasai</h2>
+ <div class="card">
+ <div class="cl-head">
+ <span class="count"><span id="doneCount">0</span>/<span id="totalCount">0</span> dikuasai</span>
+ <button class="btn-reset" id="resetBtn">Reset centang</button>
+ </div>
+ <ul class="concepts" id="conceptList">
+ <li><input type="checkbox"><span><span class="ct">Imbalan Bobot Rupiah (Rupiah-Weight) vs Bobot Waktu (Time-Weight)</span><span class="cd">Rupiah-weight (= IRR) mencerminkan arus kas masuk-keluar investor; time-weight mengukur pergerakan harga saham lintas waktu tanpa bobot nominal.</span></span></li>
+ <li><input type="checkbox"><span><span class="ct">Rerata Aritmatika vs Rerata Geometrik</span><span class="cd">Aritmatika selalu lebih tinggi (dipakai mengevaluasi prospek); geometrik lebih konservatif (dipakai mengukur kinerja historis).</span></span></li>
+ <li><input type="checkbox"><span><span class="ct">Karakteristik Risiko Investor (Averter, Neutral, Lover)</span><span class="cd">Risk averter menolak fair game namun tetap mau berinvestasi di aset berisiko asalkan diberi premi risiko positif; konsep investasi dibangun atas asumsi risk averter.</span></span></li>
+ <li><input type="checkbox"><span><span class="ct">Varian, Standar Deviasi, &amp; Koefisien Variasi (CV)</span><span class="cd">Deviasi ($s$) mengukur fluktuasi dari rerata; CV $= s/E(r)$ mengukur risiko relatif per satuan return (makin kecil CV, makin rendah risiko relatifnya).</span></span></li>
+ <li><input type="checkbox"><span><span class="ct">Diversifikasi Portofolio, Korelasi, &amp; Risiko Sistematis</span><span class="cd">Diversifikasi (~20 saham) menekan risiko spesifik (diversifiable), menyisakan risiko pasar (non-diversifiable); korelasi negatif/rendah meminimalkan risiko portofolio.</span></span></li>
+ <li><input type="checkbox"><span><span class="ct">Capital Asset Pricing Model (CAPM), SML, Beta ($\beta$), &amp; Alpha ($\alpha$)</span><span class="cd">$E(r_i) = r_f + \beta_i(r_m - r_f)$; $\beta=1$ setara pasar, $\beta=0$ aset bebas risiko; deviasi aktual dari garis SML adalah alpha ($\alpha$).</span></span></li>
+ <li><input type="checkbox"><span><span class="ct">Kritik CAPM (Stambaugh) &amp; Common/Multifactor Model (APT)</span><span class="cd">Stambaugh menjawab kritik true market portfolio; Multifactor Model menjelaskan return lewat banyak faktor makro (GDP, suku bunga, inflasi) dengan MF-SML.</span></span></li>
+ <li><input type="checkbox"><span><span class="ct">Pengujian Empiris Fama–French (SMB, HML) &amp; CHL</span><span class="cd">Fama–French (1992, 1995) menambahkan faktor ukuran (size/SMB) dan rasio nilai buku terhadap pasar (BE/ME / HML); CHL menambahkan E/P dan C/P.</span></span></li>
+ <li><input type="checkbox"><span><span class="ct">Biaya Utang Setelah Pajak ($k_d^*$) &amp; Saham Preferen ($k_p$)</span><span class="cd">$k_d^* = k_d(1-t)$ memanfaatkan tax shield bunga; saham preferen (quasi-debt) berbiaya $k_p = \text{Div PS}/\text{Net Proceed}$ (setelah flotation costs).</span></span></li>
+ <li><input type="checkbox"><span><span class="ct">Biaya Modal Sendiri: Perusahaan Tertutup &amp; Proposisi MM II ($k_o$ vs $k_e$)</span><span class="cd">Perusahaan tertutup memakai beta pembanding Tbk + premium; adanya utang menaikkan risiko ekuitas sehingga $k_e = k_o + (k_o - k_d)(1-t)(D/E)$.</span></span></li>
+ <li><input type="checkbox"><span><span class="ct">Biaya Saldo Laba (Retained Earnings) &amp; WACC</span><span class="cd">Biaya saldo laba setara $k_e$ (tanpa flotation costs); $\text{WACC} = w_d k_d(1-t) + w_p k_p + w_e k_e$ sebagai tingkat diskonto FCFF (sedangkan $k_e$ untuk FCFE).</span></span></li>
+ <li><input type="checkbox"><span><span class="ct">Batasan Meminimumkan WACC (Financial Distress)</span><span class="cd">Meski $k_d^*$ paling murah, utang 100% tidak mungkin karena menaikkan suku bunga, syarat kreditor, dan risiko kesulitan keuangan—perlu bobot optimal.</span></span></li>
+ </ul>
+ </div>
+
+ <!-- PETA KONSEP -->
+ <h2 class="section" id="peta"><span class="dot"></span>Peta Konsep (Mind Map)</h2>
+ <div class="card">
+ <div class="mm-toolbar">
+ <button class="mm-btn" id="mmExpand">Perluas semua</button>
+ <button class="mm-btn" id="mmCollapse">Ciutkan</button>
+ <span style="font-size:.76rem;color:var(--muted)">Klik simpul bertanda + / – untuk buka-tutup · Gulir untuk menggeser</span>
+ </div>
+ <div class="mindmap-host" id="mindmap"></div>
+ </div>
+
+ <!-- ========================================================= -->
+ <!-- KB 1 -->
+ <!-- ========================================================= -->
+ <h2 class="section" id="kb1"><span class="dot" style="background:var(--kb1)"></span>KB 1 — Pengertian serta Pengukuran Imbalan dan Risiko</h2>
+ <div class="card kb1b">
+ <span class="kb-tag kb1t">KB 1 · RETURN, RISIKO, &amp; PORTOFOLIO (Hal. 3.5 – 3.24)</span>
+ <p class="lead"><span class="term">Imbalan <span class="en">(expected return, $E(r)$)</span></span> adalah hasil yang diharapkan dari investasi (bunga bebas risiko pada SBI, kupon/diskonto pada obligasi, <i>capital gain + dividend yield</i> pada saham), sedangkan <span class="term">risiko</span> adalah estimasi peluang terjadinya penyimpangan/kegagalan dari nilai rata-rata tersebut.</p>
+ <div class="acro-box">
+ <span class="acro-title">📖 Kamus Konteks Singkatan &amp; Akronim KB 1</span>
+ <ul class="acro-grid">
+ <li><b>$E(r)$ &amp; $E(r_p)$</b>: <i>Expected Return</i> (imbalan ekspektasi) aset tunggal dan portofolio ($p$).</li>
+ <li><b>$P_0, P_1, \text{Div}_1$</b>: Harga beli awal ($P_0$), harga akhir ($P_1$), dan dividen diterima ($\text{Div}_1$).</li>
+ <li><b>IRR</b>: <i>Internal Rate of Return</i> — setara dengan imbalan bobot rupiah (<i>rupiah-weight</i>).</li>
+ <li><b>$s^2, s, \sigma$</b>: Varian ($s^2$) dan standar deviasi ($s$ atau $\sigma$) sebagai ukuran volatilitas/risiko.</li>
+ <li><b>CV</b>: <i>Coefficient of Variation</i> ($s/E(r)$) — risiko relatif per satu satuan return.</li>
+ <li><b>$\rho_{12}$ &amp; $\text{Cov}_{12}$</b>: Koefisien korelasi ($\rho \in [-1,+1]$) dan kovarian pergerakan bersama dua aset.</li>
+ <li><b>$w_i$</b>: Bobot/proporsi dana yang dialokasikan pada aset ke-$i$ dalam portofolio ($\sum w_i = 1$).</li>
+ <li><b>SBI</b>: <i>Sertifikat Bank Indonesia</i> — acuan aset bebas risiko ($\sigma_{rf}=0$).</li>
+ </ul>
+ </div>
+
+ <div class="eqbox">
+ \[E(r) = \frac{P_1 - P_0 + \text{Div}_1}{P_0} = \underbrace{\frac{\Delta P}{P_0}}_{\text{Capital Gain/Loss}} + \underbrace{\frac{\text{Div}_1}{P_0}}_{\text{Dividend Yield}}\]
+ </div>
+ <div class="fguide">
+ <div class="fg-head">Bedah Variabel &amp; Intisari Formula Expected Return</div>
+ <ul>
+ <li><b>$P_0$</b> = harga beli awal; <b>$P_1$</b> = harga jual/akhir periode; <b>$\Delta P = P_1 - P_0$</b> = selisih harga; <b>$\text{Div}_1$</b> = dividen kas yang diterima selama periode.</li>
+ <li><b>Makna formula:</b> Total imbalan investasi terdiri atas dua komponen: persentase kenaikan/penurunan harga (<i>capital gain/loss</i>) ditambah imbal hasil dividen (<i>dividend yield</i>).</li>
+ </ul>
+ <div class="fg-core">
+ <div>🧭 <b>Filosofis:</b> Kekayaan investor tumbuh dari dua mesin sekaligus: apresiasi nilai asetnya dan arus kas tunai yang dibagikan selama kepemilikan.</div>
+ <div>📏 <b>Mengukur:</b> Tingkat imbal hasil total satu periode atas investasi sekuritas.</div>
+ <div>🎯 <b>Manfaat:</b> Membandingkan kinerja berbagai instrumen investasi secara standar dalam satuan persentase.</div>
+ </div>
+ </div>
+
+ <div class="abc"><span class="ltr">A – B</span><h4>Bobot Rupiah vs Bobot Waktu &amp; Rerata Aritmatika vs Geometrik</h4></div>
+ <div class="rgrid c2" data-revealgroup>
+ <div class="rcell active" data-reveal data-detail="<b>Bobot Rupiah (Rupiah-Weight):</b> Menghitung imbalan berdasarkan seluruh aliran uang riil masuk dan keluar investor (setara mencari <b>IRR</b>). Pada Contoh 1 (Mas Tony beli 1 lb @1.000, beli 2 lb @1.200, jual 1 lb @1.250, jual 2 lb @1.300, dividen 100/lb), diperoleh $r = \mathbf{15\%}$ — inilah imbalan paling tepat untuk investor individu."><span class="stepnum">1</span><span><span class="rt">Rupiah-Weight (= IRR)</span><span class="rp">Akurat untuk kas aktual investor</span></span></div>
+ <div class="rcell" data-reveal data-detail="<b>Bobot Waktu (Time-Weight):</b> Mengabaikan jumlah uang masuk/keluar, hanya fokus pada perubahan harga + dividen tiap periode (dipakai saat menyatakan 'return saham AALI 20%', Kotak 1). Pada Contoh 1, imbalan tahunan 30%, 12,5%, dan 12% menghasilkan:<br>• <b>Aritmatika:</b> $(30+12{,}5+12)/3 = \mathbf{18{,}17\%}$ (selalu lebih besar; dipakai menilai <i>prospek</i>).<br>• <b>Geometrik:</b> $[(1{,}3)(1{,}125)(1{,}12)]^{1/3}-1 = \mathbf{17{,}88\%}$ (lebih konservatif; dipakai mengukur <i>kinerja masa lalu</i>)."><span class="stepnum">2</span><span><span class="rt">Time-Weight (Aritmatika &amp; Geometrik)</span><span class="rp">Mengukur pergerakan harga lintas waktu</span></span></div>
+ </div>
+ <div class="rdetail" data-revealdetail><b>Bobot Rupiah (Rupiah-Weight):</b> Menghitung imbalan berdasarkan seluruh aliran uang riil masuk dan keluar investor (setara mencari <b>IRR</b>). Pada Contoh 1 (Mas Tony beli 1 lb @1.000, beli 2 lb @1.200, jual 1 lb @1.250, jual 2 lb @1.300, dividen 100/lb), diperoleh $r = \mathbf{15\%}$ — inilah imbalan paling tepat untuk investor individu.</div>
+
+ <div class="flow">Setelah mengukur imbalan dari berbagai sudut pandang, bagian selanjutnya membedah pasangannya yang tak terpisahkan: <b>risiko</b>, karakter investor menghadapinya, serta cara mengukurnya pada aset tunggal dan portofolio.</div>
+
+ <div class="abc"><span class="ltr">1</span><h4>Risiko, Karakteristik Investor, &amp; Pengukuran Risiko Aset</h4></div>
+ <ul class="exp">
+ <li><span class="term">Hakikat Risiko</span> — Risiko bukan kepastian, melainkan <i>estimasi peluang gagal</i> (<span class="en">ex-ante</span>) yang lazim diestimasi dari data historis (<span class="en">ex-post</span>) dan digambarkan oleh fluktuasi/variasi (Kotak 4: saluran air berata-rata kedalaman 10 cm bisa menenggelamkan di titik sedalam 5 m!).</li>
+ <li><span class="term">Tiga Karakter Investor (Kotak 5 &amp; 6 · Hadiah Angpao)</span> — <span class="term">Risk Averter</span> menolak <i>fair game</i> (memilih Rp10.000 pasti daripada undian 50:50 Rp20.000/Rp0), tetapi <b>tetap mau</b> berinvestasi di aset berisiko bila ada <span class="term">premi risiko positif</span> (mis. angpao berisi Rp25.000 → premi Rp2.500). <span class="term">Risk Neutral</span> acuh tak acuh terhadap risiko. <span class="term">Risk Lover</span> (seperti penjudi/lotere) mau menerima premi risiko nol bahkan negatif. Teori investasi dibangun atas asumsi <b>risk averter</b>.</li>
+ <li><span class="term">Trade-off Risiko–Imbalan</span> — Urutan aset dari risiko terendah ke tertinggi: aset bebas risiko (SBI) → obligasi → saham → derivatif.</li>
+ <li><span class="term">Varian ($s^2$), Standar Deviasi ($s$), &amp; Distribusi Normal (Kotak 8)</span> — Mengukur sebaran dari nilai rata-rata ($m$). Pada distribusi normal: $m \pm 1s$ memuat 68% data, $m \pm 2s$ memuat 95%, dan $m \pm 3s$ memuat 99%.</li>
+ <li><span class="term">Risiko Relatif — Koefisien Variasi (CV)</span> — Jika tidak ada aset yang dominan <i>less risk</i> (Contoh 4: Aset A $E=18{,}5\%, s=4{,}5\%$; B $E=19\%, s=9{,}17\%$; C $E=18{,}4\%, s=6{,}42\%$), gunakan $\text{CV} = s/E(r)$. Aset A memiliki CV terendah ($0{,}24 &lt; 0{,}35 &lt; 0{,}48$). Garis penghubung portofolio optimal yang menunjukkan <i>trade-off</i> return–risiko disebut <span class="term">Efficient Frontier</span> (Gambar 3.3).</li>
+ </ul>
+ <div class="eqbox">
+ \[E(r) = \sum p_i x_i \qquad\big|\qquad s^2 = \sum p_i\big(x_i - E(r)\big)^2 \qquad\big|\qquad \text{CV} = \frac{s}{E(r)}\]
+ </div>
+ <div class="fguide">
+ <div class="fg-head">Bedah Variabel &amp; Intisari Formula Varian, Deviasi, &amp; CV</div>
+ <ul>
+ <li><b>$p_i$</b> = probabilitas terjadinya skenario ke-$i$; <b>$x_i$</b> = return pada skenario ke-$i$; <b>$E(r)$</b> = return ekspektasi; <b>$s^2$</b> = varian; <b>$s$</b> = standar deviasi; <b>$\text{CV}$</b> = koefisien variasi.</li>
+ <li><b>Makna formula:</b> Menghitung rata-rata tertimbang return, rata-rata kuadrat simpangannya dari ekspektasi ($s^2$), lalu menstandarkannya per satuan return lewat CV.</li>
+ </ul>
+ <div class="fg-core">
+ <div>🧭 <b>Filosofis:</b> Risiko bukan sekadar kemungkinan rugi, melainkan seberapa lebar hasil aktual bisa meleset dari harapan; CV menyetarakan perbandingan bila dua aset punya rata-rata return berbeda.</div>
+ <div>📏 <b>Mengukur:</b> Ekspektasi imbalan, risiko absolut ($s$), dan risiko relatif per 1% return (CV).</div>
+ <div>🎯 <b>Manfaat:</b> Menyaring aset yang paling efisien (CV terkecil) saat tidak ada aset yang dominan secara mutlak.</div>
+ </div>
+ </div>
+
+ <div class="abc"><span class="ltr">2 – 3</span><h4>Risiko Portofolio &amp; Efek Diversifikasi</h4></div>
+ <p>Prinsip diversifikasi ("jangan letakkan telur pada satu keranjang") menekan <span class="term">risiko spesifik perusahaan <span class="en">(diversifiable risk)</span></span>—secara praktis optimal di sekitar <b>20 saham</b>—sehingga yang tersisa hanyalah <span class="term">risiko pasar / sistematis <span class="en">(non-diversifiable risk)</span></span> (Gambar 3.4). Risiko portofolio bergantung pada <b>jumlah aset</b> dan <b>korelasi antaraset ($\rho$)</b>.</p>
+ <div class="eqbox">
+ \[E(r_p) = \sum w_i E(r_i) \qquad\big|\qquad \sigma_p^2 = w_1^2\sigma_1^2 + w_2^2\sigma_2^2 + 2w_1 w_2 \rho_{12}\sigma_1\sigma_2\]
+ \[\text{Bobot Risiko Minimum (2 aset): } w_1 = \frac{\sigma_2^2 - \text{Cov}_{12}}{\sigma_1^2 + \sigma_2^2 - 2\text{Cov}_{12}}, \quad w_2 = 1 - w_1\]
+ </div>
+ <div class="fguide">
+ <div class="fg-head">Bedah Variabel &amp; Intisari Formula Risiko Portofolio &amp; Bobot Minimum</div>
+ <ul>
+ <li><b>$w_1, w_2$</b> = proporsi dana di aset 1 &amp; 2 ($w_1+w_2=1$); <b>$\sigma_1, \sigma_2$</b> = deviasi masing-masing aset; <b>$\rho_{12}$</b> = korelasi antaraset; <b>$\text{Cov}_{12} = \rho_{12}\sigma_1\sigma_2$</b> = kovarian.</li>
+ <li><b>Makna formula:</b> Return portofolio adalah rata-rata tertimbang biasa, tetapi risiko portofolio ($\sigma_p$) bisa jauh lebih rendah dari rata-rata risiko asetnya berkat suku interaksi $2w_1w_2\rho_{12}\sigma_1\sigma_2$.</li>
+ </ul>
+ <div class="fg-core">
+ <div>🧭 <b>Filosofis:</b> Jangan letakkan semua telur di satu keranjang—menggabungkan aset yang tidak bergerak searah ($\rho < 1$) membuat gejolak satu aset diredam oleh aset lainnya.</div>
+ <div>📏 <b>Mengukur:</b> Return ekspektasi portofolio, risiko gabungan portofolio, dan komposisi bobot optimal dengan risiko paling minimum.</div>
+ <div>🎯 <b>Manfaat:</b> Merancang portofolio terdiversifikasi untuk menghilangkan risiko spesifik perusahaan tanpa mengorbankan return secara proporsional.</div>
+ </div>
+ </div>
+ <ul class="exp">
+ <li><span class="term">Portofolio dengan Aset Bebas Risiko ($\sigma_{rf}=0$, Contoh 5)</span> — Risiko portofolio menyederhana menjadi $\sigma_p = w_{\text{berisiko}} \times \sigma_{\text{berisiko}}$ (60% tabungan 10% + 40% saham $E=25\%, s=20\% \implies E_p=16\%, \sigma_p=8\%$).</li>
+ <li><span class="term">Peran Korelasi ($\rho \in [-1, +1]$, Contoh 6, 8, 9)</span> — Jika $\rho = +1$, risiko tidak bisa diturunkan; makin kecil atau negatif korelasinya (Contoh 6: $\rho = -0{,}5$ menurunkan risiko menjadi $5{,}57\%$ vs $10{,}11\%$ pada $\rho=+0{,}5$), risiko portofolio makin rendah (dan bisa mendekati nol saat $\rho = -1$).</li>
+ </ul>
+    <div class="chart-wrap">
+      <div class="chart-title">Grafik 3.4 · Efek Diversifikasi: Risiko Portofolio ($\sigma_p$) vs Jumlah Saham</div>
+      <div class="chart-sub">Menambah jumlah saham (~20 saham) menekan risiko spesifik (<i>diversifiable</i>), menyisakan risiko pasar (<i>systematic risk</i>).</div>
+      <div class="chart-host" id="ch_m3_div"></div>
+    </div>
+    <ul class="exp"><li><span class="term">Ledakan Jumlah Kovarian (Kotak 9)</span> — Portofolio $n$ aset memiliki $n(n-1)/2$ pasang kovarian: 2 aset → 1 kovarian; 5 aset → 10; 100 aset → <b>4.950 kovarian</b>!</li>
+ </ul>
+ </div>
+
+ <!-- ========================================================= -->
+ <!-- KB 2 -->
+ <!-- ========================================================= -->
+ <h2 class="section" id="kb2"><span class="dot" style="background:var(--kb2)"></span>KB 2 — Berbagai Model Risiko</h2>
+ <div class="card kb2b">
+ <span class="kb-tag kb2t">KB 2 · CAPM, MULTIFAKTOR, &amp; FAMA–FRENCH (Hal. 3.27 – 3.40)</span>
+ <p class="lead">KB 2 menjelaskan bagaimana mengestimasi tingkat pengembalian yang disyaratkan ($E(r_i)$) berdasarkan dua paradigma utama: <span class="term">CAPM</span> (berbasis portofolio pasar) dan <span class="term">Common/Multifactor Model</span> (berbasis faktor ekonomi makro), beserta pengujian empiris lanjutan.</p>
+ <div class="acro-box">
+ <span class="acro-title">📖 Kamus Konteks Singkatan &amp; Akronim KB 2</span>
+ <ul class="acro-grid">
+ <li><b>CAPM</b>: <i>Capital Asset Pricing Model</i> — model penetapan return wajar berbasis risiko pasar ($\beta$).</li>
+ <li><b>CAL &amp; SML</b>: <i>Capital Allocation Line</i> &amp; <i>Security Market Line</i> (garis hubungan $E(r)$ dan $\beta$).</li>
+ <li><b>$r_f$ &amp; $r_m$</b>: Suku bunga bebas risiko ($r_f$) dan tingkat imbalan portofolio pasar ($r_m$, mis. IHSG).</li>
+ <li><b>$\beta$ &amp; $\alpha$</b>: Beta (sensitivitas terhadap pasar) &amp; Alpha (selisih return aktual terhadap garis SML).</li>
+ <li><b>APT &amp; MF-SML</b>: <i>Arbitrage Pricing Theory</i> &amp; <i>Multifactor Security Market Line</i> (model banyak faktor makro).</li>
+ <li><b>GDP &amp; RP</b>: <i>Gross Domestic Product</i> (PDB) &amp; <i>Risk Premium</i> (premi risiko tiap faktor).</li>
+ <li><b>SMB &amp; HML</b>: Faktor Fama–French: <i>Small Minus Big</i> (ukuran/size) &amp; <i>High Minus Low</i> (nilai buku/pasar BE/ME).</li>
+ <li><b>CHL, E/P, C/P</b>: Model <i>Chan–Hamao–Lakonishok</i> memakai rasio <i>Earning/Price</i> (E/P) dan <i>Cash Flow/Price</i> (C/P).</li>
+ </ul>
+ </div>
+
+ <div class="abc"><span class="ltr">1 – 2</span><h4>Capital Asset Pricing Model (CAPM), Beta, &amp; Kritiknya</h4></div>
+ <p>Berawal dari teori portofolio Markowitz (1952) dan dikembangkan Sharpe (1964), Lintner (1965), serta Mossin (1966). Dengan asumsi (1) pasar persaingan sempurna tanpa pajak/biaya transaksi, (2) satu periode, (3) investor rasional <i>mean-variance</i>, dan (4) ekspektasi seragam (<span class="en">homogeneous expectation</span>), seluruh investor akan memegang portofolio pasar ($M$) pada titik singgung <i>Efficient Frontier</i> dan <i>Capital Allocation Line</i> (CAL).</p>
+ <div class="eqbox">
+ \[E(r_i) = r_f + \beta_i (r_m - r_f) \qquad\text{dengan}\qquad \beta_i = \frac{\text{Cov}(r_i, r_m)}{\text{Var}(r_m)}\]
+ </div>
+ <div class="fguide">
+ <div class="fg-head">Bedah Variabel &amp; Intisari Formula CAPM &amp; Beta</div>
+ <ul>
+ <li><b>$E(r_i)$</b> = return wajar yang disyaratkan saham $i$; <b>$r_f$</b> = bunga bebas risiko; <b>$r_m$</b> = return pasar; <b>$(r_m - r_f)$</b> = premi risiko pasar; <b>$\beta_i$</b> = sensitivitas saham $i$ terhadap pasar ($\text{Cov}(r_i,r_m)/\text{Var}(r_m)$).</li>
+ <li><b>Makna formula:</b> Imbalan wajar suatu saham sama dengan bunga bebas risiko ditambah kompensasi risiko sistematisnya ($\beta_i$ dikali premi risiko pasar).</li>
+ </ul>
+ <div class="fg-core">
+ <div>🧭 <b>Filosofis:</b> Pasar tidak memberi imbalan atas risiko spesifik yang sebenarnya bisa dihilangkan lewat diversifikasi; investor hanya dibayar untuk risiko sistematis ($\beta$) yang tak terhindarkan.</div>
+ <div>📏 <b>Mengukur:</b> Tingkat imbal hasil wajar saham (<i>cost of equity</i>) sekaligus acuan mendeteksi saham murah ($\alpha>0$) atau mahal ($\alpha<0$).</div>
+ <div>🎯 <b>Manfaat:</b> Menjadi metode paling luas dipakai untuk mengestimasi biaya modal sendiri ($k_e$) dalam perhitungan WACC dan valuasi saham.</div>
+ </div>
+ </div>
+ <ul class="exp">
+ <li><span class="term">Security Market Line (SML) &amp; Alpha ($\alpha$)</span> — SML adalah garis lurus hubungan $E(r_i)$ dan $\beta_i$ yang menunjukkan nilai wajar (<span class="en">fair value</span>). Selisih return aktual dengan nilai wajar CAPM disebut <span class="term">alpha ($\alpha$)</span> (di atas SML = $\alpha$ positif; di bawah SML = $\alpha$ negatif).</li>
+ <li><span class="term">Interpretasi &amp; Estimasi Beta (Kotak 10 &amp; 11)</span> — $\beta = 1$ setara risiko pasar; $\beta &gt; 1$ lebih fluktuatif; $\beta &lt; 1$ lebih defensif; $\beta = 0$ aset bebas risiko. Secara teoretis $\beta$ <b>tidak boleh negatif</b> (biasanya muncul pada saham tidur/<i>outlier</i>). Beta dicari lewat <code>=COVAR(ri,rm)/VAR(rm)</code> atau koefisien regresi $(r_i - r_f)$ terhadap $(r_m - r_f)$. Contoh 10–11: $r_f=8\%, r_m=12\%, \beta=1{,}3 \implies E(r_i) = \mathbf{13{,}2\%}$ (dipakai sebagai diskonto dividen).</li>
+ <li><span class="term">Kritik CAPM &amp; Jawaban Stambaugh (1982)</span> — Pengkritik menilai indeks saham bukan <i>true market portfolio</i> (mengabaikan obligasi, properti, barang tahan lama). Stambaugh membuktikan indeks 7 jenis aset tetap berkorelasi sangat erat dengan indeks saham umum. Kritik empiris lain datang dari <b>Fama &amp; French</b> ("<i>Beta is Dead</i>") yang tidak menemukan hubungan positif signifikan antara beta dan return.</li>
+ </ul>
+
+ 
+    <div class="chart-wrap">
+      <div class="chart-title">Grafik 3.7 · Security Market Line (SML): Hubungan $E(r_i)$ dan Beta ($\beta$)</div>
+      <div class="chart-sub">Ilustrasi Contoh 10 ($r_f = 8\%$, $r_m = 12\%$): aset di atas garis SML memiliki $\alpha &gt; 0$ (undervalued), di bawah garis $\alpha &lt; 0$ (overvalued).</div>
+      <div class="chart-host" id="ch_m3_sml"></div>
+    </div>
+    <div class="flow">Karena menghitung $n(n-1)/2$ kovarian (5.150 parameter untuk 100 saham!) tidak efisien dan banyak saham bergerak serempak mengikuti ekonomi makro, muncul alternatifnya: <b>Model Faktor Umum &amp; Multifaktor</b>.</div>
+
+ <div class="abc"><span class="ltr">3 – 7</span><h4>Model Faktor Umum, Multifaktor, MF-SML, &amp; Kritiknya</h4></div>
+ <p>Return saham dipisah menjadi pengaruh <span class="term">faktor umum ($F$)</span> dan faktor spesifik perusahaan ($e_i$). Jika $F$ hanya satu berupa indeks pasar (IHSG), disebut <i>market model</i> (dan bila $F = r_m - r_f$, menyederhana kembali menjadi CAPM). Berbeda dari CAPM yang premi risikonya selalu positif, pada model faktor premi risiko dapat bernilai positif maupun negatif (mis. suku bunga terhadap saham utilitas).</p>
+ <div class="eqbox">
+ \[r_i = E(r_i) + \beta_{i1}F_1 + \beta_{i2}F_2 + \dots + \beta_{ik}F_k + e_i\]
+ \[\text{MF-SML: } E(r_i) = r_f + \beta_{i1}(\text{RP}_1) + \beta_{i2}(\text{RP}_2) + \dots + \beta_{ik}(\text{RP}_k)\]
+ </div>
+ <div class="fguide">
+ <div class="fg-head">Bedah Variabel &amp; Intisari Formula Model Multifaktor (MF-SML)</div>
+ <ul>
+ <li><b>$F_1 \dots F_k$</b> = kejutan faktor ekonomi makro (GDP, suku bunga, inflasi); <b>$\beta_{ik}$</b> = sensitivitas saham $i$ terhadap faktor ke-$k$; <b>$\text{RP}_k$</b> = premi risiko faktor ke-$k$; <b>$e_i$</b> = faktor spesifik perusahaan.</li>
+ <li><b>Makna formula:</b> Memperluas CAPM dari satu faktor pasar menjadi penjumlahan berbagai faktor makroekonomi yang memengaruhi industri secara berbeda.</li>
+ </ul>
+ <div class="fg-core">
+ <div>🧭 <b>Filosofis:</b> Satu indeks pasar saja sering terlalu kasar—saham perhotelan lebih peka pada GDP sedangkan saham utilitas lebih peka pada suku bunga, sehingga risiko perlu diurai per sumber makro.</div>
+ <div>📏 <b>Mengukur:</b> Return yang disyaratkan saham berdasarkan eksposurnya terhadap berbagai risiko makroekonomi.</div>
+ <div>🎯 <b>Manfaat:</b> Memberikan estimasi tingkat diskonto $E(r_i)$ yang lebih tajam untuk industri dengan sensitivitas makro spesifik.</div>
+ </div>
+ </div>
+ <ul class="exp">
+ <li><span class="term">Beda Sensitivitas Industri</span> — Industri <b>perhotelan</b> sangat peka positif terhadap kenaikan GDP ($\beta_{\text{GDP}}$ besar), sedangkan <b>utilitas</b> (listrik/telepon, berpendapatan tetap seperti obligasi) sangat peka negatif terhadap kenaikan suku bunga.</li>
+ <li><span class="term">Contoh 12 (PT Wenny Depah)</span> — $r_f=5\%$, tiga faktor (GDP $\beta=0{,}6$, RP $2\%$; Suku bunga $\beta=1{,}1$, RP $3\%$; Inflasi $\beta=1{,}2$, RP $4\%$) $\implies E(r) = 5 + 1{,}2 + 3{,}3 + 4{,}8 = \mathbf{14{,}3\%}$. Dengan dividen tetap Rp200, harga saham $P_0 = 200/0{,}143 = \mathbf{\text{Rp1.398,6}}$.</li>
+ <li><span class="term">Kritik Model Multifaktor / APT (Debat Roll–Ross vs Dhrymes–Friend–Gultekin)</span> — Kelemahan utamanya adalah tidak ada dasar teoretis baku mengenai <i>faktor apa</i> ("turun dari langit") dan <i>berapa jumlah faktor</i> yang benar (secara empiris umumnya 3–5 faktor).</li>
+ </ul>
+
+ <div class="abc"><span class="ltr">8</span><h4>Berbagai Pengujian Empiris Lainnya (Fama–French &amp; CHL)</h4></div>
+ <div class="rgrid c2" data-revealgroup>
+ <div class="rcell active" data-reveal data-detail="<b>Fama &amp; French (1992, 1995, 1996):</b> Setelah membuktikan beta gagal menjelaskan $E(r)$ pada 100 grup beta×size (1992), FF (1995) membentuk 6 portofolio dari 2 <i>Size</i> (Small/Big) × 3 <i>BE/ME</i> (Low 30%, Med 40%, High 30%) dan menguji model 3 faktor:<br>\[R_p - R_f = a + b(R_m - R_f) + s(\text{SMB}) + h(\text{HML}) + e\]<br><b>SMB</b> (<i>Small Minus Big</i>) menangkap <i>size effect</i> dan <b>HML</b> (<i>High Minus Low BE/ME</i>) menangkap <i>value effect</i>. Koefisien $s$ dan $h$ terbukti signifikan (Kotak 12: di BEI sebaiknya memakai data bulanan agar observasi cukup panjang)."><span class="stepnum">FF</span><span><span class="rt">Fama–French 3-Factor Model</span><span class="rp">Pasar + SMB (Size) + HML (BE/ME)</span></span></div>
+ <div class="rcell" data-reveal data-detail="<b>Chan–Hamao–Lakonishok (CHL):</b> Mengelompokkan saham ke dalam 64 portofolio ($4\times 4\times 4$) berdasarkan <b>E/P</b> (<i>Earning/Price</i>), <b>Size</b>, dan <b>B/M</b>, lalu meregresikan <i>excess return</i> portofolio terhadap $(r_m-r_f)$, E/P, dan C/P (<i>Cash Flow/Price</i>). Kotak 13: replikasi ringkas di Indonesia cukup memakai 8 portofolio ekstrem ($2\times 2\times 2$) atau 2 ekstrem (KKK vs BBB)."><span class="stepnum">CHL</span><span><span class="rt">Model CHL (64 Portofolio)</span><span class="rp">E/P, Size, B/M, &amp; C/P</span></span></div>
+ </div>
+ <div class="rdetail" data-revealdetail><b>Fama &amp; French (1992, 1995, 1996):</b> Setelah membuktikan beta gagal menjelaskan $E(r)$ pada 100 grup beta×size (1992), FF (1995) membentuk 6 portofolio dari 2 <i>Size</i> (Small/Big) × 3 <i>BE/ME</i> (Low 30%, Med 40%, High 30%) dan menguji model 3 faktor: $R_p - R_f = a + b(R_m - R_f) + s(\text{SMB}) + h(\text{HML}) + e$. Koefisien $s$ dan $h$ terbukti signifikan.</div>
+ </div>
+
+ <!-- ========================================================= -->
+ <!-- KB 3 -->
+ <!-- ========================================================= -->
+ <h2 class="section" id="kb3"><span class="dot" style="background:var(--kb3)"></span>KB 3 — Model Biaya Modal</h2>
+ <div class="card kb3b">
+ <span class="kb-tag kb3t">KB 3 · KOMPONEN BIAYA &amp; WACC (Hal. 3.43 – 3.52)</span>
+ <p class="lead"><span class="term">Biaya modal <span class="en">(cost of capital)</span></span> mencerminkan total pengorbanan (material maupun nonmaterial) atas seluruh sumber dana jangka panjang yang membiayai aset perusahaan—digabungkan menjadi <span class="term">WACC</span> sebagai tingkat diskonto valuasi perusahaan.</p>
+ <div class="acro-box">
+ <span class="acro-title">📖 Kamus Konteks Singkatan &amp; Akronim KB 3</span>
+ <ul class="acro-grid">
+ <li><b>WACC</b>: <i>Weighted Average Cost of Capital</i> — biaya modal rata-rata tertimbang perusahaan.</li>
+ <li><b>$k_d$ &amp; $k_d^*$</b>: Biaya utang sebelum pajak ($k_d$) dan setelah pajak ($k_d^* = k_d(1-t)$).</li>
+ <li><b>$k_p$ &amp; PS</b>: Biaya saham preferen ($k_p$) atas <i>Preferred Stock</i> (PS, instrumen <i>quasi-debt</i>).</li>
+ <li><b>$k_e, k_o, k_{\text{RE}}$</b>: Biaya modal sendiri berutang ($k_e$), tanpa utang ($k_o$), &amp; saldo laba ditahan ($k_{\text{RE}}$).</li>
+ <li><b>$w_d, w_p, w_e$</b>: Bobot proporsi utang, saham preferen, dan ekuitas dalam struktur modal.</li>
+ <li><b>MM II</b>: Proposisi <i>Modigliani–Miller II</i> — hubungan kenaikan $k_e$ akibat rasio $D/E$.</li>
+ <li><b>FCFF &amp; FCFE</b>: <i>Free Cash Flow to the Firm</i> (didiskonto WACC) &amp; <i>to Equity</i> (didiskonto $k_e$).</li>
+ <li><b>Tbk</b>: <i>Terbuka</i> — perusahaan publik yang sahamnya tercatat di bursa efek.</li>
+ </ul>
+ </div>
+
+ <div class="abc"><span class="ltr">A – G</span><h4>Komponen-Komponen Biaya Modal</h4></div>
+ <div class="table-wrap">
+<table class="mini">
+ <thead><tr><th>Sumber Dana</th><th>Rumus &amp; Prinsip Kunci</th><th>Contoh / Catatan Modul</th></tr></thead>
+ <tbody>
+ <tr><td data-label="Sumber Dana"><b>B. Biaya Utang ($k_d^*$)</b></td><td data-label="Rumus &amp; Prinsip Kunci">$k_d^* = k_d(1 - t)$<br>Utang jangka panjang (bunga bank, kupon, atau diskonto <i>zero-coupon</i>). Wajib memakai <b>setelah pajak</b> karena ada <i>tax shield</i> bunga.</td><td data-label="Contoh / Catatan Modul">Kotak 14 (Pak Saliman): utang bank 150 jt berbunga $k_d=17\%$. Biaya utang setelah pajak ($k_d^*$) adalah komponen <b>termurah</b>.</td></tr>
+ <tr><td data-label="Sumber Dana"><b>C. Saham Preferen ($k_p$)</b></td><td data-label="Rumus &amp; Prinsip Kunci">$k_p = \dfrac{\text{Div PS}}{\text{Net Proceed}}$<br><i>Quasi-debt</i>: dividen tetap rutin, hak klaim di atas saham biasa (di bawah utang), tanpa hak suara, bisa kumulatif/<i>callable</i>/<i>convertible</i>.</td><td data-label="Contoh / Catatan Modul">Contoh 13 (PT Amelia Ananda): harga Rp1.000, dividen 10% (Rp100), <i>flotation costs</i> 5% → <i>net proceed</i> Rp950 $\implies k_p = \mathbf{10{,}53\%}$.</td></tr>
+ <tr><td data-label="Sumber Dana"><b>D. Modal Sendiri ($k_e$)</b></td><td data-label="Rumus &amp; Prinsip Kunci"><i>Opportunity cost</i> pemegang saham (lebih mahal dari $k_d$ karena klaim residual). Diestimasi via CAPM, Multifaktor, atau <i>growth + dividend yield</i>.</td><td data-label="Contoh / Catatan Modul">Contoh 14: Restoran Pak Saliman ($r_f=10\%, r_m=20\%, \beta=1{,}5$) $\implies k_e = 10 + 1{,}5(10) = \mathbf{25\%}$.</td></tr>
+ <tr><td data-label="Sumber Dana"><b>E. Perusahaan Tertutup</b></td><td data-label="Rumus &amp; Prinsip Kunci">$k_{e,\text{private}} = r_f + \beta_{\text{pembanding Tbk}}(r_m - r_f) + \text{premium}$<br>Tambahan <i>premium</i> mencerminkan risiko keterbukaan informasi yang lebih rendah dibanding PT Tbk.</td><td data-label="Contoh / Catatan Modul">Contoh 15 (PT Z): rerata beta 3 PT Tbk $= 1{,}1$, $r_f=12\%, r_m=20\% \implies k_e = \mathbf{20{,}8\% + \text{premium}}$.</td></tr>
+ <tr><td data-label="Sumber Dana"><b>F. Tanpa Utang ($k_o$) vs Berutang ($k_e$)</b></td><td data-label="Rumus &amp; Prinsip Kunci"><b>Proposisi MM II:</b><br>$k_e = k_o + (k_o - k_d)(1 - t)\left(\dfrac{D}{E}\right)$<br>Utang menambah risiko pemegang saham sehingga $k_e &gt; k_o$.</td><td data-label="Contoh / Catatan Modul">Contoh 16: $k_o=25\%, k_d=15\%, t=10\%, D/E=1 \implies k_e = 25\% + (10\%)(0{,}9)(1) = \mathbf{34\%}$.</td></tr>
+ <tr><td data-label="Sumber Dana"><b>G. Saldo Laba Ditahan ($k_{\text{RE}}$)</b></td><td data-label="Rumus &amp; Prinsip Kunci">$k_{\text{RE}} \approx k_e$ (sedikit lebih murah karena <b>tanpa biaya penerbitan / flotation costs</b>).</td><td data-label="Contoh / Catatan Modul">Saldo laba adalah <i>opportunity cost</i> substitusi penerbitan saham baru.</td></tr>
+ </tbody>
+ </table>
+</div>
+
+ <div class="flow">Setelah setiap komponen biaya ($k_d^*, k_p, k_e$) dihitung, bagian H menggabungkannya sesuai bobot struktur modal menjadi <b>WACC</b>, lalu bagian I menjelaskan mengapa WACC tidak bisa ditekan serendah mungkin hanya dengan memperbanyak utang.</div>
+
+ <div class="abc"><span class="ltr">H – I</span><h4>Biaya Modal Rerata Tertimbang (WACC) &amp; Batas Optimalnya</h4></div>
+ <div class="eqbox">
+ \[\text{WACC} = w_d \cdot k_d(1 - t) + w_p \cdot k_p + w_e \cdot k_e\]
+ </div>
+ <div class="fguide">
+ <div class="fg-head">Bedah Variabel &amp; Intisari Formula WACC</div>
+ <ul>
+ <li><b>$w_d, w_p, w_e$</b> = bobot nilai pasar utang, saham preferen, dan ekuitas ($w_d+w_p+w_e=1$); <b>$k_d(1-t)$</b> = biaya utang setelah pajak; <b>$k_p$</b> = biaya saham preferen; <b>$k_e$</b> = biaya ekuitas.</li>
+ <li><b>Makna formula:</b> Menggabungkan biaya seluruh sumber pendanaan jangka panjang sesuai proporsi nilai pasarnya menjadi satu tarif biaya modal rata-rata.</li>
+ </ul>
+ <div class="fg-core">
+ <div>🧭 <b>Filosofis:</b> Setiap rupiah investasi perusahaan didanai oleh campuran kreditor dan pemilik modal; proyek baru wajib menghasilkan return minimal melampaui biaya rata-rata seluruh penyedia dana tersebut.</div>
+ <div>📏 <b>Mengukur:</b> Biaya modal rata-rata tertimbang perusahaan (<i>hurdle rate</i> minimum perusahaan).</div>
+ <div>🎯 <b>Manfaat:</b> Menjadi tingkat diskonto utama untuk menilai arus kas perusahaan secara keseluruhan (FCFF) dan menentukan struktur modal optimal.</div>
+ </div>
+ </div>
+ <ul class="exp">
+ <li><span class="term">Pemilihan Bobot</span> — Secara teori paling tepat memakai <b>nilai pasar</b> (<span class="en">market value</span>) karena valuasi memproyeksikan nilai pasar masa depan (saham pakai nilai pasar, utang bank boleh nilai buku); secara praktis sering memakai nilai buku.</li>
+ <li><span class="term">Pemasangan Tingkat Diskonto untuk Modul 4</span> — <b>WACC</b> digunakan mendiskontokan arus kas perusahaan (<span class="term">FCFF</span>), sedangkan <b>$k_e$</b> digunakan mendiskontokan arus kas pemegang saham (<span class="term">FCFE</span>). Urutan biaya: $k_d^*$ terendah, $k_e$ tertinggi.</li>
+ <li><span class="term">Contoh 17 (PT Amelia Ananda)</span> — $w_d=0{,}45$ ($k_d=12\%, t=10\%$), $w_p=0{,}10$ ($k_p=15\%$), $w_e=0{,}45$ ($k_e=22\%$) $\implies \text{WACC} = 0{,}45(10{,}8\%) + 0{,}10(15\%) + 0{,}45(22\%) = \mathbf{16{,}26\%}$.</li>
+ <li><span class="term">Mengapa Utang 100% Tidak Meminimumkan WACC? (Bagian I)</span> — (1) Tidak ada kreditor yang bersedia mendanai 100%, (2) suku bunga dan <i>covenant</i> akan melonjak seiring naiknya rasio utang, dan (3) beban bunga tetap memicu risiko kesulitan keuangan (<span class="term">financial distress</span>). Karenanya, bobot dalam WACC secara tersirat merujuk pada <b>struktur modal optimal</b>.</li>
+ </ul>
+ </div>
+
+ <!-- GLOSARIUM -->
+ <h2 class="section" id="glosarium"><span class="dot"></span>Glosarium Kilat</h2>
+ <div class="card">
+ <dl class="glossary">
+ <dt>Alpha ($\alpha$)</dt><dd>Selisih antara return aktual suatu saham dan return wajarnya menurut garis SML (CAPM).</dd>
+ <dt>Beta ($\beta$)</dt><dd>Ukuran sensitivitas atau fluktuasi return suatu saham terhadap pergerakan pasar ($\text{Cov}(r_i,r_m)/\text{Var}(r_m)$).</dd>
+ <dt>Coefficient of Variation (CV)</dt><dd>Ukuran risiko relatif per satu satuan expected return ($\text{CV} = s/E(r)$).</dd>
+ <dt>Efficient Frontier</dt><dd>Kurva yang menghubungkan kombinasi portofolio efisien dengan trade-off optimal antara return dan risiko.</dd>
+ <dt>Flotation Costs</dt><dd>Biaya penerbitan dan penjualan sekuritas baru yang mengurangi kas bersih (<i>net proceed</i>) diterima emiten.</dd>
+ <dt>Quasi-Debt (Saham Preferen)</dt><dd>Instrumen hibrida yang membayar dividen rutin tetap seperti utang tetapi tidak memiliki tanggal jatuh tempo seperti saham.</dd>
+ <dt>SMB &amp; HML (Fama–French)</dt><dd>Faktor premi ukuran (<i>Small Minus Big</i>) dan faktor premi nilai buku terhadap pasar (<i>High Minus Low BE/ME</i>).</dd>
+ <dt>WACC (Weighted Average Cost of Capital)</dt><dd>Biaya modal rerata tertimbang dari utang setelah pajak, saham preferen, dan ekuitas yang menjadi tingkat diskonto perusahaan.</dd>
+ </dl>
+ </div>
+</div>
+
+<footer><b>EKMA5205 — Manajemen Keuangan</b> · Modul 3: Risiko dan Biaya Modal<br>Bahan belajar ringkas untuk persiapan ujian (berdasarkan BMP UT Edisi 3, Dr. Said Kelana Asnawi, M.M.).</footer>
+
+<script>
+(function(){
+ var pb=document.getElementById('progress');
+ function onScroll(){var h=document.documentElement;var sc=h.scrollTop||document.body.scrollTop;var max=(h.scrollHeight-h.clientHeight)||1;pb.style.width=(sc/max*100)+'%';}
+ document.addEventListener('scroll',onScroll,{passive:true});onScroll();
+
+ var list=document.getElementById('conceptList');var items=[].slice.call(list.querySelectorAll('li'));var boxes=items.map(function(li){return li.querySelector('input');});
+ document.getElementById('totalCount').textContent=items.length;var doneEl=document.getElementById('doneCount');var KEY='studi_ekma5205_m3_concepts_v1';
+ function load(){try{var a=JSON.parse(localStorage.getItem(KEY)||'[]');boxes.forEach(function(b,i){if(a[i])b.checked=true;});}catch(e){}}
+ function save(){try{localStorage.setItem(KEY,JSON.stringify(boxes.map(function(b){return b.checked?1:0;})));}catch(e){}}
+ function refresh(){var n=0;items.forEach(function(li,i){if(boxes[i].checked){li.classList.add('done');n++;}else li.classList.remove('done');});doneEl.textContent=n;}
+ load();refresh();boxes.forEach(function(b){b.addEventListener('change',function(){refresh();save();});});
+ document.getElementById('resetBtn').addEventListener('click',function(){boxes.forEach(function(b){b.checked=false;});refresh();save();});
+
+ [].slice.call(document.querySelectorAll('[data-revealgroup]')).forEach(function(g){
+ var det=g.querySelector('[data-revealdetail]');if(!det){var sib=g.nextElementSibling;if(sib&&sib.hasAttribute&&sib.hasAttribute('data-revealdetail'))det=sib;}
+ var cells=[].slice.call(g.querySelectorAll('[data-reveal]'));
+ cells.forEach(function(c){c.addEventListener('click',function(){cells.forEach(function(x){x.classList.remove('active');});c.classList.add('active');if(det){det.innerHTML=c.getAttribute('data-detail');if(window.MathJax&&window.MathJax.typesetPromise)window.MathJax.typesetPromise([det]);}});});
+ });
+
+ (function(){
+ var ROWH=46,NODE_H=32,PAD=13,GAP=52;var COL={root:'#0f5e8f',kb1:'#1a86c7',kb2:'#e08a1e',kb3:'#2a9d6f',kb4:'#7a5cc0',kb5:'#c75b7a'};
+ var mc=document.createElement('canvas').getContext('2d');mc.font='700 13px -apple-system,Segoe UI,Roboto,sans-serif';
+ function tw(t){return Math.ceil(mc.measureText(t).width);}function esc(t){return t.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');}
+ function rgba(hex,a){var h=hex.replace('#','');return 'rgba('+parseInt(h.substr(0,2),16)+','+parseInt(h.substr(2,2),16)+','+parseInt(h.substr(4,2),16)+','+a+')';}
+ var DATA={label:'MODUL 3 — Risiko dan Biaya Modal',color:COL.root,children:[
+ {label:'KB 1 · Imbalan & Risiko',color:COL.kb1,children:[
+ {label:'A–B. Pengukuran Return',children:[{label:'Rupiah-Weight (= IRR) vs Time-Weight'},{label:'Aritmatika vs Geometrik'}]},
+ {label:'1. Risiko Aset Tunggal',children:[{label:'Averter, Neutral, Lover'},{label:'Varian, Deviasi, CV & Efficient Frontier'}]},
+ {label:'2–3. Risiko Portofolio',children:[{label:'Diversifikasi (~20 saham) vs Risiko Pasar'},{label:'Efek Korelasi (ρ) & Bobot Min-Risk'}]}
+ ]},
+ {label:'KB 2 · Berbagai Model Risiko',color:COL.kb2,children:[
+ {label:'1–2. CAPM & SML',children:[{label:'E(ri) = rf + β(rm − rf)'},{label:'Beta, Alpha & Kritik Stambaugh'}]},
+ {label:'3–7. Model Multifaktor (APT)',children:[{label:'Faktor Makro (GDP, Bunga, Inflasi)'},{label:'MF-SML & Kritik True Variable'}]},
+ {label:'8. Pengujian Empiris',children:[{label:'Fama–French (SMB & HML)'},{label:'Chan–Hamao–Lakonishok (CHL)'}]}
+ ]},
+ {label:'KB 3 · Model Biaya Modal',color:COL.kb3,children:[
+ {label:'B–C. Biaya Utang (kd*) & Preferen (kp)'},
+ {label:'D–G. Biaya Modal Sendiri',children:[{label:'Perusahaan Tertutup (+ Premium)'},{label:'Proposisi MM II (ko vs ke)'},{label:'Saldo Laba Ditahan (tanpa Flotation)'}]},
+ {label:'H–I. WACC & Financial Distress',children:[{label:'WACC → FCFF; ke → FCFE'},{label:'Batas Optimal Utang'}]}
+ ]}
+ ]};
+ var idc=0;(function w(n,c){n.id='n'+(idc++);n.color=n.color||c;(n.children||[]).forEach(function(k){w(k,n.color);});})(DATA,COL.root);
+ (function w(n,d){if(d>=2&&n.children&&n.children.length)n.collapsed=true;(n.children||[]).forEach(function(k){w(k,d+1);});})(DATA,0);
+ var host=document.getElementById('mindmap');
+ function render(){
+ var colW=[];(function w(n,d){var width=tw(n.label)+PAD*2+((n.children&&n.children.length)?20:0);colW[d]=Math.max(colW[d]||0,width);if(!n.collapsed)(n.children||[]).forEach(function(k){w(k,d+1);});})(DATA,0);
+ var colX=[],acc=14;for(var d=0;d<colW.length;d++){colX[d]=acc;acc+=colW[d]+GAP;}var row={v:0};
+ (function lay(n,d){if(!n.children||!n.children.length||n.collapsed){n._y=row.v*ROWH+ROWH/2+8;row.v++;return;}var f,l;n.children.forEach(function(k,i){lay(k,d+1);if(i===0)f=k._y;l=k._y;});n._y=(f+l)/2;})(DATA,0);
+ var totalW=acc,totalH=row.v*ROWH+24;var nodes=[],links=[];
+ (function col(n,d,p){n._x=colX[d];n._w=tw(n.label)+PAD*2+((n.children&&n.children.length)?20:0);nodes.push({n:n,d:d});if(p)links.push([p,n]);if(!n.collapsed)(n.children||[]).forEach(function(k){col(k,d+1,n);});})(DATA,0,null);
+ var s='<svg width="'+totalW+'" height="'+totalH+'" viewBox="0 0 '+totalW+' '+totalH+'" xmlns="http://www.w3.org/2000/svg">';
+ links.forEach(function(pr){var a=pr[0],b=pr[1],x1=a._x+a._w,y1=a._y,x2=b._x,y2=b._y,mx=(x1+x2)/2;s+='<path d="M'+x1+' '+y1+' C'+mx+' '+y1+' '+mx+' '+y2+' '+x2+' '+y2+'" fill="none" stroke="'+rgba(b.color,.5)+'" stroke-width="2"/>';});
+ nodes.forEach(function(o){var n=o.n,x=n._x,y=n._y-NODE_H/2,w=n._w,hk=n.children&&n.children.length;var fill=o.d===0?n.color:(o.d===1?rgba(n.color,.12):'#fff');var tf=o.d===0?'#fff':'#1c2733';
+ s+='<g data-id="'+n.id+'" style="cursor:'+(hk?'pointer':'default')+'"><rect x="'+x+'" y="'+y+'" rx="9" width="'+w+'" height="'+NODE_H+'" fill="'+fill+'" stroke="'+n.color+'" stroke-width="'+(o.d===0?0:1.6)+'"/><text x="'+(x+PAD)+'" y="'+(n._y+4)+'" font-size="13" font-weight="'+(o.d<=1?'700':'500')+'" fill="'+tf+'" font-family="-apple-system,Segoe UI,Roboto,sans-serif">'+esc(n.label)+'</text>';
+ if(hk){var cx=x+w-12,cy=n._y;s+='<circle cx="'+cx+'" cy="'+cy+'" r="8.5" fill="'+n.color+'"/><text x="'+cx+'" y="'+(cy+4.5)+'" font-size="13" font-weight="700" fill="#fff" text-anchor="middle" font-family="sans-serif">'+(n.collapsed?'+':'\u2013')+'</text>';}s+='</g>';});
+ s+='</svg>';host.innerHTML=s;
+ }
+ host.addEventListener('click',function(e){var g=e.target.closest('g[data-id]');if(!g)return;var id=g.getAttribute('data-id');(function f(n){if(n.id===id){if(n.children&&n.children.length)n.collapsed=!n.collapsed;return true;}return (n.children||[]).some(f);})(DATA);render();});
+ document.getElementById('mmExpand').addEventListener('click',function(){(function w(n){if(n.children)n.collapsed=false;(n.children||[]).forEach(w);})(DATA);render();});
+ document.getElementById('mmCollapse').addEventListener('click',function(){(function w(n,d){if(d>=1&&n.children&&n.children.length)n.collapsed=true;(n.children||[]).forEach(function(k){w(k,d+1);});})(DATA,0);render();});
+ render();
+ })();
+
+ 
+  // OFFLINE CARTESIAN SVG CHART ENGINE (zero external library, 100% offline)
+  function drawCartesian(hostId, cfg){
+    var host=document.getElementById(hostId);if(!host)return;
+    var W=cfg.w||680,H=cfg.h||300,P={t:24,r:28,b:44,l:58};
+    var pw=W-P.l-P.r,ph=H-P.t-P.b;
+    var x0=cfg.xmin,x1=cfg.xmax,y0=cfg.ymin,y1=cfg.ymax;
+    function sx(x){return P.l+(x-x0)/(x1-x0)*pw;}
+    function sy(y){return P.t+ph-(y-y0)/(y1-y0)*ph;}
+    function esc(t){return String(t).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');}
+    var s='<svg viewBox="0 0 '+W+' '+H+'" width="'+W+'" height="'+H+'" xmlns="http://www.w3.org/2000/svg">';
+    s+='<rect x="'+P.l+'" y="'+P.t+'" width="'+pw+'" height="'+ph+'" fill="#fff" stroke="#e4e9f0"/>';
+    var xticks=cfg.xticks||5,yticks=cfg.yticks||5;
+    for(var i=0;i<=xticks;i++){
+      var xv=x0+(x1-x0)*i/xticks,px=sx(xv);
+      s+='<line x1="'+px.toFixed(1)+'" y1="'+P.t+'" x2="'+px.toFixed(1)+'" y2="'+(P.t+ph)+'" stroke="#eef2f6" stroke-width="1"/>';
+      var xl=cfg.xfmt?cfg.xfmt(xv):(Math.round(xv*100)/100);
+      s+='<text x="'+px.toFixed(1)+'" y="'+(P.t+ph+16)+'" text-anchor="middle" font-size="11" fill="#5c6b7a" font-family="-apple-system,Segoe UI,sans-serif">'+esc(xl)+'</text>';
+    }
+    for(var j=0;j<=yticks;j++){
+      var yv=y0+(y1-y0)*j/yticks,py=sy(yv);
+      s+='<line x1="'+P.l+'" y1="'+py.toFixed(1)+'" x2="'+(P.l+pw)+'" y2="'+py.toFixed(1)+'" stroke="#eef2f6" stroke-width="1"/>';
+      var yl=cfg.yfmt?cfg.yfmt(yv):(Math.round(yv*100)/100);
+      s+='<text x="'+(P.l-8)+'" y="'+(py+4).toFixed(1)+'" text-anchor="end" font-size="11" fill="#5c6b7a" font-family="-apple-system,Segoe UI,sans-serif">'+esc(yl)+'</text>';
+    }
+    if(y0<0&&y1>0){var zy=sy(0);s+='<line x1="'+P.l+'" y1="'+zy.toFixed(1)+'" x2="'+(P.l+pw)+'" y2="'+zy.toFixed(1)+'" stroke="#94a3b8" stroke-width="1.3" stroke-dasharray="4 3"/>';}
+    if(x0<0&&x1>0){var zx=sx(0);s+='<line x1="'+zx.toFixed(1)+'" y1="'+P.t+'" x2="'+zx.toFixed(1)+'" y2="'+(P.t+ph)+'" stroke="#94a3b8" stroke-width="1.3" stroke-dasharray="4 3"/>';}
+    s+='<line x1="'+P.l+'" y1="'+(P.t+ph)+'" x2="'+(P.l+pw)+'" y2="'+(P.t+ph)+'" stroke="#64748b" stroke-width="1.5"/>';
+    s+='<line x1="'+P.l+'" y1="'+P.t+'" x2="'+P.l+'" y2="'+(P.t+ph)+'" stroke="#64748b" stroke-width="1.5"/>';
+    if(cfg.xlabel)s+='<text x="'+(P.l+pw/2)+'" y="'+(H-8)+'" text-anchor="middle" font-size="12" font-weight="700" fill="#1c2733" font-family="-apple-system,Segoe UI,sans-serif">'+esc(cfg.xlabel)+'</text>';
+    if(cfg.ylabel)s+='<text x="15" y="'+(P.t+ph/2)+'" text-anchor="middle" font-size="12" font-weight="700" fill="#1c2733" font-family="-apple-system,Segoe UI,sans-serif" transform="rotate(-90 15 '+(P.t+ph/2)+')">'+esc(cfg.ylabel)+'</text>';
+    (cfg.vlines||[]).forEach(function(vl){
+      var px=sx(vl.x);
+      s+='<line x1="'+px.toFixed(1)+'" y1="'+P.t+'" x2="'+px.toFixed(1)+'" y2="'+(P.t+ph)+'" stroke="'+(vl.color||'#94a3b8')+'" stroke-width="1.2" stroke-dasharray="5 4"/>';
+      if(vl.label)s+='<text x="'+(px+4).toFixed(1)+'" y="'+(P.t+14)+'" font-size="10.5" font-weight="700" fill="'+(vl.color||'#475569')+'" font-family="-apple-system,Segoe UI,sans-serif">'+esc(vl.label)+'</text>';
+    });
+    (cfg.hlines||[]).forEach(function(hl){
+      var py=sy(hl.y);
+      s+='<line x1="'+P.l+'" y1="'+py.toFixed(1)+'" x2="'+(P.l+pw)+'" y2="'+py.toFixed(1)+'" stroke="'+(hl.color||'#94a3b8')+'" stroke-width="1.2" stroke-dasharray="5 4"/>';
+      if(hl.label)s+='<text x="'+(P.l+pw-4)+'" y="'+(py-5).toFixed(1)+'" text-anchor="end" font-size="10.5" font-weight="700" fill="'+(hl.color||'#475569')+'" font-family="-apple-system,Segoe UI,sans-serif">'+esc(hl.label)+'</text>';
+    });
+    (cfg.series||[]).forEach(function(sr){
+      var pts=sr.pts.map(function(p){return sx(p[0]).toFixed(1)+','+sy(p[1]).toFixed(1);}).join(' ');
+      s+='<polyline fill="none" stroke="'+sr.color+'" stroke-width="'+(sr.w||2.5)+'"'+(sr.dash?' stroke-dasharray="'+sr.dash+'"':'')+' points="'+pts+'"/>';
+    });
+    (cfg.markers||[]).forEach(function(mk){
+      var cx=sx(mk.x),cy=sy(mk.y);
+      s+='<circle cx="'+cx.toFixed(1)+'" cy="'+cy.toFixed(1)+'" r="4.8" fill="'+(mk.color||'#0f5e8f')+'" stroke="#fff" stroke-width="1.6"/>';
+      var dx=mk.dx||8,dy=mk.dy||-8,anc=mk.anchor||'start';
+      if(mk.label)s+='<text x="'+(cx+dx).toFixed(1)+'" y="'+(cy+dy).toFixed(1)+'" text-anchor="'+anc+'" font-size="11" font-weight="700" fill="'+(mk.color||'#0f5e8f')+'" font-family="-apple-system,Segoe UI,sans-serif">'+esc(mk.label)+'</text>';
+    });
+    s+='</svg>';
+    var leg='';
+    if(cfg.series&&cfg.series.length>1){
+      leg='<div class="chart-legend">'+cfg.series.map(function(sr){
+        return '<span><i style="background:'+sr.color+';'+(sr.dash?'border-top:2px dashed '+sr.color+';background:none;height:0':'')+'"></i>'+esc(sr.name)+'</span>';
+      }).join('')+'</div>';
+    }
+    host.innerHTML=s+leg;
+  }
+
+
+  (function(){
+    var dPts=[];for(var n=1;n<=30;n++){dPts.push([n, 14 + 26/Math.sqrt(n)]);}
+    drawCartesian('ch_m3_div',{
+      xmin:1,xmax:30,ymin:0,ymax:45,xticks:6,yticks:5,
+      xlabel:'Jumlah Saham dalam Portofolio (n)',ylabel:'Risiko Portofolio σ (%)',
+      hlines:[{y:14,label:'Risiko Pasar / Non-Diversifiable (~14%)',color:'#e08a1e'}],
+      vlines:[{x:20,label:'Optimal ~20 saham',color:'#2a9d6f'}],
+      series:[{name:'Total Risiko Portofolio',color:'#1a86c7',pts:dPts}],
+      markers:[{x:1,y:40,label:'1 saham (risiko tinggi)',color:'#1a86c7',dx:8,dy:4},{x:20,y:19.8,label:'20 saham',color:'#2a9d6f',dx:6,dy:-10}]
+    });
+    drawCartesian('ch_m3_sml',{
+      xmin:0,xmax:2,ymin:0,ymax:20,xticks:4,yticks:4,
+      xlabel:'Beta Saham (β)',ylabel:'Expected Return E(r) (%)',
+      yfmt:function(v){return v+'%';},
+      series:[{name:'Garis SML: E(r) = 8% + β(12% − 8%)',color:'#e08a1e',pts:[[0,8],[1,12],[1.3,13.2],[2,16]]}],
+      markers:[
+        {x:0,y:8,label:'rf = 8%',color:'#0f5e8f',dx:8,dy:4},
+        {x:1,y:12,label:'Pasar M (β=1; 12%)',color:'#e08a1e',dx:8,dy:12},
+        {x:1.3,y:13.2,label:'Contoh 10 (β=1,3; 13,2%)',color:'#1a86c7',dx:8,dy:12},
+        {x:0.8,y:14.5,label:'Titik B (α > 0)',color:'#2a9d6f',dx:8,dy:-4},
+        {x:1.4,y:10.0,label:'Titik A (α < 0)',color:'#c75b7a',dx:8,dy:4}
+      ]
+    });
+  })();
+
+  window.addEventListener('load',function(){setTimeout(function(){if(window.MathJax&&window.MathJax.typesetPromise)window.MathJax.typesetPromise();},400);});
+})();
+</script></body></html>

@@ -1,0 +1,664 @@
+<!DOCTYPE html>
+<html lang="id"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Modul 2 — Pengantar Valuasi dan Keputusan Investasi | EKMA5205</title>
+<script>window.MathJax={tex:{inlineMath:[['$','$']],displayMath:[['\\[','\\]'],['$$','$$']]},svg:{fontCache:'global'},startup:{typeset:true}};</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js" async></script>
+<style>
+:root{--bg:#f4f6f9;--panel:#fff;--ink:#1c2733;--muted:#5c6b7a;--line:#e4e9f0;--brand:#1a86c7;--brand-dark:#0f5e8f;--brand-soft:#e7f3fb;--kb1:#1a86c7;--kb2:#e08a1e;--kb3:#2a9d6f;--kb4:#7a5cc0;--kb5:#c75b7a;--radius:14px;--shadow:0 1px 2px rgba(16,42,67,.06),0 6px 20px rgba(16,42,67,.06);--maxw:900px}
+*{box-sizing:border-box}html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;line-height:1.72}
+#progress{position:fixed;top:0;left:0;height:4px;width:0;background:linear-gradient(90deg,var(--brand),#53c0ec);z-index:200;transition:width .1s}
+header.top{position:sticky;top:0;z-index:100;background:rgba(255,255,255,.92);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+.top-in{max-width:var(--maxw);margin:0 auto;padding:10px 20px;display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+.badge{background:var(--brand);color:#fff;font-weight:700;font-size:.72rem;letter-spacing:.5px;padding:4px 10px;border-radius:999px}
+.homebtn{text-decoration:none;display:inline-flex;align-items:center;gap:7px;background:var(--brand);color:#fff;font-weight:700;font-size:.8rem;padding:7px 15px;border-radius:999px;box-shadow:0 2px 6px rgba(16,42,67,.22);line-height:1}
+.top-title{font-size:.9rem;font-weight:600;color:var(--muted)}
+nav.jump{margin-left:auto;display:flex;gap:4px;flex-wrap:wrap}
+nav.jump a{font-size:.78rem;color:var(--muted);text-decoration:none;padding:5px 10px;border-radius:8px}
+nav.jump a:hover{background:var(--brand-soft);color:var(--brand-dark)}
+.wrap{max-width:var(--maxw);margin:0 auto;padding:0 20px 90px}
+.hero{margin-top:26px;padding:30px 28px;border-radius:var(--radius);color:#fff;background:linear-gradient(135deg,#0f5e8f,#1a86c7 60%,#2fa4df);box-shadow:var(--shadow);position:relative;overflow:hidden}
+.hero .eyebrow{font-size:.78rem;letter-spacing:1.5px;text-transform:uppercase;opacity:.9;font-weight:600}
+.hero h1{margin:.3em 0 .25em;font-size:1.62rem;line-height:1.25;max-width:90%}
+.hero .meta{display:flex;gap:18px;flex-wrap:wrap;font-size:.84rem;opacity:.95;margin-top:10px}
+h2.section{font-size:1.3rem;margin:48px 0 4px;display:flex;align-items:center;gap:10px;scroll-margin-top:70px}
+h2.section .dot{width:10px;height:22px;border-radius:4px;background:var(--brand)}
+.section-sub{color:var(--muted);font-size:.9rem;margin:0 0 18px}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);padding:22px 24px;margin:16px 0;--dot:var(--brand)}
+.concepts{list-style:none;margin:0;padding:0;display:grid;gap:10px}
+.concepts li{display:flex;gap:12px;align-items:flex-start;padding:12px 14px;border:1px solid var(--line);border-radius:10px;background:#fcfdff}
+.concepts input{margin-top:4px;width:18px;height:18px;accent-color:var(--brand);flex:none;cursor:pointer}
+.concepts .ct{font-weight:600}.concepts .cd{display:block;font-weight:400;color:var(--muted);font-size:.86rem;margin-top:2px}
+.concepts li.done{background:var(--brand-soft);border-color:#bfe0f3}.concepts li.done .ct{text-decoration:line-through;opacity:.65}
+.cl-head{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-bottom:6px}
+.cl-head .count{font-size:.82rem;color:var(--muted);background:var(--brand-soft);padding:3px 10px;border-radius:999px;font-weight:600}
+.btn-reset{font-size:.78rem;border:1px solid var(--line);background:#fff;color:var(--muted);padding:5px 12px;border-radius:8px;cursor:pointer}
+.mm-toolbar{display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin-bottom:10px}
+.mm-btn{font-size:.78rem;border:1px solid var(--line);background:#fff;padding:6px 13px;border-radius:8px;cursor:pointer;color:var(--brand-dark);font-weight:600}
+.mindmap-host{height:580px;overflow:auto;border:1px solid var(--line);border-radius:10px;background:#fcfdff}.mindmap-host svg{display:block}
+.kb-tag{display:inline-flex;align-items:center;gap:8px;font-size:.78rem;font-weight:700;color:#fff;padding:5px 12px;border-radius:999px;margin-bottom:6px}
+.kb1t{background:var(--kb1)}.kb2t{background:var(--kb2)}.kb3t{background:var(--kb3)}.kb4t{background:var(--kb4)}.kb5t{background:var(--kb5)}
+.kb1b{--dot:var(--kb1)}.kb2b{--dot:var(--kb2)}.kb3b{--dot:var(--kb3)}.kb4b{--dot:var(--kb4)}.kb5b{--dot:var(--kb5)}
+.lead{font-size:1.02rem}.term{font-weight:700;color:var(--dot)}.en{font-style:italic;color:var(--muted);font-weight:500}
+.abc{display:flex;align-items:center;gap:10px;margin:28px 0 10px;padding-bottom:6px;border-bottom:2px solid color-mix(in srgb,var(--dot) 18%,#fff)}
+.abc .ltr{background:var(--dot);color:#fff;font-weight:800;min-width:30px;height:30px;padding:0 7px;border-radius:8px;display:grid;place-items:center;flex:none}
+.abc h4{margin:0;font-size:1.06rem;color:var(--dot)}
+.numh{font-weight:700;color:var(--dot);margin:22px 0 4px;font-size:1rem}
+.leth{font-weight:800;color:var(--dot);margin:20px 0 6px;font-size:.98rem;border-left:3px solid var(--dot);padding-left:10px}
+ol.book{margin:12px 0;padding-left:28px}ol.book>li{margin:10px 0;padding-left:6px}ol.book>li::marker{font-weight:700;color:var(--dot)}
+ul.exp{list-style:none;margin:12px 0;padding:0;display:grid;gap:10px}ul.exp>li{position:relative;padding-left:20px}
+ul.exp>li::before{content:"";position:absolute;left:0;top:11px;width:8px;height:8px;border-radius:2px;background:var(--dot)}
+ul.let{list-style:lower-alpha;margin:10px 0;padding-left:28px}ul.let>li{margin:8px 0;padding-left:4px}ul.let>li::marker{color:var(--dot);font-weight:700}
+.flow{border-left:4px solid var(--dot);background:color-mix(in srgb,var(--dot) 9%,#fff);padding:11px 15px;border-radius:0 10px 10px 0;margin:18px 0;font-size:.9rem}
+.flow::before{content:"🔗 Benang merah — ";font-weight:700;color:var(--dot)}.flow b{color:var(--dot)}
+table.mini{width:100%;border-collapse:collapse;margin:14px 0;font-size:.86rem}
+table.mini th,table.mini td{border:1px solid var(--line);padding:9px 11px;text-align:left;vertical-align:top}
+table.mini th{background:color-mix(in srgb,var(--dot) 12%,#fff);color:var(--dot);font-weight:700}
+.rgrid{display:grid;gap:8px;margin:14px 0}.rgrid.c2{grid-template-columns:repeat(2,1fr)}.rgrid.c3{grid-template-columns:repeat(3,1fr)}.rgrid.c4{grid-template-columns:repeat(4,1fr)}
+.rcell{border:1px solid var(--line);border-radius:10px;padding:11px 13px;cursor:pointer;background:#fff;display:flex;gap:10px;align-items:flex-start;transition:.15s}
+.rcell:hover{border-color:var(--dot);box-shadow:var(--shadow);transform:translateY(-2px)}
+.rcell.active{border-color:var(--dot);background:color-mix(in srgb,var(--dot) 8%,#fff)}
+.rcell .stepnum{background:var(--dot);color:#fff;font-weight:700;min-width:24px;height:24px;border-radius:7px;display:grid;place-items:center;flex:none;font-size:.82rem}
+.rcell .rt{font-weight:700;font-size:.9rem;color:var(--dot);display:block}.rcell .rp{font-size:.78rem;color:var(--muted);display:block;margin-top:2px}
+.rdetail{font-size:.88rem;border-left:4px solid var(--dot);background:color-mix(in srgb,var(--dot) 8%,#fff);border-radius:0 10px 10px 0;padding:12px 15px;margin-top:6px}
+.pill-row{display:flex;gap:8px;flex-wrap:wrap;margin:10px 0}.pill{font-size:.8rem;background:#eef3f8;color:#36506a;border:1px solid #e0e8f0;padding:4px 11px;border-radius:999px;font-weight:600}
+.flowchart{display:flex;align-items:center;gap:6px;flex-wrap:wrap;margin:16px 0;justify-content:center}
+.fc-node{background:color-mix(in srgb,var(--dot) 12%,#fff);border:1.5px solid var(--dot);color:var(--dot);font-weight:700;font-size:.8rem;padding:8px 12px;border-radius:9px;text-align:center}
+.fc-arrow{color:var(--dot);font-weight:800;font-size:1.05rem}
+.eqbox{background:#fcfdff;border:1px solid var(--line);border-radius:10px;padding:8px 14px;margin:14px 0;overflow-x:auto}
+.glossary dt{font-weight:700;color:var(--brand-dark);margin-top:10px}.glossary dd{margin:0 0 2px;color:var(--muted);font-size:.9rem}
+footer{max-width:var(--maxw);margin:0 auto;padding:30px 20px 60px;color:var(--muted);font-size:.82rem;border-top:1px solid var(--line)}
+.offline-note{font-size:.76rem;color:var(--muted);background:#fff8e6;border:1px solid #f0e2b8;border-radius:8px;padding:8px 12px;margin:10px 0}
+.casebox{background:#f8fafc;border:1px solid var(--line);border-left:4px solid var(--dot);border-radius:0 10px 10px 0;padding:12px 15px;margin:14px 0;font-size:.88rem}
+.casebox .ctitle{font-weight:700;color:var(--dot);margin-bottom:4px;display:block}
+
+.chart-wrap{background:#fcfdff;border:1px solid var(--line);border-radius:12px;padding:14px 16px;margin:16px 0}
+.chart-title{font-weight:700;font-size:.9rem;color:var(--dot);margin:0 0 4px}
+.chart-sub{font-size:.78rem;color:var(--muted);margin:0 0 10px}
+.chart-host{width:100%;overflow-x:auto;position:relative}
+.chart-host svg{display:block;max-width:100%;height:auto;margin:0 auto}
+.chart-legend{display:flex;gap:14px;flex-wrap:wrap;justify-content:center;margin-top:8px;font-size:.78rem;color:var(--muted)}
+.chart-legend span{display:inline-flex;align-items:center;gap:6px}
+.chart-legend i{display:inline-block;width:14px;height:3px;border-radius:2px}
+@media(max-width:640px){.hero h1{font-size:1.3rem;max-width:100%}nav.jump{display:none}.rgrid.c2,.rgrid.c3,.rgrid.c4{grid-template-columns:1fr}.mindmap-host{height:440px}}
+
+/* GLOBAL RESPONSIVE & OVERFLOW PROTECTION */
+.card{overflow-x:clip;overflow-wrap:break-word;word-wrap:break-word}
+ul.exp,.concepts{grid-template-columns:minmax(0,1fr)}
+ul.exp>li,.concepts li,.concepts li>span,.rcell,.rcell>span,.bs-col,.casebox,.rdetail,.flow{min-width:0;max-width:100%;overflow-wrap:break-word;word-wrap:break-word}
+mjx-container{max-width:100%;overflow-x:auto;overflow-y:hidden}
+mjx-container:not([display="true"]){display:inline-block;vertical-align:middle}
+.table-wrap{width:100%;overflow-x:auto;-webkit-overflow-scrolling:touch;margin:14px 0;border-radius:10px}
+table.mini{width:100%;border-collapse:collapse;margin:0;font-size:.86rem;table-layout:auto}
+table.mini th,table.mini td{border:1px solid var(--line);padding:10px 12px;text-align:left;vertical-align:top;overflow-wrap:break-word;word-wrap:break-word}
+@media(max-width:680px){
+  .table-wrap{overflow-x:visible}
+  table.mini,table.mini thead,table.mini tbody,table.mini th,table.mini td,table.mini tr{display:block;width:100%}
+  table.mini thead{display:none}
+  table.mini tr{margin-bottom:12px;border:1.5px solid color-mix(in srgb,var(--dot) 28%,#e4e9f0);border-radius:10px;background:#fff;overflow:hidden;box-shadow:0 1px 4px rgba(16,42,67,.05)}
+  table.mini td{border:none;border-bottom:1px solid var(--line);padding:10px 12px;text-align:left}
+  table.mini td:last-child{border-bottom:none}
+  table.mini td::before{content:attr(data-label);display:block;font-size:.74rem;font-weight:700;text-transform:uppercase;letter-spacing:.4px;color:var(--dot);margin-bottom:4px}
+}
+
+/* KAMUS AKRONIM & BEDAH FORMULA */
+.acro-box{background:#f8fafc;border:1px solid var(--line);border-radius:10px;padding:12px 14px;margin:14px 0;font-size:.84rem;min-width:0;max-width:100%;overflow-wrap:break-word;word-wrap:break-word}
+.acro-title{font-weight:700;color:var(--dot);font-size:.86rem;margin-bottom:8px;display:block}
+.acro-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:6px 14px;margin:0;padding:0;list-style:none}
+.acro-grid li{min-width:0;line-height:1.5}
+.acro-grid b{color:var(--dot)}
+.fguide{background:color-mix(in srgb,var(--dot) 5%,#fff);border:1px solid color-mix(in srgb,var(--dot) 22%,#e4e9f0);border-radius:10px;padding:12px 15px;margin:-6px 0 16px;font-size:.86rem;min-width:0;max-width:100%;overflow-wrap:break-word;word-wrap:break-word}
+.fguide .fg-head{font-weight:700;color:var(--dot);font-size:.84rem;text-transform:uppercase;letter-spacing:.35px;margin:0 0 6px}
+.fguide ul{margin:4px 0 8px;padding-left:18px}
+.fguide ul li{margin:3px 0}
+.fguide .fg-core{border-top:1px dashed color-mix(in srgb,var(--dot) 30%,#cbd5e1);padding-top:8px;margin-top:8px;display:grid;grid-template-columns:minmax(0,1fr);gap:4px}
+.fguide .fg-core div{min-width:0}
+@media(max-width:640px){.acro-grid{grid-template-columns:minmax(0,1fr)}}
+</style></head><body>
+<div id="progress"></div>
+<header class="top"><div class="top-in">
+ <span class="badge">MODUL 2</span>
+ <a class="homebtn" href="index.html" title="Kembali ke daftar modul"><span style="font-size:1rem;line-height:1">&#8962;</span> Daftar Modul</a>
+ <span class="top-title">Manajemen Keuangan · EKMA5205</span>
+ <nav class="jump">
+ <a href="#konsep">Konsep</a>
+ <a href="#peta">Peta Konsep</a>
+ <a href="#kb1">KB 1</a>
+ <a href="#kb2">KB 2</a>
+ <a href="#glosarium">Glosarium</a>
+ </nav>
+</div></header>
+
+<div class="wrap">
+ <section class="hero">
+ <div class="eyebrow">Ringkasan Belajar · EKMA5205 (Edisi 3)</div>
+ <h1>Pengantar Valuasi dan Keputusan Investasi</h1>
+ <div class="meta">
+ <span>⏱️ ±35 menit</span>
+ <span>📚 2 Kegiatan Belajar (KB)</span>
+ <span>✍️ Dr. Said Kelana Asnawi, M.M.</span>
+ </div>
+ </section>
+
+ <p class="section-sub" style="margin-top:22px">Modul 2 membahas dua pilar utama valuasi keuangan: <b>Nilai Waktu dari Uang</b> (<i>time value of money</i>) meliputi konsep tingkat diskonto, PV, FV/compound, EAR, amortisasi/annuity, perpetuity, serta bunga riil vs nominal (KB 1), lalu menerapkannya pada <b>Penganggaran Modal</b> (<i>capital budgeting</i>) untuk menilai kelayakan proyek investasi via arus kas tambahan, NPV, IRR, Payback Method, Profitability Index, dan AAR (KB 2).</p>
+ <p class="offline-note">ℹ️ Peta konsep, kartu penjelasan interaktif, dan checklist konsep berjalan tanpa internet. Koneksi internet hanya diperlukan untuk merender persamaan matematika (MathJax).</p>
+
+ <!-- KONSEP PENTING -->
+ <h2 class="section" id="konsep"><span class="dot"></span>Konsep Penting yang Harus Dikuasai</h2>
+ <div class="card">
+ <div class="cl-head">
+ <span class="count"><span id="doneCount">0</span>/<span id="totalCount">0</span> dikuasai</span>
+ <button class="btn-reset" id="resetBtn">Reset centang</button>
+ </div>
+ <ul class="concepts" id="conceptList">
+ <li><input type="checkbox"><span><span class="ct">Tingkat Diskonto &amp; Nilai Sekarang (Present Value / PV)</span><span class="cd">Rp1 hari ini lebih bernilai dari Rp1 di masa depan; makin tinggi tingkat diskonto ($r$) atau risiko, makin rendah nilai PV.</span></span></li>
+ <li><input type="checkbox"><span><span class="ct">Future Value (FV), Compounding Diskrit vs Kontinu, &amp; EAR</span><span class="cd">Bunga-berbunga tumbuh lebih cepat dari bunga biasa; makin sering periode pemajemukan ($m$), makin tinggi Effective Annual Rate (EAR), maksimum pada kontinu ($e^r - 1$).</span></span></li>
+ <li><input type="checkbox"><span><span class="ct">Amortisasi (PVIFA) &amp; Annuity Tabungan (FVIFA)</span><span class="cd">PVIFA menghitung angsuran kredit tetap (bunga menurun, cicilan pokok naik); FVIFA menghitung tabungan rutin untuk target dana masa depan.</span></span></li>
+ <li><input type="checkbox"><span><span class="ct">Annuity Tak Hingga (Perpetuity &amp; Growing Perpetuity)</span><span class="cd">Kas konstan selamanya $\text{PV} = X/r$; jika tumbuh konstan $g$, $\text{PV} = X_1/(r-g)$ (dasar model diskonto dividen).</span></span></li>
+ <li><input type="checkbox"><span><span class="ct">Suku Bunga Riil vs Nominal &amp; Konsistensi Diskonto</span><span class="cd">Rumus eksak $(1+r_{\text{nom}})/(1+\text{inflasi})-1$; arus kas nominal wajib didiskontokan dengan $r$ nominal, arus kas riil dengan $r$ riil (hasil sama).</span></span></li>
+ <li><input type="checkbox"><span><span class="ct">Suku Bunga Bebas Risiko ($r_f$) &amp; Pemilihan Tingkat Diskonto</span><span class="cd">Acuan SBI/ORI (kepastian 100%); aset berisiko menuntut risk premium; pemilihan $r$ mengikuti jenis arus kas ($r_f$, $k_d^*$, $k_s$, $k_u$, atau WACC).</span></span></li>
+ <li><input type="checkbox"><span><span class="ct">Variasi Annuity: Delayed, Annuity Due, &amp; Infrequent</span><span class="cd">Penyesuaian nilai sekarang untuk pembayaran tertunda, pembayaran di awal periode (sekarang), dan pembayaran multi-tahun (jarang).</span></span></li>
+ <li><input type="checkbox"><span><span class="ct">Arus Kas Tambahan (Incremental Cash Flow)</span><span class="cd">Hanya menghitung kas riil yang berubah akibat proyek: keluarkan sunk costs; masukkan opportunity costs, side effects (sinergi/erosi), nilai sisa setelah pajak, dan modal kerja.</span></span></li>
+ <li><input type="checkbox"><span><span class="ct">Arus Kas Operasi (OCF) — 3 Pendekatan</span><span class="cd">NOPAT ($\text{EBIT}(1-t)+\text{Depr}$ atau $\text{EBIT}-\text{Tax}+\text{Depr}$), top-down, dan tax-shield approach; tidak memasukkan beban bunga karena OCF mengukur kemampuan operasional.</span></span></li>
+ <li><input type="checkbox"><span><span class="ct">Net Present Value (NPV) — Kriteria Terbaik</span><span class="cd">$\text{NPV} = -I_0 + \text{PV}$; proyek layak jika $\text{NPV} &gt; 0$ karena langsung menunjukkan pertambahan kekayaan pemegang saham.</span></span></li>
+ <li><input type="checkbox"><span><span class="ct">Internal Rate of Return (IRR) &amp; Kelemahannya</span><span class="cd">Tingkat diskonto saat $\text{NPV}=0$ (layak jika $k &lt; \text{IRR}$); rawan multiple IRR jika arus kas berganti tanda dan tidak membedakan posisi investasi vs meminjam.</span></span></li>
+ <li><input type="checkbox"><span><span class="ct">Konflik NPV vs IRR pada Proyek Mutually Exclusive</span><span class="cd">Diselesaikan lewat arus kas inkremental ($B-A$) untuk skala berbeda, atau mencari Cross Rate (Incremental IRR) untuk pola arus kas berbeda.</span></span></li>
+ <li><input type="checkbox"><span><span class="ct">Metode Komplemen: Payback (PM), Profitability Index (PI), &amp; AAR</span><span class="cd">PM mengukur waktu impas (mengabaikan kas pasca-impas), $\text{PI} = \text{NPV}/I_0 &gt; 0$ (atau $\text{PV}/I_0 &gt; 1$), AAR = Rerata EAT ÷ Rerata Investasi.</span></span></li>
+ </ul>
+ </div>
+
+ <!-- PETA KONSEP -->
+ <h2 class="section" id="peta"><span class="dot"></span>Peta Konsep (Mind Map)</h2>
+ <div class="card">
+ <div class="mm-toolbar">
+ <button class="mm-btn" id="mmExpand">Perluas semua</button>
+ <button class="mm-btn" id="mmCollapse">Ciutkan</button>
+ <span style="font-size:.76rem;color:var(--muted)">Klik simpul bertanda + / – untuk buka-tutup · Gulir untuk menggeser</span>
+ </div>
+ <div class="mindmap-host" id="mindmap"></div>
+ </div>
+
+ <!-- ========================================================= -->
+ <!-- KB 1 -->
+ <!-- ========================================================= -->
+ <h2 class="section" id="kb1"><span class="dot" style="background:var(--kb1)"></span>KB 1 — Nilai Waktu dari Uang</h2>
+ <div class="card kb1b">
+ <span class="kb-tag kb1t">KB 1 · TIME VALUE OF MONEY (Hal. 2.5 – 2.25)</span>
+ <p class="lead">Uang Rp1 hari ini tidak sama nilainya dengan Rp1 di masa depan karena adanya alternatif pemanfaatan (tabungan/investasi), inflasi, dan risiko. Pemahaman <span class="term">nilai waktu dari uang <span class="en">(time value of money)</span></span> menjadi landasan seluruh metode valuasi.</p>
+ <div class="acro-box">
+ <span class="acro-title">📖 Kamus Konteks Singkatan &amp; Akronim KB 1</span>
+ <ul class="acro-grid">
+ <li><b>PV &amp; FV</b>: <i>Present Value</i> (nilai sekarang) &amp; <i>Future Value</i> (nilai masa depan).</li>
+ <li><b>EAR</b>: <i>Effective Annual Rate</i> — suku bunga efektif tahunan setelah memperhitungkan frekuensi pemajemukan ($m$).</li>
+ <li><b>PVIFA &amp; FVIFA</b>: <i>Present / Future Value Interest Factor of Annuity</i> — faktor anuitas untuk angsuran kredit (PVIFA) dan tabungan rutin (FVIFA).</li>
+ <li><b>$r_f$</b>: <i>Risk-Free Rate</i> — suku bunga bebas risiko (acuan SBI/ORI).</li>
+ <li><b>SBI &amp; ORI</b>: <i>Sertifikat Bank Indonesia</i> &amp; <i>Obligasi Ritel Indonesia</i> — instrumen pemerintah bebas risiko gagal bayar.</li>
+ <li><b>$k_d^*, k_s, k_u$</b>: Biaya utang setelah pajak ($k_d^*$), biaya ekuitas berutang ($k_s$), &amp; biaya ekuitas tanpa utang ($k_u$).</li>
+ <li><b>WACC</b>: <i>Weighted Average Cost of Capital</i> — biaya modal rata-rata tertimbang perusahaan.</li>
+ <li><b>$e$ &amp; $g$</b>: Bilangan Euler ($e \approx 2{,}7183$) untuk pemajemukan kontinu &amp; tingkat pertumbuhan arus kas konstan ($g$).</li>
+ </ul>
+ </div>
+
+ <div class="casebox">
+ <span class="ctitle">Kotak 1 · Perubahan Harga (Gloria &amp; Mobil vs Flashdisk)</span>
+ Tujuh tahun lalu, mobil baru seharga Rp70 juta; kini mobil baru yang setara berharga Rp150 juta—nominal uang yang sama mengalami penurunan daya beli (inilah hakikat <b>tingkat diskonto</b>). Sebaliknya, flashdisk 256 MB dulu Rp350.000 sedangkan 4 GB kini Rp100.000: penurunan harga karena lompatan teknologi <b>tidak</b> digunakan ahli keuangan sebagai tingkat diskonto.
+ </div>
+
+ <div class="abc"><span class="ltr">A</span><h4>Tingkat Diskonto dan Nilai Sekarang <span class="en">(Present Value / PV)</span></h4></div>
+ <p><span class="term">Tingkat diskonto ($r$)</span> mencerminkan besarnya pengorbanan untuk mendapatkan dana, laju inflasi (daya beli), sekaligus <span class="term">estimasi risiko</span> yang ditanggung. Semakin tinggi $r$, semakin rendah nilai sekarang (<span class="term">PV</span>) suatu arus kas masa depan; jika $r=0$, nilai uang tidak menyusut kapan pun.</p>
+ <div class="eqbox">
+ \[\text{PV} = \frac{X}{(1+r)^T} \qquad\big|\qquad \text{PV}_{\text{multi}} = \sum_{t=1}^{T} \frac{X_t}{(1+r)^t}\]
+ </div>
+ <div class="fguide">
+ <div class="fg-head">Bedah Variabel &amp; Intisari Formula Present Value (PV)</div>
+ <ul>
+ <li><b>$\text{PV}$</b> = nilai uang saat ini ($t=0$); <b>$X, X_t$</b> = arus kas yang diterima pada tahun ke-$T$ atau ke-$t$; <b>$r$</b> = tingkat diskonto per periode; <b>$T$</b> = jumlah periode waktu.</li>
+ <li><b>Makna formula:</b> Mendiskontokan (menarik mundur) nilai uang masa depan ke masa kini dengan membagi faktor $(1+r)^t$.</li>
+ </ul>
+ <div class="fg-core">
+ <div>🧭 <b>Filosofis:</b> Satu rupiah hari ini lebih berharga daripada satu rupiah esok hari karena adanya peluang investasi, inflasi, dan ketidakpastian (risiko).</div>
+ <div>📏 <b>Mengukur:</b> Nilai ekonomis setara hari ini dari seluruh penerimaan kas di masa depan.</div>
+ <div>🎯 <b>Manfaat:</b> Menjadi bahasa universal untuk membandingkan arus kas yang terjadi pada waktu berbeda secara adil (<i>apples-to-apples</i>).</div>
+ </div>
+ </div>
+ <ul class="exp">
+ <li><span class="term">Contoh 1 (Jose — Pengaruh $r$ pada PV)</span> — Uang Rp1.000 lima tahun mendatang ($T=5$) bernilai sekarang Rp783,5 ($r=5\%$), Rp620,9 ($r=10\%$), Rp497,2 ($r=15\%$), dan hanya Rp401,9 ($r=20\%$).</li>
+ <li><span class="term">Contoh 2 (Anne — Arus Kas Bertumbuh)</span> — Royalti tahun 1 sebesar Rp10 jt tumbuh 20%/tahun selama 5 tahun ($10; 12; 14{,}4; 17{,}3; 20{,}8$) didiskontokan pada $r=10\%$ menghasilkan $\text{PV} = \mathbf{\text{Rp54,6 juta}}$.</li>
+ <li><span class="term">Contoh 3 (Wiwin — Diskonto &amp; Risiko)</span> — Modal Rp10 jt menghasilkan Rp7 jt (Thn 1) dan Rp8 jt (Thn 2). Jika dianggap <i>pasti</i> ($r=10\%$ setara tabungan), $\text{PV} = \text{Rp12,97 jt}$ (untung bersih Rp2,97 jt). Jika usaha mengandung ketidakpastian, tingkat diskonto harus <b>lebih besar dari 10%</b>.</li>
+ </ul>
+
+ 
+    <div class="chart-wrap">
+      <div class="chart-title">Grafik 2.2 · Nilai Sekarang (PV) dari Rp1.000 ($T = 5$ tahun) pada Berbagai Tingkat Diskonto ($r$)</div>
+      <div class="chart-sub">Semakin tinggi tingkat diskonto ($r$), nilai sekarang (PV) menyusut semakin tajam.</div>
+      <div class="chart-host" id="ch_m2_pv"></div>
+    </div>
+    <div class="flow">Jika bagian A menarik nilai masa depan ke saat ini (<b>PV</b>), bagian B membalik arahnya: menghitung nilai masa depan (<b>Future Value</b>) melalui mekanisme bunga-berbunga (<b>compound</b>).</div>
+
+ <div class="abc"><span class="ltr">B</span><h4>Future Value: Compound</h4></div>
+ <p>Kebalikan dari PV, semakin tinggi tingkat diskonto ($r$), semakin besar <span class="term">nilai ke depan <span class="en">(Future Value / FV)</span></span>. Pada sistem <span class="term">bunga-berbunga <span class="en">(compound)</span></span>, bunga periode sebelumnya ikut berbunga—berbeda dengan bunga biasa yang hanya menumbuhkan pokok ($C(1+Tr)$). Mulai periode ke-2, bunga <i>compound</i> selalu melampaui bunga biasa (mengikuti koefisien Segitiga Pascal: $(1+r)^3 = 1 + 3r + 3r^2 + r^3$; untuk $C=1.000, r=10\%, T=3$: bunga biasa Rp1.300 vs <i>compound</i> Rp1.331).</p>
+ <div class="eqbox">
+ \[\text{FV}_{\text{tahunan}} = C(1+r)^T \quad\big|\quad \text{FV}_{\text{diskrit}} = C\left(1+\frac{r}{m}\right)^{mT} \quad\big|\quad \text{FV}_{\text{kontinu}} = C e^{rT}\]
+ \[\text{EAR}_{\text{diskrit}} = \left(1+\frac{r}{m}\right)^m - 1 \qquad\big|\qquad \text{EAR}_{\text{kontinu}} = e^r - 1 \quad (e \approx 2{,}7183)\]
+ </div>
+ <div class="fguide">
+ <div class="fg-head">Bedah Variabel &amp; Intisari Formula Future Value (FV) &amp; EAR</div>
+ <ul>
+ <li><b>$C$</b> = modal awal; <b>$r$</b> = suku bunga nominal tahunan; <b>$T$</b> = lama investasi (tahun); <b>$m$</b> = frekuensi pemajemukan per tahun (2, 4, 12, 365); <b>$e \approx 2{,}7183$</b> = basis pemajemukan kontinu.</li>
+ <li><b>Makna formula:</b> Menghitung pertumbuhan modal secara bunga-berbunga (<i>compounding</i>) dan menyetarakan berbagai frekuensi pemajemukan ke satu suku bunga efektif tahunan (EAR).</li>
+ </ul>
+ <div class="fg-core">
+ <div>🧭 <b>Filosofis:</b> Bunga yang ikut berbunga menciptakan pertumbuhan eksponensial—makin sering bunga dimajemukkan dalam setahun, makin tinggi hasil efektifnya hingga batas maksimum pemajemukan kontinu.</div>
+ <div>📏 <b>Mengukur:</b> Nilai akumulasi dana di masa depan (FV) dan imbal hasil tahunan riil yang setara (EAR).</div>
+ <div>🎯 <b>Manfaat:</b> Membandingkan produk tabungan/kredit dengan periode bunga berbeda secara akurat dan merencanakan akumulasi kekayaan jangka panjang.</div>
+ </div>
+ </div>
+ <div class="table-wrap">
+<table class="mini">
+ <thead><tr><th>Periode Compound (Contoh 5 &amp; 6: Ngorang, $C=1.000, r=10\%$)</th><th>Pembagi ($m$)</th><th>Dana $T=1$</th><th>Dana $T=5$</th><th>EAR (%)</th></tr></thead>
+ <tbody>
+ <tr><td data-label="Periode Compound (Contoh 5 &amp; 6: Ngorang, C=1.000, r=10%)">Tahunan (<span class="en">annual</span>)</td><td data-label="Pembagi (m)">1</td><td data-label="Dana T=1">1.100,0</td><td data-label="Dana T=5">1.610,5</td><td data-label="EAR (%)">10,00%</td></tr>
+ <tr><td data-label="Periode Compound (Contoh 5 &amp; 6: Ngorang, C=1.000, r=10%)">Semester (<span class="en">semiannual</span>)</td><td data-label="Pembagi (m)">2</td><td data-label="Dana T=1">1.102,5</td><td data-label="Dana T=5">1.628,9</td><td data-label="EAR (%)">10,25%</td></tr>
+ <tr><td data-label="Periode Compound (Contoh 5 &amp; 6: Ngorang, C=1.000, r=10%)">Kuartal (<span class="en">quarterly</span>)</td><td data-label="Pembagi (m)">4</td><td data-label="Dana T=1">1.103,8</td><td data-label="Dana T=5">1.638,6</td><td data-label="EAR (%)">10,38%</td></tr>
+ <tr><td data-label="Periode Compound (Contoh 5 &amp; 6: Ngorang, C=1.000, r=10%)">Bulanan (<span class="en">monthly</span>)</td><td data-label="Pembagi (m)">12</td><td data-label="Dana T=1">1.104,7</td><td data-label="Dana T=5">1.645,3</td><td data-label="EAR (%)">10,47%</td></tr>
+ <tr><td data-label="Periode Compound (Contoh 5 &amp; 6: Ngorang, C=1.000, r=10%)">Harian (<span class="en">daily</span>)</td><td data-label="Pembagi (m)">365</td><td data-label="Dana T=1">1.105,2</td><td data-label="Dana T=5">1.648,6</td><td data-label="EAR (%)">10,52%</td></tr>
+ <tr><td data-label="Periode Compound (Contoh 5 &amp; 6: Ngorang, C=1.000, r=10%)"><b>Kontinu (<span class="en">continuous</span>)</b></td><td data-label="Pembagi (m)">$\infty$</td><td data-label="Dana T=1"><b>1.105,2</b></td><td data-label="Dana T=5"><b>1.648,7</b></td><td data-label="EAR (%)"><b>10,52% (maks)</b></td></tr>
+ </tbody>
+ </table>
+</div>
+
+ <div class="flow">Untuk arus kas seragam yang berulang secara periodik (seperti cicilan kredit atau tabungan rutin), menghitung satu per satu tidak efisien. Bagian C merumuskan jalan pintasnya melalui <b>PVIFA</b> dan <b>FVIFA</b>.</div>
+
+ <div class="abc"><span class="ltr">C</span><h4>Amortisasi <span class="en">(Annuity)</span></h4></div>
+ <p><span class="term">Amortisasi</span> menggunakan faktor <span class="term">PVIFA</span> untuk menghitung nilai sekarang atau besaran angsuran kredit tetap, sedangkan <span class="term">Annuity (tabungan)</span> menggunakan faktor <span class="term">FVIFA</span> untuk menghitung setoran rutin demi mencapai target dana masa depan.</p>
+ <div class="eqbox">
+ \[\text{PVIFA}(r,T) = \frac{1 - \frac{1}{(1+r)^T}}{r} \implies \text{Angsuran} = \frac{\text{Utang}}{\text{PVIFA}} \qquad\big|\qquad \text{FVIFA}(r,T) = \frac{(1+r)^T - 1}{r} \implies \text{Tabungan} = \frac{\text{Target}}{\text{FVIFA}}\]
+ </div>
+ <div class="fguide">
+ <div class="fg-head">Bedah Variabel &amp; Intisari Formula Amortisasi (PVIFA) &amp; Tabungan (FVIFA)</div>
+ <ul>
+ <li><b>$\text{PVIFA}(r,T)$</b> = faktor nilai sekarang anuitas selama $T$ periode pada bunga $r$; <b>$\text{FVIFA}(r,T)$</b> = faktor nilai masa depan anuitas; <b>Utang</b> = pokok pinjaman awal; <b>Target</b> = dana sasaran di akhir periode.</li>
+ <li><b>Makna formula:</b> Jalan pintas menjumlahkan deret arus kas seragam—PVIFA memecah utang menjadi angsuran tetap, sedangkan FVIFA menghitung setoran berkala menuju target dana.</li>
+ </ul>
+ <div class="fg-core">
+ <div>🧭 <b>Filosofis:</b> Arus kas rutin yang seragam tidak perlu dihitung satu per satu; faktor anuitas merangkum seluruh efek waktu dan bunga menjadi satu pengali tunggal.</div>
+ <div>📏 <b>Mengukur:</b> Besaran cicilan kredit periodik yang melunasi pokok + bunga tepat waktu, serta besaran tabungan rutin untuk mencapai target finansial.</div>
+ <div>🎯 <b>Manfaat:</b> Menyusun jadwal amortisasi kredit, membandingkan penawaran KPR/leasing, dan merencanakan dana pensiun.</div>
+ </div>
+ </div>
+ <div class="rgrid c3" data-revealgroup>
+ <div class="rcell active" data-reveal data-detail="<b>Contoh 8–10 (PT EMKA — Utang Rp100 jt, r=10%):</b> Angsuran tahunan 5 th: $\text{PVIFA}(10\%,5)=3{,}79 \implies$ angsuran Rp26,39 jt/th. Setiap periode, <b>beban bunga dihitung lebih dulu</b> dari sisa utang, sisanya melunasi pokok—sehingga bunga makin turun dan cicilan pokok makin besar. Perbandingan tenor bulanan: tenor 5 th (60 bln, cicilan Rp2,123 jt) membayar total bunga <b>Rp27,34 jt</b>, sedangkan tenor 3 th (36 bln, cicilan Rp3,225 jt) hanya membayar bunga <b>Rp16,1 jt</b>. <i>Kesimpulan: makin panjang tenor, makin besar total beban bunga.</i>"><span class="stepnum">1</span><span><span class="rt">Amortisasi Kredit</span><span class="rp">Contoh 8–10: PT EMKA</span></span></div>
+ <div class="rcell" data-reveal data-detail="<b>Contoh 11 (Pak Ghulam — Target Pensiun Rp1 M):</b> Usia 30 th, pensiun 25 th lagi ($T=25, m=12 \implies 300$ bln), bunga 10%/th ($0{,}1/12$ per bln). $\text{FVIFA} = 1.326{,}83 \implies$ cukup menabung <b>Rp754.000/bulan</b> untuk mengumpulkan Rp1 miliar saat pensiun."><span class="stepnum">2</span><span><span class="rt">Tabungan Target</span><span class="rp">Contoh 11: Pak Ghulam</span></span></div>
+ <div class="rcell" data-reveal data-detail="<b>Kotak 2 (Pak Imam — Beli Motor Rp17 jt, 3 th):</b> Membandingkan (1) BPR bunga 12%/th, (2) Leasing DP Rp2 jt + cicilan Rp722 rb (bunga tersirat ~40%), dan (3) Syariah Rp22 jt dicicil prorata Rp611.111/bln (<i>implied rate</i> 8,98% tanpa compound). Berdasarkan <i>implied rate</i>, Syariah tampak terendah; namun berdasarkan angsuran bulanan setara tanpa DP, BPR (Rp564.596) lebih kecil daripada Syariah (Rp611.111) karena Syariah tidak memakai konsep <i>compound</i>."><span class="stepnum">3</span><span><span class="rt">Banding Pembiayaan</span><span class="rp">Kotak 2: Motor Pak Imam</span></span></div>
+ </div>
+ <div class="rdetail" data-revealdetail><b>Contoh 8–10 (PT EMKA — Utang Rp100 jt, r=10%):</b> Angsuran tahunan 5 th: $\text{PVIFA}(10\%,5)=3{,}79 \implies$ angsuran Rp26,39 jt/th. Setiap periode, <b>beban bunga dihitung lebih dulu</b> dari sisa utang, sisanya melunasi pokok—sehingga bunga makin turun dan cicilan pokok makin besar. Perbandingan tenor bulanan: tenor 5 th (60 bln, cicilan Rp2,123 jt) membayar total bunga <b>Rp27,34 jt</b>, sedangkan tenor 3 th (36 bln, cicilan Rp3,225 jt) hanya membayar bunga <b>Rp16,1 jt</b>. <i>Kesimpulan: makin panjang tenor, makin besar total beban bunga.</i></div>
+
+ <div class="abc"><span class="ltr">D</span><h4>Annuity Secara Tak Hingga <span class="en">(Perpetuity)</span></h4></div>
+ <p>Jika aliran kas diterima terus-menerus tanpa batas waktu ($T \to \infty$), rumus PV menyederhana drastis (menjadi dasar model diskonto dividen di Modul 4):</p>
+ <div class="eqbox">
+ \[\text{PV}_{\text{konstan}} = \frac{X}{r} \qquad\big|\qquad \text{PV}_{\text{bertumbuh }(g)} = \frac{X_1}{r - g} = \frac{X_0(1+g)}{r - g}\]
+ </div>
+ <div class="fguide">
+ <div class="fg-head">Bedah Variabel &amp; Intisari Formula Perpetuity</div>
+ <ul>
+ <li><b>$X$</b> = arus kas tetap selamanya; <b>$X_1 = X_0(1+g)$</b> = arus kas tahun depan; <b>$r$</b> = tingkat diskonto; <b>$g$</b> = tingkat pertumbuhan konstan selamanya (syarat mutlak $r > g$).</li>
+ <li><b>Makna formula:</b> Ketika arus kas berlangsung tanpa batas waktu ($T \to \infty$), nilai sekarang menyederhana menjadi rasio arus kas tahun depan terhadap $(r-g)$.</li>
+ </ul>
+ <div class="fg-core">
+ <div>🧭 <b>Filosofis:</b> Meski arus kas mengalir selamanya, nilainya tetap berhingga karena arus kas yang sangat jauh di masa depan terdiskonto mendekati nol.</div>
+ <div>📏 <b>Mengukur:</b> Nilai intrinsik aset berumur tak terbatas seperti dana abadi, saham preferen, atau perusahaan yang beroperasi selamanya (<i>going concern</i>).</div>
+ <div>🎯 <b>Manfaat:</b> Menjadi fondasi langsung Model Diskonto Dividen (Gordon Growth) dan nilai terminal (<i>terminal value</i>) pada Modul 4.</div>
+ </div>
+ </div>
+ <p><b>Contoh 12 (Pak Ali):</b> Dana tetap Rp100 jt/th pada $r=10\%$ bernilai $\text{PV} = 100/0{,}1 = \mathbf{\text{Rp1.000 jt}}$. Jika tumbuh $g=5\%$/th (sehingga $X_1=105$ jt), $\text{PV} = 105/(0{,}10-0{,}05) = \mathbf{\text{Rp2.100 jt}}$.</p>
+
+ <div class="abc"><span class="ltr">E</span><h4>Suku Bunga Riil dan Suku Bunga Nominal</h4></div>
+ <p>Suku bunga yang tertera di bank adalah <span class="term">suku bunga nominal</span> (belum disesuaikan inflasi). Proksi sederhana ($r_{\text{riil}} \approx r_{\text{nom}} - \text{inflasi}$) hanya akurat bila bunga dan inflasi rendah; bila tinggi, wajib memakai persamaan eksak:</p>
+ <div class="eqbox">
+ \[r_{\text{riil}} = \frac{1 + r_{\text{nominal}}}{1 + \text{laju inflasi}} - 1\]
+ </div>
+ <div class="fguide">
+ <div class="fg-head">Bedah Variabel &amp; Intisari Formula Suku Bunga Riil (Fisher Eksak)</div>
+ <ul>
+ <li><b>$r_{\text{riil}}$</b> = tingkat pengembalian daya beli riil; <b>$r_{\text{nominal}}$</b> = suku bunga tertera di pasar/bank; <b>laju inflasi</b> = kenaikan tingkat harga umum.</li>
+ <li><b>Makna formula:</b> Memisahkan pertumbuhan daya beli sesungguhnya dari ilusi kenaikan nominal akibat inflasi.</li>
+ </ul>
+ <div class="fg-core">
+ <div>🧭 <b>Filosofis:</b> Bunga bank 10% saat inflasi 6% tidak membuat kekayaan riil tumbuh 10%—hanya porsi di atas inflasilah yang benar-benar menambah daya beli.</div>
+ <div>📏 <b>Mengukur:</b> Tingkat imbal hasil bersih setelah membersihkan efek gerusan inflasi.</div>
+ <div>🎯 <b>Manfaat:</b> Menjaga konsistensi valuasi (arus kas nominal wajib didiskonto $r$ nominal; arus kas riil dengan $r$ riil) agar tidak salah menilai proyek.</div>
+ </div>
+ </div>
+ <ul class="exp">
+ <li><span class="term">Perbandingan Akurasi</span> — Pada $r_{\text{nom}}=10\%$, inflasi $6\%$: proksi $= 4\%$, rumus eksak $= 3{,}8\%$ (selisih kecil 0,2%). Namun pada $r_{\text{nom}}=100\%$, inflasi $80\%$: proksi $= 20\%$, sedangkan rumus eksak hanya $\mathbf{11{,}11\%}$ (selisih besar 8,89%).</li>
+ <li><span class="term">Aturan Konsistensi (Contoh 13)</span> — Arus kas nominal didiskontokan dengan $r$ nominal, sedangkan arus kas riil (sudah dideflasikan dengan inflasi) didiskontokan dengan $r$ riil. Keduanya menghasilkan <b>PV yang sama</b> (~Rp37,9 jt).</li>
+ </ul>
+
+ <div class="abc"><span class="ltr">F</span><h4>Suku Bunga Bebas Risiko <span class="en">(Risk-Free Rate / $r_f$)</span></h4></div>
+ <p><span class="term">Suku bunga bebas risiko ($r_f$)</span> adalah imbalan dengan kepastian 100%, lazim merujuk surat utang pemerintah seperti <span class="term">SBI</span> atau <span class="term">ORI</span>. Menjadi patokan dasar: investasi berisiko wajib menawarkan imbalan di atas $r_f$ berupa <span class="term">premi risiko <span class="en">(risk premium)</span></span>.</p>
+
+ <div class="abc"><span class="ltr">G</span><h4>Beberapa Pertimbangan Analisis Diskonto</h4></div>
+ <div class="rgrid c3" data-revealgroup>
+ <div class="rcell active" data-reveal data-detail="<b>1. Pembayaran Ditunda (Delayed Annuity — Contoh 14 Bu Martha):</b> Hadiah Rp10 jt selama 10 th, pembayaran pertama baru dimulai tahun ke-5 ($r=10\%$). Tahap 1: $\text{PV}_4 = 10 \times \text{PVIFA}(10\%,10) = 61{,}446$ jt (berlaku di akhir tahun ke-4). Tahap 2: tarik ke $T=0 \implies \text{PV}_0 = 61{,}446 / (1{,}1)^4 = \mathbf{\text{Rp41,97 jt}}$ (di buku tertulis 46,179 karena faktor pembagi)."><span class="stepnum">1</span><span><span class="rt">Delayed Annuity</span><span class="rp">Pembayaran pertama tertunda</span></span></div>
+ <div class="rcell" data-reveal data-detail="<b>2. Pembayaran Disegerakan (Annuity Due — Contoh 15 Pak Sugeng):</b> Hadiah Rp100 jt selama 10 th, pembayaran pertama diterima <b>saat ini juga ($T=0$)</b>. Sisanya tinggal 9 kali di masa depan: $\text{PV} = 100 + 100 \times \text{PVIFA}(10\%,9) = 100 + 575{,}9 = \mathbf{\text{Rp675,9 jt}}$."><span class="stepnum">2</span><span><span class="rt">Annuity Due</span><span class="rp">Pembayaran dimulai sekarang</span></span></div>
+ <div class="rcell" data-reveal data-detail="<b>3. Pembayaran Jarang (Infrequent — Contoh 16 Pak Bambang):</b> Hadiah Rp1 M tiap 2 tahun sekali selama 10 tahun ($r=10\%$/th). Ubah $r$ menjadi tingkat 2-tahunan: $(1{,}1)^2 - 1 = \mathbf{21\%}$ dengan frekuensi 5 kali. $\text{PV} = 1\text{ M} \times \text{PVIFA}(21\%,5) = \mathbf{\text{Rp2,926 M}}$."><span class="stepnum">3</span><span><span class="rt">Infrequent Payment</span><span class="rp">Pembayaran per 2 tahun</span></span></div>
+ </div>
+ <div class="rdetail" data-revealdetail><b>1. Pembayaran Ditunda (Delayed Annuity — Contoh 14 Bu Martha):</b> Hadiah Rp10 jt selama 10 th, pembayaran pertama baru dimulai tahun ke-5 ($r=10\%$). Tahap 1: $\text{PV}_4 = 10 \times \text{PVIFA}(10\%,10) = 61{,}446$ jt (berlaku di akhir tahun ke-4). Tahap 2: tarik ke $T=0 \implies \text{PV}_0 = 61{,}446 / (1{,}1)^4$.</div>
+
+ <div class="casebox">
+ <span class="ctitle">Catatan Akhir KB 1 · Mencocokkan Arus Kas dengan Tingkat Diskontonya</span>
+ • Arus kas bebas risiko (mis. depresiasi) → <b>$r_f$</b><br>
+ • Arus kas utang &amp; <i>tax shield</i> utang → biaya utang setelah pajak (<b>$k_d^*$</b>)<br>
+ • Arus kas pemegang saham → <b>$k_s$</b> (berutang) atau <b>$k_u$</b> (tanpa utang)<br>
+ • Arus kas keseluruhan perusahaan → biaya modal rerata tertimbang (<b>WACC</b>)
+ </div>
+ </div>
+
+ <!-- ========================================================= -->
+ <!-- KB 2 -->
+ <!-- ========================================================= -->
+ <h2 class="section" id="kb2"><span class="dot" style="background:var(--kb2)"></span>KB 2 — Penganggaran Modal dan Keputusan Investasi</h2>
+ <div class="card kb2b">
+ <span class="kb-tag kb2t">KB 2 · CAPITAL BUDGETING (Hal. 2.29 – 2.48)</span>
+ <p class="lead"><span class="term">Penganggaran modal <span class="en">(capital budgeting)</span></span> menerapkan konsep <i>time value of money</i> untuk menilai kelayakan proyek investasi berdasarkan <span class="term">arus kas riil tambahan <span class="en">(incremental cash flow)</span></span>—bukan laba akuntansi berbasis akrual.</p>
+ <div class="acro-box">
+ <span class="acro-title">📖 Kamus Konteks Singkatan &amp; Akronim KB 2</span>
+ <ul class="acro-grid">
+ <li><b>OCF</b>: <i>Operating Cash Flow</i> — arus kas bersih dari aktivitas operasional inti proyek (tanpa bunga).</li>
+ <li><b>NOPAT</b>: <i>Net Operating Profit After Tax</i> — laba operasi setelah pajak.</li>
+ <li><b>$\Delta\text{NWC}$</b>: Perubahan <i>Net Working Capital</i> (modal kerja bersih) selama proyek berjalan.</li>
+ <li><b>$I_0$ &amp; $CF_t$</b>: Investasi kas keluar awal pada tahun ke-0 ($I_0$) &amp; arus kas bersih pada tahun ke-$t$ ($CF_t$).</li>
+ <li><b>NPV</b>: <i>Net Present Value</i> — nilai bersih sekarang ($-I_0 + \text{PV}$), kriteria kelayakan proyek terbaik.</li>
+ <li><b>IRR</b>: <i>Internal Rate of Return</i> — tingkat diskonto yang membuat $\text{NPV} = 0$.</li>
+ <li><b>PM &amp; PI</b>: <i>Payback Method</i> (waktu balik modal) &amp; <i>Profitability Index</i> (rasio manfaat terhadap $I_0$).</li>
+ <li><b>AAR / ARR</b>: <i>Average Annual Return</i> (<i>Accounting Rate of Return</i>) — rata-rata EAT dibagi rata-rata investasi.</li>
+ </ul>
+ </div>
+
+ <div class="abc"><span class="ltr">A – F</span><h4>Komponen Arus Kas Tambahan <span class="en">(Incremental Cash Flow)</span></h4></div>
+ <p>Hanya kas yang <b>bertambah atau berkurang akibat adanya proyek</b> yang boleh dimasukkan ke perhitungan:</p>
+ <div class="rgrid c3" data-revealgroup>
+ <div class="rcell active" data-reveal data-detail="<b>B. Sunk Costs (DIKELUARKAN / tidak dihitung):</b> Kas yang sudah telanjur keluar sebelum keputusan proyek dibuat, seperti biaya survei atau tes pasar. <i>Kotak 3 (Kopi Lemon):</i> biaya sampel gratis selama 3 bulan (5% biaya produksi) adalah <b>sunk cost</b> sehingga tidak dihitung sebagai biaya proyek produksi massal."><span class="stepnum">B</span><span><span class="rt">Sunk Costs</span><span class="rp">Abaikan (sudah terjadi)</span></span></div>
+ <div class="rcell" data-reveal data-detail="<b>C. Opportunity Costs (DIMASUKKAN sebagai kas keluar):</b> Nilai alternatif tertinggi yang hilang karena aset dipakai proyek. Contoh: rumah/bangunan yang biasanya disewakan Rp100 jt/th dipakai untuk proyek → hilangnya sewa Rp100 jt/th wajib dicatat sebagai arus kas keluar."><span class="stepnum">C</span><span><span class="rt">Opportunity Costs</span><span class="rp">Catat sebagai kas keluar</span></span></div>
+ <div class="rcell" data-reveal data-detail="<b>D. Efek Samping / Side Effects (DIMASUKKAN):</b> Bisa berupa <b>sinergi (+)</b> (mis. publikasi proyek menghemat iklan Rp100 jt → kas masuk) atau <b>erosi (−)</b> (mis. proyek baru menggerus penjualan produk lama perusahaan Rp50 jt → kas keluar)."><span class="stepnum">D</span><span><span class="rt">Side Effects</span><span class="rp">Sinergi (+) vs Erosi (−)</span></span></div>
+ <div class="rcell" data-reveal data-detail="<b>E. Nilai Sisa / Salvage Value (DIMASUKKAN di akhir proyek):</b> Bandingkan harga pasar aset saat dijual dengan nilai bukunya. Jika <b>harga pasar &gt; nilai buku (premium)</b>, selisihnya kena pajak (Contoh 17 PD Herbalku: NB Rp55 jt, jual Rp65 jt, pajak 15% × 10 jt = 1,5 jt → kas masuk <b>Rp63,5 jt</b>). Jika <b>harga pasar &lt; nilai buku (discount)</b>, rugi tidak kena pajak (Contoh 18: jual Rp50 jt → kas masuk penuh <b>Rp50 jt</b>)."><span class="stepnum">E</span><span><span class="rt">Salvage Value</span><span class="rp">Premium kena pajak, rugi tidak</span></span></div>
+ <div class="rcell" data-reveal data-detail="<b>F. Modal Kerja / Working Capital (DIMASUKKAN):</b> Perubahan positif modal kerja ($\Delta\text{NWC} &gt; 0$: piutang + inventori + kas − utang dagang) adalah <b>kas keluar</b> selama proyek berjalan. Pada tahun terakhir saat proyek berakhir, seluruh modal kerja kembali (menjadi <b>arus kas masuk positif</b>)."><span class="stepnum">F</span><span><span class="rt">Working Capital</span><span class="rp">Keluar di awal, kembali di akhir</span></span></div>
+ </div>
+ <div class="rdetail" data-revealdetail><b>B. Sunk Costs (DIKELUARKAN / tidak dihitung):</b> Kas yang sudah telanjur keluar sebelum keputusan proyek dibuat, seperti biaya survei atau tes pasar. <i>Kotak 3 (Kopi Lemon):</i> biaya sampel gratis selama 3 bulan (5% biaya produksi) adalah <b>sunk cost</b> sehingga tidak dihitung sebagai biaya proyek produksi massal.</div>
+
+ <div class="abc"><span class="ltr">G</span><h4>Arus Kas Operasi <span class="en">(Operating Cash Flow / OCF)</span></h4></div>
+ <p>Mengukur arus kas dari kemampuan operasional inti proyek (tanpa beban bunga). Terdapat tiga pendekatan yang menghasilkan angka identik bila tidak ada beban bunga (Contoh 19 PT Leo Bersaudara = Rp455 jt):</p>
+ <div class="eqbox">
+ \[\text{NOPAT (8a)} = \text{EBIT}(1-t) + \text{Depresiasi} \qquad\big|\qquad \text{NOPAT (8b)} = \text{EBIT} - \text{Taxes} + \text{Depresiasi}\]
+ \[\text{Top-Down} = \text{Penjualan} - \text{Beban Kas} - \text{Pajak} \qquad\big|\qquad \text{Tax Shield} = (\text{Penjualan} - \text{Beban Kas})(1-t) + \text{Depr}\cdot t\]
+ </div>
+ <div class="fguide">
+ <div class="fg-head">Bedah Variabel &amp; Intisari Formula Arus Kas Operasi (OCF)</div>
+ <ul>
+ <li><b>$\text{EBIT}$</b> = laba operasi; <b>$t$</b> = tarif pajak; <b>$\text{Taxes}$</b> = pajak aktual; <b>$\text{Depresiasi}$</b> = beban penyusutan nonkas; <b>$\text{Depr}\cdot t$</b> = <i>tax shield</i> depresiasi.</li>
+ <li><b>Makna formula:</b> Tiga jalur setara untuk mengekstrak kas operasional murni dari proyek tanpa memasukkan beban bunga.</li>
+ </ul>
+ <div class="fg-core">
+ <div>🧭 <b>Filosofis:</b> Keputusan investasi (layak tidaknya proyek) harus dipisahkan dari keputusan pendanaan (bunga utang), dan depresiasi dikembalikan karena tidak mengeluarkan kas.</div>
+ <div>📏 <b>Mengukur:</b> Arus kas masuk bersih tahunan yang murni dihasilkan oleh operasional proyek.</div>
+ <div>🎯 <b>Manfaat:</b> Menjadi bahan baku utama perhitungan NPV dan IRR dalam analisis penganggaran modal.</div>
+ </div>
+ </div>
+ <p style="font-size:.88rem;color:var(--muted)">Catatan (Contoh 20): jika ada beban bunga, rumus (8b) paling tepat secara hitungan pajak aktual (457), namun rumus (8a) paling sering dipakai karena praktis (455).</p>
+
+ <div class="casebox">
+ <span class="ctitle">Kotak 4 &amp; Contoh 21 · Kasus Terpadu: Penganggaran Modal Kue Nuri</span>
+ Investasi dapur Rp200 jt (nilai buku akhir Rp20 jt, depresiasi Rp36 jt/th, laku Rp30 jt → kas sisa setelah pajak 10% = Rp29 jt), <i>opportunity cost</i> sewa rumah Rp20 jt/th, modal kerja awal Rp100 jt (naik bertahap hingga Rp250 jt lalu turun Rp200 jt). Total kas keluar awal $I_0 = \mathbf{\text{Rp320 jt}}$. Dengan proyeksi OCF Thn 1–5 (219,6; 262,8; 314,8; 376,8; 451,5) dan tingkat diskonto modal sendiri $k = 20\%$, diperoleh $\mathbf{\text{NPV} = \text{Rp472,2 juta} &gt; 0}$ → <b>proyek layak dijalankan</b>.
+ </div>
+
+ <div class="flow">Setelah arus kas tambahan tersusun lengkap, bagian H hingga P menguraikan <b>lima kriteria penilaian proyek</b> beserta kekuatan, kelemahan, dan cara menyelesaikan konflik antarkriteria.</div>
+
+ <div class="abc"><span class="ltr">H – I</span><h4>Net Present Value (NPV) &amp; Kelemahannya</h4></div>
+ <div class="eqbox">
+ \[\text{NPV} = -I_0 + \text{PV} = -I_0 + \sum_{t=1}^{T}\frac{CF_t}{(1+k)^t} \qquad\Longrightarrow\qquad \text{Layak jika } \mathbf{\text{NPV} &gt; 0}\]
+ </div>
+ <div class="fguide">
+ <div class="fg-head">Bedah Variabel &amp; Intisari Formula Net Present Value (NPV)</div>
+ <ul>
+ <li><b>$I_0$</b> = total kas keluar investasi awal; <b>$CF_t$</b> = arus kas tambahan bersih tahun ke-$t$; <b>$k$</b> = tingkat diskonto (biaya modal proyek); <b>$T$</b> = umur ekonomis proyek.</li>
+ <li><b>Makna formula:</b> Selisih antara nilai sekarang seluruh arus kas masuk masa depan dan biaya investasi awal.</li>
+ </ul>
+ <div class="fg-core">
+ <div>🧭 <b>Filosofis:</b> Proyek hanya layak dijalankan bila nilai manfaat hari ini melampaui biayanya—setiap rupiah $\text{NPV} > 0$ adalah pertambahan kekayaan bersih langsung bagi pemegang saham.</div>
+ <div>📏 <b>Mengukur:</b> Tambahan nilai ekonomis absolut (dalam rupiah hari ini) yang diciptakan oleh suatu proyek investasi.</div>
+ <div>🎯 <b>Manfaat:</b> Kriteria penentu utama (<i>gold standard</i>) dalam memilih proyek, terutama saat terjadi konflik peringkat pada proyek <i>mutually exclusive</i>.</div>
+ </div>
+ </div>
+ <ul class="exp">
+ <li><span class="term">Mengapa NPV Terbaik? (Kotak 5 · Parulian)</span> — Jika $\text{PV} &gt; I_0$, maka $\text{NPV} &gt; 0$, yang secara langsung mengukur <b>tambahan kekayaan bersih</b> bagi perusahaan dan pemegang saham.</li>
+ <li><span class="term">Dua Sumber Kelemahan NPV</span> — (1) <b>Akurasi estimasi arus kas</b> masa depan yang rawan meleset; (2) <b>Penentuan tingkat diskonto ($k$)</b> yang bisa berbeda antar-investor (tergantung profil <i>risk averter</i>, <i>risk neutral</i>, <i>risk lover</i>) maupun antar-sumber pendanaan (bunga utang, <i>cost of equity</i>, atau WACC).</li>
+ </ul>
+
+ <div class="abc"><span class="ltr">J – K</span><h4>Internal Rate of Return (IRR), Estimasi, &amp; Kelemahannya</h4></div>
+ <p><span class="term">IRR</span> adalah tingkat diskonto ($k$) yang membuat $\text{NPV} = 0$, sekaligus menunjukkan <b>batas maksimum biaya modal</b> yang masih bisa ditoleransi. Proyek layak bila $\mathbf{\text{Biaya Modal } (k) &lt; \text{IRR}}$. Secara manual dicari lewat <i>trial &amp; error</i> dua diskonto ($k_1$ menghasilkan $\text{NPV}(+)$ dan $k_2$ menghasilkan $\text{NPV}(-)$), atau langsung dengan fungsi Excel <code>=IRR(...)</code> (Kotak 6):</p>
+ <div class="eqbox">
+ \[\text{IRR} = k_1 + \frac{\text{NPV}(+)}{\text{NPV}(+) - \text{NPV}(-)} \times (k_2 - k_1)\]
+ <p style="font-size:.82rem;color:var(--muted);margin:4px 0 0;text-align:center">Contoh 22 (Kue Nuri): $k_1=20\%$ ($\text{NPV}=+472$), $k_2=90\%$ ($\text{NPV}=-86{,}7$) $\implies \text{IRR} = \mathbf{80{,}21\%}$.</p>
+ </div>
+ <div class="fguide">
+ <div class="fg-head">Bedah Variabel &amp; Intisari Formula Internal Rate of Return (IRR)</div>
+ <ul>
+ <li><b>$k_1$</b> = tingkat diskonto lebih rendah yang menghasilkan $\text{NPV}(+)$; <b>$k_2$</b> = tingkat diskonto lebih tinggi yang menghasilkan $\text{NPV}(-)$; <b>$\text{IRR}$</b> = tingkat pengembalian internal saat $\text{NPV}=0$.</li>
+ <li><b>Makna formula:</b> Interpolasi linear antara dua titik diskonto untuk menaksir tingkat imbal hasil persentase maksimum yang dihasilkan proyek.</li>
+ </ul>
+ <div class="fg-core">
+ <div>🧭 <b>Filosofis:</b> IRR menerjemahkan kelayakan proyek ke bahasa persentase—menggambarkan seberapa tinggi biaya modal maksimal yang masih sanggup ditanggung proyek sebelum merugi.</div>
+ <div>📏 <b>Mengukur:</b> Tingkat imbal hasil persentase internal proyek (batas atas biaya modal $k$ yang layak).</div>
+ <div>🎯 <b>Manfaat:</b> Sangat populer di kalangan eksekutif karena mudah dibandingkan langsung dengan biaya modal ($k < \text{IRR}$ → terima), selama diwaspadai kelemahan <i>multiple IRR</i> &amp; skala.</div>
+ </div>
+ </div>
+ <ol class="book">
+ <li><span class="term">Kelemahan 1 — Multiple IRR</span> — Jika tanda arus kas berubah lebih dari sekali (misal $-100, +230, -132$), akan muncul lebih dari satu nilai IRR (10% dan 20%) sehingga membingungkan.</li>
+ <li><span class="term">Kelemahan 2 — Tidak Membedakan Investasi vs Meminjam</span> — Arus kas $(-100, +120)$ dan $(+100, -120)$ sama-sama menghasilkan $\text{IRR} = 20\%$, padahal pada $k=10\%$ NPV-nya bertolak belakang ($+9{,}09$ vs $-9{,}09$).</li>
+ </ol>
+
+ <div class="abc"><span class="ltr">L</span><h4>Perbandingan NPV dan IRR <span class="en">(Proyek Mutually Exclusive)</span></h4></div>
+ <p>Jika dua proyek bersifat saling meniadakan (<span class="en">mutually exclusive</span>) dan memberi peringkat bertentangan antara NPV dan IRR, <b>keputusan selalu dimenangkan oleh NPV</b> karena langsung menambah kekayaan pemegang saham. Dua penyebab konflik dan solusinya:</p>
+ <div class="rgrid c2" data-revealgroup>
+ <div class="rcell active" data-reveal data-detail="<b>1. Skala Investasi Tidak Sama (Contoh 23 — Ibu Dita, $k=10\%$):</b> Proyek A ($-10, +15$) memberi NPV 3,6 jt &amp; IRR 50%; Proyek B ($-30, +40$) memberi NPV <b>6,4 jt</b> &amp; IRR 33,3%. Solusi: hitung arus kas inkremental <b>$(B - A) = (-20, +25)$</b> → $\text{NPV}_{B-A} = +2{,}7\text{ jt} &gt; 0$ dan $\text{IRR}_{B-A} = 25\% &gt; 10\%$. Jadi <b>Proyek B dipilih</b>."><span class="stepnum">1</span><span><span class="rt">Skala Tidak Sama</span><span class="rp">Uji arus kas inkremental (B − A)</span></span></div>
+ <div class="rcell" data-reveal data-detail="<b>2. Perbedaan Pola Arus Kas &amp; Cross Rate (Contoh 24 — PT Bunga Lili):</b> Investasi sama Rp20.000 (3 th); Proyek A arus kas besar di awal (12rb, 10rb, 4rb), Proyek B besar di akhir (8rb, 6rb, 15rb). Hitung IRR dari selisih $($B-A$) = (0, -4\text{rb}, -4\text{rb}, +9\text{rb}) \implies$ diperoleh <b>Cross Rate (Incremental IRR) = 8,3%</b>. Jika $k &lt; 8{,}3\%$ pilih <b>Proyek B</b>; jika $k &gt; 8{,}3\%$ pilih <b>Proyek A</b>."><span class="stepnum">2</span><span><span class="rt">Masalah Arus Kas (Cross Rate)</span><span class="rp">Titik potong kurva NPV A &amp; B</span></span></div>
+ </div>
+ <div class="rdetail" data-revealdetail><b>1. Skala Investasi Tidak Sama (Contoh 23 — Ibu Dita, $k=10\%$):</b> Proyek A ($-10, +15$) memberi NPV 3,6 jt &amp; IRR 50%; Proyek B ($-30, +40$) memberi NPV <b>6,4 jt</b> &amp; IRR 33,3%. Solusi: hitung arus kas inkremental <b>$(B - A) = (-20, +25)$</b> → $\text{NPV}_{B-A} = +2{,}7\text{ jt} &gt; 0$ dan $\text{IRR}_{B-A} = 25\% &gt; 10\%$. Jadi <b>Proyek B dipilih</b>.</div>
+
+ 
+    <div class="chart-wrap">
+      <div class="chart-title">Grafik 2.8 &amp; 2.9 · Profil NPV Proyek A vs Proyek B &amp; Titik Cross Rate (PT Bunga Lili)</div>
+      <div class="chart-sub">Kurva NPV Proyek A dan B berpotongan di Cross Rate $8{,}3\%$: di bawah $8{,}3\%$ pilih Proyek B, di atas $8{,}3\%$ pilih Proyek A.</div>
+      <div class="chart-host" id="ch_m2_cross"></div>
+    </div>
+    <div class="abc"><span class="ltr">M – P</span><h4>Metode-Metode Komplemen (PM, PI, AAR)</h4></div>
+ <p>Digunakan sebagai pelengkap (<span class="en">rule of thumb</span>) bagi NPV dan IRR—seperti saat mengevaluasi investasi waralaba minimarket (Kotak 7):</p>
+ <div class="table-wrap">
+<table class="mini">
+ <thead><tr><th>Metode</th><th>Rumus &amp; Kriteria Layak</th><th>Catatan &amp; Hasil Contoh 25 (Aay Ellynia, $I_0=100, k=10\%$)</th></tr></thead>
+ <tbody>
+ <tr><td data-label="Metode"><b>N. Payback Method (PM)</b></td><td data-label="Rumus &amp; Kriteria Layak">Lama waktu kumulatif PV arus kas menutup $I_0$ (makin pendek makin baik).</td><td data-label="Catatan &amp; Hasil Contoh 25 (Aay Ellynia, I₀=100, k=10%)"><b>Kelemahan:</b> mengabaikan arus kas setelah titik impas; namun berguna bagi usaha kecil yang butuh perputaran kas cepat. Hasil: <b>2,59 tahun</b>.</td></tr>
+ <tr><td data-label="Metode"><b>O. Profitability Index (PI)</b></td><td data-label="Rumus &amp; Kriteria Layak">$\text{PI} = \frac{\text{NPV}}{I_0} &gt; 0$ atau $\frac{\text{PV}}{I_0} &gt; 1$.</td><td data-label="Catatan &amp; Hasil Contoh 25 (Aay Ellynia, I₀=100, k=10%)">Bahasa persentase dari NPV (berbasis arus kas). Hasil: $93{,}2/100 = \mathbf{93{,}2\%}$ (atau $1{,}93$).</td></tr>
+ <tr><td data-label="Metode"><b>P. Average Annual Return (AAR)</b></td><td data-label="Rumus &amp; Kriteria Layak">$\text{AAR} = \frac{\text{Rerata EAT}}{\text{Rerata Investasi}}$ (bandingkan dengan <i>required return</i>).</td><td data-label="Catatan &amp; Hasil Contoh 25 (Aay Ellynia, I₀=100, k=10%)">Berbasis laba akuntansi (EAT), bukan arus kas; rerata investasi garis lurus $= I_0/2$. Hasil: $20/50 = \mathbf{40\%}$.</td></tr>
+ </tbody>
+ </table>
+</div>
+ <p style="font-size:.86rem;color:var(--muted)"><b>Survei Praktik CEO (Graham &amp; Harvey):</b> IRR (75,6%) dan NPV (74,9%) merupakan pasangan kriteria paling dominan digunakan di dunia nyata, diikuti Payback Method (56,7%), ARR (30,3%), Discounted PM (29,5%), dan PI (11,9%).</p>
+ </div>
+
+ <!-- GLOSARIUM -->
+ <h2 class="section" id="glosarium"><span class="dot"></span>Glosarium Kilat</h2>
+ <div class="card">
+ <dl class="glossary">
+ <dt>Capital Budgeting (Penganggaran Modal)</dt><dd>Proses valuasi dan pengambilan keputusan investasi proyek jangka panjang berdasarkan estimasi arus kas tambahan yang didiskontokan.</dd>
+ <dt>Cross Rate (Incremental IRR)</dt><dd>Tingkat diskonto di mana dua proyek <i>mutually exclusive</i> memiliki NPV yang sama persis; menjadi batas pergantian pilihan proyek terbaik.</dd>
+ <dt>Effective Annual Rate (EAR)</dt><dd>Tingkat pengembalian tahunan efektif setelah memperhitungkan frekuensi pemajemukan (<i>compounding</i>) dalam satu tahun.</dd>
+ <dt>Incremental Cash Flow</dt><dd>Arus kas riil yang benar-benar bertambah atau berkurang sebagai akibat langsung dari diterimanya suatu proyek.</dd>
+ <dt>Net Present Value (NPV)</dt><dd>Selisih nilai sekarang seluruh arus kas masuk masa depan dikurangi investasi awal ($-I_0 + \text{PV}$); proyek layak bila $\text{NPV} &gt; 0$.</dd>
+ <dt>Opportunity Cost</dt><dd>Nilai alternatif tertinggi yang dikorbankan karena suatu aset digunakan untuk proyek tertentu; wajib dihitung sebagai arus kas keluar.</dd>
+ <dt>Perpetuity</dt><dd>Serangkaian arus kas seragam (atau tumbuh konstan) yang diterima terus-menerus tanpa batas waktu.</dd>
+ <dt>Sunk Cost</dt><dd>Biaya yang telah telanjur dikeluarkan sebelum keputusan proyek dibuat (mis. biaya survei/sampel) dan tidak boleh dimasukkan ke arus kas proyek.</dd>
+ </dl>
+ </div>
+</div>
+
+<footer><b>EKMA5205 — Manajemen Keuangan</b> · Modul 2: Pengantar Valuasi dan Keputusan Investasi<br>Bahan belajar ringkas untuk persiapan ujian (berdasarkan BMP UT Edisi 3, Dr. Said Kelana Asnawi, M.M.).</footer>
+
+<script>
+(function(){
+ var pb=document.getElementById('progress');
+ function onScroll(){var h=document.documentElement;var sc=h.scrollTop||document.body.scrollTop;var max=(h.scrollHeight-h.clientHeight)||1;pb.style.width=(sc/max*100)+'%';}
+ document.addEventListener('scroll',onScroll,{passive:true});onScroll();
+
+ var list=document.getElementById('conceptList');var items=[].slice.call(list.querySelectorAll('li'));var boxes=items.map(function(li){return li.querySelector('input');});
+ document.getElementById('totalCount').textContent=items.length;var doneEl=document.getElementById('doneCount');var KEY='studi_ekma5205_m2_concepts_v1';
+ function load(){try{var a=JSON.parse(localStorage.getItem(KEY)||'[]');boxes.forEach(function(b,i){if(a[i])b.checked=true;});}catch(e){}}
+ function save(){try{localStorage.setItem(KEY,JSON.stringify(boxes.map(function(b){return b.checked?1:0;})));}catch(e){}}
+ function refresh(){var n=0;items.forEach(function(li,i){if(boxes[i].checked){li.classList.add('done');n++;}else li.classList.remove('done');});doneEl.textContent=n;}
+ load();refresh();boxes.forEach(function(b){b.addEventListener('change',function(){refresh();save();});});
+ document.getElementById('resetBtn').addEventListener('click',function(){boxes.forEach(function(b){b.checked=false;});refresh();save();});
+
+ [].slice.call(document.querySelectorAll('[data-revealgroup]')).forEach(function(g){
+ var det=g.querySelector('[data-revealdetail]');if(!det){var sib=g.nextElementSibling;if(sib&&sib.hasAttribute&&sib.hasAttribute('data-revealdetail'))det=sib;}
+ var cells=[].slice.call(g.querySelectorAll('[data-reveal]'));
+ cells.forEach(function(c){c.addEventListener('click',function(){cells.forEach(function(x){x.classList.remove('active');});c.classList.add('active');if(det){det.innerHTML=c.getAttribute('data-detail');if(window.MathJax&&window.MathJax.typesetPromise)window.MathJax.typesetPromise([det]);}});});
+ });
+
+ (function(){
+ var ROWH=46,NODE_H=32,PAD=13,GAP=52;var COL={root:'#0f5e8f',kb1:'#1a86c7',kb2:'#e08a1e',kb3:'#2a9d6f',kb4:'#7a5cc0',kb5:'#c75b7a'};
+ var mc=document.createElement('canvas').getContext('2d');mc.font='700 13px -apple-system,Segoe UI,Roboto,sans-serif';
+ function tw(t){return Math.ceil(mc.measureText(t).width);}function esc(t){return t.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');}
+ function rgba(hex,a){var h=hex.replace('#','');return 'rgba('+parseInt(h.substr(0,2),16)+','+parseInt(h.substr(2,2),16)+','+parseInt(h.substr(4,2),16)+','+a+')';}
+ var DATA={label:'MODUL 2 — Valuasi & Keputusan Investasi',color:COL.root,children:[
+ {label:'KB 1 · Nilai Waktu dari Uang',color:COL.kb1,children:[
+ {label:'A. Tingkat Diskonto & PV',children:[{label:'PV = X / (1+r)^T'},{label:'Risiko ↑ → Diskonto ↑ → PV ↓'}]},
+ {label:'B. Future Value & Compound',children:[{label:'Diskrit vs Kontinu (Ce^rT)'},{label:'Effective Annual Rate (EAR)'}]},
+ {label:'C–D. Amortisasi & Perpetuity',children:[{label:'PVIFA (Angsuran) & FVIFA (Tabungan)'},{label:'Perpetuity X/r & X1/(r−g)'}]},
+ {label:'E–G. Bunga Riil, Risk-Free & Variasi',children:[{label:'Fisher Eksak & Konsistensi Diskonto'},{label:'Delayed, Annuity Due, Infrequent'}]}
+ ]},
+ {label:'KB 2 · Penganggaran Modal',color:COL.kb2,children:[
+ {label:'A–G. Arus Kas Tambahan & OCF',children:[{label:'Keluarkan Sunk Costs'},{label:'Opportunity Cost, Side Effects, Salvage, WC'},{label:'OCF (NOPAT, Top-down, Tax-shield)'}]},
+ {label:'H–I. Net Present Value (NPV)',children:[{label:'NPV = −I0 + PV > 0 (Terbaik)'},{label:'Kelemahan: Estimasi Kas & Diskonto'}]},
+ {label:'J–L. IRR & Konflik Mutually Exclusive',children:[{label:'Trial & Error / Interpolasi'},{label:'Kelemahan: Multiple IRR & Arah Kas'},{label:'Skala (B−A) & Cross Rate'}]},
+ {label:'M–P. Metode Komplemen',children:[{label:'Payback Method (PM)'},{label:'Profitability Index (PI)'},{label:'Average Annual Return (AAR)'}]}
+ ]}
+ ]};
+ var idc=0;(function w(n,c){n.id='n'+(idc++);n.color=n.color||c;(n.children||[]).forEach(function(k){w(k,n.color);});})(DATA,COL.root);
+ (function w(n,d){if(d>=2&&n.children&&n.children.length)n.collapsed=true;(n.children||[]).forEach(function(k){w(k,d+1);});})(DATA,0);
+ var host=document.getElementById('mindmap');
+ function render(){
+ var colW=[];(function w(n,d){var width=tw(n.label)+PAD*2+((n.children&&n.children.length)?20:0);colW[d]=Math.max(colW[d]||0,width);if(!n.collapsed)(n.children||[]).forEach(function(k){w(k,d+1);});})(DATA,0);
+ var colX=[],acc=14;for(var d=0;d<colW.length;d++){colX[d]=acc;acc+=colW[d]+GAP;}var row={v:0};
+ (function lay(n,d){if(!n.children||!n.children.length||n.collapsed){n._y=row.v*ROWH+ROWH/2+8;row.v++;return;}var f,l;n.children.forEach(function(k,i){lay(k,d+1);if(i===0)f=k._y;l=k._y;});n._y=(f+l)/2;})(DATA,0);
+ var totalW=acc,totalH=row.v*ROWH+24;var nodes=[],links=[];
+ (function col(n,d,p){n._x=colX[d];n._w=tw(n.label)+PAD*2+((n.children&&n.children.length)?20:0);nodes.push({n:n,d:d});if(p)links.push([p,n]);if(!n.collapsed)(n.children||[]).forEach(function(k){col(k,d+1,n);});})(DATA,0,null);
+ var s='<svg width="'+totalW+'" height="'+totalH+'" viewBox="0 0 '+totalW+' '+totalH+'" xmlns="http://www.w3.org/2000/svg">';
+ links.forEach(function(pr){var a=pr[0],b=pr[1],x1=a._x+a._w,y1=a._y,x2=b._x,y2=b._y,mx=(x1+x2)/2;s+='<path d="M'+x1+' '+y1+' C'+mx+' '+y1+' '+mx+' '+y2+' '+x2+' '+y2+'" fill="none" stroke="'+rgba(b.color,.5)+'" stroke-width="2"/>';});
+ nodes.forEach(function(o){var n=o.n,x=n._x,y=n._y-NODE_H/2,w=n._w,hk=n.children&&n.children.length;var fill=o.d===0?n.color:(o.d===1?rgba(n.color,.12):'#fff');var tf=o.d===0?'#fff':'#1c2733';
+ s+='<g data-id="'+n.id+'" style="cursor:'+(hk?'pointer':'default')+'"><rect x="'+x+'" y="'+y+'" rx="9" width="'+w+'" height="'+NODE_H+'" fill="'+fill+'" stroke="'+n.color+'" stroke-width="'+(o.d===0?0:1.6)+'"/><text x="'+(x+PAD)+'" y="'+(n._y+4)+'" font-size="13" font-weight="'+(o.d<=1?'700':'500')+'" fill="'+tf+'" font-family="-apple-system,Segoe UI,Roboto,sans-serif">'+esc(n.label)+'</text>';
+ if(hk){var cx=x+w-12,cy=n._y;s+='<circle cx="'+cx+'" cy="'+cy+'" r="8.5" fill="'+n.color+'"/><text x="'+cx+'" y="'+(cy+4.5)+'" font-size="13" font-weight="700" fill="#fff" text-anchor="middle" font-family="sans-serif">'+(n.collapsed?'+':'\u2013')+'</text>';}s+='</g>';});
+ s+='</svg>';host.innerHTML=s;
+ }
+ host.addEventListener('click',function(e){var g=e.target.closest('g[data-id]');if(!g)return;var id=g.getAttribute('data-id');(function f(n){if(n.id===id){if(n.children&&n.children.length)n.collapsed=!n.collapsed;return true;}return (n.children||[]).some(f);})(DATA);render();});
+ document.getElementById('mmExpand').addEventListener('click',function(){(function w(n){if(n.children)n.collapsed=false;(n.children||[]).forEach(w);})(DATA);render();});
+ document.getElementById('mmCollapse').addEventListener('click',function(){(function w(n,d){if(d>=1&&n.children&&n.children.length)n.collapsed=true;(n.children||[]).forEach(function(k){w(k,d+1);});})(DATA,0);render();});
+ render();
+ })();
+
+ 
+  // OFFLINE CARTESIAN SVG CHART ENGINE (zero external library, 100% offline)
+  function drawCartesian(hostId, cfg){
+    var host=document.getElementById(hostId);if(!host)return;
+    var W=cfg.w||680,H=cfg.h||300,P={t:24,r:28,b:44,l:58};
+    var pw=W-P.l-P.r,ph=H-P.t-P.b;
+    var x0=cfg.xmin,x1=cfg.xmax,y0=cfg.ymin,y1=cfg.ymax;
+    function sx(x){return P.l+(x-x0)/(x1-x0)*pw;}
+    function sy(y){return P.t+ph-(y-y0)/(y1-y0)*ph;}
+    function esc(t){return String(t).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');}
+    var s='<svg viewBox="0 0 '+W+' '+H+'" width="'+W+'" height="'+H+'" xmlns="http://www.w3.org/2000/svg">';
+    s+='<rect x="'+P.l+'" y="'+P.t+'" width="'+pw+'" height="'+ph+'" fill="#fff" stroke="#e4e9f0"/>';
+    var xticks=cfg.xticks||5,yticks=cfg.yticks||5;
+    for(var i=0;i<=xticks;i++){
+      var xv=x0+(x1-x0)*i/xticks,px=sx(xv);
+      s+='<line x1="'+px.toFixed(1)+'" y1="'+P.t+'" x2="'+px.toFixed(1)+'" y2="'+(P.t+ph)+'" stroke="#eef2f6" stroke-width="1"/>';
+      var xl=cfg.xfmt?cfg.xfmt(xv):(Math.round(xv*100)/100);
+      s+='<text x="'+px.toFixed(1)+'" y="'+(P.t+ph+16)+'" text-anchor="middle" font-size="11" fill="#5c6b7a" font-family="-apple-system,Segoe UI,sans-serif">'+esc(xl)+'</text>';
+    }
+    for(var j=0;j<=yticks;j++){
+      var yv=y0+(y1-y0)*j/yticks,py=sy(yv);
+      s+='<line x1="'+P.l+'" y1="'+py.toFixed(1)+'" x2="'+(P.l+pw)+'" y2="'+py.toFixed(1)+'" stroke="#eef2f6" stroke-width="1"/>';
+      var yl=cfg.yfmt?cfg.yfmt(yv):(Math.round(yv*100)/100);
+      s+='<text x="'+(P.l-8)+'" y="'+(py+4).toFixed(1)+'" text-anchor="end" font-size="11" fill="#5c6b7a" font-family="-apple-system,Segoe UI,sans-serif">'+esc(yl)+'</text>';
+    }
+    if(y0<0&&y1>0){var zy=sy(0);s+='<line x1="'+P.l+'" y1="'+zy.toFixed(1)+'" x2="'+(P.l+pw)+'" y2="'+zy.toFixed(1)+'" stroke="#94a3b8" stroke-width="1.3" stroke-dasharray="4 3"/>';}
+    if(x0<0&&x1>0){var zx=sx(0);s+='<line x1="'+zx.toFixed(1)+'" y1="'+P.t+'" x2="'+zx.toFixed(1)+'" y2="'+(P.t+ph)+'" stroke="#94a3b8" stroke-width="1.3" stroke-dasharray="4 3"/>';}
+    s+='<line x1="'+P.l+'" y1="'+(P.t+ph)+'" x2="'+(P.l+pw)+'" y2="'+(P.t+ph)+'" stroke="#64748b" stroke-width="1.5"/>';
+    s+='<line x1="'+P.l+'" y1="'+P.t+'" x2="'+P.l+'" y2="'+(P.t+ph)+'" stroke="#64748b" stroke-width="1.5"/>';
+    if(cfg.xlabel)s+='<text x="'+(P.l+pw/2)+'" y="'+(H-8)+'" text-anchor="middle" font-size="12" font-weight="700" fill="#1c2733" font-family="-apple-system,Segoe UI,sans-serif">'+esc(cfg.xlabel)+'</text>';
+    if(cfg.ylabel)s+='<text x="15" y="'+(P.t+ph/2)+'" text-anchor="middle" font-size="12" font-weight="700" fill="#1c2733" font-family="-apple-system,Segoe UI,sans-serif" transform="rotate(-90 15 '+(P.t+ph/2)+')">'+esc(cfg.ylabel)+'</text>';
+    (cfg.vlines||[]).forEach(function(vl){
+      var px=sx(vl.x);
+      s+='<line x1="'+px.toFixed(1)+'" y1="'+P.t+'" x2="'+px.toFixed(1)+'" y2="'+(P.t+ph)+'" stroke="'+(vl.color||'#94a3b8')+'" stroke-width="1.2" stroke-dasharray="5 4"/>';
+      if(vl.label)s+='<text x="'+(px+4).toFixed(1)+'" y="'+(P.t+14)+'" font-size="10.5" font-weight="700" fill="'+(vl.color||'#475569')+'" font-family="-apple-system,Segoe UI,sans-serif">'+esc(vl.label)+'</text>';
+    });
+    (cfg.hlines||[]).forEach(function(hl){
+      var py=sy(hl.y);
+      s+='<line x1="'+P.l+'" y1="'+py.toFixed(1)+'" x2="'+(P.l+pw)+'" y2="'+py.toFixed(1)+'" stroke="'+(hl.color||'#94a3b8')+'" stroke-width="1.2" stroke-dasharray="5 4"/>';
+      if(hl.label)s+='<text x="'+(P.l+pw-4)+'" y="'+(py-5).toFixed(1)+'" text-anchor="end" font-size="10.5" font-weight="700" fill="'+(hl.color||'#475569')+'" font-family="-apple-system,Segoe UI,sans-serif">'+esc(hl.label)+'</text>';
+    });
+    (cfg.series||[]).forEach(function(sr){
+      var pts=sr.pts.map(function(p){return sx(p[0]).toFixed(1)+','+sy(p[1]).toFixed(1);}).join(' ');
+      s+='<polyline fill="none" stroke="'+sr.color+'" stroke-width="'+(sr.w||2.5)+'"'+(sr.dash?' stroke-dasharray="'+sr.dash+'"':'')+' points="'+pts+'"/>';
+    });
+    (cfg.markers||[]).forEach(function(mk){
+      var cx=sx(mk.x),cy=sy(mk.y);
+      s+='<circle cx="'+cx.toFixed(1)+'" cy="'+cy.toFixed(1)+'" r="4.8" fill="'+(mk.color||'#0f5e8f')+'" stroke="#fff" stroke-width="1.6"/>';
+      var dx=mk.dx||8,dy=mk.dy||-8,anc=mk.anchor||'start';
+      if(mk.label)s+='<text x="'+(cx+dx).toFixed(1)+'" y="'+(cy+dy).toFixed(1)+'" text-anchor="'+anc+'" font-size="11" font-weight="700" fill="'+(mk.color||'#0f5e8f')+'" font-family="-apple-system,Segoe UI,sans-serif">'+esc(mk.label)+'</text>';
+    });
+    s+='</svg>';
+    var leg='';
+    if(cfg.series&&cfg.series.length>1){
+      leg='<div class="chart-legend">'+cfg.series.map(function(sr){
+        return '<span><i style="background:'+sr.color+';'+(sr.dash?'border-top:2px dashed '+sr.color+';background:none;height:0':'')+'"></i>'+esc(sr.name)+'</span>';
+      }).join('')+'</div>';
+    }
+    host.innerHTML=s+leg;
+  }
+
+
+  (function(){
+    var pvPts=[];for(var r=0;r<=25;r+=1){pvPts.push([r, 1000/Math.pow(1+r/100,5)]);}
+    drawCartesian('ch_m2_pv',{
+      xmin:0,xmax:25,ymin:0,ymax:1100,xticks:5,yticks:5,
+      xlabel:'Tingkat Diskonto r (%)',ylabel:'Present Value (Rp)',
+      xfmt:function(v){return v+'%';},
+      series:[{name:'PV Rp1.000 (T=5 th)',color:'#1a86c7',pts:pvPts}],
+      markers:[
+        {x:5,y:783.5,label:'5%: 783,5',color:'#0f5e8f',dx:6,dy:-8},
+        {x:10,y:620.9,label:'10%: 620,9',color:'#0f5e8f',dx:6,dy:-8},
+        {x:15,y:497.2,label:'15%: 497,2',color:'#0f5e8f',dx:6,dy:-8},
+        {x:20,y:401.9,label:'20%: 401,9',color:'#0f5e8f',dx:6,dy:-8}
+      ]
+    });
+    function npv(cfs,k){var s=-20000;for(var t=0;t<cfs.length;t++)s+=cfs[t]/Math.pow(1+k/100,t+1);return s;}
+    var pA=[],pB=[];
+    for(var k=0;k<=20;k+=0.5){pA.push([k,npv([12000,10000,4000],k)]);pB.push([k,npv([8000,6000,15000],k)]);}
+    var crY=npv([12000,10000,4000],8.3);
+    drawCartesian('ch_m2_cross',{
+      xmin:0,xmax:20,ymin:-3000,ymax:10000,xticks:4,yticks:5,
+      xlabel:'Tingkat Diskonto k (%)',ylabel:'NPV (Rp)',
+      xfmt:function(v){return v+'%';},
+      vlines:[{x:8.3,label:'Cross Rate 8,3%',color:'#e08a1e'}],
+      series:[
+        {name:'Proyek A (12rb, 10rb, 4rb)',color:'#1a86c7',pts:pA},
+        {name:'Proyek B (8rb, 6rb, 15rb)',color:'#e08a1e',pts:pB}
+      ],
+      markers:[{x:8.3,y:crY,label:'Potong (8,3%; '+Math.round(crY)+')',color:'#c0392b',dx:8,dy:-10}]
+    });
+  })();
+
+  window.addEventListener('load',function(){setTimeout(function(){if(window.MathJax&&window.MathJax.typesetPromise)window.MathJax.typesetPromise();},400);});
+})();
+</script></body></html>

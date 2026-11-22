@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="id"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Modul 8 — Observasi, Wawancara, dan Lain-Lain | EKMA5104</title>
+<script>window.MathJax={tex:{inlineMath:[['$','$']],displayMath:[['\\[','\\]'],['$$','$$']]},svg:{fontCache:'global'},startup:{typeset:true}};</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js" async></script>
+<style>
+:root{--bg:#f4f6f9;--panel:#fff;--ink:#1c2733;--muted:#5c6b7a;--line:#e4e9f0;--brand:#1a86c7;--brand-dark:#0f5e8f;--brand-soft:#e7f3fb;--kb1:#1a86c7;--kb2:#e08a1e;--kb3:#2a9d6f;--kb4:#7a5cc0;--kb5:#c75b7a;--radius:14px;--shadow:0 1px 2px rgba(16,42,67,.06),0 6px 20px rgba(16,42,67,.06);--maxw:900px}
+*{box-sizing:border-box}html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;line-height:1.72}
+#progress{position:fixed;top:0;left:0;height:4px;width:0;background:linear-gradient(90deg,var(--brand),#53c0ec);z-index:200;transition:width .1s}
+header.top{position:sticky;top:0;z-index:100;background:rgba(255,255,255,.92);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+.top-in{max-width:var(--maxw);margin:0 auto;padding:10px 20px;display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+.badge{background:var(--brand);color:#fff;font-weight:700;font-size:.72rem;letter-spacing:.5px;padding:4px 10px;border-radius:999px}
+.homebtn{text-decoration:none;display:inline-flex;align-items:center;gap:7px;background:var(--brand);color:#fff;font-weight:700;font-size:.8rem;padding:7px 15px;border-radius:999px;box-shadow:0 2px 6px rgba(16,42,67,.22);line-height:1}
+.top-title{font-size:.9rem;font-weight:600;color:var(--muted)}
+nav.jump{margin-left:auto;display:flex;gap:4px;flex-wrap:wrap}
+nav.jump a{font-size:.78rem;color:var(--muted);text-decoration:none;padding:5px 10px;border-radius:8px}
+nav.jump a:hover{background:var(--brand-soft);color:var(--brand-dark)}
+.wrap{max-width:var(--maxw);margin:0 auto;padding:0 20px 90px}
+.hero{margin-top:26px;padding:30px 28px;border-radius:var(--radius);color:#fff;background:linear-gradient(135deg,#0f5e8f,#1a86c7 60%,#2fa4df);box-shadow:var(--shadow);position:relative;overflow:hidden}
+.hero .eyebrow{font-size:.78rem;letter-spacing:1.5px;text-transform:uppercase;opacity:.9;font-weight:600}
+.hero h1{margin:.3em 0 .25em;font-size:1.62rem;line-height:1.25;max-width:90%}
+.hero .meta{display:flex;gap:18px;flex-wrap:wrap;font-size:.84rem;opacity:.95;margin-top:10px}
+h2.section{font-size:1.3rem;margin:48px 0 4px;display:flex;align-items:center;gap:10px;scroll-margin-top:70px}
+h2.section .dot{width:10px;height:22px;border-radius:4px;background:var(--brand)}
+.section-sub{color:var(--muted);font-size:.9rem;margin:0 0 18px}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);padding:22px 24px;margin:16px 0;--dot:var(--brand);overflow-x:clip;overflow-wrap:break-word;word-wrap:break-word}
+.concepts{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:minmax(0,1fr);gap:10px}
+.concepts li{display:flex;gap:12px;align-items:flex-start;padding:12px 14px;border:1px solid var(--line);border-radius:10px;background:#fcfdff;min-width:0;max-width:100%}
+.concepts li>span{min-width:0;max-width:100%;overflow-wrap:break-word;word-wrap:break-word}
+.concepts input{margin-top:4px;width:18px;height:18px;accent-color:var(--brand);flex:none;cursor:pointer}
+.concepts .ct{font-weight:600}.concepts .cd{display:block;font-weight:400;color:var(--muted);font-size:.86rem;margin-top:2px}
+.concepts li.done{background:var(--brand-soft);border-color:#bfe0f3}.concepts li.done .ct{text-decoration:line-through;opacity:.65}
+.cl-head{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-bottom:6px}
+.cl-head .count{font-size:.82rem;color:var(--muted);background:var(--brand-soft);padding:3px 10px;border-radius:999px;font-weight:600}
+.btn-reset{font-size:.78rem;border:1px solid var(--line);background:#fff;color:var(--muted);padding:5px 12px;border-radius:8px;cursor:pointer}
+.mm-toolbar{display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin-bottom:10px}
+.mm-btn{font-size:.78rem;border:1px solid var(--line);background:#fff;padding:6px 13px;border-radius:8px;cursor:pointer;color:var(--brand-dark);font-weight:600}
+.mindmap-host{height:580px;overflow:auto;border:1px solid var(--line);border-radius:10px;background:#fcfdff}.mindmap-host svg{display:block}
+.kb-tag{display:inline-flex;align-items:center;gap:8px;font-size:.78rem;font-weight:700;color:#fff;padding:5px 12px;border-radius:999px;margin-bottom:6px}
+.kb1t{background:var(--kb1)}.kb2t{background:var(--kb2)}.kb3t{background:var(--kb3)}.kb4t{background:var(--kb4)}.kb5t{background:var(--kb5)}
+.kb1b{--dot:var(--kb1)}.kb2b{--dot:var(--kb2)}.kb3b{--dot:var(--kb3)}.kb4b{--dot:var(--kb4)}.kb5b{--dot:var(--kb5)}
+.lead{font-size:1.02rem}.term{font-weight:700;color:var(--dot)}.en{font-style:italic;color:var(--muted);font-weight:500}
+.abc{display:flex;align-items:center;gap:10px;margin:28px 0 10px;padding-bottom:6px;border-bottom:2px solid color-mix(in srgb,var(--dot) 18%,#fff)}
+.abc .ltr{background:var(--dot);color:#fff;font-weight:800;min-width:30px;height:30px;padding:0 7px;border-radius:8px;display:grid;place-items:center;flex:none}
+.abc h4{margin:0;font-size:1.06rem;color:var(--dot)}
+.numh{font-weight:700;color:var(--dot);margin:22px 0 4px;font-size:1rem}
+.leth{font-weight:800;color:var(--dot);margin:20px 0 6px;font-size:.98rem;border-left:3px solid var(--dot);padding-left:10px}
+ol.book{margin:12px 0;padding-left:28px}ol.book>li{margin:10px 0;padding-left:6px}ol.book>li::marker{font-weight:700;color:var(--dot)}
+ul.exp{list-style:none;margin:12px 0;padding:0;display:grid;grid-template-columns:minmax(0,1fr);gap:10px}
+ul.exp>li{position:relative;padding-left:20px;min-width:0;max-width:100%;overflow-wrap:break-word;word-wrap:break-word}
+ul.exp>li::before{content:"";position:absolute;left:0;top:11px;width:8px;height:8px;border-radius:2px;background:var(--dot)}
+ul.let{list-style:lower-alpha;margin:10px 0;padding-left:28px}ul.let>li{margin:8px 0;padding-left:4px}ul.let>li::marker{color:var(--dot);font-weight:700}
+.flow{border-left:4px solid var(--dot);background:color-mix(in srgb,var(--dot) 9%,#fff);padding:11px 15px;border-radius:0 10px 10px 0;margin:18px 0;font-size:.9rem;min-width:0;max-width:100%;overflow-wrap:break-word;word-wrap:break-word}
+.flow::before{content:"🔗 Benang merah — ";font-weight:700;color:var(--dot)}.flow b{color:var(--dot)}
+.casebox{background:#f8fafc;border:1px solid var(--line);border-left:4px solid var(--dot);border-radius:0 10px 10px 0;padding:12px 15px;margin:14px 0;font-size:.88rem;min-width:0;max-width:100%;overflow-wrap:break-word;word-wrap:break-word}
+.casebox .ctitle{font-weight:700;color:var(--dot);margin-bottom:4px;display:block}
+.table-wrap{width:100%;overflow-x:auto;-webkit-overflow-scrolling:touch;margin:14px 0;border-radius:10px}
+table.mini{width:100%;border-collapse:collapse;margin:0;font-size:.86rem;table-layout:auto}
+table.mini th,table.mini td{border:1px solid var(--line);padding:10px 12px;text-align:left;vertical-align:top;overflow-wrap:break-word;word-wrap:break-word}
+table.mini th{background:color-mix(in srgb,var(--dot) 12%,#fff);color:var(--dot);font-weight:700}
+.rgrid{display:grid;gap:8px;margin:14px 0}.rgrid.c2{grid-template-columns:repeat(2,1fr)}.rgrid.c3{grid-template-columns:repeat(3,1fr)}.rgrid.c4{grid-template-columns:repeat(4,1fr)}
+.rcell{border:1px solid var(--line);border-radius:10px;padding:11px 13px;cursor:pointer;background:#fff;display:flex;gap:10px;align-items:flex-start;transition:.15s;min-width:0;max-width:100%}
+.rcell>span{min-width:0;max-width:100%;overflow-wrap:break-word;word-wrap:break-word}
+.rcell:hover{border-color:var(--dot);box-shadow:var(--shadow);transform:translateY(-2px)}
+.rcell.active{border-color:var(--dot);background:color-mix(in srgb,var(--dot) 8%,#fff)}
+.rcell .stepnum{background:var(--dot);color:#fff;font-weight:700;min-width:24px;height:24px;border-radius:7px;display:grid;place-items:center;flex:none;font-size:.82rem}
+.rcell .rt{font-weight:700;font-size:.9rem;color:var(--dot);display:block}.rcell .rp{font-size:.78rem;color:var(--muted);display:block;margin-top:2px}
+.rdetail{font-size:.88rem;border-left:4px solid var(--dot);background:color-mix(in srgb,var(--dot) 8%,#fff);border-radius:0 10px 10px 0;padding:12px 15px;margin-top:6px;min-width:0;max-width:100%;overflow-wrap:break-word;word-wrap:break-word}
+.pill-row{display:flex;gap:8px;flex-wrap:wrap;margin:10px 0}.pill{font-size:.8rem;background:#eef3f8;color:#36506a;border:1px solid #e0e8f0;padding:4px 11px;border-radius:999px;font-weight:600}
+.flowchart{display:flex;align-items:center;gap:6px;flex-wrap:wrap;margin:16px 0;justify-content:center}
+.fc-node{background:color-mix(in srgb,var(--dot) 12%,#fff);border:1.5px solid var(--dot);color:var(--dot);font-weight:700;font-size:.8rem;padding:8px 12px;border-radius:9px;text-align:center}
+.fc-arrow{color:var(--dot);font-weight:800;font-size:1.05rem}
+.pyramid{display:flex;flex-direction:column;align-items:center;gap:4px;margin:16px 0}.pyr-row{color:#fff;font-weight:700;text-align:center;padding:9px 12px;border-radius:7px;font-size:.84rem}
+.bs-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:14px 0}
+.bs-col{border:1.5px solid var(--dot);border-radius:10px;overflow:hidden;min-width:0;max-width:100%}
+.bs-head{background:var(--dot);color:#fff;font-weight:700;font-size:.84rem;padding:7px 12px;text-align:center}
+.bs-box{padding:10px 12px;border-bottom:1px dashed var(--line);font-size:.84rem}.bs-box:last-child{border-bottom:none}
+.eqbox{background:#fcfdff;border:1px solid var(--line);border-radius:10px;padding:8px 14px;margin:14px 0;overflow-x:auto}
+mjx-container{max-width:100%;overflow-x:auto;overflow-y:hidden}
+mjx-container:not([display="true"]){display:inline-block;vertical-align:middle}
+.chart-wrap{background:#fcfdff;border:1px solid var(--line);border-radius:12px;padding:14px 16px;margin:16px 0}
+.chart-title{font-weight:700;font-size:.9rem;color:var(--dot);margin:0 0 4px}
+.chart-sub{font-size:.78rem;color:var(--muted);margin:0 0 10px}
+.chart-host{width:100%;overflow-x:auto;position:relative}.chart-host svg{display:block;max-width:100%;height:auto;margin:0 auto}
+.chart-legend{display:flex;gap:14px;flex-wrap:wrap;justify-content:center;margin-top:8px;font-size:.78rem;color:var(--muted)}
+.chart-legend span{display:inline-flex;align-items:center;gap:6px}.chart-legend i{display:inline-block;width:14px;height:3px;border-radius:2px}
+.glossary dt{font-weight:700;color:var(--brand-dark);margin-top:10px}.glossary dd{margin:0 0 2px;color:var(--muted);font-size:.9rem}
+footer{max-width:var(--maxw);margin:0 auto;padding:30px 20px 60px;color:var(--muted);font-size:.82rem;border-top:1px solid var(--line)}
+.offline-note{font-size:.76rem;color:var(--muted);background:#fff8e6;border:1px solid #f0e2b8;border-radius:8px;padding:8px 12px;margin:10px 0}
+@media(max-width:680px){
+  .table-wrap{overflow-x:visible}
+  table.mini,table.mini thead,table.mini tbody,table.mini th,table.mini td,table.mini tr{display:block;width:100%}
+  table.mini thead{display:none}
+  table.mini tr{margin-bottom:12px;border:1.5px solid color-mix(in srgb,var(--dot) 28%,#e4e9f0);border-radius:10px;background:#fff;overflow:hidden;box-shadow:0 1px 4px rgba(16,42,67,.05)}
+  table.mini td{border:none;border-bottom:1px solid var(--line);padding:10px 12px;text-align:left}
+  table.mini td:last-child{border-bottom:none}
+  table.mini td::before{content:attr(data-label);display:block;font-size:.74rem;font-weight:700;text-transform:uppercase;letter-spacing:.4px;color:var(--dot);margin-bottom:4px}
+}
+.acro-box{background:#f8fafc;border:1px solid var(--line);border-radius:10px;padding:12px 14px;margin:14px 0;font-size:.84rem;min-width:0;max-width:100%;overflow-wrap:break-word;word-wrap:break-word}
+.acro-title{font-weight:700;color:var(--dot);font-size:.86rem;margin-bottom:8px;display:block}
+.acro-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:6px 14px;margin:0;padding:0;list-style:none}
+.acro-grid li{min-width:0;line-height:1.5}.acro-grid b{color:var(--dot)}
+.fguide{background:color-mix(in srgb,var(--dot) 5%,#fff);border:1px solid color-mix(in srgb,var(--dot) 22%,#e4e9f0);border-radius:10px;padding:12px 15px;margin:-6px 0 16px;font-size:.86rem;min-width:0;max-width:100%;overflow-wrap:break-word;word-wrap:break-word}
+.fguide .fg-head{font-weight:700;color:var(--dot);font-size:.84rem;text-transform:uppercase;letter-spacing:.35px;margin:0 0 6px}
+.fguide ul{margin:4px 0 8px;padding-left:18px}.fguide ul li{margin:3px 0}
+.fguide .fg-core{border-top:1px dashed color-mix(in srgb,var(--dot) 30%,#cbd5e1);padding-top:8px;margin-top:8px;display:grid;grid-template-columns:minmax(0,1fr);gap:4px}
+.fguide .fg-core div{min-width:0}
+@media(max-width:640px){.hero h1{font-size:1.3rem;max-width:100%}nav.jump{display:none}.rgrid.c2,.rgrid.c3,.rgrid.c4,.bs-grid,.acro-grid{grid-template-columns:minmax(0,1fr)}.mindmap-host{height:440px}}
+</style></head><body>
+<div id="progress"></div>
+<header class="top"><div class="top-in">
+  <span class="badge">MODUL 8</span>
+  <a class="homebtn" href="index.html" title="Kembali ke daftar modul"><span style="font-size:1rem;line-height:1">&#8962;</span> Daftar Modul</a>
+  <span class="top-title">Metode Penelitian Bisnis · EKMA5104</span>
+  <nav class="jump"><a href="#konsep">Konsep</a><a href="#peta">Peta Konsep</a><a href="#kb1">KB1</a><a href="#kb2">KB2</a><a href="#glosarium">Glosarium</a></nav>
+</div></header>
+<div class="wrap">
+  <section class="hero"><div class="eyebrow">Ringkasan Belajar · EKMA5104 (Edisi 3)</div>
+    <h1>Observasi, Wawancara, dan Lain-Lain</h1>
+    <div class="meta"><span>⏱️ ±30 menit</span><span>📚 2 bagian (KB)</span><span>✍️ Dr. Lerbin Roberto Aritonang R., M.M.</span></div></section>
+  <p class="section-sub" style="margin-top:22px">Modul 8 melengkapi pembahasan instrumen pengumpulan data selain kuesioner dan skala sikap: observasi langsung, wawancara (termasuk FGD dan wawancara mendalam), lima teknik khusus penelitian bisnis, serta pemanfaatan dan evaluasi data sekunder.</p>
+  <p class="offline-note">ℹ️ Peta konsep, grafik SVG, kartu penjelasan, dan checklist konsep berjalan tanpa internet. Koneksi internet hanya diperlukan untuk merender persamaan matematika (MathJax).</p>
+
+  <h2 class="section" id="konsep"><span class="dot"></span>Konsep Penting yang Harus Dikuasai</h2>
+  <div class="card"><div class="cl-head"><span class="count"><span id="doneCount">0</span>/<span id="totalCount">0</span> dikuasai</span><button class="btn-reset" id="resetBtn">Reset centang</button></div>
+    <ul class="concepts" id="conceptList">
+      <li><input type="checkbox"><span><span class="ct">Observasi Ilmiah (Langsung vs Tidak Langsung)</span><span class="cd">Pengamatan sistematis, terencana, dan obyektif dalam kondisi terdefinisi. Observasi langsung mengamati variabelnya; observasi tak langsung memakai angket/wawancara/tes.</span></span></li>
+      <li><input type="checkbox"><span><span class="ct">3 Syarat Observasi (Tull &amp; Hawkins, 1993)</span><span class="cd">Data dapat diakses lewat pengamatan, perilaku terjadi berulang/dapat diprediksi, dan kejadiannya berlangsung dalam rentang waktu singkat.</span></span></li>
+      <li><input type="checkbox"><span><span class="ct">5 Klasifikasi Jenis Observasi</span><span class="cd">Alamiah vs dimodifikasi (termasuk partisipan), terbuka vs tertutup, terstruktur vs tak terstruktur, manusia vs mekanis, serta deskripsi verbal vs daftar periksa.</span></span></li>
+      <li><input type="checkbox"><span><span class="ct">Kesesatan Observasi (Halo Effect &amp; Carry-Over Effect)</span><span class="cd">Halo effect akibat kesan pertama pengamat; carry-over effect akibat pengamat gagal memisahkan satu kejadian dari kejadian lainnya.</span></span></li>
+      <li><input type="checkbox"><span><span class="ct">Wawancara &amp; 3 Fungsinya (Sutrisno, 1992)</span><span class="cd">Tanya-jawab sepihak secara sistematis yang dapat berfungsi sebagai metode primer, pelengkap, atau kriterium (penguji kebenaran data metode lain).</span></span></li>
+      <li><input type="checkbox"><span><span class="ct">Asumsi Allport tentang Wawancara</span><span class="cd">Untuk mengetahui perasaan, pengalaman, ingatan, emosi, dan motif seseorang, cara paling tepat adalah menanyakannya langsung.</span></span></li>
+      <li><input type="checkbox"><span><span class="ct">Rapport &amp; Pelatihan Pewawancara</span><span class="cd">Rapport menciptakan suasana santai, saling percaya, dan tak formal; pewawancara dilatih agar bersikap faktual, tidak seperti polisi/hakim, dan tidak memicu bias.</span></span></li>
+      <li><input type="checkbox"><span><span class="ct">Wawancara Kelompok Fokus (FGD) vs Wawancara Mendalam</span><span class="cd">FGD melibatkan 1 moderator + 8–12 subyek homogen (1–3 jam); wawancara mendalam individual (1 pewawancara, 1 subyek) mengungkap hal tersembunyi pada riset eksploratif.</span></span></li>
+      <li><input type="checkbox"><span><span class="ct">5 Sumber Kekeliruan Pelaporan Wawancara (Rummel)</span><span class="cd">Ingatan terbatas, hal penting terlewat, melebih-lebihkan/meramu jawaban, mengganti hal yang lupa, dan gagal mereproduksi kronologi/hubungan fakta.</span></span></li>
+      <li><input type="checkbox"><span><span class="ct">Ukuran Fisiologis &amp; Teknik Proyeksi</span><span class="cd">Fisiologis mengukur reaksi tubuh elektronik (gelombang otak, gerak mata, getaran suara, keringat); proyeksi memakai stimulus tersamar (melengkapi, konstruksi/kartun, asosiasi/top of mind, ekspresif).</span></span></li>
+      <li><input type="checkbox"><span><span class="ct">Survei Komersial, Audit, dan Panel</span><span class="cd">Survei komersial bersifat kontinu (omnibus/panel); audit memeriksa fisik toko/produk/distribusi; panel melibatkan ahli atau konsumen/pengecer secara berkelanjutan.</span></span></li>
+      <li><input type="checkbox"><span><span class="ct">Data Primer vs Data Sekunder (Internal &amp; Eksternal)</span><span class="cd">Data primer dikumpulkan langsung untuk riset saat ini; data sekunder telah dikumpulkan sebelumnya untuk tujuan lain (dari internal perusahaan atau sumber eksternal).</span></span></li>
+      <li><input type="checkbox"><span><span class="ct">5 Kriteria Evaluasi Data Sekunder (Stewart / Malhotra)</span><span class="cd">Wajib mengevaluasi metodologi, akurasi/kekeliruan, kekinian data, kesesuaian sasaran/definisi, serta reliabilitas (kredibilitas sumber).</span></span></li>
+    </ul></div>
+
+  <h2 class="section" id="peta"><span class="dot"></span>Peta Konsep (Mind Map)</h2>
+  <div class="card"><div class="mm-toolbar"><button class="mm-btn" id="mmExpand">Perluas semua</button><button class="mm-btn" id="mmCollapse">Ciutkan</button><span style="font-size:.76rem;color:var(--muted)">Klik simpul bertanda + / – untuk buka-tutup · Gulir untuk menggeser</span></div><div class="mindmap-host" id="mindmap"></div></div>
+
+  <!-- KB 1 -->
+  <h2 class="section" id="kb1"><span class="dot" style="background:var(--kb1)"></span>KB 1 — Observasi dan Wawancara</h2>
+  <div class="card kb1b"><span class="kb-tag kb1t">KEGIATAN BELAJAR 1 · HAL. 8.4–8.16</span>
+    <div class="acro-box">
+      <span class="acro-title">📖 Kamus Konteks Singkatan &amp; Akronim KB 1</span>
+      <ul class="acro-grid">
+        <li><b>FGD</b>: <i>Focus Group Discussion</i> — wawancara kelompok fokus (1 moderator + 8–12 subyek homogen, 1–3 jam).</li>
+      </ul>
+    </div>
+
+    <p class="lead">Selain angket dan skala sikap (Modul 7), metode dasar yang paling sering digunakan untuk memperoleh data empiris penelitian bisnis adalah <b>observasi</b> dan <b>wawancara</b>.</p>
+
+    <div class="abc"><span class="ltr">A</span><h4>Observasi</h4></div>
+
+    <div class="numh">1. Pengertian Observasi</div>
+    <p>Secara ilmiah, <span class="term">observasi <span class="en">(observation)</span></span> adalah pengamatan dan pencatatan atas suatu variabel secara sistematis, terencana, dan obyektif dalam kondisi yang didefinisikan tepat (Sutrisno, 1992; Shaughnessy &amp; Zechmeister, 1994). Berbeda dari pengamatan orang awam yang kasual, bias, dan mengandalkan daya ingat, observasi ilmiah mengurangi subjektivitas dan mencatat secara formal.</p>
+    <ul class="exp">
+      <li><span class="term">Observasi langsung <span class="en">(direct observation)</span></span>: pengamatan langsung terhadap variabelnya (oleh manusia maupun kamera/mesin). Inilah fokus utama KB 1.</li>
+      <li><span class="term">Observasi tidak langsung <span class="en">(indirect observation)</span></span>: pengumpulan data tanpa mengamati langsung variabelnya, melainkan lewat angket, wawancara, atau tes.</li>
+    </ul>
+    <p>Menurut <b>Tull dan Hawkins (1993)</b>, minimal ada <b>3 kondisi</b> agar variabel layak diukur dengan observasi langsung:</p>
+    <ol class="book">
+      <li><b>Data dapat diakses lewat observasi</b>: variabel internal seperti motivasi tidak tepat diobservasi langsung.</li>
+      <li><b>Perilaku berulang atau dapat diprediksi</b>: perilaku yang jarang muncul tidak efisien diobservasi.</li>
+      <li><b>Rentang waktu kejadian singkat</b>: pertimbangan tenaga dan biaya, kecuali tak ada metode lain yang tepat.</li>
+    </ol>
+
+    <div class="numh">2. Jenis Observasi (5 Dasar Klasifikasi)</div>
+    <div class="table-wrap">
+      <table class="mini">
+        <thead><tr><th>Dasar Klasifikasi</th><th>Jenis Observasi &amp; Penjelasannya</th></tr></thead>
+        <tbody>
+          <tr><td data-label="Dasar Klasifikasi"><b>1. Latar kondisi</b></td><td data-label="Jenis Observasi &amp; Penjelasannya"><b>Alamiah</b> (kondisi nyata tanpa intervensi, mis. pembeli di supermarket; termasuk <i>observasi partisipan</i> di mana peneliti membaur sebagai konsumen) vs <b>Dimodifikasi/diciptakan</b> (simulasi di ruangan sehingga kurang alami).</td></tr>
+          <tr><td data-label="Dasar Klasifikasi"><b>2. Tujuan / keterbukaan</b></td><td data-label="Jenis Observasi &amp; Penjelasannya"><b>Tertutup</b> (subyek tak tahu diamati, mis. lewat kaca searah / <i>one-way mirror</i>) vs <b>Terbuka</b> (pengamat dan subyek saling melihat).</td></tr>
+          <tr><td data-label="Dasar Klasifikasi"><b>3. Struktur</b></td><td data-label="Jenis Observasi &amp; Penjelasannya"><b>Terstruktur</b> (aspek yang dicatat sudah ditetapkan rinci sebelumnya) vs <b>Tidak terstruktur</b> (aspek berkembang selama pengamatan berlangsung).</td></tr>
+          <tr><td data-label="Dasar Klasifikasi"><b>4. Alat pengadministrasian</b></td><td data-label="Jenis Observasi &amp; Penjelasannya"><b>Oleh manusia</b> vs <b>Secara mekanis</b> (memakai alat bantu seperti kamera/rekaman).</td></tr>
+          <tr><td data-label="Dasar Klasifikasi"><b>5. Cara pencatatan</b></td><td data-label="Jenis Observasi &amp; Penjelasannya"><b>Deskripsi verbal</b> (uraian kalimat, lazim untuk tak terstruktur) vs <b>Daftar periksa</b> (<i>checklist</i>, memberi tanda centang pada kategori baku, lazim untuk terstruktur).</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="numh">3. Pedoman Pelaksanaan Observasi (Brandt &amp; Rummel)</div>
+    <p>Terdapat <b>11 pedoman</b> utama agar observasi menghasilkan data yang valid dan reliabel:</p>
+    <ol class="book">
+      <li><b>Pengetahuan awal variabel</b>: pelajari bahan terkait variabel dan beri pelatihan bila pengamat bukan peneliti sendiri.</li>
+      <li><b>Selidiki tujuan &amp; definisi operasional</b>: spesifikasikan secara tegas apa yang harus dicatat dan tidak dicatat.</li>
+      <li><b>Siapkan alat pencatatan baku</b>: buat daftar periksa atau tulisan cepat (<i>steno</i>) dan kuasai penggunaannya.</li>
+      <li><b>Batasi tingkat kategori dengan tegas</b>: tentukan apakah cukup 2 kategori (aktif/tidak aktif) atau 5 tingkat.</li>
+      <li><b>Cermat dan kritis</b>: kecermatan pengamat diasah melalui pengalaman lapangan.</li>
+      <li><b>Catat terpisah dan sesegera mungkin</b>: mencegah lupa dan memudahkan analisis.</li>
+      <li><b>Aturan pendugaan/interpretasi</b>: tetapkan tegas apakah pengamat hanya mencatat fakta nyata atau boleh menafsirkan, demi reliabilitas tinggi.</li>
+      <li><b>Kaitkan dengan kebutuhan analisis</b>: lakukan simulasi kecil agar tidak mengumpulkan data yang tak terpakai.</li>
+      <li><b>Gunakan simbol sederhana</b>: pastikan simbol tidak bermakna ganda.</li>
+      <li><b>Manfaatkan alat bantu rekam</b>: mempercepat pemindahan data ke perangkat lunak analisis.</li>
+      <li><b>Antisipasi kejadian tak terencana</b>: identifikasi skenario penyimpangan dan cara mengatasinya sebelumnya.</li>
+    </ol>
+
+    <div class="numh">4. Keunggulan, Kelemahan, dan Kesesatan Observasi</div>
+    <div class="rgrid c3" data-revealgroup>
+      <div class="rcell active" data-reveal data-detail="<b>Keunggulan Observasi</b> — (1) Tidak bergantung pada laporan sendiri (<i>self-report</i>) sehingga bebas bias jawaban subyek; (2) Dapat menangkap ekspresi langsung subyek yang mustahil didapat lewat angket; (3) Memungkinkan pencatatan beberapa variabel sekaligus pada waktu bersamaan."><span class="stepnum">+</span><span><span class="rt">Keunggulan</span><span class="rp">Bebas self-report &amp; tangkap ekspresi</span></span></div>
+      <div class="rcell" data-reveal data-detail="<b>Kelemahan Observasi</b> — (1) Sulit untuk variabel periodik dalam rentang waktu lama; (2) Subyek yang sadar diamati cenderung berperilaku 'menyenangkan pengamat' sehingga tak mencerminkan kenyataan; (3) Tidak semua variabel bisa diamati langsung (mis. kehidupan pribadi)."><span class="stepnum">–</span><span><span class="rt">Kelemahan</span><span class="rp">Reaktivitas subyek &amp; batas akses</span></span></div>
+      <div class="rcell" data-reveal data-detail="<b>3 Kesesatan Pengamat (Sutrisno, 1992)</b> — (1) <b>Halo effect</b>: pengamat terpengaruh kesan pertama terhadap subyek; (2) <b>Kecenderungan menilai baik</b> (<i>leniency/generosity error</i>); (3) <b>Carry-over effect</b>: pengamat gagal memisahkan satu kejadian dari kejadian lain sehingga jika satu aspek baik, aspek lain ikut dicatat baik."><span class="stepnum">!</span><span><span class="rt">3 Kesesatan</span><span class="rp">Halo effect &amp; carry-over effect</span></span></div>
+    </div>
+    <div class="rdetail" data-revealdetail><b>Keunggulan Observasi</b> — (1) Tidak bergantung pada laporan sendiri (<i>self-report</i>) sehingga bebas bias jawaban subyek; (2) Dapat menangkap ekspresi langsung subyek yang mustahil didapat lewat angket; (3) Memungkinkan pencatatan beberapa variabel sekaligus pada waktu bersamaan.</div>
+
+    <div class="flow">Karena observasi langsung tidak mampu mengungkap perasaan, motivasi, atau pengalaman internal subyek, peneliti memerlukan metode kedua yang menggali informasi langsung secara verbal: <b>Wawancara</b>.</div>
+
+    <div class="abc"><span class="ltr">B</span><h4>Wawancara</h4></div>
+
+    <div class="numh">1. Pengertian, Fungsi, dan Asumsi Allport</div>
+    <p><span class="term">Wawancara <span class="en">(interview)</span></span> adalah tanya-jawab sepihak (pewawancara aktif bertanya, subyek aktif menjawab) secara sistematis dan terencana berlandaskan tujuan penelitian. Menurut <b>Allport</b>: <i>"If we want to know how people feel, what their experience and what they remember, what their emotions and motives are like, and the reasons for acting as they do — why not ask them?"</i> Menurut Sutrisno (1992), wawancara memiliki <b>3 fungsi</b>:</p>
+    <ul class="exp">
+      <li><b>Metode primer</b>: sumber data utama untuk menjawab masalah penelitian.</li>
+      <li><b>Metode pelengkap</b>: melengkapi data yang diperoleh dari metode pengumpulan data lain.</li>
+      <li><b>Kriterium</b>: menguji kebenaran dan kemantapan data dari metode lain (mis. mengecek ulang apakah kolektor data angket benar-benar menemui responden).</li>
+    </ul>
+
+    <div class="numh">2. Jenis Wawancara</div>
+    <div class="table-wrap">
+      <table class="mini">
+        <thead><tr><th>Dasar Pembedaan</th><th>Jenis Wawancara &amp; Penjelasannya</th></tr></thead>
+        <tbody>
+          <tr><td data-label="Dasar Pembedaan"><b>Cara pengadministrasian</b></td><td data-label="Jenis Wawancara &amp; Penjelasannya"><b>Telepon</b> (bisa berbantuan komputer), <b>Pribadi</b> (di rumah, lewat komputer, atau di pusat perbelanjaan / <i>mall intercept</i>), dan <b>Melalui surat</b>.</td></tr>
+          <tr><td data-label="Dasar Pembedaan"><b>Kejelasan stimulus</b></td><td data-label="Jenis Wawancara &amp; Penjelasannya"><b>Tersamar</b> (<i>disguised</i> — memakai stimulus tak langsung seperti gambar abstrak / teknik proyeksi) vs <b>Tidak tersamar / langsung</b> (pertanyaan langsung terkait tujuan, mis. FGD &amp; wawancara mendalam).</td></tr>
+          <tr><td data-label="Dasar Pembedaan"><b>Struktur</b></td><td data-label="Jenis Wawancara &amp; Penjelasannya"><b>Terstruktur</b> (butir pertanyaan ditetapkan rinci sebelumnya) vs <b>Tidak terstruktur</b> (rincian topik berkembang luwes di lapangan).</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="numh">3. Hubungan Kondusif (Rapport)</div>
+    <p>Perkenalkan diri &amp; tujuan dengan rendah hati, ciptakan suasana santai dan tak formal, lalu awali dengan pertanyaan pemanasan sebelum masuk ke inti.</p>
+
+    <div class="numh">4. Pelatihan Pewawancara</div>
+    <p>Melatih komunikasi, penggalian mendalam (<i>probing</i>), pencatatan segera tanpa mengganggu subyek, sikap faktual (tidak seperti polisi/hakim/paling tahu), pengecekan kelengkapan jawaban, ucapan terima kasih/permohonan maaf, serta uji coba hasil pelatihan.</p>
+
+    <div class="numh">5. Pedoman Wawancara (Interview Guide)</div>
+    <p>Memuat butir pertanyaan, cara pencatatan dan pemberian skor, spesifikasi alat &amp; kondisi pelaksanaan, serta karakteristik subyek yang disyaratkan.</p>
+
+    <div class="numh">6. Wawancara Kelompok Fokus (Focus Group Discussion / FGD)</div>
+    <p>Melibatkan 1 pewawancara (berperan sebagai <b>moderator</b>) + <b>8–12 subyek homogen</b> (4–5 orang disebut kelompok kecil), berlangsung 1–3 jam di ruang santai, direkam (mis. video), dan dianalisis kualitatif (analisis isi).</p>
+
+    <div class="numh">7. Wawancara Mendalam Individual (In-depth Interview)</div>
+    <p>Dilakukan 1 pewawancara terhadap 1 subyek untuk mengungkap hal tersembunyi yang sulit digali metode lain; menuntut pewawancara sangat terlatih dan lazim pada penelitian eksploratif.</p>
+
+    <div class="numh">8. Lima Sumber Kekeliruan Pelaporan Wawancara (Rummel)</div>
+    <p>Menurut <b>Rummel (dalam Sutrisno, 1992)</b>, kekeliruan pelaporan bersumber dari: (a) keterbatasan <b>ingatan</b>; (b) hal penting <b>dilewatkan</b> tak dilaporkan; (c) <b>melebih-lebihkan</b> atau meramu jawaban; (d) <b>mengganti</b> hal yang tak dapat diingat; dan (e) gagal <b>mereproduksi urutan waktu</b> atau hubungan antarfakta apa adanya.</p>
+
+    <div class="numh">9. Keunggulan dan Kelemahan Wawancara</div>
+    <p><b>Keunggulan:</b> sangat luwes menyesuaikan kondisi lapangan dan mampu mengungkap hal tersembunyi. <b>Kelemahan:</b> mahal dari sisi waktu, tenaga, dan biaya, serta sulit mencari atau melatih pewawancara berketerampilan tinggi.</p>
+  </div>
+
+  <!-- KB 2 -->
+  <h2 class="section" id="kb2"><span class="dot" style="background:var(--kb2)"></span>KB 2 — Beberapa Teknik Khusus Perolehan Data dan Data Sekunder</h2>
+  <div class="card kb2b"><span class="kb-tag kb2t">KEGIATAN BELAJAR 2 · HAL. 8.17–8.28</span>
+    <div class="acro-box">
+      <span class="acro-title">📖 Kamus Konteks Singkatan &amp; Akronim KB 2</span>
+      <ul class="acro-grid">
+        <li><b>BPS</b>: Badan Pusat Statistik — contoh sumber utama data sekunder eksternal pemerintah (data sensus/kependudukan).</li>
+        <li><b>TV</b>: Televisi — media yang diukur pola tontonannya lewat alat elektronik dalam panel konsumen.</li>
+      </ul>
+    </div>
+
+    <p class="lead">Di luar angket, observasi, dan wawancara standar, penelitian bisnis (khususnya pemasaran) memanfaatkan <b>lima teknik khusus perolehan data primer</b> serta <b>data sekunder</b> yang sudah tersedia sebelumnya.</p>
+
+    <div class="abc"><span class="ltr">A</span><h4>Beberapa Teknik Khusus</h4></div>
+    <p>Klik masing-masing dari 5 teknik khusus berikut untuk mempelajari cara kerja dan contohnya:</p>
+    <div class="rgrid c3" data-revealgroup>
+      <div class="rcell active" data-reveal data-detail="<b>1. Ukuran Fisiologis (Physiological Measures)</b> — Berangkat dari premis bahwa kondisi fisiologis memanifestasikan kondisi psikologis (mis. takut → tangan gemetar). Menggunakan alat elektronik untuk mengukur gelombang otak (minat), gerakan mata, getaran suara (emosi), dan kadar keringat kulit terhadap stimulus iklan/slogan."><span class="stepnum">1</span><span><span class="rt">Ukuran Fisiologis</span><span class="rp">Reaksi tubuh via alat elektronik</span></span></div>
+      <div class="rcell" data-reveal data-detail="<b>2. Teknik Proyeksi (Projective Techniques)</b> — Memakai stimulus tersamar untuk mengungkap aspek psikologis bawah sadar (dianalisis kualitatif). Ada 4 teknik: (a) <b>Melengkapi</b> kalimat/cerita tak utuh; (b) <b>Konstruksi</b> cerita/dialog (termasuk <i>teknik kartun</i> mengisi balon ucapan); (c) <b>Asosiasi</b> mencatat respons pertama (<i>top of mind</i>) atas kata/merek; (d) <b>Ekspresif</b> lewat permainan peran (<i>role play</i>)."><span class="stepnum">2</span><span><span class="rt">Teknik Proyeksi</span><span class="rp">Stimulus tersamar (4 teknik)</span></span></div>
+      <div class="rcell" data-reveal data-detail="<b>3. Survei Komersial (Commercial Survey)</b> — Kerja sama kontinu dengan sejumlah subyek selama periode tertentu (bukan sekali ambil). Mencakup <b>survei omnibus</b> (kerja sama beberapa perusahaan riset demi efisiensi sumber daya) dan <b>survei panel</b> (kelompok subyek bersedia ditanya berulang via surat, telepon, atau tatap muka)."><span class="stepnum">3</span><span><span class="rt">Survei Komersial</span><span class="rp">Kontinu: omnibus &amp; panel</span></span></div>
+      <div class="rcell" data-reveal data-detail="<b>4. Audit</b> — Pemeriksaan fisik persediaan, penerimaan penjualan, harga, dan bauran pemasaran untuk mengetahui penjualan, pangsa pasar, dan distribusi (Tull &amp; Hawkins, 1993). Terdiri atas <b>audit toko</b>, <b>audit produk</b>, dan <b>audit distribusi eceran</b> (agen masuk toko tanpa izin/pengetahuan staf, mirip kegiatan spionase)."><span class="stepnum">4</span><span><span class="rt">Audit</span><span class="rp">Toko, produk, distribusi eceran</span></span></div>
+      <div class="rcell" data-reveal data-detail="<b>5. Panel</b> — Sekelompok individu/organisasi/ahli yang setuju merespons stimulus peneliti selama kurun waktu tertentu. <b>Panel pengecer</b> memantau iklan, kupon, merek, harga, dan pangsa pasar; <b>panel konsumen</b> memantau perubahan perilaku keluarga/individu terhadap bauran pemasaran lewat <i>buku harian</i> pembelian atau <i>alat elektronik</i> (mis. pencatat tontonan TV)."><span class="stepnum">5</span><span><span class="rt">Panel</span><span class="rp">Panel pengecer &amp; konsumen</span></span></div>
+    </div>
+    <div class="rdetail" data-revealdetail><b>1. Ukuran Fisiologis (Physiological Measures)</b> — Berangkat dari premis bahwa kondisi fisiologis memanifestasikan kondisi psikologis (mis. takut → tangan gemetar). Menggunakan alat elektronik untuk mengukur gelombang otak (minat), gerakan mata, getaran suara (emosi), dan kadar keringat kulit terhadap stimulus iklan/slogan.</div>
+
+    <div class="flow">Seluruh instrumen di KB 1 hingga KB 2 bagian A menghasilkan <b>data primer</b>. Namun, peneliti sering kali dapat menghemat biaya dan waktu dengan memanfaatkan data yang sudah pernah dikumpulkan pihak lain—inilah <b>Data Sekunder</b>.</div>
+
+    <div class="abc"><span class="ltr">B</span><h4>Data Sekunder</h4></div>
+
+    <div class="numh">1. Pengertian Data Sekunder vs Data Primer</div>
+    <p><span class="term">Data Primer <span class="en">(primary data)</span></span> dikumpulkan sendiri secara langsung oleh peneliti untuk menjawab masalah penelitian yang sedang berjalan, sedangkan <span class="term">Data Sekunder <span class="en">(secondary data)</span></span> sudah tersedia sebelumnya karena dikumpulkan untuk tujuan penelitian lain (sering masih perlu pemrosesan ulang agar cocok dengan masalah kita).</p>
+
+    <div class="numh">2. Klasifikasi Data Sekunder (Internal vs Eksternal)</div>
+    <p>Data sekunder <b>internal</b> berasal dari dalam perusahaan tempat masalah berada (mis. laporan penjualan, laporan akuntansi), sedangkan data sekunder <b>eksternal</b> berasal dari luar perusahaan (mis. BPS, lembaga pemerintah, asosiasi).</p>
+
+    <div class="numh">3. Penggunaan Data Sekunder</div>
+    <p>Menurut <b>Malhotra (2007)</b>, data sekunder dipakai untuk: (a) mengidentifikasi masalah, (b) merumuskan masalah, (c) mengembangkan pendekatan masalah, (d) merumuskan desain penelitian &amp; variabel utama, (e) menjawab pertanyaan riset/uji hipotesis tertentu, dan (f) menginterpretasikan data primer lebih mendalam. <b>Aaker, Kumar &amp; Day (1995)</b> menambahkan: peramalan permintaan, pemantauan lingkungan, segmentasi &amp; target pasar, serta intelijen bisnis.</p>
+
+    <div class="numh">4. Keunggulan Data Sekunder</div>
+    <p>Biaya relatif murah, waktu singkat (sudah tersedia), tenaga sedikit; kadang menjadi <b>satu-satunya</b> pilihan layak (mis. data seluruh penduduk dari BPS); dan kadang <b>lebih akurat</b> dari data primer (mis. data penjualan/laba perusahaan lain yang dilaporkan ke pemerintah).</p>
+
+    <div class="numh">5. Kelemahan Data Sekunder</div>
+    <p>Karena tujuan pengumpulannya berbeda, data sekunder sering tidak cocok pada metode pengumpulan, akurasi, kekinian, tujuan, isi data, keandalan data, satuan pengukuran yang dipakai, maupun definisi pengklasifikasian variabel nominal.</p>
+
+    <div class="numh">6. Lima Kriteria Evaluasi Data Sekunder (Stewart dalam Malhotra, 2007)</div>
+    <p>Sebelum memakai data sekunder, peneliti wajib mengevaluasinya secara rutin dengan <b>5 kriteria</b>:</p>
+    <ol class="book">
+      <li><span class="term">Metodologi pengumpulan</span>: periksa ukuran &amp; sifat sampel, tingkat tanggapan, desain angket, prosedur lapangan, dan analisisnya (menentukan validitas, reliabilitas, dan generalisasi).</li>
+      <li><span class="term">Akurasi / kekeliruan data</span>: lacak potensi kesalahan desain, sampel, maupun analisis—bila perlu verifikasi lapangan pada sebagian kecil sampel.</li>
+      <li><span class="term">Kekinian data <span class="en">(currency)</span></span>: cek apakah lingkungan sudah berubah mendasar sejak data dikumpulkan; jika ya, jangan dipakai.</li>
+      <li><span class="term">Kesesuaian sasaran &amp; definisi</span>: bandingkan definisi variabel pada data sekunder dengan definisi pada penelitian kita.</li>
+      <li><span class="term">Reliabilitas sumber</span>: nilai kredibilitas, keahlian, dan reputasi pengumpulnya; utamakan memperoleh langsung dari pihak pertama yang mengumpulkan data tersebut.</li>
+    </ol>
+  </div>
+
+  <h2 class="section" id="glosarium"><span class="dot"></span>Glosarium Kilat</h2>
+  <div class="card"><dl class="glossary">
+    <dt>Audit</dt><dd>Pemeriksaan fisik persediaan, penerimaan penjualan, harga, dan aspek bauran pemasaran lain untuk menentukan penjualan, pangsa pasar, harga relatif, distribusi, dan informasi relevan.</dd>
+    <dt>Carry-Over Effects</dt><dd>Kesesatan karena pengamat tidak dapat memisahkan satu kejadian dari kejadian lain sehingga jika satu kejadian baik, kejadian lain ikut dicatat baik.</dd>
+    <dt>Data Primer (Primary Data)</dt><dd>Data yang langsung diperoleh dari subyek untuk tujuan penelitian yang sedang dilakukan.</dd>
+    <dt>Data Sekunder (Secondary Data)</dt><dd>Data yang telah ada sebelumnya untuk tujuan penelitian lain (internal maupun eksternal).</dd>
+    <dt>Halo Effects</dt><dd>Kesesatan karena pengamat cenderung dipengaruhi oleh kesan pertamanya terhadap subyek/variabel yang diobservasi.</dd>
+    <dt>Observasi (Observation)</dt><dd>Pengamatan atas suatu variabel secara sistematis dan obyektif dalam kondisi yang didefinisikan tepat, serta dicatat dengan hati-hati.</dd>
+    <dt>Panel</dt><dd>Sekelompok individu atau organisasi yang diminta dan menyetujui memberikan tanggapan atas stimulus peneliti selama periode waktu tertentu.</dd>
+    <dt>Rapport</dt><dd>Usaha pewawancara untuk menciptakan suasana wawancara yang kondusif, santai, dan saling percaya.</dd>
+    <dt>Survei Komersial (Commercial Survey)</dt><dd>Kerja sama perusahaan dengan beberapa subyek selama periode tertentu untuk memperoleh data secara kontinu.</dd>
+    <dt>Survei Omnibus (Omnibus Survey)</dt><dd>Kerja sama antara beberapa perusahaan penelitian untuk memperoleh data dari sejumlah subyek demi efisiensi sumber daya.</dd>
+    <dt>Teknik Proyeksi (Projective Technique)</dt><dd>Penggunaan stimulus tersamar untuk mengukur aspek psikologis yang tidak disadari oleh subyek.</dd>
+    <dt>Ukuran Fisiologis (Physiological Measure)</dt><dd>Data mengenai variabel penelitian yang diperoleh melalui reaksi fisiologis subyek menggunakan alat elektronik khusus.</dd>
+    <dt>Wawancara (Interview)</dt><dd>Tanya-jawab sepihak yang dilakukan secara sistematis dan berlandaskan pada tujuan penelitian.</dd>
+  </dl></div>
+</div>
+<footer><b>EKMA5104 — Metode Penelitian Bisnis (Edisi 3)</b> · Modul 8: Observasi, Wawancara, dan Lain-Lain<br>Bahan belajar ringkas untuk persiapan ujian · Dr. Lerbin Roberto Aritonang R., M.M.</footer>
+<script>
+(function(){
+  var pb=document.getElementById('progress');
+  function onScroll(){var h=document.documentElement;var sc=h.scrollTop||document.body.scrollTop;var max=(h.scrollHeight-h.clientHeight)||1;pb.style.width=(sc/max*100)+'%';}
+  document.addEventListener('scroll',onScroll,{passive:true});onScroll();
+
+  var list=document.getElementById('conceptList');var items=[].slice.call(list.querySelectorAll('li'));var boxes=items.map(function(li){return li.querySelector('input');});
+  document.getElementById('totalCount').textContent=items.length;var doneEl=document.getElementById('doneCount');var KEY='studi_ekma5104_m8_concepts_v1';
+  function load(){try{var a=JSON.parse(localStorage.getItem(KEY)||'[]');boxes.forEach(function(b,i){if(a[i])b.checked=true;});}catch(e){}}
+  function save(){try{localStorage.setItem(KEY,JSON.stringify(boxes.map(function(b){return b.checked?1:0;})));}catch(e){}}
+  function refresh(){var n=0;items.forEach(function(li,i){if(boxes[i].checked){li.classList.add('done');n++;}else li.classList.remove('done');});doneEl.textContent=n;}
+  load();refresh();boxes.forEach(function(b){b.addEventListener('change',function(){refresh();save();});});
+  document.getElementById('resetBtn').addEventListener('click',function(){boxes.forEach(function(b){b.checked=false;});refresh();save();});
+
+  [].slice.call(document.querySelectorAll('[data-revealgroup]')).forEach(function(g){
+    var det=g.querySelector('[data-revealdetail]');if(!det){var sib=g.nextElementSibling;if(sib&&sib.hasAttribute&&sib.hasAttribute('data-revealdetail'))det=sib;}
+    var cells=[].slice.call(g.querySelectorAll('[data-reveal]'));
+    cells.forEach(function(c){c.addEventListener('click',function(){cells.forEach(function(x){x.classList.remove('active');});c.classList.add('active');if(det){det.innerHTML=c.getAttribute('data-detail');if(window.MathJax&&window.MathJax.typesetPromise)window.MathJax.typesetPromise([det]);}});});
+  });
+
+  (function(){
+    var ROWH=46,NODE_H=32,PAD=13,GAP=52;var COL={root:'#0f5e8f',kb1:'#1a86c7',kb2:'#e08a1e',kb3:'#2a9d6f',kb4:'#7a5cc0',kb5:'#c75b7a'};
+    var mc=document.createElement('canvas').getContext('2d');mc.font='700 13px -apple-system,Segoe UI,Roboto,sans-serif';
+    function tw(t){return Math.ceil(mc.measureText(t).width);}function esc(t){return t.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');}
+    function rgba(hex,a){var h=hex.replace('#','');return 'rgba('+parseInt(h.substr(0,2),16)+','+parseInt(h.substr(2,2),16)+','+parseInt(h.substr(4,2),16)+','+a+')';}
+    var DATA={label:'MODUL 8 — Observasi, Wawancara, dan Lain-Lain',color:COL.root,children:[
+  {label:'KB1 · Observasi dan Wawancara',color:COL.kb1,children:[
+    {label:'A. Observasi',children:[
+      {label:'1. Pengertian & 3 Syarat (Tull & Hawkins)'},
+      {label:'2. 5 Klasifikasi Jenis Observasi'},
+      {label:'3. 11 Pedoman Pelaksanaan Observasi'},
+      {label:'4. Keunggulan, Kelemahan & Kesesatan (Halo / Carry-Over)'}
+    ]},
+    {label:'B. Wawancara',children:[
+      {label:'1. Pengertian, 3 Fungsi & Asumsi Allport'},
+      {label:'2. Jenis (Administrasi, Stimulus, Struktur)'},
+      {label:'3. Rapport'},
+      {label:'4. Pelatihan Pewawancara'},
+      {label:'5. Pedoman Wawancara'},
+      {label:'6. FGD (Wawancara Kelompok Fokus)'},
+      {label:'7. Wawancara Mendalam Individual'},
+      {label:'8. 5 Sumber Kekeliruan (Rummel)'},
+      {label:'9. Keunggulan & Kelemahan Wawancara'}
+    ]}
+  ]},
+  {label:'KB2 · Teknik Khusus & Data Sekunder',color:COL.kb2,children:[
+    {label:'A. 5 Teknik Khusus',children:[
+      {label:'1. Ukuran Fisiologis (Elektronik)'},
+      {label:'2. Teknik Proyeksi (4 Teknik)'},
+      {label:'3. Survei Komersial (Omnibus & Panel)'},
+      {label:'4. Audit (Toko, Produk, Distribusi)'},
+      {label:'5. Panel (Pengecer & Konsumen)'}
+    ]},
+    {label:'B. Data Sekunder',children:[
+      {label:'1. Pengertian Sekunder vs Primer'},
+      {label:'2. Klasifikasi Internal vs Eksternal'},
+      {label:'3. Penggunaan Data Sekunder (Malhotra & Aaker)'},
+      {label:'4. Keunggulan Data Sekunder'},
+      {label:'5. Kelemahan Data Sekunder'},
+      {label:'6. 5 Kriteria Evaluasi (Stewart / Malhotra)'}
+    ]}
+  ]}
+]};
+    var idc=0;(function w(n,c){n.id='n'+(idc++);n.color=n.color||c;(n.children||[]).forEach(function(k){w(k,n.color);});})(DATA,COL.root);
+    (function w(n,d){if(d>=2&&n.children&&n.children.length)n.collapsed=true;(n.children||[]).forEach(function(k){w(k,d+1);});})(DATA,0);
+    var host=document.getElementById('mindmap');
+    function render(){
+      var colW=[];(function w(n,d){var width=tw(n.label)+PAD*2+((n.children&&n.children.length)?20:0);colW[d]=Math.max(colW[d]||0,width);if(!n.collapsed)(n.children||[]).forEach(function(k){w(k,d+1);});})(DATA,0);
+      var colX=[],acc=14;for(var d=0;d<colW.length;d++){colX[d]=acc;acc+=colW[d]+GAP;}var row={v:0};
+      (function lay(n,d){if(!n.children||!n.children.length||n.collapsed){n._y=row.v*ROWH+ROWH/2+8;row.v++;return;}var f,l;n.children.forEach(function(k,i){lay(k,d+1);if(i===0)f=k._y;l=k._y;});n._y=(f+l)/2;})(DATA,0);
+      var totalW=acc,totalH=row.v*ROWH+24;var nodes=[],links=[];
+      (function col(n,d,p){n._x=colX[d];n._w=tw(n.label)+PAD*2+((n.children&&n.children.length)?20:0);nodes.push({n:n,d:d});if(p)links.push([p,n]);if(!n.collapsed)(n.children||[]).forEach(function(k){col(k,d+1,n);});})(DATA,0,null);
+      var s='<svg width="'+totalW+'" height="'+totalH+'" viewBox="0 0 '+totalW+' '+totalH+'" xmlns="http://www.w3.org/2000/svg">';
+      links.forEach(function(pr){var a=pr[0],b=pr[1],x1=a._x+a._w,y1=a._y,x2=b._x,y2=b._y,mx=(x1+x2)/2;s+='<path d="M'+x1+' '+y1+' C'+mx+' '+y1+' '+mx+' '+y2+' '+x2+' '+y2+'" fill="none" stroke="'+rgba(b.color,.5)+'" stroke-width="2"/>';});
+      nodes.forEach(function(o){var n=o.n,x=n._x,y=n._y-NODE_H/2,w=n._w,hk=n.children&&n.children.length;var fill=o.d===0?n.color:(o.d===1?rgba(n.color,.12):'#fff');var tf=o.d===0?'#fff':'#1c2733';
+        s+='<g data-id="'+n.id+'" style="cursor:'+(hk?'pointer':'default')+'"><rect x="'+x+'" y="'+y+'" rx="9" width="'+w+'" height="'+NODE_H+'" fill="'+fill+'" stroke="'+n.color+'" stroke-width="'+(o.d===0?0:1.6)+'"/><text x="'+(x+PAD)+'" y="'+(n._y+4)+'" font-size="13" font-weight="'+(o.d<=1?'700':'500')+'" fill="'+tf+'" font-family="-apple-system,Segoe UI,Roboto,sans-serif">'+esc(n.label)+'</text>';
+        if(hk){var cx=x+w-12,cy=n._y;s+='<circle cx="'+cx+'" cy="'+cy+'" r="8.5" fill="'+n.color+'"/><text x="'+cx+'" y="'+(cy+4.5)+'" font-size="13" font-weight="700" fill="#fff" text-anchor="middle" font-family="sans-serif">'+(n.collapsed?'+':'\u2013')+'</text>';}s+='</g>';});
+      s+='</svg>';host.innerHTML=s;
+    }
+    host.addEventListener('click',function(e){var g=e.target.closest('g[data-id]');if(!g)return;var id=g.getAttribute('data-id');(function f(n){if(n.id===id){if(n.children&&n.children.length)n.collapsed=!n.collapsed;return true;}return (n.children||[]).some(f);})(DATA);render();});
+    document.getElementById('mmExpand').addEventListener('click',function(){(function w(n){if(n.children)n.collapsed=false;(n.children||[]).forEach(w);})(DATA);render();});
+    document.getElementById('mmCollapse').addEventListener('click',function(){(function w(n,d){if(d>=1&&n.children&&n.children.length)n.collapsed=true;(n.children||[]).forEach(function(k){w(k,d+1);});})(DATA,0);render();});
+    render();
+  })();
+
+  window.addEventListener('load',function(){setTimeout(function(){if(window.MathJax&&window.MathJax.typesetPromise)window.MathJax.typesetPromise();},400);});
+})();
+</script></body></html>

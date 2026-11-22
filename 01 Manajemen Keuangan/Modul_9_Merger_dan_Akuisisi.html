@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html lang="id"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Modul 9 — Merger dan Akuisisi | EKMA5205</title>
+<script>window.MathJax={tex:{inlineMath:[['$','$']],displayMath:[['\\[','\\]'],['$$','$$']]},svg:{fontCache:'global'},startup:{typeset:true}};</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js" async></script>
+<style>
+:root{--bg:#f4f6f9;--panel:#fff;--ink:#1c2733;--muted:#5c6b7a;--line:#e4e9f0;--brand:#1a86c7;--brand-dark:#0f5e8f;--brand-soft:#e7f3fb;--kb1:#1a86c7;--kb2:#e08a1e;--kb3:#2a9d6f;--kb4:#7a5cc0;--radius:14px;--shadow:0 1px 2px rgba(16,42,67,.06),0 6px 20px rgba(16,42,67,.06);--maxw:900px}
+*{box-sizing:border-box}html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;line-height:1.72}
+#progress{position:fixed;top:0;left:0;height:4px;width:0;background:linear-gradient(90deg,var(--brand),#53c0ec);z-index:200;transition:width .1s}
+header.top{position:sticky;top:0;z-index:100;background:rgba(255,255,255,.92);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+.top-in{max-width:var(--maxw);margin:0 auto;padding:10px 20px;display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+.badge{background:var(--brand);color:#fff;font-weight:700;font-size:.72rem;letter-spacing:.5px;padding:4px 10px;border-radius:999px}
+.homebtn{text-decoration:none;display:inline-flex;align-items:center;gap:7px;background:var(--brand);color:#fff;font-weight:700;font-size:.8rem;padding:7px 15px;border-radius:999px;box-shadow:0 2px 6px rgba(16,42,67,.22);line-height:1}
+.top-title{font-size:.9rem;font-weight:600;color:var(--muted)}
+nav.jump{margin-left:auto;display:flex;gap:4px;flex-wrap:wrap}
+nav.jump a{font-size:.78rem;color:var(--muted);text-decoration:none;padding:5px 10px;border-radius:8px}
+nav.jump a:hover{background:var(--brand-soft);color:var(--brand-dark)}
+.wrap{max-width:var(--maxw);margin:0 auto;padding:0 20px 90px}
+.hero{margin-top:26px;padding:30px 28px;border-radius:var(--radius);color:#fff;background:linear-gradient(135deg,#0f5e8f,#1a86c7 60%,#2fa4df);box-shadow:var(--shadow);position:relative;overflow:hidden}
+.hero .eyebrow{font-size:.78rem;letter-spacing:1.5px;text-transform:uppercase;opacity:.9;font-weight:600}
+.hero h1{margin:.3em 0 .25em;font-size:1.62rem;line-height:1.25;max-width:90%}
+.hero .meta{display:flex;gap:18px;flex-wrap:wrap;font-size:.84rem;opacity:.95;margin-top:10px}
+h2.section{font-size:1.3rem;margin:48px 0 4px;display:flex;align-items:center;gap:10px;scroll-margin-top:70px}
+h2.section .dot{width:10px;height:22px;border-radius:4px;background:var(--brand)}
+.section-sub{color:var(--muted);font-size:.9rem;margin:0 0 18px}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);padding:22px 24px;margin:16px 0;--dot:var(--brand);overflow-x:clip;overflow-wrap:break-word;word-wrap:break-word}
+.concepts{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:minmax(0,1fr);gap:10px}
+.concepts li{display:flex;gap:12px;align-items:flex-start;padding:12px 14px;border:1px solid var(--line);border-radius:10px;background:#fcfdff;min-width:0;max-width:100%}
+.concepts li>span{min-width:0;max-width:100%;overflow-wrap:break-word;word-wrap:break-word}
+.concepts input{margin-top:4px;width:18px;height:18px;accent-color:var(--brand);flex:none;cursor:pointer}
+.concepts .ct{font-weight:600}.concepts .cd{display:block;font-weight:400;color:var(--muted);font-size:.86rem;margin-top:2px}
+.concepts li.done{background:var(--brand-soft);border-color:#bfe0f3}.concepts li.done .ct{text-decoration:line-through;opacity:.65}
+.cl-head{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-bottom:6px}
+.cl-head .count{font-size:.82rem;color:var(--muted);background:var(--brand-soft);padding:3px 10px;border-radius:999px;font-weight:600}
+.btn-reset{font-size:.78rem;border:1px solid var(--line);background:#fff;color:var(--muted);padding:5px 12px;border-radius:8px;cursor:pointer}
+.mm-toolbar{display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin-bottom:10px}
+.mm-btn{font-size:.78rem;border:1px solid var(--line);background:#fff;padding:6px 13px;border-radius:8px;cursor:pointer;color:var(--brand-dark);font-weight:600}
+.mindmap-host{height:580px;overflow:auto;border:1px solid var(--line);border-radius:10px;background:#fcfdff}.mindmap-host svg{display:block}
+.kb-tag{display:inline-flex;align-items:center;gap:8px;font-size:.78rem;font-weight:700;color:#fff;padding:5px 12px;border-radius:999px;margin-bottom:6px}
+.kb1t{background:var(--kb1)}.kb1b{--dot:var(--kb1)}
+.lead{font-size:1.02rem}.term{font-weight:700;color:var(--dot)}.en{font-style:italic;color:var(--muted);font-weight:500}
+.abc{display:flex;align-items:center;gap:10px;margin:28px 0 10px;padding-bottom:6px;border-bottom:2px solid color-mix(in srgb,var(--dot) 18%,#fff)}
+.abc .ltr{background:var(--dot);color:#fff;font-weight:800;min-width:30px;height:30px;padding:0 7px;border-radius:8px;display:grid;place-items:center;flex:none}
+.abc h4{margin:0;font-size:1.06rem;color:var(--dot)}
+.numh{font-weight:700;color:var(--dot);margin:22px 0 6px;font-size:1rem}
+ol.book{margin:12px 0;padding-left:28px}ol.book>li{margin:9px 0;padding-left:6px}ol.book>li::marker{font-weight:700;color:var(--dot)}
+ul.exp{list-style:none;margin:12px 0;padding:0;display:grid;grid-template-columns:minmax(0,1fr);gap:10px}
+ul.exp>li{position:relative;padding-left:20px;min-width:0;max-width:100%;overflow-wrap:break-word;word-wrap:break-word}
+ul.exp>li::before{content:"";position:absolute;left:0;top:11px;width:8px;height:8px;border-radius:2px;background:var(--dot)}
+.flow{border-left:4px solid var(--dot);background:color-mix(in srgb,var(--dot) 9%,#fff);padding:11px 15px;border-radius:0 10px 10px 0;margin:18px 0;font-size:.9rem;min-width:0;max-width:100%;overflow-wrap:break-word;word-wrap:break-word}
+.flow::before{content:"🔗 Benang merah — ";font-weight:700;color:var(--dot)}.flow b{color:var(--dot)}
+.casebox{background:#f8fafc;border:1px solid var(--line);border-left:4px solid var(--dot);border-radius:0 10px 10px 0;padding:12px 15px;margin:14px 0;font-size:.88rem;min-width:0;max-width:100%;overflow-wrap:break-word;word-wrap:break-word}
+.casebox .ctitle{font-weight:700;color:var(--dot);margin-bottom:4px;display:block}
+.table-wrap{width:100%;overflow-x:auto;-webkit-overflow-scrolling:touch;margin:14px 0;border-radius:10px}
+table.mini{width:100%;border-collapse:collapse;margin:0;font-size:.86rem;table-layout:auto}
+table.mini th,table.mini td{border:1px solid var(--line);padding:10px 12px;text-align:left;vertical-align:top;overflow-wrap:break-word;word-wrap:break-word}
+table.mini th{background:color-mix(in srgb,var(--dot) 12%,#fff);color:var(--dot);font-weight:700}
+.rgrid{display:grid;gap:8px;margin:14px 0}.rgrid.c2{grid-template-columns:repeat(2,1fr)}.rgrid.c3{grid-template-columns:repeat(3,1fr)}.rgrid.c4{grid-template-columns:repeat(4,1fr)}
+.rcell{border:1px solid var(--line);border-radius:10px;padding:11px 13px;cursor:pointer;background:#fff;display:flex;gap:10px;align-items:flex-start;transition:.15s;min-width:0;max-width:100%}
+.rcell>span{min-width:0;max-width:100%;overflow-wrap:break-word;word-wrap:break-word}
+.rcell:hover{border-color:var(--dot);box-shadow:var(--shadow);transform:translateY(-2px)}
+.rcell.active{border-color:var(--dot);background:color-mix(in srgb,var(--dot) 8%,#fff)}
+.rcell .stepnum{background:var(--dot);color:#fff;font-weight:700;min-width:24px;height:24px;border-radius:7px;display:grid;place-items:center;flex:none;font-size:.82rem}
+.rcell .rt{font-weight:700;font-size:.9rem;color:var(--dot);display:block}.rcell .rp{font-size:.78rem;color:var(--muted);display:block;margin-top:2px}
+.rdetail{font-size:.88rem;border-left:4px solid var(--dot);background:color-mix(in srgb,var(--dot) 8%,#fff);border-radius:0 10px 10px 0;padding:12px 15px;margin-top:6px;min-width:0;max-width:100%;overflow-wrap:break-word;word-wrap:break-word}
+.eqbox{background:#fcfdff;border:1px solid var(--line);border-radius:10px;padding:8px 14px;margin:14px 0;overflow-x:auto}
+mjx-container{max-width:100%;overflow-x:auto;overflow-y:hidden}
+mjx-container:not([display="true"]){display:inline-block;vertical-align:middle}
+.chart-wrap{background:#fcfdff;border:1px solid var(--line);border-radius:12px;padding:14px 16px;margin:16px 0}
+.chart-title{font-weight:700;font-size:.9rem;color:var(--dot);margin:0 0 4px}
+.chart-sub{font-size:.78rem;color:var(--muted);margin:0 0 10px}
+.chart-host{width:100%;overflow-x:auto;position:relative}.chart-host svg{display:block;max-width:100%;height:auto;margin:0 auto}
+.chart-legend{display:flex;gap:14px;flex-wrap:wrap;justify-content:center;margin-top:8px;font-size:.78rem;color:var(--muted)}
+.chart-legend span{display:inline-flex;align-items:center;gap:6px}.chart-legend i{display:inline-block;width:14px;height:3px;border-radius:2px}
+.glossary dt{font-weight:700;color:var(--brand-dark);margin-top:10px}.glossary dd{margin:0 0 2px;color:var(--muted);font-size:.9rem}
+footer{max-width:var(--maxw);margin:0 auto;padding:30px 20px 60px;color:var(--muted);font-size:.82rem;border-top:1px solid var(--line)}
+.offline-note{font-size:.76rem;color:var(--muted);background:#fff8e6;border:1px solid #f0e2b8;border-radius:8px;padding:8px 12px;margin:10px 0}
+.acro-box{background:#f8fafc;border:1px solid var(--line);border-radius:10px;padding:12px 14px;margin:14px 0;font-size:.84rem;min-width:0;max-width:100%;overflow-wrap:break-word;word-wrap:break-word}
+.acro-title{font-weight:700;color:var(--dot);font-size:.86rem;margin-bottom:8px;display:block}
+.acro-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:6px 14px;margin:0;padding:0;list-style:none}
+.acro-grid li{min-width:0;line-height:1.5}.acro-grid b{color:var(--dot)}
+.fguide{background:color-mix(in srgb,var(--dot) 5%,#fff);border:1px solid color-mix(in srgb,var(--dot) 22%,#e4e9f0);border-radius:10px;padding:12px 15px;margin:-6px 0 16px;font-size:.86rem;min-width:0;max-width:100%;overflow-wrap:break-word;word-wrap:break-word}
+.fguide .fg-head{font-weight:700;color:var(--dot);font-size:.84rem;text-transform:uppercase;letter-spacing:.35px;margin:0 0 6px}
+.fguide ul{margin:4px 0 8px;padding-left:18px}.fguide ul li{margin:3px 0}
+.fguide .fg-core{border-top:1px dashed color-mix(in srgb,var(--dot) 30%,#cbd5e1);padding-top:8px;margin-top:8px;display:grid;grid-template-columns:minmax(0,1fr);gap:4px}
+.fguide .fg-core div{min-width:0}
+@media(max-width:680px){
+ .table-wrap{overflow-x:visible}
+ table.mini,table.mini thead,table.mini tbody,table.mini th,table.mini td,table.mini tr{display:block;width:100%}
+ table.mini thead{display:none}
+ table.mini tr{margin-bottom:12px;border:1.5px solid color-mix(in srgb,var(--dot) 28%,#e4e9f0);border-radius:10px;background:#fff;overflow:hidden;box-shadow:0 1px 4px rgba(16,42,67,.05)}
+ table.mini td{border:none;border-bottom:1px solid var(--line);padding:10px 12px;text-align:left}
+ table.mini td:last-child{border-bottom:none}
+ table.mini td::before{content:attr(data-label);display:block;font-size:.74rem;font-weight:700;text-transform:uppercase;letter-spacing:.4px;color:var(--dot);margin-bottom:4px}
+}
+@media(max-width:640px){.hero h1{font-size:1.3rem;max-width:100%}nav.jump{display:none}.rgrid.c2,.rgrid.c3,.rgrid.c4,.acro-grid{grid-template-columns:minmax(0,1fr)}.mindmap-host{height:440px}}
+</style></head><body>
+<div id="progress"></div>
+<header class="top"><div class="top-in">
+ <span class="badge">MODUL 9</span>
+ <a class="homebtn" href="index.html" title="Kembali ke daftar modul"><span style="font-size:1rem;line-height:1">&#8962;</span> Daftar Modul</a>
+ <span class="top-title">Manajemen Keuangan · EKMA5205</span>
+ <nav class="jump">
+ <a href="#konsep">Konsep</a>
+ <a href="#peta">Peta Konsep</a>
+ <a href="#materi">A – Q</a>
+ <a href="#glosarium">Glosarium</a>
+ </nav>
+</div></header>
+
+<div class="wrap">
+ <section class="hero">
+ <div class="eyebrow">Ringkasan Belajar · EKMA5205 (Edisi 3)</div>
+ <h1>Merger dan Akuisisi</h1>
+ <div class="meta">
+ <span>⏱️ ±45 menit</span>
+ <span>📚 1 Bagian Utuh (Heading A – Q)</span>
+ <span>✍️ Dr. Said Kelana Asnawi, M.M.</span>
+ </div>
+ </section>
+
+ <p class="section-sub" style="margin-top:22px">Modul 9 menutup mata kuliah Manajemen Keuangan dengan mengupas tuntas tindakan korporasi strategis (<span class="en">corporate action</span>) berupa <b>Merger, Akuisisi, dan Hostile Takeover</b> dalam 17 bagian berurutan (<b>A – Q</b>): mulai dari pengertian &amp; 3 tipe M&amp;A, peranan pertumbuhan, dampak &amp; sumber sinergi, diversifikasi &amp; indeks Lerner, pengukuran sinergi, biaya <i>sharing</i>, 5 faktor kegagalan sinergi, proses &amp; motif takeover, penilaian perusahaan, <i>stock-for-stock swap</i> &amp; <i>bootstrapping EPS</i>, <i>hostile takeover</i>, seluruh strategi pertahanan &amp; taktik pengambilalihan, ESOP, hingga fenomena merger bursa di dunia.</p>
+ <p class="offline-note">ℹ️ Peta konsep, grafik SVG, kartu penjelasan interaktif, dan checklist konsep berjalan tanpa internet. Koneksi internet hanya diperlukan untuk merender persamaan matematika (MathJax).</p>
+
+ <!-- KONSEP PENTING -->
+ <h2 class="section" id="konsep"><span class="dot"></span>Konsep Penting yang Harus Dikuasai</h2>
+ <div class="card">
+ <div class="cl-head">
+ <span class="count"><span id="doneCount">0</span>/<span id="totalCount">0</span> dikuasai</span>
+ <button class="btn-reset" id="resetBtn">Reset centang</button>
+ </div>
+ <ul class="concepts" id="conceptList">
+ <li><input type="checkbox"><span><span class="ct">Merger vs Akuisisi, 3 Tipe Penggabungan, &amp; Peranan Pertumbuhan</span><span class="cd">Horizontal (sejenis), Vertikal (hulu–hilir), Konglomerat (diversifikasi); target ideal: industri tumbuh dengan <i>barrier to entry</i> tinggi &amp; harga non-deflasi; ekspansi lintas negara dipengaruhi kurs valas &amp; premi akuisisi.</span></span></li>
+ <li><input type="checkbox"><span><span class="ct">Dampak Sinergi ($2+2=5$) &amp; Sumber-Sumber Sinergi</span><span class="cd">$S = V_{AB}-(V_A+V_B)-(P+C)$; bersumber dari pendapatan, skala &amp; skup ekonomis (<i>free rider</i>), serta 4 sumber sinergi keuangan (akses pasar, rating, stabilitas kas, <i>tax shield</i>); bedakan efek komplemen vs efek sinergi.</span></span></li>
+ <li><input type="checkbox"><span><span class="ct">Diversifikasi (Gaughan), Indeks Lerner, Integrasi Vertikal, &amp; Tabel Ansoff</span><span class="cd">5 panduan diversifikasi + kasus gagal Montana Power; daya monopoli Indeks Lerner $(P-\text{MC})/P$; integrasi vertikal (JIT, <i>transfer pricing</i>); sinergi manajemen unggul lintas industri (Ansoff 1965).</span></span></li>
+ <li><input type="checkbox"><span><span class="ct">Pengukuran Sinergi, Biaya Sharing (Porter), &amp; 5 Kegagalan Sinergi (Itami)</span><span class="cd">Matriks Ansoff 4×4 &amp; SWOT; <i>sharing</i> membawa biaya koordinasi, kompromi, &amp; infleksibilitas; 5 penyebab gagal (<i>slogan synergy</i>, <i>future need</i>, <i>overestimate</i> aset &amp; sinergi, kanibalisasi).</span></span></li>
+ <li><input type="checkbox"><span><span class="ct">Proses M&amp;A, Motif Takeover (Roll), &amp; Penilaian Target</span><span class="cd">Arbitrageur, <i>stock-for-stock</i> (pajak tertunda) vs kas/LBO (<i>tax shield</i>), beli 100% vs parsial (<i>multiple taxation</i>); <i>hubris/pride of managers</i> &amp; <i>winner's curse</i>; 5 panduan valuasi (DCF pakai <i>hurdle rate</i> target) &amp; 12 pertimbangan premi.</span></span></li>
+ <li><input type="checkbox"><span><span class="ct">Stock-for-Stock Swap, Cut-Off Dilusi EPS, Pemulihan Pertumbuhan, &amp; Bootstrapping</span><span class="cd">Batas tawar tanpa dilusi $= \text{PER}_{\text{bidder}} \times \text{EPS}_{\text{target}}$; dilusi dapat pulih dalam $t$ tahun bila $g_{BT} &gt; g_B$; <i>bootstrapping EPS</i> mensyaratkan PER tak turun &amp; $\text{PER}_B &gt; \text{PER}_T$.</span></span></li>
+ <li><input type="checkbox"><span><span class="ct">Hostile Takeover, 3 Indikator Target, &amp; Strategi Pertahanan</span><span class="cd"><i>Management entrenchment</i> vs <i>stakeholder interests</i>; pertahanan: <i>poison pills</i> (5 jenis), amendemen AD (<i>staggered board, fair price, dual class</i>), <i>parachutes, greenmail, standstill, white knight/squire, pac-man, just say no</i>, &amp; 4 rekayasa modal.</span></span></li>
+ <li><input type="checkbox"><span><span class="ct">Lima Taktik Melakukan Takeover &amp; Peran ESOP/ESOT</span><span class="cd"><i>Toe hold, casual pass, bear hug, tender offer</i> (<i>creeping/two-tier</i>), &amp; <i>proxy fight</i>; ESOP menyelaraskan agensi &amp; mencegah HT (Polaroid berhasil vs United Airlines gagal).</span></span></li>
+ <li><input type="checkbox"><span><span class="ct">Topik Khusus: Merger Bursa Global &amp; Demutualisasi</span><span class="cd"><i>Intrabusiness</i> (AS) vs <i>Interbusiness</i> (Eropa/Asia); 4 motif (stabilitas keuangan, diversifikasi produk, teknologi <i>electronic trading</i>, inisiasi negara); kasus Korea Exchange &amp; kegagalan ASX–SGX.</span></span></li>
+ </ul>
+ </div>
+
+ <!-- PETA KONSEP -->
+ <h2 class="section" id="peta"><span class="dot"></span>Peta Konsep (Mind Map)</h2>
+ <div class="card">
+ <div class="mm-toolbar">
+ <button class="mm-btn" id="mmExpand">Perluas semua</button>
+ <button class="mm-btn" id="mmCollapse">Ciutkan</button>
+ <span style="font-size:.76rem;color:var(--muted)">Klik simpul bertanda + / – untuk buka-tutup · Gulir untuk menggeser</span>
+ </div>
+ <div class="mindmap-host" id="mindmap"></div>
+ </div>
+
+ <!-- MATERI UTAMA -->
+ <h2 class="section" id="materi"><span class="dot" style="background:var(--kb1)"></span>Ringkasan Materi Lengkap — Merger dan Akuisisi (Heading A – Q)</h2>
+ <div class="card kb1b">
+ <span class="kb-tag kb1t">MODUL 9 · MERGER, AKUISISI, SINERGI, TAKEOVER, ESOP, &amp; MERGER BURSA (Hal. 9.4 – 9.41)</span>
+
+ <div class="acro-box">
+ <span class="acro-title">📖 Kamus Lengkap Terminologi, Singkatan, &amp; Akronim Modul 9</span>
+ <ul class="acro-grid">
+ <li><b>M/A/T (M&amp;A)</b>: <i>Merger</i> (peleburan setara), <i>Akuisisi</i> (pembelian kendali), &amp; <i>Takeover</i> (pengambilalihan, sering berkonotasi paksa).</li>
+ <li><b>Acquirer / Bidder vs Target</b>: Pihak pengakuisisi/penawar vs perusahaan yang dibeli/diambil alih.</li>
+ <li><b>Premium &amp; Control Premium</b>: Kelebihan harga penawaran di atas harga pasar wajar untuk memperoleh kendali saham mayoritas.</li>
+ <li><b>Economies of Scale &amp; Scope</b>: Penurunan biaya per unit akibat volume besar (skala) vs pemanfaatan 1 input/distribusi untuk banyak produk (skup / <i>free rider</i>).</li>
+ <li><b>Indeks Lerner &amp; MC</b>: Ukuran daya monopoli $(P-\text{MC})/P$, dengan $\text{MC}$ = <i>Marginal Cost</i> (biaya tambahan 1 unit).</li>
+ <li><b>JIT &amp; Transfer Pricing</b>: <i>Just-in-Time</i> (minimalkan stok via kepastian pasok vertikal) &amp; penetapan harga transaksi antarentitas dalam satu <i>holding</i>.</li>
+ <li><b>Slogan Synergy &amp; Kanibalisasi</b>: Sinergi semu tanpa kajian mendalam (Itami) &amp; produk baru berharga murah yang justru menggerus produk lama perusahaan sendiri.</li>
+ <li><b>Arbitrageur</b>: Investor pengumpul saham target saat isu M&amp;A guna meraup selisih premi sekaligus mempercepat akumulasi bagi <i>acquirer</i>.</li>
+ <li><b>Stock-for-Stock Swap vs LBO</b>: M&amp;A lewat tukar saham (pajak target tertunda) vs pembelian kas berutang/<i>Leveraged Buyout</i> (memberi <i>tax shield</i> &amp; cenderung <i>go private</i>).</li>
+ <li><b>Wholly Owned Subsidiary &amp; Multiple Taxation</b>: Akuisisi 100% menjadi anak perusahaan penuh vs beli parsial (10–20%) yang terkena pajak ganda karena belum bisa konsolidasi (syarat 70–80%).</li>
+ <li><b>Hubris Hypothesis &amp; Winner's Curse</b>: Kebanggaan berlebih manajer (Roll, 1986) yang memicu bayar terlalu mahal; kutukan pemenang (<i>bad bidder becomes good target</i>, Mitchell &amp; Lehn 1990).</li>
+ <li><b>Bootstrapping EPS</b>: Kenaikan EPS otomatis akibat M&amp;A (tanpa peningkatan produksi) saat $\text{PER}_{\text{bidder}} &gt; \text{PER}_{\text{target}}$ dan PER tidak turun.</li>
+ <li><b>HT (Hostile Takeover)</b>: Pengambilalihan paksa yang ditentang manajemen target (diukur lewat <i>management entrenchment</i> vs <i>stakeholder interests hypothesis</i>).</li>
+ <li><b>Poison Pills</b>: "Pil racun" penerbitan saham/hak khusus (<i>preferred stock plan, flip-over, flip-in, back-end, voting plans</i>) untuk menghalangi <i>bidder</i>.</li>
+ <li><b>Staggered Board, Fair Price, &amp; Dual Capitalization</b>: Amendemen AD: pergantian direksi bertahap, wajib harga wajar bagi minoritas, &amp; dua kelas saham beda hak suara.</li>
+ <li><b>Golden/Silver Parachutes, Greenmail, &amp; Standstill</b>: Pesangon besar eksekutif/staf bila diambil alih, beli balik saham <i>bidder</i> secara premium agar mundur, &amp; kontrak larangan tambah saham.</li>
+ <li><b>White Knight, White Squire, Pac-Man, &amp; Scorched Earth</b>: Pembeli alternatif bersahabat, sekutu blok saham (ESOP), target balik beli saham <i>bidder</i>, &amp; sengaja berutang besar agar tak menarik.</li>
+ <li><b>Toe Hold, Casual Pass, Bear Hug, Tender Offer, &amp; Proxy Fight</b>: 5 taktik pengambilalihan dari beli diam-diam hingga perang perebutan hak suara perwakilan (<i>proxy</i>).</li>
+ <li><b>ESOP &amp; ESOT</b>: <i>Employee Stock Opportunity Program</i> (kepemilikan saham karyawan) &amp; <i>Trust</i> (hak suara dikontrol manajer/<i>trust</i>).</li>
+ <li><b>Demutualisasi, Intrabusiness, &amp; Interbusiness</b>: Perubahan bursa dari milik anggota (<i>mutual</i>) menjadi PT publik; merger bursa sejenis vs lintas jenis (saham + komoditas).</li>
+ </ul>
+ </div>
+
+ <div class="abc"><span class="ltr">A</span><h4>Pendahuluan: Pengertian &amp; Tiga Tipe M&amp;A</h4></div>
+ <p><span class="term">Merger</span> adalah peleburan dua perusahaan berkekuatan seimbang menjadi satu, sedangkan <span class="term">akuisisi</span> menonjolkan peran pembeli (<i>acquirer</i>) dan penjual (<i>target</i>). Ketiga tipe penggabungan bermotif sama—ekspansi, menyinergikan potensi, menekan persaingan, dan memperluas basis pendapatan:</p>
+ <div class="rgrid c3" data-revealgroup>
+ <div class="rcell active" data-reveal data-detail="<b>1. Merger Horizontal:</b> Penggabungan dua perusahaan sejenis di bidang operasional sama (mis. sesama <i>consumer goods</i>) untuk menguasai pasar, memperkuat distribusi, mengurangi persaingan, dan meningkatkan kekuatan monopoli."><span class="stepnum">1</span><span><span class="rt">Horizontal</span><span class="rp">Pesaing / bidang sejenis</span></span></div>
+ <div class="rcell" data-reveal data-detail="<b>2. Merger Vertikal:</b> Penggabungan dua perusahaan dalam satu rantai pasok (hulu/produksi dengan hilir/distribusi-pemasaran) demi kepastian pasokan bahan baku dan penguasaan pasar."><span class="stepnum">2</span><span><span class="rt">Vertikal</span><span class="rp">Hulu (Produksi) ↔ Hilir</span></span></div>
+ <div class="rcell" data-reveal data-detail="<b>3. Konglomerat:</b> Penggabungan dua bisnis tak berhubungan (mis. <i>consumer goods</i> + minyak) untuk memperluas basis laba dan <b>diversifikasi risiko</b> agar rugi satu lini tak menjatuhkan seluruh <i>holding</i>."><span class="stepnum">3</span><span><span class="rt">Konglomerat</span><span class="rp">Lintas sektor / diversifikasi</span></span></div>
+ </div>
+ <div class="rdetail" data-revealdetail><b>1. Merger Horizontal:</b> Penggabungan dua perusahaan sejenis di bidang operasional sama (mis. sesama <i>consumer goods</i>) untuk menguasai pasar, memperkuat distribusi, mengurangi persaingan, dan meningkatkan kekuatan monopoli.</div>
+ <div class="casebox">
+ <span class="ctitle">Kotak 1 · Merger/Akuisisi pada Dua Industri di Indonesia (TV &amp; Telekomunikasi)</span>
+ • <b>Televisi:</b> Trans7 (merger Trans TV + TV7), MNC Corp (<i>holding</i> RCTI, Global TV, MNC TV), Antv (saham dibeli Star TV, satu kepemilikan dengan TV One).<br>
+ • <b>Telekomunikasi:</b> Telkomsel (65% Telkom, 35% SingTel); Indosat (awalnya BUMN 1980 → 41,94% dijual ke STT 2002 → akuisisi Satelindo, IM3, Bimagraha 2003 → Qatar Telecom menguasai 65% via <i>tender offer</i> 2009).
+ </div>
+
+ <div class="abc"><span class="ltr">B</span><h4>Peranan Pertumbuhan terhadap Peluang Merger dan Akuisisi</h4></div>
+ <ul class="exp">
+ <li><span class="term">Kriteria Target Industri Tumbuh</span> — Perusahaan harus menduga pertumbuhan industri masa depan. Target baru menarik bila memiliki (1) <b>hambatan masuk (<i>barrier to entry</i>) tinggi</b> (jika lemah, pesaing baru mudah masuk dan menggerus laba) dan (2) <b>tren harga jual naik / tidak deflasi</b> (pada industri deflasi, peningkatan pangsa pasar belum tentu menaikkan laba).</li>
+ <li><span class="term">M&amp;A Lintas Negara (MNC) &amp; Kurs Valas</span> — Banyak MNC meraup 60–70% pendapatan dari pasar regional. Kurs valas memengaruhi biaya akuisisi (ilustrasi Indonesia–Thailand: perubahan kurs Rp/Baht mengubah besaran premi yang harus dibayar).</li>
+ <li><span class="term">Harga Premium</span> — Target lazim dibeli di atas harga berlaku (mis. saham Tbk Rp50 ditawar Rp65 = premi 30%). Untuk perusahaan tertutup, patokannya nilai buku atau pembanding industri sejenis—tetap disertai premi hasil tawar-menawar.</li>
+ </ul>
+
+ <div class="abc"><span class="ltr">C</span><h4>Dampak Merger dan Akuisisi: Sinergi</h4></div>
+ <p><span class="term">Sinergi</span> adalah "mantra" M&amp;A yang digambarkan sederhana sebagai <b>$2 + 2 = 5$</b> (ada tambahan manfaat dari gabungan dua perusahaan dibanding berdiri sendiri). Namun karena premi ($P$) dan biaya transaksi ($C$) dibayar di muka sementara sinergi bersifat estimasi masa depan, nilai sinergi bersih wajib memperhitungkan keduanya:</p>
+ <div class="eqbox">
+ \[S = V_{AB} - (V_A + V_B) - (P + C)\]
+ </div>
+ <div class="fguide">
+ <div class="fg-head">Bedah Variabel &amp; Intisari Formula Sinergi Bersih ($S$)</div>
+ <ul>
+ <li><b>$V_{AB}$</b> = nilai perusahaan gabungan pasca-M&amp;A; <b>$V_A, V_B$</b> = nilai masing-masing perusahaan bila berdiri sendiri; <b>$P$</b> = premi akuisisi yang dibayar kepada pemegang saham target; <b>$C$</b> = biaya proses penggabungan (penasihat, hukum, dll.).</li>
+ <li><b>Makna formula:</b> Mengukur apakah nilai tambah gabungan $V_{AB} - (V_A + V_B)$ benar-benar melampaui total premi dan biaya akuisisi $(P + C)$.</li>
+ </ul>
+ <div class="fg-core">
+ <div>🧭 <b>Filosofis:</b> Penggabungan yang menaikkan nilai operasional tetap bisa merugikan pengakuisisi bila premi yang dibayar kepada target melebihi nilai sinerginya.</div>
+ <div>📏 <b>Mengukur:</b> Tambahan kekayaan bersih (<i>net synergy</i>) yang tersisa bagi pemegang saham pengakuisisi.</div>
+ <div>🎯 <b>Manfaat:</b> Menjadi batas plafon maksimum premi akuisisi ($P$) yang masih rasional dibayar.</div>
+ </div>
+ </div>
+ <div class="casebox">
+ <span class="ctitle">Kotak 2 · One Stop Solution yang Gagal (Allegis Corporation)</span>
+ Allegis Corp (induk United Airlines) mengakuisisi Hilton International Hotel ($980 jt, 1987) dan Hertz Rent a Car ($587 jt, 1986) demi menawarkan paket terpadu penerbangan–hotel–sewa mobil sekaligus menghemat promosi. Namun pasar dan konsumen tidak merespons konsep tersebut—bukti bahwa memperbesar pendapatan lewat sinergi jauh lebih sulit daripada teori.
+ </div>
+
+ <div class="abc"><span class="ltr">D</span><h4>Sumber-Sumber Sinergi</h4></div>
+ <ol class="book">
+ <li><span class="term">Peningkatan Penerimaan</span> — Paling sulit diraih karena butuh kreativitas menciptakan permintaan baru, bukan sekadar menjumlahkan omzet lama.</li>
+ <li><span class="term">Pengurangan Biaya: Skala Ekonomis &amp; Skup Ekonomis (Gambar 9.1)</span> — <b>Skala ekonomis</b> menurunkan biaya rata-rata per unit ($AC$ turun saat output $Q$ naik) lewat penyebaran <i>overhead costs</i>. <b>Skup ekonomis (<i>economies of scope / free rider</i>)</b> mengoptimalkan satu input bersama (mis. data riset atau saluran distribusi) untuk beragam unit bisnis tanpa mengurangi manfaat produk awalnya.</li>
+ <li><span class="term">Sinergi Keuangan (4 Jalur Penurunan Cost of Capital)</span> — (i) Skala lebih besar membuka akses pasar modal &amp; menekan <i>flotation costs</i> per unit; (ii) perusahaan ber-<i>rating</i> rendah menumpang sumber dana murah pengakuisisi ber-<i>rating</i> tinggi; (iii) fluktuasi kas mengecil sehingga biaya pinjaman turun; dan (iv) tambahan utang akuisisi memberi penghematan pajak (<i>tax shield</i>).</li>
+ </ol>
+ <div class="casebox">
+ <span class="ctitle">Kotak 3 · Efek Komplemen vs Efek Sinergi (Resor Ski &amp; Golf Jepang — Itaki)</span>
+ Resor ski hanya ramai di musim salju; menambah lapangan golf agar ramai di musim panas barulah <b>efek komplemen</b>. <b>Efek sinergi</b> sejati baru lahir bila penginapan dibuat sangat mengesankan sehingga pegolf musim panas tertarik kembali bermain ski di musim dingin dan sebaliknya!
+ </div>
+
+ <div class="abc"><span class="ltr">E</span><h4>Sumber Sinergi: Diversifikasi, Indeks Lerner, Integrasi Vertikal, &amp; Sinergi Manajemen</h4></div>
+ <ul class="exp">
+ <li><span class="term">Lima Panduan Diversifikasi (Gaughan)</span> — (1) Beli pemimpin pasar (#1/#2) untuk langsung meraih <i>consumer awareness</i> &amp; distribusi, namun berani <b>stop loss</b> (jual kembali) bila gagal; (2) waspadai ketidakpastian arus kas yang mengganggu komitmen dividen reguler; (3) pilih industri tumbuh ber-<b>high barrier to entry</b> (bukan yang sekadar untung sesaat); (4) jangan sembarangan pindah <i>core business</i> (<b>Kotak 4 — Montana Power</b> menjual bisnis utilitas $1,3 M untuk pindah ke telekomunikasi Touch America → saham anjlok dari $65 ke $0,53 lalu <i>delisting</i>); (5) pilih industri yang <i>earning</i>-nya <b>tidak berkorelasi sempurna</b> untuk menekan risiko portofolio.</li>
+ <li><span class="term">Kekuatan Pasar Horizontal &amp; Indeks Lerner</span> — Merger horizontal mengurangi pesaing sehingga meningkatkan daya monopoli (<i>market power</i>), diukur dengan Indeks Lerner:</li>
+ </ul>
+ <div class="eqbox">
+ \[\text{Lerner Index} = \frac{P - \text{MC}}{P}\]
+ </div>
+ <div class="fguide">
+ <div class="fg-head">Bedah Variabel &amp; Intisari Formula Indeks Lerner</div>
+ <ul>
+ <li><b>$P$</b> = harga jual produk di pasar; <b>$\text{MC}$</b> = biaya marginal (tambahan biaya memproduksi 1 unit tambahan).</li>
+ <li><b>Makna formula:</b> Mengukur persentase <i>markup</i> harga jual di atas biaya marginalnya (0 = persaingan sempurna; mendekati 1 = monopoli kuat).</li>
+ </ul>
+ <div class="fg-core">
+ <div>🧭 <b>Filosofis:</b> Berkurangnya kompetitor akibat merger horizontal memberi ruang perusahaan menetapkan harga lebih jauh di atas biaya marginalnya.</div>
+ <div>📏 <b>Mengukur:</b> Tingkat kekuatan pasar / daya monopoli (<i>market power</i>) pasca-merger horizontal.</div>
+ <div>🎯 <b>Manfaat:</b> Acuan manajemen menilai potensi sinergi harga sekaligus acuan regulator persaingan usaha mencegah monopoli berlebihan.</div>
+ </div>
+ </div>
+ <ul class="exp">
+ <li><span class="term">Integrasi Vertikal (JIT &amp; Transfer Pricing)</span> — Menjamin pasokan bahan baku sehingga menekan inventori hingga mampu menerapkan <b>Just-in-Time (JIT)</b>. Meski <b>transfer pricing</b> (pemasok A jual murah ke pembeli B dalam satu <i>holding</i>) tampak netral secara konsolidasi, sinergi tetap lahir dari dukungan daya saing B, penghematan biaya kontrak/administrasi, pembuatan input terspesialisasi, serta paduan divisi produksi + pembiayaan konsumen.</li>
+ <li><span class="term">Joint Effect, Sinergi Manajemen, &amp; Tabel 9.1 (Ansoff, 1965)</span> — Sinergi operasi/investasi adalah <i>joint effect</i> ($R_S &gt; R_I$, $O_S &lt; O_I$, $I_S &lt; I_I$). Selain itu terdapat <b>sinergi manajemen</b>: Tabel 9.1 Ansoff memetakan 4 fungsi (<i>General Management/GM, Manufacturing, R&amp;D, Marketing</i>) dan membuktikan peluang sinergi tertinggi terjadi di industri sama, namun khusus kapabilitas <b>GM</b> tetap memberi sinergi tinggi meski lintas industri!</li>
+ </ul>
+
+ <div class="abc"><span class="ltr">F</span><h4>Pengukuran Besaran Sinergi</h4></div>
+ <p>Untuk menghindari kegagalan akibat <i>over-optimism</i>, Ansoff menyarankan analisis sensitivitas serta memetakan <b>3 efek sinergi</b> (kenaikan penjualan, turunnya biaya operasi, dan turunnya <i>investment requirement</i>) pada tahap <i>start-up</i>, operasi, dan ekspansi (<b>Tabel 9.2</b>) dilengkapi analisis <b>SWOT</b>. Keempat aspek fungsional (GM, R&amp;D, Marketing, Operations) kemudian dipasangkan dalam <b>Matriks 4×4 (Tabel 9.3)</b> dengan 4 sumber daya baku: (1) <i>facilities &amp; equipment</i>, (2) <i>personal skills</i>, (3) <i>organizational capabilities</i>, dan (4) <i>management capabilities</i> (mis. pada GM-Finance: <i>data processing</i>, keahlian hukum/SDM/akuntansi, <i>financing &amp; control</i>, serta <i>investment &amp; large system management</i>).</p>
+
+ <div class="abc"><span class="ltr">G</span><h4>Sharing dan Sinergi</h4></div>
+ <p>Menurut <b>Porter</b>, penggunaan input bersama (<span class="term">sharing</span>) meningkatkan laba bila terkait <i>scale</i>, <i>learning</i>, atau pola utilitas, serta memperkuat diferensiasi. Namun <i>sharing</i> menimbulkan <b>tiga jenis biaya</b>:</p>
+ <ol class="book">
+ <li><span class="term">Biaya Koordinasi (<span class="en">Ongoing Cost</span>)</span> — Biaya waktu, personel, dan uang untuk menyelaraskan berbagai departemen agar <i>sharing</i> berjalan mulus.</li>
+ <li><span class="term">Biaya Kompromi (<span class="en">Ongoing Cost</span>)</span> — Risiko penurunan kualitas/fokus (mis. wiraniaga yang menjual terlalu banyak produk sekaligus kurang menguasai produknya) sehingga butuh pelatihan &amp; insentif ekstra.</li>
+ <li><span class="term">Biaya Infleksibilitas (<span class="en">Potential Cost</span>)</span> — Lambatnya respons terhadap perubahan kompetisi serta sulitnya keluar (<i>exit</i>) dari satu industri karena berdampak pada <i>sister company</i>.</li>
+ </ol>
+
+ <div class="abc"><span class="ltr">H</span><h4>Kegagalan Pencapaian Sinergi (5 Faktor Itami)</h4></div>
+ <ol class="book">
+ <li><span class="term">Lack of Careful Analysis (<span class="en">Slogan Synergy</span>)</span> — Desain M&amp;A terlalu sederhana dan terlalu optimistis tanpa kajian mendalam sehingga sinergi hanya menjadi slogan.</li>
+ <li><span class="term">Sulit Memprediksi Kebutuhan Masa Depan (<span class="en">Future Need</span>)</span> — Perubahan lingkungan membuat permintaan meleset atau sumber daya tak terkumpul tepat waktu.</li>
+ <li><span class="term">Overestimate Sumber Daya Sekarang</span> — Salah menilai kapabilitas internal dan <i>invisible asset</i> yang dimiliki perusahaan.</li>
+ <li><span class="term">Overestimate Benefit Sinergi</span> — Perhitungan manfaat sinergi tidak memakai asumsi ketat.</li>
+ <li><span class="term">Kanibalisasi</span> — Produk baru berharga/berkualitas lebih rendah justru merusak pasar produk premium perusahaan sendiri (solusi: bentuk anak perusahaan terpisah untuk tiap segmen kualitas di bawah satu <i>holding</i>).</li>
+ </ol>
+
+ <div class="flow">Setelah memahami seluruh seluk-beluk sinergi (C–H), bagian I–L membedah <b>proses eksekusi M&amp;A</b>, <b>motif takeover</b>, <b>valuasi target</b>, hingga perhitungan <b>pertukaran saham</b>.</div>
+
+ <div class="abc"><span class="ltr">I</span><h4>Proses Merger dan Akuisisi</h4></div>
+ <ul class="exp">
+ <li><span class="term">Peran Arbitrageur</span> — Investor yang memborong saham target saat muncul isu M&amp;A demi meraup selisih harga premium. Keberadaan mereka mempercepat pengumpulan blok saham bagi <i>acquirer</i>, dengan risiko rugi bila M&amp;A batal.</li>
+ <li><span class="term">Stock-for-Stock Swap vs Pembelian Kas / LBO</span> — Pada <b>pertukaran saham</b>, pemegang saham target menikmati <i>capital gain</i> dengan <b>pajak tertunda</b> (baru bayar saat saham dijual), sedangkan <i>bidder</i> tidak mendapat <i>tax shield</i> bunga. Pada <b>pembelian kas / LBO</b> (didanai utang), target langsung kena pajak, sedangkan <i>acquirer</i> menikmati <i>tax shield</i> bunga dan perusahaan cenderung berubah tertutup (<i>go private</i>).</li>
+ <li><span class="term">Akuisisi 100% vs Parsial (10–20%)</span> — Beli 100% menjadikan target <b>wholly owned subsidiary</b> (butuh dana besar &amp; jadi tertutup). Beli parsial 10–20% lebih murah tanpa premi kontrol dan tanpa izin otoritas tertentu, namun memicu <b>pajak ganda (<i>multiple taxation</i>)</b> karena belum memenuhi syarat konsolidasi laporan keuangan (70–80%).</li>
+ </ul>
+
+ <div class="abc"><span class="ltr">J</span><h4>Motif Pengambilalihan Perusahaan (Takeover)</h4></div>
+ <ul class="exp">
+ <li><span class="term">Hubris Hypothesis (Roll, 1986) &amp; Agensi</span> — Motif takeover tidak selalu rasional: sering didorong <b>kebanggaan manajer (<i>pride of managers</i>)</b> dan motivasi agensi (memperbesar skala perusahaan agar kompensasi/benefit manajer naik), di samping motif perbaikan manajemen, R&amp;D, dan distribusi.</li>
+ <li><span class="term">Tiga Hasil Empiris &amp; Winner's Curse</span> — (1) Harga saham <i>acquirer</i> cenderung <b>turun</b> setelah pengumuman, (2) harga saham target <b>naik</b> (efek premi), dan (3) kombinasi keduanya negatif akibat biaya proses ke pihak luar. Perusahaan pengakuisisi yang gagal dapat terkena <b>Winner's Curse</b>: <i>"Do bad bidders become good targets?"</i> (Mitchell &amp; Lehn, 1990) — pengakuisisi yang gagal justru balik menjadi target pengambilalihan!</li>
+ </ul>
+
+ <div class="abc"><span class="ltr">K</span><h4>Penilaian Perusahaan untuk Akuisisi / Merger / Takeover</h4></div>
+ <p>Manajer perlu menjaga harga saham tetap tinggi (berbasis laba bagus) agar biaya pengambilalihan mahal (<i>anti-takeover</i>). Lima panduan valuasi target: (1) <b>Nilai buku</b> ($A - D - \text{PS}$), (2) <b>Liquidation value/share</b> (nilai likuidasi riil, biasanya di bawah nilai buku), (3) <b>Discounted future cash flow / DCF</b> (Kaplan &amp; Ruback 1995: pakai <b>hurdle rate perusahaan target</b>, bukan <i>bidder</i>), (4) <b>Continuing value</b> (nilai sisa periode pertumbuhan lanjut), dan (5) <b>Perbandingan relatif</b>. Pertimbangan kunci harga/premium (12 poin buku): $P_0$ perlu penyesuaian negosiasi; hak kontrol menuntut <b>control premium</b>; pasar <i>bearish</i> memicu tuntutan premi lebih tinggi; dampak umumnya <b>positif (+) bagi stockholder, bondholder, &amp; PS target</b> (karena risiko gagal bayar turun) namun <b>nol/negatif bagi bidder</b>; serta beda kepentingan pasca-swap (<i>seller</i> ingin cepat registrasi bursa untuk jual saham, <i>buyer</i> tidak).</p>
+
+ <div class="abc"><span class="ltr">L</span><h4>Merger dan Akuisisi dengan Saham (Stock-for-Stock Swap)</h4></div>
+ <p>Empat langkah standar: (i) evaluasi target ($T$), (ii) evaluasi <i>bidder</i> ($B$), (iii) hitung rasio pertukaran saham ($P_{\text{tawar}}/P_B$), dan (iv) hitung angka gabungan ($BT$). Studi kasus buku: <b>PT B</b> (EAT 100 M, 10.000 jt lbr, $P=300$, $\text{EPS}=10$, $\text{PER}=30$) mengakuisisi <b>PT T</b> (EAT 20 M, 4.000 jt lbr, $P=100$, $\text{EPS}=5$, $\text{PER}=20$):</p>
+ <div class="table-wrap">
+ <table class="mini">
+ <thead><tr><th>Skenario Tawaran PT B ke PT T</th><th>Harga Tawar</th><th>Rasio T/B &amp; Saham Baru</th><th>Total Saham BT</th><th>EPS Gabungan (EAT 120 M)</th></tr></thead>
+ <tbody>
+ <tr><td data-label="Skenario Tawaran">Premium 30%</td><td data-label="Harga Tawar">Rp130</td><td data-label="Rasio & Saham Baru">$0{,}43 \implies 1.720$ jt lbr</td><td data-label="Total Saham BT">11.720 jt</td><td data-label="EPS Gabungan"><b>Rp10,23 (Naik / Akretif)</b></td></tr>
+ <tr><td data-label="Skenario Tawaran"><b>1. Titik Cut-Off (Prem 50%)</b></td><td data-label="Harga Tawar"><b>Rp150</b> ($\text{PER}_B \times \text{EPS}_T$)</td><td data-label="Rasio & Saham Baru">$0{,}50 \implies 2.000$ jt lbr</td><td data-label="Total Saham BT">12.000 jt</td><td data-label="EPS Gabungan"><b>Rp10,00 (Tetap / Impas)</b></td></tr>
+ <tr><td data-label="Skenario Tawaran">Premium 60%</td><td data-label="Harga Tawar">Rp160</td><td data-label="Rasio & Saham Baru">$0{,}53 \implies 2.133$ jt lbr</td><td data-label="Total Saham BT">12.133 jt</td><td data-label="EPS Gabungan"><b>Rp9,89 (Turun / Dilusi!)</b></td></tr>
+ </tbody>
+ </table>
+ </div>
+ <div class="eqbox">
+ \[\text{Harga Tawar Cut-Off} = \text{PER}_{\text{bidder}} \times \text{EPS}_{\text{target}} \qquad\big|\qquad \text{EPS}_{\text{gabungan}} = \frac{\text{EAT}_B + \text{EAT}_T}{\#\text{Saham}_B + \#\text{Saham Baru}}\]
+ </div>
+ <div class="fguide">
+ <div class="fg-head">Bedah Variabel &amp; Intisari Formula Cut-Off Dilusi EPS</div>
+ <ul>
+ <li><b>$\text{PER}_{\text{bidder}}$</b> = rasio PER pengakuisisi (PT B = 30); <b>$\text{EPS}_{\text{target}}$</b> = EPS target (PT T = 5); <b>$\#\text{Saham Baru}$</b> = $(P_{\text{tawar}}/P_B) \times \#\text{Saham}_T$.</li>
+ <li><b>Makna formula:</b> Menentukan harga penawaran maksimum agar EPS gabungan pasca-M&amp;A tidak turun (terdilusi) di bawah EPS awal pengakuisisi.</li>
+ </ul>
+ <div class="fg-core">
+ <div>🧭 <b>Filosofis:</b> Membayar premi melebihi batas <i>cut-off</i> memaksa penerbitan terlalu banyak saham baru sehingga laba per saham pemilik lama menyusut.</div>
+ <div>📏 <b>Mengukur:</b> Batas harga tawar maksimum (Rp150) yang memisahkan akuisisi akretif dari dilutif.</div>
+ <div>🎯 <b>Manfaat:</b> Pedoman negosiasi premi maksimum dalam transaksi <i>stock-for-stock swap</i>.</div>
+ </div>
+ </div>
+ <div class="chart-wrap">
+ <div class="chart-title">Grafik Cut-Off Dilusi EPS · EPS Gabungan PT BT vs Harga Penawaran Saham PT T</div>
+ <div class="chart-sub">Di bawah Rp150, EPS pasca-merger naik (akretif); di atas Rp150, EPS turun di bawah Rp10 (terdilusi).</div>
+ <div class="chart-host" id="ch_m9_eps"></div>
+ </div>
+
+ <div class="numh">2. Harga Premium, Pertumbuhan, &amp; Bootstrapping EPS</div>
+ <p>Mengapa PT B tetap mau membayar Rp160 walau EPS awal terdilusi ke Rp9,89? Karena sinergi menaikkan pertumbuhan laba ($g_{BT} = 9\%$ vs $g_B = 7\%$ tanpa M&amp;A). Waktu pemulihan dilusi ($t$) dihitung dengan menyamakan proyeksi EPS keduanya:</p>
+ <div class="eqbox">
+ \[\text{EPS}_B(1 + g_B)^t = \text{EPS}_{BT}(1 + g_{BT})^t \implies 10(1{,}07)^t = 9{,}89(1{,}09)^t \implies t = \mathbf{0{,}6\text{ tahun}}\]
+ </div>
+ <div class="fguide">
+ <div class="fg-head">Bedah Variabel &amp; Intisari Formula Pemulihan Dilusi EPS</div>
+ <ul>
+ <li><b>$\text{EPS}_B, g_B$</b> = EPS awal &amp; pertumbuhan tahunan PT B tanpa M&amp;A; <b>$\text{EPS}_{BT}, g_{BT}$</b> = EPS pasca-M&amp;A &amp; pertumbuhan gabungan berkat sinergi; <b>$t$</b> = waktu (tahun) hingga EPS gabungan menyalip EPS awal.</li>
+ <li><b>Makna formula:</b> Mengukur berapa lama percepatan pertumbuhan ($g_{BT} &gt; g_B$) menutup dilusi EPS awal (pada $t=1$, $\text{EPS}_{BT} = 10{,}78 &gt; \text{EPS}_B = 10{,}70$).</li>
+ </ul>
+ <div class="fg-core">
+ <div>🧭 <b>Filosofis:</b> Dilusi jangka pendek dapat diterima secara rasional bila sinergi pertumbuhan mengembalikan keunggulan EPS dalam waktu singkat.</div>
+ <div>📏 <b>Mengukur:</b> Periode balik modal EPS (<i>break-even time</i>) dan efek <b>Bootstrapping EPS</b> (kenaikan EPS otomatis tanpa kenaikan produksi).</div>
+ <div>🎯 <b>Manfaat:</b> Dua prasyarat wajib agar <i>bootstrapping EPS</i> selalu berhasil: (1) <b>PER tidak boleh turun</b> pasca-M&amp;A, dan (2) <b>$\text{PER}_{\text{bidder}} &gt; \text{PER}_{\text{target}}$</b> (ditunjang ukuran laba target relatif besar).</div>
+ </div>
+ </div>
+
+ <div class="flow">Tidak semua pengambilalihan berlangsung damai. Bagian M–P membedah konflik <b>Hostile Takeover (HT)</b>, seluruh strategi pertahanan manajemen, taktik menyerang <i>bidder</i>, hingga peran <b>ESOP</b>.</div>
+
+ <div class="abc"><span class="ltr">M</span><h4>Hostile Takeover (HT)</h4></div>
+ <ul class="exp">
+ <li><span class="term">Dua Hipotesis Dampak Pertahanan HT</span> — Upaya manajemen menghalangi HT dapat merugikan pemegang saham (<b>management entrenchment hypothesis</b>) atau menguntungkan pemegang saham (<b>stakeholder interests hypothesis</b>; empiris diukur dengan <i>Tobin's Q</i>).</li>
+ <li><span class="term">Tiga Indikator Target Potensial HT</span> — (1) Arus kas tinggi &amp; stabil, utang rendah, harga saham di bawah nilai intrinsik; (2) mengamati blok kepemilikan (karyawan cenderung loyal ke manajemen vs <i>arbitrageur</i> yang berpihak ke <i>bidder</i>); (3) lonjakan volume perdagangan mencurigakan (indikasi akumulasi saham oleh <i>arbitrageur/bidder</i>).</li>
+ </ul>
+
+ <div class="abc"><span class="ltr">N</span><h4>Beberapa Strategi Menghadapi Takeovers</h4></div>
+ <div class="rgrid c3" data-revealgroup>
+ <div class="rcell active" data-reveal data-detail="<b>1. Poison Pills (Pil Racun — 5 Varian):</b><br>• <b>Preferred stock plan:</b> terbitkan saham preferen berkeistimewaan (kasus Lenox 1982: 1 PS dikonversi jadi 40 saham biasa jika diambil alih Brown Foreman → gagal takeover).<br>• <b>Flip-over right:</b> hak beli saham pengakuisisi sangat murah (dipicu akuisisi 20% atau <i>tender offer</i> 30%).<br>• <b>Flip-in:</b> hak beli saham target untuk mendilusi kepemilikan <i>bidder</i>.<br>• <b>Back-end plans (note purchase rights):</b> dividen dapat ditukar kas/surat berharga senior di atas harga pasar.<br>• <b>Voting plans:</b> terbitkan saham preferen berhak suara.<br><i>Kotak 6 (Oracle vs PeopleSoft 2003):</i> PeopleSoft beri <i>rebate</i> 5× lisensi konsumen → meski akhirnya berhasil diambil alih Oracle, nilainya naik dari $7,7 M ke $10,3 M!"><span class="stepnum">1</span><span><span class="rt">Poison Pills (5 Varian)</span><span class="rp">Pil racun berbasis saham &amp; hak</span></span></div>
+ <div class="rcell" data-reveal data-detail="<b>2. Amendemen Anggaran Dasar (AD):</b><br>• <b>Staggered board:</b> pergantian dewan direksi dibuat bertahap sehingga <i>bidder</i> sulit langsung menguasai kursi direksi.<br>• <b>Fair price provisions:</b> mewajibkan pengakuisisi membayar pemegang saham minoritas minimal pada harga wajar.<br>• <b>Dual capitalizations:</b> memecah saham menjadi dua kelas dengan hak suara berbeda (memberi <i>voting power</i> lebih besar ke kubu pro-manajemen)."><span class="stepnum">2</span><span><span class="rt">Amendemen AD (3 Cara)</span><span class="rp">Staggered board, fair price, dual class</span></span></div>
+ <div class="rcell" data-reveal data-detail="<b>3. Parachutes, Taktik Negosiasi, &amp; Ubah Struktur Modal:</b><br>• <b>Golden / Silver Parachutes:</b> kompensasi pesangon besar bagi direksi / lingkup lebih luas bila kehilangan jabatan.<br>• <b>Greenmail:</b> beli kembali saham <i>bidder</i> secara premium agar batal mengakuisisi (kasus Icahn beli 9,9% Saxon Industry @7,21, dibeli balik @10,5).<br>• <b>Standstill agreement:</b> kontrak agar calon <i>bidder</i> tak menambah saham.<br>• <b>White knight</b> (undang pembeli bersahabat) &amp; <b>White squire</b> (mitra/ESOP pegang blok saham besar).<br>• <b>Pac-man defense</b> (target balik membeli saham <i>bidder</i>) &amp; <b>Just say no</b>.<br>• <b>4 Taktik Struktur Modal:</b> (1) <b>Rekapitalisasi</b> (superdividen dari utang), (2) <b>Scorched earth defense</b> (berutang besar agar tak menarik), (3) <b>Terbitkan saham baru/ESOP</b> (≥22% sangat mempersulit HT), (4) <b>Buy back</b> (<i>self-tender, open market, targeted repurchase</i>) untuk kuras kas &amp; saham <i>arbitrageur</i>."><span class="stepnum">3</span><span><span class="rt">Parachutes, Taktik &amp; Modal</span><span class="rp">Greenmail, White Knight, Pac-Man, Buyback</span></span></div>
+ </div>
+ <div class="rdetail" data-revealdetail><b>1. Poison Pills (Pil Racun — 5 Varian):</b> <i>Preferred stock plan</i> (kasus Lenox vs Brown Foreman 1982), <i>Flip-over right</i> (pemicu 20%/30%), <i>Flip-in</i>, <i>Back-end plans</i>, dan <i>Voting plans</i>. Pada <b>Kotak 6</b>, perlawanan PeopleSoft (<i>rebate</i> 5×) menaikkan harga akuisisi Oracle dari $7,7 M menjadi $10,3 M.</div>
+
+ <div class="abc"><span class="ltr">O</span><h4>Bagaimana Melakukan Takeover (5 Taktik Bidder)</h4></div>
+ <ol class="book">
+ <li><span class="term">Toe Hold</span> — Membeli saham secara diam-diam sedikit demi sedikit lalu mengakumulasikannya menjadi kepemilikan tunggal.</li>
+ <li><span class="term">Casual Pass</span> — <i>Bidder</i> menemui manajemen target dan mengajukan penawaran secara informal.</li>
+ <li><span class="term">Bear Hug</span> — Menekan manajemen target (biasanya saat <i>arbitrageur</i> sudah memegang banyak saham) dengan penawaran harga spesifik yang lebih murah &amp; cepat daripada <i>tender offer</i>.</li>
+ <li><span class="term">Tender Offer</span> — Penawaran terbuka berharga premium ke seluruh pemegang saham (dibantu tim: <i>investment bank, legal advisor, information agent, depository bank</i>). Variannya: <b>creeping tender offer</b> (bertahap) dan <b>two-tier tender offer</b> (tahap pertama kompensasi superior, tahap kedua lebih rendah sehingga dinilai kurang adil).</li>
+ <li><span class="term">Proxy Fight</span> — Perebutan dukungan hak suara perwakilan (<i>proxy</i>) pemegang saham lewat media/iklan untuk mengganti direksi/proposal; biayanya lebih murah dibanding <i>tender offer</i> dan efektif saat kinerja manajemen petahana buruk.</li>
+ </ol>
+
+ <div class="abc"><span class="ltr">P</span><h4>Employee Stock Opportunity Program (ESOP)</h4></div>
+ <p><span class="term">ESOP</span> berlandaskan asas keadilan/kesejahteraan, meredam masalah agensi (karyawan sekaligus pemilik), menjadi sumber dana murah, dan berfungsi sebagai perisai anti-HT (suara karyawan umumnya memihak manajemen). Lazimnya dibiayai utang karyawan yang digaransi perusahaan. Variannya adalah <span class="term">ESOT (Employee Stock Opportunity Trust)</span> di mana hak suara dikontrol oleh manajer sebagai <i>trust</i>.</p>
+ <div class="casebox">
+ <span class="ctitle">Kotak 7 · ESOP Gagal vs ESOP Berhasil</span>
+ • <b>Gagal — United Airlines (1994):</b> Serikat pilot &amp; <i>machinist</i> menyetujui potong upah demi utang $4,9 M beli 55% saham (dapat 3 dari 12 kursi direksi), namun serikat divisi lain menolak sehingga memicu konflik internal.<br>
+ • <b>Berhasil — Polaroid (1988):</b> Memberikan ESOP 20% kepemilikan ($285 jt utang + $15 jt kas via potong gaji 5% &amp; benefit) untuk mengantisipasi ancaman HT oleh Shamrock Holding ($40/lbr) — terbukti ampuh mencegah takeover.
+ </div>
+
+ <div class="abc"><span class="ltr">Q</span><h4>Topik Khusus: Merger Bursa di Dunia</h4></div>
+ <ol class="book">
+ <li><span class="term">Perkembangan Merger Bursa &amp; Demutualisasi</span> — Bursa-bursa dunia bergabung agar lebih kuat, fokus, dan efisien, lalu melakukan <b>demutualisasi</b> (mengubah bentuk organisasi dari milik anggota/<i>mutual</i> menjadi perusahaan terbuka berorientasi bisnis). Contoh: <b>BEI</b> (BEJ + BES, belum demutualisasi), <b>ASX</b> (Australian Stock + Sydney Futures, 2006), <b>SGX</b> (SSX + SIMEX + SCCS, 1999), <b>TSE</b> (Hiroshima + Niigata + rencana OSE), <b>HKEX</b> (SEHK + HKFE + HKSC, 2000; beli London Metal Exchange 2012), dan <b>PSE</b>.</li>
+ <li><span class="term">Tipe Merger Bursa (Tabel Choi, 2009)</span> — <b>Intrabusiness mergers</b> (antarsesama bursa saham atau sesama komoditas, dominan di AS: NYSE + Archipelago, CME + CBOT + NYMEX via platform Globex, Nasdaq + OMX) vs <b>Interbusiness mergers</b> (bursa saham + komoditas/derivatif, dominan di Eropa &amp; Asia: SGX, HKEX, Deutsche Börse, Korea Exchange, NYSE + Euronext).</li>
+ <li><span class="term">Empat Motif Merger Bursa</span> — (i) <b>Stabilitas keuangan</b> industri mencegah gagal bayar bursa lemah; (ii) <b>Diversifikasi lini produk</b> (saham + <i>futures</i>/komoditas); (iii) <b>Perubahan teknologi cepat</b> (<i>electronic trading &amp; clearing</i> sebagai <i>survival tool</i> utama); dan (iv) <b>Inisiasi/paksaan negara</b> (SIMEX/SGX, HKEX, dan studi kasus <b>Korea Exchange / MOFE 2005</b> yang menggabungkan KSE, KFE, &amp; KOSDAQ di Busan: memicu PHK 99 staf/13% namun berhasil menyatukan sistem elektronik di bawah KSCC &amp; menekan biaya).</li>
+ <li><span class="term">Kegagalan Merger Bursa Australia (ASX) &amp; Singapura (SGX, 2010–2011)</span> — SGX menawar ASX senilai US$9 M (premi 37%, saham ASX melonjak 19%, porsi SGX 64%) untuk membentuk bursa #5 dunia (kapitalisasi &gt;US$2,7 T). Namun parlemen Australia menolaknya keras (<i>"lunacy on a grand scale"</i>) karena isu harkat/kedaulatan negara dan resmi membatalkannya pada 8 April 2011.</li>
+ </ol>
+ </div>
+
+ <!-- GLOSARIUM -->
+ <h2 class="section" id="glosarium"><span class="dot"></span>Glosarium Kilat</h2>
+ <div class="card">
+ <dl class="glossary">
+ <dt>Arbitrageur</dt><dd>Investor pengumpul saham target menjelang M&amp;A demi selisih premi yang sekaligus mempercepat akumulasi saham bagi pengakuisisi.</dd>
+ <dt>Bootstrapping EPS</dt><dd>Peningkatan EPS otomatis pasca-M&amp;A tanpa kenaikan produksi saat $\text{PER}_{\text{bidder}} &gt; \text{PER}_{\text{target}}$ dan PER tidak turun.</dd>
+ <dt>Demutualisasi Bursa</dt><dd>Transformasi kelembagaan bursa efek dari kepemilikan bersama anggota (<i>mutual</i>) menjadi perseroan terbuka berorientasi korporasi.</dd>
+ <dt>Hubris Hypothesis &amp; Winner's Curse</dt><dd>Kebanggaan manajer (Roll, 1986) memicu bayar premi berlebih; pengakuisisi gagal berisiko balik menjadi target takeover (Mitchell &amp; Lehn, 1990).</dd>
+ <dt>Indeks Lerner</dt><dd>Ukuran kekuatan monopoli perusahaan dari persentase <i>markup</i> harga di atas biaya marginal ($(P-\text{MC})/P$).</dd>
+ <dt>Poison Pills &amp; Greenmail</dt><dd>Tindakan penerbitan saham/hak khusus untuk menghalangi <i>bidder</i>; <i>greenmail</i> adalah pembelian balik saham <i>bidder</i> secara premium agar batal mengakuisisi.</dd>
+ <dt>Proxy Fight &amp; Tender Offer</dt><dd>Perebutan suara perwakilan pemegang saham vs penawaran beli terbuka berharga premium kepada seluruh pemegang saham target.</dd>
+ <dt>White Knight vs White Squire</dt><dd>Pembeli alternatif yang bersahabat vs sekutu/ESOP yang membeli blok saham besar agar perusahaan target tetap independen.</dd>
+ </dl>
+ </div>
+</div>
+
+<footer><b>EKMA5205 — Manajemen Keuangan</b> · Modul 9: Merger dan Akuisisi<br>Bahan belajar ringkas untuk persiapan ujian (berdasarkan BMP UT Edisi 3, Dr. Said Kelana Asnawi, M.M.).</footer>
+
+<script>
+(function(){
+ var pb=document.getElementById('progress');
+ function onScroll(){var h=document.documentElement;var sc=h.scrollTop||document.body.scrollTop;var max=(h.scrollHeight-h.clientHeight)||1;pb.style.width=(sc/max*100)+'%';}
+ document.addEventListener('scroll',onScroll,{passive:true});onScroll();
+
+ var list=document.getElementById('conceptList');var items=[].slice.call(list.querySelectorAll('li'));var boxes=items.map(function(li){return li.querySelector('input');});
+ document.getElementById('totalCount').textContent=items.length;var doneEl=document.getElementById('doneCount');var KEY='studi_ekma5205_m9_concepts_v2';
+ function load(){try{var a=JSON.parse(localStorage.getItem(KEY)||'[]');boxes.forEach(function(b,i){if(a[i])b.checked=true;});}catch(e){}}
+ function save(){try{localStorage.setItem(KEY,JSON.stringify(boxes.map(function(b){return b.checked?1:0;})));}catch(e){}}
+ function refresh(){var n=0;items.forEach(function(li,i){if(boxes[i].checked){li.classList.add('done');n++;}else li.classList.remove('done');});doneEl.textContent=n;}
+ load();refresh();boxes.forEach(function(b){b.addEventListener('change',function(){refresh();save();});});
+ document.getElementById('resetBtn').addEventListener('click',function(){boxes.forEach(function(b){b.checked=false;});refresh();save();});
+
+ [].slice.call(document.querySelectorAll('[data-revealgroup]')).forEach(function(g){
+ var det=g.querySelector('[data-revealdetail]');if(!det){var sib=g.nextElementSibling;if(sib&&sib.hasAttribute&&sib.hasAttribute('data-revealdetail'))det=sib;}
+ var cells=[].slice.call(g.querySelectorAll('[data-reveal]'));
+ cells.forEach(function(c){c.addEventListener('click',function(){cells.forEach(function(x){x.classList.remove('active');});c.classList.add('active');if(det){det.innerHTML=c.getAttribute('data-detail');if(window.MathJax&&window.MathJax.typesetPromise)window.MathJax.typesetPromise([det]);}});});
+ });
+
+ (function(){
+ var ROWH=46,NODE_H=32,PAD=13,GAP=52;var COL={root:'#0f5e8f',kb1:'#1a86c7',kb2:'#e08a1e',kb3:'#2a9d6f',kb4:'#7a5cc0'};
+ var mc=document.createElement('canvas').getContext('2d');mc.font='700 13px -apple-system,Segoe UI,Roboto,sans-serif';
+ function tw(t){return Math.ceil(mc.measureText(t).width);}function esc(t){return t.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');}
+ function rgba(hex,a){var h=hex.replace('#','');return 'rgba('+parseInt(h.substr(0,2),16)+','+parseInt(h.substr(2,2),16)+','+parseInt(h.substr(4,2),16)+','+a+')';}
+ var DATA={label:'MODUL 9 — Merger dan Akuisisi',color:COL.root,children:[
+ {label:'A–B. Konsep, 3 Tipe M&A & Peranan Pertumbuhan',color:COL.kb1,children:[
+ {label:'Horizontal, Vertikal & Konglomerat'},
+ {label:'Barrier to Entry, Kurs MNC & Harga Premium'}
+ ]},
+ {label:'C–H. Sinergi, Diversifikasi, Sharing & Kegagalan',color:COL.kb2,children:[
+ {label:'C–D. Formula Sinergi, Skala/Skup & 4 Sinergi Keuangan'},
+ {label:'E. Diversifikasi (Gaughan), Indeks Lerner & Ansoff'},
+ {label:'F–H. Matriks 4×4, 3 Biaya Sharing & 5 Kegagalan Itami'}
+ ]},
+ {label:'I–L. Proses, Motif, Valuasi & Stock-for-Stock Swap',color:COL.kb3,children:[
+ {label:'I–J. Arbitrageur, Swap vs LBO, Hubris & Winner\'s Curse'},
+ {label:'K. 5 Panduan Valuasi & 12 Pertimbangan Premi'},
+ {label:'L. Cut-Off Dilusi EPS, Pemulihan & Bootstrapping EPS'}
+ ]},
+ {label:'M–Q. Hostile Takeover, ESOP & Merger Bursa Global',color:COL.kb4,children:[
+ {label:'M–N. Indikator HT, Poison Pills, Amendemen AD & Modal'},
+ {label:'O–P. 5 Taktik Takeover & ESOP/ESOT (Polaroid vs UA)'},
+ {label:'Q. Intrabusiness vs Interbusiness, 4 Motif & ASX–SGX'}
+ ]}
+ ]};
+ var idc=0;(function w(n,c){n.id='n'+(idc++);n.color=n.color||c;(n.children||[]).forEach(function(k){w(k,n.color);});})(DATA,COL.root);
+ (function w(n,d){if(d>=2&&n.children&&n.children.length)n.collapsed=true;(n.children||[]).forEach(function(k){w(k,d+1);});})(DATA,0);
+ var host=document.getElementById('mindmap');
+ function render(){
+ var colW=[];(function w(n,d){var width=tw(n.label)+PAD*2+((n.children&&n.children.length)?20:0);colW[d]=Math.max(colW[d]||0,width);if(!n.collapsed)(n.children||[]).forEach(function(k){w(k,d+1);});})(DATA,0);
+ var colX=[],acc=14;for(var d=0;d<colW.length;d++){colX[d]=acc;acc+=colW[d]+GAP;}var row={v:0};
+ (function lay(n,d){if(!n.children||!n.children.length||n.collapsed){n._y=row.v*ROWH+ROWH/2+8;row.v++;return;}var f,l;n.children.forEach(function(k,i){lay(k,d+1);if(i===0)f=k._y;l=k._y;});n._y=(f+l)/2;})(DATA,0);
+ var totalW=acc,totalH=row.v*ROWH+24;var nodes=[],links=[];
+ (function col(n,d,p){n._x=colX[d];n._w=tw(n.label)+PAD*2+((n.children&&n.children.length)?20:0);nodes.push({n:n,d:d});if(p)links.push([p,n]);if(!n.collapsed)(n.children||[]).forEach(function(k){col(k,d+1,n);});})(DATA,0,null);
+ var s='<svg width="'+totalW+'" height="'+totalH+'" viewBox="0 0 '+totalW+' '+totalH+'" xmlns="http://www.w3.org/2000/svg">';
+ links.forEach(function(pr){var a=pr[0],b=pr[1],x1=a._x+a._w,y1=a._y,x2=b._x,y2=b._y,mx=(x1+x2)/2;s+='<path d="M'+x1+' '+y1+' C'+mx+' '+y1+' '+mx+' '+y2+' '+x2+' '+y2+'" fill="none" stroke="'+rgba(b.color,.5)+'" stroke-width="2"/>';});
+ nodes.forEach(function(o){var n=o.n,x=n._x,y=n._y-NODE_H/2,w=n._w,hk=n.children&&n.children.length;var fill=o.d===0?n.color:(o.d===1?rgba(n.color,.12):'#fff');var tf=o.d===0?'#fff':'#1c2733';
+ s+='<g data-id="'+n.id+'" style="cursor:'+(hk?'pointer':'default')+'"><rect x="'+x+'" y="'+y+'" rx="9" width="'+w+'" height="'+NODE_H+'" fill="'+fill+'" stroke="'+n.color+'" stroke-width="'+(o.d===0?0:1.6)+'"/><text x="'+(x+PAD)+'" y="'+(n._y+4)+'" font-size="13" font-weight="'+(o.d<=1?'700':'500')+'" fill="'+tf+'" font-family="-apple-system,Segoe UI,Roboto,sans-serif">'+esc(n.label)+'</text>';
+ if(hk){var cx=x+w-12,cy=n._y;s+='<circle cx="'+cx+'" cy="'+cy+'" r="8.5" fill="'+n.color+'"/><text x="'+cx+'" y="'+(cy+4.5)+'" font-size="13" font-weight="700" fill="#fff" text-anchor="middle" font-family="sans-serif">'+(n.collapsed?'+':'\u2013')+'</text>';}s+='</g>';});
+ s+='</svg>';host.innerHTML=s;
+ }
+ host.addEventListener('click',function(e){var g=e.target.closest('g[data-id]');if(!g)return;var id=g.getAttribute('data-id');(function f(n){if(n.id===id){if(n.children&&n.children.length)n.collapsed=!n.collapsed;return true;}return (n.children||[]).some(f);})(DATA);render();});
+ document.getElementById('mmExpand').addEventListener('click',function(){(function w(n){if(n.children)n.collapsed=false;(n.children||[]).forEach(w);})(DATA);render();});
+ document.getElementById('mmCollapse').addEventListener('click',function(){(function w(n,d){if(d>=1&&n.children&&n.children.length)n.collapsed=true;(n.children||[]).forEach(function(k){w(k,d+1);});})(DATA,0);render();});
+ render();
+ })();
+
+ function drawCartesian(hostId, cfg){
+ var host=document.getElementById(hostId);if(!host)return;
+ var W=cfg.w||680,H=cfg.h||300,P={t:24,r:28,b:44,l:58};
+ var pw=W-P.l-P.r,ph=H-P.t-P.b;
+ var x0=cfg.xmin,x1=cfg.xmax,y0=cfg.ymin,y1=cfg.ymax;
+ function sx(x){return P.l+(x-x0)/(x1-x0)*pw;}
+ function sy(y){return P.t+ph-(y-y0)/(y1-y0)*ph;}
+ function esc(t){return String(t).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');}
+ var s='<svg viewBox="0 0 '+W+' '+H+'" width="'+W+'" height="'+H+'" xmlns="http://www.w3.org/2000/svg">';
+ s+='<rect x="'+P.l+'" y="'+P.t+'" width="'+pw+'" height="'+ph+'" fill="#fff" stroke="#e4e9f0"/>';
+ var xticks=cfg.xticks||5,yticks=cfg.yticks||5;
+ for(var i=0;i<=xticks;i++){var xv=x0+(x1-x0)*i/xticks,px=sx(xv);s+='<line x1="'+px.toFixed(1)+'" y1="'+P.t+'" x2="'+px.toFixed(1)+'" y2="'+(P.t+ph)+'" stroke="#eef2f6" stroke-width="1"/>';var xl=cfg.xfmt?cfg.xfmt(xv):(Math.round(xv*100)/100);s+='<text x="'+px.toFixed(1)+'" y="'+(P.t+ph+16)+'" text-anchor="middle" font-size="11" fill="#5c6b7a" font-family="-apple-system,Segoe UI,sans-serif">'+esc(xl)+'</text>';}
+ for(var j=0;j<=yticks;j++){var yv=y0+(y1-y0)*j/yticks,py=sy(yv);s+='<line x1="'+P.l+'" y1="'+py.toFixed(1)+'" x2="'+(P.l+pw)+'" y2="'+py.toFixed(1)+'" stroke="#eef2f6" stroke-width="1"/>';var yl=cfg.yfmt?cfg.yfmt(yv):(Math.round(yv*100)/100);s+='<text x="'+(P.l-8)+'" y="'+(py+4).toFixed(1)+'" text-anchor="end" font-size="11" fill="#5c6b7a" font-family="-apple-system,Segoe UI,sans-serif">'+esc(yl)+'</text>';}
+ if(y0<0&&y1>0){var zy=sy(0);s+='<line x1="'+P.l+'" y1="'+zy.toFixed(1)+'" x2="'+(P.l+pw)+'" y2="'+zy.toFixed(1)+'" stroke="#94a3b8" stroke-width="1.3" stroke-dasharray="4 3"/>';}
+ if(x0<0&&x1>0){var zx=sx(0);s+='<line x1="'+zx.toFixed(1)+'" y1="'+P.t+'" x2="'+zx.toFixed(1)+'" y2="'+(P.t+ph)+'" stroke="#94a3b8" stroke-width="1.3" stroke-dasharray="4 3"/>';}
+ s+='<line x1="'+P.l+'" y1="'+(P.t+ph)+'" x2="'+(P.l+pw)+'" y2="'+(P.t+ph)+'" stroke="#64748b" stroke-width="1.5"/>';
+ s+='<line x1="'+P.l+'" y1="'+P.t+'" x2="'+P.l+'" y2="'+(P.t+ph)+'" stroke="#64748b" stroke-width="1.5"/>';
+ if(cfg.xlabel)s+='<text x="'+(P.l+pw/2)+'" y="'+(H-8)+'" text-anchor="middle" font-size="12" font-weight="700" fill="#1c2733" font-family="-apple-system,Segoe UI,sans-serif">'+esc(cfg.xlabel)+'</text>';
+ if(cfg.ylabel)s+='<text x="15" y="'+(P.t+ph/2)+'" text-anchor="middle" font-size="12" font-weight="700" fill="#1c2733" font-family="-apple-system,Segoe UI,sans-serif" transform="rotate(-90 15 '+(P.t+ph/2)+')">'+esc(cfg.ylabel)+'</text>';
+ (cfg.vlines||[]).forEach(function(vl){var px=sx(vl.x);s+='<line x1="'+px.toFixed(1)+'" y1="'+P.t+'" x2="'+px.toFixed(1)+'" y2="'+(P.t+ph)+'" stroke="'+(vl.color||'#94a3b8')+'" stroke-width="1.2" stroke-dasharray="5 4"/>';if(vl.label)s+='<text x="'+(px+4).toFixed(1)+'" y="'+(P.t+14)+'" font-size="10.5" font-weight="700" fill="'+(vl.color||'#475569')+'" font-family="-apple-system,Segoe UI,sans-serif">'+esc(vl.label)+'</text>';});
+ (cfg.hlines||[]).forEach(function(hl){var py=sy(hl.y);s+='<line x1="'+P.l+'" y1="'+py.toFixed(1)+'" x2="'+(P.l+pw)+'" y2="'+py.toFixed(1)+'" stroke="'+(hl.color||'#94a3b8')+'" stroke-width="1.2" stroke-dasharray="5 4"/>';if(hl.label)s+='<text x="'+(P.l+pw-4)+'" y="'+(py-5).toFixed(1)+'" text-anchor="end" font-size="10.5" font-weight="700" fill="'+(hl.color||'#475569')+'" font-family="-apple-system,Segoe UI,sans-serif">'+esc(hl.label)+'</text>';});
+ (cfg.series||[]).forEach(function(sr){var pts=sr.pts.map(function(p){return sx(p[0]).toFixed(1)+','+sy(p[1]).toFixed(1);}).join(' ');s+='<polyline fill="none" stroke="'+sr.color+'" stroke-width="'+(sr.w||2.5)+'"'+(sr.dash?' stroke-dasharray="'+sr.dash+'"':'')+' points="'+pts+'"/>';});
+ (cfg.markers||[]).forEach(function(mk){var cx=sx(mk.x),cy=sy(mk.y);s+='<circle cx="'+cx.toFixed(1)+'" cy="'+cy.toFixed(1)+'" r="4.8" fill="'+(mk.color||'#0f5e8f')+'" stroke="#fff" stroke-width="1.6"/>';var dx=mk.dx||8,dy=mk.dy||-8,anc=mk.anchor||'start';if(mk.label)s+='<text x="'+(cx+dx).toFixed(1)+'" y="'+(cy+dy).toFixed(1)+'" text-anchor="'+anc+'" font-size="11" font-weight="700" fill="'+(mk.color||'#0f5e8f')+'" font-family="-apple-system,Segoe UI,sans-serif">'+esc(mk.label)+'</text>';});
+ s+='</svg>';
+ var leg=(cfg.series&&cfg.series.length>1)?'<div class="chart-legend">'+cfg.series.map(function(sr){return '<span><i style="background:'+sr.color+';'+(sr.dash?'border-top:2px dashed '+sr.color+';background:none;height:0':'')+'"></i>'+esc(sr.name)+'</span>';}).join('')+'</div>':'';
+ host.innerHTML=s+leg;
+ }
+
+ (function(){
+ var pts=[];
+ for(var p=100;p<=180;p+=5){
+ var newSh=(p/300)*4000;
+ pts.push([p, 120000/(10000+newSh)]);
+ }
+ drawCartesian('ch_m9_eps',{
+ xmin:100,xmax:180,ymin:9.4,ymax:10.8,xticks:4,yticks:4,
+ xlabel:'Harga Penawaran Saham PT T (Rp)',ylabel:'EPS Gabungan PT BT (Rp)',
+ hlines:[{y:10.0,label:'EPS Awal PT B = Rp10,00',color:'#64748b'}],
+ vlines:[{x:150,label:'Cut-Off = Rp150 (Prem 50%)',color:'#c75b7a'}],
+ series:[{name:'EPS Pasca-Merger',color:'#1a86c7',pts:pts}],
+ markers:[
+ {x:130,y:10.23,label:'Prem 30%: Rp10,23',color:'#2a9d6f',dx:-8,dy:-10,anchor:'end'},
+ {x:150,y:10.0,label:'Cut-off (150; 10,00)',color:'#c75b7a',dx:8,dy:-8},
+ {x:160,y:9.89,label:'Prem 60%: Rp9,89',color:'#e08a1e',dx:8,dy:12}
+ ]
+ });
+ })();
+
+ window.addEventListener('load',function(){setTimeout(function(){if(window.MathJax&&window.MathJax.typesetPromise)window.MathJax.typesetPromise();},400);});
+})();
+</script></body></html>
